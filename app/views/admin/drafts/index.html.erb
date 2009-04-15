@@ -1,0 +1,57 @@
+<% @title = "" -%>
+<%= render :partial => "admin/sub_menu_for_manage" %>
+<%= render_flash %>
+<div class="center">
+<% form_tag "", :onsubmit => "return false;" do -%>
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+	    <td class="category_filter" style="width:10em">
+		<% if @categories %>
+		    <%= t :category_filter,:scope => [:txt, :view, :admin, :posts]  %>:
+		    <select id="category" name="category" onchange="change_list_by(this)" >
+		    <% for category in @categories %>
+			<option  value="<%=admin_category_drafts_path(category) %>" <%= "selected='selected'" if category.id.to_s == params[:category_id]%>><%= category.name %></option>
+		    <% end %>
+			<option value="<%=admin_drafts_path %>" <%= "selected='selected'" if !params[:category_id]%>><%= t :all, :scope => [:txt, :view, :admin, :posts] %></option>
+		    </select>
+		<% end %>
+	    </td>
+
+    </tr>
+</table>
+
+<% if @drafts.size >0 -%>
+<table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed checkbox" style=""><%= check_box_tag "trigger", true, false, :onclick => "checkall(this.name, this.form)" %></th>	    
+	    <th class="helpHed" style="text-align:left;"><%= t :title, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
+	    <th class="helpHed"><%= t :category, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for draft in @drafts %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="checkbox"><%= check_box_tag "ids[]", draft.id, nil, :id => draft.id %></td>
+	    <td class="title_col"><%= draft.title %></td>
+	    <td class="time_col"><%= draft.created_at.to_s :db_short %></td>
+	    <td class="category_col"><%= draft.category.name if draft.category %></td>
+	    <td class="action_col">
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(draft, :html), :class => "read" %></td>
+	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_draft_path(draft), :class => "edit" %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_draft_path(draft, _params), :class => "delete", :method => :delete, 
+	    :confirm => t(:delete_draft?, :scope => [:txt, :view, :admin, :drafts], :title => draft.title)%></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+    	    <div class="delete_selected">
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :posts]), :url => destroy_selected_admin_drafts_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "selected_submit" %>
+	    </div>
+    <% end -%>
+<div id="pagilinks">
+<%= will_paginate @drafts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% end -%>
+</div>

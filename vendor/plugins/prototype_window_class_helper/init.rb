@@ -1,0 +1,1 @@
+require 'prototype_window_class_helper'

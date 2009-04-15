@@ -1,0 +1,65 @@
+<% @title = t(:manage_users, :scope => [:txt, :view, :admin, :users]) -%>
+<%= render :partial => "admin/sub_menu_for_root" %>
+<%= render_flash %>
+<div class="center">
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+	    <td class="category_filter">
+		<% form_tag(admin_users_path, :method => :get) do %>
+		    <%=t(:search_for, :scope => [:txt, :view, :admin, :users]) %>:
+		    <%= text_field_tag(:name, params[:name], :size => 20) %>
+		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :users]), :id => 's' %> 
+		<% end -%>	
+		Sum: <%= @users.total_entries %>
+	    </td>
+    </tr>
+</table>
+<table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed"><%= t(:username, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed"><%= t(:nick, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed">E-mail</th>
+	    <th class="helpHed"><%= t(:blog_name, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed"><%= t(:domain, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed"><%= t(:group, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% old_user = @user -%>
+    <% for @user in @users %>
+    <tr class="<%= cycle("odd", "") %>">
+	    <td class="user_name_col"><%= link_to @user.name, root_path(:subdomain => @user.name) %></td>
+	    <td class="user_nick_col"><%= @user.nick %></td>
+	    <td class="user_email_col"><%= @user.email %></td>
+	    <td class="user_title_col"><%= @user.title %></td>
+	    <td class="user_bind_domain_col"><%= in_place_editor_field "user", "bind_domain", {},:cols => 10, :save_text => t(:save_text, :scope => [:txt, :view, :admin, :users]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :users]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :users]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :users]) %></td>
+	    <td class="user_group_col" id="user<%= @user.id %>_group">
+	     <% if @user.id == session[:user_id] -%>
+		<%= @user.group.name %>
+	     <% else -%>
+		<% form_remote_tag :url => set_group_admin_user_path(@user) do-%>
+		   <select name="group" id="group"> 
+		    <%= options_from_collection_for_select(@groups, "id", "name", @user.get_group.id) %>
+		   </select>
+		    <%= submit_tag t(:set, :scope => [:txt, :view, :admin, :users]) %>
+		    <span id="user_<%= @user.id %>"></span>
+		<% end -%>
+	     <% end -%>
+	    </td>
+	    <td class="action_col delete">
+	    <% unless @user.id == session[:user_id] -%>
+		<%= link_to t(:delete, :scope => [:txt, :view, :admin, :users]), admin_user_path(@user, :page => params[:page]), :class => "delete",
+							  :confirm => t(:delete_user?, :scope => [:txt, :view, :admin, :users], :user => @user.name), :method => :delete %>
+	    <% else -%>						  
+		<%= image_tag "current.gif" %> Current
+	    <% end -%>
+
+	    </td>
+	    
+    </tr>
+    <% end -%>	
+    <% @user = old_user -%>
+</table>
+<div id="pagilinks">
+<%= will_paginate @users, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+</div>

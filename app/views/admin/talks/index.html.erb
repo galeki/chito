@@ -1,0 +1,48 @@
+<% @title = t(:view_talks, :scope => [:txt, :view, :admin, :talks]) -%>
+<%= render :partial => "admin/sub_menu_for_feedbacks" %>
+<%= render_flash %>
+<div class="center">
+<% if @talks.size >0 -%>
+
+<% if params[:keyword] and !params[:keyword].blank?-%>
+<div class="search_conditions">
+<%=t(:talks_contains, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks])%>:    
+</div>
+<% end -%>
+<table id="comments_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed"><%=t(:title, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks])  %></th>
+	    <th class="helpHed"><%=t(:writer, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks])  %></th>
+	    <th class="helpHed"><%=t(:last_comment, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks])  %></th>
+	    <th class="helpHed"><%=t(:comments, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks]) %></th>
+    </tr>
+    <% for talk in @talks -%>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="title_col"><%= link_to talk.title, formatted_post_url(talk, :html, :subdomain => talk.user.name) %></td>
+	    <td class="comment_writer_col"><%=h talk.user.nick %></td>
+	    <td class="comment_content_col">
+		<% @comment = talk.comments.last -%>
+		<div class="talk_avatar"><%= comment_avatar %></div>
+		<b><%= @comment.writer %> </b> <%= t "txt.view.comments._comment.said" %>
+		<br/>
+		<small><%=l @comment.created_at %></small>
+		<br/>
+		<%=h strip_tags(@comment.content) %>
+	    </td>
+	    <td class="comments_col" style="text-align:center;">
+		<%= link_to t("txt.view.admin.talks.jump_to"), formatted_post_path(talk, :html, :anchor => comment_id, :subdomain => talk.user.name), :target => "_blank"%>
+	    </td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+<div id="pagilinks">
+<%= will_paginate @talks, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% else -%>
+<div style="margin-top:40px;">
+   <%= t(:no_match, :scope => [:txt, :view, :admin, :comments]) %> 
+</div>
+<% end -%>
+</div>
+

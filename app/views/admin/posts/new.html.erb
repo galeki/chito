@@ -1,0 +1,5 @@
+<% @title = t(:new_post, :scope => [:txt, :view, :admin, :posts]) -%>
+<%= render :partial => 'admin/sub_menu_for_compose'%>
+<%= render :partial => 'admin/share/article_form', :locals => {:url => admin_posts_path, :method => :post} %> 
+
+

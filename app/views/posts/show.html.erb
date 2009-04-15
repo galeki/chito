@@ -1,0 +1,66 @@
+  <small><%= link_to_previous_post %></small>
+
+  <h1><%= post_title %></h1>
+
+  <div id="article_header">
+    <strong> <%=h @user.nick %></strong> 
+    posted @ <%= post_time %>
+    <%= (' in ' + link_to_post_category ) if @post.category %>
+    <% unless @post.tags.empty? -%>
+	with tags 
+	<%= link_to_post_tags %>
+    <% end -%>
+    , <%= @post.read_count %> <%= t("txt.view.posts.show.readers") %>
+      <% if session[:user_id] == @post.user_id %>
+	    <br/>
+		<%= link_to t(:message_0, :scope => [:txt, :view, :posts, :show]), edit_admin_post_path(@post), :class => "edit" %>
+		<%= link_to t(:message_1, :scope => [:txt, :view, :posts, :show]), admin_posts_path, :class => "return" %>
+      <% end %>
+  </div>
+
+  <small><%= link_to_next_post %></small>
+  
+  <div id="article_body">
+    <%= post_content %>
+  </div>
+
+  <%= postbars %>
+
+<% if @trackbacks.size > 0 && @user.show_trackbacks -%>
+    <div class="articlefooter">
+	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml) %></span>
+	<span class="trackbacks">
+	    <%= image_tag "trackbacks.gif", :class => 'trackbacks' %>
+	    <%= t(:trackbacks, :scope => [:txt, :view, :posts, :show]) %> (<%= @trackbacks.size %>)
+	</span>
+    </div>
+    <div id="trackbacks">
+	<ul>
+		<% for trackback in @trackbacks -%>
+		    <li>
+			<%= link_to (trackback.writer || trackback.blog_name), trackback.homepage, :title => trackback.content, :target => "_blank", :id => "trackback#{trackback.id}" %>
+			- <%= trackback.created_at.to_s(:db_short) %>
+		    </li>
+		<% end -%>
+	</ul>
+    </div>
+<% end -%>
+<div class="articlefooter">
+    <% if @trackbacks.empty? -%>
+	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml) %></span>
+    <% end -%>
+    <span class="comments">
+	<%= link_to (image_tag "small_feed.png", :class => 'feed'), formatted_post_path(@post, :rss) %>
+	<%= t(:comments, :scope => [:txt, :view, :posts, :show]) %> (<%= @comments.size %>)
+    </span>
+</div>
+<div id="comments">
+    <%= comments %> 
+</div>
+
+<% unless @post.forbid_comment || @post.is_draft?%>
+<br />
+<div id="post_comment">
+    <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>
+</div>
+<% end %>

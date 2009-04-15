@@ -1,0 +1,39 @@
+#stickies .stickies_close_area
+{
+    margin: 0;
+    padding: 0 10px 4px 0;
+    float: left;
+}
+
+#stickies .error_stickie,
+#stickies .warning_stickie,
+#stickies .notice_stickie,
+#stickies .debug_stickie
+{
+    margin: 10px 0;
+    padding: 8px;
+}
+
+#stickies .error_stickie
+{
+    border: solid 2px #cc2f00;
+    background-color: #ff9999;
+}
+
+#stickies .warning_stickie
+{
+    border: solid 2px #ff7700;
+    background-color: #ffc28d;
+}
+
+#stickies .notice_stickie
+{
+    border: solid 2px #399c07;
+    background-color: #d7ffaf;
+}
+
+#stickies .debug_stickie
+{
+    border: dashed 2px #444;
+    background-color: #eee;
+}

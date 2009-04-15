@@ -1,0 +1,84 @@
+body{
+    font-size:12px;
+}
+h1 {
+    margin:0;
+    padding:15px 0px 15px 0px;
+    background:url(header.jpg);
+    color:#eee;
+    font-size:18px;
+    text-align:center;
+}
+h1.error{
+    padding:8px 0 8px 0;
+}
+#setup_main {
+    margin:0 auto;
+    width:320px;
+    margin-top:20px;
+}
+#reg, #error{
+    border-top:6px solid #C4DA75;
+    border-bottom:6px solid #C4DA75;
+    padding:10px 20px 25px 20px;
+    background:#F1FACB;
+    color: #666;
+}
+#error{
+    text-align:center;
+}
+#error div{
+    font-weight:bold;
+    font-size:130%;
+    margin:10px 0px 10px 0px;
+}
+label{
+    display:block;
+    margin:15px 0px 5px 0px;    
+}
+label div{
+}
+input{
+	padding: 5px 5px;
+	border: 1px solid #999;
+	font: normal small Arial, Helvetica, sans-serif;
+	color: #666;
+	font-size:14px;
+}
+input.submit{
+    font-size:12px;
+    margin-top:20px;
+}
+input.ck{
+    border:0;
+    padding:0;
+}
+p {
+    padding-left:20px;
+}
+.wrong, .formError {color:red;font-weight:bold;}
+.fieldWithErrors {
+    padding: 3px;
+    background: red;
+    display: inline;
+}
+#hintbox{ /*CSS for pop up hint box */
+position:absolute;
+top: 0;
+background-color: lightyellow;
+width: 150px; /*Default width of hint.*/ 
+padding: 3px;
+border:1px solid black;
+font:normal 12px Verdana;
+line-height:18px;
+z-index:100;
+border-right: 3px solid black;
+border-bottom: 3px solid black;
+visibility: hidden;
+}
+
+.hintanchor{ /*CSS for link that shows hint onmouseover*/
+font-weight: bold;
+color: #666;
+margin: 3px 8px;
+}

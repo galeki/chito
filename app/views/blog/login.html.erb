@@ -1,0 +1,12 @@
+<% @title = t(:message_0, :scope => [:txt, :view, :blog, :login]) -%>
+<%= render_flash %>
+<div id="login">
+<% form_tag ({:action => 'login'}) do%>
+    <label for="name"><div><%= t(:message_1, :scope => [:txt, :view, :blog, :login]) %>:</div>
+    <%= text_field_tag "name", params[:name], :size => 15 %> </label>
+    <label for="password"><div><%= t(:message_2, :scope => [:txt, :view, :blog, :login]) %>:</div>
+    <%= password_field_tag "password", nil, :size => 15 %> </label>
+    <label><%=check_box_tag "persist", value = "1", true, :style => 'border:0;'%> <%= t(:message_3, :scope => [:txt, :view, :blog, :login]) %></label>
+    <%= submit_tag t(:message_4, :scope => [:txt, :view, :blog, :login]) %>
+<% end  %>
+</div>

@@ -1,0 +1,4 @@
+<% @title = t(:edit_post, :scope => [:txt, :view, :admin, :posts]) -%>
+<%= render :partial => 'admin/sub_menu_for_manage' %>
+<%= select_admin_menu("manage", :sub_menu => "_posts_index") %>
+<%= render :partial => 'admin/share/article_form', :locals => {:url => admin_post_path(@article), :method => :put} %> 

@@ -1,0 +1,11 @@
+  <% @title = @page.title -%>
+
+  <div id="article_body">
+          <% if session[:user_id] == @page.user_id %>
+	    <br/>
+		<%= link_to t(:message_0, :scope => [:txt, :view, :pages, :show]), edit_admin_page_path(@page), :class => "edit" %>
+		<%= link_to t(:message_1, :scope => [:txt, :view, :pages, :show]), admin_pages_path, :class => "return" %>
+	    <% end %>
+    <%= @page.content %>
+  </div>
+

@@ -1,0 +1,51 @@
+<% form_for :article, :url => url, :html => {:id => "article_form",:name => "article_form", :method => method, :onsubmit => 'return false', :multipart => true} do |f| -%>
+<div id="form_sidebar">
+ <div class="form_item">
+    <div class="right_c"></div>
+    <div class="form_category"><%=t :category, :scope => [:txt, :view, :admin, :share]  %></div>
+    <div id='add_category_remote'>
+	<%= text_field '_category', 'name', :onkeypress => %Q[if(event.keyCode==13) add_category_remote(this.value, '#{form_authenticity_token}');], :size => 10%>
+	<input type="button" value="<%=t :add, :scope => [:txt, :view, :admin, :share]  %>" id="s" onclick="add_category_remote($(_category_name).value, '<%= form_authenticity_token %>')" />	
+    </div>
+    <div id="category_list_remote">
+	<ul id="categories_checkboxes">
+    <% for category in @categories -%>
+	    <li><label>
+		<%= radio_button_tag :category, category.id, (category.id == @selected), :class => 'checkbox' %><%= category.name %>
+	    </label></li>
+    <% end -%>
+	</ul>
+    </div>
+ </div>
+ <div class="form_item">
+    <div class="right_c"></div>
+    <div class="form_category"><%=t :option, :scope => [:txt, :view, :admin, :share]%></div>
+    <label><%= check_box 'article', 'forbid_comment',  :class => 'checkbox' %> <%= t :forbid_comment, :scope => [:txt, :view, :admin, :share] %></label>
+ </div>
+</div>
+ <div id='form_main' >  
+    <label for="article_title"><strong><%=t :title, :scope => [:txt, :view, :admin, :share]%>:</strong></label>
+    <%= text_field 'article', 'title' %>
+<%= article_edit_field %>
+
+    <%= show_something :in_article_form %>
+    <label><strong>Trackbacks: </strong></label>
+    <%= text_field_tag "trackbacks", nil, :size => 30, :style => "width:60%;" %>
+ <div id="article_brief_div">
+    <label for="article_brief"><strong><%=t :brief, :scope => [:txt, :view, :admin, :share] %></strong></label>
+	<label><%= check_box 'article', 'auto_brief', :onclick => 'if(this.checked){new Effect.Fade("article_brief");}else{new Effect.Appear("article_brief",{duration:.6})};', :class => 'checkbox', :checked => @article.auto_brief.to_tf%> <%= t :auto_brief, :scope => [:txt, :view, :admin, :share] %></label>
+	<%= text_area 'article', 'brief', :style => ('display:none;' if @article.auto_brief) %>
+ </div>
+    <br/>
+<script type='text/javascript'>
+var away_text = '<%= t(:leave_message, :scope => [:txt, :view, :admin, :share]) %>';
+window.onbeforeunload=unload_form;
+if($('trackbacks'))
+    $('trackbacks').value = '';
+</script>
+<input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form);" class="submit_post"/>
+<input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form);"/>
+<input type="button" value="<%= t :save_to_draft_box, :scope => [:txt, :view, :admin, :share]  %>" onclick="submit_as('drafts', this.form);" />
+<input type="button" value="<%= t :save_and_edit, :scope => [:txt, :view, :admin, :share]%>" onclick="formSubmit=true;this.form.action += '?continue_editing=1';this.form.submit();" />
+</div>
+<% end -%>

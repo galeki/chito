@@ -1,0 +1,11 @@
+<div id="sub_menu">
+    <ul>
+		    <li><%= link_to t(:message_0, :scope => [:txt, :view, :admin, :_sub_menu_for_appearance]), {:controller => 'themes'}, :id => "_themes_index" %></li>
+		    <li><%= link_to t(:message_1, :scope => [:txt, :view, :admin, :_sub_menu_for_appearance]), {:controller => 'sidebar'}, :id => "_sidebar_index"%></li>
+		    <li><%= link_to t(:message_2, :scope => [:txt, :view, :admin, :_sub_menu_for_appearance]), {:controller => 'navbar'}, :id => "_navbar_index"%></li>
+		    <li><%= link_to t(:message_3, :scope => [:txt, :view, :admin, :_sub_menu_for_appearance]), {:controller => 'postbar'}, :id => "_postbar_index"%></li>
+		    
+    </ul>
+</div>
+<%= select_admin_menu("appearance") %>
+

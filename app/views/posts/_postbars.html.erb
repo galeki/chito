@@ -1,0 +1,17 @@
+<% if @user.show_postbars -%>
+  <div id="article_bar">
+    <dl id="tab" class="tab">
+    <% for bar in @enable_postbars -%>
+	<dt><%= title_of(bar) %></dt>
+	<dd>
+	    <%= content_of(bar) %>
+	</dd>
+    <% end -%>
+    </dl>
+    <script type="text/javascript">
+	// <![CDATA[
+	    s2uTab('tab', 'click', 0);
+	// ]]>
+    </script>
+  </div>
+<% end -%>

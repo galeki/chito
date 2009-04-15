@@ -1,0 +1,12 @@
+<%= @post.title %> <%= t("txt.mail.comment_notifier.new_comment") %>
+<%= formatted_post_url(@post.id, :html, :host => @request.host) %>
+
+[<%= @comment.writer %>] <%= t("txt.mail.comment_notifier.post_at") %> <%= Time.now.to_s(:db_short) %> :
+
+<%= strip_tags @comment.content %>
+
+<%= t("txt.mail.comment_notifier.check_all_comments") %>:
+<%= formatted_post_url(@post.id, :html, :host => @request.host, :anchor => "comments") %>
+
+<%= t("txt.mail.comment_notifier.no_nexttime") %>:
+<%= cancel_comment_notifier_post_url(@post.id, :host => @request.host, :email => @email, :key => @post.emails[@email]).gsub("&amp;","&") %>

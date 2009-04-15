@@ -1,0 +1,15 @@
+<% @title = t(:message_0, :scope => [:txt, :view, :admin, :settings]) -%>
+<%= render :partial => 'admin/sub_menu_for_setting' %>
+<%= render_flash %>
+<div class="option_wrap">
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:message_1, :scope => [:txt, :view, :admin, :settings]) %></div>
+    <% form_for :user, :url => {:action => :rss} do |f| %>
+    <label><%= f.radio_button :rss_type, 'full', :checked => true,  :class => 'ck' %> <%= t(:message_2, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= f.radio_button :rss_type, 'brief',  :class => 'ck' %> <%= t(:message_3, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= t(:message_4, :scope => [:txt, :view, :admin, :settings]) %>: <%= f.text_field :rss_number, :size => '5' %> <%= t(:message_5, :scope => [:txt, :view, :admin, :settings]) % {:num => 12} %></label>
+    <%= submit_tag t(:message_6, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,13 @@
+<div id="sub_menu">
+    <ul>
+		    <li><%= link_to t(:message_0, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), admin_comments_path, :id => "_comments_index" %></li>		    
+		    <li><%= link_to t(:message_1, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), admin_messages_path, :id => "_messages_index" %></li>		    
+		    <li><%= link_to t(:message_2, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), admin_trackbacks_path, :id => "_trackbacks_index" %></li>		    
+		    <li><%= link_to t(:talks, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), admin_talks_path, :id => "_talks_index" %></li>		    
+		    <li><%= link_to t(:message_3, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), admin_spams_path, :id => "_spams_index", :style => ("font-weight:bold;" if @user.has_new_spam) %></li>		    
+		    <li><%= link_to t(:message_4, :scope => [:txt, :view, :admin, :_sub_menu_for_feedbacks]), settings_admin_comments_path, :id => "_comments_settings" %></li>		    
+		    
+    </ul>
+</div>
+<%= select_admin_menu("comments") %>
+

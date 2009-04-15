@@ -1,0 +1,52 @@
+<div id="file_list_top">
+<div id="space_info"><%=t(:used, :scope => [:txt, :view, :admin, :files]) %> <%= @precent.round(1) %>% | <%= @used_space.round(1) %>M/<%= @user.get_group.space %>M</div><style>#used_space{width:<%= @precent.round(1) %>%;}</style>
+<div id="space_bar"><div id="used_space"></div></div>
+<div id="folder_info">
+<span class="file_info_type">
+<% if @type == 'File'-%>
+    <%=t(:file, :scope => [:txt, :view, :admin, :files])  %>
+<% elsif @type == 'Image' -%>
+    <%=t(:image, :scope => [:txt, :view, :admin, :files])  %>
+<% elsif @type == 'Flash' -%>
+    <%=t(:flash, :scope => [:txt, :view, :admin, :files]) %>
+<% end -%>
+</span>
+<span class="file_info_folder"><%= @folder %></span>
+<span id='in_pro' style='margin-left:20px;color:#06f;display:none;'><%=t(:loading, :scope => [:txt, :view, :admin, :files])  %> <img src='/images/inprogress.gif' /></span>
+<span id='delete_flash'><%= flash[:notice] %></span>
+</div>
+</div>
+<table id="file_table" class="sofT" cellspacing="0">
+    <% unless @folder.blank? or @folder =~ /^\/$/-%>
+    <tr>
+	    <td class="file_pic_col"><%= link_to_files (image_tag 'up-folder.png'), :type => @type, :folder => File.dirname(@folder) %></td>
+	    <td class="file_name_col"><%= link_to_files t(:up, :scope => [:txt, :view, :admin, :files]), :type => @type, :folder => File.dirname(@folder)  %></td>
+	    <td class="file_size_col"></td>
+	    <td class="file_action_col"></td>
+    </tr>
+    <% end -%>
+    <% for folder in @folders -%>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="file_pic_col"><%= image_tag 'folder.png' %></td>
+	    <td class="file_name_col"><%= link_to_files folder, :type => @type, :folder => File.join(@folder, folder) %></td>
+	    <td class="file_size_col"></td>
+	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , :loading => "Element.show('in_pro')", :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :html => {:class => "delete"} %></td>
+    </tr>
+    <% end -%>
+    <% for file in @files -%>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="file_pic_col">
+	    <% if file[:thumbnail] -%>
+		<%= image_tag file[:thumbnail], :alt => file[:name] %>
+	    <% else -%>
+		<%= image_tag 'file.png' %>
+	    <% end -%>
+	    </td>
+	    <td class="file_name_col">
+	    <%= link_to file[:name], file[:url], :target => '_blank', :title => t(:download, :scope => [:txt, :view, :admin, :files]) %>
+	    </td>
+	    <td class="file_size_col"><%= file[:size] %>KB</td>
+	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, :loading => "Element.show('in_pro')", :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :html => {:class => "delete"}  %></td>
+    </tr>
+    <% end -%>	
+</table>

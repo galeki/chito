@@ -1,0 +1,32 @@
+<%= render :partial => 'admin/sub_menu_for_appearance' %>
+<%= render_flash %>
+<div class="option_wrap">
+<% @title = t(:navbar_settings, :scope => [:txt, :view, :admin, :navbar]) -%>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><div id="notifier"></div><%= t(:navbars_position, :scope => [:txt, :view, :admin, :navbar]) %></div>
+<% form_for :user, :url => {:action => 'navbar_position'} do |f| %>
+	<div class="enable_navbars_title"><%= t(:navbar, :scope => [:txt, :view, :admin, :navbar]) %></div>
+	<ul id="enable" class="enable_navbars">
+	  <% for navbar in @enable_navbars -%>
+		<%= show_navbar(navbar) %>
+	  <% end -%>
+	</ul>
+  <br style="clear:both"/>
+  <div id="disable_bar_box">
+	<div class="disable_bars_title"><%= t(:available_navbars, :scope => [:txt, :view, :admin, :navbar]) %></div>
+	<ul id="disable" class="disable_navbars">
+	  <% for navbar in @disable_navbars -%>
+		<%= show_navbar(navbar) %>
+	  <% end -%>
+	</ul>
+	<br style="clear:both"/>
+  </div>
+
+    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :navbar]) %>" onclick='this.form.action += "?" + navbars_config(this.form);this.form.submit();return false;'/>
+<% end %>
+</div>
+
+    <%= sortable_element 'disable',:url => '' , :constraint => false, :containment => [:disable, :enable], :dropOnEmpty => true, :overlap => :horizontal, :format => "/^bar_(.*)$/" %>
+    <%= sortable_element 'enable',:url => '' , :constraint => false, :containment => [:disable, :enable], :dropOnEmpty => true, :overlap => :horizontal, :format => "/^bar_(.*)$/" %>
+</div>

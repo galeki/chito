@@ -1,0 +1,30 @@
+en-US:
+    plugins:
+         seo:
+          name: SEO
+          intro: Introduction
+          intro_content: Allow you to set the meta-keywords and meta-description of post. And show the seo title in url.
+          intro_content2: And you can set the meta info of the whole blog below.
+          seo_of_blog: SEO info of the blog
+          blog_info: Blog description
+          blog_keywords: Blog keywords (delimited by comma)
+          save: Save
+          permalink: Permalink
+          seo_keywords: SEO keywords
+          dbc: (delimited by comma)
+zh-CN:
+    plugins:
+         seo:
+          name: SEO
+          intro: 简介
+          intro_content: 可以在文章编辑界面设定文章的关键字(meta-keywords)、描述(meta-description)，还可以指定文章 URL 中的标题名称。
+          intro_content2: 也可以在下方设定网站的 SEO 信息。
+          seo_of_blog: Blog 的 SEO 信息
+          blog_info: Blog 描述
+          blog_keywords: Blog 关键字 (英文逗号分隔)
+          save: 保存
+          permalink: 永久链接
+          seo_keywords: SEO 关键字
+          dbc: (英文逗号分隔)
+
+

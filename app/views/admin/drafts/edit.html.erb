@@ -1,0 +1,5 @@
+<% @title = t(:edit_draft, :scope => [:txt, :view, :admin, :drafts]) -%>
+<%= render :partial => 'admin/sub_menu_for_manage' %>
+<%= render_flash :close => nil, :effect => "Fade", :effect_options => {:duration => 5} %>
+<%= select_admin_menu("manage", :sub_menu => "_drafts_index") %>
+<%= render :partial => 'admin/share/article_form', :locals => {:url => admin_draft_path(@article), :method => :put} %> 

@@ -1,0 +1,568 @@
+--- 
+en-US: 
+  activerecord:
+    attributes:
+      category: 
+        name: Category name
+        default_name: Uncategorized
+        default_info: Uncategorized Posts
+      link:
+        title: Link title
+        url: Link url
+      user:
+        name: User name
+        email: User email
+        nick: Nick name
+      group:
+        name: Group name
+      feedback:
+        writer: Comment writer
+        content: Comment content
+        email: Email
+  txt: 
+    errors:
+        "404":
+            title1: Resource not found
+            title2: "Ooops! Nothing here ..."
+            text: I really found nothing here, maybe yor feed me a broken url, huh?
+    save: Save
+    cancel: Cancel
+    prev_page: "&laquo; Previous"
+    next_page: "Next &raquo;"
+    close: Close
+    mail:
+        comment_notifier:
+            email_title: "{{post}} has a new comment"
+            new_comment: has a new comment.
+            writer: Writer
+            post_at: post at
+            comment_content: Comment content
+            check_all_comments: You can check all comments of the post from
+            no_nexttime: "If you dont want to receive this notifier again, click the link below"
+        reset_password:
+            email_title: Reset your password.
+    controller: 
+      blog: 
+        message_0: Registeration is forbidden
+        message_1: Register successful. Please Login.
+        message_2: Captcha dismatch
+        message_3: Login unsuccessful
+        no_user_found: User not found.
+        reset_password_email_send: Password reset link was send to your email. Please follow that to reset your password.
+        password_reseted: "Your password was successfully reseted. Please <a href=\"/login\">relogin</a>."
+        confirm_dismatch: Password confirmation dismacth.
+        reset_password_expired: Sorry, this reset password request was expired.
+      application: 
+        message_0: Logout successful
+        message_1: User not found.
+      site: 
+        message_0: Unkown request.
+      posts: 
+        cancel_comment_notifier: Comment notifier of {{title}} was successfully canceled.
+        no_comment_notifier: You had already canceled the comment notifier of {{title}}.
+      pages: 
+        message_0: Page not found.
+      admin:
+        articles:
+          draft_saved: Draft was successfully saved at {{time}}
+        posts:
+          post_successfully_deleted: Post was successfully deleted
+          posts_successfully_deleted: Posts were successfully deleted
+          posts_successfully_recategoried: Posts were successfully recategoried
+        drafts:
+          draft_successfully_deleted: Draft was successfully deleted
+          draft_successfully_saved: Draft was successfully saved
+          draft_successfully_created: Draft was successfully created
+          drafts_successfully_deleted: Drafts were successfully deleted
+        pages:
+          page_successfully_deleted: Page was successfully deleted
+        categories:
+          must_have_a_category: Should not delete the last category
+          category_successfully_deleted: Category was successfully deleted
+        links:
+          link_successfully_deleted: Link was successfully deleted
+        rss:
+          rss_import_successfully: RSS data was successfully imported
+          rss_import_fail: RSS data could not be imported, please check the rss url
+        comments:
+          comment_deleted: Comment was successfully deleted
+          comments_deleted: Comments was successfully deleted
+          filter_settings_updated: Comment filter settings was successfully updated
+        messages:
+          message_deleted: Message was successfully deleted
+          messages_deleted: Messages was successfully deleted
+        trackbacks:
+          trackback_deleted: Trackback was successfully deleted
+          trackbacks_deleted: Trackbacks was successfully deleted
+        spams:
+          comment_restored: Comment was successfully restored
+          spam_deleted: Spam was successfully deleted
+          spams_deleted: Spams was successfully deleted
+        sidebar:
+          sidebars_updated: Sidebar position was successfully updated
+        base:
+          config_updated: Config was successfully updated
+          config_not_saved: Config could not be saved
+        navbar:
+          navbar_updated: Navbar position was successfully updated
+        postbar:
+          postbar_updated: Postbars settings was successfully updated
+        settings:
+          profile_updated: Profile was successfully updated
+          avatar_uploaded: Avatar uploaded successfully
+          avatar_format_error: Avatar must be a picture and less than 100KB
+          password_updated: Password was successfully updated
+          password_invalid: Password was invalid
+          password_dismatch: Password confirmation dismacth
+          favicon_uploaded: Favicon uploaded successfully 
+          favicon_format_error: Favicon must be a picture and less than 20KB
+        plugins:
+          plugin_updated: Plugin config was successfully updated
+          plugin_not_save: Plugin config could not be saved
+          config_updated: Config was successfully updated
+        site:
+          config_updated: Site config was successfully updated
+          config_not_save: Site config could not be saved
+          no_user: "The user {{user}} doesn't exist."
+        groups:
+          group_deleted: Group was successfully deleted
+          no_delete: "'Admin' and 'Default' groups should not be deleted"
+        users:
+          user_deleted: User was successfully deleted
+    helper: 
+      posts: 
+        message_0: Read more
+        message_1: Read all
+        message_2: Read
+        message_4: Previous post
+        message_5: Next post
+        no_title: "- No Title -"
+      comments:
+          reply_to: Reply to {{user}}
+          reply: Reply
+    view: 
+      messages: 
+        index: 
+          builder: 
+            message_0: Messages
+      comments: 
+        index: 
+          builder: 
+            message_0: Comments
+        _form: 
+          message_0: Sending comment...
+          message_1: Submit
+          message_2: Nick name
+          message_3: Login
+          message_4: Submit
+          comment_notifier: Notify follow-up comments via e-mail
+        _comment:
+          said: "said:"
+      blog: 
+        add: 
+          message_0: Register
+          message_1: Register
+          message_2: Username
+          message_3: Nick name
+          message_4: Password
+          message_5: Confirm password
+          message_6: Captcha
+          message_7: Submit
+          input_captcha: (type the code from the image)
+        guestbook: 
+          message_0: "{{user}}'s guestbook"
+          message_1: Leave a message to {{user}}
+        login: 
+          message_0: Login
+          message_1: Username
+          message_2: Password
+          message_3: Remember me
+          message_4: Login
+        forgot_password:
+          password_reset: Reset your password
+          confirm: Confirm
+          input_email: "Please input your E-mail:"
+        reset_password:
+          password_reset: Reset your password
+          input_new_password: "Input your new password:"
+      admin: 
+        _sub_menu_for_manage: 
+          message_0: Posts
+          message_1: Pages
+          message_2: Drafts
+          message_3: Categories
+          message_4: Links
+          message_5: Files
+          message_6: RSS import
+        plugins: 
+          message_0: Plugin config
+        _sub_menu_for_feedbacks: 
+          message_0: Comments
+          message_1: Messages
+          message_2: Trackbacks
+          message_3: Spam
+          message_4: Settings
+          talks: Talks
+        trackbacks: 
+          message_0: Manage trackbacks
+          message_1: Search
+          message_2: Delete selected
+          message_3: Delete selected trackbacks?
+          message_4: View
+          message_5: " Delete"
+          message_6: Delete this trackback ?
+        files: 
+          up: Up
+          loading: Londing
+          delete: " Delete"
+          delete_folder?: Delete folder {{folder}} ?
+          download: Download
+          used: Used
+          delete_file?: Delete file {{file}} ?
+          manage_files: Manage Files
+          file: File
+          image: Image
+        groups: 
+          manage_groups: Manage Groups
+          name: Name
+          create: Create
+          saving: Saving
+          space_c: Space (click to edit)
+          file_size_limit_c: File size limit (click to edit)
+          delete: Delete
+          saving_text: Saving
+          click_to_edit_text: Click to edit
+          delete_category?: Delete category {{name}} ?
+          save_text: Save
+          cancel_text: Cancel
+          delete_group?: Delete group {{group}} ?
+        comments: 
+          manage_comments: Manage Comments
+          search_for: Search for
+          search: Search
+          comments_contain: Comments contain {{words}}
+          writer: Writer
+          time: Time
+          brief: Brief
+          view: View
+          email: Email
+          delete: Delete
+          delete_selected: Delete selected
+          delete_selected?: Delete selected comments ?
+          delete_comment?: Delete this comment ?
+          no_match: No matched comments
+          comment_settings: Comment Settings
+          save: Save
+          filter_chain: Filter Chain
+          a_comment: "I'm a comment"
+          available_comment_filters: Available Comment Filters
+        messages: 
+          manage_messages: Manage Messages
+          search_for: Search for
+          search: Search
+          messages_contain: Messages contain {{keyword}}
+          writer: Writer
+          time: Time
+          brief: Brief
+          view: View
+          email: Email
+          delete: Delete
+          delete_selected: Delete selected
+          delete_selected?: Delete selected messages ?
+          delete_message?: Delete this message ?
+          no_match: No matched message
+        trackbacks: 
+          manage_trackbacks: Manage Trackbacks
+          search_for: Search for
+          search: Search
+          trackbacks_contain: Trackbacks contain {{keyword}}
+          writer: Writer
+          time: Time
+          brief: Brief
+          view: View
+          email: Email
+          delete: Delete
+          delete_selected: Delete selected
+          delete_selected?: Delete selected messages ?
+          delete_trackback?: Delete this trackback ?
+          no_match: No matched trackback
+        talks:
+          writer: Writer
+          talks: Talks
+          view_talks: View Talks
+          last_comment: Last comment
+          title: Title
+          comments: Comments
+          jump_to: Jump to
+        spams: 
+          manage_spam: Manage Spam
+          search_for: Search for
+          search: Search
+          writer: Writer
+          time: Time
+          brief: Brief
+          view: View
+          email: Email
+          delete: Delete
+          delete_selected: Delete selected
+          delete_selected?: Delete selected messages ?
+          delete_spam?: Delete this spam ?
+          block_by: Block by
+          pass: Pass
+          pass_spam?: Pass this spam ?
+          no_spam: No Spam
+        dashboard: 
+          message_0: Administration
+          message_1: "Posts: {{posts_size}}"
+          message_2: "Drafts: {{drafts_size}}"
+          message_3: "Comments: {{comments_size}}"
+          message_4: "Messages: {{messages_size}}"
+          message_5: Write new post
+          message_6: Manage your posts
+          message_7: Update your profile
+          recent_comments: Recent comments
+          recent_messages: Recent messages
+          statistics: Statistics
+          welcome_back: Welcome Back
+          write_new_post: Write a new blog post
+          manage_posts: Manage posts, drafts and pages
+          change_profile: Change your profile, avatar and blog title
+          see_talks: View talks
+          see_the_talks: View the updates of posts which you commented before.
+        share:
+          option: Option
+          title: Title
+          brief: Brief
+          category: Category
+          add: Add
+          forbid_comment: Forbid comment
+          auto_brief: Auto generate brief
+          save_to_draft_box: Save to Draft Box
+          save_and_edit: Save and Continue Editing
+          submit_post: Submit Post
+          submit_as_page: Submit as Page
+          leave_message: The changes you made will be lost if you navigate away
+        _sub_menu_for_root: 
+          message_0: Site
+          message_1: User groups
+          message_2: Users
+        categories:
+          saving: Saving
+          create_category: Create Category
+          name: Name
+          description: Description
+          name_c: Name (click to edit)
+          description_c: Description (click to edit)
+          delete: Delete
+          saving_text: Saving
+          click_to_edit_text: Click to edit
+          delete_category?: Delete category {{name}} ?
+          save_text: Save
+          cancel_text: Cancel
+          manage_categories: Manage Categories
+          categories_position_updated: Category positions updated at {{time}}
+        links: 
+          links_position_updated: Link positions updated at {{time}}
+          saving: Saving
+          create_link: Add Link
+          name: Name
+          url: Url
+          info: Info
+          name_c: Name (click to edit)
+          url_c: Url (click to edit)
+          info_c: Info (click to edit)
+          delete: Delete
+          saving_text: Saving
+          click_to_edit_text: Click to edit
+          delete_link?: Delete link {{link}} ?
+          save_text: Save
+          cancel_text: Cancel
+          manage_links: Manage Links
+        _sub_menu_for_appearance: 
+          message_0: Theme
+          message_1: Sidebar
+          message_2: Navbar
+          message_3: Postbar
+        sidebar: 
+          sidebar_settings: Sidebar settings
+          sidebar_layout_title: Sidebar layout and title
+          save: Save
+          available_sidebars: Available sidebars
+          theme: Theme
+          sidebar: Sidebar
+        _sub_menu_for_setting: 
+          message_0: Profile
+          message_1: Blog
+          message_2: System
+        settings: 
+          show_slogan_in_title: "Show slogan in title"
+          blog_options: Blog Options
+          settings: Settings
+          profile: Profile
+          post_read_count: Post read count
+          show_post_read_count: Show post read count
+          save: Save
+          trackback: Trackback
+          show_trackback: Show trackback
+          enable_trackback: Enable trackback
+          paginate: Paginate
+          posts_pre_page: Posts pre page
+          default: Default {{num}}
+          rss: RSS
+          full: Full
+          brief: Brief
+          avatar: Avatar
+          upload_new: Upload new avatar
+          upload: Upload
+          pic_format: PNG format, 120x120 px, less than 200KB
+          pic_info: Avatar description
+          title: Blog title
+          nick: Nick
+          slogan: Slogan
+          change_profile: Change your porfile
+          favicon: Favicon
+          refresh_favicon: Refresh favicon
+          favicon_format: 16x16 ~ 48x48, ICO or PNG(except IE) format, less than 20KB
+          RSS: RSS settings
+          message_8: Blue
+          message_9: Change
+          message_0: System Options
+          message_1: Change password
+          message_2: Old password
+          message_3: New password
+          message_4: Confirm new password
+          message_5: Change
+          message_6: Administration style
+          message_7: Green
+        site: 
+          message_16: Save
+          message_8: I want to write several blogs, or hope people register and write blogs here
+          message_9: Registerable
+          message_0: Site Options
+          message_1: Change site profile
+          message_2: Site title
+          message_10: Default group
+          message_3: Site URL
+          message_11: New register user belongs to this group automatically
+          message_4: Blog mode
+          message_12: Root domain
+          message_5: Single user
+          message_13: "Chito use subdomain to specify different users, like: <br/> http://user1.chito.com <br/> http://user2.chito.com <br/> You must have a wildcard DNS record like chito.com, and point *.chito.com to your sever ip. And fill the root domian here (exclude www prefix)"
+          message_6: I write only one blog
+          message_14: Default user
+          message_7: Mutli users
+          message_15: "When the subdomain is www or not specified, show this user`s blog. Example:<br/> If the root domain is chito.com, and the default user is `galeki`, so: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> all show galeki`s blog."
+        rss:
+          rss_import: RSS import
+          no_url: Please input RSS url
+          url_invalid: The RSS url seems invalid
+          rss_url: RSS Url
+          importing: Importing
+          import: Import
+          categorize_in: Categorize in
+          auto_category: Auto create categories
+          import_comments: Try to import comments
+        navbar:
+          navbar_settings: Navbar settings
+          navbars_position: Navbars position
+          available_navbars: Available navbars
+          navbar: Navbar
+          save: Save
+        postbar: 
+          message_0: Postbar options
+          message_1: Postbar position
+          message_2: Show Postbar
+          message_3: Current Postbars
+          message_4: Available Postbars
+          message_5: Save
+        users: 
+          manage_users: Manage Users
+          search_for: Search for
+          search: Search
+          username: Username
+          blog_name: Blog name
+          domain: Domain
+          group: Group
+          delete: Delete
+          delete_user?: Delete user {{user}} ?
+          saving_text: Saving
+          click_to_edit_text: Click to edit
+          delete_category?: Delete category {{name}} ?
+          save_text: Save
+          cancel_text: Cancel
+          set: Set
+          nick: Nick
+        posts: 
+          new_post: Write new post
+          edit_post: Edit post
+          recategory: Recategory to
+          delete_selected: Delete selected
+          delete_selected?: Delete selected posts ?
+          recategory_selected?: Recategory selected posts ?
+          category_filter: Category filter
+          title: Title
+          create_time: Create time
+          comments: Comments
+          category: Category
+          view: View
+          edit: Edit
+          delete: Delete
+          delete_post: Delete {{title}} ?
+          all: All
+        drafts:
+          delete_draft?: Delete {{title}} ?
+          edit_draft: Edit draft
+        pages: 
+          delete_page?: Delete {{title}} ?
+          permalink: Permalink
+          edit_page: Edit page
+        _sub_menu_for_compose: 
+          message_0: Post
+          message_1: Post [{{mode}}]
+        themes:
+          theme_settings: Theme settings
+          use: Use
+      site: 
+        setup: 
+          message_8: Single user
+          message_9: I write only one blog
+          message_0: "Chito: Register the first user"
+          message_1: Register the first user
+          message_2: Username
+          message_10: Mutli users
+          message_3: Nick name
+          message_11: I want to write several blogs, or hope people register and write blogs here
+          message_4: Password
+          message_12: Root domain
+          message_5: E-mail
+          message_13: "Chito use subdomain to specify different users, like: <br/> http://user1.chito.com <br/> http://user2.chito.com <br/> You must have a wildcard DNS record like chito.com, and point *.chito.com to your sever ip. And fill the root domian here (exclude www prefix)"
+          message_6: Confirm password
+          message_14: Submit
+          message_7: Blod mode
+      posts: 
+        show: 
+          message_0: Edit this post
+          message_1: Return
+          comments: Comments
+          trackbacks: Trackbacks
+          readers: readers
+          rss:
+            comments: Comments
+      pages: 
+        show: 
+          message_0: Edit this page
+          message_1: Return
+      layouts: 
+        admin: 
+          message_8: Appearance
+          message_9: Settings
+          message_0: "{{user}}'s Administration"
+          message_1: Return to Blog
+          message_2: Logout
+          message_10: Plugins
+          message_3: Index
+          message_11: Chito Admin
+          message_4: Write
+          message_5: Manage
+          message_6: Feedbacks
+          message_7: New Spam

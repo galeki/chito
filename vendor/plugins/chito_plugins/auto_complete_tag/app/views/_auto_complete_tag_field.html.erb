@@ -1,0 +1,53 @@
+<% @color = ( @user.admin_style == 'blue' ? '#91A5BD' : '#bed569' )-%>
+<style type="text/css" media="all">
+.tag_list_auto_complete{
+    background: #fff;
+    border:1px solid #999;
+    border-top:0px;
+    font-size:16px;
+}
+.tag_list_auto_complete ul{
+    margin:0;
+    padding:0;
+}
+.tag_list_auto_complete li{
+    list-style-type:none;
+    padding:2px 0px 0px 8px;
+}
+.tag_list_auto_complete li.selected{
+    background:#ff9;
+}
+#tags_field a:hover{
+    color: #000;
+}
+#tags_field a{
+    text-decoration:none;
+    color: #666;
+    font-weight:bold;
+}
+#tags_field{
+    float:right;
+    width:25%;
+    padding:5px 10px 5px 10px;
+    border:1px dashed <%= @color %>;
+}
+</style>
+<% @tags = @user.posts.tag_counts.map {|t| t.name}.sort rescue @tags = []-%>
+<label><strong>Tags</strong> <%= t("plugins.auto_complete_tag.comma")  %> :</label>
+<% if @user.enable_tags_select_field -%>
+<div id="tags_field">
+    <%= t("plugins.auto_complete_tag.tag_list") %>:<br/>
+    <% for tag in @tags -%>
+	<%= link_to_function tag, "add_tag('#{tag}')" %>
+    <% end -%>
+</div> 
+<% end -%>
+
+<%= text_field "article", "tag_list" %>
+<% if @user.enable_tags_auto_complete -%>
+<div class="tag_list_auto_complete" id="tag_list" style="display:none"></div>
+<script type="text/javascript">
+    new Autocompleter.Local('article_tag_list', 'tag_list',<%= array_or_string_for_javascript(@tags) %> , 
+			    {frequency: 0.1, tokens: ',', afterUpdateElement: function(element) {element.value+=', ';}});
+</script>
+<% end -%>

@@ -1,0 +1,9 @@
+<%= text_area 'article', 'content' %>
+<script type="text/javascript">
+//<![CDATA[
+var oFCKeditor = new FCKeditor('article_content', '100%', '600px');
+oFCKeditor.BasePath = "/javascripts/fckeditor/"
+oFCKeditor.Config['CustomConfigurationsPath'] = '../../fckcustom.js';
+oFCKeditor.ReplaceTextarea();
+//]]>
+</script>

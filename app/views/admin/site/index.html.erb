@@ -1,0 +1,51 @@
+<% @title = t(:message_0, :scope => [:txt, :view, :admin, :site]) -%>
+<%= render :partial => 'admin/sub_menu_for_root' %>
+<%= render_flash %>
+<div class="option_wrap">
+<%= javascript_include_tag "setup" -%>
+
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:message_1, :scope => [:txt, :view, :admin, :site]) %></div>
+<% form_for :site, :url =>{:action => 'config'} do |f| %>
+    <label><%= t(:message_2, :scope => [:txt, :view, :admin, :site]) %>:</label>
+    <%= f.text_field 'title', :size => '25'%>
+    <br/>
+    <label><%= t(:message_3, :scope => [:txt, :view, :admin, :site]) %>:</label>
+    http:// <%= f.text_field 'url', :size => '30'%>
+    <br/>
+    <label><div><%= t(:message_4, :scope => [:txt, :view, :admin, :site]) %>:</div></label>    
+    	<label><%= f.radio_button :user_mode, "s", :class => "ck" %> <%= t(:message_5, :scope => [:txt, :view, :admin, :site]) %></label>
+	<p><%= t(:message_6, :scope => [:txt, :view, :admin, :site]) %></p>
+	<label><%= f.radio_button :user_mode, "m", :class => "ck" %> <%= t(:message_7, :scope => [:txt, :view, :admin, :site]) %></label>
+	<p><%= t(:message_8, :scope => [:txt, :view, :admin, :site]) %></p>
+	
+	<p><label><%= f.check_box :registerable, :class => 'ck' %><%= t(:message_9, :scope => [:txt, :view, :admin, :site]) %>
+	</label></p>	
+	
+	<p><label><%= t(:message_10, :scope => [:txt, :view, :admin, :site]) %>: <%= f.collection_select :default_group, @groups, :id, :name %> 
+		<a href="#" class="hintanchor" onMouseover="showhint(
+		    '<%= t(:message_11, :scope => [:txt, :view, :admin, :site]) %>',
+		     this, event, '220px')">[?]</a>
+	</label></p>	
+	
+	<p><label><%= t(:message_12, :scope => [:txt, :view, :admin, :site]) %>: <%= f.text_field :domain, :size => 15  %> 
+		<a href="#" class="hintanchor" onMouseover="showhint(
+		    '<%= t(:message_13, :scope => [:txt, :view, :admin, :site]) % {:br =>%q[<br/>]} %>',
+
+		     this, event, '220px')">[?]</a>
+	</label></p>
+	
+	<p><label><%= t(:message_14, :scope => [:txt, :view, :admin, :site]) %>: <%= f.text_field :default_user, :size => 15  %>
+		<a href="#" class="hintanchor" onMouseover="showhint(
+		    '<%= t(:message_15, :scope => [:txt, :view, :admin, :site]) % {:br =>%q[<br/>]} %>',
+		    this, event, '220px')">[?]</a>	
+	</label></p> 
+    
+    <br/>
+    <%= submit_tag t(:message_16, :scope => [:txt, :view, :admin, :site]), :class =>'submit' %>
+<% end %>
+</div>
+
+
+</div>

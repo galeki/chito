@@ -1,0 +1,62 @@
+<% @title = t(:manage_messages, :scope => [:txt, :view, :admin, :messages]) -%>
+<%= render :partial => "admin/sub_menu_for_feedbacks" %>
+<%= render_flash %>
+<div class="center">
+<% if @messages.size >0 -%>
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+	    <td class="category_filter">
+		<% form_tag(admin_messages_path, :method => :get) do %>
+		    <%=t(:search_for, :scope => [:txt, :view, :admin, :messages]) %>:
+		    <%= text_field_tag(:keyword, params[:keyword], :size => 25) %>
+		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :messages]), :id => 's' %> 
+		<% end -%>	
+	    </td>
+<% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
+
+    </tr>
+</table>
+<% if params[:keyword] and !params[:keyword].blank?-%>
+<div class="search_conditions">
+<%=t :messages_contain, :scope => [:txt, :view, :admin, :messages], :keyword => params[:keyword] %>:
+</div>
+<% end -%>
+<table id="messages_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed checkbox" style=""><%= check_box_tag "trigger", true, false, :onclick => "checkall(this.name, this.form)" %></th>    
+	    <th class="helpHed"><%=t(:writer, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"><%=t(:time, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"><%=t(:brief, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"><%=t(:email, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"><%=t(:view, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for message in @messages	-%>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="checkbox"><%= check_box_tag "ids[]", message.id, nil, :id => message.id %></td>        
+	    <td class="comment_writer_col"><%=h message.writer %></td>
+	    <td class="comment_time_col"><%= message.created_at.to_s :db_short %></td>
+	    <td class="comment_content_col"><%=h strip_tags(message.content) %></td>
+	    <td class="comment_email_col"><%= (mail_to h(message.email), (image_tag "email.gif")) unless message.email.blank? %></td>	    
+	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :messages])), 
+					    :controller => '/blog', :action => "guestbook", :anchor => "comment#{message.id}") %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :messages]), admin_message_path(message, _params), :class => "delete",
+		:confirm => t(:delete_message?, :scope => [:txt, :view, :admin, :messages]), :method => :delete %></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+	    <div class="delete_selected">
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :messages]), :url => destroy_selected_admin_messages_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :messages]), :class => "selected_submit" %>
+	    </div>
+    <% end -%>
+<div id="pagilinks">
+<%= will_paginate @messages, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% else -%>
+<div style="margin-top:40px;">
+   <%= t(:no_match, :scope => [:txt, :view, :admin, :messages]) %> 
+</div>
+<% end -%>
+</div>
+

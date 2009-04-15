@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Geshi Highlighter for FCKeditor</title>
+		<script src="scripts/mootools.js" type="text/javascript"></script>
+		<script src="./scripts/geshipro.js" type="text/javascript"></script>
+		<link href="../../dialog/common/fck_dialog_common.css" rel="stylesheet" type="text/css" />
+		<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body scroll="no">
+
+		<form id="f1" name="f1">
+			<div id="divSourceCode" class="show">
+				<fieldset>
+					<legend><span fckLang="GeshiproLanguage">Language</span></legend>
+					<select name="lang" id="lang">
+				<option value="c">C</option>
+				<option value="cpp">C++</option>
+				<option value="java">Java</option>
+				<option value="csharp">C#</option>
+				<option value="javascript">Javascript</option>
+				<option value="html4strict">HTML (4.0.1)</option>
+				<option value="xml">XML</option>
+				<option value="css">CSS</option>
+				<option value="asp">ASP</option>
+				<option value="php">PHP</option>
+				<option value="perl">Perl</option>
+				<option value="python">Python</option>
+				<option value="ruby">Ruby</option>
+				<option value="rails">Rails</option>
+				<option value="text">纯文本</option>
+				<option value="actionscript">ActionScript</option>
+				<option value="actionscript-french" class="sublang">&nbsp;&nbsp;ActionScript (French Doc Links)</option>
+				<option value="ada">Ada</option>
+				<option value="apache">Apache Log File</option>
+				<option value="applescript">AppleScript</option>
+				<option value="asm">ASM (NASM based)</option>
+				<option value="autoit">AutoIT</option>
+				<option value="bash">Bash</option>
+				<option value="blitzbasic">BlitzBasic</option>
+				<option value="bnf">Backus-Naur form</option>
+				<option value="caddcl">CAD DCL</option>
+				<option value="cadlisp">CAD Lisp</option>
+				<option value="cfdg">CFDG</option>
+				<option value="cfm">ColdFusion</option>
+				<option value="cpp-qt" class="sublang">&nbsp;&nbsp;C++/QT</option>
+				<option value="d">D</option>
+				<option value="delphi">Delphi</option>
+				<option value="diff">Diff</option>
+				<option value="div">DIV</option>
+				<option value="dos">DOS</option>
+				<option value="eiffel">Eiffel</option>
+				<option value="fortran">Fortran</option>
+				<option value="freebasic">FreeBasic</option>
+				<option value="gml">GML</option>
+				<option value="groovy">Groovy</option>
+				<option value="idl">Uno IDL</option>
+				<option value="inno">Inno</option>
+				<option value="io">IO</option>
+				<option value="java5" class="sublang">&nbsp;&nbsp;Java 5</option>
+				<option value="latex">LaTeX</option>
+				<option value="lisp">Lisp</option>
+				<option value="lua">Lua</option>
+				<option value="matlab">Matlab</option>
+				<option value="mirc">mIRC</option>
+				<option value="mpasm">MPASM</option>
+				<option value="mysql">MySQL</option>
+				<option value="nsis">NullSoft Installer</option>
+				<option value="objc">Objective C</option>
+				<option value="ocaml">OCaml</option>
+				<option value="ocaml-brief" class="sublang">&nbsp;&nbsp;OCaml (Brief)</option>
+				<option value="oobas">Openoffice.org BASIC</option>
+				<option value="oracle8">Oracle 8</option>
+				<option value="pascal">Pascal</option>
+				<option value="plsql">PL/SQL</option>
+				<option value="qbasic">QBasic/QuickBASIC</option>
+				<option value="reg">Windows Registry</option>
+				<option value="robots">robots.txt</option>
+				<option value="sas">SAS</option>
+				<option value="scheme">Scheme</option>
+				<option value="sdlbasic">SDLBasic</option>
+				<option value="smalltalk">Smalltalk</option>
+				<option value="smarty">Smarty</option>
+				<option value="sql">SQL</option>
+				<option value="tcl">TCL</option>
+				<option value="thinbasic">thinBasic</option>
+				<option value="tsql">T-SQL</option>
+				<option value="vb">VisualBasic</option>
+				<option value="vbnet">VB.NET</option>
+				<option value="vhdl">VHDL</option>
+				<option value="visualfoxpro">VisualFoxPro</option>
+				<option value="winbatch">Winbatch</option>
+				<option value="xpp">X++</option>
+				<option value="z80">Z80 Assembler</option>
+					</select>
+				</fieldset>
+				<fieldset>
+					<legend><span fckLang="GeshiproSourceCode">Source Code</span></legend>
+						<textarea name="source" id="source"></textarea>
+				</fieldset>
+			</div>
+			<div id="divOptions" class="hide">
+				<fieldset id="all_style">
+					<legend><span>样式</span></legend>
+					<select name="style" id="style">
+					    <option value="style1">样式1</option>
+					    <option value="style2">样式2</option>
+					</select>
+				</fieldset>
+				<fieldset id="font">
+					<legend><span>字体</span></legend>
+					<select name="font-family" id="font-family">
+						<option value="nil">无</option>
+						<option value="Courier New, Courier, monospace;" style="font-family: Courier New, Courier, monospace;">Courier New</option>
+						<option value="Tahoma, Courier, monospace;" style="font-family: Tahoma, Courier, monospace;">Tahoma</option>
+						<option value="Times New Roman, Times, serif;" style="font-family: Times New Roman, Times, serif;">Times New Roman</option>
+						<option value="Georgia, Times New Roman, Times, serif;" style="font-family: Times New Roman, Times, serif;">Georgia</option>
+						<option value="Arial, Helvetica, sans-serif;" style="font-family: Arial, Helvetica, sans-serif;">Arial</option>
+						<option value="Verdana, Arial, Helvetica, sans-serif;" style="font-family: Verdana, Arial, Helvetica, sans-serif;">Verdana</option>			
+						<option value="Comic Sans MS, sans-serif;" style="font-family: Comic Sans MS, sans-serif;">Comic Sans MS</option>
+					</select>
+					<label> 指定大小: <input id="font-size" name="font-size" size="3" type="text"/> px</label>
+					<label><input type="checkbox" name="is_bold" id="is_bold" value="1" class="checkbox"/> 粗体</label>
+				</fieldset>
+				<fieldset id="lines">
+					<legend><span fckLang="GeshiproLineNumbers">Line Numbers</span></legend>
+					<label><input type="checkbox" name="is_linenumber" id="is_linenumber" value="1" class="checkbox"/>显示行号</label> 	
+					<label>起始行号: <input id="first_number" name="first_number" size="4" type="text" value="1" /></label>
+
+				</fieldset>
+				<fieldset id="tabwidth">
+					<legend><span>代码框大小</span></legend>
+					<label><input type="checkbox" name="is_fixed" id="is_fixed" value="1" class="checkbox"/> 固定代码框高度</label>
+					<input type="text" name="height" id="height" value="300" size="4"/> px 
+				</fieldset>
+				<fieldset id="codecontainer">
+					<legend><span fcklang="GeshiproCodeContainer">Code Container</span></legend>
+					<select name="code_container" id="code_container">
+						<option value="1"  fckLang="GeshiproContainerNone">No Container</option>
+						<option value="2"  fckLang="GeshiproContainerPre">pre Container</option>
+						<option value="3" fckLang="GeshiproContainerDiv" selected="selected">div Container</option>
+					</select>
+				</fieldset>
+			</div>
+		</form>
+		<script type="text/javascript">
+		    set_form();
+		</script>
+		<div id="wait"><span fckLang="GeshiproWaitMsg">Waiting for geshi to respond...</span></div>
+	</body>
+</html>

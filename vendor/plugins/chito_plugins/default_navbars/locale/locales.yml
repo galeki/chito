@@ -1,0 +1,21 @@
+en-US:
+    plugins:
+        navbar:
+            default_navbars:
+                home:
+                    name: Home
+                admin:
+                    name: Admin
+                guestbook:
+                    name: Guestbook
+zh-CN:
+    plugins:
+        navbar:
+            default_navbars:
+                home:
+                    name: 首页
+                admin:
+                    name: 管理
+                guestbook:
+                    name: 留言板
+

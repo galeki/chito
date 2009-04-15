@@ -1,0 +1,18 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="all"/>
+<meta name="author" content="<%=h @meta_author %>"/>
+<meta name="description" content="<%=h @meta_description %>"/>
+<meta name="keywords" content="<%=h @meta_keywords %>"/>
+<link rel="shortcut icon" type="image/x-icon" href="<%= favicon_url %>" />
+<%= posts_rss_link %>
+<%= comments_rss_link %>
+<%= messages_rss_link %>
+<%= stylesheet_link_tag "common" %>
+<%= javascript_include_tag "prototype", "effects", "blog", "fckeditor/fckeditor", "s2utab"  -%>
+<%= theme_css_links :order => options[:css]%>
+<%= theme_js_links :order => options[:js]%>
+<%= show_something :in_head %>
+<%= stylesheet_link_tag plugin_css_path %>
+<title><%= @title %></title>
+</head>

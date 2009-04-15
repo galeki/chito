@@ -1,0 +1,68 @@
+<% @title = "" -%>
+<%= render :partial => "admin/sub_menu_for_manage" %>
+<%= render_flash %>
+<div class="center">
+<% form_tag "", :onsubmit => "return false;" do -%>
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+	    <td class="category_filter">
+		<% if @categories %>
+		    <%= t :category_filter,:scope => [:txt, :view, :admin, :posts]  %>:
+		    <select id="category" name="category" onchange="change_list_by(this)" >
+		    <% for category in @categories %>
+			<option  value="<%= admin_category_posts_path(category) %>" <%= "selected='selected'" if category.id.to_s == params[:category_id]%>><%= category.name %></option>
+		    <% end %>
+			<option value="<%= admin_posts_path %>" <%= "selected='selected'" if !params[:category_id]%>><%= t :all, :scope => [:txt, :view, :admin, :posts]  %></option>
+		    </select>
+		<% end %>
+	    </td>
+	    <td>
+		<% if @categories %>
+		    <%= selected_button :text => t(:recategory, :scope => [:txt, :view, :admin, :posts]), :url => recategory_selected_admin_posts_path(_params), :confirm => t(:recategory_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "recategory_selected_submit" %>
+		    <select id="recategory" name="recategory" >
+		    <% for category in @categories %>
+			<option  value="<%= category.id %>"><%= category.name %></option>
+		    <% end %>
+		    </select>
+		<% end %>	    
+	    </td>
+
+    </tr>
+</table>
+<% if @posts.size >0 -%>
+<table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed checkbox" style=""><%= check_box_tag "trigger", true, false, :onclick => "checkall(this.name, this.form)" %></th>	    
+	    <th class="helpHed" style="text-align:left;"><%= t :title, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
+	    <th class="helpHed"><%= t :comments, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :category, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for post in @posts %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
+	    <td class="title_col"><%= post_title(post) %></td>
+	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
+	    <td class="comments_col"><%= link_to "(#{post.comments.size})", formatted_post_path(post, :html, :anchor => "comments"), :class => "post_comments" %></td>
+	    <td class="category_col"><%= post.category.name if post.category %></td>
+	    <td class="action_col">
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(post, :html), :class => "read" %></td>
+	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_post_path(post), :class => "edit" %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_post_path(post, _params), :class => "delete", :method => :delete, 
+	    :confirm => t(:delete_post, :scope => [:txt, :view, :admin, :posts], :title => post.title) %></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+	    <div class="delete_selected">
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :posts]), :url => destroy_selected_admin_posts_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "selected_submit" %>
+	    </div>
+<% end -%>
+<div id="pagilinks">
+<%= will_paginate @posts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% end -%>
+</div>

@@ -1,0 +1,19 @@
+<div class="<%= comment_class %>" id="<%= comment_id %>">
+<div class="comment_header">
+    <div class="comments_count">
+	    <%= comment_count %>
+    </div> 
+	    <%= reply_comment_button %>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <%= comment_avatar %>
+	</div>
+	<div class="comment_content">
+	    <%= link_to_comment_writer %> <%= t "txt.view.comments._comment.said" %> 
+	    <br/>
+	    <small><%= comment_time %></small>
+	    <%= comment_content %>
+	</div>
+</div>
+</div>

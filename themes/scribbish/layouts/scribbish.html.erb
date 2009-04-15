@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><%= site_title %></span></h1>
+    <h2><%= site_slogan %></h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <%= yield %>
+    </div>
+
+    <div id="sidebar">
+			<% sidebar do |item| -%>
+				    <h3><%= title_of(item) %></h3>
+					<%= content_of(item) %>
+			<% end -%>	
+    </div>
+    <br style="clear:both;" />
+  </div>
+<%= blog_tail %>
+  <div id="footer">
+    <hr />
+    <p><%= footer %></p>
+    <ul>
+      <li>
+        <%= "Styled with " + link_to('scribbish', 'http://quotedprintable.com/pages/scribbish')%>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

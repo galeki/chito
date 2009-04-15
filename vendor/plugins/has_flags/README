@@ -1,0 +1,51 @@
+= has_flags.rb - Has Bit Flags Plugin
+
+Copyright 2006, Rain City Software, Inc. License: Apache 2.0, Version 0.1.4  11-Aug-2006
+
+== Overview
+
+The has_flags plugin provides a simple way to define and access multiple
+boolean flags that map to a single integer database column.  The primary
+objects for using flags are:
+
+  1) control and access the state of an object
+  2) to enable finding database rows with a particular state
+  3) to ease long term maintenance by providing a database definition independent way of extending states
+  4) to be able to adapt to legacy systems that use this approach
+
+
+== Conventions:
+
+  *) Db Column Name: bit_flags
+  *) attribute writer (setter) accepts true, 'true', 'yes', :yes, 1, '1', 'ok' to evaluate true.  all others are false.
+
+== Sample Use:
+
+    class PayableInvoice << ActiveRecord::Base
+      has_flags [ :active, true, :ok_to_post, 7, :posted, :archived ]
+    end
+
+=== instance attrs
+
+  invoice = Payable.new => new payable object created, uses 'after_initialize' to set defaults
+  invoice.active?      => true
+  invoice.active       => true
+  invoice.ok_to_post?  => false
+  invoice.bit_flags    => 1  # follows the 'active=true' configuration
+
+  invoice.active = v   => true where v is in [ true, 'true', 1, '1', 'yes', 'YeS', :yes, :ok 'OK', "oK" ]
+  invoice.active = v   => false where v.to_s.upcase is not in the list above
+
+=== Class Methods
+
+  PayableInvoice.flags    => { "active"=>1, "ok_to_post"=>128, "posted"=>256, "archived"=>512 }
+  PayableInvoice.mask(:ok_to_post, :posted) => 384 (0b0110000000)
+  PayableInvoice.mask(:active, :archived)   => 512 (0x1000000000)
+
+=== Finders
+
+  PayableInvoice.find_by_flags(:active, :ok_to_post)  => returns a list of objects that are 'active' and 'ok to post'
+  PayableInvoice.find_by_flags(:not_active)           => returns a list of objects that are not active
+
+For other examples, see http://RainCityOnRails.com/has_flags
+

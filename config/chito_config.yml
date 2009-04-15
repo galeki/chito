@@ -1,0 +1,11 @@
+:mail:
+    :method: :smtp
+    :from: 'no-reply@is-programer.com'
+    :settings:
+        :address: 127.0.0.1
+        :port:    25
+        :domain:  mail.is-programmer.com
+#       :authentication:  :login
+#       :user_name:        myname
+#       :password:         mypass        
+

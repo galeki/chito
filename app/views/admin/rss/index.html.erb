@@ -1,0 +1,30 @@
+<% @title = t(:rss_import, :scope => [:txt, :view, :admin, :rss]) -%>
+<%= render :partial => 'admin/sub_menu_for_manage' %>
+<%= render_flash %>
+<div class="option_wrap">
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:rss_import, :scope => [:txt, :view, :admin, :rss]) %></div>
+<script type="text/javascript">
+    var t1 = "<%= t(:no_url, :scope => [:txt, :view, :admin, :rss]) %>";
+    var t2 = "<%= t(:url_invalid, :scope => [:txt, :view, :admin, :rss]) %>";
+</script>
+    <div id="import_result"></div>
+           <%
+		form_remote_tag( :update => "import_result", 
+				:condition => "check_url(this.rss_url.value, t1, t2)",
+				:url => { :action => 'import'},
+				:before => "Element.show('importing');$(s).disabled=true;",
+				:complete => "Element.hide('importing');$(s).disabled=false;"
+				) do
+				%>
+    <label style="margin-bottom:20px;"><%= t(:rss_url, :scope => [:txt, :view, :admin, :rss]) %>: <%= text_field_tag 'rss_url', '', :size => '70' %></label>
+    <label><%= radio_button_tag :import_category, 'new_category', true, :class => 'ck' %> <%= t(:auto_category, :scope => [:txt, :view, :admin, :rss]) %></label>
+    <label style="display:inline;"><%= radio_button_tag :import_category, 'default_category', false, :class => 'ck' %> <%= t(:categorize_in, :scope => [:txt, :view, :admin, :rss]) %> </label><select  id="category" name="category" style="width:30%;"><%= options_from_collection_for_select(@categories,:id, :name,@selected) %></select>
+    <label><%= check_box_tag :import_comments, 1, false, :class => 'ck' %> <%= t(:import_comments, :scope => [:txt, :view, :admin, :rss]) %></label>
+    <span style="display:none;" id="importing"><%= image_tag 'importing.gif' %> <%= t(:importing, :scope => [:txt, :view, :admin, :rss]) %></span>
+    <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :id => 's' %>
+<% end %>
+</div>
+</div>
+

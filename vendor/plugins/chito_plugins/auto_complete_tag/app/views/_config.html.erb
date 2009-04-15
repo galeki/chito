@@ -1,0 +1,15 @@
+<% options_div t("plugins.auto_complete_tag.intro") do %>
+<p><%= t("plugins.auto_complete_tag.intro_content") %>:
+    <ol>
+	<li><%= t("plugins.auto_complete_tag.autocomplete") %></li>
+	<li><%= t("plugins.auto_complete_tag.clickadd") %></li>
+    </ol>
+</p>
+<% end -%>
+<% options_div t("plugins.auto_complete_tag.settings") do %>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'auto_complete_tag'} do |f|%>
+    <label><%= f.check_box :enable_tags_select_field,  :class => 'checkbox' %><%= t("plugins.auto_complete_tag.show_tag_list") %></label>
+    <label><%= f.check_box :enable_tags_auto_complete,  :class => 'checkbox' %><%= t("plugins.auto_complete_tag.autocomplete_tag") %></label>
+    <%= submit_tag t("plugins.auto_complete_tag.save"), :class =>'submit' %>
+<% end %>
+<% end -%>

@@ -1,0 +1,33 @@
+<% @title = t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) -%>
+<%= render :partial => 'admin/sub_menu_for_appearance' %>
+<div class="option_wrap" style="width:100%;margin:0;">
+	<table id="theme_table">
+	 <tr class="theme">
+		    <td id="theme_list">
+		     <div id="theme_demo">
+			<% for theme in @theme_list -%>
+			    <div class="theme_warp">
+				<div><%= image_tag "/themes/#{theme}/screenshot.png" %></div>
+				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
+				<div class="theme_form">
+					<% form_remote_tag( :update => "theme_iframe_content", 
+									:url => { :action => 'change_theme', :theme => theme},
+									:loading => "Element.show('in_progress')",
+									:complete => "Element.hide('in_progress');window.location.reload();"
+									) do%>
+					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]) %>
+					<% end %>
+				</div>
+			    </div>
+			<% end -%>
+		     </div>
+		    </td>
+		    <td id="theme_iframe" valign="top">
+		      <div id="theme_iframe_content">
+			<%= render :partial => 'theme_demo' %>
+		      </div>
+		    </td>
+	 </tr>
+	</table>
+</div>
+

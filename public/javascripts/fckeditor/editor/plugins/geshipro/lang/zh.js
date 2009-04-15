@@ -1,0 +1,17 @@
+FCKLang['GeshiproTitle'] 				= '高亮代码';
+FCKLang['GeshiproSourceCode']    		= '请输入代码';
+FCKLang['GeshiproOptions']    			= '高亮设置';
+FCKLang['GeshiproLanguage']       		= '程序语言';
+FCKLang['GeshiproLineNumbers']   	 	= '行号';
+FCKLang['GeshiproNoLines']    			= '无';
+FCKLang['GeshiproNormalLines']    		= '一般';
+FCKLang['GeshiproFancyLines']     		= '特殊';
+FCKLang['GeshiproTabWidth']				= 'Tab 宽度';
+FCKLang['GeshiproCssClasses']			= 'CSS 外带';
+FCKLang['GeshiproCssClassesDisable']	= '禁用';
+FCKLang['GeshiproCssClassesEnable']		= '启用';
+FCKLang['GeshiproCodeContainer']		= '高亮代码容器标签';
+FCKLang['GeshiproContainerNone']		= '无';
+FCKLang['GeshiproContainerPre']			= 'pre';
+FCKLang['GeshiproContainerDiv']			= 'div';
+FCKLang['GeshiproWaitMsg']				= '正在处理，请稍后……'; 

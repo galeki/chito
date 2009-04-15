@@ -1,0 +1,36 @@
+<%= render :partial => 'admin/sub_menu_for_appearance' %>
+<%= render_flash %>
+<div class="option_wrap">
+<% @title = t(:sidebar_settings, :scope => [:txt, :view, :admin, :sidebar]) -%>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><div id="notifier"></div><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @user.theme.camelize %> ] </div>
+<% form_for :user, :url => {:action => 'sidebar_postion'} do |f| %>
+  <%= bars_layout %>
+  <br style="clear:both"/>
+  <% @disable_bars ||= @all_bars.reject {|b| b.show? and @fields.include?(b.field.to_s)} -%>
+  <div id="disable_bar_box">
+	<div class="disable_bars_title"><%= t(:available_sidebars, :scope => [:txt, :view, :admin, :sidebar]) %></div>
+	<ul id="disable" class="disable_hbars">
+	  <% for bar in @disable_bars -%>
+	     <%= show_bar(bar) %>
+	  <% end -%>
+	</ul>
+	<br style="clear:both"/>
+  </div>
+  <% @fields << 'disable' -%>
+  <% @overlap[:disable] = :horizontal -%>
+
+  <% for field in @fields -%>
+    <%= hidden_field_tag 'fields[]', field %>
+  <% end -%>
+    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :sidebar]) %>" onclick='this.form.action += "?" + bars_config(this.form, <%= @fields.inspect %>);this.form.submit();return false;'
+	style=""/>
+<% end %>
+</div>
+
+<% for field in @fields -%>
+    <%= sortable_element field,:url => '' , :constraint => false, :containment => @fields, :dropOnEmpty => true, :overlap => @overlap[field.to_sym], :format => "/^bar_(.*)$/"%>
+<% end -%>
+</div>
+

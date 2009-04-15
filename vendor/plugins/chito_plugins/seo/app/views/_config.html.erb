@@ -1,0 +1,18 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.seo.intro" %></div>
+<p>
+<%= t "plugins.seo.intro_content" %>
+</p>
+<p><%=t "plugins.seo.intro_content2" %></p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.seo.seo_of_blog" %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'seo'} do |f|%>
+    <label><%= t "plugins.seo.blog_info" %>: </label>
+    <%= f.text_area :meta_description, :style => "width:60%;height:100px;" %>
+    <label><%= t "plugins.seo.blog_keywords" %>: <%= f.text_field :meta_keywords, :size => '60'%></label>
+    <%= submit_tag t "plugins.seo.save", :class =>'submit' %>
+<% end %>
+</div>

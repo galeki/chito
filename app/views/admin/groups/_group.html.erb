@@ -1,0 +1,10 @@
+    <tr id="group_<%= @group.id %>" class="<%= cycle("odd", "") %>">
+	    <td class="group_name_col">
+			<%= @group.name %>
+	    </td>
+	    <td class="group_space_col"><%= in_place_editor_field "group", "space", {},:cols => 4, :save_text => t(:save_text, :scope => [:txt, :view, :admin, :groups]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :groups]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :groups]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :groups]) %></td>
+	    <td class="group_file_size_limit_col"><%= in_place_editor_field "group", "file_size_limit", {}, :cols => 4,  :save_text => t(:save_text, :scope => [:txt, :view, :admin, :groups]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :groups]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :groups]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :groups]) %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :groups]), admin_group_path(@group), :class => "delete", 
+		:confirm => t(:delete_group?, :scope => [:txt, :view, :admin, :groups], :group => @group.name), :method => :delete %></td>
+    </tr>
+

@@ -1,0 +1,67 @@
+<% @title = t(:profile, :scope => [:txt, :view, :admin, :settings]) -%>
+<%= render :partial => 'admin/sub_menu_for_setting' %>
+<%= render_flash %>
+<div class="option_wrap">
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:avatar, :scope => [:txt, :view, :admin, :settings]) %></div>
+<div id="head_pic">
+    <div id="head" style="width:125px;">
+	<%= image_tag @user.avatar_url, :size => "120x120" %>
+	<div id="info" style='text-align:center;'> <%= @user.info %></div>
+    </div>	
+</div>
+<div id="head_option">
+<label><%= t(:upload_new, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+<% form_for :user, :url => {:action => 'save_avatar'}, :html => {:multipart => true} do |f| -%>
+    <%= file_field :file, :data, :accept => 'image/jpeg' %>
+    <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
+    <br/>
+<% end -%>
+<%= t(:pic_format, :scope => [:txt, :view, :admin, :settings]) %>
+<label><%= t(:pic_info, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+<% form_for :user, :url => {:action => 'avatar_info'} do |f| %>
+    <%= f.text_field 'info', :size => '40' %>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:favicon, :scope => [:txt, :view, :admin, :settings]) %></div>
+<%= image_tag "/user_files/#{@user.name}/config/favicon.ico", :size => "16x16", :class => "favicon", :alt => "" %>
+<% form_for :user, :url => {:action => 'save_favicon'}, :html => {:multipart => true} do |f| -%>
+    <%= file_field :file, :data, :accept => 'image/ico' %>
+    <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
+    <%= link_to t(:refresh_favicon, :scope => [:txt, :view, :admin, :settings]), "/favicon.ico", :target => "_blank" %>
+    <br/>
+    <span style="padding-left:36px;"><%= t(:favicon_format, :scope => [:txt, :view, :admin, :settings]) %>
+<% end -%>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:change_profile, :scope => [:txt, :view, :admin, :settings]) %></div>
+<% form_for :user, :url =>{:action => 'info'} do |f| %>
+    <label><%= t(:title, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+    <%= f.text_field 'title', :size => '25'%>
+    <br/>
+    <label><%= t(:slogan, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+    <%= f.text_field 'slogan', :size => '40'%><br/> 
+    <%= f.check_box :show_slogan_in_title, :class => "ck" %> <%= t("txt.view.admin.settings.show_slogan_in_title") %>
+    <br/>
+    <label><%= t(:nick, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+    <%= f.text_field 'nick', :size => '10'%>
+    <br/>
+    <label >E-mail:</label>
+    <%= f.text_field 'email', :size => '25' %>
+    <label >Language:</label>
+    <%= f.select :language, LANGUAGES %>
+    <br/>
+    <br/>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+
+
+</div>
+

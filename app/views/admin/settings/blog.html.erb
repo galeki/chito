@@ -1,0 +1,37 @@
+<% @title = t(:blog_options, :scope => [:txt, :view, :admin, :settings]) -%>
+<%= render :partial => 'admin/sub_menu_for_setting' %>
+<%= render_flash %>
+<div class="option_wrap">
+
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:trackback, :scope => [:txt, :view, :admin, :settings]) %></div>
+<% form_for :user do |f| %>
+    <label><%= f.check_box :show_trackbacks, :class => 'checkbox' %> <%= t(:show_trackback, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= f.check_box :enable_trackbacks, :class => 'checkbox' %> <%= t(:enable_trackback, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+
+
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:paginate, :scope => [:txt, :view, :admin, :settings]) %></div>
+<% form_for :user do |f| %>
+    <label><%= t(:posts_pre_page, :scope => [:txt, :view, :admin, :settings]) %>: <%= f.text_field :blog_per_page, :size => '5' %> <%= t(:default, :scope => [:txt, :view, :admin, :settings], :num => 10) %></label>
+    <%= expire_cache_field :type => "posts_index/*" %>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t(:RSS, :scope => [:txt, :view, :admin, :settings]) %></div>
+    <% form_for :user do |f| %>
+    <label><%= f.radio_button :rss_type, 'full', :checked => true,  :class => 'ck' %> <%= t(:full, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= f.radio_button :rss_type, 'brief',  :class => 'ck' %> <%= t(:brief, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+
+</div>

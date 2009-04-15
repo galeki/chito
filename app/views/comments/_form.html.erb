@@ -1,0 +1,35 @@
+           <%
+		form_remote_tag( 
+				:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
+				:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;",
+				:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
+				) do%>
+		<div id="comment_error" style="display: none;"></div>
+               <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
+		<input id="comment_writer" name="comment[writer]" size="10" type="text" 
+			value="<%= session[:user_nick] || cookies[:comment_writer] || '' %>"  
+			<% if session[:user_name] %>disabled<% end %> /> *
+		<%= (link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]), :controller => "/blog", :action => 'login', :jump => request.url) unless session[:user_name] %> 
+		<br/>
+		<% unless session[:user_name] %>
+		    <label>E-mail:</label>
+		    <%= text_field 'comment','email', :value => cookies[:comment_email]  %> *
+		    <br/>
+		    <label>Web:</label>
+		    <%= text_field 'comment','homepage', :value => cookies[:comment_homepage] || 'http://' %>
+		    <br/>
+		<% end %>
+		<div id="comment_editor">
+		  <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
+		  <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>
+		  <input type="button" id="comment_editor_button" onclick='show_editor();' />
+		</div>
+		<% if controller.action_name == "show" %>
+		    <label><%= check_box_tag :enable_notifier, 1, false %><%= t("txt.view.comments._form.comment_notifier") %> </label>
+		<% end -%>
+		<div id="comment_extra" >
+		    <%= show_something :in_comment_form %>
+		</div>
+		    <input id="ss" name="commit" type="submit" autocomplete="off" value="<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>" />
+
+	    <% end %>

@@ -1,0 +1,51 @@
+<% @title = t(:manage_spam, :scope => [:txt, :view, :admin, :spams]) -%>
+<%= render :partial => "admin/sub_menu_for_feedbacks" %>
+<%= render_flash %>
+<div class="center">
+<% if @spams.size >0 -%>
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+<% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
+
+    </tr>
+</table>
+<table id="comments_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <form>
+    <tr>
+	    <th class="helpHed checkbox" style=""><%= check_box_tag "trigger", true, false, :onclick => "checkall(this.name, this.form)" %></th>
+	    <th class="helpHed"><%=t(:writer, :scope => [:txt, :view, :admin, :spams])  %></th>
+	    <th class="helpHed"><%=t(:time, :scope => [:txt, :view, :admin, :spams])  %></th>
+	    <th class="helpHed"><%=t(:brief, :scope => [:txt, :view, :admin, :spams])  %></th>
+	    <th class="helpHed"><%=t(:block_by, :scope => [:txt, :view, :admin, :spams])  %></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for spam in @spams %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="checkbox"><%= check_box_tag "ids[]", spam.id, nil, :id => spam.id %></td>
+	    <td class="comment_writer_col"><%=h spam.writer %></td>
+	    <td class="comment_time_col"><%= spam.created_at.to_s :db_short %></td>
+	    <td class="comment_content_col"><%=h strip_tags(spam.content) %></td>
+	    <td class="comment_block_by"><%= spam.audit_by %></td>
+	    <td class="action_col"><%= link_to t(:pass, :scope => [:txt, :view, :admin, :spams]), pass_admin_spam_path(spam, _params), :class => "pass", 
+					:confirm => t(:pass_spam?, :scope => [:txt, :view, :admin, :spams]), :method => :post %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :spams]), admin_spam_path(spam, _params), :class => "delete",
+		:confirm => t(:delete_spam?, :scope => [:txt, :view, :admin, :spams]), :method => :delete %></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+	    <div class="delete_selected">
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :spams]), :url => destroy_selected_admin_spams_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :spams]), :class => "selected_submit" %>
+	    </div>
+    <% end -%>
+<div id="pagilinks">
+<%= will_paginate @spams, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% else -%>
+<div style="margin-top:40px;">
+   <%=t(:no_spam, :scope => [:txt, :view, :admin, :spams]) %> 
+</div>
+<% end -%>
+</div>
+

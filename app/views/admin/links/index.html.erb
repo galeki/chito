@@ -1,0 +1,42 @@
+<% @title = t(:manage_links, :scope => [:txt, :view, :admin, :links]) -%>
+<%= render :partial => 'admin/sub_menu_for_manage' %>
+<%= render_flash %>
+<div class="option_wrap">
+<div class="add_cate">
+    <div id='add_category'>
+	<% form_remote_tag( :url => admin_links_path,
+			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :links])}';$(s).disabled=true;",
+			    :complete => "$(s).value='#{t(:create_link, :scope => [:txt, :view, :admin, :links])}';$(s).disabled=false;"
+			    ) do %>
+		<label for="link_title"><%= t(:name, :scope => [:txt, :view, :admin, :links]) %>:</label>
+		<%= text_field 'link', 'title', :size => 10  %>
+		<label for="link_url"><%= t(:url, :scope => [:txt, :view, :admin, :links]) %>:</label>
+		<%= text_field 'link', 'url', :size => 20 %>
+		<label for="link_info"><%= t(:info, :scope => [:txt, :view, :admin, :links]) %>:</label>
+		<%= text_field 'link', 'info', :size => 20 %>
+	    <%= submit_tag t(:create_link, :scope => [:txt, :view, :admin, :links]), :id => 's', :autocomplete => 'off' %> 
+	<% end -%>	
+    </div>	
+</div>
+<div id="updater"></div>
+<div id='mylinks'>
+<table class="sofT" cellspacing="0">
+    <tr>
+	    <th class="helpHed dragger"></th>
+	    <th class="helpHed"><%= t(:name_c, :scope => [:txt, :view, :admin, :links]) %></th>
+	    <th class="helpHed"><%= t(:url_c, :scope => [:txt, :view, :admin, :links]) %></th>
+	    <th class="helpHed"><%= t(:info_c, :scope => [:txt, :view, :admin, :links]) %></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <tbody id="all_links">
+	<% for @link in @links %>
+	    <%= render :partial => "link" %>
+	<% end -%>	
+    </tbody>
+</table>
+<%= sortable_element 'all_links',:url => set_position_admin_links_path, 
+				 :containment => ['all_links'], 
+				 :tag => 'tr', :ghosting => true, :handle => "dragger" %>
+</div>
+
+</div>

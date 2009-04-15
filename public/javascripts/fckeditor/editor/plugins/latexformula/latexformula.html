@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>插入程序代码</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta content="noindex, nofollow" name="robots">
+		<link href="main.css" media="screen" rel="Stylesheet" type="text/css" />
+		<script src="/javascripts/prototype.js" type="text/javascript"></script>
+		<script language="javascript">
+
+var oEditor = window.parent.InnerDialogLoaded().FCK;
+window.onload = function ()
+{
+	// Show the "Ok" button.
+	window.parent.SetOkButton( true ) ;	
+}
+function Ok()
+{
+	var formula = $('formula');
+	oEditor.InsertHtml(formula.innerHTML)
+	return true;
+}
+function check(form)
+{
+    if(form.latex.value.length==0 || form.latex.value.isInChinese())
+    {	alert('公式内容不正确或者包含了中文');
+	return false;
+    }else
+	return true;
+}
+String.prototype.isInChinese = function() {
+return (this.length != this.replace(/[^\x00-\xff]/g,"**").length);
+}
+</script>
+	</head>
+	<body scroll="no" style="OVERFLOW: hidden;font-size:12px;">
+	<div style="text-align:center">
+	<form action="/admin/latexformula" method="post" id="" onsubmit="if (check(this)) { new Ajax.Updater('formula', '/latex_formula/make_png', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('in_progress');}, onLoading:function(request){Element.show('in_progress');}, parameters:Form.serialize(this)}); }; return false;">
+    		<label>请输入公式 (不含中文字符) : </label> <a href="http://blog.linuxgem.org/lyanry/show/442.html" target="_blank"> TeX 公式简明教程</a><br/>
+		<input type="text" id="latex" name="latex" style="width:80%;border:1px solid #666;font-size:16px;font-weight:bold;padding:5px;" /><br/>
+		文字大小: 
+		<select name="size">
+		    	<option value="100">最小</option>
+		    	<option value="150" selected="selected">较小</option>
+		    	<option value="200">中等</option>
+		    	<option value="300">较大</option>
+		    	<option value="500">最大</option>
+		    </select>
+		<input type="submit" value="生成" style="border:1px solid #666;margin-left:20px;"/> 
+	</form>
+	公式生成后点击“确定”插入
+		<div id="in_progress" style="display:none;margin-top:8px;"><span style="color:#06f"> 正在处理 </span><img src="/images/inprogress.gif" /></div><br/>
+	</div>
+
+	<div id="formula" style="margin-top:20px;text-align:center;">
+
+	</div>
+	</body>
+</html>

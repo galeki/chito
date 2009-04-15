@@ -1,0 +1,567 @@
+--- 
+zh-CN: 
+  activerecord:
+    attributes:
+      category: 
+        name: 分类名称
+        default_name: 未分类
+        default_info: 未分类的文章
+      link:
+        title: 链接名称
+        url: 链接 URL
+      user:
+        name: 用户名
+        email: 用户 E-mail
+        nick: 昵称
+      group:
+        name: 组名
+      feedback:
+        writer: 评论作者
+        content: 评论内容
+        email: E-mail
+  txt: 
+    errors:
+        "404":
+            title1: 资源未找到
+            title2: "噢卖糕的，啥也没找到……"
+            text: 真的啥也没找到，是不是 URL 打错了？
+    save: 保存
+    cancel: 取消
+    prev_page: "&laquo; 上一页"
+    next_page: "下一页 &raquo;"
+    close: 关闭
+    mail:
+        comment_notifier:
+            email_title: "{{post}} 有了新评论"
+            new_comment: 有一条新评论
+            writer: 作者
+            post_at: 发表于
+            comment_content: 评论内容
+            check_all_comments: 你可以在此查看所有的评论
+            no_nexttime: "如果你不想再收到提醒邮件，可以点击下面的链接。"
+        reset_password:
+            email_title: 重设你的密码。
+    controller: 
+      blog: 
+        message_0: 注册被禁用了。
+        message_1: 注册成功！请登录。
+        message_2: 验证码错列
+        message_3: 登录失败列～
+        no_user_found: 用户未找到。
+        reset_password_email_send: 重设密码链接已经发送到你的邮箱中，请查收并按照其中的指示重设你的密码。
+        password_reseted: "密码重设成功，请 <a href=\"/login\">重登录</a>."
+        confirm_dismatch: 两次输入的密码不一样。
+        reset_password_expired: 这个密码重设请求已经过期了……
+      application: 
+        message_0: 成功登出
+        message_1: 用户未找到。
+      site: 
+        message_0: 未知的请求。
+      posts: 
+        cancel_comment_notifier: 成功取消 {{title}} 的评论邮件提醒。
+        no_comment_notifier: 你已经取消了 {{title}} 的评论邮件提醒。
+      pages: 
+        message_0: 页面未找到。
+      admin:
+        articles:
+          draft_saved: 草稿成功保存于 {{time}}
+        posts:
+          post_successfully_deleted: 文章删除成功
+          posts_successfully_deleted: 文章删除成功
+          posts_successfully_recategoried: 文章重归类成功
+        drafts:
+          draft_successfully_deleted: 草稿删除成功
+          draft_successfully_saved: 草稿保存成功
+          draft_successfully_created: 草稿创建成功
+          drafts_successfully_deleted: 草稿删除成功
+        pages:
+          page_successfully_deleted: 页面删除成功
+        categories:
+          must_have_a_category: 必须保留至少一个分类
+          category_successfully_deleted: 分类删除成功
+        links:
+          link_successfully_deleted: 链接删除成功
+        rss:
+          rss_import_successfully: RSS 数据导入成功
+          rss_import_fail: RSS 导入失败，请检查 URL 地址
+        comments:
+          comment_deleted: 评论删除成功
+          comments_deleted: 评论删除成功
+          filter_settings_updated: 评论过滤链设置更新成功
+        messages:
+          message_deleted: 留言删除成功
+          messages_deleted: 留言删除成功
+        trackbacks:
+          trackback_deleted: Trackback 删除成功
+          trackbacks_deleted: Trackback 删除成功
+        spams:
+          comment_restored: 评论回复成功
+          spam_deleted: Spam 删除成功
+          spams_deleted: Spam 删除成功
+        sidebar:
+          sidebars_updated: 边栏位置更新成功
+        base:
+          config_updated: 设置保存成功
+          config_not_saved: 设置保存失败
+        navbar:
+          navbar_updated: 导航栏位置更新成功
+        postbar:
+          postbar_updated: 底栏设置保存成功
+        settings:
+          profile_updated: 信息保存成功
+          avatar_uploaded: 头像上传成功
+          avatar_format_error: 头像必须是图片，而且要小于 200K
+          password_updated: 密码更新成功
+          password_invalid: 密码错误
+          password_dismatch: 两次输入的密码不一致
+          favicon_uploaded: 网站小图标上传成功
+          favicon_format_error: 网站小图标必须是小于 20K 的图片
+        plugins:
+          plugin_updated: 插件设置更新成功
+          plugin_not_save: 插件设置更新失败
+          config_updated: 设置保存成功
+        site:
+          config_updated: 网站设置更新成功
+          config_not_save: 网站设置保存失败
+          no_user: "用户 {{user}} 不存在"
+        groups:
+          group_deleted: 用户组删除成功
+          no_delete: "'Admin' 和 'Default' 组是不能删除的"
+        users:
+          user_deleted: 用户删除成功
+    helper: 
+      posts: 
+        message_0: 继续阅读
+        message_1: 阅读全文
+        message_2: 阅读
+        message_4: 上一篇
+        message_5: 下一篇
+        no_title: "- 未命名 -"
+      comments:
+        reply_to: 回复 {{user}}
+        reply: 回复
+    view: 
+      messages: 
+        index: 
+          builder: 
+            message_0: 留言
+      comments: 
+        index: 
+          builder: 
+            message_0: 评论
+        _form: 
+          message_0: 发送评论……
+          message_1: 发送
+          message_2: 昵称
+          message_3: 登录
+          message_4: 发送
+          comment_notifier: 当有新评论通过 E-mail 通知我
+        _comment:
+          said: "说:"
+      blog: 
+        add: 
+          message_0: 注册
+          message_1: 注册
+          message_2: 用户名
+          message_3: 昵称
+          message_4: 密码
+          message_5: 确认密码
+          message_6: 验证码
+          message_7: 提交
+          input_captcha: (输入验证码)
+        guestbook: 
+          message_0: "{{user}} 的留言簿"
+          message_1: 给 {{user}} 留言
+        login: 
+          message_0: 登录
+          message_1: 用户名
+          message_2: 密码
+          message_3: 记住我
+          message_4: 登录
+        forgot_password:
+          password_reset: 重设你的密码
+          confirm: 确认
+          input_email: "请输入你的 E-mail 地址："
+        reset_password:
+          password_reset: 重设你的密码
+          input_new_password: "输入新密码"
+      admin: 
+        _sub_menu_for_manage: 
+          message_0: 文章
+          message_1: 页面
+          message_2: 草稿
+          message_3: 分类
+          message_4: 友情链接
+          message_5: 文件
+          message_6: RSS 导入
+        plugins: 
+          message_0: 插件设置
+        _sub_menu_for_feedbacks: 
+          message_0: 评论
+          message_1: 留言
+          message_2: Trackback
+          message_3: Spam
+          message_4: 设置
+          talks: 讨论
+        trackbacks: 
+          message_0: 管理 trackback
+          message_1: 查找
+          message_2: 删除所选
+          message_3: 删除所选的 trackback ?
+          message_4: 查看
+          message_5: " 删除"
+          message_6: 删除这个 trackback ?
+        files: 
+          up: 向上
+          loading: 载入中……
+          delete: " 删除"
+          delete_folder?: 删除文件夹 {{folder}} ?
+          download: 下载
+          used: 已使用
+          delete_file?: 删除文件 {{file}} ?
+          manage_files: 管理文件
+          file: 文件
+          image: 图片
+        groups: 
+          manage_groups: 管理组
+          name: 组名
+          create: 创建
+          saving: 保存中…
+          space_c: 空间 (点击修改)
+          file_size_limit_c: 文件大小 (点击更新)
+          delete: 删除
+          saving_text: 保存中…
+          click_to_edit_text: 点击修改
+          delete_category?: 删除分类 {{name}} ?
+          save_text: 保存
+          cancel_text: 取消
+          delete_group?: 删除用户组 {{group}} ?
+        comments: 
+          manage_comments: 管理评论
+          search_for: 搜索
+          search: 搜索
+          comments_contain: 含有 {{words}} 的评论
+          writer: 作者
+          time: 时间
+          brief: 摘要
+          view: 查看
+          email: E-mail
+          delete: 删除
+          delete_selected: 删除所选
+          delete_selected?: 删除所选的评论 ?
+          delete_comment?: 删除这条评论 ?
+          no_match: 没有找到评论
+          comment_settings: 评论设置
+          save: 保存
+          filter_chain: 过滤链
+          a_comment: "我是条评论"
+          available_comment_filters: 可用的过滤链
+        messages: 
+          manage_messages: 管理留言
+          search_for: 搜索
+          search: 搜索
+          messages_contain: 含有 {{keyword}} 的留言
+          writer: 作者
+          time: 时间
+          brief: 摘要
+          view: 查看
+          email: E-mail
+          delete: 删除
+          delete_selected: 删除所选
+          delete_selected?: 删除所选的留言 ?
+          delete_message?: 删除这条留言 ?
+          no_match: 没有找到留言
+        trackbacks: 
+          manage_trackbacks: 管理 Trackback
+          search_for: 搜索
+          search: 搜索
+          trackbacks_contain: 含有 {{keyword}} 的 Trackback
+          writer: 作者
+          time: 时间
+          brief: 摘要
+          view: 查看
+          email: E-mail
+          delete: 删除
+          delete_selected: 删除所选
+          delete_selected?: 删除所选的 Trackback ?
+          delete_trackback?: 删除这条 Trackback ?
+          no_match: 没有找到 Trackback
+        talks:
+          writer: 作者
+          talks: 讨论
+          view_talks: 查看
+          last_comment: 最新评论
+          title: 标题
+          comments: 评论
+          jump_to: 查看
+        spams: 
+          manage_spam: 管理 Spam
+          search_for: 搜索
+          search: 搜索
+          writer: 作者
+          time: 时间
+          brief: 摘要
+          view: 查看
+          email: E-mail
+          delete: 删除
+          delete_selected: 删除所选
+          delete_selected?: 删除所选的 Spam ?
+          delete_spam?: 删除这条 Spam ?
+          block_by: 拦截者
+          pass: 通过
+          pass_spam?: 通过这条 Spam ?
+          no_spam: 没有 Spam
+        dashboard: 
+          message_0: 工作台
+          message_1: "文章: {{posts_size}}"
+          message_2: "草稿: {{drafts_size}}"
+          message_3: "评论: {{comments_size}}"
+          message_4: "留言: {{messages_size}}"
+          message_5: 撰写新文章
+          message_6: 管理你的文章
+          message_7: 更新你的信息
+          recent_comments: 最新评论
+          recent_messages: 最新留言
+          statistics: 统计
+          welcome_back: 欢迎回来
+          write_new_post: 撰写新文章
+          manage_posts: 管理文章、页面和草稿
+          change_profile: 更改你的信息、头像和 Blog 标题
+          see_talks: 查看讨论
+          see_the_talks: 查看曾经在其他用户 Blog 上发表过评论的后续更新
+        share:
+          option: 设置
+          title: 标题
+          brief: 摘要
+          category: 分类
+          add: 添加
+          forbid_comment: 禁止评论
+          auto_brief: 自动生成摘要
+          save_to_draft_box: 保存到草稿箱
+          save_and_edit: 保存并继续编辑
+          submit_post: 提交文章
+          submit_as_page: 提交为页面
+          leave_message: 当前的内容还没有保存，如果离开，编辑的内容将丢失
+        _sub_menu_for_root: 
+          message_0: 网站
+          message_1: 用户组
+          message_2: 用户
+        categories:
+          saving: 保存中
+          create_category: 创建分类
+          name: 名称
+          description: 描述
+          name_c: 名称 (点击编辑)
+          description_c: 描述 (点击编辑)
+          delete: 删除
+          saving_text: 保存中
+          click_to_edit_text: 点击编辑
+          delete_category?: 删除分类 {{name}} ?
+          save_text: 保存
+          cancel_text: 取消
+          manage_categories: 管理评论
+          categories_position_updated: 分类位置于 {{time}} 更新成功
+        links: 
+          links_position_updated: 链接位置于 {{time}} 更新成功
+          saving: 保存中
+          create_link: 添加链接
+          name: 名称
+          url: URL
+          info: 信息
+          name_c: 名称 (点击编辑)
+          url_c: URL (点击编辑)
+          info_c: 信息 (点击编辑)
+          delete: 删除
+          saving_text: 保存中
+          click_to_edit_text: 点击编辑
+          delete_link?: 删除友情链接 {{link}} ?
+          save_text: 保存
+          cancel_text: 取消
+          manage_links: 管理友情链接
+        _sub_menu_for_appearance: 
+          message_0: 主题
+          message_1: 边栏
+          message_2: 导航栏
+          message_3: 文章底栏
+        sidebar: 
+          sidebar_settings: 边栏设置
+          sidebar_layout_title: 边栏布局和标题
+          save: 保存
+          available_sidebars: 可用的边栏
+          theme: 主题
+          sidebar: 边栏
+        _sub_menu_for_setting: 
+          message_0: 个人信息
+          message_1: Blog
+          message_2: 系统
+        settings: 
+          show_slogan_in_title: "在页面标题中显示"
+          blog_options: Blog 设置
+          settings: 设置
+          profile: 信息
+          post_read_count: 文章阅读数
+          show_post_read_count: 显示文章阅读数
+          save: 保存
+          trackback: Trackback
+          show_trackback: 显示 Trackback
+          enable_trackback: 接受 Trackback
+          paginate: 分页
+          posts_pre_page: 每页文章数量
+          default: 默认为 {{num}}
+          rss: RSS
+          full: 全文
+          brief: 摘要
+          avatar: 头像
+          upload_new: 上传新头像
+          upload: 上传
+          pic_format: PNG 格式, 120x120 px, 小于 200KB
+          pic_info: 头像描述
+          title: Blog 标题
+          nick: 昵称
+          slogan: Blog 副标题
+          change_profile: 更改你的信息
+          favicon: 网站小图标 (favicon)
+          refresh_favicon: 刷新图标
+          favicon_format: 16x16 ~ 48x48, ICO 或者 PNG(IE 不支持)格式, 小于 20KB
+          RSS: RSS 设置
+          message_8: 蓝色
+          message_9: 更改
+          message_0: 系统设置
+          message_1: 更改密码
+          message_2: 旧密码
+          message_3: 新密码
+          message_4: 确认新密码
+          message_5: 更改
+          message_6: 工作台风格
+          message_7: 绿色
+        site: 
+          message_16: 保存
+          message_8: 我想写多个 Blog，或者想让别人到这里来写 Blog。
+          message_9: 可注册
+          message_0: 网站设置
+          message_1: 更改网站信息
+          message_2: 网站标题
+          message_10: 默认组
+          message_3: 网站地址
+          message_11: 新注册的用户自动归为此组
+          message_4: Blog 模式
+          message_12: 根域名
+          message_5: 单用户
+          message_13: "Chito 用二级域名来区分不同的用户，比如: <br/> http://user1.chito.com <br/> http://user2.chito.com <br/> 你必须有一个泛解析的域名，比如 chito.com, 然后将 *.chito.com 指向你的服务器 ip. 最后把域名填写到此处 (不包含 www)"
+          message_6: 我只会写一个 Blog
+          message_14: 默认用户
+          message_7: 多用户
+          message_15: "当二级域名为 www 或者没有指定时，显示此用户的 Blog，比如:<br/> 如果根域名为 chito.com, 默认用户为 `galeki`, 那么: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> 都将显示 galeki 的 Blog."
+        rss:
+          rss_import: RSS 导入
+          no_url: 请输入 RSS 地址
+          url_invalid: RSS 地址格式似乎不正确
+          rss_url: RSS URL
+          importing: 导入中
+          import: 导入
+          categorize_in: 归类到
+          auto_category: 自动创建分类
+          import_comments: 尝试导入评论
+        navbar:
+          navbar_settings: 导航栏设置
+          navbars_position: 导航栏位置
+          available_navbars: 可用的导航栏
+          navbar: 导航栏
+          save: 保存
+        postbar: 
+          message_0: 文章底栏设置
+          message_1: 文章底栏位置
+          message_2: 显示文章底栏
+          message_3: 当前的文章底栏
+          message_4: 可用的文章底栏
+          message_5: 保存
+        users: 
+          manage_users: 管理用户
+          search_for: 搜索
+          search: 搜索
+          username: 用户名
+          blog_name: Blog 名称
+          domain: 域名
+          group: 用户组
+          delete: 删除
+          delete_user?: 删除用户 {{user}} ?
+          saving_text: 保存中
+          click_to_edit_text: 点击编辑
+          save_text: 保存
+          cancel_text: 取消
+          set: 设置
+          nick: 昵称
+        posts: 
+          new_post: 撰写新文章
+          edit_post: 编辑文章
+          recategory: 重归类为
+          delete_selected: 删除所选
+          delete_selected?: 删除所选的文章 ?
+          recategory_selected?: 重分类所选的文章 ?
+          category_filter: 分类过滤
+          title: 标题
+          create_time: 创建时间
+          comments: 评论
+          category: 分类
+          view: 查看
+          edit: 编辑
+          delete: 删除
+          delete_post: 删除 {{title}} ?
+          all: 全部
+        drafts:
+          delete_draft?: 删除 {{title}} ?
+          edit_draft: 编辑草稿
+        pages: 
+          delete_page?: 删除 {{title}} ?
+          permalink: 永久链接
+          edit_page: 编辑页面
+        _sub_menu_for_compose: 
+          message_0: 文章
+          message_1: 位置 [{{mode}}]
+        themes:
+          theme_settings: 主题设置
+          use: 设置
+      site: 
+        setup: 
+          message_8: 单用户
+          message_9: 我只会写一个 Blog
+          message_0: "Chito: 注册第一个用户"
+          message_1: 注册第一个用户
+          message_2: 用户名
+          message_10: 多用户
+          message_3: 昵称
+          message_11: 我想写多个 Blog，或者想让别人到这里来写 Blog
+          message_4: 密码
+          message_12: 根域名
+          message_5: E-mail
+          message_13: "Chito 用二级域名来区分不同的用户，比如: <br/> http://user1.chito.com <br/> http://user2.chito.com <br/> 你必须有一个泛解析的域名，比如 chito.com, 然后将 *.chito.com 指向你的服务器 ip. 最后把域名填写到此处 (不包含 www)"
+          message_6: 确认密码
+          message_14: 提交
+          message_7: Blod 模式
+      posts: 
+        show: 
+          message_0: 编辑此文章
+          message_1: 返回
+          comments: 评论
+          trackbacks: Trackbacks
+          readers: 阅读
+          rss:
+            comments: 评论          
+      pages: 
+        show: 
+          message_0: 编辑此页面
+          message_1: 返回
+      layouts: 
+        admin: 
+          message_8: 外观
+          message_9: 设置
+          message_0: "{{user}} 的工作台"
+          message_1: 返回 Blog
+          message_2: 登出
+          message_10: 插件
+          message_3: 首页
+          message_11: Chito 管理员
+          message_4: 撰写
+          message_5: 管理
+          message_6: 评论
+          message_7: 新 Spam

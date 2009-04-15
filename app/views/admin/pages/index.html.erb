@@ -1,0 +1,33 @@
+<% @title = "" -%>
+<%= render :partial => "admin/sub_menu_for_manage" %>
+<%= render_flash %>
+<div class="center">
+<% if @pages.size >0 -%>
+<table id="article_table" class="sofT" cellspacing="0">
+    <tr>
+	    <th class="helpHed" style="text-align:left;"><%= t :title, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :permalink, :scope => [:txt, :view, :admin, :pages] %></th>
+	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for page in @pages %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="title_col"><%= page.title %></td>
+	    <td class="permalink_col"><%= page.permalink %></td>
+	    <td class="time_col"><%= page.created_at.to_s :db_short %></td>
+	    <td class="action_col">
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), pagepath(page), :class => "read" %></td>
+	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_page_path(page), :class => "edit" %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_page_path(page, _params), :class => "delete", :method => :delete, 
+	    :confirm => t(:delete_page?, :scope => [:txt, :view, :admin, :pages], :title => page.title)%></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+<div id="pagilinks">
+<%= will_paginate @pages, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% end -%>
+</div>

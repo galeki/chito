@@ -1,0 +1,21 @@
+<% posts_cache do -%>
+  <% posts do -%>
+	<h2 class="link_to_post"><%= link_to_post %></h2>
+	
+	<div class='post_brief'><%= post_brief %></div>
+	<p class="read-more align-right">					
+	    <%= link_to_read_more %>
+	</p>
+	<p class="post-footer align-right">					
+		<%= link_to_post_category(:class => 'readmore') %>
+		<%= link_to_post_tags(:class => 'post_tags') %>
+		<%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
+		<span class="date"><%= post_time %></span>	
+	</p>
+
+  <% end -%>
+  <%= pagilinks %>
+  <br/>
+  <br/>
+  <br/>
+<% end -%>

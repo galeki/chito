@@ -1,0 +1,40 @@
+<% @title = t(:manage_categories, :scope => [:txt, :view, :admin, :categories]) -%>
+<%= render :partial => 'admin/sub_menu_for_manage' %>
+<%= render_flash %>
+<div class="option_wrap">
+<div class="add_cate">
+    <div id='add_category'>
+	<% form_remote_tag( :url => formatted_admin_categories_path(:html),
+			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :categories])}';$(s).disabled=true;",
+			    :complete => "$(category_name).value='';$(category_info).value='';$(s).value='#{t(:create_category, :scope => [:txt, :view, :admin, :categories])}';$(s).disabled=false;"
+			    ) do %>
+		<label for="category_name"><%=t :name, :scope => [:txt, :view, :admin, :categories] %>:</label>
+		<%= text_field 'category', 'name', :size => 20  %>
+		<label for="category_info"><%=t :description, :scope => [:txt, :view, :admin, :categories] %>:</label>
+		<%= text_field 'category', 'info', :size => 25 %>
+	    <%= submit_tag t(:create_category, :scope => [:txt, :view, :admin, :categories]), :id => 's', :autocomplete => 'off' %> 
+	<% end -%>	
+    </div>	
+</div>
+<div id="updater"></div>
+<div id='categories'>
+	<table class="sofT" cellspacing="0">
+	    <tr>
+		    <th class="helpHed dragger"></th>
+		    <th class="helpHed"><%=t :name_c, :scope => [:txt, :view, :admin, :categories] %></th>
+		    <th class="helpHed"><%=t :description_c, :scope => [:txt, :view, :admin, :categories] %></th>
+		    <th class="helpHed"></th>
+	    </tr>
+	<tbody id="all_categories">
+	<% for @category in @categories -%>
+	    <%= render :partial => "category" %>
+	<% end -%>	
+	</tbody>
+	</table>
+	<%= sortable_element 'all_categories',:url => set_position_admin_categories_path,
+			     :containment => ['all_categories'], :tag => 'tr', :ghosting => true,
+			     :handle => "dragger"
+			     %>
+</div>
+</div>
+

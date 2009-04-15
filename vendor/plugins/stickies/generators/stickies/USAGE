@@ -1,0 +1,8 @@
+Description:
+    Install a default CSS file for the stickies plugin.
+
+Example:
+    ./script/generate stickies
+
+    This will create:
+        public/stylesheets/stickies.css

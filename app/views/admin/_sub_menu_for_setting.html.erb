@@ -1,0 +1,9 @@
+<div id="sub_menu">
+    <ul>
+		    <li><%= link_to t(:message_0, :scope => [:txt, :view, :admin, :_sub_menu_for_setting]), {:controller => 'settings', :action => 'info'}, :id => "_settings_info" %></li>		    
+		    <li><%= link_to t(:message_1, :scope => [:txt, :view, :admin, :_sub_menu_for_setting]), {:controller => 'settings', :action => 'blog'}, :id => "_settings_blog"  %></li>		    
+		    <li><%= link_to t(:message_2, :scope => [:txt, :view, :admin, :_sub_menu_for_setting]), {:controller => 'settings', :action => 'system'}, :id => "_settings_system" %></li>
+		    
+    </ul>
+</div>
+<%= select_admin_menu("settings") %>

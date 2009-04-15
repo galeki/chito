@@ -1,0 +1,12 @@
+en-US:
+    plugins:
+        fck:
+            please_login: Please login.
+            file_size_invalid: File size must smaller than {{size}}M.
+            space_full: Your file space is full
+zh-CN:
+    plugins:
+        fck:
+            please_login: 请登录后再上传文件。
+            file_size_invalid: 文件大小必须小于 {{size}}M。
+            space_full: 你的空间已满。
