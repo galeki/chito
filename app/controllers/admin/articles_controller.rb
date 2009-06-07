@@ -3,9 +3,13 @@ class Admin::ArticlesController <  Admin::BaseController
 
   def new
     @article = Article.new
+    @article.prepare(@user, params)    
+    @article.is_draft = true
     @article.auto_brief = true
     @categories = @user.categories
     @selected = @user.categories.find(:first).id
+    @article.save
+    redirect_to edit_admin_draft_path(@article)
   end
 
   def create

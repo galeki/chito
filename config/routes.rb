@@ -81,7 +81,7 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.connect "/articles/:id/:seo_title.:format", :controller => 'posts', :action => 'show'
 	map.connect "/rss", :controller => 'posts', :action => 'index', :format => "rss"
-	map.connect "/feed", :controller => 'posts', :action => 'index', :format => "rss"
+	map.feed    "/feed", :controller => 'posts', :action => 'index', :format => "rss"
 	map.connect "/show/:id.:format", :controller => 'posts', :action => 'show'
 	
 	map.connect "/setup", :controller => 'site', :action => "setup"

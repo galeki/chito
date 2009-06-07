@@ -34,7 +34,13 @@
     <% for draft in @drafts %>
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", draft.id, nil, :id => draft.id %></td>
-	    <td class="title_col"><%= draft.title %></td>
+	    <td class="title_col">
+		<% if draft.title.blank? -%>
+		    <%= t(:message_2, :scope => [:txt, :view, :admin, :_sub_menu_for_manage]) + " - " + draft.created_at.to_s(:db_short) %>
+		<% else -%>
+		    <%= draft.title %>
+		<% end -%>
+	    </td>
 	    <td class="time_col"><%= draft.created_at.to_s :db_short %></td>
 	    <td class="category_col"><%= draft.category.name if draft.category %></td>
 	    <td class="action_col">

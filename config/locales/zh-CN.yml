@@ -342,6 +342,9 @@ zh-CN:
           submit_post: 提交文章
           submit_as_page: 提交为页面
           leave_message: 当前的内容还没有保存，如果离开，编辑的内容将丢失
+          autosaving_message: 自动保存中
+          autosave_ok_message: 自动保存草稿于
+          autosave_fail: 自动保存失败
         _sub_menu_for_root: 
           message_0: 网站
           message_1: 用户组

@@ -342,6 +342,9 @@ en-US:
           submit_post: Submit Post
           submit_as_page: Submit as Page
           leave_message: The changes you made will be lost if you navigate away
+          autosaving_message: Autosaving
+          autosave_ok_message: Autosaved to draft on
+          autosave_fail: Autosave fail
         _sub_menu_for_root: 
           message_0: Site
           message_1: User groups

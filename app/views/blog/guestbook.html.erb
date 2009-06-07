@@ -1,3 +1,4 @@
+<div id="guestbook_wrap">
 <%  @title = t(:message_0, :scope => [:txt, :view, :blog, :guestbook], :user => @user.nick) %>
 <h4><%= t(:message_1, :scope => [:txt, :view, :blog, :guestbook], :user => @user.nick) %></h4>
 <div id="post_comment">
@@ -9,4 +10,4 @@
 	<%= comments %> 
     </div>
 <% end -%>
-
+</div>

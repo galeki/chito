@@ -58,6 +58,13 @@ input.ck{border:0;background:none;}
     padding:2%;
     padding-top:0;
 }
+#article_title {
+    font-size:20px;
+    width:80%;
+    padding:5px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
 * html #article_form{
     margin-top:0px;
     padding-top:0px;
@@ -539,4 +546,22 @@ div.talk_avatar{
 input.submit_post,input.submit_post:focus {
     background: url(/images/submit_post.gif) no-repeat 6px;
     padding-left: 20px;
+}
+
+#article_autosave_notifier{
+    float:right;
+    padding:5px;
+    color:#999;
+}
+span#autosaving{
+    padding-left:20px;
+    background: url(/images/inprogress.gif) no-repeat 2px;
+}
+span#autosave_ok{
+    padding-left:20px;
+    background: url(/images/saved.png) no-repeat 2px;
+}
+span#autosave_fail{
+    padding-left:20px;
+    background: url(/images/fail.gif) no-repeat 2px;
 }

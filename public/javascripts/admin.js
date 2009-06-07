@@ -113,3 +113,18 @@ function checkall(trigger, form)
 	v.checked = form.elements[trigger].checked;
     }
 }
+
+function autosaving(text)
+{
+   $("article_autosave_notifier").innerHTML = "<span id='autosaving'>" + text + "</span>";
+}
+function autosave_ok(text)
+{
+   var now = new Date();
+   $("article_autosave_notifier").innerHTML = "<span id='autosave_ok'>" + text + " " + now.getHours() + ":" + now.getMinutes() +  "</span>";
+   new Effect.Highlight("article_autosave_notifier", { startcolor: '#ffff00', endcolor: '#ffffff', duration: 3 });
+}
+function autosave_fail(text)
+{
+   $("article_autosave_notifier").innerHTML = "<span id='autosave_fail'>" + text + "</span>";
+}

@@ -25,6 +25,7 @@
 </div>
  <div id='form_main' >  
     <label for="article_title"><strong><%=t :title, :scope => [:txt, :view, :admin, :share]%>:</strong></label>
+    <div id="article_autosave_notifier"></div>
     <%= text_field 'article', 'title' %>
 <%= article_edit_field %>
 
@@ -39,10 +40,34 @@
     <br/>
 <script type='text/javascript'>
 var away_text = '<%= t(:leave_message, :scope => [:txt, :view, :admin, :share]) %>';
+var autosave_ok_text = '<%= t(:autosave_ok_message, :scope => [:txt, :view, :admin, :share]) %>';
+var autosaving_text = '<%= t(:autosaving_message, :scope => [:txt, :view, :admin, :share]) %>';
+var autosave_fail_text = '<%= t(:autosave_fail_message, :scope => [:txt, :view, :admin, :share]) %>';
+
 window.onbeforeunload=unload_form;
 if($('trackbacks'))
     $('trackbacks').value = '';
+
+
+function update_article_content()
+{
+    if(FCKeditorAPI)
+    {
+	var oEditor = FCKeditorAPI.GetInstance('article_content');
+	oEditor.UpdateLinkedField();
+    }
+}
+
+setInterval( update_article_content, 3000);
 </script>
+<%= observe_form :article_form,
+		  :frequency => 250,
+		  :url => admin_draft_path(@article),
+		  :before => "autosaving(autosaving_text);",
+		  :success => "autosave_ok(autosave_ok_text);",
+		  :failure => "autosave_fail(autosave_fail_text);"
+%>
+
 <input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form);" class="submit_post"/>
 <input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form);"/>
 <input type="button" value="<%= t :save_to_draft_box, :scope => [:txt, :view, :admin, :share]  %>" onclick="submit_as('drafts', this.form);" />

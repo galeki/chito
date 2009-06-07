@@ -1,3 +1,4 @@
+<div id="article_wrap">
   <small><%= link_to_previous_post %></small>
 
   <h1><%= post_title %></h1>
@@ -64,3 +65,5 @@
     <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>
 </div>
 <% end %>
+
+</div>
