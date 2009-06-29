@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 	if cookies[:remember_key] and @user = User.find_by_remember_key(cookies[:remember_key]) and @user.remember_key_expires_at > Time.now
 	    @user.set_session(session, request, @site)
 	else
-	    redirect_to(login_path)
+	    redirect_to(login_path :subdomain => "www")
 	    return false
 	end 
     end

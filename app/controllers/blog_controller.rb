@@ -100,7 +100,7 @@ class BlogController < ApplicationController
   def render(options = nil, extra_options = {}, &block)
     if @theme and (params[:format].nil? or params[:format] == "html")
    	layout = "#{@theme}/layouts/#{@theme}"
-	template = "#{@theme}/views/#{action_name}"
+	template = "#{@theme}/views/#{controller_name}/#{action_name}"
 	template_path = File.join("#{RAILS_ROOT}/themes", template + ".html.erb" )
 	if File.exists?(template_path)
 	    super :template => template, :layout => layout

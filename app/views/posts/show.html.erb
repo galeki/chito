@@ -4,15 +4,15 @@
   <h1><%= post_title %></h1>
 
   <div id="article_header">
-    <strong> <%=h @user.nick %></strong> 
+    <strong> <%= post_writer %></strong> 
     posted @ <%= post_time %>
     <%= (' in ' + link_to_post_category ) if @post.category %>
     <% unless @post.tags.empty? -%>
 	with tags 
 	<%= link_to_post_tags %>
     <% end -%>
-    , <%= @post.read_count %> <%= t("txt.view.posts.show.readers") %>
-      <% if session[:user_id] == @post.user_id %>
+    , <%= post_read_count %> <%= t("txt.view.posts.show.readers") %>
+      <% if_my_post do %>
 	    <br/>
 		<%= link_to t(:message_0, :scope => [:txt, :view, :posts, :show]), edit_admin_post_path(@post), :class => "edit" %>
 		<%= link_to t(:message_1, :scope => [:txt, :view, :posts, :show]), admin_posts_path, :class => "return" %>
@@ -27,7 +27,7 @@
 
   <%= postbars %>
 
-<% if @trackbacks.size > 0 && @user.show_trackbacks -%>
+<% if_show_trackbacks do -%>
     <div class="articlefooter">
 	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml) %></span>
 	<span class="trackbacks">
@@ -48,7 +48,7 @@
 <% end -%>
 <div class="articlefooter">
     <% if @trackbacks.empty? -%>
-	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml) %></span>
+	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml, :key => @post.trackback_key) %></span>
     <% end -%>
     <span class="comments">
 	<%= link_to (image_tag "small_feed.png", :class => 'feed'), formatted_post_path(@post, :rss) %>
@@ -59,7 +59,7 @@
     <%= comments %> 
 </div>
 
-<% unless @post.forbid_comment || @post.is_draft?%>
+<% if_can_comment do -%>
 <br />
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>

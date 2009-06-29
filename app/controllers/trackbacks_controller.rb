@@ -4,10 +4,14 @@ class TrackbacksController < ApplicationController
 
 
     def create
+	@error_message = "Trackback not save"
 	if @user.enable_trackbacks
-	    @trackback = @user.trackbacks.new
-	    @trackback.prepare_trackback(request, params)
-	    @error_message = "Trackback not save" unless @trackback.save
+	    post = @user.posts.find(params[:post_id])
+	    if post && post.trackback_key == params[:key]
+		@trackback = @user.trackbacks.new
+		@trackback.prepare_trackback(request, params)
+		@trackback.save && @error_message = ""
+	    end
 	end
 
 	respond_to do |format|

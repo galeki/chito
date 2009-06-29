@@ -32,6 +32,8 @@ Rails::Initializer.run do |config|
   # (create the session table with 'rake db:sessions:create')
   #
    config.action_controller.session_store = :p_store
+   #config.action_controller.session = { :key => "_chito_session_112", :secret => "b97aa4aa77a0660c16c5a2e3076f30ac68aaa1faf489c36642bf278b16ad4d7a99e089a815f5c543a9804a4800ebbecc04a" }
+
    #config.action_controller.session_store = :active_record_store
 
    config.action_controller.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"

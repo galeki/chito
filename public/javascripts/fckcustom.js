@@ -15,17 +15,20 @@ FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/silver/';
 FCKConfig.EditorAreaCSS = FCKConfig.BasePath + 'css/fck_editorarea.css' ;
 FCKConfig.SourcePopup	= true ;
 
-//FCKConfig.Plugins.Add( 'latexformula' ) ;
 FCKConfig.Plugins.Add( 'wpmore');
-//FCKConfig.Plugins.Add( 'geshipro', 'zh' ) ;
+//
+FCKConfig.Plugins.Add( 'latexformula' ) ;
+FCKConfig.Plugins.Add( 'syntaxhighlighter', 'zh,en') ;
+FCKConfig.Plugins.Add( 'geshipro', 'zh' ) ;
+//
 FCKConfig.ToolbarSets["Default"] = [
 	['Source','Undo','Redo'],
 	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],['Templates'],
 	['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
 	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
 	['Link','Unlink','Anchor'],
-	//['Image','Table','Rule','Smiley'],['GeSHiPro','Latex_Formula'],['wpmore']
-	['Image','Table','Rule','Smiley'],['wpmore']
+	['Image','Table','Rule','Smiley'],['GeSHiPro','SyntaxHighlighter', 'Latex_Formula'], ['wpmore']
+	//['Image','Table','Rule','Smiley'],['wpmore']
 	,'/',
 	['Style','FontFormat','FontName','FontSize'],
 	['TextColor','BGColor'],

@@ -32,7 +32,23 @@ module PostsHelper
     end
 
     def post_writer
-	@post.writer || @user.nick
+	rewriter{ h(@post.writer || @user.nick) }
+    end
+
+    def post_read_count
+	@post.read_count
+    end
+
+    def if_my_post
+	yield if session[:user_id] == @post.user_id
+    end
+
+    def if_show_trackbacks
+	yield if @trackbacks.size > 0 && @user.show_trackbacks
+    end
+
+    def if_can_comment
+	yield unless @post.forbid_comment || @post.is_draft?
     end
 
     def post_brief

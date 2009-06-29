@@ -39,6 +39,11 @@ class Article < ActiveRecord::Base
       end
     end
 
+    def trackback_key
+	str = "#{self.title}-#{self.created_at}-#{self.user_id}-#{self.trackbacks.size / 5}"
+	Digest::SHA1.hexdigest(str)
+    end
+
     def trackback_params
 	{:title => self.title,
 	 :excerpt => helpers.truncate(helpers.strip_tags(self.brief), :length => 200),

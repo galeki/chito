@@ -1,0 +1,45 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.syntaxhighlighter.intro") %></div>
+<p>
+<%= t("plugins.syntaxhighlighter.intro_content") %>
+</p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.syntaxhighlighter.settings") %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'syntaxhighlighter'} do |f|%>
+    <style>label{padding:8px;} label:hover{background: #fff;} label img{margin:5px;}</style>
+    <label><%= f.check_box :enable_syntaxhighlighter,  :class => 'checkbox' %><%= t("plugins.syntaxhighlighter.enable") %></label>
+
+    <h3><%= t("plugins.syntaxhighlighter.themes") %></h3>
+    
+    <label><%= f.radio_button :syntaxhighlighter_theme, "Default" %> Default
+    <br/>
+    <img src="/plugins/syntaxhighlighter/images/default_demo.png"/>
+    </label>
+
+    <label><%= f.radio_button :syntaxhighlighter_theme, "Django" %> Django
+    <br/>
+    <img src="/plugins/syntaxhighlighter/images/django_demo.png"/>
+    </label>
+
+    <label><%= f.radio_button :syntaxhighlighter_theme, "FadeToGrey" %> FadeToGrey
+    <br/>
+    <img src="/plugins/syntaxhighlighter/images/fade_to_grey_demo.png"/>
+    </label>
+
+    <label><%= f.radio_button :syntaxhighlighter_theme, "Midnight" %> Midnight
+    <br/>
+    <img src="/plugins/syntaxhighlighter/images/midnight_demo.png"/>
+    </label>
+
+    <label><%= f.radio_button :syntaxhighlighter_theme, "RDark" %> RDark
+    <br/>
+    <img src="/plugins/syntaxhighlighter/images/rdark_demo.png"/>
+    </label>
+
+    
+    <%= submit_tag t("plugins.syntaxhighlighter.save"), :class =>'submit' %>
+<% end  %>
+</div>

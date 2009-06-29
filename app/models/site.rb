@@ -20,7 +20,7 @@ class Site < ActiveRecord::Base
 	if self.single_user? or request.subdomains.first.blank? or (request.domain == self.domain && request.subdomains.first == "www")
 	    user = User.find_by_name(self.default_user)
 	elsif request.domain == self.domain
-	    user = User.find_by_name(request.subdomains.first)	
+	    user = User.find_by_name(request.subdomains.join("."))	
 	else
 	    user = User.find_by_bind_domain(request.host)
 	end
