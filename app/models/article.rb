@@ -8,13 +8,19 @@ class Article < ActiveRecord::Base
 	has_many :comments, 
 		 :class_name => 'Feedback',
 		 :order => 'feedbacks.created_at', 
-		 :conditions => ["feedbacks.bit_opt = 1"]
+		 :conditions => ["feedbacks.bit_opt = 1"],
+		 :dependent => :destroy
 	has_many :trackbacks, 
 		 :class_name => 'Feedback',
 		 :order => 'feedbacks.created_at', 
-		 :conditions => ["feedbacks.bit_opt = 5"]
+		 :conditions => ["feedbacks.bit_opt = 5"],
+		 :dependent => :destroy
 	belongs_to :category
 	include ArticlePlugin
+
+    def self.new_posts
+	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
+    end
 
     def title
 	super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super

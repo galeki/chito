@@ -76,6 +76,8 @@ en-US:
           drafts_successfully_deleted: Drafts were successfully deleted
         pages:
           page_successfully_deleted: Page was successfully deleted
+          fontpage_enable_done: Page was successfully set as fontpage
+          fontpage_cancel_done: Fontpage was successfully canceled
         categories:
           must_have_a_category: Should not delete the last category
           category_successfully_deleted: Category was successfully deleted
@@ -383,6 +385,7 @@ en-US:
           manage_links: Manage Links
         _sub_menu_for_appearance: 
           message_0: Theme
+          themesettings: Theme Settings
           message_1: Sidebar
           message_2: Navbar
           message_3: Postbar
@@ -455,6 +458,7 @@ en-US:
           message_14: Default user
           message_7: Mutli users
           message_15: "When the subdomain is www or not specified, show this user`s blog. Example:<br/> If the root domain is chito.com, and the default user is `galeki`, so: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> all show galeki`s blog."
+          footer: Site Footer          
         rss:
           rss_import: RSS import
           no_url: Please input RSS url
@@ -495,6 +499,7 @@ en-US:
           cancel_text: Cancel
           set: Set
           nick: Nick
+          created_at: Created Time
         posts: 
           new_post: Write new post
           edit_post: Edit post
@@ -519,12 +524,16 @@ en-US:
           delete_page?: Delete {{title}} ?
           permalink: Permalink
           edit_page: Edit page
+          enable_frontpage: Set as Fontpage
+          cancel_frontpage: Cancel Fontpage
         _sub_menu_for_compose: 
           message_0: Post
           message_1: Post [{{mode}}]
         themes:
           theme_settings: Theme settings
           use: Use
+        themesettings:
+          no_theme_settings: Current Theme {{theme}} has no settings.
       site: 
         setup: 
           message_8: Single user

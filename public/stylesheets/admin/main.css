@@ -60,7 +60,7 @@ input.ck{border:0;background:none;}
 }
 #article_title {
     font-size:20px;
-    width:80%;
+    width:75%;
     padding:5px;
     margin-bottom:10px;
     font-weight:bold;
@@ -451,6 +451,20 @@ a.pass{
     background: url(/images/pass.gif) no-repeat left center;
     padding-left: 22px;
 }
+a.enable_fontpage{    
+    display:none;
+}
+td:hover a.enable_fontpage{    
+    background: url(/images/enable_fontpage.gif) no-repeat left center;
+    padding-left: 22px;
+    display: inline;
+}
+a.cancel_fontpage{    
+    background: url(/images/cancel_fontpage.gif) no-repeat left center;
+    padding-left: 22px;
+}
+tr.fontpage_col{
+}
 *+html a.read, *+html a.edit, *+html a.delete, *+html a.pass{
     padding-top:2px;
 }
@@ -565,3 +579,8 @@ span#autosave_fail{
     padding-left:20px;
     background: url(/images/fail.gif) no-repeat 2px;
 }
+.user_theme_warp
+{
+    background: Red;
+}
+.post_title_link{color:#000;}

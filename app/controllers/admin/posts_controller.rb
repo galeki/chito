@@ -64,6 +64,8 @@ class Admin::PostsController <  Admin::ArticlesController
 	    path << "?#{trackback_url.query}" if trackback_url.query
 	    http.post(path, query,'Content-type' => 'application/x-www-form-urlencoded; charset=utf-8')
 	end
+
+	rescue
     end
 	    
 end

@@ -53,7 +53,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.namespace :admin do |admin|
 	    admin.resources :posts, :collection => {:destroy_selected => :post, :recategory_selected => :post}
 	    admin.resources :drafts, :collection => {:destroy_selected => :post}
-	    admin.resources :pages
+	    admin.resources :pages, :member => {:enable_fontpage => :post, :cancel_fontpage => :post}
 	    admin.resources :users, :member => {:set_group => :post, :set_user_bind_domain => :post}
 	    admin.resources :groups, :member => {:set_group_space => :post, :set_group_name => :post, :set_group_file_size_limit => :post}
 	    admin.resources :comments, :collection => {:settings => :get, :set_filter_position => :post, :destroy_selected => :delete}
@@ -83,6 +83,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect "/rss", :controller => 'posts', :action => 'index', :format => "rss"
 	map.feed    "/feed", :controller => 'posts', :action => 'index', :format => "rss"
 	map.connect "/show/:id.:format", :controller => 'posts', :action => 'show'
+	map.formatted_site "/site.:format", :controller => 'blog', :action => 'index'
 	
 	map.connect "/setup", :controller => 'site', :action => "setup"
 	#map.connect "/category/:category_id", :controller => 'posts', :action => 'list'
@@ -104,6 +105,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/admin/remote_form/:plugin/:view', :controller => 'admin/plugins', :action => 'remote_form'
 	map.connect '/admin/remote_update', :controller => 'admin/plugins', :action => 'remote_update'
 	map.connect '/admin/themes/:action/:id', :controller => 'admin/themes'
+	map.connect '/admin/themesettings/:action/:id', :controller => 'admin/themesettings'
 
 	map.connect '/admin/sidebar/:action/:id', :controller => 'admin/sidebar'
 	map.connect '/admin/navbar/:action/:id', :controller => 'admin/navbar'

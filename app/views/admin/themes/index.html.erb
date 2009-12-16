@@ -5,13 +5,15 @@
 	 <tr class="theme">
 		    <td id="theme_list">
 		     <div id="theme_demo">
+			<% no_theme = 0 -%>
 			<% for theme in @theme_list -%>
-			    <div class="theme_warp">
-				<div><%= image_tag "/themes/#{theme}/screenshot.png" %></div>
+			    <% is_user_theme = (no_theme < @user_theme_count) -%>
+			    <div class="theme_warp<%= " user_theme_warp" if is_user_theme %>">
+				<div><%= image_tag theme_path(:theme => theme, :type => nil, :file => "screenshot.png", :user_theme => is_user_theme) %></div>
 				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
 				<div class="theme_form">
 					<% form_remote_tag( :update => "theme_iframe_content", 
-									:url => { :action => 'change_theme', :theme => theme},
+									:url => { :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
 									:loading => "Element.show('in_progress')",
 									:complete => "Element.hide('in_progress');window.location.reload();"
 									) do%>
@@ -19,6 +21,7 @@
 					<% end %>
 				</div>
 			    </div>
+			    <% no_theme += 1 -%>
 			<% end -%>
 		     </div>
 		    </td>
@@ -30,4 +33,3 @@
 	 </tr>
 	</table>
 </div>
-

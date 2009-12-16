@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}
@@ -113,11 +113,16 @@ class ApplicationController < ActionController::Base
     def get_user_and_needed
 	get_user
 	get_locale
-	@theme = @user.theme
+	get_theme
 	get_sidebars
 	get_navbars
 	get_title
 	do_something :before_blog_show
+    end
+
+    def get_theme
+	@theme = @user.theme
+	prepend_view_path File.join(@user.base_dir, "themes")
     end
 
     def get_title

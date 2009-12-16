@@ -8,6 +8,7 @@
 <%= posts_rss_link %>
 <%= comments_rss_link %>
 <%= messages_rss_link %>
+<%= site_rss_link %>
 <%= stylesheet_link_tag "common" %>
 <%= javascript_include_tag "prototype", "effects", "blog", "fckeditor/fckeditor", "s2utab"  -%>
 <%= theme_css_links :order => options[:css]%>
@@ -16,3 +17,4 @@
 <%= stylesheet_link_tag plugin_css_path %>
 <title><%= @title %></title>
 </head>
+<%= @user.custom_header if @user.enable_custom_header %>

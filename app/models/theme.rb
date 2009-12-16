@@ -22,4 +22,8 @@ class Theme
 	rescue nil
     end
 
+    def self.user_themes(user)
+	Dir[File.join(user.base_dir, "themes") + "/*"].map{|t| File.basename(t)}.sort
+    end
+
 end

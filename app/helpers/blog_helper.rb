@@ -6,12 +6,15 @@ module BlogHelper
     end
 
     def footer
-	%Q?&copy; <a href="http://#{@site.url || request.domain || request.host}">#{@site.title}</a> All rights reserved. | Power by <a href="http://www.chitolog.org">Chito #{VER}</a>  | ? +
-	link_to("沪ICP备07005989号", "http://www.miibeian.gov.cn" , :target => "_blank")
+	rewriter { @site.footer.to_s }
     end
-
+    
     def posts_rss_link
 	auto_discovery_link_tag :rss, formatted_posts_url(:rss) , :title => 'Blog RSS'
+    end
+
+    def site_rss_link
+	auto_discovery_link_tag :rss, formatted_site_url(:rss) , :title => "#{@site.title} RSS"
     end
 
     def comments_rss_link

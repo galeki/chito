@@ -9,6 +9,15 @@ class BlogController < ApplicationController
     @comment = Feedback.new
   end
 
+  def index
+    respond_to do |format|
+	format.rss do
+	    @posts = Article.new_posts 
+	end
+    end
+
+  end
+
   def add
     unless @site.mutli_users? and @site.registerable?
 	error_stickie t(:message_0, :scope => [:txt, :controller, :blog])
@@ -100,6 +109,10 @@ class BlogController < ApplicationController
   def render(options = nil, extra_options = {}, &block)
     if @theme and (params[:format].nil? or params[:format] == "html")
    	layout = "#{@theme}/layouts/#{@theme}"
+	layout_path = File.join(@user.base_dir, "themes", @theme, "layouts", @theme + ".html.erb")
+	if File.exists?(layout_path)
+	    @user_theme = true
+	end
 	template = "#{@theme}/views/#{controller_name}/#{action_name}"
 	template_path = File.join("#{RAILS_ROOT}/themes", template + ".html.erb" )
 	if File.exists?(template_path)

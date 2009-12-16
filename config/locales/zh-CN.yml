@@ -76,6 +76,8 @@ zh-CN:
           drafts_successfully_deleted: 草稿删除成功
         pages:
           page_successfully_deleted: 页面删除成功
+          fontpage_enable_done: 首页设置成功
+          fontpage_cancel_done: 首页取消成功
         categories:
           must_have_a_category: 必须保留至少一个分类
           category_successfully_deleted: 分类删除成功
@@ -382,6 +384,7 @@ zh-CN:
           cancel_text: 取消
           manage_links: 管理友情链接
         _sub_menu_for_appearance: 
+          themesettings: 主题设置
           message_0: 主题
           message_1: 边栏
           message_2: 导航栏
@@ -455,6 +458,7 @@ zh-CN:
           message_14: 默认用户
           message_7: 多用户
           message_15: "当二级域名为 www 或者没有指定时，显示此用户的 Blog，比如:<br/> 如果根域名为 chito.com, 默认用户为 `galeki`, 那么: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> 都将显示 galeki 的 Blog."
+          footer: 网站页脚信息
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址
@@ -494,6 +498,7 @@ zh-CN:
           cancel_text: 取消
           set: 设置
           nick: 昵称
+          created_at: 注册时间
         posts: 
           new_post: 撰写新文章
           edit_post: 编辑文章
@@ -518,12 +523,16 @@ zh-CN:
           delete_page?: 删除 {{title}} ?
           permalink: 永久链接
           edit_page: 编辑页面
+          enable_frontpage: 设为首页
+          cancel_frontpage: 取消首页
         _sub_menu_for_compose: 
           message_0: 文章
           message_1: 位置 [{{mode}}]
         themes:
           theme_settings: 主题设置
           use: 设置
+        themesettings:
+          no_theme_settings: 当前主题 {{theme}} 没有设置信息。
       site: 
         setup: 
           message_8: 单用户

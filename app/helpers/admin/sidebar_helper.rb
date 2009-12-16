@@ -24,14 +24,17 @@ module Admin::SidebarHelper
 
     def bars_layout
 	template = "#{@user.theme}/views/bars_config"
-	template_path = File.join(RAILS_ROOT,"themes/#{@user.theme}/views/_bars_config.html.erb")
-	if File.exists?(template_path)
-	    render :partial => template
-	else
-	    render :partial => 'bars_config'
-	end
+	render :partial => template
+	rescue
+	render :partial => 'bars_config'
     end
 
+    def theme_settings
+	template = "#{@user.theme}/views/admin/theme_settings"
+	render :partial => template
+	rescue
+	render :partial => 'theme_settings'
+    end
 
     def sidebars_in(field)
 	@all_bars.select{|b| b.field.to_sym == field && b.show?}.sort_by{|b| b.position}

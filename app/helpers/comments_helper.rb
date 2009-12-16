@@ -29,7 +29,7 @@ module CommentsHelper
 
     def comment_class
 	t = "comment_box comment_box#{cycle('0', '1')}"
-	t << " comment_self" if @comment.user_name && @comment.user_name == request.subdomains.first
+	t << " comment_self" if @comment.user_name && @comment.user_name.downcase == request.subdomains.first
 	t
     end
 

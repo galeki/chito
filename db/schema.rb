@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090222141750) do
+ActiveRecord::Schema.define(:version => 20091213235937) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20090222141750) do
     t.datetime "created_at"
     t.integer  "default_group"
     t.integer  "bit_opt",       :default => 0
+    t.string   "footer"
   end
 
   create_table "taggings", :force => true do |t|

@@ -6,7 +6,7 @@ module PostsHelper
 	path = {:controller => "/posts", :subdomain => options[:subdomain],  :action => 'show', :id => post.id, 
 		 :format => 'html', :permalink => permalink,:anchor => options.delete(:anchor)}
 	path.merge!({:year => post.created_at.year, :month => post.created_at.month, :day => post.created_at.day}) unless permalink.blank?
-	link_to h(options.delete(:text) || post_title(post)), path, options
+	link_to options.delete(:text) || post_title(post), path, options
     end 
 
     def link_to_post(options={})

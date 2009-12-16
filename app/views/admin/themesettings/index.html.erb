@@ -1,0 +1,11 @@
+<% @title = t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) -%>
+<%= render :partial => 'admin/sub_menu_for_appearance' %>
+<%= render_flash %>
+<div class="option_wrap" style="width:100%;margin:0;">
+    <div class="edit_field">
+    <div class="right_c"></div>
+    <div class="edit_header"><%= t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) %></div>
+	<%= theme_settings %>
+    </div>
+</div>
+

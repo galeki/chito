@@ -27,4 +27,10 @@ module Admin::BaseHelper
     def sidebar_expire_cache_field(id, options={})
 	hidden_field_tag "expire_requests[]", chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id))
     end
+
+    def if_has_notifier
+	@notifier_path = admin_spams_path if @user.has_new_spam
+	@notifier_path = admin_talks_path if @user.has_new_talk
+	yield if @notifier_path
+    end
 end

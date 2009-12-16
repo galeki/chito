@@ -290,6 +290,7 @@ class User < ActiveRecord::Base
     def create_dir
 	Dir.mkdir(self.base_dir,0775) unless File.exists?(self.base_dir)
 	Dir.mkdir("#{self.base_dir}/config",0775) unless File.exists?("#{self.base_dir}/config")
+	Dir.mkdir("#{self.base_dir}/themes",0775) unless File.exists?("#{self.base_dir}/themes")
     end
 
     

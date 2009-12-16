@@ -24,6 +24,10 @@ class PostsController < BlogController
   def index
     respond_to do |format|
 	format.html do
+	    if request.path.sub("/", "").blank? && @user.fontpage_id
+		@page = @user.pages.find(@user.fontpage_id)
+		redirect_to(@page.permalink.blank? ? page_path(@page) : page_permalink_path(@page.permalink)) if @page
+	    end
 	    unless chito_cache_enable(_params.merge(:type => :posts_index, :theme => @user.theme))
 		@posts = @user.find_articles :type => :posts, :category_id => params[:category_id], 
 					     :tag => params[:tag_name], :keyword => params[:s],
@@ -33,6 +37,7 @@ class PostsController < BlogController
 	    @titles.unshift(h @category.name) if @category
 	    @title = @titles * " - "
 	    do_something :before_list_show
+	    #render(:controller => "pages", :action => "show", :id => 0) #&& return if @page
 	end
 	format.rss do
 	    @posts = @user.find_articles :type => :posts, :category_id => params[:category_id], 

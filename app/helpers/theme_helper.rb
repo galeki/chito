@@ -1,27 +1,15 @@
 module ThemeHelper
 
     def theme_css_links(options={})
-	if options[:order]
-	    options[:order].inject(""){|html,css| html << stylesheet_link_tag("/themes/#{@theme}/stylesheets/#{css}") << "\n"}
-	else
-	    @css_list = theme_files(@theme, :stylesheets)
-	    @css_list.inject(""){|html,css| html <<  stylesheet_link_tag(css) << "\n"}
-	end
+	theme_files(:theme => @theme, :type => :stylesheets, :order => options[:order], :user_theme => @user.user_theme)
     end
 
     def theme_js_links(options={})
-	if options[:order]
-	    options[:order].inject(""){|html,js| html << javascript_include_tag("/themes/#{@theme}/javascripts/#{js}") << "\n"}
-	else
-	    @js_list = theme_files(@theme, :javascripts)
-	    @js_list.inject(""){|html,js| html << javascript_include_tag(js) << "\n"}
-	end
+	theme_files(:theme => @theme, :type => :javascripts, :order => options[:order], :user_theme => @user.user_theme)
     end
 
-    private
-    
-    def theme_files(theme, type)
-	case type
+    def theme_files(options={})
+	case options[:type]
 	when :javascripts
 	    ext = "js"
 	when :stylesheets
@@ -29,8 +17,25 @@ module ThemeHelper
 	else
 	    ext = "*"
 	end
-	Dir["#{RAILS_ROOT}/themes/#{theme}/#{type}/*.#{ext}"].map do |file| 
-	    "/themes/#{theme}/#{type}/#{File.basename(file)}"
+	f = options[:user_theme] ? Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"] : Dir["#{RAILS_ROOT}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+	lists = options[:order] || f
+	file_list = lists.map {|file| theme_path(:theme => options[:theme], :type => options[:type], :file => File.basename(file), :user_theme => options[:user_theme])}
+	
+	case options[:type]
+	when :javascripts
+	    return file_list.inject(""){|html,js|  html << javascript_include_tag(js) << "\n" }
+	when :stylesheets
+	    return file_list.inject(""){|html,css|  html <<  stylesheet_link_tag(css) << "\n" }
+	else
+	    return ""
+	end
+    end
+
+    def theme_path(options={})
+	if options[:user_theme]
+	    File.join "/user_files/#{@user.name}/themes", options[:theme].to_s, options[:type].to_s, options[:file].to_s
+	else
+	    File.join "/themes/#{options[:theme].to_s}", options[:type].to_s, options[:file].to_s	
 	end
     end
 

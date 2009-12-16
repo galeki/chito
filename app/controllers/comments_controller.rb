@@ -31,6 +31,20 @@ class CommentsController < ApplicationController
    private
 
    def call_notifier
+	call_talk_notifier
+	call_email_notifier
+   end
+
+   def call_talk_notifier
+	@post.comments.each do |comment|
+	    if comment.post_by.to_i > 0 && comment.post_by.to_i != @user.id && comment.post_by != session[:user_id]
+		user = User.find(comment.post_by)
+		user.update_attribute("has_new_talk", true) if user
+	    end
+	end
+   end
+
+   def call_email_notifier
 	@post.emails ||= {}
 	if params[:enable_notifier] && !@post.emails.has_key?(@comment.email)
 	    @post.emails[@comment.email] = UUID.random_create.to_s

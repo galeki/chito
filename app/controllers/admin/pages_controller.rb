@@ -20,6 +20,20 @@ class Admin::PagesController <  Admin::ArticlesController
 	redirect_to admin_pages_path(:page => params[:page]) 
     end
 
+    def enable_fontpage
+	@user.fontpage_id = params[:id]	
+	@user.save
+	notice_stickie  t(:fontpage_enable_done, :scope => [:txt, :controller, :admin, :pages])
+	redirect_to admin_pages_path(:page => params[:page]) 
+    end
+
+    def cancel_fontpage
+	@user.fontpage_id = nil
+	@user.save
+	notice_stickie  t(:fontpage_cancel_done, :scope => [:txt, :controller, :admin, :pages])
+	redirect_to admin_pages_path(:page => params[:page]) 
+    end
+
     private
 
     def save_and_redirect

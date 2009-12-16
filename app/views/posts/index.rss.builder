@@ -1,7 +1,5 @@
 xml.instruct! :xml, :version => "1.0", :encoding=>"UTF-8"
 xml.rss "version" => "2.0",
-	"xmlns:dc" => "http://purl.org/dc/element/1.1/",
-	"xmlns:content" => "http://purl.org/rss/1.0/modules/content/",
 	"xmlns:wfw" => "http://wellformedweb.org/CommentAPI/" do
     xml.channel do
 	xml.title {xml.cdata! @user.title }
@@ -18,7 +16,7 @@ xml.rss "version" => "2.0",
 		xml.title {xml.cdata! post.title}
 		xml.link formatted_post_url(post, :html) 
 		if @user.rss_type == 'full'
-		    xml.tag! 'content:encoded' do
+		    xml.description do
 			xml.cdata! rss_content(post.content)
 		    end
 		else
