@@ -9,7 +9,7 @@ xml.rss "version" => "2.0",
 	@posts.each do |post|
 	    xml.item do
 		xml.title {xml.cdata! post.title}
-		xml.link formatted_post_url(post, :html) 
+		xml.link formatted_post_url(post, :html, :subdomain => post.user.name) 
 		    xml.description do
 			xml.cdata! rss_content(post.brief)
 		    end

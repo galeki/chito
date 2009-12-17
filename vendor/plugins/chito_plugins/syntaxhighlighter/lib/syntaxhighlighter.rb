@@ -14,6 +14,7 @@
 		    shBrushJavaFX.js
 		    shBrushJava.js
 		    shBrushJScript.js
+		    shBrushLua.js
 		    shBrushPerl.js
 		    shBrushPhp.js
 		    shBrushPlain.js
