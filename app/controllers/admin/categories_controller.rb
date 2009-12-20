@@ -32,7 +32,7 @@ class Admin::CategoriesController <  Admin::BaseController
 	    page.insert_html :top, @update, :partial => @partial 
 	    page.visual_effect :highlight, "category_#{@category.id}", :startcolor => '#ffff00',
 			       :endcolor => '#ffffff',
-			       :duration => 5.0
+			       :duration => 8.0
 	end
     else
 	error_stickie @category.errors.full_messages

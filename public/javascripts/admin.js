@@ -39,9 +39,15 @@ function add_category_remote(category_name,token)
 {
     if(category_name.length > 0){ 
 	var url = '/admin/categories.js';
-	var data = 'category[name]=' + category_name + "&authenticity_token=" + encodeURIComponent(token);
-	$('_category_name').value='';
-	new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:data});
+	var data = {'category[name]':  category_name,
+		    '_method': "POST",
+		    "authenticity_token": encodeURIComponent(token)};
+	$('#_category_name').val("");
+	$.post(url, data, function(data)
+	{
+	    eval(data);
+	});
+	//new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:data});
     }
     return false;
 }

@@ -69,7 +69,7 @@ class CommentsController < ApplicationController
 	render :update do |page|
  	  page.replace_html "comment_error", "" 
 	  page.insert_html options[:position], 'comments',  :partial => 'comments/comment'
-	  page.visual_effect :Highlight, "comment#{@comment.id}", :duration => 3, :startcolor => '#ffff00'
+	  page.visual_effect :highlight, "comment#{@comment.id}", :duration => 5, :startcolor => '#ffff00'
 	  page.call @call if @call
 	  page.call 'clean_field'
         end
@@ -78,7 +78,7 @@ class CommentsController < ApplicationController
    def render_error
  	render :update do |page|
  	  page.replace_html "comment_error", :partial => "comments/error" 
-	  page.visual_effect :BlindDown, "comment_error"
+	  page.visual_effect :blind_down, "comment_error"
 	  page.call @call if @call
          end
    end

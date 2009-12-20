@@ -2,6 +2,10 @@ var post_show = false;
 var insert = false;
 var g_user_name, g_time, g_id, g_text;
 var FCKeditorAPI = null;
+function ele(name)
+{
+    
+}
 function insert_cite(user_name, time, id, text)
 {
     if(!post_show)
@@ -50,8 +54,10 @@ function update_field()
 }
 function show_editor()
 {
-    $('comment_editor_button').style.display="none";
-    $('comment_mode').value = "html";
+    var e0 = document.getElementById('comment_editor_button');
+    e0.style.display="none";
+    var e1 = document.getElementById('comment_mode');
+    e1.value = "html";
     var oFCKeditor = new FCKeditor('comment_content', '90%', '250px', 'Basic');
     oFCKeditor.BasePath = "/javascripts/fckeditor/"
     oFCKeditor.Config['CustomConfigurationsPath'] = '../../fckcustom.js';
@@ -63,16 +69,10 @@ function FCKeditor_OnComplete( editorInstance )
     if(insert)
 	_insert_cite(g_user_name, g_time, g_id, g_text);
 }
-function re_vcode()
-{
-    var pic=document.getElementById('vcode');
-    var img='/captcha_image?'+new Date;
-    pic.src=img;
-    document.getElementById('code').value="";
-}
 function re_captcha()
 {
-   new Ajax.Updater('show_simple_captcha', '/simple_captcha_ajax', {asynchronous:true, evalScripts:true}); 
+   //new Ajax.Updater('show_simple_captcha', '/simple_captcha_ajax', {asynchronous:true, evalScripts:true}); 
+    $('#show_simple_captcha').load('/simple_captcha_ajax');
 
 }
 function ReImgSize(w, text){
@@ -102,8 +102,9 @@ function ReImgSize(w, text){
   }
  }
 function fix_comment_mode(){
-	if($('comment_mode'))
-	    $('comment_mode').value = 'plain';
+	var e = document.getElementById('comment_mode');
+	if(e)
+	    e.value = 'plain';
 }
 function setCaretAtEnd (field) {
    if (field.createTextRange) {
@@ -124,12 +125,17 @@ function reply_to(s){
 		content = "<br/>" + content;
 	    oEditor.InsertHtml(content);
 	}else{
-	    if($("comment_content").value != "")
-		content = "\n" + content;
-	    $("comment_content").value += content;
+	    var e = document.getElementById('comment_content');
+	    if(e)
+	    {
+		if(e && e.value != "")
+		    content = "\n" + content;
+		e.value += content;
+	    }
 	}
 	window.location.hash="comment_writer";
-	setCaretAtEnd($("comment_content"));
+	var e1 = document.getElementById('comment_content');
+	setCaretAtEnd(e);
     }
 }
 var rtlang = {'zh-CN':{}, 'en':{}};
@@ -187,13 +193,12 @@ function relative_time_text(m, local){
     return text + rtlang[local][' ago'];
 }
 function _show_relative_time(selector, local){
-    var times = $$(selector);
     var now = new Date();
-    for(i=0;i<times.length;i++){
-	var time = times[i];
-	var t = new Date(time.innerHTML);
+    $(selector).each(function(index){
+	var t = new Date($(this).text());
 	var diff = now - t;
-	time.innerHTML = relative_time_text(Math.floor(Math.abs(diff/1000/60)), local);
-    }
+	$(this).html(relative_time_text(Math.floor(Math.abs(diff/1000/60)), local))
+    
+    })
 }
-Event.observe(window, 'load', fix_comment_mode);
+$(document).ready(fix_comment_mode)

@@ -5,7 +5,7 @@
     <div class="form_category"><%=t :category, :scope => [:txt, :view, :admin, :share]  %></div>
     <div id='add_category_remote'>
 	<%= text_field '_category', 'name', :onkeypress => %Q[if(event.keyCode==13) add_category_remote(this.value, '#{form_authenticity_token}');], :size => 10%>
-	<input type="button" value="<%=t :add, :scope => [:txt, :view, :admin, :share]  %>" id="s" onclick="add_category_remote($(_category_name).value, '<%= form_authenticity_token %>')" />	
+	<input type="button" value="<%=t :add, :scope => [:txt, :view, :admin, :share]  %>" id="s" onclick="add_category_remote($('#_category_name').val(), '<%= form_authenticity_token %>');" />	
     </div>
     <div id="category_list_remote">
 	<ul id="categories_checkboxes">

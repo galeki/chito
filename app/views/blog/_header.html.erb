@@ -10,7 +10,11 @@
 <%= messages_rss_link %>
 <%= site_rss_link %>
 <%= stylesheet_link_tag "common" %>
-<%= javascript_include_tag "prototype", "effects", "blog", "fckeditor/fckeditor", "s2utab"  -%>
+<script src="/javascripts/jquery.js" type="text/javascript"></script>  
+<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>  
+<script src="/javascripts/jrails.js" type="text/javascript"></script>  
+<%# javascript_include_tag "prototype", "effects", "blog", "fckeditor/fckeditor", "s2utab"  -%>
+<%= javascript_include_tag "blog", "fckeditor/fckeditor", "s2utab"  -%>
 <%= theme_css_links :order => options[:css]%>
 <%= theme_js_links :order => options[:js]%>
 <%= show_something :in_head %>
