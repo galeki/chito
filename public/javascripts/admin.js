@@ -2,27 +2,70 @@ var formSubmit = false;
 function remote_form()
 {
     var url = "/admin/remote_update";
-    var form = document.getElementById('remote_form');
-    new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:Form.serialize(form)});
+    //alert($('#remote_form').find('input').serialize() + $('#remote_form').find('textarea').serialize());
+    $.post(url, $('#remote_form').find('input').serialize() + '&' + $('#remote_form').find('textarea').serialize()  , function(data)
+    {
+	eval(data);
+    });
+}
+function open_remote_form(options)
+{
+	//var url = this.href;
+        var dialog = $('<div style="display:hidden"></div>').appendTo('body');
+                        // load remote content
+	dialog.ajaxComplete(function() {                         
+			dialog.dialog( {  
+				modal: true,  
+				buttons: {  
+				    "Save": function(){  
+					    remote_form();  
+					    $(this).html("");
+					    $(this).dialog("close");  
+				    },  
+				    "Cancel": function(){  
+					$(this).html("");
+					$(this).dialog("close");  
+				    }  
+				},
+				title: options['title'],
+				width: options['width']
+			})
+		});
+        dialog.load(
+                     options['url'], 
+                     function (data) {
+			dialog.html(data);
+
+                     }
+                   );
+}
+function sortable_serialize(config)
+{
+    return $('#' + config).sortable('serialize',{key:(config + '[]'), expression:/^bar_(.*)$/});
+}
+function form_serialize(form)
+{
+    return ( $('form').find('input').serialize());
 }
 function bars_config(form, config)
 {
     var config_data = '' ;
     for(i=0; i<config.length; i++ )
-	config_data = config_data + '&' + Sortable.serialize(config[i]) ;
-    return Form.serialize(form) + config_data	;
+	config_data = config_data + '&' + sortable_serialize(config[i]) ;
+    return ( form_serialize(form) + config_data	);
 }
+
 function navbars_config(form)
 {
-    return Form.serialize(form) + '&' + Sortable.serialize("enable") + '&' + Sortable.serialize("disable") ;
+    return form_serialize(form) + '&' + sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
 }
 function postbars_config(form)
 {
-    return Form.serialize(form) + '&' + Sortable.serialize("enable") + '&' + Sortable.serialize("disable") ;
+    return form_serialize(form) + '&' + sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
 }
 function filter_config(form)
 {
-    return Form.serialize(form) + '&' + Sortable.serialize("enable_filters") + '&' + Sortable.serialize("disable_filters") ;
+    return form_serialize(form) + '&' + sortable_serialize("enable_filters") + '&' + sortable_serialize("disable_filters") ;
 }
 function unload_form()
 {
@@ -63,14 +106,14 @@ function change_list_by(e)
 }
 function clean_category_field()
 {
-    $('category_name').value='';
-    $('category_info').value='';
+    $('#category_name').val("");
+    $('#category_info').val("");
 }
 function clean_link_field()
 {
-    $('link_title').value='';
-    $('link_info').value='';
-    $('link_url').value='';
+    $('#link_title').val("");
+    $('#link_info').val("");
+    $('#link_url').val("");
 }
 function check_url(url, t1, t2)
 {
@@ -99,10 +142,9 @@ function add_tag(tag)
 function select_menu(main_menu_id, controller)
 {
     var sub_menu_id = controller;
-    var menu = $(main_menu_id);
-    if(menu){ menu.addClassName("selected");}
-    menu = $(sub_menu_id);
-    if(menu){ menu.addClassName("selected");}
+
+    $('#' + main_menu_id).addClass("selected");
+    $('#' + sub_menu_id).addClass("selected");
 
 }
 function submit_as(type, form)
@@ -122,15 +164,15 @@ function checkall(trigger, form)
 
 function autosaving(text)
 {
-   $("article_autosave_notifier").innerHTML = "<span id='autosaving'>" + text + "</span>";
+   $("#article_autosave_notifier").html("<span id='autosaving'>" + text + "</span>");
 }
 function autosave_ok(text)
 {
    var now = new Date();
-   $("article_autosave_notifier").innerHTML = "<span id='autosave_ok'>" + text + " " + now.getHours() + ":" + now.getMinutes() +  "</span>";
-   new Effect.Highlight("article_autosave_notifier", { startcolor: '#ffff00', endcolor: '#ffffff', duration: 3 });
+   $("#article_autosave_notifier").html("<span id='autosave_ok'>" + text + " " + now.getHours() + ":" + now.getMinutes() +  "</span>");
+   $("#article_autosave_notifier").highlight({ startcolor: '#ffff00', endcolor: '#ffffff', duration: 10 });
 }
 function autosave_fail(text)
 {
-   $("article_autosave_notifier").innerHTML = "<span id='autosave_fail'>" + text + "</span>";
+   $("#article_autosave_notifier").html("<span id='autosave_fail'>" + text + "</span>");
 }

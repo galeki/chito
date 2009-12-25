@@ -14,11 +14,9 @@ module Admin::SidebarHelper
 	if(bar.jump)
 	    link_to image_tag("setting.gif"), bar.jump, :target => "_blank", :class => "remote_setting"
 	else
-	    (link_to_ajax_dialog 'confirm', image_tag("setting.gif"),
-				{:url => bar.form_url, :title => bar.info, :width => 400,  :okLabel => t("txt.save"),:cancelLabel => t("txt.cancel"), :className => "alphacube", 
-				 :draggable => true, :resizable => true, :closable => true, :destroyOnClose => true,
-				 :onOk => "function(win){ remote_form();return true;}"}, 
-				{:class => "remote_setting"}) if bar.config
+	    (link_to image_tag("setting.gif"), "#", 
+		    {:onclick => "open_remote_form({'url':'#{bar.form_url}', 'title':'#{bar.info}', 'width':450});", 
+		    :class => "remote_setting"} )  if bar.config
 	end
     end
 

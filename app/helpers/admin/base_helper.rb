@@ -1,6 +1,4 @@
-require "prototype_window_class_helper"
 module Admin::BaseHelper
-    include PrototypeWindowClassHelper
 
     def select_admin_menu(main_menu, options={})
 	sub_menu = options[:sub_menu] || "_#{controller.controller_name}_#{controller.action_name}"

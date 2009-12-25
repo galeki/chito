@@ -53,7 +53,7 @@ class Admin::CommentsController < Admin::BaseController
     end
 
     def clean_email(comment)
-	article = @user.articles.find(comment.article_id)
+	article = @user.articles.find(comment.article_id) rescue nil
 	if article && article.email && article.emails.has_key?(comment.email)
 	    article.emails.delete(comment.email)
 	    article.save

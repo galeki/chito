@@ -25,7 +25,7 @@ class Admin::PluginsController <  Admin::BaseController
     expire_chito_fragment
     render :update do |page|
 	page.replace_html 'notifier', t(:config_updated, :scope => [:txt, :controller, :admin, :plugins])
-	page.visual_effect :Highlight, "notifier", :duration => 3, :startcolor => '#ffff00'
+	page.visual_effect :highlight, "notifier", :duration => 4, :startcolor => '#ffff00'
     end
   end
 
