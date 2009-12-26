@@ -5,13 +5,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%= favicon_url %>" />
 <%= stylesheet_link_tag 'admin/main', 'admin/smoothness/jquery-ui' %>
 <%= stylesheet_link_tag "admin/#{@user.admin_style || 'green'}" %>
-<script src="/javascripts/jquery.js" type="text/javascript"></script>  
-<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>  
-<script src="/javascripts/jrails.js" type="text/javascript"></script>  
-<script src="/javascripts/jquery.jeditable.js" type="text/javascript"></script>  
-
+<%= javascript_include_tag "jquery", "jquery-ui","jrails", "jquery.jeditable" %>
 <%= javascript_include_tag "admin", "fckeditor/fckeditor" -%>
-<%# javascript_include_tag "prototype", "window", "effects", "dragdrop", "controls", "admin", "fckeditor/fckeditor" -%>
 <title><%= "#{@title} - Chito" %></title>
 </head>
 

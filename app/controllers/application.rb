@@ -103,6 +103,7 @@ class ApplicationController < ActionController::Base
 	    redirect_to :controller => "site", :action => "setup"
 	    return false
 	end
+	ActionController::Base.asset_host = "www.#{request.domain}" if @site.mutli_users?
     end
 
     def get_user

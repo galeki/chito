@@ -1,17 +1,24 @@
 <% if @user.show_postbars -%>
+
   <div id="article_bar">
-    <dl id="tab" class="tab">
+  <div id="article_tabs">
+    <ul>
+	<% for bar in @enable_postbars -%>
+	    <li><a href="#<%= bar.id %>_post_bar"><%= title_of(bar) %></a></li>
+	<% end -%>
+    </ul>
     <% for bar in @enable_postbars -%>
-	<dt><%= title_of(bar) %></dt>
-	<dd>
+	<div id="<%= bar.id %>_post_bar">
 	    <%= content_of(bar) %>
-	</dd>
+	</div>
     <% end -%>
-    </dl>
-    <script type="text/javascript">
-	// <![CDATA[
-	    s2uTab('tab', 'click', 0);
-	// ]]>
-    </script>
   </div>
+  </div>
+
+    <script type="text/javascript">
+	$(function() {
+		$("#article_tabs").tabs();
+	});
+    </script>
+
 <% end -%>

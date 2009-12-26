@@ -9,16 +9,13 @@
 <%= comments_rss_link %>
 <%= messages_rss_link %>
 <%= site_rss_link %>
-<%= stylesheet_link_tag "common" %>
-<script src="/javascripts/jquery.js" type="text/javascript"></script>  
-<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>  
-<script src="/javascripts/jrails.js" type="text/javascript"></script>  
-<%# javascript_include_tag "prototype", "effects", "blog", "fckeditor/fckeditor", "s2utab"  -%>
-<%= javascript_include_tag "blog", "fckeditor/fckeditor", "s2utab"  -%>
+<%= stylesheet_link_tag "common", 'admin/smoothness/jquery-ui', :subdomain => "www" %>
+<%= javascript_include_tag "jquery", "jquery-ui","jrails" %>
+<%= javascript_include_tag "blog", "fckeditor/fckeditor" -%>
 <%= theme_css_links :order => options[:css]%>
 <%= theme_js_links :order => options[:js]%>
 <%= show_something :in_head %>
-<%= stylesheet_link_tag plugin_css_path %>
+<link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 <title><%= @title %></title>
 </head>
 <%= @user.custom_header if @user.enable_custom_header %>
