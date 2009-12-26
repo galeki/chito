@@ -27,6 +27,8 @@ zh-CN:
             text: 真的啥也没找到，是不是 URL 打错了？
     save: 保存
     cancel: 取消
+    saving: "保存中..."
+    click_to_edit_text: 点击编辑
     prev_page: "&laquo; 上一页"
     next_page: "下一页 &raquo;"
     close: 关闭

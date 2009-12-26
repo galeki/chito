@@ -4,8 +4,8 @@
 <div class="option_wrap">
 <div id="file_type">
     <ul id="file_type_list">
-	<li><%= link_to_remote t(:file, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => list_admin_files_path(:type => "File"), :method => :get, :loading => "Element.show('in_pro')"  %></li>
-	<li><%= link_to_remote t(:image, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => list_admin_files_path(:type => "Image"), :method => :get, :loading => "Element.show('in_pro')"  %></li>
+	<li><%= link_to_remote t(:file, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => list_admin_files_path(:type => "File"), :method => :get, :loading => "$('#in_pro').show();"  %></li>
+	<li><%= link_to_remote t(:image, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => list_admin_files_path(:type => "Image"), :method => :get, :loading => "$('#in_pro').show();"  %></li>
     </ul>
 </div>
 <div id="file_list">

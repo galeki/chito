@@ -26,6 +26,8 @@ en-US:
             title2: "Ooops! Nothing here ..."
             text: I really found nothing here, maybe yor feed me a broken url, huh?
     save: Save
+    saving: "Saving..."
+    click_to_edit_text: Click to edit
     cancel: Cancel
     prev_page: "&laquo; Previous"
     next_page: "Next &raquo;"

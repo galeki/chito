@@ -1,8 +1,8 @@
     <tr id="link_<%= @link.id %>" class="">
 	    <td class="dragger"></td>
-	    <td class="link_title_col"><%= in_place_editor_field "link", "title", {},:cols => 8, :save_text => t(:save_text, :scope => [:txt, :view, :admin, :links]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :links]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :links]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :links]) %></td>
-	    <td class="link_url_col"><%= in_place_editor_field "link", "url", {},:save_text => t(:save_text, :scope => [:txt, :view, :admin, :links]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :links]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :links]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :links]) %></td>
-	    <td class="link_info_col"><%= in_place_editor_field "link", "info", {}, :save_text => t(:save_text, :scope => [:txt, :view, :admin, :links]) , :cancel_text => t(:cancel_text, :scope => [:txt, :view, :admin, :links]) , :loading_text => t(:loading_text, :scope => [:txt, :view, :admin, :links]),:click_to_edit_text=> t(:click_to_edit_text, :scope => [:txt, :view, :admin, :links]) %></td>
+	    <td class="link_title_col"><%= in_place_edit :link, :title, @link.id, @link.title %></td>
+	    <td class="link_url_col"><%= in_place_edit :link, :url, @link.id, @link.url %></td>
+	    <td class="link_info_col"><%= in_place_edit :link, :info, @link.id, @link.info %></td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :links]), admin_link_path(@link), :class => "delete",
 	    :confirm => t(:delete_link?, :scope => [:txt, :view, :admin, :links], :link => @link.title), :method => :delete %></td>
 	    

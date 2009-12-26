@@ -13,9 +13,7 @@
 				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
 				<div class="theme_form">
 					<% form_remote_tag( :update => "theme_iframe_content", 
-									:url => { :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
-									:loading => "Element.show('in_progress')",
-									:complete => "Element.hide('in_progress');window.location.reload();"
+									:url => { :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i}
 									) do%>
 					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]) %>
 					<% end %>

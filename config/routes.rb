@@ -49,12 +49,23 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :messages
 	map.formatted_comments '/comments.:format', :controller => 'comments', :action => 'index'
 	map.tag_posts '/tag/:tag_name', :controller => 'posts', :action => 'index'
+	#
+	
+	#In place edit jQuery
+	map.connect '/admin/links/set_link_title', :controller => 'admin/links', :action => 'set_link_title'
+	map.connect '/admin/links/set_link_url', :controller => 'admin/links', :action => 'set_link_url'
+	map.connect '/admin/links/set_link_info', :controller => 'admin/links', :action => 'set_link_info'
+
+	map.connect '/admin/categories/set_category_name', :controller => 'admin/categories', :action => 'set_category_name'
+	map.connect '/admin/categories/set_category_info', :controller => 'admin/categories', :action => 'set_category_info'
+
+	map.connect '/admin/users/set_user_bind_domain', :controller => 'admin/users', :action => 'set_user_bind_domain'
 
 	map.namespace :admin do |admin|
 	    admin.resources :posts, :collection => {:destroy_selected => :post, :recategory_selected => :post}
 	    admin.resources :drafts, :collection => {:destroy_selected => :post}
 	    admin.resources :pages, :member => {:enable_fontpage => :post, :cancel_fontpage => :post}
-	    admin.resources :users, :member => {:set_group => :post, :set_user_bind_domain => :post}
+	    admin.resources :users, :member => {:set_group => :post}
 	    admin.resources :groups, :member => {:set_group_space => :post, :set_group_name => :post, :set_group_file_size_limit => :post}
 	    admin.resources :comments, :collection => {:settings => :get, :set_filter_position => :post, :destroy_selected => :delete}
 	    admin.resources :messages, :collection => {:destroy_selected => :delete}
@@ -62,10 +73,8 @@ ActionController::Routing::Routes.draw do |map|
 	    admin.resources :talks
 	    admin.resources :spams, :member => {:pass => :post}, :collection => {:destroy_selected => :delete}
 	    admin.resources :categories, :has_many => [:posts, :drafts],
-			    :member => {:set_category_name => :post, :set_category_info => :post },
 			    :collection => {:set_position => :post}
 	    admin.resources :links, 
-			    :member => {:set_link_title => :post, :set_link_url => :post, :set_link_info => :post },
 			    :collection => {:set_position => :post}
 	    admin.resources :files, 
 			    :collection => {:list => :get, :delete_file => :post, :delete_dir => :post}

@@ -30,7 +30,7 @@
 	    <td class="file_pic_col"><%= image_tag 'folder.png' %></td>
 	    <td class="file_name_col"><%= link_to_files folder, :type => @type, :folder => File.join(@folder, folder) %></td>
 	    <td class="file_size_col"></td>
-	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , :loading => "Element.show('in_pro')", :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :html => {:class => "delete"} %></td>
+	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , :loading => "$('#in_pro').show();", :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :html => {:class => "delete"} %></td>
     </tr>
     <% end -%>
     <% for file in @files -%>
@@ -46,7 +46,7 @@
 	    <%= link_to file[:name], file[:url], :target => '_blank', :title => t(:download, :scope => [:txt, :view, :admin, :files]) %>
 	    </td>
 	    <td class="file_size_col"><%= file[:size] %>KB</td>
-	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, :loading => "Element.show('in_pro')", :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :html => {:class => "delete"}  %></td>
+	    <td class="file_action_col delete"><%= link_to_remote t(:delete, :scope => [:txt, :view, :admin, :files]), :update => 'file_list', :url => {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, :loading => "$('#in_pro').show();", :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :html => {:class => "delete"}  %></td>
     </tr>
     <% end -%>	
 </table>
