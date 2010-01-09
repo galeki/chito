@@ -52,7 +52,7 @@ module PostsHelper
     end
 
     def post_brief
-	arounder{ @post.brief }
+	arounder{ "<div class='post_brief'>" + @post.brief + "</div>"}
     end
 
     def link_to_post_category(options={})
@@ -88,7 +88,7 @@ module PostsHelper
     end
 
     def post_content
-	arounder{ @post.content.sub('<!--more-->','<a id="more"></a>') }
+	arounder{ "<div id='article_content'>" + @post.content.sub('<!--more-->','<a id="more"></a>') + "</div>" }
     end
 
     def postbars

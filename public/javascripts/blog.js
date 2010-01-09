@@ -2,6 +2,11 @@ var post_show = false;
 var insert = false;
 var g_user_name, g_time, g_id, g_text;
 var FCKeditorAPI = null;
+function set_cookie(name, value)
+{
+    var theCookie = name + "=" + encodeURIComponent(value);
+    document.cookie = theCookie;
+}
 function ele(name)
 {
     

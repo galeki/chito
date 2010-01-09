@@ -31,7 +31,7 @@
 	    <td class="user_name_col"><%= link_to @user.name, root_path(:subdomain => @user.name) %></td>
 	    <td class="user_nick_col"><%= @user.nick %></td>
 	    <td class="user_email_col"><%= @user.email %></td>
-	    <td class="user_email_col"><%= @user.created_at.to_s(:db_short) %></td>
+	    <td class="user_email_col"><%= @user.created_at.to_s(:db_short) if @user.created_at%></td>
 	    <td class="user_title_col"><%= @user.title %></td>
 	    <td class="user_bind_domain_col">
 	    <%= in_place_edit :user, :bind_domain, @user.id, @user.bind_domain %>

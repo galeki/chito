@@ -3,31 +3,8 @@
 	    if @user.enable_syntaxhighlighter
 		head = plugin_javascript_inculde_tag('syntaxhighlighter', "shCore.js") + "\n"
 		
-		%w(shBrushAS3.js
-		    shBrushBash.js
-		    shBrushCpp.js
-		    shBrushCSharp.js
-		    shBrushCss.js
-		    shBrushDelphi.js
-		    shBrushDiff.js
-		    shBrushGroovy.js
-		    shBrushJavaFX.js
-		    shBrushJava.js
-		    shBrushJScript.js
-		    shBrushLua.js
-		    shBrushPerl.js
-		    shBrushPhp.js
-		    shBrushPlain.js
-		    shBrushPowerShell.js
-		    shBrushPython.js
-		    shBrushRuby.js
-		    shBrushScala.js
-		    shBrushSql.js
-		    shBrushVb.js
-		    shBrushXml.js
-		).each do |js|
-		    head += plugin_javascript_inculde_tag('syntaxhighlighter', js) + "\n"
-		end
+		head += plugin_javascript_inculde_tag('syntaxhighlighter', "shBrushes.js") + "\n"
+
 		head += %Q!<script type="text/javascript">SyntaxHighlighter.config.clipboardSwf = '/plugins/syntaxhighlighter/javascripts/clipboard.swf';SyntaxHighlighter.all();</script>!
 
 		head += plugin_stylesheet_link_tag('syntaxhighlighter', "shCore.css") + "\n"

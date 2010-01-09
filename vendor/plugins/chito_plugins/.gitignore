@@ -1,4 +1,5 @@
 akismet_comment_filter
+auto_js_latex
 comment_gravatar
 custom_css
 custom_navbars
@@ -9,13 +10,16 @@ highlight_search_word
 hot_posts
 img_resize
 is_programmer_admin
+is_programmer_google_analytics
 js_code_highlighter
 page_patch
+password_post
 post_icon
 random_posts
 relative_posts
 relative_time
 rss_patch
 simple_vcode_comment_filter
+syntaxhighlighter
 tag_cloud
 textile_mode

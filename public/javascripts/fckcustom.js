@@ -27,7 +27,7 @@ FCKConfig.ToolbarSets["Default"] = [
 	['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
 	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
 	['Link','Unlink','Anchor'],
-	['Image','Table','Rule','Smiley'],['GeSHiPro','SyntaxHighlighter', 'Latex_Formula'], ['wpmore']
+	['Image','Table','Rule','Smiley'],['SyntaxHighlighter', 'Latex_Formula'], ['wpmore']
 	//['Image','Table','Rule','Smiley'],['wpmore']
 	,'/',
 	['Style','FontFormat','FontName','FontSize'],
@@ -36,7 +36,6 @@ FCKConfig.ToolbarSets["Default"] = [
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [
-	//['GeSHiPro','Bold','-','TextColor','BGColor','Blockquote','-','Smiley','-','Latex_Formula']
 	['Bold','-','TextColor','BGColor','Blockquote','-','Smiley']
 ] ;
 FCKConfig.ToolbarSets["Set"] = [

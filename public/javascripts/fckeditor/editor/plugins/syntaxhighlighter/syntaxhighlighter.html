@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta content="noindex, nofollow" name="robots">
 		<link href="main.css" media="screen" rel="Stylesheet" type="text/css" />
-		<script src="/javascripts/prototype.js" type="text/javascript"></script>
+		<script src="/javascripts/jquery.js" type="text/javascript"></script>
 		<script language="javascript">
 
 var oEditor = window.parent.InnerDialogLoaded();
@@ -49,8 +49,10 @@ function set_form()
 }
 function Ok()
 {
-	var code_text = $('code').value.gsub("<", "&lt;").gsub(">", "&gt;");
-	var html = "<pre class='brush: " + $('slang').value + "\'>" + code_text + "</pre>";
+	var slang_obj = document.getElementById('slang');
+	var code_text = $("#code").val().replace("<","&lt;").replace(">","&gt;");
+
+	var html = "<pre class='brush: " + slang_obj.value + "\'>" + code_text + "</pre>";
 	//alert(html);
 	oEditor.FCK.InsertHtml(html);
 	set_form_cookie();
@@ -64,17 +66,22 @@ function Ok()
 	    <label><span fckLang="SyntaxHighlighterLang">Language: </span></label>
 		<select name="slang" id="slang">
 				<option value="actionscript3">ActionScript3</option>
+				<option value="asm">ASM</option>
 				<option value="bash">Bash/shell</option>
+				<option value="bat">.bat</option>
 				<option value="csharp">C#</option>
 				<option value="cpp">C/C++</option>
 				<option value="css">CSS</option>
 				<option value="delphi">Delphi/Pascal</option>
 				<option value="diff">Diff</option>
+				<option value="erlang">Erlang</option>
 				<option value="groovy">Groovy</option>
 				<option value="javascript">Javascript</option>
 				<option value="java">Java</option>
 				<option value="javafx">JavaFX</option>
+				<option value="latex">LaTeX</option>
 				<option value="lua">Lua</option>
+				<option value="matlab">Matlab</option>
 				<option value="perl">Perl</option>
 				<option value="php">PHP</option>
 				<option value="txt">Plain Text</option>
@@ -85,6 +92,7 @@ function Ok()
 				<option value="sql">SQL</option>
 				<option value="vb">Visual Basic</option>
 				<option value="xml">XML/HTML</option>
+				<option value="yaml">YAML</option>
 		</select>
 
 	    <br/>

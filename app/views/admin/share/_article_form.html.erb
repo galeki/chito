@@ -23,6 +23,7 @@
     <label>Trackback:
     <%= text_field_tag "trackbacks", nil,  :style => "margin:5px 5px 5px 5px;" %></label>
     <label><%= check_box 'article', 'forbid_comment',  :class => 'checkbox' %> <%= t :forbid_comment, :scope => [:txt, :view, :admin, :share] %></label>
+    <%= show_something :in_article_options_form %>
  </div>
 </div>
  <div id='form_main' >  

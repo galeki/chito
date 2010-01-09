@@ -1,4 +1,4 @@
-FCKLang.SyntaxHighlighterTitle	= 'Syntax Highlighter';
+FCKLang.SyntaxHighlighterTitle	= 'Syntax 代码高亮';
 FCKLang.SyntaxHighlighterLang	= '语言: ';
 FCKLang.SyntaxHighlighterCode	= '代码: ';
 FCKLang.SyntaxHighlighterTip1	= '不要忘记在 Chito 的插件设置中激活 Syntax Highlighter。';

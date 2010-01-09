@@ -125,19 +125,5 @@ class BlogController < ApplicationController
     end
   end
 
-  #def setup_title
-  #  thash = {}
-  #  tstring = @user.blog_format_string || "%article_title% !!!!--!!!!! %blog_title%"
-  #  article = @post || @page
-  #  if article
-  #	thash["%article_title%"] = article.title
-  #	thash["%article_category%"] = article.category.name if article.category
-  #  end
-  #	
-  #  thash["%blog_title%"] = @user.title
-  #  thash["%blog_slogan%"] = @user.slogan
-  #  @title = tstring.replace_with(thash)
-  #end
-
 end
 

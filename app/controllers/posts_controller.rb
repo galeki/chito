@@ -16,7 +16,7 @@ class PostsController < BlogController
 	    do_something :before_post_show
 	end
 	format.rss
-	format.xml {render :xml => @post.to_xml(:include => [ :comments ])}
+	#format.xml {render :xml => @post.to_xml(:include => [ :comments ])}
     end
 
   end
@@ -37,11 +37,11 @@ class PostsController < BlogController
 	    @titles.unshift(h @category.name) if @category
 	    @title = @titles * " - "
 	    do_something :before_list_show
-	    #render(:controller => "pages", :action => "show", :id => 0) #&& return if @page
 	end
 	format.rss do
 	    @posts = @user.find_articles :type => :posts, :category_id => params[:category_id], 
 					 :per_page => 12
+	    do_something :before_list_rss_show
 	end
     end
   end

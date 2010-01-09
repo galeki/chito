@@ -61,6 +61,9 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.connect '/admin/users/set_user_bind_domain', :controller => 'admin/users', :action => 'set_user_bind_domain'
 
+	map.connect '/admin/groups/set_group_space', :controller => 'admin/groups', :action => 'set_group_space'
+	map.connect '/admin/groups/set_group_file_size_limit', :controller => 'admin/groups', :action => 'set_group_file_size_limit'
+
 	map.namespace :admin do |admin|
 	    admin.resources :posts, :collection => {:destroy_selected => :post, :recategory_selected => :post}
 	    admin.resources :drafts, :collection => {:destroy_selected => :post}
