@@ -1,0 +1,16 @@
+en-US:
+    plugins:
+        custom_css:
+            name: Custom CSS
+            config_title: Set the custom CSS here
+            intro: Introduction
+            save: Save
+            custom_css: Custom CSS
+zh-CN:
+    plugins:
+        custom_css:
+            name: 自定义 CSS
+            config_title: 可以在此设置全局自定义 CSS。
+            intro: 简介
+            save: 保存
+            custom_css: 自定义 CSS

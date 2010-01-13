@@ -1,0 +1,14 @@
+en-US:
+    plugins:
+        random_posts:
+            random_posts:
+                info: Random Posts
+            number: Numbers of random posts
+            default_number: (default is 5)
+zh-CN:
+    plugins:
+        random_posts:
+            random_posts:
+                info: 随机文章
+            number: 随机文章显示数量
+            default_number: (默认为 5 篇)

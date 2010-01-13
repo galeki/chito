@@ -1,0 +1,12 @@
+en-US:
+    plugins:
+        textile_mode:
+            name: Textile edit mode 
+            ref: Textile Reference
+zh-CN:
+    plugins:
+        textile_mode:
+            name: Textile 编辑模式
+            ref: Textile 语法参考
+    
+

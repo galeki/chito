@@ -1,0 +1,20 @@
+en-US:
+    plugins:
+        relative_time:
+            name: Relative Time
+            intro: Introduction
+            intro_content: Show post and comment datetime in ralative form
+            settings: Settings
+            save: Save
+            enable_post: "Show the <b>post</b> datetime in ralative form"
+            enable_comment: "Show the <b>comment</b> datetime in ralative form"
+zh-CN:
+    plugins:
+        relative_time:
+            name: 相对时间
+            intro: 简介
+            intro_content: 以相对时间的形式显示文章和评论的发表日期。
+            settings: 设置
+            save: 保存
+            enable_post: "以相对时间显示<b>文章</b>的发表日期"
+            enable_comment: "以相对时间显示<b>评论</b>的发表日期"

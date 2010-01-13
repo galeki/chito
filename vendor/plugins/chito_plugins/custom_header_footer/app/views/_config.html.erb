@@ -1,0 +1,26 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.custom_header_footer.intro" %></div>
+<p><%= t "plugins.custom_header_footer.config_title" %></p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.custom_header_footer.option" %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'custom_header_footer'} do |f|%>
+    <label><%= t "plugins.custom_header_footer.custom_header" %> : </label>
+    <label><strong><%= t "plugins.custom_header_footer.custom_header_intro" %></strong></label>
+    <label><%= f.check_box :enable_custom_header,  :class => 'checkbox' %><%= t "plugins.custom_header_footer.enable_custom_header" %></label>
+
+    <%= f.text_area 'custom_header', :style => "font-size:12px;width:80%;height:200px;" %>
+    <br/>
+    <br/>
+    <label><%= t "plugins.custom_header_footer.custom_footer" %> : </label>
+    <label><strong><%= t "plugins.custom_header_footer.custom_footer_intro" %></strong></label>
+    <label><%= f.check_box :enable_rewriter_of_footer,  :class => 'checkbox' %><%= t "plugins.custom_header_footer.enable_custom_footer" %></label>
+    <%= f.text_area 'custom_footer', :style => "font-size:12px;width:80%;height:200px;" %>
+    <br/>
+    <br/>
+    <br/>
+    <%= submit_tag t "plugins.custom_header_footer.save", :class =>'submit' %>
+<% end %>
+</div>

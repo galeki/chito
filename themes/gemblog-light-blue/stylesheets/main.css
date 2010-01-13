@@ -1,0 +1,188 @@
+body {
+}
+#main {
+    border-top: 0px;
+    padding: 12px 40px 22px 22px;
+} 
+#main_warp {
+    margin-right: 0px;
+    margin-left: 142px;
+}
+#footer {
+    clear: both;
+    padding-top: 2px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+#flash {
+    padding-left: 3px;
+    font-weight: bold;
+}
+#flash .right {
+    color: #43a800;
+}
+#flash .wrong {
+    color: #ff3300;
+}
+#hom {
+    padding: 4px 2px 4px 2px;
+}
+#is_login {
+    float: right;
+    padding-right: 2px;
+    text-align: right;
+}
+.rss {
+    border: 0px;
+    margin-bottom: -3px;
+    margin-right: 3px;
+}
+
+#article_header {
+    color: #777;
+    margin: 0px 0px 8px 10px;
+    padding: 0px 10px 0px 30px;
+}
+#article_header img {
+    border: 0px;
+    margin-bottom: -3px;
+    margin-right: 2px;
+}
+#article_body {
+    margin: 15px -40px 0px -22px;
+    padding: 8px 40px 5px 40px;
+}
+.article_footer {
+    text-align: right;
+    padding-bottom: 3px;
+}
+#main h4{
+    margin-top: 10px;
+    font-size: 110%;
+}
+#main h1 {
+    margin: 3px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-indent: 12px;
+    font-size: 170%;
+}
+.hl_result {
+    overflow: auto;
+}
+#comments strong {
+    text-align: center;
+    display: block;
+}
+.comment_box0, .comment_box1, .comment_self {
+    padding:15px;
+    width: 90%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top:15px;
+}
+.comment_self {
+    background: #fff;
+}
+.comments_count {
+    float: right;
+    font-weight: bold;  
+    font-style: italic;
+    font-family: Georgia, Serif; 
+    margin-right: 3px; 
+}
+.comment_box0 a,.comment_box1 a {
+    font-weight: bold;
+}
+.comment_box0 a:hover,.comment_box1 a:hover {
+}
+.comment_pic {
+    float: left;
+    padding: 5px;
+}
+.comment_content {
+    padding: 8px;
+}
+.pc {
+    width: 350px;
+    height: 100px;
+}
+.cite {
+    margin-bottom: -3px;
+    cursor: pointer;
+}
+#post_comment fieldset {
+    margin: 1em 0;
+    border: 1px solid #666;
+    width: 500px;
+}
+input, textarea, select {
+    font-size: small;
+    border: 1px solid #666;
+    margin: 5px 0px 0px 0px;
+}
+input:focus, textarea:focus {
+}
+pre {
+    overflow:auto;
+    border: 1px solid #666;
+    padding: 15px;
+}
+.hl_result ul, .hl_result li, .hl_result ol
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#google_a2, #google_a1 {
+    float: right;
+}
+#google_a2 {
+    margin: 0px -28px 0px 5px;
+}
+#google_a1 {
+    margin: 4px -10px 0px 10px;
+}
+#main h4 {
+    margin-bottom: 8px;
+}
+#dhtmltooltip{
+position: absolute;
+border: 1px solid #666;
+padding: 2px;
+visibility: hidden;
+z-index: 100;
+filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+}
+
+#list_sidebar {
+    float:right;
+    width:270px;
+}
+.tip_box {
+    background:#ff9;
+    width:300px;
+    padding-bottom:15px;
+    border:1px solid #999;
+}
+#list_sidebar .tip_box {
+    width: 250px;
+    margin-left:20px;
+    margin-top:10px;
+    padding:5px;
+}
+.tip{
+    background:#ff9;
+    color:#999;
+}
+.tip_box h3{margin:0;padding:0px;}
+.post-footer{
+    border:1px solid #377CB1;
+    border-right:150px solid #377CB1;
+    margin-left:0;
+    margin-right:0;
+    background:#9BD1FA;
+}
+h2.link_to_post{
+    text-align:left;
+}
+

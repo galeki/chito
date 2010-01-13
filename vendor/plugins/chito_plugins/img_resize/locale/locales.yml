@@ -1,0 +1,22 @@
+en-US:
+    plugins:
+        img_resize:
+            name: Image Auto Resizer
+            intro: Introduction
+            intro_content: " Auto resize the images to fixed width with javascript"
+            save: Save
+            settings: Settings
+            bigger_than: When the width of image is bigger than
+            resize_to: Auto resize it to this width. Defaule is 400px.
+            new_window: Open image in new window
+zh-CN:
+    plugins:
+        img_resize:
+            name: 自动缩小图片
+            intro: 简介
+            intro_content: 用 Javascript 自动缩小过大的图片。
+            save: 保存
+            settings: 设置
+            bigger_than: 当图片宽度大于
+            resize_to: " 自动缩小到此宽度。默认为 400px。"
+            new_window: 在新窗口打开图片

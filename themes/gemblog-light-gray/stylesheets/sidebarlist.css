@@ -1,0 +1,153 @@
+#sidebar {
+    position: absolute;
+    width: 134px;
+    top: 3px;
+    left: 3px;
+    padding: 5px;
+}
+#sidebar a {
+    font-weight: normal;
+}
+#nav_bar {
+    margin-top: 7px;
+}
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#nav_bar li {
+    border-bottom: 1px solid #fff;
+    margin: 0;
+}
+#nav_bar ul a {
+	display: block;
+	padding: 5px 6px 5px 9px;
+	border-left: 10px solid #666;
+	text-decoration: none;
+}
+#nav_bar ul a:hover {
+	border-left: 10px solid #999;
+}
+
+#writer {
+    padding: 10px 5px 8px 5px;
+    text-align: center;
+}
+#writer h3 {
+    margin: 0px;
+    text-align: center;
+}
+#writer_info {
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    color: #444;
+    margin: 5px;
+    text-align: center;
+    margin-bottom: 9px;
+}
+.new_comment, #sidebar #links, #new_messages ,#count{
+    border-top: 0px;
+    padding: 6px; 
+    overflow: hidden;
+    color: #333;
+}
+.new_comment ul {
+    margin-left: 14px;
+    list-style-type: square;
+}
+.new_messages ul {
+    margin-left: 14px;
+    list-style-type: disc;
+}
+.header {
+    margin: 0px;
+    padding: 3px;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 6px;
+    color: #fff;
+}
+.new_comment li, #sidebar #links li, #new_messages li{
+    font-size: 90%;
+}
+#bulletin {
+    padding: 10px;
+    margin: 5px -15px 5px 10px;
+    width: 270px;
+}
+.date {
+    float: left;
+    width: 3em;
+    font-size: 90%;
+    text-align: center;
+    padding: 4px;
+    margin: 2px 7px 3px 10px;
+}
+* html .date {
+    margin-left:5px;
+    padding: 2px;
+}
+.date span {
+    display: block;
+    font-size: 160%;
+    font-weight: bold;
+}
+.list_box{
+    margin: 30px 110px 5px 10px;
+}
+.list_header, .list_header a {
+    color: #c63;
+    font-size: 90%;
+    font-weight: bold;
+}
+.list_header a:hover {
+    color: #fff;
+}
+.list_box p {
+    clear: left;
+    padding: 0px 3px 22px 3px;
+    border-bottom: 2px solid #eee;
+}
+.list_box h3 {
+    margin-bottom: 0px;
+}
+.list_box h3 span {
+    font-size: 90%;
+    vertical-align: super;
+    padding: 4px;
+}
+.list_brief {
+    padding: 8px;
+    padding-left: 25px;
+    padding-top: 22px;
+}
+.list_footer {
+    text-align: right;
+    margin-top: 5px;
+}
+.list_read {
+    text-align: right;
+    margin-top: 20px;
+}
+#page {
+    margin-top: 20px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 160%;
+    display: inline;
+}
+#page a {
+    font-size: 70%;
+    text-decoration: underline;
+}
+#page a:hover {
+}
+#count {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;  
+    font-style: italic;
+    font-family: Tahoma, Georgia, Serif; 
+}

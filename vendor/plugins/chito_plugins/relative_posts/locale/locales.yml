@@ -1,0 +1,20 @@
+en-US:
+    plugins:
+        relative_posts:
+            relative_posts:
+                info: Relative Posts
+            global_relative_posts: 
+                info: Global Relative Posts
+            no_match: No match
+            number: Numbers of relative posts
+            default: (default is 5)
+zh-CN:
+    plugins:
+        relative_posts:
+            relative_posts:
+                info: 相关文章
+            global_relative_posts: 
+                info: 全局相关文章
+            no_match: 无匹配
+            number: 相关文章数量           
+            default: (默认为 5 篇)

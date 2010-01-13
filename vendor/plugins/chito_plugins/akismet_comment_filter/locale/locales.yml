@@ -1,0 +1,20 @@
+en-US:
+    plugins:
+        comment_filter:
+            akismet:
+                name: Akismet
+        akismet_comment_filter:
+            name: Akismet
+            api_key: Akismet API Key
+            setup_api_key: Please setup your api key before use Akismet.
+            comment_was_blocked: Comment will show up once it has been approved by the administrator.
+zh-CN:
+    plugins:
+        comment_filter:
+            akismet:
+                name: Akismet
+        akismet_comment_filter:
+            name: Akismet
+            api_key: Akismet API Key
+            setup_api_key: 请先设置 Akismet API key。
+            comment_was_blocked: 评论发送成功，请等待管理员审核。

@@ -1,0 +1,18 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.auto_js_latex.intro") %></div>
+<p>
+<%= t("plugins.auto_js_latex.intro_content") %>
+</p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.auto_js_latex.settings") %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'auto_js_latex'} do |f|%>
+    <style>label{padding:8px;} label:hover{background: #fff;} label img{margin:5px;}</style>
+    <label><%= f.check_box :enable_auto_js_latex,  :class => 'checkbox' %><%= t("plugins.auto_js_latex.enable") %></label>
+
+    <%= submit_tag t("plugins.auto_js_latex.save"), :class =>'submit' %>
+<% end  %>
+</div>
+

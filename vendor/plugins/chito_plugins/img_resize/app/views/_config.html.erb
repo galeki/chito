@@ -1,0 +1,14 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.img_resize.intro") %></div>
+<p><%=t("plugins.img_resize.intro_content") %></p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%=t("plugins.img_resize.settings") %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'img_resize'} do |f|%>
+    <label><%= t("plugins.img_resize.bigger_than")%>
+    <%= f.text_field 'img_max_width', :style => 'width:4em;text-align:right;' %> px <%= t("plugins.img_resize.resize_to") %></label>
+    <%= submit_tag t("plugins.img_resize.save"), :class =>'submit' %>
+<% end %>
+</div>

@@ -1,0 +1,24 @@
+en-US:
+    plugins:
+        page_patch:
+            name: Page Patch
+            intro: Introduction
+            intro_content: Allow you add custom content in the blog, like post header and footer.
+            intro_content1: You can insert copyright info or ad.
+            settings: Settings
+            before_content: Before the post content
+            after_content: After the post content
+            after_brief: After the posts brief
+            save: Save
+zh-CN:
+    plugins:
+        page_patch:
+            name: 页面补丁
+            intro: 简介
+            intro_content: 页面补丁插件可以在 Blog 的某个位置插入自定义的内容，目前支持的地方有所有文章正文的上方和下方，还有所有文章简介的下方。
+            intro_content1: 你可以插入广告、版权声明等信息。
+            settings: 设置
+            before_content: 文章正文前
+            after_content: 文章正文后
+            after_brief: 所有文章简介后
+            save: 保存

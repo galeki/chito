@@ -1,0 +1,9 @@
+<ul>
+	<% unless @relative_posts.blank? -%>
+	    <% for post in @relative_posts -%>
+		<li><%= post_link(post) %></li>
+	    <% end -%>
+	<% else -%>
+	    <li><%= t "plugins.relative_posts.no_match" %></li>
+	<% end -%>
+</ul>	

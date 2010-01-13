@@ -1,0 +1,10 @@
+<% remote_form do |f| -%>
+    <p>
+	    <%= t("plugins.custom_navbars.ex_site") %>
+
+    </p>
+	<p>
+	    <label><%= t("plugins.custom_navbars.title") %>: <%= f.text_field :custom_navbar_3_title, :size => '15'%></label>
+	    <label><%=t("plugins.custom_navbars.url") %> : <%= f.text_field :custom_navbar_3_url, :size => '25'%></label>
+	</p>
+<% end -%>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+  <body id="<%= @user.theme %>">
+    <a id="top"></a>
+    <div id="dhtmltooltip"></div>
+    <script type="text/javascript" src="/javascripts/tool.js"></script>
+    <div id="main_warp">
+    <div id="flash">
+    </div>
+    <div id="hom">
+	    <div id="is_login">
+				    <% navbar.each do |n| -%>
+					<%= link_to_nav n %> |
+				    <% end -%>
+	    </div>
+	    <span style="margin-left:5px;"><%= @title %></span>
+    </div>
+    <div id="main">
+	    <%= yield %>
+    </div>
+	<div id="footer"><small><%= footer %> All by <%= link_to "galeki", :subdomain => "galeki", :controller => "posts" %>. 2007年1月</small></div>
+    </div>
+    <div id="sidebar">
+	        <% sidebar do |item|%>
+		 <% if id_of(item) == :categories -%>
+		    <div id="nav_bar">
+			<%= content_of(item) %>
+		    </div>
+		 <% else -%>
+		    <div class="header"><%= title_of(item) %></div>
+		    <div class="new_comment"><%= content_of(item) %></div>
+		<% end -%>
+	      <% end -%>
+
+    </div>
+<script type="text/javascript">
+Cube();
+</script>
+<%= blog_tail %>
+
+  </body>
+</html>

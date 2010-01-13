@@ -1,0 +1,18 @@
+en-US:
+    plugins:
+        hot_posts:
+            name: Hot Posts
+            hot_posts:
+                info: Hot Posts
+            numbers: Numbers of hot posts
+            default: Default is 5
+
+zh-CN:
+    plugins:
+        hot_posts:
+            name: 热门文章
+            hot_posts:
+                info: 热门文章
+            numbers: 显示热门文章数量 
+            default: 默认为 5 篇
+

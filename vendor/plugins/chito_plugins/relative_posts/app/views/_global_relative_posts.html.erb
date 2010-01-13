@@ -1,0 +1,9 @@
+<ul>
+	<% unless @global_relative_posts.blank? -%>
+	    <% for post in @global_relative_posts -%>
+		<li><%= post_link(post, :subdomain => post.user.name) %></li>
+	    <% end -%>
+	<% else -%>
+	    <li><%= t "plugins.relative_posts.no_match" %></li>
+	<% end -%>
+</ul>	

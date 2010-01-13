@@ -1,0 +1,1094 @@
+/*
+Theme Name: Aeros
+Theme URI: http://thebuckmaker.com/aeros-astro
+Description: Beautiful light and professional designed WordPress theme with 10+ background images by <a href="http://thebuckmaker.com">TheBuckmaker.com</a>. Background menu by <a href="http://missionsplace.com">Aaron Edwards</a>. Valid and ready for 2.7
+Author: Joe Fischler
+Author URI: http://thebuckmaker.com
+Tags: blue, green, light, two-columns, fixed-width, theme-options, right-sidebar, threaded-comments
+Version: 2.0
+*/
+
+/* ++++++++++++++++++ Aeros Version 2.0: 'ASTRO'  ++++++++++++++++++ */
+/* ++++++++++++++++++ NEW since 1.0.8: The corners and png opacity, changed div containers ++++++++++++++++++ */
+
+.headcornerwrap {
+		height:10px;
+		width:100%;
+		margin:0; padding:0;
+
+}
+* html .headcornerwrap { /*IE6 only*/
+        display:none;
+  }
+
+.headcornerwrapbottom {
+		height:10px;
+		width:100%;
+		margin:0 0 13px 0; padding:0;
+
+}
+* html .headcornerwrapbottom { /*IE6 only*/
+        display:none;
+  }
+
+.cornercontent {
+		background:url(../images/corners/black.png) repeat 0 0;
+		width:765px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.cornercontentbottom {
+		background:url(../images/corners/black.png) repeat 0 0;
+		width:755px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.cornerleft {
+		display:none;
+		background:url(../images/corners/blackleft10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.cornerright {
+		background:url(../images/corners/blackright10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+.cornerleftbottom {
+		background:url(../images/corners/blackleftbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.cornerrightbottom {
+		background:url(../images/corners/blackrightbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+.posttotal {
+		float:none;
+		width:100%;
+		margin:0 0 15px 0;
+		overflow:hidden;
+		padding:0;
+}
+
+.storywrap ,#article_wrap, #page_wrap, #guestbook_wrap{
+        padding:0px 20px;
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:505px;
+        background:url(../images/corners/white.png) repeat 0 0;
+        overflow:hidden;
+}
+#article_wrap, #page_wrap, #guestbook_wrap{
+    padding-top:10px;
+    width: 540px;
+}
+#article_header, #tab{
+    font-size:12px;
+}
+
+* html .storywrap { /*IE6 only*/
+        padding:15px 20px;
+  }
+.storywrap2 {
+        padding:0px 20px;
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:540px;
+        background:url(../images/corners/white.png) repeat 0 0;
+        overflow:hidden;
+}
+
+* html .storywrap2 { /*IE6 only*/
+        padding:15px 20px;
+  }
+.storycornerwrap {
+        padding:0px;
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:545px;
+		height:10px;
+		margin:0;
+
+}
+* html .storycornerwrap { /*IE6 only*/
+        display:none;
+  }
+  
+.storycornerwrap2 {
+        padding:0px;
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:580px;
+		height:10px;
+		margin:0;
+
+}
+* html .storycornerwrap2 { /*IE6 only*/
+        display:none;
+  }  
+
+.storycornerwrapbottom {
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:545px;
+		height:10px;
+		margin:0; padding:0 0 0 35px;
+
+
+}
+* html .storycornerwrapbottom { /*IE6 only*/
+        display:none;
+  }
+
+.storycornerwrapbottom2 {
+        font-size:13px;
+        text-align:justify;
+        float:left;
+        width:580px;
+		height:10px;
+		margin:0; padding:0px;
+
+
+}
+* html .storycornerwrapbottom2 { /*IE6 only*/
+        display:none;
+  }  
+  
+.storycornercontent {
+		background:url(../images/corners/white.png) repeat 0 0;
+		width:535px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.storycornercontent2 {
+		background:url(../images/corners/white.png) repeat 0 0;
+		width:560px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.storycornercontentbottom {
+		background:url(../images/corners/white.png) repeat 0 0;
+		width:525px;
+		height:10px;
+		padding:0;
+		float:left;
+		margin-bottom:15px;
+}
+
+.storycornercontentbottom2 {
+		background:url(../images/corners/white.png) repeat 0 0;
+		width:560px;
+		height:10px;
+		padding:0;
+		float:left;
+		margin-bottom:15px;
+}
+
+.storycornerleft {
+		display:none;
+		background:url(../images/corners/whiteleft10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+.storycornerleft2 {
+		background:url(../images/corners/whiteleft10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+.storycornerright {
+		background:url(../images/corners/whiteright10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+.storycornerleftbottom {
+		background:url(../images/corners/whiteleftbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.storycornerrightbottom {
+		background:url(../images/corners/whiterightbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+
+
+.sidecornerwrap {
+		width:180px;
+		float:right;
+		height:10px;
+		margin:0; padding:0;
+}
+* html .sidecornerwrap { /*IE6 only*/
+        display:none;
+  }
+
+.sidecornerwrapbottom {
+		width:180px;
+		float:right;
+		height:10px;
+		height:10px;
+		margin:0; padding:0;
+
+}
+* html .sidecornerwrapbottom { /*IE6 only*/
+        display:none;
+  }
+
+.sidecornercontent {
+		background:url(../images/corners/black.png) repeat 0 0;
+		width:160px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.sidecornercontentbottom {
+		background:url(../images/corners/black.png) repeat 0 0;
+		width:160px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.sidecornerleft {
+		background:url(../images/corners/blackleft10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.sidecornerright {
+		background:url(../images/corners/blackright10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+.sidecornerleftbottom {
+		background:url(../images/corners/blackleftbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:left;
+}
+
+.sidecornerrightbottom {
+		background:url(../images/corners/blackrightbot10.png) no-repeat 0 0;
+		width:10px;
+		height:10px;
+		padding:0; margin:0;
+		float:right;
+}
+
+
+
+										/*       ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+												 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+												 ++++++++++ End of the new Aeros2 section ++++++++++++
+												 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+												 ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+												 
+												 
+												 
+/*       ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+         ++++++++++++++++++ General Stylings ++++++++++++++++++
+         +++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+a {
+        color: #000;
+        text-decoration:none;
+        font-weight:bold;
+}
+
+a img {
+        border: none;
+}
+
+img {}
+
+
+
+a:hover {
+        color:#000;
+        text-decoration:none;
+}
+
+
+
+blockquote {
+        border-left: 5px solid #ccc;
+        margin-left: 1.5em;
+        padding-left: 5px;
+}
+
+
+/*++++++++++++++++++ The BACKGROUND IMAGE +++++++++++++++++++++*/
+/*+++++ replace "(images/default.jpg)" with another image from the /images directory of the theme or use the custom background switcher (Appearance - Change Background Image) ++++*/
+
+body {
+        background: url(../images/default.jpg) no-repeat 0 0 #fff;
+        background-attachment:fixed;
+        background-position: bottom center;
+        color: #000;
+        font-family: Arial, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+}
+
+cite {
+        font-size: 90%;
+        font-style: normal;
+}
+
+h1 {    
+		font-size:20px;
+}
+
+h2 {
+        
+		font-size:18px;
+
+}
+
+h3 {
+		font-size:16px;
+}
+
+h4 {
+		font-size:15px;
+}
+
+h5 {
+		font-size:14px;
+}
+
+h6 {
+		font-size:13px;
+}
+
+p, li {
+        font: 13px 'Arial', Verdana, sans-serif;
+        line-height:17px;
+}
+
+
+
+/*       ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        ++++++++++++++ Containers and Headers ++++++++++++++++
+         +++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/* ++++++++++++++++++ The Main Container ++++++++++++++++++ */
+
+#rap {
+        width:775px;
+        margin:0 auto;
+
+}
+
+/* ++++++++++++++++++ The Content Container - where your posts are ++++++++++++++++++ */
+
+#content {
+        width: 590px;
+        float:left;
+        overflow:hidden;
+}
+
+/* ++++++++++++++++++ The Date and comment count container  ++++++++++++++++++ */
+.datecomrap {
+        float:left;
+        width:35px;
+        overflow:hidden;
+		height:110px;
+}
+
+.date {
+         color:#fff;
+         background:url(../images/date.png) no-repeat 0 0;
+         width:35px;
+         height:60px;
+         text-align:center;
+         font-size:0.7em;
+         padding:3px 0 0 0;
+}
+* html .date { /*IE6 only*/
+        background:#000;
+  }
+
+.commy {
+         color:#fff;
+         background:url(../images/comments.png) no-repeat 0 0;
+         width:35px;
+         height:30px;
+         text-align:center;
+         font-size:1.1em;
+         padding:7px 0 0 0;
+         margin-top:10px;
+}
+
+* html .commy { /*IE6 only*/
+        background:#000;
+  }
+
+.commy a, .commy a:hover {color:#fff;}
+
+
+/* ++++++++++++++++++ The Header Section ++++++++++++++++++ */
+
+#header {
+        width:775px;
+		height:63px;
+        font-family: Verdana, Arial, sans-serif;
+        overflow:hidden;
+        margin:0;
+        padding: 5px 0 10px 0;
+        background:url(../images/corners/black.png) repeat 0 0;
+}
+
+* html #header { /*IE6 only*/
+        background:#000;
+		margin-bottom:15px;
+		padding:20px 0;
+  }
+
+
+#header a {
+        color: #fff;
+        text-decoration: none;
+}
+
+#header a:hover {
+        text-decoration: none;
+}
+
+#header h1 {font-family:verdana,arial,sans-serif;
+            font-size:29px;
+            margin: 5px 0 0 20px;
+            padding:0;
+            color:#fff;
+
+
+}
+
+#header h1 a:hover {}
+
+#header h2 {margin-top:2px;
+            font-family: verdana, arial, sans-serif;
+            font-size:13px;
+            color:#fff;
+            margin-left:25px;
+
+}
+
+#headerleft {
+            float:left;
+            width:80%;
+
+}
+
+#headerright a {
+        background:url(../images/rss2.png) no-repeat -1px -64px;
+        width:60px;
+        height:59px;
+        cursor:pointer;
+        float:right;
+        margin:5px 20px 0 0;
+}
+
+* html #headerright a { /*IE6 only*/
+        background:url(../images/rss2.jpg) no-repeat -1px -64px;
+  }
+
+#headerright a:hover {
+        background:url(../images/rss2.png) no-repeat -1px -1px;
+}
+
+
+  
+* html #headerright a:hover { /*IE6 only*/
+        background:#000;
+		background:url(../images/rss2.jpg) no-repeat -1px -1px;
+  } 
+
+
+.navlink {
+        margin:0px 48px 20px 40px;
+        color:#808080;
+        text-align:center;
+        font-size:10px;
+}
+
+.navlink a {
+        padding:5px 10px;
+        font-size:10px;
+        background:url(../images/corners/headmenu3.png) repeat-x 0 0;
+}
+
+.navlink a:hover {
+        color:#000;
+
+}
+
+#headmenu {
+font-family: verdana, arial, sans-serif;
+width:775px;
+font-weight:bold;
+float:none;
+margin:30px 0 0 0;
+color:#fff;
+overflow:hidden;
+
+}
+
+#headmenu ul {
+margin:0;
+padding:0;
+}
+
+#headmenu ul li {
+			float:left;
+			text-align:center;
+            list-style-type:none;
+			background:url(../images/corners/headtabwhite.png) no-repeat 0 0;
+			width:80px;
+			height:18px;
+			overflow:hidden;
+			margin-right:2px;
+			padding:1px 10px 0 10px;
+			
+}
+
+#headmenu a {
+			font-size:12px;
+			color:#000;
+			
+}
+
+
+#headmenu li:hover {text-decoration:none; 
+}
+#headmenu li a:hover{
+text-decoration:underline;
+}
+
+
+
+#headsubmenu {
+		padding:0; 
+		margin:-55px 0 0 0;
+		height:25px;
+		width:100%;
+		float:right;
+
+		 }
+		 
+#headsubmenu li a {
+		letter-spacing:1px;
+		font-size:10px;
+		padding:2px 10px;
+		line-height:18px;
+		color:#000;
+		background:url(../images/corners/headmenu3.png) repeat 0 0;
+		margin-left:2px;
+
+}
+
+#headsubmenu li a:hover {
+		text-decoration:underline;
+
+}		 
+		 
+#headsubmenu ul {
+		margin:0; padding:0;
+		background:#000;
+}
+
+#headsubmenu li {
+		float:left;
+		list-style-type:none;
+		margin:3px 0 0 0;
+
+}
+
+
+
+
+
+/* ++++++++++++++++++ The Sidebar Section ++++++++++++++++++ */
+#sidebarwrap {
+		width:180px;
+		overflow:hidden;
+		margin:0 0 20px 0;
+		padding:0;
+		float:right;
+}
+
+#sidebar {
+        width:180px;
+        float:right;
+        color:#fff;
+        padding: 0 0 30px 0;
+        margin-top:0px;
+        background:url(../images/corners/black.png) repeat 0 0;
+        overflow:hidden;
+}
+
+* html #sidebar { /*IE6 only*/
+        background:#000;
+		width:200px;
+		padding:10px 0;
+  }
+
+
+#search {list-style-type:none;
+         padding:5px 5px 5px 0;
+
+}
+
+.notfound {
+         margin:40px 100px 0 100px;
+         text-align:center;
+         font-weight:bold;
+         background:#fff;
+         padding:20px 10px;
+		 color:#000;}
+
+
+.notfound a {
+         text-decoration:underline;}
+
+#sidebar form {
+        margin: 0;
+
+
+        padding:0;
+
+        list-style-type:none;
+}
+
+#sidebar input#s {
+        text-align:left;
+        margin-left:0px;
+        width: 77%;
+        color: #000;
+        font-weight:bold;
+        font-family: verdana, arial,sans-serif;
+        font-size:12px;
+}
+
+#sidebar a {font-weight:normal; color:#fff;}
+
+#sidebar a:hover {
+         color:#fff;
+         text-decoration:underline;
+}
+
+
+#sidebar h3 {font-weight:bold; font-size:15px; margin:17px 0 6px 5px;}
+
+#sidebar ul {
+        color: #fff;
+        font-weight: bold;
+        list-style-type: none;
+        margin: 0;
+        padding-bottom:0px;
+		padding-left:0px;
+}
+
+#sidebar ul li {
+        font-family: Arial, Verdana, sans-serif;
+        padding:0 10px 1px 10px;
+        margin:3px 0 0 0;
+        list-style-type: none;
+        font-size:11px;
+}
+
+
+
+/*       ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        ++++++++++++++++++ Special Stylings ++++++++++++++++++
+         +++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+/* +++++++++++++++ The Heading of your Posts and Pages ++++++++++++++++++ */
+
+.storytitle {
+        color:#000;
+		font-size:19px;
+        padding-bottom:2px;
+        border-bottom:1px solid #808080;
+        text-align:left;
+		margin-top:3px;
+}
+
+.storytitle h3 {text-align:left;}
+
+.storytitle a {
+        text-decoration: none;
+        color:#000;
+        font-size:19px;
+        font-weight:bold;
+
+}
+
+.storytitle a:hover {
+        text-decoration:none;
+}
+
+.storytitle a:visited {
+}
+
+
+.post {
+       clear:both;
+       padding-bottom:10px;
+       overflow:visible;
+
+}
+
+.feedback {
+       float:left;
+       font-size:10px;
+       margin-bottom:20px;
+}
+
+.feedback a {font-weight:normal;}
+
+.storycontent p a {text-decoration:underline;}
+
+.meta {
+        font-size: 10px;
+        font-family: Arial, Verdana, sans-serif;
+        color: #808080;
+        clear:both;
+        padding-top:2px;
+        border-top:1px solid #808080;
+        margin:30px 0 0 0;
+}
+
+.meta li, ul.post-meta li {
+        display: inline;
+
+}
+
+.meta ul {
+        display: inline;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+}
+
+
+.meta a, .meta a:visited {
+        color: #808080;
+        font-weight: bold;
+}
+
+
+.meta a:hover {
+        border-bottom:1px solid #808080;
+}
+
+ul.post-meta {
+        list-style: none;
+}
+
+ul.post-meta span.post-meta-key {
+        font-weight: bold;
+}
+
+
+
+			
+/* +++++++++++++++ The comment section +++++++++++++++++ */
+
+
+#commentform #author, #commentform #email, #commentform #url, #commentform textarea {
+
+        border: 1px solid #808080;
+        padding: .2em;
+        margin-left:10px;
+}
+
+#commentform textarea {
+        width:96%;
+}
+
+#commentlist {
+        width: 97%;
+        font-size:11px;
+        color:#000;
+        margin:0 0 20px 0;
+        padding: 0 0 0 10px;
+}
+
+#commentlist li {
+        border:5px solid #dcdcdc;
+        margin:0 0 20px 0;
+        list-style-type:none;
+        padding:0px;
+        background:#f5f5f5;
+
+}
+
+#commentlist ul {margin:0; padding:0;}
+
+#commentlist li p {font-size:12px;
+        padding:5px 10px 5px 80px;
+        margin:0;
+
+}
+
+#commentlist a {
+        text-decoration:underline;
+        font-weight:bold;
+}
+
+#commentlist li div.meta {padding:0; margin:0; text-align:center;}
+
+#commentlist li .avatar {
+        float:left;
+        padding:0;
+        margin:5px;
+
+}
+
+
+#commentlist2 {
+        width: 97%;
+        font-size:11px;
+        color:#000;
+        margin:0 0 20px 0;
+        padding: 0 0 0 10px;
+}
+
+#commentlist2 li {
+        border:5px solid #dcdcdc;
+        margin:0 0 20px 0;
+		padding:5px;
+        list-style-type:none;
+        padding:5px 10px 5px 63px;
+        background:#f5f5f5;
+
+
+}
+
+#commentlist2 ul {margin:0; padding:0;}
+
+#commentlist2 li p {font-size:12px;
+        margin:0;
+}
+
+#commentlist2 a {
+        text-decoration:underline;
+        font-weight:bold;
+}
+
+#commentlist2 li div.meta {padding:0; margin:0; text-align:center;}
+
+#commentlist2 li .avatar {
+        float:left;
+        padding:0;
+        margin-left:-58px;
+		width:50px;
+		height:50px;
+}
+
+#commentlist2 li ul li { 
+	margin-right: -15px;
+	margin-left: -50px;
+	margin-bottom: -10px;
+}
+
+.children { padding: 0; }
+
+.authorcomm {float:left;
+            margin:0;
+            padding:0;
+            width:70px;
+            text-align:center;
+            line-height:12px;
+            font-size:10px;
+}
+
+.authorcomm a {text-decoration:none; font-weight:bold;}
+
+.reply {text-align:right; padding:5px;}
+.navigation {width:100%; height:20px;}
+.cancel-comment-reply{text-align:right; float:none; font-size:12px;}
+.comment-meta  a{font-size:8px; float:right; margin-top:-18px; color:#757575;}
+.fn {font-size:15px; font-weight:bold;}
+.says {display:none;}
+#comments {font-size:16px;}
+#respond h3 {font-size:16px;}
+
+/* ++++++++++++++++++             Footer                 ++++++++++++++++++ */
+.footprint {
+        border-top:3px double #fff;
+        color: #fff;
+        font-size: 10px;
+		letter-spacing:1px;
+        margin: 30px 0 0 0;
+        background:url(../images/corners/blacklight.png) repeat 0 0;
+        padding: 0 3px;
+        text-align: center;
+        clear:both;
+		height:17px;
+}
+
+* html .footprint { /*IE6 only*/
+        background:#000;
+  }
+.footprint a {
+        color:#fff;
+
+}
+
+
+/* ++++++++++++++++++             MISC                 ++++++++++++++++++ */
+
+fieldset {padding:5px 10px;}
+th { border:1px solid #000; vertical-align:top; overflow:hidden; padding:3px;}
+td { border:1px solid #000; vertical-align:top; overflow:hidden; padding:3px;}
+.postlist {padding-bottom:20px;}
+
+/* ++++++++++++++++++ Not to much css for the Calendar ++++++++++++++++++ */
+
+#wp-calendar {
+
+        border: 1px solid #999;
+
+
+
+        empty-cells: show;
+        font-size: 11px;
+        width:90%;
+        text-align:center;
+}
+
+#wp-calendar a {text-decoration:underline; font-weight:bold;}
+#wp-calendar a:hover {border:none; color:#fff;}
+#wp-calendar caption {text-align:left;}
+
+
+
+/* ++++++++++++++++++ IMAGES Size & aligment ++++++++++++++++++ */
+
+img.alignleft {
+        float: left;
+        margin:0 10px 5px 0;
+
+}
+
+img.aligncenter {
+        margin-top:10px;
+        margin-bottom:10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+}
+
+img.alignright {
+        float: right;
+        margin:0 0 5px 10px;
+
+}
+
+img.size-thumbnail {
+}
+
+img.size-medium{
+}
+
+img.size-full {
+}
+
+/* ++++++++++++++++++ WORDPRESS Captions & aligment ++++++++++++++++++ */
+
+
+.aligncenter,
+div.aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.alignleft {
+        float: left;
+}
+
+.alignright {
+        float: right;
+}
+
+.wp-caption {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding-top: 4px;
+        margin: 10px;
+}
+
+.wp-caption img {
+        margin: 0;
+        padding: 0;
+        border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+        font-size: 11px;
+        line-height: 17px;
+        padding: 0 4px 5px;
+        margin: 0;
+}
+
+#comments{
+    font-size:12px;
+}

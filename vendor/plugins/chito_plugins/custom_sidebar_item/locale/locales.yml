@@ -1,0 +1,26 @@
+en-US:
+    plugins:
+        custom_sidebar_item:
+            custom_sidebar_item_1:
+                info: Custom Sidebar 1
+            custom_sidebar_item_2:
+                info: Custom Sidebar 2
+            custom_sidebar_item_3:
+                info: Custom Sidebar 3
+            custom_sidebar_item_4:
+                info: Custom Sidebar 4
+            custom_sidebar_item_5:
+                info: Custom Sidebar 5
+zh-CN:
+    plugins:
+        custom_sidebar_item:
+            custom_sidebar_item_1:
+                info: 自定义边栏 1
+            custom_sidebar_item_2:
+                info: 自定义边栏 2
+            custom_sidebar_item_3:
+                info: 自定义边栏 3
+            custom_sidebar_item_4:
+                info: 自定义边栏 4
+            custom_sidebar_item_5:
+                info: 自定义边栏 5

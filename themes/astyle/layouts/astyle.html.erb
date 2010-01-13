@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<%= header %>
+<body>
+<div id="wrapper">
+<div id="nav">
+    <ul id="navlist">
+				    <% navbar.each do |n| -%>
+					<li><%= link_to_nav n %></li>
+				    <% end -%>
+    </ul>
+</div>
+<h1 class="logo"><%= site_title %></h1>
+<h2 class="slogan"><%= site_slogan %></h2>
+	<div id="content">
+	    <%= yield %>	
+	</div>
+<div class="sidebar">
+<ul>
+<% bars_in :foot1 do |b| %>
+    <h2><%= b.title %></h2>
+    <%= content_of(b) %>
+<% end -%>
+</ul>
+</div>
+<div class="sidebar">
+<ul>
+<% bars_in :foot2 do |b| %>
+    <h2><%= b.title %></h2>
+    <%= content_of(b) %>
+<% end -%>
+</ul>
+</div>
+<div class="sidebar">
+<ul>
+<% bars_in :foot3 do |b| %>
+    <h2><%= b.title %></h2>
+    <%= content_of(b) %>
+<% end -%>
+</ul>
+</div>
+<div class="sidebar">
+<ul>
+<% bars_in :foot4 do |b| %>
+    <h2><%= b.title %></h2>
+    <%= content_of(b) %>
+<% end -%>
+</ul>
+</div>
+</div>
+<%= blog_tail %>
+<div class="clear"></div>
+<!-- please leave the credits intact! -->
+<div id="footer">
+<p>AStyle Theme by <a href="http://overdose40.mayersky.com/">greedz</a>, based on <a href="http://oriol.f2o.org/">Qwilm!</a> by Oriol Sanchez</p>
+<p><%= footer %></p>
+</div>
+
+</body></html>

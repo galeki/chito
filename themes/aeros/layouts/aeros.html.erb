@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<%= header %>
+<% unless @user.theme_aeros_background.to_s.blank? -%>
+
+<style>
+body {
+        background: url(<%= theme_path :theme => :aeros, :type => :images, :file => "#{@user.theme_aeros_background}.jpg" %>) no-repeat 0 0 #fff;
+        background-attachment:fixed;
+        background-position: bottom center;
+}
+</style>
+<% end -%>
+<body id="<%= @theme %>">
+
+<div id="rap">
+
+
+<div id="headmenu">
+        <ul>
+	    <% navbar.each do |bar| -%>
+		    <li class="page_item <%= "current_page_item" if current(bar)%>"><%= link_to_nav bar %></li>
+	    <% end -%>
+	</ul>
+</div>				
+				
+
+<div class="headcornerwrap">
+<div class="cornerleft">
+</div><!-- end cornerleft -->
+<div class="cornercontent">
+</div><!-- end cornercontent -->
+<div class="cornerright">
+</div><!-- end cornerright -->
+</div><!-- end headcornerwrap -->
+
+
+<div id="header">
+
+
+<div id="headerleft">
+<h1><%= site_title %></h1>
+<h2><%= site_slogan %></h2>
+</div><!-- end headerleft -->
+
+<div id="headerright">
+<%= link_to "", feed_path %>
+</div><!-- end headerright -->
+
+</div><!-- end header -->
+
+<div class="headcornerwrapbottom">
+<div class="cornerleftbottom">
+</div><!-- end cornerleftbottom -->
+<div class="cornercontentbottom">
+</div><!-- end cornercontentbottom -->
+<div class="cornerrightbottom">
+</div><!-- end cornerrightbottom -->
+</div><!-- end headcornerwrap -->
+
+<div id="content">
+
+
+<%= yield %>
+
+<!-- begin footer -->
+</div><!-- end content -->
+
+
+<!-- begin sidebar -->
+
+<div id="sidebarwrap">
+<div class="sidecornerwrap">
+<div class="sidecornerleft">
+</div><!-- end sidecornerleft -->
+<div class="sidecornercontent">
+</div><!-- end sidecornercontent -->
+<div class="sidecornerright">
+</div><!-- end sidecornerright -->
+</div><!-- end sidecornerwrap -->
+
+
+<div id="sidebar">
+
+<ul>
+    <% sidebar do |s| -%>
+	<li id="<%= s.id %>">
+	    <h3><%= title_of(s) unless s.id == :search || s.id == :head%></h3>
+	    <ul>
+		<li>
+		    <%= content_of(s) %>
+		</li>
+	    </ul>
+	
+	</li>
+    <% end -%>
+</ul>
+
+</div><!-- end sidebar -->
+
+<div class="sidecornerwrapbottom">
+<div class="sidecornerleftbottom">
+</div><!-- end sidecornerleftbottom -->
+<div class="sidecornercontentbottom">
+</div><!-- end sidecornercontentbottom -->
+<div class="sidecornerrightbottom">
+</div><!-- end sidecornerrightbottom -->
+</div><!-- end sidecornerwrapbottom -->
+</div><!-- end sidebarwrap -->
+<!-- please leave the footprint as it is as a contribution to the theme designer -->
+<%= blog_tail%>
+<p class="footprint"><%= footer %> | Theme: <a href="http://thebuckmaker.com/aerostwo">Aeros 2.0</a> by <a href="http://thebuckmaker.com">TheBuckmaker.com</a>
+</cite></p>
+
+</div><!-- end rap -->
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+<!--[if lt IE 7]>
+<style type="text/css" media="screen">
+#menuh{float:none;}
+body{behavior:url(csshover.htc); font-size:75%;}
+#menuh ul li{float:left; width: 100%;}
+#menuh a{height:1%;font:normal 1em/1.6em "Trebuchet MS", helvetica, arial, sans-serif;}
+</style>
+<![endif]-->
+<body id="<%= @theme %>">
+<div id="container">
+<div id="top">
+<h1><%= site_title %></h1>
+<div id="gem_slogan"><%= site_slogan %></div>
+</div>
+
+<div id="menuh-container">	
+<div id="menuh">
+		
+				    <% navbar.each do |n| -%>
+					<ul><li><%= link_to_nav n %></li></ul>
+				    <% end -%>
+
+</div>
+</div>
+
+<div id="leftnav">
+<div id="nav">
+    <% sidebar do |item| %>
+	    <h3><%= title_of(item) %></h3>
+	    <%= content_of(item) %>
+    <% end -%>
+</div>
+</div>
+
+<div id="content">
+
+<%= yield %>
+</div>
+<%= blog_tail %>
+
+<div id="footer">
+
+	  <%= footer %> |
+  &copy; 2007 <a href="http://www.linuxgem.org">LinuxGem</a> | Design by <a href="http://www.mitchinson.net"> www.mitchinson.net</a></div>
+
+</div>
+</body>
+</html>

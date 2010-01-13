@@ -1,0 +1,16 @@
+en-US:
+    plugins:
+        custom_navbars:
+            name: Custom Navbars
+            ex_site: "If the navbar points to a external site, like www.google.com, the url must include http:// ."
+            title: Title
+            url: URL
+
+zh-CN:
+    plugins:
+        custom_navbars:
+            name: 自定义导航栏
+            ex_site: "如果导航栏指向一个外部站点，比如 www.google.com，那么 url 要包含 http://"
+            title: 标题
+            url: URL
+

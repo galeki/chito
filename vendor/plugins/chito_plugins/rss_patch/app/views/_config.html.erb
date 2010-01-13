@@ -1,0 +1,29 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.rss_patch.intro") %></div>
+<p>
+<%= t("plugins.rss_patch.intro_content") %>
+</p>
+<p><%= t("plugins.rss_patch.intro_content1") %></p>
+</div>
+<style>
+
+</style>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t("plugins.rss_patch.settings") %></div>
+<style>
+h3 {font-size:12px;}
+</style>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'rss_patch'} do |f|%>
+    <h3><%= t("plugins.rss_patch.before_content") %>:</h3>
+    <%= f.text_area :patch_before_rss_content, :style => "font-size:12px;width:60%;height:120px;"  %>
+    <br/>
+
+    <h3><%= t("plugins.rss_patch.after_content")%>:</h3>
+    <%= f.text_area :patch_after_rss_content, :style => "font-size:12px;width:60%;height:120px;"  %>
+    <br/>
+
+    <%= submit_tag t("plugins.rss_patch.save"), :class =>'submit' %>
+<% end %>
+</div>

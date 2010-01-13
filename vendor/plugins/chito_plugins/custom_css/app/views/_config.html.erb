@@ -1,0 +1,15 @@
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.custom_css.intro" %></div>
+<p><%= t "plugins.custom_css.config_title" %></p>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><%= t "plugins.custom_css.custom_css" %></div>
+<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'custom_css'} do |f|%>
+    <label><%= t "plugins.custom_css.custom_css" %></label>
+    <%= f.text_area 'custom_css', :style => "font-size:12px;width:80%;height:200px;" %>
+    <br/>
+    <%= submit_tag t "plugins.custom_css.save", :class =>'submit' %>
+<% end %>
+</div>

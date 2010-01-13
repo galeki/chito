@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+<body>
+<div id="header">
+	<div id="topmenu">
+	</div>
+	<div id="logo">
+		<h1><%= site_title %></h1>
+		<h2><%= site_slogan %></h2>
+	</div>
+</div>
+<div id="menu">
+	<ul>
+				    <% navbar.each do |n| -%>
+					<li><%= link_to_nav n %></li>
+				    <% end -%>
+	</ul>
+</div>
+<div id="content">
+	<div id="main">
+	    <%= yield %>
+	</div>
+	<div id="sidebar">
+		<% sidebar do |i| -%>
+		    <div  class="boxed">
+			    <h2 class="title"><%= title_of(i) %></h2>
+			    <div class="content">
+				<%= content_of(i) %>
+			    </div>
+		    </div>
+		<% end %>
+	</div>
+</div>
+<%= blog_tail %>
+<div id="footer">
+	<p id="legal"><%= footer %> Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+</div>
+</body>
+</html>

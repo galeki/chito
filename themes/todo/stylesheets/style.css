@@ -1,0 +1,159 @@
+/*
+Theme Name: Toto
+Theme URI: http://bezdar.ru/palyground/toto
+Version: 1.0b
+Author: Zhulanov
+Author URI: http://bezdar.ru/
+*/
+/*************************************
+ +Containers
+ *************************************/
+body{
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	color: #555555;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	line-height: 1.5
+}
+
+#header{
+	margin-bottom: 10px;
+	padding: 40px;
+	padding-bottom: 0;
+	background: url(images/header_bg.gif) #FFFFFF repeat-x;
+	height: 185px
+}
+
+#content{
+	padding: 40px;
+	padding-top: 2px;
+	float: left;
+	margin-left: 1px;
+	width: 70%; /*	border: 1px solid black;*/
+	font-size: 13px
+}
+
+#sidebar{
+	float: left;
+	padding: 40px;
+	padding-top: 0;
+	width: 12%;
+	font-size: 11px /*background:transparent url(./images/sidebar_bg.gif) repeat-y;*/
+}
+
+#footer{
+	float: right;
+	clear: both;
+	padding-right: 70px;
+	padding-bottom: 5px;
+	color: #888888;
+	font-size: 9px;
+	text-align: right
+}
+
+.infobox{
+	padding: 8px;
+	background: #7CC523;
+	color: #FFFFFF;
+	font-size: 11px
+}
+
+/*************************************
+ +Hn and p
+ *************************************/
+h1, h2, h3{
+	margin: 0;
+	padding-bottom: 5px;
+	padding-top: 7px;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	letter-spacing: 0px
+}
+
+#header h1{
+	margin: 0;
+	padding: 0;
+	color: #7CC523;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 28px
+}
+
+#header h1 a{ color: #7CC523 }
+
+#header h1 a:hover{ color: #B50443 }
+
+#header p{
+	margin: 0;
+	padding-left: 1px;
+	margin-top: -2px;
+	color: #AAAAAA;
+	font-size: 11px
+}
+
+.entrytitle h2{ font-size: 17px; line-height: 1.0em }
+
+.entrytitle h2 a { color: #7CC523 }
+
+.entrytitle h2 a:hover{ color: #58BBEB }
+
+.entrytitle h3{ color: #6F6F6F; font-size: 11px }
+
+#sidebar h2{ margin-bottom: 5px; color: #555555; font-size: 15px }
+
+/*************************************
+ +Entry
+ *************************************/
+.entry{ margin-bottom: 3em }
+
+.entrybody{ font-size: 12px }
+
+.entrymeta{ padding-top: 5px; font-size: 11px }
+
+.postedby{
+	padding: 3px;
+	padding-left: 20px;
+	background: url(images/user.gif) #FFFFFF no-repeat
+}
+
+.filedto{
+	padding: 3px;
+	padding-left: 20px;
+	background: url(images/post.gif) #FFFFFF no-repeat
+}
+
+.commentslink{
+	padding: 3px;
+	padding-left: 20px;
+	background: url(images/packaged.gif) #FFFFFF no-repeat
+}
+.posttags{
+	padding: 3px;
+	padding-left: 20px;
+	background: url(images/tag.gif) #FFFFFF no-repeat
+}
+
+
+/*************************************
+ +Sidebar
+ *************************************/
+#sidebar ul{ margin: 0; padding: 0; list-style-type: none }
+
+#sidebar ul li{
+	border-bottom: 1px dotted #DDDDDD;
+	margin-bottom: 0.3em;
+	padding: 0.3em
+}
+
+/*************************************
+ +Misc
+ *************************************/
+a{ color: #557799; text-decoration: none }
+
+a:hover{ color: #CC0000 }
+
+#bulletin {
+    width:25%;
+    border:1px solid #ccc;
+}

@@ -1,0 +1,17 @@
+en-US:
+    plugins:
+       comment_gravatar: 
+            intro: Intro
+            intro_content: Show gravatar in comment.
+            settings: Settings
+            save: Save
+            enable_gravatar: Enable gravatar in comment.
+zh-CN:
+    plugins:
+       comment_gravatar: 
+            name: 评论 Gravatar 头像
+            intro: 简介
+            intro_content: 在评论中显示 Gravatar 小图标。
+            settings: 设置
+            save: 保存
+            enable_gravatar: 显示 Gravatar 小图标

@@ -1,0 +1,22 @@
+en-US:
+    plugins:
+        rss_patch:
+            name: 
+            intro: Introduction
+            intro_content: Allow you add custom content before or after the rss content.
+            intro_content1: You can insert copyright info or ad.
+            settings: Settings
+            before_content: Before the rss content
+            after_content: After the rss content
+            save: Save
+zh-CN:
+    plugins:
+        rss_patch:
+            name: RSS 补丁
+            intro: 简介
+            intro_content: RSS 补丁插件可以在 RSS 内容的之前或之后插入自定义内容。
+            intro_content1: 你可以插入广告、版权声明等信息。
+            settings: 设置
+            before_content: RSS 正文前
+            after_content: RSS 正文后
+            save: 保存

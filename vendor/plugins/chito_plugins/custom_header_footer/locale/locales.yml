@@ -1,0 +1,29 @@
+en-US:
+    plugins:
+       custom_header_footer: 
+            name: Custom Html Header and Footer
+            config_title: Set the custom page header and footer here
+            intro: Introduction
+            save: Save
+            custom_header: Custom Header
+            enable_custom_header: Enable Custom Header
+            custom_header_intro: 'These code will be insert before the html body element.'
+            custom_footer_intro: 'These code will replace the page footer content.'
+            custom_footer: Custom Footer
+            enable_custom_footer: Enable Custom Footer
+            option: Options
+
+zh-CN:
+    plugins:
+       custom_header_footer: 
+            name: 自定义页面 Header 和 Footer
+            config_title: 自定义页面的 Header 和 Footer 区域代码
+            intro: 介绍
+            save: 保存
+            custom_header: 自定义 Header
+            enable_custom_header: 激活自定义 Header
+            custom_header_intro: '代码将插入到页面 html 中 body 元素之前。'
+            custom_footer_intro: '代码将替换页面的 Footer 区域的内容。'
+            custom_footer: 自定义 Footer
+            enable_custom_footer: 激活自定义 Footer
+            option: 设置

@@ -1,0 +1,19 @@
+en-US:
+    plugins:
+        highlight_search_word:
+            name: Highlight Search Word
+            intro: Introduction
+            intro_content: Highlight the search word.
+            enable_it: Enable search word highlighter
+            settings: Settings
+            save: Save
+
+zh-CN:
+    plugins:
+        highlight_search_word:
+            name: 高亮搜索关键字
+            intro: 简介
+            intro_content: 高亮显示搜索中的关键字。
+            enable_it: 激活高亮搜索关键字
+            settings: 设置
+            save: 保存

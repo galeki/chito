@@ -1,0 +1,18 @@
+en-US:
+    plugins:
+       auto_js_latex: 
+            name: Inline TeX
+            intro: Intro
+            intro_content: 'Auto trans [tex] ... [/tex] into TeX pics.' 
+            enable: Enable Inline Tex
+            settings: Settings
+            save: Save
+zh-CN:
+    plugins:
+       auto_js_latex: 
+            name: 自动 Tex 公式转换
+            intro: 简介
+            intro_content: '自动将文章中 [tex] ... [/tex] 中的内容转成公式图片。'
+            enable: 激活自动 Tex 公式转换
+            settings: 设置
+            save: 保存

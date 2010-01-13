@@ -1,0 +1,26 @@
+<% posts_cache do -%>
+
+<% posts do -%>
+<div class="entry">
+	<div class="entrytitle">
+	<h2><%= link_to_post %></h2>
+	<h3><%= post_time %></h3>
+	</div>
+	
+	<div class="entrybody">
+	<%= post_brief %>
+	</div>
+	<p class="read-more align-right">					
+	    <%= link_to_read_more %>
+	</p>
+	<div class="entrymeta">
+	<span class="postedby">Posted by <%= post_writer %></span>
+	<span class="filedto">Filed in <%= link_to_post_category %></span>
+	<span class="posttags">Tagged by <%= link_to_post_tags %></span>
+	<span class="commentslink"><%= link_to_post(:text => "Comments[#{@post.comments.size}]", :anchor => 'comments') %></span>
+	</div>
+</div>
+<% end -%>
+<%= pagilinks %>
+
+<% end -%>

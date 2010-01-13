@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+<%= header %>
+<body>
+
+<!-- start header -->
+<div id="header">
+	<div id="menu">
+		<ul>
+		    		    <% navbar.each do |n| -%>
+					<li class="<%= current(n) ? "current_page_item" : "page_item"  %>"><%= link_to_nav n %></li>
+				    <% end -%>
+		</ul>
+	</div>
+</div>
+<div id="logo">
+	<h1><%= site_title %></h1>
+	<h2><%= site_slogan %></h2>
+	<!-- <p>» Lorem / Ipsum / <strong>Dolorem</strong></p>-->
+</div>
+<!-- end header -->
+
+<hr/>
+
+<!-- start page -->
+<div id="page">
+
+
+<!-- start content -->
+<div id="content">
+    <%= yield %>
+</div>
+<!-- end content -->
+
+<!-- start sidebar one -->
+<div id="sidebar1" class="sidebar">
+	<ul>
+		    <% bars_in :left do |b| -%>
+			    <li>
+				<h2><%= b.title %></h2>
+				<%= content_of(b) %>
+			    </li>
+		    <% end -%>		
+	</ul>
+</div>
+<!-- end sidebar one -->
+	
+
+
+<div id="sidebar2" class="sidebar">
+	<ul>
+		    <% bars_in :right do |b| -%>
+			    <li>
+				<h2><%= b.title %></h2>
+				<%= content_of(b) %>
+			    </li>
+		    <% end -%>		
+	</ul>
+</div>
+
+
+
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+
+<hr/>
+<%= blog_tail %>
+
+<!-- start footer -->
+<div id="footer">
+	<p>
+	    &nbsp;•&nbsp; Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>
+	</p>
+	<p>
+	    <%= footer %>
+	</p>
+</div>
+<!-- end footer -->
+
+ 
+</body></html>
