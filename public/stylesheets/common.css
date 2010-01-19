@@ -484,3 +484,8 @@ img.trackbacks{
     margin-top:40px;
     text-align:center;
 }
+
+span.latex_eq img{
+    vertical-align:middle;
+}
+

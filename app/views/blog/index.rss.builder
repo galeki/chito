@@ -15,7 +15,7 @@ xml.rss "version" => "2.0",
 		    end
 		xml.tag! 'wfw:commentRss', formatted_post_url(post, :rss)
 		xml.pubDate post.created_at.to_s(:rfc822)
-		xml.guid post_url(post)
+		xml.guid formatted_post_url(post, :html, :subdomain => post.user.name)
 	    end
 	end
     end

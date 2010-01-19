@@ -50,7 +50,7 @@ function set_form()
 function Ok()
 {
 	var slang_obj = document.getElementById('slang');
-	var code_text = $("#code").val().replace("<","&lt;").replace(">","&gt;");
+	var code_text = $("#code").val().replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
 	var html = "<pre class='brush: " + slang_obj.value + "\'>" + code_text + "</pre>";
 	//alert(html);
@@ -81,6 +81,7 @@ function Ok()
 				<option value="java">Java</option>
 				<option value="javafx">JavaFX</option>
 				<option value="latex">LaTeX</option>
+				<option value="lisp">LISP</option>
 				<option value="lua">Lua</option>
 				<option value="matlab">Matlab</option>
 				<option value="perl">Perl</option>
