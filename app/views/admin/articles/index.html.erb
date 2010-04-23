@@ -1,0 +1,49 @@
+<% @title = "" -%>
+<%= render :partial => "admin/sub_menu_for_root" %>
+<%= render_flash %>
+<div class="center">
+<% form_tag "", :onsubmit => "return false;" do -%>
+
+<% if @posts.size >0 -%>
+<table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed checkbox" style=""><%= check_box_tag "trigger", true, false, :onclick => "checkall(this.name, this.form)" %></th>	    
+	    <th class="helpHed"><%= t(:username, :scope => [:txt, :view, :admin, :users]) %></th>
+	    <th class="helpHed" style="text-align:left;"><%= t :title, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
+	    <th class="helpHed"><%= t :comments, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed">Rank</th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for post in @posts %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
+        <td class="user_name_col"><%= link_to post.user.name, root_path(:subdomain => post.user.name) %></td>
+	    <td class="title_col"><%= link_to post_title(post), formatted_post_path(post, :html, :subdomain => post.user.name), :class => "post_title_link"  %></td>
+	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
+	    <td class="comments_col"><%= link_to "(#{post.comments.size})", formatted_post_path(post, :html, :anchor => "comments", :subdomain => post.user.name), :class => "post_comments", :target => '_blank' %></td>
+	    <td class="category_col">
+                <%= button_to_remote "-", :url => decrease_rank_admin_article_path(post) %>
+                    <span id="<%= "post#{post.id}_rank" %>"><%= post.rank %></span>
+                <%= button_to_remote "+", :url => increase_rank_admin_article_path(post) %>
+            </td>
+	    <td class="action_col">
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(post, :html, :subdomain => post.user.name), :class => "read", :target => '_blank' %></td>
+	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_post_path(post), :class => "edit" %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_post_path(post, _params), :class => "delete", :method => :delete, 
+	    :confirm => t(:delete_post, :scope => [:txt, :view, :admin, :posts], :title => post.title) %></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+	    <div class="delete_selected">
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :posts]), :url => destroy_selected_admin_posts_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "selected_submit" %>
+	    </div>
+<% end -%>
+<div id="pagilinks">
+<%= will_paginate @posts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% end -%>
+</div>

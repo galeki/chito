@@ -1,4 +1,4 @@
-class Admin::MessagesController < Admin::CommentsController
+class Admin::MessagesController < Admin::FeedbacksController
 
     def index
 	@messages = @user.find_feedbacks :type => :messages, :keyword => params[:keyword],

@@ -1,4 +1,4 @@
-class Admin::CommentsController < Admin::BaseController
+class Admin::CommentsController < Admin::FeedbacksController
 
     def index
 	@comments = @user.find_feedbacks :type => :comments, :keyword => params[:keyword],
@@ -41,22 +41,4 @@ class Admin::CommentsController < Admin::BaseController
 	redirect_to :action => "settings"
     end
 
-    private
-
-    def destroy_ids(ids)
-	if ids
-	    for comment in @user.feedbacks.find(ids)
-		clean_email(comment)
-		comment.destroy
-	    end
-	end	
-    end
-
-    def clean_email(comment)
-	article = @user.articles.find(comment.article_id) rescue nil
-	if article && article.email && article.emails.has_key?(comment.email)
-	    article.emails.delete(comment.email)
-	    article.save
-	end
-    end
 end

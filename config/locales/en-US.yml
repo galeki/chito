@@ -133,6 +133,9 @@ en-US:
           no_delete: "'Admin' and 'Default' groups should not be deleted"
         users:
           user_deleted: User was successfully deleted
+        feedbacks:
+          feedback_deleted: Feedback was successfully deleted
+          feedbacks_deleted: Feedbacks was successfully deleted
     helper: 
       posts: 
         message_0: Read more
@@ -160,6 +163,8 @@ en-US:
           message_3: Login
           message_4: Submit
           comment_notifier: Notify follow-up comments via e-mail
+          login_as: Login as
+          change_user: Change Account
         _comment:
           said: "said:"
       blog: 
@@ -353,6 +358,7 @@ en-US:
           message_0: Site
           message_1: User groups
           message_2: Users
+          feedbacks: Feedbacks
         categories:
           saving: Saving
           create_category: Create Category
@@ -536,6 +542,11 @@ en-US:
           use: Use
         themesettings:
           no_theme_settings: Current Theme {{theme}} has no settings.
+        feedbacks:
+          manage_feedbacks: Manage Feedbacks
+          delete_feedback?: Delete this feedback?
+          feedback_contain: Feedbacks contains {{word}}
+          no_match: No Match
       site: 
         setup: 
           message_8: Single user

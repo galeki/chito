@@ -1,62 +1,54 @@
-class Admin::ArticlesController <  Admin::BaseController
-    include Admin::ArticleControllerPlugin
+class Admin::ArticlesController < Admin::BaseController
+    before_filter :chito_admin_authorize    
 
-  def new
-    @article = Article.new
-    @article.prepare(@user, params)    
-    @article.is_draft = true
-    @article.auto_brief = true
-    @categories = @user.categories
-    @selected = @user.categories.find(:first).id
-    @article.save
-    redirect_to edit_admin_draft_path(@article)
+  def index
+    @posts = Article.paginate :per_page => 30, :page => params[:page],
+                             :conditions => ["articles.bit_opt = 0"], 
+                             :include => [:comments, :category, :user],
+                             :order => 'articles.created_at DESC'
   end
 
-  def create
-    @article = Article.new
-    @article.prepare(@user, params)
-    do_something :before_article_save
-    @article.make_brief
+  def increase_rank
+    @post = Article.find(params[:id])
+    @post.increment!(:rank)
+
+    render :update do |page|
+        page.replace_html "post#{@post.id}_rank", @post.rank.to_s
+        page.visual_effect :highlight, "post#{@post.id}_rank", :startcolor => '#ffff00',
+                           :endcolor => '#ffffff',
+                           :duration => 4.0
+    end
   end
 
-  def edit
-    @article = @user.articles.find(params[:id])
-    @categories = @user.categories
-    @selected = @article.category.id if @article.category
+  def decrease_rank
+    @post = Article.find(params[:id])
+    @post.decrement!(:rank)
+
+    render :update do |page|
+        page.replace_html "post#{@post.id}_rank", @post.rank.to_s
+        page.visual_effect :highlight, "post#{@post.id}_rank", :startcolor => '#ffff00',
+                           :endcolor => '#ffffff',
+                           :duration => 4.0
+    end
   end
 
-  def update
-    @article = @user.articles.find(params[:id])
-    @article.prepare(@user, params)
-    do_something :before_article_save     
-    @article.make_brief
-  end
-
-  def destroy
-    @article = @user.articles.find(params[:id])
-    @article.destroy
-  end
-
-  def destroy_selected
-    if params[:ids]
-	for article in @user.articles.find(params[:ids])
-	    article.destroy
+  def set_group
+    unless session[:user_id] == params[:id]
+	@u = User.find(params[:id])
+	@u.group_id = params[:group]
+	@u.save
+	render :update do |page|
+	    page.visual_effect :highlight, "user#{@u.id}_group", :startcolor => '#ffff00',
+			       :endcolor => '#ffffff',
+			       :duration => 3.0
 	end
     end
   end
 
-  private
-  
-  def unless_continue_edit
-    if params[:continue_editing]
-	@article.is_draft = true
-	@article.save
-	notice_stickie t("txt.controller.admin.articles.draft_saved", :time => Time.now.to_s(:update))
-	redirect_to edit_admin_draft_path(@article)
-    else
-	@article.save
-	yield
-    end
+  def destroy
+    @user = User.find(params[:id])
+    notice_stickie t(:user_deleted, :scope => [:txt, :controller, :admin, :users]) if @user.destroy
+    redirect_to admin_users_path   
   end
 
 end

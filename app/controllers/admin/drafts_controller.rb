@@ -1,4 +1,4 @@
-class Admin::DraftsController <  Admin::ArticlesController
+class Admin::DraftsController <  Admin::ArticleBaseController
     after_filter(:only => [:create, :update]) {|c| c.chito_cache_expire(:type => "posts_index/*")}
 
     def index

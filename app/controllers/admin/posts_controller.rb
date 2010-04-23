@@ -1,4 +1,4 @@
-class Admin::PostsController <  Admin::ArticlesController
+class Admin::PostsController <  Admin::ArticleBaseController
     after_filter(:except => :index) {|c| c.chito_cache_expire(:type => "posts_index/*")}
     
     def index

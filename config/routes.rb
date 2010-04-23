@@ -48,7 +48,8 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :categories, :has_many => :posts
 	map.resources :messages
 	map.formatted_comments '/comments.:format', :controller => 'comments', :action => 'index'
-	map.tag_posts '/tag/:tag_name', :controller => 'posts', :action => 'index'
+	#map.tag_posts '/tag/:tag_name', :controller => 'posts', :action => 'index'
+	map.tag_posts '/tag/*tag_name', :controller => 'posts', :action => 'index'
 	#
 	
 	#In place edit jQuery
@@ -81,6 +82,8 @@ ActionController::Routing::Routes.draw do |map|
 			    :collection => {:set_position => :post}
 	    admin.resources :files, 
 			    :collection => {:list => :get, :delete_file => :post, :delete_dir => :post}
+	    admin.resources :feedbacks, :collection => {:destroy_selected => :delete} 
+	    admin.resources :articles, :member => {:increase_rank => :post, :decrease_rank => :post}#, :collection => {:destroy_selected => :delete} 
 	end
 	#map.admin_files "/admin/files/:action", :controller => "admin/files"
 

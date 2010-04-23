@@ -5,20 +5,29 @@
 				:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
 				) do%>
 		<div id="comment_error" style="display: none;"></div>
-               <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
-		<input id="comment_writer" name="comment[writer]" size="10" type="text" 
-			value="<%= session[:user_nick] || cookies[:comment_writer] || '' %>"  
-			<% if session[:user_name] %>disabled<% end %> /> *
-		<%= (link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]), :controller => "/blog", :action => 'login', :jump => request.url) unless session[:user_name] %> 
-		<br/>
-		<% unless session[:user_name] %>
+
+ 
+		
+		<% if session[:user_name] %>
+		    <% t(:login_as, :scope => [:txt, :view, :comments, :_form]) %> <b><%= session[:user_name] %></b>
+		    <%= link_to t(:change_user, :scope => [:txt, :view, :comments, :_form]),
+				 :controller => "/blog", :action => 'login', :jump => request.url%> 
+		<% else %>
+               	    <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
+		    <input id="comment_writer" name="comment[writer]" size="10" type="text" value="<%= cookies[:comment_writer] %>" /> 
+		    <%= link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]),
+				 :controller => "/blog", :action => 'login', :jump => request.url%> 
 		    <label>E-mail:</label>
 		    <%= text_field 'comment','email', :value => cookies[:comment_email]  %> *
 		    <br/>
 		    <label>Web:</label>
 		    <%= text_field 'comment','homepage', :value => cookies[:comment_homepage] || 'http://' %>
 		    <br/>
+		    <label>Twitter:</label>
+		    <%= text_field 'comment','twitter', :value => cookies[:comment_twitter], :size => 12 %>
+		    <br/>
 		<% end %>
+
 		<div id="comment_editor">
 		  <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
 		  <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>

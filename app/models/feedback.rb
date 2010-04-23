@@ -17,15 +17,21 @@ class Feedback < ActiveRecord::Base
 	self.request = request
 	self.pass = true
 	if session[:user_name]
+	    user = User.find(session[:user_id])
+	    if user
+	    	self.email = user.email
+	    	self.twitter = user.twitter 	    
+	    end	
 	    self.writer = session[:user_nick] 
 	    self.user_name = session[:user_name]
-	    self.email = User.find(session[:user_id]).email
 	    self.user_post = true
 	    self.post_by = session[:user_id]
 	end
+	self.twitter = self.twitter.split('/').last unless self.twitter.blank?
 	cookies[:comment_writer] = {:value => self.writer, :expires => 365.days.from_now, :domain => request.domain}
 	cookies[:comment_homepage] = {:value => self.homepage, :expires => 365.days.from_now, :domain => request.domain}
 	cookies[:comment_email] = {:value => self.email, :expires => 365.days.from_now, :domain => request.domain}
+	cookies[:comment_twitter] = {:value => self.twitter, :expires => 365.days.from_now, :domain => request.domain}
     end
 
     def prepare_trackback(request, params)

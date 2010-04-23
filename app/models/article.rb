@@ -19,45 +19,45 @@ class Article < ActiveRecord::Base
 	include ArticlePlugin
 
     def self.new_posts
-	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
+	    find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
     end
 
     def title
-	super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
+	    super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
     end
 
     def prepare(user, params)
-	self.bit_opt_will_change!
-	self.attributes = params[:article]
-	self.user_id = user.id
-	self.category = user.categories.find(params[:category] || :first)
+	    self.bit_opt_will_change!
+	    self.attributes = params[:article]
+	    self.user_id = user.id
+	    self.category = user.categories.find(params[:category] || :first)
     end
 
     def make_brief
       return unless self.auto_brief
       index = self.content.index('<!--more-->')
       if index
-	s = content[0,index]
-	self.has_more = true
-	self.brief = close_html(s)
+        s = content[0,index]
+        self.has_more = true
+        self.brief = close_html(s)
       else
-	self.has_more = false
+        self.has_more = false
       end
     end
 
     def trackback_key
-	str = "#{self.title}-#{self.created_at}-#{self.user_id}-#{self.trackbacks.size / 5}"
-	Digest::SHA1.hexdigest(str)
+        str = "#{self.title}-#{self.created_at}-#{self.user_id}-#{self.trackbacks.size / 5}"
+        Digest::SHA1.hexdigest(str)
     end
 
     def trackback_params
-	{:title => self.title,
-	 :excerpt => helpers.truncate(helpers.strip_tags(self.brief), :length => 200),
-	 :blog_name => self.user.title}
+        {:title => self.title,
+            :excerpt => helpers.truncate(helpers.strip_tags(self.brief), :length => 200),
+            :blog_name => self.user.title}
     end
 
     def brief
-	(self.auto_brief && !self.has_more) ? self.content : "<p>#{super}</p>"
+        (self.auto_brief && !self.has_more) ? self.content : "<p>#{super}</p>"
     end
 
     def prev
@@ -65,28 +65,28 @@ class Article < ActiveRecord::Base
     end
 
     def next
-	self.category.posts.find(:first, :conditions => ["created_at > ? and bit_opt = 0 ", self.created_at], :order => 'id') if self.category
+        self.category.posts.find(:first, :conditions => ["created_at > ? and bit_opt = 0 ", self.created_at], :order => 'id') if self.category
     end
 
     def to_xml(options={})
-	only = {:only => [:title, :created_at, :content, :writer]}
-	super only.merge(options)
+        only = {:only => [:title, :created_at, :content, :writer]}
+        super only.merge(options)
     end
 
     private
 
     def close_html(html)
-	stream = html.scan(/<\s*[\/]*[^>^\/]+>/).map {|x| x[/<\s*([^>^\s]*)[^>]*>/, 1]}
-	stack = []
-	stream.each do |x|
-	    if x =~ /^\//
-		stack.pop if x[1..-1] == stack.last
-	    else
-		stack.push x
+        stream = html.scan(/<\s*[\/]*[^>^\/]+>/).map {|x| x[/<\s*([^>^\s]*)[^>]*>/, 1]}
+        stack = []
+        stream.each do |x|
+	        if x =~ /^\//
+	            stack.pop if x[1..-1] == stack.last
+	        else
+                stack.push x
+	        end
 	    end
-	end
-	stack.reverse.each {|x| html << "</#{x}>\n"}
-	html
+        stack.reverse.each {|x| html << "</#{x}>\n"}
+        html
     end 
 
 end

@@ -1,4 +1,4 @@
-class Admin::PagesController <  Admin::ArticlesController
+class Admin::PagesController <  Admin::ArticleBaseController
 
     def index
 	@pages = @user.find_articles(:type => :pages, :page => params[:page], :per_page => 20)

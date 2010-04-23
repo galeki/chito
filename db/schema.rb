@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091213235937) do
+ActiveRecord::Schema.define(:version => 20100422150320) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20091213235937) do
     t.integer  "category_id"
     t.string   "permalink"
     t.datetime "last_commented_at"
+    t.integer  "rank",              :default => 0
   end
 
   add_index "articles", ["bit_opt"], :name => "index_articles_on_bit_opt"
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20091213235937) do
     t.string   "audit_by"
     t.string   "ip"
     t.integer  "post_by"
+    t.string   "twitter"
   end
 
   add_index "feedbacks", ["article_id"], :name => "index_comments_on_article_id"
@@ -76,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20091213235937) do
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "url"
-    t.string   "info",       :default => "-- No Info --"
+    t.text     "info"
     t.datetime "created_at"
     t.integer  "user_id"
     t.integer  "position",   :default => 0
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20091213235937) do
     t.string   "language"
     t.string   "reset_password_key"
     t.datetime "reset_password_key_expires_at"
+    t.string   "twitter"
   end
 
   add_index "users", ["bit_opt"], :name => "index_users_on_bit_opt"

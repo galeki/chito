@@ -33,13 +33,13 @@ module BlogControllerPlugin
 	    if @user.show_new_comments && !sidebar_cache_enable(:new_comments)
 		num = @user.new_comments_number.to_i
 		@new_comments = @user.new_comments(num)	    
-		@comment_cut = @user.new_comments_cut.to_num(13)
+		@comment_cut = @user.new_comments_cut.to_num(20)
 	    end
 
 	    if @user.show_new_messages && !sidebar_cache_enable(:new_messages)
 		num = @user.new_messages_number.to_i
 		@new_messages = @user.new_messages(num)
-		@message_cut = @user.new_messages_cut.to_num(13)
+		@message_cut = @user.new_messages_cut.to_num(20)
 	    end
 
 	    if @user.show_links && !sidebar_cache_enable(:links)

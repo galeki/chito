@@ -21,7 +21,7 @@
 <%= t(:pic_format, :scope => [:txt, :view, :admin, :settings]) %>
 <label><%= t(:pic_info, :scope => [:txt, :view, :admin, :settings]) %>:</label>
 <% form_for :user, :url => {:action => 'avatar_info'} do |f| %>
-    <%= f.text_field 'info', :size => '40' %>
+    <%= f.text_field 'info', :size => '50' %>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
 </div>
@@ -46,7 +46,7 @@
     <%= f.text_field 'title', :size => '25'%>
     <br/>
     <label><%= t(:slogan, :scope => [:txt, :view, :admin, :settings]) %>:</label>
-    <%= f.text_field 'slogan', :size => '40'%><br/> 
+    <%= f.text_field 'slogan', :size => '50'%><br/> 
     <%= f.check_box :show_slogan_in_title, :class => "ck" %> <%= t("txt.view.admin.settings.show_slogan_in_title") %>
     <br/>
     <label><%= t(:nick, :scope => [:txt, :view, :admin, :settings]) %>:</label>
@@ -54,6 +54,8 @@
     <br/>
     <label >E-mail:</label>
     <%= f.text_field 'email', :size => '25' %>
+    <label >Twitter:</label>
+    <%= f.text_field 'twitter', :size => '15' %>
     <label >Language:</label>
     <%= f.select :language, LANGUAGES %>
     <br/>

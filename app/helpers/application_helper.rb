@@ -14,6 +14,16 @@ module ApplicationHelper
 	cache chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
     end
 
+    def jquery_include_tag
+	#javascript_include_tag "jquery"
+	javascript_include_tag "jquery"
+    end
+
+    def jquery_ui_include_tag
+	#javascript_include_tag "jquery-ui"
+	javascript_include_tag "jquery-ui"
+    end
+
     private
 
     def rewriter

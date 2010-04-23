@@ -133,6 +133,9 @@ zh-CN:
           no_delete: "'Admin' 和 'Default' 组是不能删除的"
         users:
           user_deleted: 用户删除成功
+        feedbacks:
+          feedback_deleted: 反馈删除成功
+          feedbacks_deleted: 反馈删除成功
     helper: 
       posts: 
         message_0: 继续阅读
@@ -154,12 +157,14 @@ zh-CN:
           builder: 
             message_0: 评论
         _form: 
-          message_0: 发送评论……
+          message_0: 发送评论中……
           message_1: 发送
           message_2: 昵称
           message_3: 登录
           message_4: 发送
           comment_notifier: 当有新评论通过 E-mail 通知我
+          login_as: 当前登录为
+          change_user: 改变用户
         _comment:
           said: "说:"
       blog: 
@@ -353,6 +358,7 @@ zh-CN:
           message_0: 网站
           message_1: 用户组
           message_2: 用户
+          feedbacks: 反馈
         categories:
           saving: 保存中
           create_category: 创建分类
@@ -535,6 +541,11 @@ zh-CN:
           use: 设置
         themesettings:
           no_theme_settings: 当前主题 {{theme}} 没有设置信息。
+        feedbacks:
+          manage_feedbacks: 管理反馈 
+          delete_feedback?: 删除这条反馈？
+          feedback_contain: 含有 {{word}} 的反馈
+          no_match: 没有找到反馈
       site: 
         setup: 
           message_8: 单用户

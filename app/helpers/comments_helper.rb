@@ -78,4 +78,12 @@ module CommentsHelper
 				:title => t("txt.helper.comments.reply_to", :user => @comment.writer)
 	end
     end
+
+    def twitter_comment_button
+	unless @comment.twitter.blank?
+	    content_tag :span, :class => "twitter_comment_button" do
+	    	link_to h("Twitter"), "http://twitter.com/#{@comment.twitter}", :class => "follow_him", :target => "_blank"
+	    end
+	end
+    end
 end

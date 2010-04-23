@@ -170,6 +170,8 @@ a.return{
 .comment_box:hover .reply_comment_button{
     display:inline;
 }
+.comment_box:hover {
+}
 .comment_box0 a,.comment_box1 a {
     font-weight: bold;
 }
@@ -488,4 +490,22 @@ img.trackbacks{
 span.latex_eq img{
     vertical-align:middle;
 }
-
+div.pre_next_post{
+    font-size: 90%;
+    float:right;
+    margin-right: 25px;
+}
+.twitter_comment_button{
+    text-align:center;
+    margin-right:10px;
+    float:right;
+}
+.follow_him:hover{
+    text-decoration: none;
+}
+.follow_him{
+    background: url(/images/twitter.png) no-repeat left;
+    padding-left:16px;
+    margin-top:5px;
+    margin-right:5px;
+}
