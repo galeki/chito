@@ -584,3 +584,4 @@ span#autosave_fail{
     background: Red;
 }
 .post_title_link{color:#000;}
+.post_rank{font-weight:bold; }

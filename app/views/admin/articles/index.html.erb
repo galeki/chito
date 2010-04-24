@@ -1,4 +1,4 @@
-<% @title = "" -%>
+<% @title = t(:manage_articles, :scope => [:txt, :view, :admin, :articles]) -%>
 <%= render :partial => "admin/sub_menu_for_root" %>
 <%= render_flash %>
 <div class="center">
@@ -26,7 +26,7 @@
 	    <td class="comments_col"><%= link_to "(#{post.comments.size})", formatted_post_path(post, :html, :anchor => "comments", :subdomain => post.user.name), :class => "post_comments", :target => '_blank' %></td>
 	    <td class="category_col">
                 <%= button_to_remote "-", :url => decrease_rank_admin_article_path(post) %>
-                    <span id="<%= "post#{post.id}_rank" %>"><%= post.rank %></span>
+                    <span id="<%= "post#{post.id}_rank" %>" class="post_rank"><%= post.rank %></span>
                 <%= button_to_remote "+", :url => increase_rank_admin_article_path(post) %>
             </td>
 	    <td class="action_col">

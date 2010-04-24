@@ -359,6 +359,7 @@ en-US:
           message_1: User groups
           message_2: Users
           feedbacks: Feedbacks
+          articles: Posts
         categories:
           saving: Saving
           create_category: Create Category
@@ -547,6 +548,8 @@ en-US:
           delete_feedback?: Delete this feedback?
           feedback_contain: Feedbacks contains {{word}}
           no_match: No Match
+        articles:
+          manage_articles: Manage Posts
       site: 
         setup: 
           message_8: Single user

@@ -359,6 +359,7 @@ zh-CN:
           message_1: 用户组
           message_2: 用户
           feedbacks: 反馈
+          articles: 文章
         categories:
           saving: 保存中
           create_category: 创建分类
@@ -546,6 +547,8 @@ zh-CN:
           delete_feedback?: 删除这条反馈？
           feedback_contain: 含有 {{word}} 的反馈
           no_match: 没有找到反馈
+        articles:
+          manage_articles: 管理文章
       site: 
         setup: 
           message_8: 单用户
