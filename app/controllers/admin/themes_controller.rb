@@ -1,8 +1,8 @@
 class Admin::ThemesController <  Admin::BaseController
 
   def index
-    @theme_list = Theme.user_themes(@user) + Theme::THEME_LIST
-    @user_theme_count = Theme.user_themes(@user).size
+    @theme_list = UserTheme.user_themes(@user) + UserTheme::LIST
+    @user_theme_count = UserTheme.user_themes(@user).size
     @theme_list.uniq!
   end
 

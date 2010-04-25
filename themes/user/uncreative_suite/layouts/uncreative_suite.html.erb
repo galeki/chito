@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+<%= header %>
+<body id="<%= @theme %>">
+<div id="container">
+<div id="containerPad">
+<div id="topLinks">
+
+</div>
+
+<div id="header">
+	<div class="headLeft"></div>
+	<div class="headMiddle">
+	<h1><%= site_title %></h1>
+	<div id="gem_slogan"><%= site_slogan %></div>
+	</div>
+	<div class="headRight"></div>
+	<div id="navigation">
+		<div class="naviLeft"></div>
+				    <% navbar.each do |n| -%>
+					<div class="link"><%= link_to_nav n %></div>
+				    <% end -%>
+	</div>	
+</div>
+
+<div id="sidebar">
+    <% sidebar do |item| -%>
+	<% if id_of(item) == :categories -%>
+	<% @categories ||= @user.categories -%>
+	    <% for category in @categories -%>
+	    <div class="link">
+		<%= link_to h(category.name), category_posts_path(category) %>
+	    </div>
+	    <% end -%>
+	    <br/>
+	<% else -%>
+		<div class="top"><%= title_of(item) %></div>
+		<div class="middle">
+		    <%= content_of(item) %>
+		</div>
+		<div class="bottom"></div>
+	<% end -%>
+    <% end -%>
+
+</div>
+
+	
+
+<div id="content">
+	<div class="top">
+		<div class="topLeft"></div><div class="topMiddle"><h1><%= @title %></h1></div><div class="topRight"></div>
+	</div>
+	<div class="middle">
+	<%= yield %>
+	</div>
+	<div class="bottom"><div class="bottomLeft"></div><div class="bottomRight"></div></div>
+</div>
+<div id="contentEnd"></div>
+<%= blog_tail %>
+
+<div id="footerTop">
+	<%= footer %> |
+  &copy; 2007 <a href="http://www.linuxgem.org">LinuxGem</a> | 
+	Design by <a href="http://doomrealm.mancubus.net">Matthew "Agent Spork" McGee</a><br />
+</div>
+
+</div>
+</div>
+<div id="footerBottom"><div class="left"></div><div class="right"></div></div>
+
+</body>
+</html>

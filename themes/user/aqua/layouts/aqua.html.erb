@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+<body id="<%= @theme %>">
+<a id="top"></a>
+	<div id="main_page" align="center">
+		<div id="header">
+			<div id="companyname" align="left">
+			    <%= site_title %>
+			    <div id="gem_slogan"><%= site_slogan %></div>
+			</div>
+			<div align="right" class="links_menu" id="menu">
+				<% navbar.each do |bar| -%>
+					<%= link_to_nav bar %> |
+				<% end -%>
+			</div>
+		</div>
+		<br />
+		<div id="content">
+			<div id="leftpanel">
+	    		<% @show_categories_rss = true -%>
+			<% sidebar do |item| -%>
+				<div class="table_top">
+				    <div align="center"><span class="title_panel"><%= title_of(item) %></span> </div>
+				</div>
+				    <div class="table_content">
+					<div class="table_text">
+					    <%= content_of(item) %>
+					</div>
+				    </div>
+				<div class="table_bottom">
+				    <%= image_tag "table_bottom.jpg", :width => "204", :height => "23", :border => "0" %>
+				</div>
+				<br />
+			<% end -%>
+			
+			</div>
+			<div id="contenttext">
+    <%= yield %>
+
+			</div>
+			<br />
+			<br />
+<%= blog_tail %>
+
+			<div class="footer">
+				<br />
+				<%= footer %> | Designed by <a href="http://www.winkhosting.com/">Wink Hosting</a>.
+			</div>
+		</div>
+	</div>
+</body>
+</html>

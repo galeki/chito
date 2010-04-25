@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+<%= header %>
+<body>
+
+<div id="header">
+	<div id="logo">
+		<h1><%= site_title %></h1>
+		<h2><%= site_slogan %></h2>
+	</div>
+	<div id="menu">
+		<ul>
+		    		    <% navbar.each do |n| -%>
+					<li class="page_item"><%= link_to_nav n %></li>
+				    <% end -%>
+		</ul>
+	</div>
+</div>
+
+<hr>
+
+<!-- start page -->
+<div id="page">
+
+<!-- start sidebar1 -->
+<div id="sidebar1" class="sidebar">
+	<ul>
+	    <% bars_in :left do |b| -%>
+		    <li>
+			<h2><%= b.title %></h2>
+			<%= content_of(b) %>
+		    </li>
+	    <% end -%>
+	</ul>
+</div>
+<!-- end sidebar1 -->
+
+	<!-- start content -->
+	<div id="content">
+	    <div id="content_w">
+		<%= yield %>
+	    </div>
+	</div>
+	<!-- end content -->
+
+	<!-- start sidebar2 -->
+	<div id="sidebar2" class="sidebar">
+		<ul>
+		    <% bars_in :right do |b| -%>
+			    <li>
+				<h2><%= b.title %></h2>
+				<%= content_of(b) %>
+			    </li>
+		    <% end -%>		
+		</ul>
+	</div>
+	<!-- end sidebar2 -->
+
+
+
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+
+<hr>
+<%= blog_tail %>
+<div id="footer">
+	<p class="legal">
+	    <%= footer %>
+	</p>
+	<p class="credit">
+		Designed by <a href="http://www.freewpthemes.net/">Free WordPress Themes</a>.
+	</p>
+</div>
+
+</body></html>

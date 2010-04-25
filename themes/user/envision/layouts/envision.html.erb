@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<%= header %>
+<body id="<%= @theme %>">
+<a id="top"></a>
+<!-- wrap starts here -->
+<div id="wrap">
+		
+		<!--header -->
+		<div id="header">			
+				
+			<h1 id="logo-text"><%= site_title %></h1>		
+			<p id="slogan"><%= site_slogan %></p>		
+			
+			<div id="header-links">
+		
+		</div>		
+						
+		</div>
+		
+		<!-- menu -->	
+		<div  id="menu">
+			<ul>
+				    <% navbar.each do |n| -%>
+					<li><%= link_to_nav n %></li>
+				    <% end -%>
+			</ul>
+		</div>					
+			
+		<!-- content-wrap starts here -->
+		<div id="content-wrap">
+				
+			<div id="sidebar">
+			    <% @show_categories_rss=true -%>
+			    <% sidebar do |i| -%>
+				<h3><%= title_of(i) %></h3>
+				    <%= content_of(i) %>				
+			    <% end -%>
+								
+			</div>
+				
+			<div id="main">
+				
+			    <%= yield %>
+			</div>
+		
+		<!-- content-wrap ends here -->	
+		</div>
+	<%= blog_tail %>				
+		<!--footer starts here-->
+		<div id="footer">
+			
+			<p>
+			<%= footer %> | 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> 
+   		</p>
+				
+		</div>	
+
+<!-- wrap ends here -->
+</div>
+
+</body>
+</html>

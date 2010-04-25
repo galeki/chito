@@ -1,0 +1,339 @@
+/********************************************
+   AUTHOR:  			Erwin Aligam 
+   WEBSITE:   			http://www.styleshout.com/
+   TEMPLATE NAME: 	SimpleBlog 1.0
+	TEMPLATE CODE: 	S-0007
+   VERSION:          1.0          	
+ *******************************************/
+ 
+/********************************************
+   HTML ELEMENTS
+********************************************/ 
+
+/* Top Elements */
+* { margin: 0; padding: 0; }
+
+body {
+	background: #FFF;
+	font: normal 12px Verdana, Tahoma, Verdana, sans-serif;
+	color: #333; 
+	text-align: center;
+}
+/* links */
+a {
+	background: inherit;
+	text-decoration: none;
+	color: #667F99;	
+}
+a:hover {
+	background: inherit;
+	color: #996800; 
+}
+/* headers */
+h1, h2, h3 {
+	font-family: Verdana, Tahoma, 'Trebuchet MS', Sans-serif;
+	font-weight: Bold; 		
+}
+#header h1 a{
+    font-size:26px;
+    color:#eee;
+}
+h1 a{
+    color:#666;
+    background:none;
+}
+h1 a:hover{
+    color:#999;
+    background:none;
+}
+h1 { font-size: 120%; }
+h2 { font-size: 110%; text-transform: uppercase; }
+h3 { font-size: 110%; color: #007E80; }
+
+h1, h2, h3, p {
+	margin: 0;
+	padding: 10px;		
+}
+ul, ol {
+	margin: 10px 20px;
+	padding: 0 20px;
+}
+
+/* images */
+img {
+	border: 2px solid #CCC;
+}
+img.float-right {
+  margin: 5px 0px 5px 10px;  
+}
+img.float-left {
+  margin: 5px 10px 5px 0px;
+}
+
+code {
+  margin: 5px 0;
+  padding: 10px;
+  text-align: left;
+  display: block;
+  overflow: auto;  
+  font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace ;
+  /* white-space: pre; */
+}
+acronym {
+  cursor: help;
+  border-bottom: 1px solid #777;
+}
+
+/* blockquote */
+blockquote {
+	margin: 10px;
+ 	padding: 0 0 0 28px;  
+   border: 1px solid #f2f2f2; 
+  	background: #FAFAFA url(quote.gif) no-repeat 5px 5px;    
+}
+
+/* form elements */
+form {
+	margin:10px; padding: 0 5px;
+	border: 1px solid #f2f2f2; 
+	background-color: #FAFAFA; 
+}
+label {
+	display:block;
+	font-weight:bold;
+	margin:5px 0;
+}
+input {
+	padding:2px;
+	border:1px solid #eee;
+	font: normal 1em Verdana, sans-serif;
+	color:#777;
+}
+textarea {
+	width:400px;
+	padding:2px;
+	font: normal 1em Verdana, sans-serif;
+	border:1px solid #eee;
+	height:100px;
+	display:block;
+	color:#777;
+}
+input.button { 
+	margin: 0; 
+	font: bolder 12px Arial, Sans-serif; 
+	border: 1px solid #CCC; 
+	padding: 2px 3px; 
+	background: #FFF;
+	color: #275F6C;
+}
+/* search form */
+form.search {
+	padding: 0; margin: 0; 
+	vertical-align: bottom;
+	border: none;
+	background-color: transparent;
+}
+form.search input.textbox { 
+	margin: 0; padding: 1px;
+	width: 120px;
+	border: 1px solid #CCC; 
+	background: #FFF;
+	color: #333; 
+}
+form.search input.button {
+	height: 20px;
+	padding: 1px 3px;
+	width: 60px;
+}
+
+/********************************************
+   LAYOUT
+********************************************/ 
+#wrap {
+	width: 833px;
+	background: url(bg.jpg) repeat-y center top;
+	margin: 0 auto;
+	text-align: left;
+}
+#content-wrap {
+	position: relative;
+	width: 91%;
+	margin: 0 auto;
+	padding: 0;	
+}
+/* header */
+#header {
+	position: relative;
+	width: 833px;
+	height: 100px;
+	background: #FFF url(header.jpg) no-repeat center top;
+	margin: 0; padding: 0;
+	font-size: 14px;
+	color: #FFF;
+}
+#header h1#logo {
+	position: absolute;
+	margin: 0; padding: 0;
+	font: bold 42px 'Trebuchet MS', Arial, Sans-serif;
+	letter-spacing: -2px;
+	color: #FFF;
+	text-transform: none;
+	
+	/* change the values of top and Left to adjust the position of the logo*/
+	top: 19px; left: 53px;	
+}
+#header h2#slogan {
+	position: absolute;
+	z-index: 9999999;
+	margin: 0; padding: 0;
+	font: bold 12px 'Trebuchet MS', Arial, Sans-serif;
+	text-transform: none;
+	color: #ccc;
+	
+	/* change the values of top and Left to adjust the position of the slogan*/
+	top: 65px; left:75px;			
+}
+#header #searchform {
+	float: right;
+	padding: 45px 40px 0 0;
+	display: inline;
+}
+/* menu */
+#menu {
+	clear: both;
+	width: 833px;
+	height: 26px;
+	background: #FFF url(menubg.jpg) repeat-y;
+	margin: 0;
+	font: bolder 12px/26px Tahoma, Verdana, Arial, Sans-Serif;			
+}
+#menu ul{
+	margin: 0; padding: 0 0 0 35px;
+}
+#menu ul li {
+	float: left;
+	list-style: none;		
+}
+#menu ul li a {
+	display: block;
+	text-decoration: none;	
+	padding: 0 10px;
+	background: inherit;
+	color: #FFF;
+}
+#menu ul li a:hover {
+   background: #FFF; 
+	color: #333;  
+}
+#menu ul li#current a {	
+	background: #30899F; 
+	color: #FFF;	
+}
+
+/* Main */
+#main {
+	float: left;	
+	width: 72%;
+	padding: 0;	margin: 0;	
+}
+#main h1 {
+	color: #667F99; 
+	border-bottom: 1px solid #CCCCCC;
+	background: #F6F6F6 url(arrow.gif) no-repeat 5px 50%;	
+	padding: 3px 0 3px 20px;	
+	margin: 10px 0 0 0;
+}
+
+.post-footer {
+	background-color: #FAFAFA;
+	padding: 5px; margin: 20px 10px 0 10px;
+	border: 1px solid #f2f2f2;
+	font-size: 95%;	
+}
+.post-footer .date {
+	background: url(clock.gif) no-repeat left center;
+	padding-left: 20px; margin: 0 10px 0 5px;
+	float:none;
+}
+.post-footer .comments {
+	background: url(comment.gif) no-repeat left center;
+	padding-left: 20px; margin: 0 10px 0 5px;
+}
+.post-footer .readmore {
+	background: url(page.gif) no-repeat left center;
+	padding-left: 20px; margin: 0 10px 0 5px;
+}
+.post-footer .post_tags {
+	background: url(tag.gif) no-repeat left center;
+	padding-left: 20px; margin: 0 10px 0 5px;
+}
+
+/* sidebar */
+#sidebar {
+	float: right;
+	width: 26%;
+	padding: 0; margin: 0;		
+}	
+#sidebar h1 {
+	margin: 10px 0 0 0; 
+	padding: 3px 10px; 
+	font: bold 120% Tahoma, Verdana, Sans-Serif;	
+	color: #FFF;	
+	background: #B6B8BB;	
+}
+#sidebar ul.sidemenu {
+	list-style: none;
+	text-align: left;
+	margin: 3px 0px 8px 0; padding: 0;
+	text-decoration: none;	
+}
+#sidebar ul.sidemenu li {
+	border-bottom: 1px solid #EFF0F1;
+	background: url(bullet.gif) no-repeat 2px 3px ;
+	padding: 2px 0 2px 25px;
+	margin: 0 2px;			 
+}
+
+* html body #sidebar ul.sidemenu li { height: 1%; }
+
+#sidebar ul.sidemenu a {
+	font-weight: bold;
+	padding: 2px 0; 		
+	background: none;
+}
+
+/* footer */
+#footer {
+	clear: both;
+	color: #66737B;
+	font: normal 90% Verdana, Tahoma, sans-serif;
+	background: #FFF url(footerbg.jpg) no-repeat center top;	
+	width: 833px;
+	height: 60px;
+	text-align: center;
+	padding: 8px 0 0 0;
+	margin: 0 auto;	
+}
+#footer a { text-decoration: none; }
+
+/* alignment classes */
+.float-left  { float: left; }
+.float-right { float: right; }
+.align-left  { text-align: left; }
+.align-right { text-align: right; }
+
+/* additional classes */
+.clear { clear: both; }
+.gray { color: #CCC; }
+
+#bulletin{
+    background:#fff;
+    border:1px solid #ccc;
+}
+
+#bulletin img{
+    border:0;
+}
+.comment_header img{
+    border:0;
+}

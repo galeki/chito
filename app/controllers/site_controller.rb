@@ -16,6 +16,7 @@ class SiteController < ApplicationController
 	    @site = Site.new(params[:sites])
 	    @site.default_user = @user.name
 	    @site.default_group = Group.default.id
+            @site.index_mode = "user"
 	    redirect_to "/" if @site.save
 	end
 

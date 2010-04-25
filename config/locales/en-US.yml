@@ -468,6 +468,11 @@ en-US:
           message_7: Mutli users
           message_15: "When the subdomain is www or not specified, show this user`s blog. Example:<br/> If the root domain is chito.com, and the default user is `galeki`, so: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> all show galeki`s blog."
           footer: Site Footer          
+          index_mode: Index Mode
+          index: Index
+          user: User
+          index_mode_intro: Show all users updates.
+          user_mode_intro: "Show this user's Blog："
         rss:
           rss_import: RSS import
           no_url: Please input RSS url

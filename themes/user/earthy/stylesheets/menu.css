@@ -1,0 +1,381 @@
+/* Begin CSS Popout Menu */
+
+
+#menuh-container
+	{
+	position:  relative;
+	margin-top: 0;
+	width:750px;
+	}
+
+#menuh
+	{
+	font-size: 80%;
+	font-family: helvetica, "Trebuchet MS",arial, sans-serif;
+	width:100%;
+	float:right;
+	margin:0;
+	color: #333;
+	background: #6E6A5A url(images/pt02.jpg);
+	border-bottom : 0px solid #520934;
+	}
+		
+#menuh a
+	{
+	text-align: left;
+	display:block;
+	height:16px;
+	border: 0px solid #eee;
+	white-space:nowrap;
+	margin:0;
+	padding: 0.3em 0.2em 0.3em 0.4em;
+	}
+	
+#menuh a, #menuh a:visited	/* menu at rest */
+	{
+	color: #fff;
+	background: #6E6A5A;
+	text-decoration:none;
+	}
+	
+#menuh a:hover	/* menu at mouse-over  */
+	{
+	color: #fff;
+	background-color: #404040;
+	}	
+			
+#menuh a.top_parent, #menuh a.top_parent:hover  /* attaches down-arrow to all top-parents */
+	{text-transform: uppercase;
+	background-image: url(images/navdown_white.gif);
+	background-position: right center;
+	background-repeat: no-repeat;
+	}
+	
+#menuh a.parent, #menuh a.parent:hover 	/* attaches side-arrow to all parents */
+	{
+	background-image: url(images/nav_white.gif);
+	background-position: right center;
+	background-repeat: no-repeat;
+	}
+
+#menuh ul
+	{
+	font-size:12px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	float:left;
+	width:100px;	/* width of all menu boxes */
+	}
+
+#menuh li
+	{
+	position:relative;
+	}
+
+#menuh ul ul
+	{
+	position:absolute;
+	z-index:500;
+	top:auto;
+	display:none;
+	padding: 1em;
+	margin:-1em 0 0 -1em;
+	}
+
+#menuh ul ul ul
+	{
+	top:0;
+	left:100%;
+	}
+
+div#menuh li:hover
+	{
+	cursor:pointer;
+	z-index:100;
+	}
+
+div#menuh li:hover ul ul,
+div#menuh li li:hover ul ul,
+div#menuh li li li:hover ul ul,
+div#menuh li li li li:hover ul ul
+{display:none;}
+
+div#menuh li:hover ul,
+div#menuh li li:hover ul,
+div#menuh li li li:hover ul,
+div#menuh li li li li:hover ul
+{display:block;}
+
+#head {
+    padding-top:10px;
+    text-align:center;
+}
+#gad {
+    float:right;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-right: -80px;
+}
+* html #gad {
+    margin-right:0px;
+}
+.hl_result {
+    overflow: auto;
+    text-align:left;
+}
+* html .hl_result{
+    overflow: hidden;
+}
+img {
+    border:0px;
+}
+a.up {
+    background: url(/images/up-gray.gif) no-repeat left center;
+    padding-left: 14px;
+    display:none;
+}
+small{font-size:12px;}
+a.down {
+    background: url(/images/down-gray.gif) no-repeat left center;
+    padding-left: 14px;
+    display:none;
+}
+#article_header {
+    color: #777;
+    margin: 0px 0px 8px 10px;
+    padding: 0px 10px 0px 30px;
+}
+#article_header img {
+    border: 0px;
+    margin-bottom: -3px;
+    margin-right: 2px;
+}
+#category {
+    text-align: left;
+}
+#category li {
+    font-size: 14px;
+    line-height: 20px;
+}
+#info {
+    font-weight: normal;
+    font-size: 12px;
+}
+#bulletin {
+    padding: 10px;
+    margin: 5px 15px 5px 10px;
+    width: 180px;
+    border: 1px solid #eee;
+}
+.date {
+    float: left;
+    width: 3em;
+    font-size: 90%;
+    text-align: center;
+    padding: 2px;
+    margin: 2px 7px 3px 0px;
+}
+.date span {
+    display: block;
+    font-size: 160%;
+    font-weight: bold;
+}
+.list_box h3 {
+    padding:0px;
+    margin:0;
+    margin-bottom: 0px;
+}
+h3 a:hover{
+    color:#fff;
+}
+.list_box p {
+    padding: 0px 3px 22px 3px;
+}
+.list_box h3 span {
+    font-size: 80%;
+    vertical-align: super;
+    padding: 4px;
+    color:#666;
+}
+#page {
+    margin: 20px 0px 20px 10px;
+    font-weight: bold;
+    font-size: 160%;
+    display: inline;
+}
+#page a {
+    font-size: 70%;
+    text-decoration: underline;
+}
+#article_body {
+    font-size: 13px;
+    padding-right:10px;
+    padding-bottom:20px;
+    line-height:20px;
+    border-bottom: 1px dashed #808080;
+}
+.article_footer {
+    text-align: right;
+    padding-bottom: 3px;
+    display:none;
+}
+#comments strong {
+    text-align: center;
+    display: block;
+}
+.comment_box0, .comment_box1, .comment_self {
+    float:left;
+    padding:5px;
+    width: 430px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.comment_self {
+    background: #fff;
+}
+.comments_count {
+    float: right;
+    font-weight: bold;  
+    font-style: italic;
+    font-family: Georgia, Serif; 
+    margin-right: 3px; 
+}
+.comment_box0 a,.comment_box1 a {
+    font-weight: bold;
+}
+.comment_box0 a:hover,.comment_box1 a:hover {
+}
+.comment_pic {
+    float: left;
+    padding: 5px;
+}
+.comment_content {
+    padding: 8px;
+}
+.pc {
+    width: 350px;
+    height: 100px;
+}
+.cite {
+    margin-bottom: -3px;
+    cursor: pointer;
+}
+#post_comment fieldset {
+    margin: 1em 0;
+    border: 1px solid #ccc;
+    width: 500px;
+}
+#post_comment {
+    float:left;
+    background: inherit;
+    border:1px solid #eee;
+    margin-left:10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+input, textarea, select {
+    font-size: small;
+    border: 1px solid #666;
+    margin: 5px 0px 0px 0px;
+}
+input:focus, textarea:focus {
+}
+.cite_box {
+    border: 1px solid #999;
+    color: #333;
+    padding: 4px;
+    margin:5px;
+}
+.cite_header {
+    border-bottom: 1px solid #999;
+    padding-right: 80px;
+}
+.clear {
+    clear: both;
+}
+.Bold
+{
+	font-weight: bold;
+}
+
+.Title
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: #cc3300;
+}
+
+.Code
+{
+	border: #8b4513 1px solid;
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #000066;
+	font-family: 'Courier New' , Monospace;
+	background-color: #ff9933;
+}
+#post_loading {
+    margin: 10px 0px 0px 0px;
+}
+#post_loading span {
+    background: #fc0;
+    padding: 5px;
+}
+#head {
+    text-align:center;
+}
+.hl_result {
+    overflow:auto;
+}
+* html .hl_result {
+    word-break:break-all;
+}
+* html .comment_box0, * html .comment_box1, * html .comment_self {
+    height: 70px;
+    word-break: break-all;
+    overflow: visible;
+}
+* html  h1 {
+    font-size:200%;
+}
+.hl_result ul, .hl_result li, .hl_result ol
+{
+margin-top: 0px;
+margin-bottom: 0px;
+}
+#article_body {
+    text-align: justify;
+}
+#count {
+    font-size: 20px;
+    color: #eee;
+    margin-bottom:5px;
+    text-align: center;
+    font-weight: bold;  
+    font-style: italic;
+    font-family: Tahoma, Georgia, Serif; 
+}
+#list_sidebar {
+    float:right;
+    width:210px;
+}
+.tip_box {
+    background:#ff9;
+    width:300px;
+    padding-bottom:15px;
+    border:1px solid #999;
+    border-left:3px solid #999;
+}
+#list_sidebar .tip_box {
+    width: 180px;
+    margin-left:10px;
+    margin-top:10px;
+    padding:5px;
+}
+.tip{
+    background:#ff9;
+}
+.tip_box h3{font-size:90%;margin:0;padding:0px;}
+*+html .list_box h3 span{font-size:60%;}
+

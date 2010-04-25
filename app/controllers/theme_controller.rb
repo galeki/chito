@@ -1,23 +1,28 @@
 class ThemeController < ApplicationController
     skip_before_filter :get_site
-    before_filter :get_path
     session :off
 
-    def file
-	if File.exists?(@path)
-	    Theme.copy_to_public(@theme)
-	    send_file(@path, :type => mime_for(@file), :disposition => 'inline', :stream => true) 
-	else
-	    return (render :text => "Not Found", :status => 404)
-	end
+    def user_theme_file
+        get_theme_file_of(UserTheme)
+    end
+
+    def index_theme_file
+        get_theme_file_of(IndexTheme)
     end
 
     private
 
-    def get_path
+    def get_theme_file_of(klass)
 	@theme, @file = params[:theme], File.join(params[:anything])
-	@path = Theme.file_path(@theme, @file)
-	raise "Access denied" unless File.expand_path(@path).start_with?(Theme::THEME_PATH)
+	@path = klass.file_path(@theme, @file)
+	raise "Access denied" unless File.expand_path(@path).start_with?(klass::PATH)
+
+	if File.exists?(@path)
+	    klass.copy_to_public(@theme)
+	    send_file(@path, :type => mime_for(@file), :disposition => 'inline', :stream => true) 
+	else
+	    return (render :text => "Not Found", :status => 404)
+	end
     end
 
     def mime_for(filename)

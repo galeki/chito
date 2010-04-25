@@ -108,7 +108,8 @@ ActionController::Routing::Routes.draw do |map|
 	#map.connect "/page/:page", :controller => 'posts', :action => 'index'
 
 
-	map.connect '/themes/:theme/*anything', :controller => 'theme', :action => 'file'
+	map.connect '/themes/:theme/*anything', :controller => 'theme', :action => 'user_theme_file'
+	map.connect '/index/themes/:theme/*anything', :controller => 'theme', :action => 'index_theme_file'
 	map.connect '/plugins/:plugin/*anything', :controller => 'plugin', :action => 'file'
 
 

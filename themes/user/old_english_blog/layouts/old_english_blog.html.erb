@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz">
+<%= header %>
+<body>	
+	<div id="WholePage">
+
+		    <div id="Inner">
+			<div id="Container">
+			
+					<div id="TopPart">
+						<div id="Header">
+					    	<span><%= site_title %></span><br/>
+					    	<a class="link"><%= site_slogan %></a>
+						</div>
+
+					    <div id="Top_left">
+			
+						</div>
+						
+						<div id="Top_right">
+							<div id="Menu">
+				    <% navbar.each do |n| -%>
+					<%= link_to_nav n %>
+				    <% end -%>
+							</div>
+							<div id="Menu_bottom"></div>
+						</div>
+					</div>
+					
+
+					<div id="CentralPart">
+
+					    <div id="LeftPart">
+					        <div id="Page">
+						    <%= yield %>
+						</div>
+					    </div>
+						
+						<div id="RightPart">
+						    <% sidebar do |item| -%>
+							<div id="Pages">
+							    <div class="rightpart_header"><%= title_of(item) %></div>
+							    <%= content_of(item) %>
+							</div>
+						    <% end -%>
+   						</div>
+						
+                        <div class="cleaner"></div>
+		
+					</div>
+		    <%= blog_tail %>
+                    <div id="Bottom">
+						<p class="down_left">Copyright © 2007
+						</p>
+						<p class="down_right">
+						<a href="http://www.sunlight.cz">Webdesign, tvorba www stránek</a></p>
+						
+					</div>
+					<div class="down2">
+      					<p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml11"
+        alt="Valid XHTML 1.1" height="31" width="88" /></a>
+  </p>
+					</div>
+			</div>
+	</div>
+	</div>
+
+</body>
+
+</html>
+
+
+
+
+
+

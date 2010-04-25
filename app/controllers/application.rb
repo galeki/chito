@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
     before_filter :get_site
     protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
-    self.prepend_view_path(Theme::THEME_PATH) 
+    self.prepend_view_path(UserTheme::PATH) 
+    self.prepend_view_path(IndexTheme::PATH) 
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'

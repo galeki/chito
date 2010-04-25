@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<%= header %>
+<body>
+
+<div id="page">
+
+	<div id="header">
+		
+		<p class="blogtitle"><%= site_title %></p>
+
+		<p class="description"><%= site_slogan %></p>
+
+	</div>
+
+	<div id="content" class="narrowcolumn">
+		<%= yield %>	
+	</div>
+
+	<ul id="sidebar">
+	    <% sidebar do |s| -%>
+		<li class="<%= id_of(s) %>">
+		    <h2><%= title_of(s) %></h2>
+		    <%= content_of(s) %>
+		</li>
+	    <% end -%>
+	</ul>
+<%= blog_tail %>
+<div id="footer">
+
+
+	<p><a href="http://www.ardamis.com/2007/06/03/apricot/">Apricot</a> theme designed by <a href="http://www.ardamis.com/">Ardamis.com</a>. 
+	<a href="http://validator.w3.org/check?uri=referer" title="Validate the XHTML of this page.">XHTML</a>, 
+	<a href="http://jigsaw.w3.org/css-validator/check/referer" title="Validate the CSS of this page.">CSS</a>.
+	
+	<%= footer %></p>
+
+	<p><%= link_to "Entries (RSS)", formatted_posts_url(:rss) %> and <%= link_to "Comments (RSS)", formatted_comments_url(:rss) %> and <%= link_to "Messages (RSS)", formatted_messages_url(:rss) %></p>
+	
+</div>
+</div>
+
+
+</body>
+</html>

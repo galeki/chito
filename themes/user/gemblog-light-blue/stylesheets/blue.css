@@ -1,0 +1,158 @@
+body {
+}
+/*#main, #nav_bar ul a, #writer {
+    background: #ccf;
+}*/
+a {
+    color: #069;
+}
+a:hover, #hom a:hover {
+    color:  #fff;
+}
+#main {
+    background: #9BD1FA;
+    color: #000;
+} 
+#footer {
+    color: #333;
+}
+#footer a:hover {
+    color: #c60;
+}
+#flash .right {
+    color: #43a800;
+}
+#flash .wrong {
+    color: #ff3300;
+}
+#hom {
+    background: #377CB1;    
+    color: #fff;
+}
+#hom a {
+    color:  #9BD1FA;
+}
+#article_header {
+    color: #777;
+}
+#article_body {
+    background: #e5e5ec;
+}
+#main h4{
+    color: #666;
+}
+.comment_box0, .comment_box1, .comment_self {
+    background: #eee;
+}
+.comment_self {
+    background: #fff;
+}
+.comments_count {
+    color: #377CB1;
+}
+.comment_header {
+    color: #666;
+}
+.comment_box0 a,.comment_box1 a {
+    color: #2287a8;
+}
+.comment_box0 a:hover,.comment_box1 a:hover {
+    color: #ff9900;
+}
+.comment_content {
+    color: #555;
+}
+.cite_box {
+    border: 1px solid #bbb;
+    color: #777;
+}
+.cite_header {
+    border-bottom: 1px solid #bbb;
+}
+#post_comment fieldset {
+    border: 1px solid #666;
+}
+input, textarea, select {
+    border: 1px solid #377cb1;
+}
+input:focus, textarea:focus {
+    background: #e5ccff;
+}
+pre {
+    border: 1px solid #666;
+}
+#hom #is_login .reg {
+    color: #ff6;
+}
+a.up {
+    background: url(/images/up-blue.gif) no-repeat left center;
+    padding-left: 14px;
+}
+a.down {
+    background: url(/images/down-blue.gif) no-repeat left center;
+    padding-left: 14px;
+}
+#dhtmltooltip{
+border: 1px solid #377cb1;
+background-color: #9bd1fa;
+}
+#nav_bar li {
+    border-bottom: 1px solid #cce5ff;
+}
+#nav_bar ul a {
+	border-left: 10px solid #377CB1;
+	background-color: #9BD1FA;
+	color: #333;
+}
+#nav_bar ul a:hover {
+	border-left: 10px solid #377cb1;
+	background-color: #667fff;
+	color: #fff;
+}
+#writer {
+    background: #9BD1FA;
+}
+#writer_info {
+    border-top: 1px solid #377CB1;
+    border-bottom: 1px solid #377CB1;
+    color: #444;
+}
+.new_comment, #sidebar #links, #new_messages,#count {
+    background: #9BD1FA;
+    color: #333;
+}
+.header {
+    color: #fff;
+    background: #377CB1;
+}
+#bulletin {
+    background: #eee;
+}
+.date {
+    color: #c63;
+    background: #eee;
+}
+.list_box{
+    border-left: 4px solid #377cb1;
+}
+.list_header, .list_header a {
+    color: #c63;
+}
+.list_header a:hover {
+    color: #fff;
+}
+.list_box h3 span {
+    color: #666;
+}
+.list_footer {
+    background: #ddd;
+}
+#page {
+    color: #f90;
+}
+#page a {
+    color: #bbb;
+}
+#page a:hover {
+    color: #f90;
+}

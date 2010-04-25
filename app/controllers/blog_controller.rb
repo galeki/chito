@@ -11,11 +11,13 @@ class BlogController < ApplicationController
 
   def index
     respond_to do |format|
+        format.html do
+
+        end
 	format.rss do
 	    @posts = Article.new_posts 
 	end
     end
-
   end
 
   def add
@@ -106,7 +108,7 @@ class BlogController < ApplicationController
 
   protected
 
-  def render(options = nil, extra_options = {}, &block)
+  def render(options = {}, extra_options = {}, &block)
     if @theme and (params[:format].nil? or params[:format] == "html")
    	layout = "#{@theme}/layouts/#{@theme}"
 	layout_path = File.join(@user.base_dir, "themes", @theme, "layouts", @theme + ".html.erb")
@@ -114,11 +116,11 @@ class BlogController < ApplicationController
 	    @user_theme = true
 	end
 	template = "#{@theme}/views/#{controller_name}/#{action_name}"
-	template_path = File.join("#{RAILS_ROOT}/themes", template + ".html.erb" )
+	template_path = File.join(UserTheme::PATH, template + ".html.erb" )
 	if File.exists?(template_path)
 	    super :template => template, :layout => layout
 	else
-	    super :template => options && options[:template], :layout => layout
+	    super :template => options[:template], :layout => layout
 	end 
     else
 	super(options, extra_options, &block)

@@ -15,6 +15,10 @@ class Site < ActiveRecord::Base
     def single_user?
 	self.user_mode == "s"
     end
+
+    def index_mode?
+        self.index_mode == "index"
+    end
     
     def get_user(request)
 	if self.single_user? or request.subdomains.first.blank? or (request.domain == self.domain && request.subdomains.first == "www")

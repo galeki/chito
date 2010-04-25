@@ -1,0 +1,12 @@
+<% form_for :user do |f| %>
+
+
+    <label>Background:</label>
+    <% %w(autumn china-wall darkmoon default parchment-map planet shuttle starbirth sunflowers temple vector-landscape winter yellow-mountains).each do |t|  -%>
+	<label><%= f.radio_button :theme_aeros_background, t,  :class => 'ck' %> <%= t.capitalize %> <br/>
+	<%= image_tag theme_path(:theme => @user.theme, :type => :images, :file => "option-#{t}.jpg", :user_theme => @user.user_theme) %>
+	</label>
+	
+    <% end -%>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end -%>

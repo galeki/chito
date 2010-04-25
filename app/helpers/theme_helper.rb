@@ -17,9 +17,14 @@ module ThemeHelper
 	else
 	    ext = "*"
 	end
-	f = options[:user_theme] ? Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"] : Dir["#{RAILS_ROOT}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+	f = options[:user_theme] ? 
+            Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"] : 
+            Dir["#{UserTheme::PATH}/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
 	lists = options[:order] || f
-	file_list = lists.map {|file| theme_path(:theme => options[:theme], :type => options[:type], :file => File.basename(file), :user_theme => options[:user_theme])}
+	file_list = lists.map {|file| theme_path(:theme => options[:theme], 
+                                                 :type => options[:type], 
+                                                 :file => File.basename(file), 
+                                                 :user_theme => options[:user_theme])}
 	
 	case options[:type]
 	when :javascripts

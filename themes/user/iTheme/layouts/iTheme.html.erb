@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header :js => ["dbx", "dbx-key"]%>
+<body>
+<div id="page">
+  <div id="wrapper">
+    <div id="header">
+      <h1><%= site_title %></h1>
+      <div class="description"><%= site_slogan %></div>
+      <form method="get" id="searchform" action="<%= posts_path %>">
+<div><input value="Search" name="s" id="s" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" type="text">
+<input id="searchsubmit" value="Go" type="submit">
+</div>
+</form>
+    </div><!-- /header -->
+
+    <div id="left-col">
+      <div id="nav">
+        <ul>
+	    <% navbar.each do |n| -%>
+		    <li class="<%= current(n) ? "current_page_item" : "page_item"  %>"><%= link_to_nav n %></li>
+	    <% end -%>
+        </ul>
+      </div><!-- /nav -->
+
+    	
+      <div id="content">
+	<%= yield %>
+      </div><!--/content -->
+
+      <div id="footer">
+      <%= footer %><br/>
+      Translate from <a href="http://www.ndesign-studio.com/resources/wp-themes/">WP Theme</a> &amp; <a href="http://www.ndesign-studio.com/stock-icons/">Icons</a> by <a href="http://www.ndesign-studio.com/">N.Design Studio</a></div>
+    </div><!--/left-col -->
+
+<div class="dbx-group" id="sidebar">
+
+    <% sidebar do |s| -%>
+      <!--sidebox start -->
+      <div id="<%= id_of(s) if id_of(s) == :categories %>" class="dbx-box">
+        <h3 class="dbx-handle"><%= title_of s %></h3>
+        <div class="dbx-content">
+	    <%= content_of s %>
+        </div>
+      </div>
+      <!--sidebox end -->
+    <% end -%>
+
+</div><!--/sidebar -->
+<%= blog_tail %>
+    <hr class="hidden" />
+
+  </div><!--/wrapper -->
+
+</div><!--/page -->
+
+</body></html>

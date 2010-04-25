@@ -468,6 +468,11 @@ zh-CN:
           message_7: 多用户
           message_15: "当二级域名为 www 或者没有指定时，显示此用户的 Blog，比如:<br/> 如果根域名为 chito.com, 默认用户为 `galeki`, 那么: <br/> http://www.chito.com <br/> http://chito.com <br/> http://galeki.chito.com <br/> 都将显示 galeki 的 Blog."
           footer: 网站页脚信息
+          index_mode: 首页模式
+          index: 聚合
+          user: 用户
+          index_mode_intro: 首页显示所有用户的更新文章。
+          user_mode_intro: 首页显此户的 Blog：
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址

@@ -1,0 +1,20 @@
+<% posts_cache do -%>
+
+<% posts do -%>
+			<div class="post multipost" id="post-19">
+				<h2><%= link_to_post %></h2>
+				<p class="postdate"><%= post_time %></p>
+
+				
+				<div class="entry">
+				    <%= post_brief %>
+				</div>
+		
+				<p class="postmetadata alt">Tags: <%= link_to_post_tags %><br /> 
+				Posted in <%= link_to_post_category %> |   <span><%= link_to_post(:text => "#{@post.comments.size} Comments", :anchor => 'comments') %></span></p>
+
+			</div>
+
+<% end -%>
+<div class="page-nav"><%= pagilinks %></div>
+<% end -%>
