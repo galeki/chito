@@ -1,11 +1,11 @@
 module ThemeHelper
 
     def theme_css_links(options={})
-	theme_files(:theme => @theme, :type => :stylesheets, :order => options[:order], :user_theme => @user.user_theme)
+	theme_files(:theme => @theme, :type => :stylesheets, :order => options[:order], :user_theme => @user && @user.user_theme)
     end
 
     def theme_js_links(options={})
-	theme_files(:theme => @theme, :type => :javascripts, :order => options[:order], :user_theme => @user.user_theme)
+	theme_files(:theme => @theme, :type => :javascripts, :order => options[:order], :user_theme => @user && @user.user_theme)
     end
 
     def theme_files(options={})
@@ -17,9 +17,14 @@ module ThemeHelper
 	else
 	    ext = "*"
 	end
-	f = options[:user_theme] ? 
-            Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"] : 
-            Dir["#{UserTheme::PATH}/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+        if @show_index
+            f = Dir["#{IndexTheme::PATH}/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+	elsif options[:user_theme] 
+            f = Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+        else
+            f = Dir["#{UserTheme::PATH}/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
+        end
+
 	lists = options[:order] || f
 	file_list = lists.map {|file| theme_path(:theme => options[:theme], 
                                                  :type => options[:type], 
@@ -37,7 +42,9 @@ module ThemeHelper
     end
 
     def theme_path(options={})
-	if options[:user_theme]
+	if @show_index
+	    File.join "/index/themes/#{options[:theme].to_s}", options[:type].to_s, options[:file].to_s	
+        elsif options[:user_theme]
 	    File.join "/user_files/#{@user.name}/themes", options[:theme].to_s, options[:type].to_s, options[:file].to_s
 	else
 	    File.join "/themes/#{options[:theme].to_s}", options[:type].to_s, options[:file].to_s	

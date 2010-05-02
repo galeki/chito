@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="all"/>
+<meta name="author" content="galeki"/>
+<meta name="description" content="快乐程序员 is-Programmer.com"/>
+<meta name="keywords" content="快乐程序员 is-Programmer.com"/>
+<%= site_rss_link %>
+<%= jquery_include_tag %>
+<%= jquery_ui_include_tag %>
+<%= javascript_include_tag "jrails" %>
+<%= javascript_include_tag "blog", "fckeditor/fckeditor" -%>
+<%= theme_css_links %>
+<%= theme_js_links %>
+<title>快乐程序员 is-Programmer.com</title>
+</head>
+
+<body>
+<div id="header">
+	<div id="topmenu">
+	</div>
+	<div id="logo">
+		<h1>
+		    <span class="if">if</span> 
+		    <span class="self">self</span>.<span class="site_title"><a href="/">is_Programmer?</a></span>
+		</h1>
+		<h2 class="reg"><a href="/add">register</a> && enjoy</h2>
+		<h2><span class="end">end</span></h2>
+	</div>
+</div>
+<div id="menu">
+</div>
+<div id="content">
+	<div id="main">
+            <%= yield %>
+	    <% if controller.action_name == 'index' -%>
+		<div id="welcome">
+			<h2>&gt; is_Programmer?</h2>
+			<%= image_tag '/themes/is-Programmer/images/ishappy.png', :class => 'left' %>
+			<p><strong>is_Programmer</strong> 基于 <a href="http://www.rubyonrails.org">Ruby on Rails</a>， 是一个面向程序员的非盈利 Blog 系统。如同 <a href="http://www.ruby-lang.org">Ruby</a> 给人的感觉一样，我们相信编程是一件有趣、快乐的事。</p>
+		</div>
+		<div id="example">
+			<h2>&gt; features.each {|f| puts f }</h2>
+			<%= image_tag '/themes/is-Programmer/images/isintro1.png', :class => 'right' %>
+			<h3>可视化编辑</h3>
+			<p>基于开源编辑器 FCKEditor 2.6，编辑器兼容几乎全部主流浏览器，轻松设置文章格式。</p>
+			<br style="clear:both;"/>
+			<%= image_tag '/themes/is-Programmer/images/isintro2.png', :class => 'left' %>
+			<h3>代码高亮</h3>
+			<p>可以在文章中插入70多种高亮后的程序代码，并且可以在编辑器中对高亮后的代码进行再编辑。</p>
+			<br style="clear:both;"/>
+			<%= image_tag '/themes/is-Programmer/images/isintro3.png', :class => 'right' %>
+			<h3>TeX 数学公式</h3>
+			<p>在文章中插入复杂的 TeX 数学公式，让 Blog 帮你生成图片，更加直观的描述的算法和定理。</p>
+			<br style="clear:both;"/>
+			<%= image_tag '/themes/is-Programmer/images/isintro4.png', :class => 'left' %>
+			<h3>全文 RSS 导入和导出</h3>
+			<p>支持从外部的 RSS 导入文章，并且支持文章全文和评论的 RSS 输出，更容易转移和备份自己的文章。</p>
+		</div>
+	    <% elsif controller.action_name == 'add' -%>
+		<% @title = ("Register") -%>
+		<%= render_flash %>
+		<% if @site.mutli_users? and @site.registerable? -%>
+		    <strong><%= ("Register") %></strong>
+		    <% if flash[:error] %>
+			<div id="flash"><span class="wrong"><%= flash[:error] %></span></div>
+		    <% end %>
+		    <div id="reg">
+			    <% form_for :new_user, :url => {:controller => "blog", :action => 'add'} do |f| %>
+				<label for="user_name"><div><%= ("用户名") %></div> http:// <%= f.text_field :name, :size => "14" %>.is-programmer.com</label>
+				<%= error_message_on :new_user, :name %>
+				<label for="user_name"><div><%= ("昵称") %></div> <%= f.text_field :nick, :size => "14" %></label>
+				<%= error_message_on :new_user, :nick %>
+				<label for="user_password"><div><%= ("密码") %></div> <%= f.password_field :password, :size => "14" %></label>
+				<%= error_message_on :new_user, :password %>
+				<label><div><%= ("确认密码") %></div> <%= f.password_field :password_confirmation, :size => "14" %></label>
+				<label for="user_email"><div>E-mail</div> <%= f.text_field :email, :size => "14" %></label>
+				<%= error_message_on :new_user, :email %>
+    <label for="user_language"><div>Language</div> <%= f.select :language, LANGUAGES %></label>
+    <br/>
+    <%= show_simple_captcha :image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha") %>
+				<br/>
+				<%= submit_tag  ("提交") , :class => 'submit' %><br/>
+			    <% end %>
+		    </div>
+		<% end -%>
+	    <% else -%>
+		<%= yield %>
+	    <% end -%>	
+	</div>
+	<div id="sidebar">
+
+                <% sidebar do |i| -%>
+		    <div  class="boxed">
+                            <% unless i.id == :login_field -%>
+			        <h2 class="title"><%= title_of(i) %></h2>
+                            <% end -%>
+			    <div class="content">
+				<%= content_of(i) %>
+			    </div>
+		    </div>
+		<% end %>
+
+		<div id="partners" class="boxed">
+			<h2 class="title">Power by</h2>
+			<div class="content" style="text-align:center;">
+			    <div class="baseon"><%= link_to (image_tag 'rails.png'), "http://www.rubyonrails.org" %></div>
+			    <div class="baseon"><%= link_to (image_tag 'chito.png'), "http://www.chitolog.org" %></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p id="legal">
+	    <%= @site.footer %> 
+	    | Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.
+	</p>
+</div>
+</body>
+</html>

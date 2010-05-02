@@ -1,0 +1,22 @@
+<% if session[:user_name] -%>
+    <%= link_to "[进入我的 Blog]", :subdomain => session[:user_name], :controller => "posts", :only_path => false %><br/>
+    <%= link_to "[管理我的 Blog]", :subdomain => session[:user_name], :controller => "admin/dashboard", :only_path => false %><br/>
+    <%= link_to "[登出]", :subdomain => session[:user_name], :controller => "admin/dashboard", :action => 'logout' %>
+
+<% else -%>
+    	<fieldset>
+    	<legend>Sign-In</legend>
+    		<% form_tag ({:controller => "blog", :action => 'login'}) do%>
+    		    <fieldset>
+    		    <label for="inputtext1">用户名:</label>
+    		    <%= text_field_tag "name", params[:name], :size => 10, :id => "inputtext1" %> <br/>
+    		    <label for="inputtext2">密码:</label>
+    		    <%= password_field_tag "password", nil, :size => 10, :id => "inputtext2" %> <br/>
+    		    <label><%=check_box_tag("persist", value = "1", options = {})%> 记住我</label>
+    		    <p><%= link_to '注册', :controller => "blog", :action => :add %></p>
+    		    <%= submit_tag '登录', :id => "inputsubmit1"%>
+    		    <label><small><%= link_to (t("plugins.useful_sidebars.forgot_password")), forgot_password_path %></small></label>
+    		    </fieldset>
+    		<% end  %>
+    	</fieldset>
+<% end -%>

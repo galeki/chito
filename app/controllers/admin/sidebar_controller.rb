@@ -1,4 +1,5 @@
 class Admin::SidebarController <  Admin::BaseController
+  self.prepend_view_path(UserTheme::PATH) 
 
   def index
     @overlap = {}

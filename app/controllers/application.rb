@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
     before_filter :get_site
     protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
-    self.prepend_view_path(UserTheme::PATH) 
-    self.prepend_view_path(IndexTheme::PATH) 
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
@@ -17,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
     def admin_authorize
-	return if (session[:user_id] && @user = User.find(session[:user_id]))
+	return if (session[:user_id] and @user = User.find(session[:user_id]))
 	if cookies[:remember_key] and @user = User.find_by_remember_key(cookies[:remember_key]) and @user.remember_key_expires_at > Time.now
 	    @user.set_session(session, request, @site)
 	else
@@ -99,7 +97,7 @@ class ApplicationController < ActionController::Base
 
     def get_site
 	@site = Site.instance
-	ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.update( :session_domain => request.domain)
+	ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.update(:session_domain => request.domain)
 	unless @site
 	    redirect_to :controller => "site", :action => "setup"
 	    return false
@@ -139,6 +137,15 @@ class ApplicationController < ActionController::Base
 	    @all_bars = Sidebar.sidebars
 	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
 	end
+    end
+
+    def get_index_sidebars
+        if_html do 
+	    IndexSidebar.user = @site
+	    do_something :in_index_sidebar if IndexSidebar.items.empty?
+	    @all_bars = IndexSidebar.items
+	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
+        end
     end
 
     def get_postbars

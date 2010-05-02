@@ -5,13 +5,13 @@ class UserTheme
     COPIED = {}
 
     def self.file_path(theme, file)
-	File.join PATH, theme, file
+	File.join self::PATH, theme, file
     end
 
     def self.copy_to_public(theme)
 	unless COPIED[theme]
-	    dst = File.join(PUBLIC_PATH, theme)
-	    src = File.join(PATH, theme)
+	    dst = File.join(self::PUBLIC_PATH, theme)
+	    src = File.join(self::PATH, theme)
 	    FileUtils.makedirs dst
 	    ['images', 'stylesheets', 'javascripts', 'screenshot.png'].each do |f|
 		FileUtils.cp_r File.join(src, f), dst

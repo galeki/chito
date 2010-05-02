@@ -1,0 +1,9 @@
+<% @fields = ['chito_default'] -%>
+<% @overlap[:chito_default] = :vertical -%>
+<% @disable_bars = @all_bars.reject{|b| b.show?}.sort_by{|x| x.position} -%>
+<ul id='chito_default' class="vbars">
+    <div class="bars_title"><%= t(:sidebar, :scope => [:txt, :view, :admin, :sidebar]) %></div>
+    <% for bar in @enable_bars -%>
+	<%= show_bar(bar, :site) %>
+    <% end -%>
+</ul>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="all"/>
+<meta name="author" content="<%=h @meta_author %>"/>
+<meta name="description" content="<%=h @meta_description %>"/>
+<meta name="keywords" content="<%=h @meta_keywords %>"/>
+<link rel="shortcut icon" type="image/x-icon" href="<%= favicon_url %>" />
+<%= site_rss_link %>
+<%= jquery_include_tag %>
+<%= jquery_ui_include_tag %>
+<%= javascript_include_tag "jrails" %>
+<%= javascript_include_tag "blog", "fckeditor/fckeditor" -%>
+<%= theme_css_links %>
+<%= theme_js_links %>
+<link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
+<title><%= @title %></title>
+</head>
+<body>
+
+<div id="header">
+	<div id="logo">
+		<h1><%= @site.title %></h1>
+		<h2><%=  %></h2>
+	</div>
+	<div id="menu">
+		<ul>
+					<li class="page_item">AAA</li>
+					<li class="page_item">AAA</li>
+					<li class="page_item">AAA</li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+
+<!-- start page -->
+<div id="page">
+
+<!-- start sidebar1 -->
+<div id="sidebar1" class="sidebar">
+	<ul>
+	    <% bars_in :left do |b| -%>
+		    <li>
+			<h2><%= b.title %></h2>
+			<%= content_of(b) %>
+		    </li>
+	    <% end -%>
+	</ul>
+</div>
+<!-- end sidebar1 -->
+
+	<!-- start content -->
+	<div id="content">
+	    <div id="content_w">
+		<%= yield %>
+	    </div>
+	</div>
+	<!-- end content -->
+
+	<!-- start sidebar2 -->
+	<div id="sidebar2" class="sidebar">
+		<ul>
+		    <% bars_in :right do |b| -%>
+			    <li>
+				<h2><%= b.title %></h2>
+				<%= content_of(b) %>
+			    </li>
+		    <% end -%>		
+		</ul>
+	</div>
+	<!-- end sidebar2 -->
+
+
+
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+
+<hr>
+<%=  %>
+<div id="footer">
+	<p class="legal">
+	    <%=  %>
+	</p>
+	<p class="credit">
+		Designed by <a href="http://www.freewpthemes.net/">Free WordPress Themes</a>.
+	</p>
+</div>
+
+</body></html>

@@ -1,7 +1,9 @@
 var formSubmit = false;
-function remote_form()
+function remote_form(index)
 {
     var url = "/admin/remote_update";
+    if(index)
+        url += "?index=1";
     //alert($('#remote_form').find('input').serialize() + $('#remote_form').find('textarea').serialize());
     $.post(url, $('#remote_form').find('input').serialize() + '&' + $('#remote_form').find('textarea').serialize()  , function(data)
     {
@@ -18,7 +20,7 @@ function open_remote_form(options)
 				modal: true,  
 				buttons: {  
 				    "Save": function(){  
-					    remote_form();  
+					    remote_form(options['index']);  
 					    $(this).html("");
 					    $(this).dialog("close");  
 				    },  

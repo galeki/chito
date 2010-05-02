@@ -1,0 +1,8 @@
+<ul>
+    <% for post in @user_update_posts -%>
+	<li>
+		<h3><%= post.created_at.strftime("%a %b %d %H:%M %Y") %></h3>
+		<p><%= post_link post, :subdomain => post.user.name %></p>
+	</li>
+    <% end -%>
+</ul>

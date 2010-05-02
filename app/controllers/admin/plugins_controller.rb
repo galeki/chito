@@ -21,8 +21,12 @@ class Admin::PluginsController <  Admin::BaseController
 
   def remote_update
     return unless request.xhr?
-    @user.update_attributes(params[:user]) 
-    expire_chito_fragment
+    if params[:index] && @user.is_chito_admin?
+        @site.update_attributes(params[:site])
+    else
+        @user.update_attributes(params[:user]) 
+        expire_chito_fragment
+    end
     render :update do |page|
 	page.replace_html 'notifier', t(:config_updated, :scope => [:txt, :controller, :admin, :plugins])
 	page.visual_effect :highlight, "notifier", :duration => 4, :startcolor => '#ffff00'

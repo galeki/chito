@@ -354,12 +354,14 @@ en-US:
           autosaving_message: Autosaving
           autosave_ok_message: Autosaved to draft on
           autosave_fail: Autosave fail
+          show_in_navbar: and show in navbar
         _sub_menu_for_root: 
           message_0: Site
           message_1: User groups
           message_2: Users
           feedbacks: Feedbacks
           articles: Posts
+          index_sidebar: Index sidebars
         categories:
           saving: Saving
           create_category: Create Category

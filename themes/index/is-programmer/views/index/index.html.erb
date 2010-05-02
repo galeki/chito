@@ -1,0 +1,12 @@
+<%# posts_cache do -%>
+<% posts do -%>
+			<h1><%= post_link @post, :subdomain => (@post.user && @post.user.name) %></h1>
+			
+                        <%= @post.short_brief(100) %>
+			<p class="post-footer align-right">					
+				<%= link_to_post_category(:class => 'readmore') %>
+				<%= link_to_post_tags(:class => 'post_tags') %>
+				<%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
+			</p>	
+<% end -%>
+<%# end -%>

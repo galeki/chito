@@ -1,0 +1,70 @@
+en-US:
+    plugins:
+        useful_sidebars:
+            head:
+                info: Avatar
+            categories:
+                info: Categories
+            links:
+                info: Links
+            new_comments:
+                info: New Comments
+            new_messages:
+                info: New Messages
+            page:
+                info: Pages
+            blog_counter:
+                info: Counter
+            search:
+                info: Search
+            meta:
+                info: Meta
+            search:
+                info: Search
+            register: Register
+            admin: Admin
+            login: Login
+            forgot_password: Forgot password ?
+            posts_rss: Posts RSS
+            comments_rss: Comments RSS
+            messages_rss: Messages RSS
+            num_of_newcomments: Numbers of comments
+            maxlength_of_newcomments: Max length of comments
+            num_of_newmessages: Numbers of messages
+            maxlength_of_newmessages: Max length of messages
+            search_tag: Search
+zh-CN:
+    plugins:
+        useful_sidebars:
+            head:
+                info: 头像
+            categories:
+                info: 分类
+            links:
+                info: 链接
+            new_comments:
+                info: 最新评论
+            new_messages:
+                info: 最新留言
+            page:
+                info: 页面
+            blog_counter:
+                info: 计数器
+            search:
+                info: 搜索
+            meta:
+                info: 功能
+            search:
+                info: 搜索
+            register: 注册
+            admin: 管理
+            login: 登录
+            forgot_password: 忘记密码？
+            posts_rss: 文章 RSS
+            comments_rss: 评论 RSS
+            messages_rss: 留言 RSS
+            num_of_newcomments: 评论显示数量
+            maxlength_of_newcomments: 评论长度
+            num_of_newmessages: 留言显示数量
+            maxlength_of_newmessages: 留言长度
+            search_tag: 搜索

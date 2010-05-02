@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100425150838) do
+ActiveRecord::Schema.define(:version => 20100430170939) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20100425150838) do
     t.string   "footer"
     t.string   "index_mode"
     t.string   "index_theme"
+    t.text     "settings"
   end
 
   create_table "taggings", :force => true do |t|

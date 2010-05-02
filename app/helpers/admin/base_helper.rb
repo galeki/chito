@@ -11,6 +11,12 @@ module Admin::BaseHelper
 	concat "</div>"
     end
 
+    def remote_form_site(&block)
+	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>"
+	form_for :site, :html => {:id => 'remote_form', :onsubmit => "return false"}, &block  #do |f|
+	concat "</div>"
+    end
+
     def selected_button(options={})
 	button_to_function options[:text], %Q[
 	if(confirm("#{options[:confirm]}")){

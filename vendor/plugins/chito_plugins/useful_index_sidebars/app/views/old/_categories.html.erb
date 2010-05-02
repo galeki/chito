@@ -1,0 +1,9 @@
+<% sidebar_cache :categories do -%>
+    <ul id="category">
+     <% for category in @categories -%>
+	<li class="category">
+	    <%= link_to h(category.name), category_posts_path(category) %>
+	</li>
+     <% end -%>
+    </ul>
+<% end -%>

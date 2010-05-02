@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+    self.prepend_view_path(UserTheme::PATH) 
     before_filter :get_user_and_needed , :except => [:plugin_css, :favicon]
     before_filter :get_user, :only => [:plugin_css, :favicon]
     include BlogControllerPlugin

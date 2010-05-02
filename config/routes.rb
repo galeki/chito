@@ -30,6 +30,8 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
+	#map.root :controller => 'posts', :action => 'index'
+	map.connect "/", :controller => 'index', :action => 'index'
 	map.root :controller => 'posts', :action => 'index'
 	map.favicon '/favicon.ico', :controller => 'blog', :action => 'favicon'
 	map.plugin_css '/plugin.css', :controller => 'blog', :action => 'plugin_css'
@@ -124,6 +126,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/admin/themesettings/:action/:id', :controller => 'admin/themesettings'
 
 	map.connect '/admin/sidebar/:action/:id', :controller => 'admin/sidebar'
+	map.connect '/admin/index_sidebar/:action/:id', :controller => 'admin/index_sidebar'
 	map.connect '/admin/navbar/:action/:id', :controller => 'admin/navbar'
 	map.connect '/admin/postbar/:action/:id', :controller => 'admin/postbar'
 	

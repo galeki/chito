@@ -1,8 +1,8 @@
 module Admin::SidebarHelper
 
-    def show_bar(bar)
+    def show_bar(bar, type=:user)
 	 %Q[<li class="bar" id="bar_#{bar.id}">
-		#{text_field :user, bar.title_name,  :value => bar.title}
+		#{text_field type, bar.title_name,  :value => bar.title}
 		<div class="bar_info">
 		#{bar_settings_area(bar)} 
 		#{bar.info} 
@@ -15,13 +15,17 @@ module Admin::SidebarHelper
 	    link_to image_tag("setting.gif"), bar.jump, :target => "_blank", :class => "remote_setting"
 	else
 	    (link_to image_tag("setting.gif"), "#", 
-		    {:onclick => "open_remote_form({'url':'#{bar.form_url}', 'title':'#{bar.info}', 'width':450});", 
+		    {:onclick => "open_remote_form( { 'url':'#{bar.form_url}', 
+                                                      'title':'#{bar.info}', 
+                                                      'width':550
+                                                      #{",'index':true" if bar.class == IndexSidebar}
+                                                        });", 
 		    :class => "remote_setting"} )  if bar.config
 	end
     end
 
-    def bars_layout
-	template = "#{@user.theme}/views/bars_config"
+    def bars_layout(t=@user.theme)
+	template = "#{t}/views/bars_config"
 	render :partial => template
 	rescue
 	render :partial => 'bars_config'

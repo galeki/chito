@@ -73,6 +73,10 @@ class Article < ActiveRecord::Base
         super only.merge(options)
     end
 
+    def short_brief(n)
+        helpers.truncate(helpers.strip_tags(self.brief), :length => n)
+    end
+
     private
 
     def close_html(html)

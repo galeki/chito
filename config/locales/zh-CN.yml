@@ -354,12 +354,14 @@ zh-CN:
           autosaving_message: 自动保存中
           autosave_ok_message: 自动保存草稿于
           autosave_fail: 自动保存失败
+          show_in_navbar: 并显示在导航栏
         _sub_menu_for_root: 
           message_0: 网站
           message_1: 用户组
           message_2: 用户
           feedbacks: 反馈
           articles: 文章
+          index_sidebar: 首页边栏
         categories:
           saving: 保存中
           create_category: 创建分类

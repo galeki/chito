@@ -70,6 +70,9 @@ setInterval( update_article_content, 3000);
 
 <input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form);" class="submit_post"/>
 <input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form);"/>
+<!--
+<label style="display:inline;"><%= check_box_tag "show_in_navbar" %><%= t(:show_in_navbar, :scope => [:txt, :view, :admin, :share]) %></label>
+-->
 <input type="button" value="<%= t :save_to_draft_box, :scope => [:txt, :view, :admin, :share]  %>" onclick="submit_as('drafts', this.form);" />
 <input type="button" value="<%= t :save_and_edit, :scope => [:txt, :view, :admin, :share]%>" onclick="formSubmit=true;this.form.action += '?continue_editing=1';this.form.submit();" />
 </div>

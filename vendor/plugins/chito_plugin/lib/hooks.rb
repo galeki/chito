@@ -30,3 +30,5 @@ module Admin::ArticleHelperPlugin
 end
 module CommentControllerPlugin
 end
+module IndexControllerPlugin
+end
