@@ -73,11 +73,15 @@ ol li {
 
 a {
 	color: #3c0;
+	text-decoration: none;
 }
 
 a:hover {
 	text-decoration: none;
 	color: #9c3;
+}
+a:visited{
+    color:#666;
 }
 #updates a:visited{
     color:#666;
@@ -449,3 +453,17 @@ img.right {
     background-color: #d7ffaf;
 }
 #login #inputsubmit1:hover{color:#666;}
+
+h2.link_to_post{
+    font-size: 1.2em;
+}
+h2.link_to_post a{
+    color: #6666ff;
+}
+h2.link_to_post a:visited{
+    color: #999;
+}
+h2.link_to_post a:hover{
+    color: #9c3;
+}
+.align-right { text-align: right; }

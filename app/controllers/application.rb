@@ -142,8 +142,8 @@ class ApplicationController < ActionController::Base
     def get_index_sidebars
         if_html do 
 	    IndexSidebar.user = @site
-	    do_something :in_index_sidebar if IndexSidebar.items.empty?
-	    @all_bars = IndexSidebar.items
+	    do_something :in_index_sidebar if IndexSidebar.index_sidebars.empty?
+	    @all_bars = IndexSidebar.index_sidebars
 	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
         end
     end

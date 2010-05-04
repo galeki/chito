@@ -1,11 +1,11 @@
 class IndexSidebar < Sidebar
-    mattr_accessor :items, :user
+    mattr_accessor :index_sidebars, :user
 
-    @@items = []
+    @@index_sidebars = []
     @@user
 
     def self.add(sidebar)
-      @@items << sidebar
+      @@index_sidebars << sidebar
     end
     
 end

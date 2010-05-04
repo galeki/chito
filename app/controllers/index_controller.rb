@@ -5,7 +5,7 @@ class IndexController < ApplicationController
   def index
     if @site.show_index?(request)
         @show_index = true
-        @posts = Article.find(:all)
+        @posts = Article.find(:all, :order => "created_at desc", :limit => 20)
         get_index_sidebars
         do_something :before_index_show
     else

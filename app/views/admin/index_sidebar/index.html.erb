@@ -4,6 +4,22 @@
 <% @title = t(:sidebar_settings, :scope => [:txt, :view, :admin, :sidebar]) -%>
 <div class="edit_field">
 <div class="right_c"></div>
+<div class="edit_header"><div id="notifier"></div><%= t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) %> </div>
+<% form_for :site, :url => {:action => "change_settings"} do |f| %>
+    <label>Post brief cut <%= f.text_field :post_brief_cut, :size => 8 %></label>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
+<div class="edit_header"><div id="notifier"></div><%= t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) %> </div>
+<% form_for :site, :url => {:action => "change_settings"} do |f| %>
+    <%= f.select :index_theme, @index_theme_list %>
+    <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
+<% end %>
+</div>
+<div class="edit_field">
+<div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @site.index_theme %> ] </div>
 <% form_for :site, :url => {:action => 'sidebar_postion'} do |f| %>
   <%= bars_layout(@site.index_theme) %>

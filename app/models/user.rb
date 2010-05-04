@@ -274,6 +274,15 @@ class User < ActiveRecord::Base
 	end	
     end
 
+    def small_avatar_url(options={})
+	avatar = Dir[File.join(self.base_dir, "config", "{avatar_small.png,head_small.jpg}")].sort.first
+	if avatar	
+	    "/user_files/#{self.name}/config/#{File.basename(avatar)}"
+	else
+	   "/user_files/avatar_small.png"
+	end	
+    end
+
     def error_messages
 	self.errors.map{|x| x[1]}.join("; ")
     end

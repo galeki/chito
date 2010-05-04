@@ -3,8 +3,15 @@ class Admin::IndexSidebarController <  Admin::BaseController
   before_filter :chito_admin_authorize    
 
   def index
+    @index_theme_list = IndexTheme::LIST
     @overlap = {}
     get_index_sidebars
+  end
+
+  def change_settings
+    return unless request.post?
+    notice_stickie(t(:config_updated, :scope => [:txt, :controller, :admin, :base])) if @site.update_attributes(params[:site])
+    redirect_to :action => "index"
   end
 
   def sidebar_postion
