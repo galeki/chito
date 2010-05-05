@@ -521,3 +521,8 @@ a.down:hover {
 }
 #content .hl_result ul, #content .hl_result ol
 {margin-top: 0px;margin-bottom: 0px;}
+
+#content #article_tabs ul{
+	list-style-type: none; 
+        margin:0;
+}

@@ -556,6 +556,10 @@ zh-CN:
           no_match: 没有找到反馈
         articles:
           manage_articles: 管理文章
+        index_settings:
+          settings: 首页设置
+          brief_cut: 简介截取字数
+          post_number: 新文章数量
       site: 
         setup: 
           message_8: 单用户

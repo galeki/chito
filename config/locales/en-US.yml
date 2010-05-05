@@ -557,6 +557,10 @@ en-US:
           no_match: No Match
         articles:
           manage_articles: Manage Posts
+        index_settings:
+          settings: Index Settings
+          brief_cut: Brief cut length
+          post_number: Post number
       site: 
         setup: 
           message_8: Single user

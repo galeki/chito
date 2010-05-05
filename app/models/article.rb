@@ -19,7 +19,14 @@ class Article < ActiveRecord::Base
 	include ArticlePlugin
 
     def self.new_posts
-	    find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
+	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
+    end
+
+    def self.new_ranked_posts(options)
+        paginate :conditions => ["articles.bit_opt = 0 and articles.rank > ?", options[:rank]],
+                 :order => "articles.created_at DESC",
+                 :include => [:user, :comments],
+                 :per_page => (options[:per_page] || 10), :page => options[:page]
     end
 
     def title

@@ -372,6 +372,7 @@ h3 {
 #content ul span {
 	color:#444;
 }
+/*
 #contentnorightbar ul {
 	margin:15px 0 15px 20px;
 	line-height:25px;
@@ -383,6 +384,7 @@ h3 {
 #contentnorightbar ul span {
 	color:#444;
 }
+*/
 
 img {
 }
@@ -461,3 +463,4 @@ a.up:hover, a.down:hover, #article_header a:hover{color:#555;}
 #comments a{text-decoration:none;border:none;}
 
 
+#article_tabs{float:left;width:100%;margin-bottom:25px;}

@@ -264,12 +264,11 @@ h3 a:hover{
 #post_comment fieldset {
     margin: 1em 0;
     border: 1px solid #ccc;
-    width: 500px;
+    width: 95%;
 }
 #post_comment {
     float:left;
     background: inherit;
-    border:1px solid #eee;
     margin-left:10px;
     padding: 20px;
     margin-bottom: 20px;
@@ -379,3 +378,4 @@ margin-bottom: 0px;
 .tip_box h3{font-size:90%;margin:0;padding:0px;}
 *+html .list_box h3 span{font-size:60%;}
 
+.articlefooter{background:none;}

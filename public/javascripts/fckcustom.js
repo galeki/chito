@@ -19,7 +19,7 @@ FCKConfig.Plugins.Add( 'wpmore');
 //
 FCKConfig.Plugins.Add( 'latexformula' ) ;
 FCKConfig.Plugins.Add( 'syntaxhighlighter', 'zh,en') ;
-FCKConfig.Plugins.Add( 'geshipro', 'zh' ) ;
+//FCKConfig.Plugins.Add( 'geshipro', 'zh' ) ;
 //
 FCKConfig.ToolbarSets["Default"] = [
 	['Source','Undo','Redo'],

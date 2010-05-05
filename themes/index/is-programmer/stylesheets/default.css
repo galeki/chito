@@ -144,6 +144,7 @@ img.right {
 }
 .if, .end{color:#99f;}
 .self{color:#CD853F;}
+.beta{color:#bbb;margin-left:0.5em;}
 #logo h1 {
 	padding: 35px 0 0 0;
 	font-size: 1.6em;
@@ -353,29 +354,29 @@ img.right {
 #updates {
 }
 
-#updates ul {
+#updates ul , .boxed ul{
 	margin: 0;
 	list-style: none;
 }
 
-#updates li {
+#updates li , .boxed li{
 	margin-bottom: 1em;
 }
 
-#updates h3 {
+#updates h3 , .boxed h3{
 	margin: 0;
 	padding: 0 0 0 10px;
 	font-size: x-small;
 }
 
-#updates p {
+#updates p , .boxed p{
 	margin: 0;
 	padding: 0 0 0 10px;
 	line-height: normal;
 	font-size: .85em;
 }
 
-#updates a {
+#updates a, .boxed a{
 	text-decoration: none;
 }
 
@@ -467,3 +468,6 @@ h2.link_to_post a:hover{
     color: #9c3;
 }
 .align-right { text-align: right; }
+#pagilinks a:visited {
+	color: #3c0;
+}

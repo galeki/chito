@@ -1,11 +1,14 @@
 class IndexController < ApplicationController
   include IndexControllerPlugin 
   self.prepend_view_path(IndexTheme::PATH) 
+  before_filter :get_index_local
 
   def index
     if @site.show_index?(request)
         @show_index = true
-        @posts = Article.find(:all, :order => "created_at desc", :limit => 20)
+        @posts = Article.new_ranked_posts :rank => 0, 
+                                          :page => params[:page], 
+                                          :per_page => @site.new_post_number.to_num(10)
         get_index_sidebars
         do_something :before_index_show
     else
@@ -14,6 +17,10 @@ class IndexController < ApplicationController
   end
 
   private 
+
+  def get_index_local
+    I18n.locale = "zh-CN"
+  end
 
   def render(options = {}, extra_options = {}, &block)
     @theme = @site.index_theme || "is-programmer"

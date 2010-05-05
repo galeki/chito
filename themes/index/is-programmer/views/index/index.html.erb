@@ -6,7 +6,7 @@
         </div>
 	    <h2 class="link_to_post"><%= post_link @post, :subdomain => (@post.user && @post.user.name) %></h2>
 			
-            <%= @post.short_brief(100) %>
+            <%= @post.short_brief(@site.post_brief_cut.to_num(200)) %>
 
         <br style="clear:both;" />
             <p class="post-footer align-right">					
@@ -17,4 +17,8 @@
 	    </p>
     </div>
 <% end -%>
+
+<div id="pagilinks">
+    <%= will_paginate @posts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
 <%# end -%>
