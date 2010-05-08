@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
 	acts_as_settings :nil_value => ['', '0']
 	has_flags [:is_none, :is_draft, :is_page], [:column => 'bit_opt']
 	belongs_to :user 
+	belongs_to :index 
 	has_many :comments, 
 		 :class_name => 'Feedback',
 		 :order => 'feedbacks.created_at', 

@@ -1,0 +1,22 @@
+    <tr id="index_<%= @index.id %>" class="<%= cycle("odd", "") %>">
+	    <td class="index_title_col">
+			<%= in_place_edit :index, :title, @index.id, @index.title.to_s %>
+	    </td>
+	    <td class="index_bind_domain_col"><%= in_place_edit :index, :bind_domain, @index.id, @index.bind_domain.to_s %></td>
+            <td class="index_info_col"><%= in_place_edit :index, :info, @index.id, @index.info.to_s %></td>
+	    <td class="index_theme_col"><%= @index.theme %></td>
+	    <td class="index_managers_col">
+                <% form_remote_tag( :url => add_manager_admin_index_path(@index)
+			    ) do %>
+		    <%= text_field_tag 'user_name', "", :size => 8  %>
+	            <%= submit_tag t(:add, :scope => [:txt, :view, :admin, :indices]), :id => "ss_#{@index.id}", :autocomplete => 'off' %> 
+	        <% end -%>	
+                <div id="index_users_<%= @index.id %>">
+                    <%= render :partial => "managers" %>
+                </div>
+            </td>
+
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :indices]), admin_index_path(@index), :class => "delete", 
+		:confirm => t(:delete_index?, :scope => [:txt, :view, :admin, :indices], :index => @index.title), :method => :delete %></td>
+    </tr>
+

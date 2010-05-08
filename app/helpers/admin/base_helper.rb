@@ -11,9 +11,9 @@ module Admin::BaseHelper
 	concat "</div>"
     end
 
-    def remote_form_site(&block)
+    def remote_form_index(&block)
 	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>"
-	form_for :site, :html => {:id => 'remote_form', :onsubmit => "return false"}, &block  #do |f|
+	form_for :index, :html => {:id => 'remote_form', :onsubmit => "return false"}, &block  #do |f|
 	concat "</div>"
     end
 

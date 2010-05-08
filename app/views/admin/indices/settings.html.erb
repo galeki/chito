@@ -1,12 +1,13 @@
-<%= render :partial => 'admin/sub_menu_for_root' %>
+<%= render :partial => 'admin/sub_menu_for_index' %>
 <%= render_flash %>
 <div class="option_wrap">
 <% @title =  t :settings, :scope => [:txt, :view, :admin, :index_settings] -%>
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t :settings, :scope => [:txt, :view, :admin, :index_settings] %> </div>
-<% form_for :site, :url => {:action => "change_settings"} do |f| %>
-    <label><%= t :post_number, :scope => [:txt, :view, :admin, :index_settings] %> <%= f.text_field :new_post_number, :size => 6 %></label>
+<% form_for(:index, :url => change_settings_admin_index_path(@index)) do |f| %>
+    <label><%= t :post_number, :scope => [:txt, :view, :admin, :index_settings] %> 
+    <%= f.text_field :new_post_number, :size => 6 %></label>
     <label><%= t :brief_cut, :scope => [:txt, :view, :admin, :index_settings] %> <%= f.text_field :post_brief_cut, :size => 6 %></label>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
@@ -14,23 +15,23 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) %> </div>
-<% form_for :site, :url => {:action => "change_settings"} do |f| %>
-    <%= f.select :index_theme, @index_theme_list %>
+<% form_for :index, :url => change_settings_admin_index_path(@index) do |f| %>
+    <%= f.select :theme, @index_theme_list %>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
 </div>
 <div class="edit_field">
 <div class="right_c"></div>
-<div class="edit_header"><div id="notifier"></div><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @site.index_theme %> ] </div>
-<% form_for :site, :url => {:action => 'sidebar_postion'} do |f| %>
-  <%= bars_layout(@site.index_theme) %>
+<div class="edit_header"><div id="notifier"></div><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @index.theme %> ] </div>
+<% form_for :index, :url => sidebar_position_admin_index_path(@index) do |f| %>
+  <%= bars_layout(@index.theme) %>
   <br style="clear:both"/>
   <% @disable_bars ||= @all_bars.reject {|b| b.show? and @fields.include?(b.field.to_s)} -%>
   <div id="disable_bar_box">
 	<div class="disable_bars_title"><%= t(:available_sidebars, :scope => [:txt, :view, :admin, :sidebar]) %></div>
 	<ul id="disable" class="disable_hbars">
 	  <% for bar in @disable_bars -%>
-	     <%= show_bar(bar, :site) %>
+	     <%= show_bar(bar, :index) %>
 	  <% end -%>
 	</ul>
 	<br style="clear:both"/>

@@ -67,12 +67,17 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/admin/groups/set_group_space', :controller => 'admin/groups', :action => 'set_group_space'
 	map.connect '/admin/groups/set_group_file_size_limit', :controller => 'admin/groups', :action => 'set_group_file_size_limit'
 
+	map.connect '/admin/indices/set_index_title', :controller => 'admin/indices', :action => 'set_index_title'
+	map.connect '/admin/indices/set_index_bind_domain', :controller => 'admin/indices', :action => 'set_index_bind_domain'
+	map.connect '/admin/indices/set_index_info', :controller => 'admin/indices', :action => 'set_index_info'
+
 	map.namespace :admin do |admin|
 	    admin.resources :posts, :collection => {:destroy_selected => :post, :recategory_selected => :post}
 	    admin.resources :drafts, :collection => {:destroy_selected => :post}
 	    admin.resources :pages, :member => {:enable_fontpage => :post, :cancel_fontpage => :post}
 	    admin.resources :users, :member => {:set_group => :post}
 	    admin.resources :groups, :member => {:set_group_space => :post, :set_group_name => :post, :set_group_file_size_limit => :post}
+	    admin.resources :indices, :member => {:add_manager => :post, :remove_manager => :post, :settings => :get, :change_settings => :post, :sidebar_position => :post}
 	    admin.resources :comments, :collection => {:settings => :get, :set_filter_position => :post, :destroy_selected => :delete}
 	    admin.resources :messages, :collection => {:destroy_selected => :delete}
 	    admin.resources :trackbacks, :collection => {:destroy_selected => :delete}
@@ -126,7 +131,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/admin/themesettings/:action/:id', :controller => 'admin/themesettings'
 
 	map.connect '/admin/sidebar/:action/:id', :controller => 'admin/sidebar'
-	map.connect '/admin/index_sidebar/:action/:id', :controller => 'admin/index_sidebar'
+	#map.connect '/admin/index_sidebar/:action/:id', :controller => 'admin/index_sidebar'
 	map.connect '/admin/navbar/:action/:id', :controller => 'admin/navbar'
 	map.connect '/admin/postbar/:action/:id', :controller => 'admin/postbar'
 	

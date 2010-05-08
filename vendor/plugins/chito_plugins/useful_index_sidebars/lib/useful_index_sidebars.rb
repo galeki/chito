@@ -27,18 +27,18 @@ module IndexControllerPlugin
 	    #	@comment_cut = @user.new_comments_cut.to_num(20)
 	    #end
 
-            if @site.show_user_updates
-                uname = @site.user_of_user_updates || 'official'
+            if @index.show_user_updates
+                uname = @index.user_of_user_updates || 'official'
                 u = User.find_by_name(uname)
                 if u
-                    @user_update_posts = u.posts.find(:all, :limit => @site.user_updates_number.to_num(5))
+                    @user_update_posts = u.posts.find(:all, :limit => @index.user_updates_number.to_num(5))
                 else
                     @user_update_posts = []
                 end
             end
 
-            if @site.show_new_reg_users
-                @new_reg_users = User.find(:all, :order => 'created_at desc', :limit => @site.new_reg_users_number.to_num(10))
+            if @index.show_new_reg_users
+                @new_reg_users = User.find(:all, :order => 'created_at desc', :limit => @index.new_reg_users_number.to_num(10))
             end
 
         end

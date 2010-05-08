@@ -15,14 +15,18 @@ class Admin::PluginsController <  Admin::BaseController
 
   def remote_form 
     return if bad_param(params[:plugin]) or bad_param(params[:view])
+    @index = Index.find(params[:index_id]) if params[:index_id]
     path = "#{params[:plugin]}/app/views/#{params[:view]}"
     render :partial => path
   end
 
   def remote_update
     return unless request.xhr?
-    if params[:index] && @user.is_chito_admin?
-        @site.update_attributes(params[:site])
+    if params[:index_id]
+        @index = Index.find(params[:index_id])
+        if @index && check_rank_authorize(@index.id)
+            @index.update_attributes(params[:index])
+        end
     else
         @user.update_attributes(params[:user]) 
         expire_chito_fragment

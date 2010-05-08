@@ -1,0 +1,40 @@
+<% @title = t(:manage_indices, :scope => [:txt, :view, :admin, :indices]) -%>
+<%= render :partial => 'admin/sub_menu_for_root' %>
+<%= render_flash %>
+<div class="option_wrap">
+
+<div class="add_cate">
+    <div id='add_category'>
+	<% form_remote_tag( :url => admin_indices_path,
+			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :groups])}';$(s).disabled=true;",
+			    :complete => "$(index_title).value='';$(s).value='#{t(:create, :scope => [:txt, :view, :admin, :groups])}';$(s).disabled=false;"
+			    ) do %>
+		<label for="index_title"><%= t(:title, :scope => [:txt, :view, :admin, :indices]) %>:</label>
+		<%= text_field 'index', 'title', :size => 20  %>
+	    <%= submit_tag t(:create, :scope => [:txt, :view, :admin, :groups]), :id => 's', :autocomplete => 'off' %> 
+	<% end -%>	
+    </div>	
+</div>
+<div id="updater"></div>
+<div id='groups'>
+<table class="sofT" cellspacing="0" style="width:60%;">
+    <tr>
+	    <th class="helpHed"><%= t(:title, :scope => [:txt, :view, :admin, :indices]) %></th>
+	    <th class="helpHed"><%= t(:bind_domain, :scope => [:txt, :view, :admin, :indices]) %></th>
+	    <th class="helpHed"><%= t(:info, :scope => [:txt, :view, :admin, :indices]) %></th>
+	    <th class="helpHed"><%= t(:theme, :scope => [:txt, :view, :admin, :indices]) %></th>
+	    <th class="helpHed"><%= t(:managers, :scope => [:txt, :view, :admin, :indices]) %></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <tbody id="all_indices">
+    <% for @index in @indices %>
+	   <%= render :partial => "index" %> 
+    <% end -%>	
+    </tbody>
+</table>
+</div>
+
+</div>
+<%= in_place_edit_js :index, :title %>
+<%= in_place_edit_js :index, :bind_domain %>
+<%= in_place_edit_js :index, :info %>

@@ -8,4 +8,7 @@ class IndexSidebar < Sidebar
       @@index_sidebars << sidebar
     end
     
+    def form_url
+	"/admin/remote_form/#{self.plugin_id}/#{self.id}_config?index_id=#{@@user.id}"
+    end
 end

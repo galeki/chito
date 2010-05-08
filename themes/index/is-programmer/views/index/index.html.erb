@@ -1,4 +1,3 @@
-<%# posts_cache do -%>
 <% posts do -%>
     <div class="post_wrap" style="margin-bottom:10px;">
         <div class="post_avatar" style="float:left;padding-right:5px;">
@@ -6,7 +5,7 @@
         </div>
 	    <h2 class="link_to_post"><%= post_link @post, :subdomain => (@post.user && @post.user.name) %></h2>
 			
-            <%= @post.short_brief(@site.post_brief_cut.to_num(200)) %>
+            <%= @post.short_brief(@index.post_brief_cut.to_num(200)) %>
 
         <br style="clear:both;" />
             <p class="post-footer align-right">					
@@ -21,4 +20,3 @@
 <div id="pagilinks">
     <%= will_paginate @posts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
 </div>
-<%# end -%>

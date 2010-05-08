@@ -19,6 +19,8 @@ en-US:
         writer: Comment writer
         content: Comment content
         email: Email
+      index:
+        title: Index title
   txt: 
     errors:
         "404":
@@ -136,6 +138,9 @@ en-US:
         feedbacks:
           feedback_deleted: Feedback was successfully deleted
           feedbacks_deleted: Feedbacks was successfully deleted
+        indices:
+          index_deleted: Index was successfully deleted
+          no_such_user: No such user
     helper: 
       posts: 
         message_0: Read more
@@ -245,6 +250,17 @@ en-US:
           save_text: Save
           cancel_text: Cancel
           delete_group?: Delete group {{group}} ?
+        indices:
+          manage_indices: Manage Indices
+          title: Index title
+          bind_domain: Bind domain
+          info: Info
+          theme: Theme
+          managers: Managers
+          delete: Delete
+          delete_index?: Delete index {{index}} ?
+          add: Add
+          remove: Remove
         comments: 
           manage_comments: Manage Comments
           search_for: Search for
@@ -362,6 +378,7 @@ en-US:
           feedbacks: Feedbacks
           articles: Posts
           index_sidebar: Index sidebars
+          indices: Indices
         categories:
           saving: Saving
           create_category: Create Category
@@ -411,6 +428,9 @@ en-US:
           message_0: Profile
           message_1: Blog
           message_2: System
+        _sub_menu_for_index:
+          articles: Articles
+          settings: Settings
         settings: 
           show_slogan_in_title: "Show slogan in title"
           blog_options: Blog Options

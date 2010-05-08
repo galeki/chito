@@ -1,0 +1,9 @@
+<% for user in @index.users -%>
+    <div class="manager" style="padding-top:5px;">
+        <% form_remote_tag( :url => remove_manager_admin_index_path(@index, :user_id => user.id)
+			    ) do %>
+            <span><%= user.name %></span>
+	    <%= submit_tag t(:remove, :scope => [:txt, :view, :admin, :indices]), :id => "sr_#{@index.id}", :autocomplete => 'off' %> 
+        <% end -%>
+    </div>
+<% end -%>

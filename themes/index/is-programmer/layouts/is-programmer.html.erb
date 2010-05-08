@@ -60,33 +60,6 @@
 			<h3>全文 RSS 导入和导出</h3>
 			<p>支持从外部的 RSS 导入文章，并且支持文章全文和评论的 RSS 输出，更容易转移和备份自己的文章。</p>
 		</div>
-	    <% elsif controller.action_name == 'add' -%>
-		<% @title = ("Register") -%>
-		<%= render_flash %>
-		<% if @site.mutli_users? and @site.registerable? -%>
-		    <strong><%= ("Register") %></strong>
-		    <% if flash[:error] %>
-			<div id="flash"><span class="wrong"><%= flash[:error] %></span></div>
-		    <% end %>
-		    <div id="reg">
-			    <% form_for :new_user, :url => {:controller => "blog", :action => 'add'} do |f| %>
-				<label for="user_name"><div><%= ("用户名") %></div> http:// <%= f.text_field :name, :size => "14" %>.is-programmer.com</label>
-				<%= error_message_on :new_user, :name %>
-				<label for="user_name"><div><%= ("昵称") %></div> <%= f.text_field :nick, :size => "14" %></label>
-				<%= error_message_on :new_user, :nick %>
-				<label for="user_password"><div><%= ("密码") %></div> <%= f.password_field :password, :size => "14" %></label>
-				<%= error_message_on :new_user, :password %>
-				<label><div><%= ("确认密码") %></div> <%= f.password_field :password_confirmation, :size => "14" %></label>
-				<label for="user_email"><div>E-mail</div> <%= f.text_field :email, :size => "14" %></label>
-				<%= error_message_on :new_user, :email %>
-    <label for="user_language"><div>Language</div> <%= f.select :language, LANGUAGES %></label>
-    <br/>
-    <%= show_simple_captcha :image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha") %>
-				<br/>
-				<%= submit_tag  ("提交") , :class => 'submit' %><br/>
-			    <% end %>
-		    </div>
-		<% end -%>
 	    <% else -%>
 		<%= yield %>
 	    <% end -%>	

@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-    before_filter :chito_admin_authorize    
+    before_filter :chito_admin_authorize, :only => [:index, :destroy]    
 
   def index
     @posts = Article.paginate :per_page => 30, :page => params[:page],
@@ -10,6 +10,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def increase_rank
     @post = Article.find(params[:id])
+    return unless check_rank_authorize(@post.index_id)
     @post.increment!(:rank)
 
     render :update do |page|
@@ -22,6 +23,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def decrease_rank
     @post = Article.find(params[:id])
+    return unless check_rank_authorize(@post.index_id)
     @post.decrement!(:rank)
 
     render :update do |page|

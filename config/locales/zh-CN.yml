@@ -19,6 +19,8 @@ zh-CN:
         writer: 评论作者
         content: 评论内容
         email: E-mail
+      index:
+        title: 索引名称
   txt: 
     errors:
         "404":
@@ -136,6 +138,9 @@ zh-CN:
         feedbacks:
           feedback_deleted: 反馈删除成功
           feedbacks_deleted: 反馈删除成功
+        indices:
+          index_deleted: 索引删除成功
+          no_such_user: 此用户不存在
     helper: 
       posts: 
         message_0: 继续阅读
@@ -245,6 +250,17 @@ zh-CN:
           save_text: 保存
           cancel_text: 取消
           delete_group?: 删除用户组 {{group}} ?
+        indices:
+          manage_indices: 管理索引
+          title: 索引名称
+          bind_domain: 绑定域名
+          info: 描述
+          theme: 主题
+          managers: 管理者
+          delete: 删除
+          delete_index?: 删除索引 {{index}} ?
+          add: 加入
+          remove: 删除
         comments: 
           manage_comments: 管理评论
           search_for: 搜索
@@ -362,6 +378,7 @@ zh-CN:
           feedbacks: 反馈
           articles: 文章
           index_sidebar: 首页边栏
+          indices: 索引
         categories:
           saving: 保存中
           create_category: 创建分类
@@ -411,6 +428,9 @@ zh-CN:
           message_0: 个人信息
           message_1: Blog
           message_2: 系统
+        _sub_menu_for_index:
+          articles: 文章
+          settings: 设置
         settings: 
           show_slogan_in_title: "在页面标题中显示"
           blog_options: Blog 设置

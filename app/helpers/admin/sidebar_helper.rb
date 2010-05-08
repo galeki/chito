@@ -17,8 +17,8 @@ module Admin::SidebarHelper
 	    (link_to image_tag("setting.gif"), "#", 
 		    {:onclick => "open_remote_form( { 'url':'#{bar.form_url}', 
                                                       'title':'#{bar.info}', 
-                                                      'width':550
-                                                      #{",'index':true" if bar.class == IndexSidebar}
+                                                      'width':550,
+                                                      'index':#{bar.class == IndexSidebar ? @index.id : 0}
                                                         });", 
 		    :class => "remote_setting"} )  if bar.config
 	end

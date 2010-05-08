@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100430170939) do
+ActiveRecord::Schema.define(:version => 20100508134955) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20100430170939) do
     t.string   "permalink"
     t.datetime "last_commented_at"
     t.integer  "rank",              :default => 0
+    t.integer  "index_id"
   end
 
   add_index "articles", ["bit_opt"], :name => "index_articles_on_bit_opt"
@@ -74,6 +75,22 @@ ActiveRecord::Schema.define(:version => 20100430170939) do
     t.text    "settings"
     t.integer "bit_opt",         :default => 0
   end
+
+  create_table "indices", :force => true do |t|
+    t.string "title"
+    t.string "theme"
+    t.string "bind_domain"
+    t.text   "info"
+    t.text   "settings"
+  end
+
+  create_table "indices_users", :id => false, :force => true do |t|
+    t.integer "index_id"
+    t.integer "user_id"
+  end
+
+  add_index "indices_users", ["index_id"], :name => "index_indices_users_on_index_id"
+  add_index "indices_users", ["user_id", "index_id"], :name => "index_indices_users_on_user_id_and_index_id"
 
   create_table "links", :force => true do |t|
     t.string   "title"

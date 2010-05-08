@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}
@@ -26,6 +26,12 @@ class ApplicationController < ActionController::Base
 
     def chito_admin_authorize
 	return if @user.is_chito_admin?
+	redirect_to login_path
+    end
+
+    def index_manager_authorize
+        @index = Index.find(params[:id])
+        return if @index and @user.indices.find(@index.id)
 	redirect_to login_path
     end
 
@@ -141,7 +147,7 @@ class ApplicationController < ActionController::Base
 
     def get_index_sidebars
         if_html do 
-	    IndexSidebar.user = @site
+	    IndexSidebar.user = @index
 	    do_something :in_index_sidebar if IndexSidebar.index_sidebars.empty?
 	    @all_bars = IndexSidebar.index_sidebars
 	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}

@@ -25,4 +25,10 @@ class Admin::BaseController < ApplicationController
     end
   end
 
+  def check_rank_authorize(index_id)
+    return true if @user.is_chito_admin?
+    return true if @user.indices.find(index_id)
+    return false
+  end
+
 end

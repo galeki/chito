@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
     has_flags [:registerable], [:column => 'bit_opt']
-    acts_as_settings :nil_value => ['', '0']
+    #acts_as_settings :nil_value => ['', '0']
 
     @@site = nil
 
@@ -17,16 +17,17 @@ class Site < ActiveRecord::Base
 	self.user_mode == "s"
     end
 
-    def index_mode?
-        self.index_mode == "index"
-    end
-
     def no_subdomain?(request)
         if request.domain == self.domain
             return true if request.subdomains.first.blank?
             return true if request.subdomains.first == "www"
         end
         return false
+    end
+
+    def get_index(request)
+        index = Index.find_by_bind_domain(request.host) || Index.find_by_bind_domain("www." + request.host)
+        index
     end
     
     def get_user(request)
@@ -40,8 +41,4 @@ class Site < ActiveRecord::Base
 	user
     end
 
-    def show_index?(request)
-        return true if self.index_mode? and no_subdomain?(request)
-        return false
-    end
 end

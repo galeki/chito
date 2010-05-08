@@ -4,11 +4,11 @@ class IndexController < ApplicationController
   before_filter :get_index_local
 
   def index
-    if @site.show_index?(request)
-        @show_index = true
+    @index = @site.get_index(request)
+    if @index
         @posts = Article.new_ranked_posts :rank => 0, 
                                           :page => params[:page], 
-                                          :per_page => @site.new_post_number.to_num(10)
+                                          :per_page => @index.new_post_number.to_num(10)
         get_index_sidebars
         do_something :before_index_show
     else
@@ -23,7 +23,7 @@ class IndexController < ApplicationController
   end
 
   def render(options = {}, extra_options = {}, &block)
-    @theme = @site.index_theme || "is-programmer"
+    @theme = @index.theme || "is-programmer"
     if @theme 
    	layout = "#{@theme}/layouts/#{@theme}"
 	template = "#{@theme}/views/#{controller_name}/#{action_name}"
@@ -36,7 +36,7 @@ class IndexController < ApplicationController
 
   def internal_redirect_to (options={})
     params.merge!(options)
-    (c = ActionController.const_get("PostsController").new).process(request,response)
+    (c = PostsController.new).process(request,response)
     c.instance_variables.each{|v| self.instance_variable_set(v,c.instance_variable_get(v))} 
   end
   

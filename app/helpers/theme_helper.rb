@@ -17,7 +17,7 @@ module ThemeHelper
 	else
 	    ext = "*"
 	end
-        if @show_index
+        if @index
             f = Dir["#{IndexTheme::PATH}/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
 	elsif options[:user_theme] 
             f = Dir["#{@user.base_dir}/themes/#{options[:theme]}/#{options[:type]}/*.#{ext}"]
@@ -42,7 +42,7 @@ module ThemeHelper
     end
 
     def theme_path(options={})
-	if @show_index
+	if @index
 	    File.join "/index/themes/#{options[:theme].to_s}", options[:type].to_s, options[:file].to_s	
         elsif options[:user_theme]
 	    File.join "/user_files/#{@user.name}/themes", options[:theme].to_s, options[:type].to_s, options[:file].to_s

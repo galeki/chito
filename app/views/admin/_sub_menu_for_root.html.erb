@@ -1,9 +1,9 @@
 <div id="sub_menu">
     <ul>
 		    <li><%= link_to t(:message_0, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), {:controller => 'site'}, :class => @site_class %></li>
-		    <li><%= link_to t(:settings, :scope => [:txt, :view, :admin, :index_settings]),  {:controller => 'index_sidebar'}, :id => "_index_sidebar_index" %></li>
 		    <li><%= link_to t(:message_1, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), admin_groups_path, :id => "_groups_index" %></li>
 		    <li><%= link_to t(:message_2, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), admin_users_path, :id => "_users_index" %></li>
+		    <li><%= link_to t(:indices, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), admin_indices_path, :id => "_indices_index" %></li>
 		    <li><%= link_to t(:feedbacks, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), admin_feedbacks_path, :id => "_feedbacks_index" %></li>
 		    <li><%= link_to t(:articles, :scope => [:txt, :view, :admin, :_sub_menu_for_root]), admin_articles_path, :id => "_articles_index" %></li>
 		    

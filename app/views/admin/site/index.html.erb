@@ -37,17 +37,20 @@
 		    '<%= t(:message_11, :scope => [:txt, :view, :admin, :site]) %>',
 		     this, event, '220px')">[?]</a>
 	</label></p>	
-    
+	<p>
+        <%= f.text_field :default_user, :size => 15  %>
+		<a href="#" class="hintanchor" onMouseover="showhint(
+		    '<%= t(:message_15, :scope => [:txt, :view, :admin, :site]) % {:br =>%q[<br/>]} %>',
+		    this, event, '220px')">[?]</a>
+        </p>
+    <!--
     <label><div><%= t(:index_mode, :scope => [:txt, :view, :admin, :site]) %>:</div></label>    
 	<label><%= f.radio_button :index_mode, "index", :class => "ck" %> <%= t(:index, :scope => [:txt, :view, :admin, :site]) %></label>
 	<p><%= t(:index_mode_intro, :scope => [:txt, :view, :admin, :site]) %></p>
     	<label><%= f.radio_button :index_mode, "user", :class => "ck" %> <%= t(:user, :scope => [:txt, :view, :admin, :site]) %></label>
 	<p><%= t(:user_mode_intro, :scope => [:txt, :view, :admin, :site]) %>
-	<%= f.text_field :default_user, :size => 15  %>
-		<a href="#" class="hintanchor" onMouseover="showhint(
-		    '<%= t(:message_15, :scope => [:txt, :view, :admin, :site]) % {:br =>%q[<br/>]} %>',
-		    this, event, '220px')">[?]</a>	
 	</p> 
+        -->
 	
 	
     

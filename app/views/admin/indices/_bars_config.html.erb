@@ -4,6 +4,6 @@
 <ul id='chito_default' class="vbars">
     <div class="bars_title"><%= t(:sidebar, :scope => [:txt, :view, :admin, :sidebar]) %></div>
     <% for bar in @enable_bars -%>
-	<%= show_bar(bar, :site) %>
+	<%= show_bar(bar, :index) %>
     <% end -%>
 </ul>
