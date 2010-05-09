@@ -24,7 +24,7 @@ class Article < ActiveRecord::Base
     end
 
     def self.new_ranked_posts(options)
-        paginate :conditions => ["articles.bit_opt = 0 and articles.rank > ?", options[:rank]],
+        paginate :conditions => ["articles.index_id = ? and articles.bit_opt = 0 and articles.rank > ?", options[:index_id], options[:rank]],
                  :order => "articles.created_at DESC",
                  :include => [:user, :comments],
                  :per_page => (options[:per_page] || 10), :page => options[:page]

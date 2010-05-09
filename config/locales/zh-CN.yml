@@ -371,6 +371,7 @@ zh-CN:
           autosave_ok_message: 自动保存草稿于
           autosave_fail: 自动保存失败
           show_in_navbar: 并显示在导航栏
+          indices: 总分类
         _sub_menu_for_root: 
           message_0: 网站
           message_1: 用户组

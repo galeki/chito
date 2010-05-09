@@ -31,14 +31,14 @@ class Site < ActiveRecord::Base
     end
     
     def get_user(request)
-	if self.single_user? or no_subdomain?(request) 
+	if self.single_user? #or no_subdomain?(request) 
 	    user = User.find_by_name(self.default_user)
 	elsif request.domain == self.domain
 	    user = User.find_by_name(request.subdomains.join("."))	
 	else
-	    user = User.find_by_bind_domain(request.host) || User.find_by_domain("www." + request.host)
+	    user = User.find_by_bind_domain(request.host) || User.find_by_bind_domain("www." + request.host)
 	end
-	user
+	user || User.find_by_name(self.default_user)
     end
 
 end

@@ -7,6 +7,7 @@ class IndexController < ApplicationController
     @index = @site.get_index(request)
     if @index
         @posts = Article.new_ranked_posts :rank => 0, 
+                                          :index_id => @index.id,
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
         get_index_sidebars

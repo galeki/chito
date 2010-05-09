@@ -17,6 +17,9 @@ module BlogHelperPlugin
         def show_custom_index_sidebar_3_bar
 	    plugin_render :useful_index_sidebars, :custom_index_sidebar_3
         end
+        def show_index_managers_bar
+	    plugin_render :useful_index_sidebars, :index_managers
+        end
 end
 module IndexControllerPlugin
 	private
@@ -97,6 +100,15 @@ module ApplicationPlugin
                 bar.default_position = 6
                 bar.plugin_id = :useful_index_sidebars
                 bar.config = true
+                IndexSidebar.add(bar)
+        end
+        def add_index_managers_in_index_sidebar
+                bar = IndexSidebar.new
+                bar.id = :index_managers
+                bar.info = "Managers"
+                bar.default_position = 0
+                bar.plugin_id = :useful_index_sidebars
+                bar.config = false
                 IndexSidebar.add(bar)
         end
 end

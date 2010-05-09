@@ -585,3 +585,7 @@ span#autosave_fail{
 }
 .post_title_link{color:#000;}
 .post_rank{font-weight:bold; }
+#index_wrap{text-align:center;}
+#index_url{padding:10px;font-size:medium;}
+#index_info{padding:5px;}
+#index_img{float:left;padding:3px;}

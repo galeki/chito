@@ -1,5 +1,30 @@
 <% form_for :article, :url => url, :html => {:id => "article_form",:name => "article_form", :method => method, :onsubmit => 'return false', :multipart => true} do |f| -%>
+<% unless @indices.empty? -%>
 <div id="form_sidebar">
+ <div class="form_item">
+    <div class="right_c"></div>
+    <div class="form_category"><%=t :indices, :scope => [:txt, :view, :admin, :share]  %></div>
+    <div id="index_wrap" >
+    <script type='text/javascript'>
+        index_list = { 
+            '0':{'url':'', 'info':''},
+            <% for index in @indices -%>
+                <%= %Q! '#{index.id}': {'url': '#{h(index.bind_domain)}', 'info':'#{h(index.info)}'}, ! %>
+            <% end -%>
+        };
+    </script>
+        <%= f.collection_select(:index_id, @indices, :id, :title, {}, :onchange => "show_index_info(this)", :style => "width:80%;") %>
+    <div id="index_info_wrap">
+        <div id="index_img"></div>
+        <div id="index_url"></div>
+        <div id="index_info"></div>
+    </div>
+    <script type='text/javascript'>
+        show_index_info(document.getElementById('article_index_id'));
+    </script>
+    </div>
+ </div>
+<% end -%>
  <div class="form_item">
     <div class="right_c"></div>
     <div class="form_category"><%=t :category, :scope => [:txt, :view, :admin, :share]  %></div>

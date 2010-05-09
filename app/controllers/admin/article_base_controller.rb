@@ -7,6 +7,7 @@ class Admin::ArticleBaseController <  Admin::BaseController
     @article.is_draft = true
     @article.auto_brief = true
     @categories = @user.categories
+    @indices = Index.find(:all)
     @selected = @user.categories.find(:first).id
     @article.save
     redirect_to edit_admin_draft_path(@article)
@@ -22,6 +23,7 @@ class Admin::ArticleBaseController <  Admin::BaseController
   def edit
     @article = @user.articles.find(params[:id])
     @categories = @user.categories
+    @indices = Index.find(:all)
     @selected = @article.category.id if @article.category
   end
 

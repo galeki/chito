@@ -1,4 +1,5 @@
 var formSubmit = false;
+var index_list = {};
 function remote_form(index)
 {
     var url = "/admin/remote_update";
@@ -105,6 +106,14 @@ function change_list_by(e)
 {
     var url = e.options[e.selectedIndex].value;
     location.replace(url);
+}
+function show_index_info(e)
+{
+    var key = e.options[e.selectedIndex].value;
+    var url = index_list[key]['url'];
+    var info = index_list[key]['info'];
+    $('#index_url').html("<a href='http://" + url + "' target='_blank'>http://" + url + "</a>");
+    $('#index_info').html(info);
 }
 function clean_category_field()
 {
