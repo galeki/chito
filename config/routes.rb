@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
 	#map.root :controller => 'posts', :action => 'index'
 	map.connect "/", :controller => 'index', :action => 'index'
+	map.index_feed "/index.rss", :controller => 'index', :action => 'index', :format => "rss"
 	map.root :controller => 'posts', :action => 'index'
 	map.favicon '/favicon.ico', :controller => 'blog', :action => 'favicon'
 	map.plugin_css '/plugin.css', :controller => 'blog', :action => 'plugin_css'

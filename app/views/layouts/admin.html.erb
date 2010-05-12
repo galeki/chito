@@ -37,7 +37,7 @@
 		    <li><%= link_to t(:message_9, :scope => [:txt, :view, :layouts, :admin]), {:controller => 'settings', :action => 'info'}, :id => "settings" %></li>
 		    <li><%= link_to t(:message_10, :scope => [:txt, :view, :layouts, :admin]), {:controller => 'plugins', :plugin_id => nil}, :id => "plugin" %></li>
                 <% for index in @user.indices -%>
-		    <li><%= link_to index.title, admin_index_path(index), :id => "index_#{index.id}" %></li>
+		    <li><%= link_to index.title, admin_index_path(index), :id => "index_index_#{index.id}" %></li>
                 <% end -%>
 
 		<% if @user.is_chito_admin? -%>

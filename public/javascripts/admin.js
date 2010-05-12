@@ -112,8 +112,10 @@ function show_index_info(e)
     var key = e.options[e.selectedIndex].value;
     var url = index_list[key]['url'];
     var info = index_list[key]['info'];
+    var theme = index_list[key]['theme'];
     $('#index_url').html("<a href='http://" + url + "' target='_blank'>http://" + url + "</a>");
     $('#index_info').html(info);
+    $('#index_img').html("<img src='/index/themes/" + theme + "/images/icon.png' />");
 }
 function clean_category_field()
 {

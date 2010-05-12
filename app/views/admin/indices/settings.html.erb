@@ -6,6 +6,8 @@
 <div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t :settings, :scope => [:txt, :view, :admin, :index_settings] %> </div>
 <% form_for(:index, :url => change_settings_admin_index_path(@index)) do |f| %>
+    <label><%= t :slogan, :scope => [:txt, :view, :admin, :index_settings] %> 
+    <%= f.text_field :slogan, :size => 50 %></label>
     <label><%= t :post_number, :scope => [:txt, :view, :admin, :index_settings] %> 
     <%= f.text_field :new_post_number, :size => 6 %></label>
     <label><%= t :brief_cut, :scope => [:txt, :view, :admin, :index_settings] %> <%= f.text_field :post_brief_cut, :size => 6 %></label>

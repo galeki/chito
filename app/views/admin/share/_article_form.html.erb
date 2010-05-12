@@ -9,7 +9,7 @@
         index_list = { 
             '0':{'url':'', 'info':''},
             <% for index in @indices -%>
-                <%= %Q! '#{index.id}': {'url': '#{h(index.bind_domain)}', 'info':'#{h(index.info)}'}, ! %>
+                <%= %Q! '#{index.id}': {'url': '#{h(index.bind_domain)}', 'info':'#{h(index.info)}', 'theme':'#{h(index.theme)}'}, ! %>
             <% end -%>
         };
     </script>

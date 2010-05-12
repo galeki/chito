@@ -17,6 +17,10 @@ module BlogHelper
 	auto_discovery_link_tag :rss, formatted_site_url(:rss) , :title => "#{@site.title} RSS"
     end
 
+    def index_rss_link
+	auto_discovery_link_tag :rss, index_feed_url , :title => "#{@index.title} RSS"
+    end
+
     def comments_rss_link
 	auto_discovery_link_tag :rss, formatted_comments_url(:rss) , :title => 'Comments RSS'
     end

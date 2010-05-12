@@ -1,0 +1,3 @@
+<div style="text-align:center;">
+    <%= link_to (image_tag "/plugins/rss_icon_sidebar/images/#{@index.rss_icon_img || "feed_1.png"}", :alt => "RSS Link"), (@index.stand_alone_feed_url.to_s.empty? ? index_feed_url : @index.stand_alone_feed_url.to_s)  %>
+</div>

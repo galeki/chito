@@ -20,6 +20,9 @@ module BlogHelperPlugin
         def show_index_managers_bar
 	    plugin_render :useful_index_sidebars, :index_managers
         end
+        def show_index_rss_icon_bar
+	    plugin_render :useful_index_sidebars, :index_rss_icon
+        end
 end
 module IndexControllerPlugin
 	private
@@ -109,6 +112,15 @@ module ApplicationPlugin
                 bar.default_position = 0
                 bar.plugin_id = :useful_index_sidebars
                 bar.config = false
+                IndexSidebar.add(bar)
+        end
+        def add_rss_icon_in_index_sidebar
+                bar = IndexSidebar.new
+                bar.id = :index_rss_icon
+                bar.info = "Feed"
+                bar.default_position = 0
+                bar.plugin_id = :useful_index_sidebars
+                bar.config = true
                 IndexSidebar.add(bar)
         end
 end

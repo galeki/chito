@@ -82,7 +82,7 @@ module CommentsHelper
     def twitter_comment_button
 	unless @comment.twitter.blank?
 	    content_tag :span, :class => "twitter_comment_button" do
-	    	link_to h("Twitter"), "http://twitter.com/#{@comment.twitter}", :class => "follow_him", :target => "_blank"
+	    	link_to "", "http://twitter.com/#{h @comment.twitter}", :class => "follow_him", :target => "_blank"
 	    end
 	end
     end

@@ -10,8 +10,13 @@ class IndexController < ApplicationController
                                           :index_id => @index.id,
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
-        get_index_sidebars
-        do_something :before_index_show
+        respond_to do |format|
+	    format.html do
+                get_index_sidebars
+                do_something :before_index_show
+	    end
+	    format.rss
+        end
     else
         internal_redirect_to :controller => "posts", :action => "index"
     end
@@ -25,7 +30,7 @@ class IndexController < ApplicationController
 
   def render(options = {}, extra_options = {}, &block)
     @theme = @index.theme || "is-programmer"
-    if @theme 
+    if @theme && (params[:format].nil? or params[:format] == "html")
    	layout = "#{@theme}/layouts/#{@theme}"
 	template = "#{@theme}/views/#{controller_name}/#{action_name}"
 	template_path = File.join(IndexTheme::PATH, template + ".html.erb" )

@@ -37,6 +37,7 @@
 	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
 	    <th class="helpHed"><%= t :comments, :scope => [:txt, :view, :admin, :posts] %></th>
 	    <th class="helpHed"><%= t :category, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :indices, :scope => [:txt, :view, :admin, :share]  %></th>
 	    <th class="helpHed"></th>
 	    <th class="helpHed"></th>
 	    <th class="helpHed"></th>
@@ -48,6 +49,7 @@
 	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
 	    <td class="comments_col"><%= link_to "(#{post.comments.size})", formatted_post_path(post, :html, :anchor => "comments"), :class => "post_comments" %></td>
 	    <td class="category_col"><%= post.category.name if post.category %></td>
+	    <td class="category_col"><%= post.index.title if post.index %></td>
 	    <td class="action_col">
 		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(post, :html), :class => "read" %></td>
 	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_post_path(post), :class => "edit" %></td>

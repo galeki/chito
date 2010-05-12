@@ -1,5 +1,5 @@
 <ul>
     <% for user in @new_reg_users -%>
-        <li><%= user.name %></li>
+        <li><%= link_to "#{user.name} - #{user.title}", root_url(:subdomain => user.name), :target => '_blank' %></li>
     <% end -%>
 </ul>

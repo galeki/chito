@@ -582,6 +582,7 @@ en-US:
           settings: Index Settings
           brief_cut: Brief cut length
           post_number: Post number
+          slogan: Slogan
       site: 
         setup: 
           message_8: Single user
