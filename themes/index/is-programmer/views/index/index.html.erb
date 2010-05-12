@@ -9,10 +9,9 @@
 
         <br style="clear:both;" />
             <p class="post-footer align-right">					
-		<%= link_to_post_category(:class => 'readmore') %>
-		<%= link_to_post_tags(:class => 'post_tags') %>
-		<%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
-		<span class="date"><%=  @post.created_at.to_s(:db_short) %></span>	
+    	        Posted by: <cite><%= link_to @post.user.nick, root_url(:subdomain => @post.user.name) %></cite>
+		<%= post_link @post, :text => "Comments(#{@post.comments.size})", :subdomain => @post.user.name, :anchor => 'comments', :class => 'comments' %>
+		@ <span class="date"><%=  @post.created_at.to_s(:db_short) %></span>	
 	    </p>
     </div>
 <% end -%>

@@ -36,7 +36,7 @@
 	<div id="main">
             <%= yield %>
             <!--
-	    <% if controller.action_name == 'index' -%>
+	    <% if false -%>
 		<div id="welcome">
 			<h2>&gt; is_Programmer?</h2>
 			<%= image_tag '/themes/is-Programmer/images/ishappy.png', :class => 'left' %>
@@ -68,7 +68,7 @@
 	<div id="sidebar">
 
                 <% sidebar do |i| -%>
-		    <div  class="boxed">
+		    <div  class="boxed" <%= "id='login'" if i.id == :login_field %> >
                             <% unless i.id == :login_field -%>
 			        <h2 class="title"><%= title_of(i) %></h2>
                             <% end -%>

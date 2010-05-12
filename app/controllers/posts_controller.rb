@@ -25,7 +25,7 @@ class PostsController < BlogController
     respond_to do |format|
 	format.html do
 	    if request.path.sub("/", "").blank? && @user.fontpage_id
-		@page = @user.pages.find(@user.fontpage_id)
+		@page = @user.pages.find(@user.fontpage_id) rescue nil
 		redirect_to(@page.permalink.blank? ? page_path(@page) : page_permalink_path(@page.permalink)) if @page
 	    end
 	    unless chito_cache_enable(_params.merge(:type => :posts_index, :theme => @user.theme))

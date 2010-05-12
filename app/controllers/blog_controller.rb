@@ -49,7 +49,7 @@ class BlogController < ApplicationController
 	if user
 	    jump = session[:jump]
 	    clean_session_cookie
-	    reset_session
+	    #reset_session
 	    user.set_session(session, request, @site)
 	    user.remember_me(cookies, request) if params[:persist]
 	    if jump
