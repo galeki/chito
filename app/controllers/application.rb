@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}

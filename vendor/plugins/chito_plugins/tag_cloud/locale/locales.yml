@@ -1,0 +1,13 @@
+en-US:
+    plugins:
+        tag_cloud:
+            css_intro: '#tag_cloud is the id of the cloud div. The hotest tag will be classed with .tag_css4.'
+            tag_cloud:
+                info: Tag Cloud
+zh-CN:
+    plugins:
+        tag_cloud:
+            css_intro: '#tag_cloud 为包含着标签云内容 div 的样式，.tag_css1 为最冷门的标签，.tag_css4 为最热门'
+            tag_cloud:
+                info: 标签云
+

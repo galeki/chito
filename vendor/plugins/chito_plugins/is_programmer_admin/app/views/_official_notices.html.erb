@@ -1,0 +1,7 @@
+<h3>最近的更新信息 :</h3>
+<% for @post in @notices -%>
+    <div class="notice">
+	<h4><%= link_to_post(:subdomain => @post.user.name) %> <span class="notice_date"> - <%= @post.created_at.strftime("%Y年%m月%d日 %I:%M%p") %></span></h4>
+	<%= @post.brief %>
+    </div>
+<% end -%>

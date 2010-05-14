@@ -1,0 +1,16 @@
+en-US:
+    plugins:
+        simple_vcode_comment_filter:
+            captcha: Captcha
+            error_captcha: Error Captcha
+        comment_filter:
+            simple_vcode:
+                name: Simple Captcha
+zh-CN:
+    plugins:
+        simple_vcode_comment_filter:
+            captcha: 验证码
+            error_captcha: 验证码错咧
+        comment_filter:
+            simple_vcode:
+                name: 验证码

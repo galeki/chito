@@ -1,0 +1,17 @@
+    <h2>官方 :</h2>
+    <ul>
+	    <li><%= link_to 'Bug 报告', 'http://official.is-programmer.com/show/609.html', :target => '_blank' %></li>
+	    <li><%= link_to '自动简介使用方法', 'http://official.is-programmer.com/articles/647/autobrief-how-to.html', :target => '_blank' %></li>
+    </ul>
+    <%= link_to image_tag("setting.gif"), "#", 
+		    {:onclick => "open_remote_form({'url':'/admin/remote_form/is_programmer_admin/new_posts_config', 'title':'显示数量', 'width':450});", 
+		    :class => "remote_setting"} %>
+    <h2>
+	<%=link_to (image_tag "small_feed.png"), formatted_site_url(:rss), :style => "margin-right:3px;" %>
+	is-Programmer 新文章 : 
+	    </h2>
+    <ul>
+	<% for post in @new_posts -%>
+	    <li><%= post_link post, :target => '_blank', :subdomain => post.user.name %></li>
+	<% end -%>
+    </ul>
