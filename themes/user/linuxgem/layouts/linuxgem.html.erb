@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<%= header %>
+<body id="<%= "show" if controller.action_name == "show"%>">
+  <div class="page-container">
+    <div class="nav-global-container">
+      <div class="nav-global nav-global-font">
+      </div>
+    </div>				
+	    	<div class="site-name">
+		  <%= site_title %>
+		  <div class="site-slogan">				 
+		    <%= site_slogan %>
+		  </div>
+		</div> 						
+
+
+		<div><img class="img-header" src="/themes/linuxgem/images/header.gif" alt=""/></div>
+    <div class="nav-main nav-main-font">			
+	    <ul>
+		<% navbar.each do |bar| -%>
+			<li><%= link_to_nav bar %></li>
+		<% end -%>
+	
+	    </ul>
+    </div>
+    
+    <% if controller.action_name != "show" -%>
+    <div class="nav-sub nav-sub-font">
+	<% bars_in :left do |b| -%>
+	 <ul>
+	    <li class="title"><%= title_of(b) %></li>
+	    <%= content_of(b) %>
+	 </ul>
+	 <br/>
+	<% end -%>
+    </div>				
+    <% end -%>
+    <div class="container-content-sidebar">						
+	<div class="content content-font">
+            <%= yield %>	
+    	</div>
+
+		    <div class="sidebar sidebar-font">
+			<% bars_in :right do |s| -%>
+				<div class="sidebarbox-border">
+				    <div class="sidebarbox-title-shading"><%= title_of(s) %></div>
+					<%= content_of(s) %>
+				</div>
+			<% end -%>
+		    </div>
+
+    </div>		
+    <%= blog_tail %>
+    <div class="footer footer-font">
+       <p><%= footer %></p>
+       <p><a href='http://www.miibeian.gov.cn/'>沪ICP备07005989号</a></p>
+    </div>
+  </div>
+</body>
+</html>

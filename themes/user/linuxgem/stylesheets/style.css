@@ -1,0 +1,370 @@
+body {font-size: 62.5%; margin: 0em auto; padding: 0px; font-family: arial, tahoma, verdana, sans-serif; }
+.page-container { margin: 0px; padding: 0px;  border-bottom: solid 1px rgb(125,125,125);}
+ul {font-size:12px;}
+.nav-global-container {position: absolute; z-index: 3;  top: 5px; background-color: transparent;}
+.nav-global {float: right;  margin: 0px 5px 0px 0px; padding: 0px; background-color: transparent;}	
+.nav-global ul {float: right; display: inline; list-style: none; margin: 0px; padding: 0px;}	
+.nav-global li {display: inline; white-space: nowrap; text-transform: none;}
+.nav-global li a {display: inline; margin: 0px; padding: 0px 0px 0px 4px; border-left: solid 1px rgb(100,100,100); color: rgb(150,150,150); font-weight: bold; text-decoration: none; font-size: 110%;}
+.nav-global a:hover {background-color: rgb(255,255,255); color: rgb(0,0,0); text-decoration: underline;}
+.img-flag {display: inline; vertical-align: text-bottom; height: 1.0em; margin: 0px; padding: 0px; border: solid 1px rgb(0,0,0);}
+
+.site-name  {clear: both; float: left; position: absolute; z-index: 2; width: 700px; top: 20px; margin: 0px; padding-left: 17px; background-color: transparent; color: rgb(255,255,255); font-weight: bold; font-size: 24px;}
+.site-name a{text-decoration:none;color:#fff;}
+.site-slogan  {float: left; position: absolute; z-index: 1; width: 700px; top: 1.9em; left: 15px; margin: 0px; padding: 0px 0px 0px 3px; background-color: transparent; color: rgb(204,216,228); font-weight: bold; font-size: 14px;}
+.img-header {clear: both; float: left; height: 100px; margin: 0px; padding: 0px;}
+
+.nav-main {clear: both; float: left; width: 770px;  min-height: 2.0em; height: auto !important; height: 2.0em; line-height: 2.0em; margin: 0px; padding: 0px; border-top: solid 1px rgb(84,111,144); border-bottom: solid 1px rgb(84,111,144); background-color: rgb(159,182,213);} /* Use background-color: rgb(176,207,106);	for green */
+.nav-main ul {list-style: none; margin: 0px; padding: 0px; font-weight: bold;}	
+.nav-main li {float: left; white-space: nowrap; background-color: inherit;}
+.nav-main li a {margin: 0px; padding: 0px 10px 0px 10px; border-right: solid 1px rgb(255,255,255); color: rgb(255,255,255); text-decoration: none; font-size: 110%;}
+.nav-main a:hover, .nav-main a.selected {background-color: inherit; color: rgb(75,75,75); text-decoration: none;}
+.buffer {float: left; width: 770px; height: 30px; margin: 0px; padding: 0px; background-color: rgb(255,255,255);}
+
+
+.sidebanner-frontpage {clear: both; float: left; width: 160px; margin: 0px; padding: 0px;}
+.img-sidebanner {width: 160px; margin: 0px; padding: 0px; border: none;}
+
+
+.nav-sub {clear: both; float: left; width: 18%; min-height: 500px; height: 100% !important;  margin: 0px; padding: 0px; background-color: rgb(255,255,255);}
+.nav-sub ul {float: left; list-style: none; width: 100%; margin: 0px; padding: 0px; border-bottom: solid 1px rgb(200,200,200);}	
+.nav-sub li {margin: 0px; padding: 0px;}
+.nav-sub li.title {vertical-align: top; margin: 0px; padding: 0px 5px 4px 20px; color: rgb(100,100,100); text-transform: uppercase;  font-size: 12px;margin-top:8px;}
+.nav-sub li.group a, .nav-sub li.category a {display: block; min-height: 1.5em; height: auto !important; height: 1.5em; line-height: 1.5em; margin: 1px 0px 1px 0px; padding: 0px 7px 0px 10px; border-top: solid 1px rgb(200,200,200);  border-left: solid 10px rgb(201,198,234); color: rgb(100,100,100); font-weight: bold; font-size: 100%;}
+.nav-sub li a {display: block; min-height: 1.5em; height: auto !important; height: 1.5em; line-height: 1.5em; margin: 1px 0px 1px 0px; padding: 0px 7px 0px 10px; border-left: solid 10px rgb(201,198,234); color: rgb(100,100,100); text-decoration: none; font-size: 120%;}
+.nav-sub li a:hover, .nav-sub li a.selected {border-left: solid 10px rgb(121,153,196); color: rgb(0,0,0); text-decoration: none;}
+.nav-sub a{text-decoration:none;color:#444;}
+
+
+.container-content-sidebar-front {float: left;  min-height: 500px; height: auto !important; height: 500px; margin: 0px; padding: 0px 0px 20px 1px; background-color: rgb(255,255,255);}
+.container-content-sidebar, .container-content2-sidebar {float: left; width:81%;  min-height: 500px; height: auto !important; height: 500px; margin: 0px; padding: 0px 0px 20px 0px; border-left: solid 1px rgb(200,200,200); background-color: rgb(255,255,255);}
+
+
+.content {float: left; width: 73%; margin: 0px; padding: 0px 0px 0px 20px; background-color: transparent; color: rgb(75,75,75);} /* Width should be 444px, but IE-duplication bug forces us to reduce with 6px to 428px */
+.contentbox-container {clear: both; float: left; width: 425px; margin: 0px 0px 15px 0px; padding: 0px;} /* Width should be 428px, but IE-duplication bug forces us to reduce with 3px to 425px */
+.contentbox-full {width: 425px; margin: 0px; padding: 0px;}
+.contentbox-half-left {float: left; width: 205px; margin: 0px; padding: 0px;}
+.contentbox-half-right {float: right; width: 205px; margin: 0px; padding: 0px;}
+.contentbox-third-left {float: left; width: 134px; margin: 0px 13px 0px 0px; padding: 0px;}
+.contentbox-third-middle {float: left; width: 134px; margin: 0px; padding: 0px;}
+.contentbox-third-right {float: right; width: 134px; margin: 0px; padding: 0px;}
+
+
+.content2 {float: left; width: 563px; min-height: 500px; height: auto !important; height: 500px; margin: 0px; padding: 0px 20px 0px 20px; background-color: transparent; color: rgb(100,100,100);} /* Width should be 569px, but IE-duplication bug forces us to reduce with 6px to 563px */
+.contentbox2-container {clear: both; float: left; width: 560px; margin: 0px 0px 15px 0px; padding: 0px;} /* Width should be 563px, but IE-duplication bug forces us to reduce with 3px to 560px */
+.contentbox2-full {width: 559px; margin: 0px; padding: 0px;}
+.contentbox2-half-left {float: left; width: 273px; margin: 0px; padding: 0px;}
+.contentbox2-half-right {float: right; width: 273px; margin: 0px; padding: 0px;}
+.contentbox2-third-left {float: left; width: 176px; margin: 0px 17px 0px 0px; padding: 0px;}
+.contentbox2-third-middle {float: left; width: 176px; margin: 0px; padding: 0px;}
+.contentbox2-third-right {float: right; width: 176px; margin: 0px; padding: 0px;}
+
+
+.content-pagetitle {width: 100%; margin: 0px 0px 10px 0px; padding: 0px 0px 5px 0px; background-color: transparent; border-bottom: solid 0px rgb(200,200,200); color: rgb(100,100,100); text-transform: uppercase; font-weight: bold; font-size: 140%;}
+.contentbox-title-noshading-small {margin: 0px 0px -5px 0px; padding: 0px; background-color: transparent;  color: rgb(75,75,75); font-weight: bold; font-size: 130%;}
+.contentbox-title-noshading-medium {margin: 0px 0px -5px 0px; padding: 0px; background-color: transparent; color: rgb(75,75,75); font-weight: bold; font-size: 150%;}
+.contentbox-title-noshading-large {margin: 0px 0px -5px 0px; padding: 0px; background-color: transparent; color: rgb(75,75,75); font-weight: bold; font-size: 170%;}
+.contentbox-title-noshading-huge {margin: 0px 0px -5px 0px; padding: 0px; background-color: transparent; color: rgb(75,75,75); font-weight: bold; font-size: 180%;}
+.contentbox-title-shading-small {margin: 0px; padding: 1px 0px 2px 3px; background-color: rgb(222,220,242); color: rgb(75,75,75); font-weight: bold; font-size: 130%;}
+.contentbox-title-shading-medium {margin: 0px; padding: 1px 0px 2px 3px; background-color: rgb(222,220,242); color: rgb(75,75,75); font-weight: bold; font-size: 150%;}
+.contentbox-title-shading-large {margin: 0px; padding: 1px 0px 2px 3px; background-color: rgb(222,220,242); color: rgb(75,75,75); font-weight: bold; font-size: 170%;}
+.contentbox-title-shading-huge {margin: 0px; padding: 1px 0px 2px 3px; background-color: rgb(222,220,242);color: rgb(75,75,75); font-weight: bold; font-size: 180%;}
+.contentbox-noshading {margin: 0px; padding: 0.7em 0px 0px 0px; background-color: transparent;}
+.contentbox-shading {margin: 0px; padding: 7px 10px 5px 10px; background-color: rgb(233,232,244);}
+
+
+h1 {clear: left; margin: 1.0em 0px 0.5em 0px; font-weight: bold; font-size: 160%;}
+h2 {clear: left; margin: 1.0em 0px 0.5em 0px; font-weight: bold; font-size: 150%;}
+h3 {clear: left; margin: 1.0em 0px 0.5em 0px;	font-weight: bold; font-size: 140%;}
+h4 {clear: left; margin: 1.0em 0px 0.5em 0px; font-weight: bold; font-size: 130%;}
+h5 {clear: left; margin: 0px; font-weight: bold; font-size: 130%;}
+h6 {clear: left; margin: 0px;	font-weight: bold; font-style: italic; font-size: 130%;}
+
+p {margin: 0px 0px 0.5em 0px; padding: 0px; line-height: 1.2em;  }
+p.readmore {margin: -0.2em 0px 0.5em 0px; padding: 0px; line-height: 1.2em; font-size: 110%; }
+p.quote {margin: 0em 30px 0.6em 30px;	line-height: 120%; font-size: 120%;}
+
+.embed {float: left; width: 120px; margin: 7px 7px 5px 0px; padding: 5px 5px 5px 5px; background-color: rgb(238,237,249); font-style: italic; font-weight: bold;  line-height: 1.2em; font-size: 140%;}
+.embed-caption {float: left; margin: 5px 0px 0px 0px; padding: 0px; font-style: italic; font-weight: normal; line-height: 1.2em; font-size: 70%;}
+
+.content ul.noindent, .content2 ul.noindent {margin: 0px 0px 7px 15px; padding: 0px; list-style-type: disc; list-style-position: outside; font-size: 120%;}
+.content ul.indent, .content2 ul.indent {margin: 0px 0px 7px 15px; padding: 0px 0px 0px 15px; list-style-type: disc; font-size: 120%;}
+.content ol, .content2 ol {margin: 0px 0px 0px 9px; padding: 0px 0px 0px 25px; list-style-type: decimal; list-style-position: outside; font-size: 120%;}
+
+.content ul.linklist-noindent, .content2 ul.linklist-noindent {margin: -0.3em 0px 0.5em 0px; padding: 0px; list-style-type: none; line-height: 1.2em; font-size: 120%; }
+.content ul.linklist-indent, .content2 ul.linklist-indent {margin: -0.3em 0px 0.5em 0px; padding: 0px 0px 0px 10px; list-style-type: none; line-height: 1.2em; font-size: 120%; }
+
+
+.table {clear: left; margin: 0.5em 0px 0.2em 30px; border: solid 1px rgb(150,150,150); empty-cells: show; border-collapse: collapse; background-color: rgb(233,232,244);}
+.table tr {margin: 0px; padding: 0px;}
+.table td {padding: 2px 7px 2px 7px; border: solid 1px rgb(150,150,150); text-align: left; font-size: 120%;}
+.table th {margin: 0px; padding: 2px 7px 2px 7px; border: solid 1px rgb(150,150,150); empty-cells: show; text-align: left; font-size: 120%; 	}
+p.table-caption {margin: 0.5em 0px 1.0em 30px; padding: 0px; clear: both; text-align: left; font-size: 120%;}
+
+
+.img-left-noborder {float: left; margin: 2px 7px 3px 0px;}
+.img-right-noborder {float: right; margin: 2px 0px 3px 7px;}
+.img-left-border {float: left; margin: 4px 7px 3px 0px; border: solid 1px rgb(150,150,150);}
+.img-right-border {float: right; margin: 2px 0px 3px 7px; border: solid 1px rgb(150,150,150);}
+
+
+.sidebar {float: right; width: 28%; margin: 0px ; padding: 3.1em 0px 0px 0px; background-color: rgb(255,255,255); text-align: left;  color: rgb(75,75,75);} /* Actual width should be: 175px, but because of IE-bug we reduce with 6px so that container has some free space) */
+.sidebarbox-noborder {width: 140px; margin: 0px 0px 1.0em 9px; padding: 0px;}
+.sidebarbox-border { margin: 0px 0px 1.0em 9px; padding: 4px 4px 4px 4px; border: solid 1px rgb(200,200,200);}
+.sidebarbox-title-noshading {display: block; margin: 0px 0px 2px 0px; padding: 0px; background-color: transparent; font-weight: bold; font-size: 110%;}
+.sidebarbox-title-shading {display: block; margin: 0px 0px 2px 0px; padding: 2px 5px 3px 5px; background-color: rgb(225,225,225); font-weight: bold; font-size: 110%;}
+.sidebarbox-noborder p {margin: 0px 5px 0.4em 5px; padding: 0px; background-color: transparent; line-height: 1.2em; font-size: 110%;}
+.sidebarbox-border p {margin: 0px 0px 0.4em 0px; padding: 0px; background-color: transparent; line-height: 1.2em; font-size: 110%;}
+
+
+.footer {clear: both;  height: 3.0em; margin: 0px; padding: 0.5em 0px 0.5em 0px; border-top: solid 1px rgb(125,125,125); background-color: rgb(159,182,213); color: rgb(255,255,255);}
+.footer p {margin: 0px; padding: 0px; text-align: center; line-height: 1.3em; font-size: 110%;}
+
+
+.content a, .content2 a, .sidebar a {color: rgb(75,75,75); }
+.content a:hover, .content2 a:hover, .sidebar a:hover {color: #f90; text-decoration: none;}
+.content a:visited, .content2 a:visited, sidebar a:visited {color: rgb(150,150,150);}
+.footer a {color: rgb(255,255,255); text-decoration: underline;}
+.footer a:hover {color: rgb(0,0,0); text-decoration: none;}
+
+
+.nav-global-font {font-size: 1.0em;}
+.nav-main-font {font-size: 1.0em;}
+.nav-sub-font {font-size: 1.0em;}
+.content-font {font-size: 1.0em;}
+.sidebar-font {font-size: 1.0em;}
+.footer-font {font-size: 1.0em;}
+
+
+.box-on {float: left; min-width: 0.5em; margin-right: 0.2em; padding-left: 0.3em;}
+.box-off {display: none;}
+
+
+.align-left {text-align: left;}
+.align-right {text-align: right;}
+.align-center {text-align: center;}
+
+
+
+.showcode { font-family: monospace; font-weight: bold; font-size: 13px; color: rgb(255,0,0);}
+.clear {clear: both;}
+.hide {display: none;}
+br {clear: none;}
+
+#h{
+    background: url(../images/header.gif) no-repeat;
+    width:770px;
+    height:100px;
+}
+.site-slogan{
+    padding:5px 0px 0px 40px;
+    font-weight:normal;
+    font-size:12px;
+    color:#fff;
+}
+.sidebar-font{
+    font-size:11px;
+}
+.notice{
+    font-weight:bold;
+    font-size:16px;
+    padding:5px;
+    color:#090;
+}
+.sidebar{width:23%;padding-top:12px;}
+.sidebarbox-border{width:88%;}
+ul.side, .sidebarbox-border ul{
+    list-style-type:none;
+    padding:0px 5px 0px 8px;
+}
+.sidebarbox-border ul li a {
+    color:#444;
+}
+ul.side li {overflow:auto;}
+*+html ul.side, * html ul.side {
+    margin:0;
+    word-break:break-all;
+}
+* html ul.side{
+   margin:0;
+}
+* html li{
+word-break:break-all;
+}
+
+img{border:0px;}
+.side a, .sidebarbox-border a{
+    text-decoration:none;
+}
+h2 a{
+    text-decoration:none;
+}
+.content h2 a:hover {
+    color:#f90;
+}
+.content .tip_header a:hover, .content .comment_header a:hover {
+    color:#f90;
+}
+.tip_box{
+    margin:10px 0px 20px 0px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom:5px;
+}
+.tip_box h2 span {
+    font-size: 70%;
+    vertical-align: super;
+    padding: 4px;
+    color:#999;
+}
+*+html .tip_box {border:0px;margin-bottom:45px;}
+* html .tip_box {border:0px;margin-bottom:45px;}
+.tip_box h2{
+    font-size:16px;
+    margin-bottom:0px;
+}
+.tip_header, #article_header{
+    font-size:12px;
+    color:#666;
+    margin:2px 0px 5px 0px;
+}
+#show .content{
+    padding:0px 5px 0px 20px;
+}
+#article_header a, a.up, a.down{
+    text-decoration:none;
+}
+.tip_box p{
+    font-family: 'lucida sans',Verdana,SimHei,Sans-serif;
+    font-weight:normal;
+    font-size:12px;
+}
+.tip_box img{
+    float:left;
+    margin-right:15px;
+    margin-bottom:5px;
+}
+
+#show {
+}
+#show h1{
+    font-size:22px;
+    margin-bottom:0px;
+    margin-top:10px;
+}
+#header{
+    font-size:12px;
+    color:#999;
+    margin-left:30px;
+}
+#tip_body{
+    margin:20px 20px 0px 0px;
+    font-size:14px;
+    padding-left:20px;
+}
+#post_comment{
+    width:500px;
+    font-size:12px;
+    padding:20px;
+    border-top:3px solid #ccc;
+    background: #ddd;
+}
+input, textarea{
+    border:1px solid #666;
+    margin-top:8px;
+    font-size:12px;
+}
+#comments strong {
+    text-align: center;
+    display: block;
+}
+.comment_box0, .comment_box1, .comment_self {
+    padding:10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top:10px;
+    font-size:13px;
+}
+.comment_box0{
+    background: #fff;    
+}
+.comment_box1{
+    background: #ddd;    
+}
+.comments_count {
+    float: right;
+    font-weight: bold;  
+    font-style: italic;
+    font-family: Georgia, Serif; 
+    margin-right: 3px; 
+}
+.comment_header a{
+    font-size:13px;
+    font-weight:bold;
+
+}
+.comment_box0 a,.comment_box1 a {
+    text-decoration:none;
+}
+.comment_box0 a:hover,.comment_box1 a:hover {
+}
+.comment_pic {
+    float: left;
+    padding: 5px;
+}
+.comment_content {
+    padding: 8px;
+}
+.pc {
+    width: 450px;
+    height: 150px;
+}
+#pw{
+    font-size:12px;
+}
+#page {
+    margin: 20px 0px 20px 10px;
+    font-weight: bold;
+    font-size: 160%;
+    display: inline;
+}
+#page a {
+    font-size: 70%;
+    text-decoration: underline;
+}
+#gad1{
+    margin:9px 0px 10px 10px;
+    float:right;
+}
+#gad2{
+    margin:25px 0px 30px 20px;
+}
+.hl_result {
+    overflow:auto;
+}
+.hl_result ul, .hl_result li, .hl_result ol
+{
+margin-top: 0px;
+margin-bottom: 0px;
+}
+.content a:hover, .content2 a:hover, .sidebar a:hover {color: #f90; text-decoration: none;}
+.img-header, .nav-main {
+width:100%;
+}
+#show .container-content-sidebar{width:100%;border:0px;}
+#show .content{width:70%;}
+blockquote {
+	margin: 15px;
+ 	padding: 0 0 0 10px;  	
+  	background: #FAFAFA; 
+	padding:4px;
+	background-position: 8px 10px;
+	border-left: 3px solid #99f;  
+}
+*+html form {padding-top:0;margin-top:0;}
+form table br {display:none;}
+form table {width:98%;padding-left:1%;}
+#ss0, #ss1 {border:0px;}
+#sbi {width:90%;}
+ul#category{
+    list-style:none;
+}
