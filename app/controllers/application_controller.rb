@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     include SimpleCaptcha::ControllerHelpers
     before_filter :get_site
     #protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
+    session :session_key => '_chito_session_115'
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
     helper :all
     helper_method :chito_cache_key
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
 	if cookies[:remember_key] and @user = User.find_by_remember_key(cookies[:remember_key]) and @user.remember_key_expires_at > Time.now
 	    @user.set_session(session, request, @site)
 	else
-	    redirect_to(login_path :subdomain => "www")
+	    redirect_to(login_path(:subdomain => "www"))
 	    return false
 	end 
     end

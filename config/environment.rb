@@ -8,7 +8,7 @@
 #RAILS_GEM_VERSION = "2.0.2"
 $KCODE = 'u'
 require 'jcode' 
-RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+#RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -31,8 +31,8 @@ Rails::Initializer.run do |config|
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
   #
-   config.action_controller.session_store = :p_store
-   #config.action_controller.session = { :key => "_chito_session_112", :secret => "b97aa4aa77a0660c16c5a2e3076f30ac68aaa1faf489c36642bf278b16ad4d7a99e089a815f5c543a9804a4800ebbecc04a" }
+   #config.action_controller.session_store = :p_store
+   #config.action_controller.session = { :key => "_chito_session_115"}
 
    #config.action_controller.session_store = :active_record_store
 
@@ -58,10 +58,10 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
-  #config.action_controller.session = {
-  #  :session_key => '_chito_session',
-  #  :secret      => 'cfb8733302e2533ca5d22b4cb72af032a56634a69fac916401f6b1cc21284743a0149bbbadf30d576ba02108c944cb6f59ab86e97768d0ce4273af0b1d7ca57a'
-  #} 
+  config.action_controller.session = {
+    :session_key => '_chito_session_115',
+    :secret      => 'cfb8733302e2533ca5d22b4cb72af032a56634a69fac916401f6b1cc21284743a0149bbbadf30d576b'
+  } 
   # See Rails::Configuration for more options
 end
 #ActionController::Base.fragment_cache_store = ActionController::Caching::Fragments::FileStore.new

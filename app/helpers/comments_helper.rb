@@ -19,7 +19,7 @@ module CommentsHelper
 
     def link_to_comment_writer
 	comment_homepage ? 
-		white_list(link_to comment_writer, comment_homepage) :
+		white_list(link_to(comment_writer, comment_homepage)) :
 		comment_writer
     end
 

@@ -10,7 +10,7 @@ class Admin::MessagesController < Admin::FeedbacksController
 	notice_stickie t(:message_deleted, :scope => [:txt, :controller, :admin, :messages]) if message.destroy
 	sidebar_cache_expire :new_messages
 	chito_cache_expire :id => :guestbook
-	redirect_to admin_messages_path :keyword => params[:keyword], :page => params[:page]
+	redirect_to(admin_messages_path :keyword => params[:keyword], :page => params[:page])
     end
 
     def destroy_selected
@@ -18,6 +18,6 @@ class Admin::MessagesController < Admin::FeedbacksController
 	notice_stickie t(:messages_deleted, :scope => [:txt, :controller, :admin, :messages])
 	sidebar_cache_expire :new_messages
 	chito_cache_expire :id => :guestbook
-	redirect_to admin_messages_path :keyword => params[:keyword], :page => params[:page]
+	redirect_to(admin_messages_path :keyword => params[:keyword], :page => params[:page])
     end	
 end

@@ -16,7 +16,7 @@ class Admin::FeedbacksController < Admin::BaseController
   def destroy_selected
 	destroy_global_ids(params[:ids])
 	notice_stickie t(:feedbacks_deleted, :scope => [:txt, :controller, :admin, :feedbacks])
-	redirect_to admin_feedbacks_path :keyword => params[:keyword], :page => params[:page]
+	redirect_to(admin_feedbacks_path :keyword => params[:keyword], :page => params[:page])
   end	
 
  private    
