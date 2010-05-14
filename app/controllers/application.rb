@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     include ApplicationPlugin
     include SimpleCaptcha::ControllerHelpers
     before_filter :get_site
-    protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
+    #protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
     helper :all
     helper_method :chito_cache_key

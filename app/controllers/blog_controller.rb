@@ -3,7 +3,7 @@ class BlogController < ApplicationController
     before_filter :get_user_and_needed , :except => [:plugin_css, :favicon]
     before_filter :get_user, :only => [:plugin_css, :favicon]
     include BlogControllerPlugin
-    protect_from_forgery  :only => [:add, :login]
+    #protect_from_forgery  :only => [:add, :login]
 
   def guestbook
     @comments = @user.messages unless chito_cache_enable(:id => :guestbook)
