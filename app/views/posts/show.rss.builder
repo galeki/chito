@@ -5,7 +5,7 @@ xml.rss "version" => "2.0",
 	"xmlns:wfw" => "http://wellformedweb.org/CommentAPI/" do
     xml.channel do
 	xml.title "#{h(@post.title)} - #{t(:comments, :scope => [:txt, :view, :posts, :show, :rss])}"
-	xml.link formatted_post_url(@post, :rss)
+	xml.link post_url(@post, :format => :rss)
 	xml.generator 'Chito'
 
 	@comments.each do |comment|

@@ -14,7 +14,7 @@ xml.rss "version" => "2.0",
 	@posts.each do |post|
 	    xml.item do
 		xml.title {xml.cdata! post.title}
-		xml.link formatted_post_url(post, :html) 
+		xml.link post_url(post, :format => :html) 
 		if @user.rss_type == 'full'
 		    xml.description do
 			xml.cdata! rss_content(post.content)
@@ -25,7 +25,7 @@ xml.rss "version" => "2.0",
 		    end
 		end
 		(xml.category {xml.cdata! post.category.name}) if post.category
-		xml.tag! 'wfw:commentRss', formatted_post_url(post, :rss)
+		xml.tag! 'wfw:commentRss', post_url(post, :format => :rss)
 		xml.pubDate post.created_at.to_s(:rfc822)
 		xml.guid post_url(post)
 	    end

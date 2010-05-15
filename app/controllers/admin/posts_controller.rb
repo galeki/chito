@@ -56,7 +56,7 @@ class Admin::PostsController <  Admin::ArticleBaseController
 
     def send_trackback(url, post)
 	return if url.blank?
-	post_url = formatted_post_url(post, :html)
+	post_url = post_url(post, :format => html)
 	query = post.trackback_params.merge(:url => post_url).to_query
 	trackback_url = URI.parse(url)
 	Net::HTTP.start(trackback_url.host, trackback_url.port) do |http|

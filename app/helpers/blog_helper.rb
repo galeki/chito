@@ -10,11 +10,11 @@ module BlogHelper
     end
     
     def posts_rss_link
-	auto_discovery_link_tag :rss, formatted_posts_url(:rss) , :title => 'Blog RSS'
+	auto_discovery_link_tag :rss, posts_url(:format => :rss) , :title => 'Blog RSS'
     end
 
     def site_rss_link
-	auto_discovery_link_tag :rss, formatted_site_url(:rss) , :title => "#{@site.title} RSS"
+	auto_discovery_link_tag :rss, site_url(:format => :rss) , :title => "#{@site.title} RSS"
     end
 
     def index_rss_link
@@ -22,11 +22,11 @@ module BlogHelper
     end
 
     def comments_rss_link
-	auto_discovery_link_tag :rss, formatted_comments_url(:rss) , :title => 'Comments RSS'
+	auto_discovery_link_tag :rss, comments_url(:format => :rss) , :title => 'Comments RSS'
     end
 
     def messages_rss_link
-	auto_discovery_link_tag :rss, formatted_messages_url(:rss) , :title => 'Messages RSS'
+	auto_discovery_link_tag :rss, messages_url(:format => :rss) , :title => 'Messages RSS'
     end
 
     def site_title

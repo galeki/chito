@@ -6,7 +6,7 @@
 	    <li><%= link_to (t("plugins.useful_sidebars.login")), :controller => 'blog', :action => :login %></li>
 	    <li><%= link_to (t("plugins.useful_sidebars.forgot_password")), forgot_password_path %></li>
 	<% end -%>
-	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.posts_rss")}</abbr>", formatted_posts_url(:rss) %></li>
-	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.comments_rss")}</abbr>", formatted_comments_url(:rss) %></li>
-	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.messages_rss")}</abbr>", formatted_messages_url(:rss) %></li>
+	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.posts_rss")}</abbr>", posts_url(:format => :rss) %></li>
+	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.comments_rss")}</abbr>", comments_url(:format => :rss) %></li>
+	<li><%= link_to "<abbr title='Really Simple Syndication'>#{t("plugins.useful_sidebars.messages_rss")}</abbr>", messages_url(:format => :rss) %></li>
 </ul>	

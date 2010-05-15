@@ -18,7 +18,7 @@
     </tr>
     <% for talk in @talks -%>
     <tr class="<%= cycle "odd", "" %>">
-	    <td class="title_col"><%= link_to talk.title, formatted_post_url(talk, :html, :subdomain => talk.user.name) %></td>
+	    <td class="title_col"><%= link_to talk.title, post_url(talk, :subdomain => talk.user.name, :format => :html) %></td>
 	    <td class="comment_writer_col"><%=h talk.user.nick %></td>
 	    <td class="comment_content_col">
 		<% @comment = talk.comments.last -%>
@@ -30,7 +30,7 @@
 		<%=h strip_tags(@comment.content) %>
 	    </td>
 	    <td class="comments_col" style="text-align:center;">
-		<%= link_to t("txt.view.admin.talks.jump_to"), formatted_post_path(talk, :html, :anchor => comment_id, :subdomain => talk.user.name), :target => "_blank"%>
+		<%= link_to t("txt.view.admin.talks.jump_to"), post_path(talk, :anchor => comment_id, :subdomain => talk.user.name, :format => :html), :target => "_blank"%>
 	    </td>
 	    
     </tr>

@@ -40,7 +40,7 @@
 	    <td class="comment_content_col"><%=h strip_tags(comment.content) %></td>
 	    <td class="comment_email_col"><%= (mail_to h(comment.email), (image_tag "email.gif")) unless comment.email.blank? %></td>
 	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :comments])), 
-			formatted_post_path(comment.article, :html, :anchor => "comment#{comment.id}")) if comment.article %></td>
+			post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :comments]), admin_comment_path(comment, _params), :class => "delete",
 		    :confirm => t(:delete_comment?, :scope => [:txt, :view, :admin, :comments]), :method => :delete %></td>
 	    

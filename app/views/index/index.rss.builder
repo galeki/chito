@@ -10,13 +10,13 @@ xml.rss "version" => "2.0",
 	@posts.each do |post|
 	    xml.item do
 		xml.title {xml.cdata! post.title}
-		xml.link formatted_post_url(post, :html, :subdomain => post.user.name) 
+		xml.link post_url(post, :subdomain => post.user.name, :format => :html) 
 		xml.description do
 		    xml.cdata! post.brief
 		end
-		xml.tag! 'wfw:commentRss', formatted_post_url(post, :rss)
+		xml.tag! 'wfw:commentRss', post_url(post, :format => :rss)
 		xml.pubDate post.created_at.to_s(:rfc822)
-		xml.guid formatted_post_url(post, :html, :subdomain => post.user.name)
+		xml.guid post_url(post, :html, :subdomain => post.user.name, :format => :html)
 	    end
 	end
     end

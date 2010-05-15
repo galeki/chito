@@ -55,7 +55,7 @@
 
 <% if_show_trackbacks do -%>
     <div class="articlefooter">
-	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml) %></span>
+	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :format => :xml) %></span>
 	<span class="trackbacks">
 	    <%= image_tag "trackbacks.gif", :class => 'trackbacks' %>
 	    <%= t(:trackbacks, :scope => [:txt, :view, :posts, :show]) %> (<%= @trackbacks.size %>)
@@ -76,10 +76,10 @@
 
 <div class="articlefooter">
     <% if @trackbacks.empty? -%>
-	<span class="trackbacks_url"><%= link_to "Trackback URI", formatted_post_trackbacks_path(@post, :xml, :key => @post.trackback_key) %></span>
+	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :key => @post.trackback_key, :format => :xml) %></span>
     <% end -%>
     <span class="comments">
-	<%= link_to (image_tag "small_feed.png", :class => 'feed'), formatted_post_path(@post, :rss) %>
+	<%= link_to (image_tag "small_feed.png", :class => 'feed'), post_path(@post, :format => :rss) %>
 	<%= t(:comments, :scope => [:txt, :view, :posts, :show]) %> (<%= @comments.size %>)
     </span>
 </div>

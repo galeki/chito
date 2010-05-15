@@ -4,7 +4,7 @@
 <div class="option_wrap">
 <div class="add_cate">
     <div id='add_category'>
-	<% form_remote_tag( :url => formatted_admin_categories_path(:html),
+	<% form_remote_tag( :url => admin_categories_path(:format => :html),
 			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :categories])}';$(s).disabled=true;",
 			    :complete => "$(category_name).value='';$(category_info).value='';$(s).value='#{t(:create_category, :scope => [:txt, :view, :admin, :categories])}';$(s).disabled=false;"
 			    ) do %>

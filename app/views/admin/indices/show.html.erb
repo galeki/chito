@@ -19,16 +19,16 @@
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
         <td class="user_name_col"><%= link_to post.user.name, root_path(:subdomain => post.user.name) %></td>
-	    <td class="title_col"><%= link_to post_title(post), formatted_post_path(post, :html, :subdomain => post.user.name), :class => "post_title_link"  %></td>
+	    <td class="title_col"><%= link_to post_title(post), post_path(post, :subdomain => post.user.name, :format => :html), :class => "post_title_link"  %></td>
 	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
-	    <td class="comments_col"><%= link_to "(#{post.comments.size})", formatted_post_path(post, :html, :anchor => "comments", :subdomain => post.user.name), :class => "post_comments", :target => '_blank' %></td>
+	    <td class="comments_col"><%= link_to "(#{post.comments.size})", post_path(post, :anchor => "comments", :subdomain => post.user.name, :format => :html), :class => "post_comments", :target => '_blank' %></td>
 	    <td class="category_col">
                 <%= button_to_remote "-", :url => decrease_rank_admin_article_path(post) %>
                     <span id="<%= "post#{post.id}_rank" %>" class="post_rank"><%= post.rank %></span>
                 <%= button_to_remote "+", :url => increase_rank_admin_article_path(post) %>
             </td>
 	    <td class="action_col">
-		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(post, :html, :subdomain => post.user.name), :class => "read", :target => '_blank' %></td>
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_path(post, :subdomain => post.user.name, :format => :html), :class => "read", :target => '_blank' %></td>
 	    
     </tr>
     <% end -%>	

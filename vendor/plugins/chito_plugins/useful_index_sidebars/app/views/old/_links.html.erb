@@ -1,7 +1,0 @@
-<% sidebar_cache :links do -%>
-<ul class="navlist">
-			<% for link in @links -%>
-			    <li><%= link_to h(link.title), link.url, :title => h(link.info) %></li>
-			<% end -%>
-</ul>	
-<% end -%>

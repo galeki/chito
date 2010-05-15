@@ -44,7 +44,7 @@
 	    <td class="time_col"><%= draft.created_at.to_s :db_short %></td>
 	    <td class="category_col"><%= draft.category.name if draft.category %></td>
 	    <td class="action_col">
-		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), formatted_post_path(draft, :html), :class => "read" %></td>
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_path(draft, :format => :html), :class => "read" %></td>
 	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_draft_path(draft), :class => "edit" %></td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_draft_path(draft, _params), :class => "delete", :method => :delete, 
 	    :confirm => t(:delete_draft?, :scope => [:txt, :view, :admin, :drafts], :title => draft.title)%></td>

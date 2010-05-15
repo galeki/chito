@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :pages
 	map.resources :categories, :has_many => :posts
 	map.resources :messages
-	map.formatted_comments '/comments.:format', :controller => 'comments', :action => 'index'
+	map.comments '/comments.:format', :controller => 'comments', :action => 'index'
 	#map.tag_posts '/tag/:tag_name', :controller => 'posts', :action => 'index'
 	map.tag_posts '/tag/*tag_name', :controller => 'posts', :action => 'index'
 	#
@@ -106,7 +106,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect "/rss", :controller => 'posts', :action => 'index', :format => "rss"
 	map.feed    "/feed", :controller => 'posts', :action => 'index', :format => "rss"
 	map.connect "/show/:id.:format", :controller => 'posts', :action => 'show'
-	map.formatted_site "/site.:format", :controller => 'blog', :action => 'index'
+	map.site "/site.:format", :controller => 'blog', :action => 'index'
 	
 	map.connect "/setup", :controller => 'site', :action => "setup"
 	#map.connect "/category/:category_id", :controller => 'posts', :action => 'list'

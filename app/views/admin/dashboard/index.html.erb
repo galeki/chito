@@ -13,7 +13,7 @@
 			<% for comment in @new_comments 
 			    e = h(comment.writer + ":" + strip_tags(comment.content))
 			-%>
-			    <li><%= (link_to truncate(e, :length => 25), formatted_post_path(comment.article, :html, :anchor => "comment#{comment.id}")) if comment.article %></li>
+			    <li><%= (link_to truncate(e, :length => 25), post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
 			<% end -%>
 
     </ul>

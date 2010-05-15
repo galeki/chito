@@ -22,6 +22,6 @@ module NavbarHelper
     end
 
     def pagepath(page)
-	page.permalink.blank? ? formatted_page_path(page, :html) : page_permalink_path(page.permalink)
+	page.permalink.blank? ? page_path(page, :format => :html) : page_permalink_path(page.permalink)
     end
 end
