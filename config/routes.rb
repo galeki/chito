@@ -91,7 +91,7 @@ ActionController::Routing::Routes.draw do |map|
 	    admin.resources :files, 
 			    :collection => {:list => :get, :delete_file => :post, :delete_dir => :post}
 	    admin.resources :feedbacks, :collection => {:destroy_selected => :delete} 
-	    admin.resources :articles, :member => {:increase_rank => :post, :decrease_rank => :post}#, :collection => {:destroy_selected => :delete} 
+	    admin.resources :articles, :member => {:increase_rank => :post, :decrease_rank => :post}, :collection => {:destroy_selected => :delete} 
 	end
 	#map.admin_files "/admin/files/:action", :controller => "admin/files"
 

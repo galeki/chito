@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-    before_filter :chito_admin_authorize, :only => [:index, :destroy]    
+    before_filter :chito_admin_authorize, :only => [:index, :destroy, :destroy_selected]    
 
   def index
     @posts = Article.paginate :per_page => 30, :page => params[:page],
@@ -35,9 +35,18 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    notice_stickie t(:user_deleted, :scope => [:txt, :controller, :admin, :users]) if @user.destroy
-    redirect_to admin_users_path   
+    article = Article.find(params[:id])
+    notice_stickie(t(:post_successfully_deleted, :scope => [:txt, :controller, :admin, :posts])) if article.destroy
+    redirect_to admin_articles_path(:page => params[:page])   
   end
 
+  def destroy_selected
+    if params[:ids]
+	for article in Article.find(params[:ids])
+	    article.destroy
+	end
+    end 
+    notice_stickie t(:posts_successfully_deleted, :scope => [:txt, :controller, :admin, :posts])
+    redirect_to admin_articles_path(:page => params[:page]) 
+  end
 end

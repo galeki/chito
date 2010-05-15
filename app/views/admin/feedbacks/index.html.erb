@@ -5,6 +5,7 @@
 <% if @feedbacks.size >0 -%>
 <table id="article_actions" cellspacing="0" style="width:100%;">
     <tr>
+    <!--
 	    <td class="category_filter">
 		<% form_tag(admin_feedbacks_path, :method => :get) do %>
 		    <%=t(:search_for, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %>:
@@ -12,6 +13,7 @@
 		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :comments]), :id => 's' %> 
 		<% end -%>	
 	    </td>
+    -->
 <% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
 
     </tr>

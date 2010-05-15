@@ -2,7 +2,7 @@
 <%= render :partial => "admin/sub_menu_for_root" %>
 <%= render_flash %>
 <div class="center">
-<% form_tag "", :onsubmit => "return false;" do -%>
+<% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
 
 <% if @posts.size >0 -%>
 <table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
@@ -13,7 +13,6 @@
 	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
 	    <th class="helpHed"><%= t :comments, :scope => [:txt, :view, :admin, :posts] %></th>
 	    <th class="helpHed">Rank</th>
-	    <th class="helpHed"></th>
 	    <th class="helpHed"></th>
 	    <th class="helpHed"></th>
     </tr>
@@ -31,15 +30,14 @@
             </td>
 	    <td class="action_col">
 		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_path(post, :subdomain => post.user.name, :format => :html), :class => "read", :target => '_blank' %></td>
-	    <td class="action_col"><%= link_to t(:edit, :scope => [:txt, :view, :admin, :posts]), edit_admin_post_path(post), :class => "edit" %></td>
-	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_post_path(post, _params), :class => "delete", :method => :delete, 
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_article_path(post, _params), :class => "delete", :method => :delete, 
 	    :confirm => t(:delete_post, :scope => [:txt, :view, :admin, :posts], :title => post.title) %></td>
 	    
     </tr>
     <% end -%>	
 </table>
 	    <div class="delete_selected">
-		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :posts]), :url => destroy_selected_admin_posts_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "selected_submit" %>
+		<%= selected_button :text => t(:delete_selected, :scope => [:txt, :view, :admin, :posts]), :url => destroy_selected_admin_articles_path(_params), :confirm => t(:delete_selected?, :scope => [:txt, :view, :admin, :posts]), :class => "selected_submit" %>
 	    </div>
 <% end -%>
 <div id="pagilinks">
