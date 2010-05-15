@@ -1,6 +1,5 @@
 class ThemeController < ApplicationController
     skip_before_filter :get_site
-    session :off
 
     def user_theme_file
         get_theme_file_of(UserTheme)

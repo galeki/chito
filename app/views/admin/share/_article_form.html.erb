@@ -1,6 +1,6 @@
 <% form_for :article, :url => url, :html => {:id => "article_form",:name => "article_form", :method => method, :onsubmit => 'return false', :multipart => true} do |f| -%>
-<% unless @indices.empty? -%>
 <div id="form_sidebar">
+<% unless @indices.empty? -%>
  <div class="form_item">
     <div class="right_c"></div>
     <div class="form_category"><%=t :indices, :scope => [:txt, :view, :admin, :share]  %></div>

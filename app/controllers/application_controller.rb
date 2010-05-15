@@ -3,13 +3,12 @@ class ApplicationController < ActionController::Base
     include SimpleCaptcha::ControllerHelpers
     before_filter :get_site
     #protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
-    session :session_key => '_chito_session_115'
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}
@@ -104,7 +103,6 @@ class ApplicationController < ActionController::Base
 
     def get_site
 	@site = Site.instance
-	ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.update(:session_domain => request.domain)
 	unless @site
 	    redirect_to :controller => "site", :action => "setup"
 	    return false
