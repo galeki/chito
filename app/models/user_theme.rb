@@ -9,17 +9,19 @@ class UserTheme
     end
 
     def self.copy_to_public(theme)
-	unless COPIED[theme]
-	    dst = File.join(self::PUBLIC_PATH, theme)
-	    src = File.join(self::PATH, theme)
-	    FileUtils.makedirs dst
-	    ['images', 'stylesheets', 'javascripts', 'screenshot.png'].each do |f|
-		FileUtils.cp_r File.join(src, f), dst
+        begin
+	    unless COPIED[theme]
+	        dst = File.join(self::PUBLIC_PATH, theme)
+	        src = File.join(self::PATH, theme)
+	        FileUtils.makedirs dst
+	        ['images', 'stylesheets', 'javascripts', 'screenshot.png'].each do |f|
+		    FileUtils.cp_r File.join(src, f), dst
+	        end
+	        COPIED[theme] = true
 	    end
-	    COPIED[theme] = true
-	end
+	rescue
 
-	rescue nil
+        end
     end
 
     def self.user_themes(user)
