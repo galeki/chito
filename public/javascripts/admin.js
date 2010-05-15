@@ -3,7 +3,7 @@ var index_list = {};
 function remote_form(index)
 {
     var url = "/admin/remote_update";
-    if(index > 0)
+    if(index >= 0)
         url += "?index_id=" + index;
     //alert($('#remote_form').find('input').serialize() + $('#remote_form').find('textarea').serialize());
     $.post(url, $('#remote_form').find('input').serialize() + '&' + $('#remote_form').find('textarea').serialize()  , function(data)

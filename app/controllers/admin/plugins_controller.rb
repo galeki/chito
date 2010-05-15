@@ -22,7 +22,7 @@ class Admin::PluginsController <  Admin::BaseController
 
   def remote_update
     return unless request.xhr?
-    if params[:index_id]
+    if params[:index]
         @index = Index.find(params[:index_id])
         if @index && check_rank_authorize(@index.id)
             @index.update_attributes(params[:index])

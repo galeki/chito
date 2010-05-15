@@ -15,7 +15,7 @@ class UserTheme
 	        src = File.join(self::PATH, theme)
 	        FileUtils.makedirs dst
 	        ['images', 'stylesheets', 'javascripts', 'screenshot.png'].each do |f|
-		    FileUtils.cp_r File.join(src, f), dst
+		    FileUtils.cp_r(File.join(src, f), dst) rescue nil
 	        end
 	        COPIED[theme] = true
 	    end
