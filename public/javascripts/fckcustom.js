@@ -1,3 +1,6 @@
+FCKConfig.ProcessHTMLEntities	= false ;
+
+
 FCKRelativePath = '';
 
 FCKConfig.LinkBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=File&Connector='+FCKRelativePath+'/fckeditor/command';
