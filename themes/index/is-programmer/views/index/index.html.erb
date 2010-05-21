@@ -5,7 +5,7 @@
         </div>
 	    <h2 class="link_to_post"><%= post_link @post, :subdomain => (@post.user && @post.user.name) %></h2>
 			
-            <%= @post.short_brief(@index.post_brief_cut.to_num(200)) %>
+            <div><%= @post.short_brief(@index.post_brief_cut.to_num(200)) %></div>
 
         <br style="clear:both;" />
             <p class="post-footer align-right">					
