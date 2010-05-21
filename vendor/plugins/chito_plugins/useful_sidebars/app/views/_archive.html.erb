@@ -1,0 +1,21 @@
+<% sidebar_cache :archive do -%>
+<ul class="navlist">
+    <% if @user.archive_style == "Selection" -%>
+        <select onchange="change_list_by(this)" >
+            <% t = @last_archive_time
+                while t >= @first_archive_time
+                -%>
+                <option value="<%= archive_url(:year => t.year, :month => t.month) %>"><%= t.strftime(t("plugins.useful_sidebars.archive_time_format", :default => "%Y-%m")) %></option>
+                <% t -= 1.month  -%>
+            <% end -%>
+	</select>
+    <% else -%>
+        <% t = @last_archive_time
+            while t >= @first_archive_time
+            -%>	
+            <li><%= link_to t.strftime(t("plugins.useful_sidebars.archive_time_format", :default => "%Y-%m")), archive_url(:year => t.year, :month => t.month) %></li>
+            <% t -= 1.month  -%>
+        <% end -%>
+    <% end -%>
+</ul>	
+<% end -%>

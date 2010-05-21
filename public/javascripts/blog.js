@@ -7,9 +7,10 @@ function set_cookie(name, value)
     var theCookie = name + "=" + encodeURIComponent(value);
     document.cookie = theCookie;
 }
-function ele(name)
+function change_list_by(e)
 {
-    
+    var url = e.options[e.selectedIndex].value;
+    location.replace(url);
 }
 function insert_cite(user_name, time, id, text)
 {

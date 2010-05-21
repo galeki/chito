@@ -1,0 +1,6 @@
+<% remote_form do |f|%>
+    <label><%= t("plugins.useful_sidebars.archive_style") %>: </label>
+    <label><%= f.radio_button :archive_style, "List" %><%= t("plugins.useful_sidebars.list") -%></label>
+    <label><%= f.radio_button :archive_style, "Selection" %><%= t("plugins.useful_sidebars.selection") -%></label>
+    <%= sidebar_expire_cache_field :archive %>
+<% end %>

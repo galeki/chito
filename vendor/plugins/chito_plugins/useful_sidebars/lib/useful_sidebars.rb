@@ -26,6 +26,9 @@ module BlogHelperPlugin
 	def show_page_bar
 	    plugin_render :useful_sidebars, :page
 	end
+	def show_archive_bar
+	    plugin_render :useful_sidebars, :archive
+	end
 end
 module BlogControllerPlugin
 	private
@@ -49,6 +52,12 @@ module BlogControllerPlugin
 	    if @user.show_categories && !sidebar_cache_enable(:categories)
 		@categories = @user.categories
 	    end
+            if @user.show_archive && !sidebar_cache_enable(:archive)
+                first_post = @user.posts.find(:first)
+                last_post = @user.posts.find(:last)
+                @first_archive_time = Time.mktime(first_post.created_at.year, first_post.created_at.month)
+                @last_archive_time = Time.mktime(last_post.created_at.year, last_post.created_at.month)
+            end
         end
 
 	def count_blog_view_and_post_view_before_post_show
@@ -136,6 +145,15 @@ module ApplicationPlugin
 	    bar.info = "Page"
 	    bar.default_position = 1
 	    bar.plugin_id = :useful_sidebars
+	    Sidebar.add(bar)
+	end
+	def add_archive_in_sidebar
+	    bar = Sidebar.new
+	    bar.id = :archive
+	    bar.info = "Archive"
+	    bar.default_position = 5
+	    bar.plugin_id = :useful_sidebars
+	    bar.config = true
 	    Sidebar.add(bar)
 	end
 end

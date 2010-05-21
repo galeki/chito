@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
 	end
 	temp << ["articles.content like ?", "%#{options[:keyword]}%"] if options[:keyword]
 	temp << ["tags.name = ?", options[:tag]] if options[:tag]
+        if options[:year] && options[:month]
+            temp << ["articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i)]
+            temp << ["articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month].to_i + 1)]
+        end
 	joins = options[:tag] && "INNER JOIN taggings ON articles.id = taggings.taggable_id INNER JOIN tags ON taggings.tag_id = tags.id"
 	sql = temp.map {|x| x.first}.join " AND "
 	sql_params = temp.map {|x| x[1]}.compact

@@ -44,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
 		    :requirements => {:year => /(19|20)\d\d/, :month => /[0|1]?\d/, :day => /[0-3]?\d/},
 		    :controller => 'posts',
 		    :action => 'show'
+        map.archive ':year/:month', :controller => 'posts', :action => 'index', :year => /\d{4}/, :month => /\d{1,2}/
 
 	map.resources :posts, :has_many => :comments, :member => {:cancel_comment_notifier => :get}
 	map.resources :posts, :has_many => :trackbacks

@@ -21,6 +21,8 @@ en-US:
                 info: Meta
             search:
                 info: Search
+            archive:
+                info: Archive
             register: Register
             admin: Admin
             login: Login
@@ -33,6 +35,10 @@ en-US:
             num_of_newmessages: Numbers of messages
             maxlength_of_newmessages: Max length of messages
             search_tag: Search
+            archive_time_format: "%b %Y"
+            archive_style: Archive style
+            list: List
+            selection: Selection
 zh-CN:
     plugins:
         useful_sidebars:
@@ -56,6 +62,8 @@ zh-CN:
                 info: 功能
             search:
                 info: 搜索
+            archive:
+                info: 存档
             register: 注册
             admin: 管理
             login: 登录
@@ -68,3 +76,7 @@ zh-CN:
             num_of_newmessages: 留言显示数量
             maxlength_of_newmessages: 留言长度
             search_tag: 搜索
+            archive_time_format: "%Y年%m月"
+            archive_style: 存档显示样式
+            list: 列表
+            selection: 下拉选择
