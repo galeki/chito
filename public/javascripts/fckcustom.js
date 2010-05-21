@@ -35,7 +35,7 @@ FCKConfig.ToolbarSets["Default"] = [
 	,'/',
 	['Style','FontFormat','FontName','FontSize'],
 	['TextColor','BGColor'],
-	['FitWindow']
+	['FitWindow', 'About']
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [
