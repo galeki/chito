@@ -13,7 +13,7 @@ module SidebarHelper
     end
 
     def content_of(item)
-	item.content.is_a?(String) ? item.content : send(:"show_#{item.id}_bar")
+        plugin_render item.plugin_id, item.id
     end
 
     def id_of(item)

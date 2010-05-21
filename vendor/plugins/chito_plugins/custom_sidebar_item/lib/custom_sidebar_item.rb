@@ -1,20 +1,3 @@
-    module BlogHelperPlugin
-	def show_custom_sidebar_item_1_bar
-	    @user.custom_sidebar_item_1_content || ''
-	end
-	def show_custom_sidebar_item_2_bar
-	    @user.custom_sidebar_item_2_content || ''
-	end
-	def show_custom_sidebar_item_3_bar
-	    @user.custom_sidebar_item_3_content || ''
-	end
-	def show_custom_sidebar_item_4_bar
-	    @user.custom_sidebar_item_4_content || ''
-	end
-	def show_custom_sidebar_item_5_bar
-	    @user.custom_sidebar_item_5_content || ''
-	end
-    end
     module ApplicationPlugin
 	private
 	def add_custom_sidebar_item_in_sidebar

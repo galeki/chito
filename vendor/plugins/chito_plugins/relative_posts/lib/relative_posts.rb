@@ -1,11 +1,3 @@
-module BlogHelperPlugin
-	def show_relative_posts_bar
-	    plugin_render :relative_posts, :relative_posts
-	end
-	def show_global_relative_posts_bar
-	    plugin_render :relative_posts, :global_relative_posts
-	end
-end
 module ApplicationPlugin
 	private
 

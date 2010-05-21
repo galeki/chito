@@ -1,8 +1,3 @@
-    module BlogHelperPlugin
-	def show_random_posts_bar
-	    plugin_render :random_posts, :random_posts
-	end
-    end
     module BlogControllerPlugin
       private
       def get_random_posts_before_blog_show

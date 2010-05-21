@@ -1,8 +1,3 @@
-    module BlogHelperPlugin
-	def show_hot_posts_bar
-	    plugin_render :hot_posts, :hot_posts
-	end
-    end
     module BlogControllerPlugin
       private
       def get_hot_posts_before_blog_show

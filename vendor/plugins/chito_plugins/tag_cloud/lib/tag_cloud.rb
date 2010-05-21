@@ -1,8 +1,3 @@
-    module BlogHelperPlugin
-	def show_tag_cloud_bar
-	    plugin_render 'tag_cloud', 'cloud'
-	end
-    end
     module BlogControllerPlugin
       private
       def get_tag_cloud_before_blog_show

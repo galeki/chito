@@ -1,35 +1,3 @@
-module BlogHelperPlugin
-	def show_categories_bar
-	    plugin_render :useful_sidebars, :categories
-	end
-	def show_head_bar
-	    plugin_render :useful_sidebars, :head
-	end
-	def show_new_comments_bar
-	    plugin_render :useful_sidebars, :new_comments
-	end
-	def show_new_messages_bar
-	    plugin_render :useful_sidebars, :new_messages
-	end
-	def show_search_bar
-	    plugin_render :useful_sidebars, :search
-	end
-	def show_links_bar
-	    plugin_render :useful_sidebars, :links
-	end
-	def show_meta_bar
-	    plugin_render :useful_sidebars, :meta
-	end
-	def show_blog_counter_bar
-	    plugin_render :useful_sidebars, :counter
-	end
-	def show_page_bar
-	    plugin_render :useful_sidebars, :page
-	end
-	def show_archive_bar
-	    plugin_render :useful_sidebars, :archive
-	end
-end
 module BlogControllerPlugin
 	private
 	def get_useful_sidebars_needed_before_blog_show
