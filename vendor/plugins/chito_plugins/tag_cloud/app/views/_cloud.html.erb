@@ -1,8 +1,0 @@
-<% sidebar_cache :id => :tag_cloud do -%>
-  <div id="tag_cloud">
-  <% @tags = @tags.sort{|x,y| x.name <=> y.name} %>
-  <% tag_cloud @tags, %w(tag_css1 tag_css2 tag_css3 tag_css4) do |tag, css_class| %>
-    <%= link_to h(tag.name), tag_posts_path(tag.name), :class => css_class %>
-  <% end %>
-  </div>
-<% end -%>

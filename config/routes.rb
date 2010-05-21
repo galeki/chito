@@ -141,6 +141,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/admin/settings/:action/:id', :controller => 'admin/settings'
 	map.connect '/admin/rss/:action/:id', :controller => 'admin/rss'
 	map.connect '/admin/site/:action/:id', :controller => 'admin/site'
+	map.connect '/admin/systeminfo/:action/:id', :controller => 'admin/systeminfo'
 
 	map.connect '/admin/:action/:id',:controller => 'admin/dashboard'
 	
@@ -149,5 +150,6 @@ ActionController::Routing::Routes.draw do |map|
 
 
 	#map.connect "*anything", :controller => 'site', :action => 'unknown_request'
+        #map.connect ':controller/:action/:id'
 end
 

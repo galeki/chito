@@ -380,6 +380,7 @@ en-US:
           articles: Posts
           index_sidebar: Index sidebars
           indices: Indices
+          systeminfo: System Info
         categories:
           saving: Saving
           create_category: Create Category
@@ -583,6 +584,8 @@ en-US:
           brief_cut: Brief cut length
           post_number: Post number
           slogan: Slogan
+        systeminfo:
+          systeminfo: Info
       site: 
         setup: 
           message_8: Single user

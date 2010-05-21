@@ -1,0 +1,51 @@
+<% @title = t(:systeminfo, :scope => [:txt, :view, :admin, :systeminfo]) -%>
+<%= render :partial => 'admin/sub_menu_for_root' %>
+<%= render_flash %>
+<div class="center" id="infos">
+
+<table id="systeminfo_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed"><b><%= "System Info" %></b></th>
+	    <th class="helpHed" style="width:80%;"></th>
+    </tr>
+    <% @system_info.each do |t| -%>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= t.keys %></td>
+	    <td ><pre><%= t.values %></pre></td>
+
+        </tr>
+    <% end -%>
+</table>
+
+<table id="ralsinfo_table" class="sofT" cellspacing="0" style="margin-top:35px;">
+    <tr>
+	    <th class="helpHed"><b><%= "Rails Info" %></b></th>
+	    <th class="helpHed" style="width:80%;"></th>
+    </tr>
+    <% @rails_info.each do |t| -%>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= t.keys %></td>
+	    <td ><pre><%= t.values %></pre></td>
+
+        </tr>
+    <% end -%>
+</table>
+
+<table id="env_table" class="sofT" cellspacing="0" style="margin-top:35px;">
+    <tr>
+	    <th class="helpHed"><b><%= "Enviroment" %></b></th>
+	    <th class="helpHed" style="width:80%;"></th>
+    </tr>
+    <% ENV.each do |k, v| -%>
+        <tr class="<%= cycle("odd", "") %>" >
+            <td style="padding:12px;"><%= k %></td>
+	    <td style="padding:12px;"><%= v %></td>
+
+        </tr>
+    <% end -%>
+</table>
+
+
+
+</div>
+

@@ -380,6 +380,7 @@ zh-CN:
           articles: 文章
           index_sidebar: 首页边栏
           indices: 索引
+          systeminfo: 系统信息
         categories:
           saving: 保存中
           create_category: 创建分类
@@ -582,6 +583,8 @@ zh-CN:
           brief_cut: 简介截取字数
           post_number: 每页文章数量
           slogan: 副标题
+        systeminfo:
+          systeminfo: 系统信息
       site: 
         setup: 
           message_8: 单用户
