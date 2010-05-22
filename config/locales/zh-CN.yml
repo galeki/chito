@@ -583,6 +583,10 @@ zh-CN:
           brief_cut: 简介截取字数
           post_number: 每页文章数量
           slogan: 副标题
+          plugin_css: 附加的 CSS
+          main_title: 名称
+          title_field: 标题区域代码
+          tail_field: 页面尾部区域代码
         systeminfo:
           systeminfo: 系统信息
       site: 

@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.root :controller => 'posts', :action => 'index'
 	map.favicon '/favicon.ico', :controller => 'blog', :action => 'favicon'
 	map.plugin_css '/plugin.css', :controller => 'blog', :action => 'plugin_css'
+	map.index_plugin_css '/index_plugin.css', :controller => 'index', :action => 'plugin_css'
 #	map.captcha_image '/captcha_image', :controller => 'blog', :action => 'captcha'
 	map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
 	map.connect '/simple_captcha_ajax', :controller => 'simple_captcha', :action => 'simple_captcha_ajax'

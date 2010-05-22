@@ -36,7 +36,7 @@
 	
 	<%= footer %></p>
 
-	<p><%= link_to "Entries (RSS)", formatted_posts_url(:rss) %> and <%= link_to "Comments (RSS)", formatted_comments_url(:rss) %> and <%= link_to "Messages (RSS)", formatted_messages_url(:rss) %></p>
+	<p><%= link_to "Entries (RSS)", posts_url(:format => :rss) %> and <%= link_to "Comments (RSS)", comments_url(:format => :rss) %> and <%= link_to "Messages (RSS)", messages_url(:format => :rss) %></p>
 	
 </div>
 </div>

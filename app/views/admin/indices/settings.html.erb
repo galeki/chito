@@ -6,11 +6,19 @@
 <div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t :settings, :scope => [:txt, :view, :admin, :index_settings] %> </div>
 <% form_for(:index, :url => change_settings_admin_index_path(@index)) do |f| %>
+    <label><%= t :main_title, :scope => [:txt, :view, :admin, :index_settings] %> 
+    <%= f.text_field :main_title, :size => 50 %></label>
+    <label><%= t :title_field, :scope => [:txt, :view, :admin, :index_settings] %></label> 
+    <%= f.text_area :title_field, :style => "width:50%;height:100px;font-size:small;" %>
+    <br/>
     <label><%= t :slogan, :scope => [:txt, :view, :admin, :index_settings] %> 
     <%= f.text_field :slogan, :size => 50 %></label>
     <label><%= t :post_number, :scope => [:txt, :view, :admin, :index_settings] %> 
     <%= f.text_field :new_post_number, :size => 6 %></label>
     <label><%= t :brief_cut, :scope => [:txt, :view, :admin, :index_settings] %> <%= f.text_field :post_brief_cut, :size => 6 %></label>
+    <label><%= t :tail_field, :scope => [:txt, :view, :admin, :index_settings] %></label> 
+    <%= f.text_area :tail_field, :style => "width:50%;height:100px;font-size:small;" %>
+    <br/>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
 </div>
@@ -19,6 +27,9 @@
 <div class="edit_header"><div id="notifier"></div><%= t(:theme_settings, :scope => [:txt, :view, :admin, :themes]) %> </div>
 <% form_for :index, :url => change_settings_admin_index_path(@index) do |f| %>
     <%= f.select :theme, @index_theme_list %>
+    <label><%= t :plugin_css, :scope => [:txt, :view, :admin, :index_settings] %></label> 
+    <%= f.text_area :plugin_css, :style => "width:80%;height:100px;font-size:small;" %>
+    <br/>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
 </div>

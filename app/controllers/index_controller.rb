@@ -1,10 +1,10 @@
 class IndexController < ApplicationController
   include IndexControllerPlugin 
   self.prepend_view_path(IndexTheme::PATH) 
-  before_filter :get_index_local
+  before_filter :get_index
+  before_filter :get_index_needed, :except => [:plugin_css]
 
   def index
-    @index = @site.get_index(request)
     if @index
         @posts = Article.new_ranked_posts :rank => 0, 
                                           :index_id => @index.id,
@@ -22,14 +22,22 @@ class IndexController < ApplicationController
     end
   end
 
+  def plugin_css
+    send_data @index.plugin_css.to_s, :type => 'text/css', :disposition => 'inline'  
+  end
+
   private 
 
-  def get_index_local
-    I18n.locale = "zh-CN"
+  def get_index
+    @index = @site.get_index(request)
+  end
+
+  def get_index_needed
+    I18n.locale = "zh-CN" #TODO
+    @theme = @index.theme || "spheroids"
   end
 
   def render(options = {}, extra_options = {}, &block)
-    @theme = @index.theme || "is-programmer"
     if @theme && (params[:format].nil? or params[:format] == "html")
    	layout = "#{@theme}/layouts/#{@theme}"
 	template = "#{@theme}/views/#{controller_name}/#{action_name}"

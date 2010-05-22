@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="all"/>
+<meta name="author" content="galeki"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<%= index_rss_link %>
+<%= jquery_include_tag %>
+<%= jquery_ui_include_tag %>
+<%= javascript_include_tag "jrails" %>
+<%= javascript_include_tag "blog", "fckeditor/fckeditor" -%>
+<%= theme_css_links %>
+<%= theme_js_links %>
+<link href="/index_plugin.css" media="screen" rel="stylesheet" type="text/css" />
+<title><%= @index.main_title.to_s + " - " + @index.slogan.to_s %></title>
+<body>
+<div id="container">
+  <div id="header">
+    <h1><%= @index.title_field %></h1>
+    <h2><%= @index.slogan %></h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <%= yield %>
+    </div>
+
+    <div id="sidebar">
+			<% sidebar do |item| -%>
+				    <h3><%= title_of(item) %></h3>
+					<%= content_of(item) %>
+			<% end -%>	
+    </div>
+    <br style="clear:both;" />
+  </div>
+<%= @index.tail_field %>
+  <div id="footer">
+    <hr />
+    <p><%= @site.footer %></p>
+    <ul>
+      <li>
+        <%= "Styled with " + link_to('scribbish', 'http://quotedprintable.com/pages/scribbish')%>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

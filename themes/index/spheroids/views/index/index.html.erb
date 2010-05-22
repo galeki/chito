@@ -1,0 +1,21 @@
+<% posts do -%>
+    <div class="post_wrap" style="margin-bottom:10px;">
+        <div class="post_avatar" style="float:left;padding-right:5px;">
+            <%= link_to (image_tag @post.user.small_avatar_url), root_url(:subdomain => @post.user.name) %>
+        </div>
+	    <h2 class="link_to_post"><%= post_link @post, :subdomain => (@post.user && @post.user.name) %></h2>
+			
+            <div><%= @post.short_brief(@index.post_brief_cut.to_num(200)) %></div>
+
+        <br style="clear:both;" />
+            <p class="post-footer align-right">					
+    	        Posted by: <cite><%= link_to @post.user.nick, root_url(:subdomain => @post.user.name) %></cite>
+		<%= post_link @post, :text => "Comments(#{@post.comments.size})", :subdomain => @post.user.name, :anchor => 'comments', :class => 'comments' %>
+		@ <span class="date"><%=  @post.created_at.to_s(:db_short) %></span>	
+	    </p>
+    </div>
+<% end -%>
+
+<div id="pagilinks">
+    <%= will_paginate @posts, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>

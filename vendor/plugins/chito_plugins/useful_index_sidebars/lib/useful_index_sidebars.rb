@@ -15,6 +15,10 @@ module IndexControllerPlugin
                 @new_reg_users = User.find(:all, :order => 'created_at desc', :limit => @index.new_reg_users_number.to_num(10))
             end
 
+            if @index.show_index_list
+                @index_list = Index.find(:all, :order => 'id')
+            end
+
         end
 end
 module ApplicationPlugin
@@ -89,6 +93,15 @@ module ApplicationPlugin
                 bar.default_position = 0
                 bar.plugin_id = :useful_index_sidebars
                 bar.config = true
+                IndexSidebar.add(bar)
+        end
+        def add_index_list_in_index_sidebar
+                bar = IndexSidebar.new
+                bar.id = :index_list
+                bar.info = "Indices"
+                bar.default_position = 0
+                bar.plugin_id = :useful_index_sidebars
+                #bar.config = true
                 IndexSidebar.add(bar)
         end
 end

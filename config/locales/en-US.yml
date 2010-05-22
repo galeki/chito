@@ -584,6 +584,10 @@ en-US:
           brief_cut: Brief cut length
           post_number: Post number
           slogan: Slogan
+          plugin_css: Extra CSS
+          main_title: Title
+          title_field: Title Field
+          tail_field: Page Tail Field
         systeminfo:
           systeminfo: Info
       site: 

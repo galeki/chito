@@ -1,0 +1,5 @@
+<ul>
+    <% for index in @index_list -%>
+        <li><%= link_to "#{index.title} - #{index.slogan}", "http://" + index.bind_domain, :target => '_blank' %></li>
+    <% end -%>
+</ul>
