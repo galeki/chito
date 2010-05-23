@@ -141,6 +141,8 @@ zh-CN:
         indices:
           index_deleted: 索引删除成功
           no_such_user: 此用户不存在
+          avatar_uploaded: 图标上传成功
+          avatar_format_error: 图标必须是小于 200K 的图片
     helper: 
       posts: 
         message_0: 继续阅读
@@ -433,6 +435,7 @@ zh-CN:
         _sub_menu_for_index:
           articles: 文章
           settings: 设置
+          jumpto: 访问
         settings: 
           show_slogan_in_title: "在页面标题中显示"
           blog_options: Blog 设置
@@ -587,6 +590,7 @@ zh-CN:
           main_title: 名称
           title_field: 标题区域代码
           tail_field: 页面尾部区域代码
+          avatar: 图标
         systeminfo:
           systeminfo: 系统信息
       site: 

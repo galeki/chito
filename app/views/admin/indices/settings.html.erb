@@ -4,6 +4,18 @@
 <% @title =  t :settings, :scope => [:txt, :view, :admin, :index_settings] -%>
 <div class="edit_field">
 <div class="right_c"></div>
+<div class="edit_header"><%= t(:avatar, :scope => [:txt, :view, :admin, :index_settings]) %></div>
+<%= image_tag @index.avatar_url, :size => "60x60", :class => "favicon", :alt => "" %>
+<% form_for :index, :url => save_avatar_admin_index_path(@index), :html => {:multipart => true} do |f| -%>
+    <%= file_field :file, :data, :accept => 'image/png' %>
+    <br/>
+    <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
+    <br/>
+<% end -%>
+</div>
+
+<div class="edit_field">
+<div class="right_c"></div>
 <div class="edit_header"><div id="notifier"></div><%= t :settings, :scope => [:txt, :view, :admin, :index_settings] %> </div>
 <% form_for(:index, :url => change_settings_admin_index_path(@index)) do |f| %>
     <label><%= t :main_title, :scope => [:txt, :view, :admin, :index_settings] %> 

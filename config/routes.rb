@@ -80,7 +80,7 @@ ActionController::Routing::Routes.draw do |map|
 	    admin.resources :pages, :member => {:enable_fontpage => :post, :cancel_fontpage => :post}
 	    admin.resources :users, :member => {:set_group => :post}
 	    admin.resources :groups, :member => {:set_group_space => :post, :set_group_name => :post, :set_group_file_size_limit => :post}
-	    admin.resources :indices, :member => {:add_manager => :post, :remove_manager => :post, :settings => :get, :change_settings => :post, :sidebar_position => :post}
+	    admin.resources :indices, :member => {:add_manager => :post, :remove_manager => :post, :settings => :get, :change_settings => :post, :sidebar_position => :post, :save_avatar => :post}
 	    admin.resources :comments, :collection => {:settings => :get, :set_filter_position => :post, :destroy_selected => :delete}
 	    admin.resources :messages, :collection => {:destroy_selected => :delete}
 	    admin.resources :trackbacks, :collection => {:destroy_selected => :delete}

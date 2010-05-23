@@ -1,7 +1,7 @@
 class Admin::IndicesController < Admin::BaseController
     self.prepend_view_path(IndexTheme::PATH) 
     before_filter :chito_admin_authorize, :only => [:index, :create, :add_manager, :remove_manager, :destroy]
-    before_filter :index_manager_authorize, :only => [:show, :settings, :change_settings, :sidebar_position]
+    before_filter :index_manager_authorize, :only => [:show, :settings, :change_settings, :sidebar_position, :save_avatar]
     in_place_edit_for :index, :title
     in_place_edit_for :index, :info
     in_place_edit_for :index, :bind_domain
@@ -15,6 +15,17 @@ class Admin::IndicesController < Admin::BaseController
     @index_theme_list = IndexTheme::LIST
     @overlap = {}
     get_index_sidebars
+  end
+
+  def save_avatar
+    file = params[:file] && params[:file][:data]
+    if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.length < 204800
+	@index.avatar = file
+	notice_stickie t(:avatar_uploaded, :scope => [:txt, :controller, :admin, :indices])
+    else
+	error_stickie t(:avatar_format_error, :scope => [:txt, :controller, :admin, :indices])
+    end
+    redirect_to :action => "settings"
   end
 
   def change_settings

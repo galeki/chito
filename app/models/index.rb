@@ -17,4 +17,18 @@ class Index < ActiveRecord::Base
         super.blank? ? "- Not Specify -" : super
     end
 
+    def public_path
+        File.join RAILS_ROOT, "public/index", self.id.to_s
+    end
+
+    def avatar=(file)
+	Dir.mkdir(self.public_path) unless File.exists?(self.public_path)  
+	File.open(File.join(self.public_path, "avatar.png"), "wb") do |f| 
+	    f.write(file.read)
+	end
+    end
+
+    def avatar_url
+        "/index/#{self.id}/avatar.png"
+    end
 end

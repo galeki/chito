@@ -14,7 +14,7 @@
 <div id="head_option">
 <label><%= t(:upload_new, :scope => [:txt, :view, :admin, :settings]) %>:</label>
 <% form_for :user, :url => {:action => 'save_avatar'}, :html => {:multipart => true} do |f| -%>
-    <%= file_field :file, :data, :accept => 'image/jpeg' %>
+    <%= file_field :file, :data, :accept => 'image/png' %>
     <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
     <br/>
 <% end -%>

@@ -116,7 +116,7 @@ en-US:
         settings:
           profile_updated: Profile was successfully updated
           avatar_uploaded: Avatar uploaded successfully
-          avatar_format_error: Avatar must be a picture and less than 100KB
+          avatar_format_error: Avatar must be a picture and less than 200KB
           password_updated: Password was successfully updated
           password_invalid: Password was invalid
           password_dismatch: Password confirmation dismacth
@@ -141,6 +141,8 @@ en-US:
         indices:
           index_deleted: Index was successfully deleted
           no_such_user: No such user
+          avatar_uploaded: Avatar uploaded successfully
+          avatar_format_error: Avatar must be a picture and less than 200KB
     helper: 
       posts: 
         message_0: Read more
@@ -433,6 +435,7 @@ en-US:
         _sub_menu_for_index:
           articles: Articles
           settings: Settings
+          jumpto: Visit
         settings: 
           show_slogan_in_title: "Show slogan in title"
           blog_options: Blog Options
@@ -588,6 +591,7 @@ en-US:
           main_title: Title
           title_field: Title Field
           tail_field: Page Tail Field
+          avatar: Avatar
         systeminfo:
           systeminfo: Info
       site: 
