@@ -1,11 +1,11 @@
 class IndexController < ApplicationController
   include IndexControllerPlugin 
   self.prepend_view_path(IndexTheme::PATH) 
-  before_filter :get_index
-  before_filter :get_index_needed, :except => [:plugin_css]
+  before_filter :get_index, :except => [:plugin_css]
 
   def index
     if @index
+        get_index_needed
         @posts = Article.new_ranked_posts :rank => 0, 
                                           :index_id => @index.id,
                                           :page => params[:page], 
