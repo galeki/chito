@@ -17,6 +17,7 @@ class Article < ActiveRecord::Base
 		 :conditions => ["feedbacks.bit_opt = 5"],
 		 :dependent => :destroy
 	belongs_to :category
+        attr_protected :read_count, :rank
 	include ArticlePlugin
 
     def self.new_posts
