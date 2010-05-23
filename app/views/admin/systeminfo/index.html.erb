@@ -2,7 +2,20 @@
 <%= render :partial => 'admin/sub_menu_for_root' %>
 <%= render_flash %>
 <div class="center" id="infos">
-
+<table id="chito_version_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed"><b><%= "Chito Info" %></b></th>
+	    <th class="helpHed" style="width:80%;"></th>
+    </tr>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= "Version" %></td>
+	    <td ><pre><%= VER %></pre></td>
+        </tr>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= "Languages" %></td>
+	    <td ><pre><%= LANGUAGES.map{|l| l[0]} * "\n" %></pre></td>
+        </tr>
+</table>
 <table id="systeminfo_table" class="sofT" cellspacing="0" style="margin-top:5px;">
     <tr>
 	    <th class="helpHed"><b><%= "System Info" %></b></th>
