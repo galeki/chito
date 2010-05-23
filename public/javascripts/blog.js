@@ -144,6 +144,20 @@ function reply_to(s){
 	setCaretAtEnd(e);
     }
 }
+function reply_to_id(id)
+{
+    $("#post_comment").appendTo('#comment'+id+'  > div.comment_body');
+    $("#comment_reply_to").val(id);
+
+}
+function thread_comments()
+{
+    $(".comment_reply").each(function() {
+        $(this).appendTo("#comment"+ $(this).attr("reply_id"));
+        $(this).addClass("reply_comment_box");
+        $(this).find(".comments_count").html("");
+    });
+}
 var rtlang = {'zh-CN':{}, 'en':{}};
 rtlang['en']['less than a minute'] = 'less than a minute';
 rtlang['en'][' minutes'] = ' minutes';

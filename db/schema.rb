@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100508134955) do
+ActiveRecord::Schema.define(:version => 20100523133755) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20100508134955) do
     t.string   "ip"
     t.integer  "post_by"
     t.string   "twitter"
+    t.integer  "reply_to"
   end
 
   add_index "feedbacks", ["article_id"], :name => "index_comments_on_article_id"

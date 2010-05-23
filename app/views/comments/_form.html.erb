@@ -30,6 +30,7 @@
 
 		<div id="comment_editor">
 		  <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
+                  <input id="comment_reply_to" name="comment[reply_to]" type="hidden" value=""/>
 		  <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>
 		  <input type="button" id="comment_editor_button" onclick='show_editor();' />
 		</div>

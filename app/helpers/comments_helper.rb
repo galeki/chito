@@ -30,6 +30,7 @@ module CommentsHelper
     def comment_class
 	t = "comment_box comment_box#{cycle('0', '1')}"
 	t << " comment_self" if @comment.user_name && @comment.user_name.downcase == request.subdomains.first
+        t << " comment_reply" if @comment.reply_to.to_i != 0
 	t
     end
 
@@ -59,6 +60,10 @@ module CommentsHelper
 	"comment#{@comment.id}"
     end
 
+    def comment_reply_id
+        "reply_id='#{@comment.reply_to}'" if @comment.reply_to.to_i != 0
+    end
+
     def comment_content_id
 	"comment_content#{@comment.id}"
     end
@@ -74,8 +79,13 @@ module CommentsHelper
 
     def reply_comment_button
 	content_tag :span, :class => "reply_comment_button" do
-	    link_to_function t("txt.helper.comments.reply"), "reply_to('#{comment_writer}');event.returnValue = false;", :class => "reply_him",
-				:title => t("txt.helper.comments.reply_to", :user => @comment.writer)
+            if true
+	        link_to_function image_tag("reply.png"), "reply_to_id('#{@comment.id}');event.returnValue = false;", 
+				    :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
+            else
+	        link_to_function t("txt.helper.comments.reply"), "reply_to('#{comment_writer}');event.returnValue = false;", :class => "reply_him",
+				    :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
+            end
 	end
     end
 

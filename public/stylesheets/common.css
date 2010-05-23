@@ -122,11 +122,17 @@ a.return{
     text-align: center;
     display: block;
 }
-.comment_box, .comment_box0, .comment_box1, .comment_self {
+.comment_box{
     padding:10px;
     width: 93%;
     margin-left: 10px;
     margin-bottom: 10px;
+}
+.reply_comment_box{
+    margin: 5px 0px 5px 30px;
+    background:none !important;    
+    border:1px dashed #999;
+    width:80%;
 }
 *+html .comment_box, *+html .comment_box0,*+html .comment_box1, *+html .comment_self {
     padding:10px;
@@ -155,11 +161,16 @@ a.return{
 .reply_comment_button{
     text-align:center;
     margin-right:10px;
-    display:none;
     float:right;
 }
 .reply_him:hover{
     text-decoration: none;
+}
+.reply_him_id{
+    background: url(/images/reply.png) no-repeat left;
+    padding-left:20px;
+    margin-top:5px;
+    margin-right:5px;
 }
 .reply_him{
     background: url(/images/reply.png) no-repeat left;
