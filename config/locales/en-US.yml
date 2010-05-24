@@ -153,7 +153,7 @@ en-US:
         no_title: "- No Title -"
       comments:
           reply_to: Reply to {{user}}
-          reply: Reply
+          reply: "[Reply]"
     view: 
       messages: 
         index: 
@@ -476,6 +476,8 @@ en-US:
           message_5: Change
           message_6: Administration style
           message_7: Green
+          comments: Comments
+          enable_thread_comment: Enable Thread Comment
         site: 
           message_16: Save
           message_8: I want to write several blogs, or hope people register and write blogs here

@@ -79,13 +79,9 @@ module CommentsHelper
 
     def reply_comment_button
 	content_tag :span, :class => "reply_comment_button" do
-            if true
-	        link_to_function image_tag("reply.png"), "reply_to_id('#{@comment.id}');event.returnValue = false;", 
-				    :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
-            else
-	        link_to_function t("txt.helper.comments.reply"), "reply_to('#{comment_writer}');event.returnValue = false;", :class => "reply_him",
-				    :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
-            end
+            reply_js_function = @user.enable_thread_comment ? "reply_to_id('#{@comment.id}')" : "reply_to('#{comment_writer}', '#{@comment.id}')"
+	    link_to_function t("txt.helper.comments.reply"), "#{reply_js_function};event.returnValue = false;",
+			      :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
 	end
     end
 
@@ -95,5 +91,11 @@ module CommentsHelper
 	    	link_to "", "http://twitter.com/#{h @comment.twitter}", :class => "follow_him", :target => "_blank"
 	    end
 	end
+    end
+
+    def thread_comment_script_tag
+        if @user.enable_thread_comment
+           javascript_tag "thread_comment();"
+        end
     end
 end

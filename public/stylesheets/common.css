@@ -129,10 +129,9 @@ a.return{
     margin-bottom: 10px;
 }
 .reply_comment_box{
-    margin: 5px 0px 5px 30px;
+    margin: 8px 0px 8px 30px;
     background:none !important;    
-    border:1px dashed #999;
-    width:80%;
+    border-left:5px solid #eee;
 }
 *+html .comment_box, *+html .comment_box0,*+html .comment_box1, *+html .comment_self {
     padding:10px;

@@ -153,7 +153,7 @@ zh-CN:
         no_title: "- 未命名 -"
       comments:
         reply_to: 回复 {{user}}
-        reply: 回复
+        reply: "[回复]"
     view: 
       messages: 
         index: 
@@ -476,6 +476,8 @@ zh-CN:
           message_5: 更改
           message_6: 工作台风格
           message_7: 绿色
+          comments: 评论
+          enable_thread_comment: 使用 Thread Comment
         site: 
           message_16: 保存
           message_8: 我想写多个 Blog，或者想让别人到这里来写 Blog。

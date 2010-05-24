@@ -111,6 +111,7 @@ function fix_comment_mode(){
 	var e = document.getElementById('comment_mode');
 	if(e)
 	    e.value = 'plain';
+        $("#comment_reply_to").val("");
 }
 function setCaretAtEnd (field) {
    if (field.createTextRange) {
@@ -121,7 +122,7 @@ function setCaretAtEnd (field) {
    }else
     field.focus();
 }
-function reply_to(s){
+function reply_to(s, id){
     var content;
     if(s){
 	content = "@" + s + ": ";
@@ -143,6 +144,7 @@ function reply_to(s){
 	var e1 = document.getElementById('comment_content');
 	setCaretAtEnd(e);
     }
+    $("#comment_reply_to").val(id);
 }
 function reply_to_id(id)
 {
@@ -150,7 +152,7 @@ function reply_to_id(id)
     $("#comment_reply_to").val(id);
 
 }
-function thread_comments()
+function thread_comment()
 {
     $(".comment_reply").each(function() {
         $(this).appendTo("#comment"+ $(this).attr("reply_id"));
