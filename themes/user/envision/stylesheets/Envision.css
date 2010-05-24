@@ -72,17 +72,6 @@ ul, ol {
 	padding: 0 20px;
 }
 
-code {
-  margin: 5px 0;
-  padding: 10px;
-  text-align: left;
-  display: block;
-  overflow: auto;  
-  font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace ;
-  /* white-space: pre; */
-  background: #FAFAFA;
-  border: 1px solid #f2f2f2;  
-}
 acronym {
   cursor: help;
   border-bottom: 1px dotted #777;
