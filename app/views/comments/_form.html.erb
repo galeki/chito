@@ -1,3 +1,4 @@
+           <%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
            <%
 		form_remote_tag( 
 				:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
@@ -41,5 +42,4 @@
 		    <%= show_something :in_comment_form %>
 		</div>
 		    <input id="ss" name="commit" type="submit" autocomplete="off" value="<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>" />
-
 	    <% end %>

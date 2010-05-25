@@ -172,6 +172,7 @@ en-US:
           comment_notifier: Notify follow-up comments via e-mail
           login_as: Login as
           change_user: Change Account
+          cancel_reply_to: "Cancel reply"
         _comment:
           said: "said:"
       blog: 

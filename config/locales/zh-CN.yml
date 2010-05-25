@@ -172,6 +172,7 @@ zh-CN:
           comment_notifier: 当有新评论通过 E-mail 通知我
           login_as: 当前登录为
           change_user: 改变用户
+          cancel_reply_to: "[取消回复评论]"
         _comment:
           said: "说:"
       blog: 

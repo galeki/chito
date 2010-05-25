@@ -150,7 +150,14 @@ function reply_to_id(id)
 {
     $("#post_comment").appendTo('#comment'+id+'  > div.comment_body');
     $("#comment_reply_to").val(id);
+    $("#cancel_reply_link").show();
 
+}
+function cancel_reply_to_id()
+{
+    $("#cancel_reply_link").hide();
+    $("#post_comment").insertAfter('#comments');
+    $("#comment_reply_to").val("");
 }
 function thread_comment()
 {
