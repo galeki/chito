@@ -420,9 +420,6 @@ div.rmf{
     text-align:left;
     padding:10px 10px 0 10px;
 }
-div#notifier{
-    float:right;
-}
 #article_created_at{
     width:80%;
 }
@@ -589,3 +586,18 @@ span#autosave_fail{
 #index_url{padding:5px;font-size:medium;}
 #index_info{padding:3px;}
 #index_img{padding:10px 0px 0px 0px;}
+#notifier_wrap {
+    width:100%;
+    height:1.5em;
+}
+#notifier {
+    font-weight:bold;
+    text-align:right;
+    margin-right:16px;
+    padding:0px 10px 0px 10px;
+    float:right;
+    color:#666;
+}
+#links{
+height: 40px;
+}

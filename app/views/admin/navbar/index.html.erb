@@ -4,7 +4,7 @@
 <% @title = t(:navbar_settings, :scope => [:txt, :view, :admin, :navbar]) -%>
 <div class="edit_field">
 <div class="right_c"></div>
-<div class="edit_header"><div id="notifier"></div><%= t(:navbars_position, :scope => [:txt, :view, :admin, :navbar]) %></div>
+<div class="edit_header"><%= t(:navbars_position, :scope => [:txt, :view, :admin, :navbar]) %></div>
 <% form_for :user, :url => {:action => 'navbar_position'} do |f| %>
 	<div class="enable_navbars_title"><%= t(:navbar, :scope => [:txt, :view, :admin, :navbar]) %></div>
 	<ul id="enable" class="enable_navbars">

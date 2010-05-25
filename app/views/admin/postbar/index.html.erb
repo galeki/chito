@@ -4,7 +4,7 @@
 <% @title = t(:message_0, :scope => [:txt, :view, :admin, :postbar]) -%>
 <div class="edit_field">
 <div class="right_c"></div>
-<div class="edit_header"><div id="notifier"></div><%= t(:message_1, :scope => [:txt, :view, :admin, :postbar]) %></div>
+<div class="edit_header"><%= t(:message_1, :scope => [:txt, :view, :admin, :postbar]) %></div>
 <% form_for :user, :url => {:action => 'postbar_position'} do |f| %>
 	<label style="font-weight:bold;"><%= f.check_box :show_postbars %> <%= t(:message_2, :scope => [:txt, :view, :admin, :postbar]) %></label>
 	<div class="enable_postbars_title"><%= t(:message_3, :scope => [:txt, :view, :admin, :postbar]) %></div>

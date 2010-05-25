@@ -102,7 +102,7 @@ ol li
 /* links / footer */
 
 #links
-{ height: 55px;  
+{   
   padding: 18px 0px 0px 0px;
   font-size: 88%;
 }
@@ -629,7 +629,7 @@ ul#file_type_list, #file_type_list li{
     font-weight:bold;
     width:100%;
     background: #fff url(input_back.jpg) repeat-x;
-    border:1px solid #647DA0;
+    border:1px solid #999;
     text-align:center;
     color:#666;
     text-decoration:none;
@@ -664,12 +664,12 @@ ul#file_type_list, #file_type_list li{
     width:40%;
     height:7px;
     background:#fff;
-    border:1px solid #647DA0;
+    border:1px solid #999;
     margin:4px 10px 0 0;
     float:right;
 }
 #used_space{
-    background:#647DA0;
+    background:#999;
     height:100%;
 }
 #in_progress{
@@ -790,7 +790,7 @@ h1
 }
 .index {width:96%;padding:0px 2% 20px 2%;}
 .index h1{font-size:22px;color:#333;}
-.index h3{font-size:14px;color:#666;width:50%;border-bottom:1px solid #647DA0;padding:0px 0px 4px 0px;}
+.index h3{font-size:14px;color:#666;width:50%;border-bottom:1px solid #999;padding:0px 0px 4px 0px;}
 .index h4{font-size:16px;color:#333;margin:5px 0px 10px 0px;}
 .index ul{margin:6px 0px 10px 20px;}
 .index li{list-style-type:none;margin-bottom:2px;}

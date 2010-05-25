@@ -4,7 +4,7 @@
 <% @title = t(:sidebar_settings, :scope => [:txt, :view, :admin, :sidebar]) -%>
 <div class="edit_field">
 <div class="right_c"></div>
-<div class="edit_header"><div id="notifier"></div><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @user.theme.camelize %> ] </div>
+<div class="edit_header"><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @user.theme.camelize %> ] </div>
 <% form_for :user, :url => {:action => 'sidebar_postion'} do |f| %>
   <%= bars_layout %>
   <br style="clear:both"/>
