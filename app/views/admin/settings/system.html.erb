@@ -21,6 +21,7 @@
 <% form_for :user, :url => {:action => :admin_style} do |f|%>
 	<label><%= f.radio_button :admin_style, 'green', :class => 'ck' %> <%= t(:message_7, :scope => [:txt, :view, :admin, :settings]) %></label>
 	<label><%= f.radio_button :admin_style, 'blue' , :class => 'ck' %> <%= t(:message_8, :scope => [:txt, :view, :admin, :settings]) %></label>
+	<label><%= f.radio_button :admin_style, 'grey' , :class => 'ck' %> <%= t(:grey, :scope => [:txt, :view, :admin, :settings]) %></label>
 	<%= submit_tag t(:message_9, :scope => [:txt, :view, :admin, :settings]), :class => 'submit' %>
 <% end %>
 </div>

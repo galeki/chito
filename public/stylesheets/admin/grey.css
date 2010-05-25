@@ -100,10 +100,6 @@ ol li
 }
 
 /* links / footer */
-#links_container
-{ border-top: 1px solid; 
-  border-bottom: 1px solid;
-}
 
 #links
 { height: 55px;  
@@ -257,8 +253,28 @@ float:left;
 
 #colour a, #colour a:hover{border: 0px;}
 
-#article_form{
-    padding:2%;
+.blue
+{ background: #FFFFFF url(blue.png) no-repeat left center;
+  color: #109CEF;
+  padding: 0px 40px 0px 20px;
+}
+
+.green
+{ background: #FFFFFF url(green.png) no-repeat left center;
+  color: #94C65A;
+  padding: 0px 40px 0px 20px;
+}
+
+.purple
+{ background: #FFFFFF url(purple.png) no-repeat left center;
+  color: #CE5AEF;
+  padding: 0px 40px 0px 20px;
+}
+
+.orange
+{ background: #FFFFFF url(orange.png) no-repeat left center;
+  color: #FF9C21;
+  padding: 0px 40px 0px 20px;
 }
 #form_sidebar {
     float:right;
@@ -287,27 +303,18 @@ a img{
 .form_category {
     font-size:12px;
     text-align:center;
-    background: url(left.gif) no-repeat left top;
     padding:5px 0px 10px 10px;
 }
 .right_c{
     float:right;
     height:10px;
     width:10px;
-  background: url(right.gif) no-repeat right top;  
 }
 .form_item {
-   background: #F1FACB url(form_item_back.jpg) top left repeat-x; 
+   background: #eee;
    margin: 0px 0px 20px 0px;
    padding:0px 0px 10px 0px;
 
-}
-#article_title {
-    font-size:20px;
-    width:90%;
-    padding:5px;
-    margin-bottom:10px;
-    font-weight:bold;
 }
 #category{
     width:90%;
@@ -317,14 +324,14 @@ a img{
     margin: 0 2% 0 5%;
 }
 input, textarea {
-    border: 1px solid #bed569;
+    border: 1px solid #999;
     background: #fff url(input_back.jpg) repeat-x;
     padding:3px;
 }
 select
 {
     background:#fafafa url(input_back.jpg) repeat-x;
-    border: 1px solid #bed569;
+    border: 1px solid #999;
     padding:3px;
 }
 .checkbox{
@@ -353,7 +360,7 @@ label{
 }
 
 #form_sidebar label:hover{
-    background:#D9E99E;
+    background:#B7C4D5;
 }
 #article_tag_list{
     font-size:16px;
@@ -397,13 +404,12 @@ label{
 .center{
     text-align:center;
     width:90%;
-    margin:10px 5% 0px 5%;
+    margin-left:5%;
+    margin-right:5%;
     float:left;
     clear:both;
 }
-select#category,select#category option{
-    width:80%;
-}
+
 /*
 table#article_table{
     border-collapse:collapse;
@@ -426,20 +432,21 @@ thead{
 */
 th.helpHed
 { 
-border-bottom: 2px solid #D9E99E;
-border-top: 2px solid #D9E99E;
-border-left: 1px solid #D9E99E;
-background-color: #CCC;
+border-bottom: 1px solid #999;
+border-top: 1px solid #999;
+border-left: 1px solid #999;
+background-color: #ccc;
 padding: 5px 0px 5px 0px;
 text-align: center;
 text-indent: 5px;
 font-family: Verdana;
 font-weight: normal;
-color: #404040; }
+color: #000; }
+th.checkbox{text-align:center;text-indent:0px;}
 td
 { 
 border-top: 0px;
-border-left: 1px solid #CCC;
+border-left: 1px solid #999;
 border-right: 0px;
 text-align: center;
 font-family: Verdana, sans-serif, Arial;
@@ -449,12 +456,12 @@ color: #404040;
 table.sofT
 { 
 margin:auto;
-margin-top:20px;
+margin-top:30px;
 font-family: Verdana;
 font-weight: normal;
 color: #404040;
 background-color: #fafafa;
-border: 1px solid  #CCC;
+border: 1px solid  #999;
 border-collapse: collapse;
 border-spacing: 0px; } 
 table.sideB
@@ -463,7 +470,7 @@ table.sideB
 }
 table a{
     text-decoration:none;
-    color:#c60;
+    color:#666;
 }
 table img{
     margin-bottom:-3px;}
@@ -474,14 +481,13 @@ table img{
     width:120px;
 }
 .title_col{
-    width:45%;
     min-width:200px;
     padding-left:10px;
     text-align:left;
 }
 .action_col{
     width:80px;
-    padding:10px;
+    padding:8px;
 }
 .category_name_col{
     width:200px;
@@ -508,20 +514,6 @@ table img{
 .sideb_info{
     width:200px
 }
-.comment_writer_col{
-    width:130px;
-}
-.comment_time_col{
-    width:180px;
-}
-.comment_content_col{
-    width:380px;
-    text-align:left;
-    padding:5px 15px 5px 15px;
-}
-.comment_guest_col{
-    width:50px;
-}
 #add_category{
     text-align:center;
     padding-top:5px;
@@ -538,16 +530,16 @@ tr.odd{
     background:#eee;
 }
 table.sofT tr:hover{
-    background:#D9E99E;
+    background:#ccc;
 }
 .edit_header{
-    background: url(left.gif) no-repeat left top;    
+    background: #ccc;
     padding:5px;
     font-weight:bold;
     margin-bottom:10px;
 }
 .edit_field{
-   background: #F1FACB url(form_item_back.jpg) top left repeat-x;     
+   background: #eee ;     
     float:left;
     width:100%;
     margin-bottom:15px;
@@ -568,7 +560,7 @@ input.submit{
     float:left;
     padding:8px;
     margin:0px 25px 15px 20px;
-    border:1px solid #CCC;
+    border:1px solid #ccc;
 }
 .option_wrap{
     width:96%;
@@ -577,7 +569,7 @@ input.submit{
 }
 .plugin_intro{
     padding:10px;
-    border:1px solid #ccc;
+    border:1px solid green;
     margin:auto;
     margin-bottom:20px;
     width:90%;}
@@ -588,8 +580,8 @@ ul#sidebar_items{
 li.sidebar_item{
     list-style-type:none;
     padding:15px 30px 15px 30px;
-    border: 1px solid #CCC;
-    border-left:15px solid #CCC;
+    border: 1px solid #91A5BD;
+    border-left:15px solid #91A5BD;
     margin:10px 0px 10px 0px;
     cursor:move;
     font-size:14px;
@@ -637,7 +629,7 @@ ul#file_type_list, #file_type_list li{
     font-weight:bold;
     width:100%;
     background: #fff url(input_back.jpg) repeat-x;
-    border:1px solid #CCC;
+    border:1px solid #647DA0;
     text-align:center;
     color:#666;
     text-decoration:none;
@@ -672,12 +664,12 @@ ul#file_type_list, #file_type_list li{
     width:40%;
     height:7px;
     background:#fff;
-    border:1px solid #CCC;
+    border:1px solid #647DA0;
     margin:4px 10px 0 0;
     float:right;
 }
 #used_space{
-    background:#CCC;
+    background:#647DA0;
     height:100%;
 }
 #in_progress{
@@ -689,7 +681,27 @@ ul#file_type_list, #file_type_list li{
 .file_info_folder{
     font-size:14px;
 }
-
+ul#index_list{
+    list-style-type:none;
+    width:400px;
+    margin:0 0 0 20px;
+    padding:0;
+}
+#index_list li{
+    list-style-type:none;
+}
+#index_list li a{
+    display:block;
+    padding: 5px 0px 5px 0px;
+    font-size:12px;
+    margin-bottom:20px;
+    width:150px;
+    background: #fff url(input_back.jpg) repeat-x;
+    border:1px solid #C4DA75;
+    text-align:center;
+    color:#666;
+    text-decoration:none;
+}
 #pagilinks {
     margin: 20px 0px 20px 0px;
 }
@@ -706,14 +718,12 @@ h1
 { 
   background: url(header.jpg) repeat;
   color: #FFF;
-  border-top-color: #E2E2E2;
-  border-bottom-color: #6C6C6C;
 }
 
 #footer
 { 
+  background: #999;
   background: url(header.jpg) repeat;
-  border-top: 30px solid #eee;
   color: #FFF;
 }
 #footer a{
@@ -735,7 +745,6 @@ h1
 { 
   color: #000;
   background:#eee;
-  border-top:1px solid #CCC;
 }
 
 #menu li a
@@ -744,12 +753,12 @@ h1
   margin-right:1px;
 }
 #sub_menu li a{
-    color:#000;
+    color:#fff;
 }
 #sub_menu, #menu li a:hover, #menu li a.selected, #menu li a.selected:hover
 { 
-    background: #CCC;
-    color: #000;
+    background: #999;
+    color: #fff;
 } 
 #sub_menu li a:hover, #sub_menu li a.selected, #sub_menu li a.selected:hover
 {
@@ -779,22 +788,16 @@ h1
 { background: transparent url(blue_arrow.png) no-repeat left center;
   color: #555;
 }
-ul#index_list{
-    list-style-type:none;
-    width:400px;
-    margin:0 0 0 20px;
-    padding:0;
-}
 .index {width:96%;padding:0px 2% 20px 2%;}
 .index h1{font-size:22px;color:#333;}
-.index h3{font-size:14px;color:#666;width:50%;border-bottom:1px solid #CCC;padding:0px 0px 4px 0px;}
+.index h3{font-size:14px;color:#666;width:50%;border-bottom:1px solid #647DA0;padding:0px 0px 4px 0px;}
 .index h4{font-size:16px;color:#333;margin:5px 0px 10px 0px;}
 .index ul{margin:6px 0px 10px 20px;}
 .index li{list-style-type:none;margin-bottom:2px;}
-.index a {color:#CC6600;text-decoration:none;}
+.index a {color:#666;text-decoration:none;}
 .index p{color:#666;}
 .option_wrap_index a:visited{
-    color:#999;
+    color:#000;
 }
 .index a:hover {color:#f93;text-decoration:none;}
 .option_wrap_index{
@@ -805,7 +808,7 @@ ul#index_list{
 .index_sidebar h2{
     margin:0;
     padding:0 0 4px 0;
-    border-bottom:1px solid #CCC;
+    border-bottom:1px solid #999;
     color:#666;
 }
 .index_sidebar {
@@ -828,13 +831,26 @@ a.index_action{
     margin:0px 0px 0px 0px;
     width:150px;
     background: #fff url(input_back.jpg) repeat-x;
-    border:1px solid #CCC;
+    border:1px solid #999;
     text-align:center;
     color:#000;
     text-decoration:none;
 }
 .notice_date{font-size:12px;font-weight:normal;color:#888;}
-
+li.bar, .enable_postbars li.bar, .disable_postbars li.bar{
+    border:1px solid #999;
+}
+.vbars, .hbars{border-color:#999;}
+.disable_bars_title{
+    border-bottom:1px solid #999;
+}
+div.theme_warp{
+    padding:10px 0px 10px 0px;
+    border-bottom:1px solid #999;
+}
+div.theme_warp:hover{
+    background:#eee;
+}
 /*
 tr.even td{background:#e5f1f4;}
 tr.odd td{background:#f8fbfc;}
@@ -847,47 +863,20 @@ td.over, tr.even td.over, tr.odd td.over{background:#ecfbd4;}
 td.down, tr.even td.down, tr.odd td.down{background:#bce774;color:#fff;}
 td.selected, tr.even td.selected, tr.odd td.selected{background:#bce774;color:#555;}
 */
-/*-----------------------------------------------------------------*/
-.edit_field{
-   background: #ddd;     
+.enable_navbars, .enable_postbars{
+    border:1px dashed #999;
 }
-input, textarea {
-    border: 1px solid #ccc;
-    background: #fff url(input_back.jpg) repeat-x;
-    padding:3px;
+li.navbar{
+    border:1px solid #999;
 }
-select
-{
-    background:#fafafa url(input_back.jpg) repeat-x;
-    border: 1px solid #ccc;
-    padding:3px;
+.comment_box{
+    border:1px solid #999;
 }
-.right_c{
-  background: #ddd;
+
+ul#enable_filters{
+    border:1px dashed #999;
 }
-.edit_header{
-    background: none;    
-    padding:5px;
-    font-weight:bold;
-    margin-bottom:10px;
+ul#enable_filters li, ul#disable_filters li {
+    float:left;
+    border:1px solid #999;
 }
-th.helpHed
-{ 
-border-bottom: 2px solid #999;
-border-top: 2px solid #999;
-border-left: 1px solid #999;
-background-color: #CCC;
-color: #404040; }
-table.sofT tr:hover{
-    background:#ccc;
-}
-.form_category {
-    background: #ddd;
-}
-.form_item {
-   background: #eee;
-}
-#form_sidebar label:hover{
-    background:#fff;
-}
-.index a, table a{color:#000;}

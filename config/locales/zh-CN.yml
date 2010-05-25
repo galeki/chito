@@ -479,6 +479,7 @@ zh-CN:
           message_7: 绿色
           comments: 评论
           enable_thread_comment: 使用 Thread Comment
+          grey: 灰色
         site: 
           message_16: 保存
           message_8: 我想写多个 Blog，或者想让别人到这里来写 Blog。

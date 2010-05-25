@@ -17,7 +17,7 @@ class Admin::SettingsController < Admin::BaseController
 
   def admin_style
     return unless request.post?
-    params[:user][:admin_style] == 'green' ? @user.admin_style = 'green' : @user.admin_style = 'blue'
+    @user.admin_style = params[:user][:admin_style]
     @user.save
     redirect_to :action => 'system'
   end
