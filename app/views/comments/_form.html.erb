@@ -27,6 +27,7 @@
 		    <label>Twitter:</label>
 		    <%= text_field 'comment','twitter', :value => cookies[:comment_twitter], :size => 12 %>
 		    <br/>
+		    <input id="comment_info" name="comment[info]" size="6" type="text" value="" class="comment_info_field" autocomplete="off" /> 
 		<% end %>
 
 		<div id="comment_editor">

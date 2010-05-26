@@ -519,3 +519,4 @@ div.pre_next_post{
     margin-top:5px;
     margin-right:5px;
 }
+.comment_info_field{display:none;width:0px;height:0px;margin:0px;padding:0px;}

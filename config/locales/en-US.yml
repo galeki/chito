@@ -514,6 +514,7 @@ en-US:
           categorize_in: Categorize in
           auto_category: Auto create categories
           import_comments: Try to import comments
+          unescape_html: Unescape HTML tag
         navbar:
           navbar_settings: Navbar settings
           navbars_position: Navbars position

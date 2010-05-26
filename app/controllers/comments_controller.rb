@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
    end
 
    def create
+        chito_spam_check
 	@comment = @user.comments.new(params[:comment])
 	@comment.prepare(params, request, session, cookies)
 
@@ -29,6 +30,10 @@ class CommentsController < ApplicationController
    end 
 
    private
+
+   def chito_spam_check
+        block_filter(:drop => true) unless params[:comment][:info].blank?
+   end
 
    def call_notifier
 	call_talk_notifier

@@ -3,6 +3,7 @@ require 'RMagick'
 require 'simple-rss'
 require 'open-uri'
 require 'uuidtools'
+require 'cgi'
 class User < ActiveRecord::Base
     acts_as_taggable    
     acts_as_settings :nil_value => ['', '0']
@@ -193,14 +194,20 @@ class User < ActiveRecord::Base
 	end
     end
 
-    def import_rss(url, import_category, category, import_comments)
+    def import_rss(url, import_category, category, import_comments, unescape_html)
 	feed = SimpleRSS.parse(open(url).read)
 	feed.items.each do |item|
 	    article = self.articles.build
 	    article.title = item.title
-	    content = item.content_encoded || item.description || item.summary
-	    article.content = content
-	    article.brief = item.description || item.summary || article.content
+            if unescape_html
+	        cont = CGI.unescapeHTML(item.content_encoded || item.description || item.summary)
+                brf =  CGI.unescapeHTML(item.description || item.summary || article.content)
+            else
+	        cont = item.content_encoded || item.description || item.summary
+                brf =  item.description || item.summary || article.content
+            end 
+	    article.content = cont
+	    article.brief = brf
 	    #article.writer = item.author || item.dc_creator || self.nick
 	    article.created_at = item.pubDate || item.dc_date || Time.now
 	    article.tag_list = item.the_tags

@@ -22,6 +22,7 @@
     <label><%= radio_button_tag :import_category, 'new_category', true, :class => 'ck' %> <%= t(:auto_category, :scope => [:txt, :view, :admin, :rss]) %></label>
     <label style="display:inline;"><%= radio_button_tag :import_category, 'default_category', false, :class => 'ck' %> <%= t(:categorize_in, :scope => [:txt, :view, :admin, :rss]) %> </label><select  id="category" name="category" style="width:30%;"><%= options_from_collection_for_select(@categories,:id, :name,@selected) %></select>
     <label><%= check_box_tag :import_comments, 1, false, :class => 'ck' %> <%= t(:import_comments, :scope => [:txt, :view, :admin, :rss]) %></label>
+    <label><%= check_box_tag :unescape_html, 1, false, :class => 'ck' %> <%= t(:unescape_html, :scope => [:txt, :view, :admin, :rss]) %></label>
     <span style="display:none;" id="importing"><%= image_tag 'importing.gif' %> <%= t(:importing, :scope => [:txt, :view, :admin, :rss]) %></span>
     <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :id => 's' %>
 <% end %>

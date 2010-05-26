@@ -112,6 +112,7 @@ function fix_comment_mode(){
 	if(e)
 	    e.value = 'plain';
         $("#comment_reply_to").val("");
+        $("#comment_info").val("");
 }
 function setCaretAtEnd (field) {
    if (field.createTextRange) {

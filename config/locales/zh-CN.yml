@@ -514,6 +514,7 @@ zh-CN:
           categorize_in: 归类到
           auto_category: 自动创建分类
           import_comments: 尝试导入评论
+          unescape_html: "反解析 HTML (如果在导入后发现大量未转义的 HTML 标签请选中此项)"
         navbar:
           navbar_settings: 导航栏设置
           navbars_position: 导航栏位置
