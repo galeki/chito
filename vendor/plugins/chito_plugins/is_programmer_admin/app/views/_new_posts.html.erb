@@ -7,7 +7,7 @@
 		    {:onclick => "open_remote_form({'url':'/admin/remote_form/is_programmer_admin/new_posts_config', 'title':'显示数量', 'width':450});", 
 		    :class => "remote_setting"} %>
     <h2>
-	<%=link_to (image_tag "small_feed.png"), formatted_site_url(:rss), :style => "margin-right:3px;" %>
+	<%=link_to (image_tag "small_feed.png"), site_url(:format => :rss), :style => "margin-right:3px;" %>
 	is-Programmer 新文章 : 
 	    </h2>
     <ul>
