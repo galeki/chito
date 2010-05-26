@@ -14,8 +14,8 @@
 		form_remote_tag( :update => "import_result", 
 				:condition => "check_url(this.rss_url.value, t1, t2)",
 				:url => { :action => 'import'},
-				:before => "Element.show('importing');$(s).disabled=true;",
-				:complete => "Element.hide('importing');$(s).disabled=false;"
+				:before => "$('#importing').show();$('#s').disabled=true;",
+				:complete => "$('#importing').hide();$('#s').disabled=false;"
 				) do
 				%>
     <label style="margin-bottom:20px;"><%= t(:rss_url, :scope => [:txt, :view, :admin, :rss]) %>: <%= text_field_tag 'rss_url', '', :size => '70' %></label>
