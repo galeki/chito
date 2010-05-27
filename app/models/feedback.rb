@@ -1,6 +1,6 @@
 class Feedback < ActiveRecord::Base
 	has_flags [:pass, :is_message, :is_trackback], [:column => 'bit_opt']	
-	acts_as_settings :nil_value => ['', '0']
+	has_settings :nil_value => ['', '0']
 	belongs_to :article
 	belongs_to :user
 	validates_presence_of :writer

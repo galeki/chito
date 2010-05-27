@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 class Article < ActiveRecord::Base
 	acts_as_taggable
-	acts_as_settings :nil_value => ['', '0']
+	has_settings :nil_value => ['', '0']
 	has_flags [:is_none, :is_draft, :is_page], [:column => 'bit_opt']
 	belongs_to :user 
 	belongs_to :index 
@@ -20,8 +20,8 @@ class Article < ActiveRecord::Base
         attr_protected :read_count, :rank
 	include ArticlePlugin
 
-    def self.new_posts
-	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => 20
+    def self.new_posts(num=20)
+	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => num
     end
 
     def self.new_ranked_posts(options)

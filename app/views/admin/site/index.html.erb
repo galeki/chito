@@ -45,12 +45,15 @@
         </label>
         </p>
 	
-	
-    
+    <label><%= t(:bulletin_title, :scope => [:txt, :view, :admin, :site]) %>:</label>
+    <%= f.text_field 'bulletin_title', :size => '25'%>
+    <label><%= t(:bulletin_content, :scope => [:txt, :view, :admin, :site]) %>:</label>
+    <%= f.text_area 'bulletin_content', :style => 'width:80%;height:150px;'%>
+
     <br/>
-    <%= submit_tag t(:message_16, :scope => [:txt, :view, :admin, :site]), :class =>'submit' %>
+    <%= submit_tag t(:message_16, :scope => [:txt, :view, :admin, :site]), :class =>'submit' %>	
+    
 <% end %>
 </div>
-
 
 </div>

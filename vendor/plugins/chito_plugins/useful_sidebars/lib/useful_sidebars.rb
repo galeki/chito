@@ -124,4 +124,13 @@ module ApplicationPlugin
 	    bar.config = true
 	    Sidebar.add(bar)
 	end
+	def add_bulletin_in_sidebar
+	    bar = Sidebar.new
+	    bar.id = :bulletin
+	    bar.info = "Bulletin"
+	    bar.default_position = 9
+	    bar.plugin_id = :useful_sidebars
+	    bar.config = false
+	    Sidebar.add(bar)
+	end
 end

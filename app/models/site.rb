@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
     has_flags [:registerable], [:column => 'bit_opt']
-    #acts_as_settings :nil_value => ['', '0']
+    has_settings :nil_value => ['', '0']
 
     @@site = nil
 

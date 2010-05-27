@@ -8,9 +8,7 @@ module ApplicationPlugin
 
 	num = @user.numbers_of_new_posts_in_admin.to_num(6)
 	num = 30 if num > 50
-	@new_posts = Article.find(:all, 
-				  :conditions => ["bit_opt = 0 and user_id != 418 and user_id != 950 and user_id != 951 and user_id != 952"], :order => 'created_at DESC', 
-				  :limit => num)
+	@new_posts = Article.new_posts(num)
     end
 end
 

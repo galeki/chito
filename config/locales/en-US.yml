@@ -357,6 +357,9 @@ en-US:
           change_profile: Change your profile, avatar and blog title
           see_talks: View talks
           see_the_talks: View the updates of posts which you commented before.
+          new_posts: New posts
+          new_posts_num: New posts numbers
+          official_updates: Official updates
         share:
           option: Option
           title: Title
@@ -504,6 +507,9 @@ en-US:
           user: User
           index_mode_intro: Show all users updates.
           user_mode_intro: "Show this user's Blog："
+          bulletin: Bulletin
+          bulletin_title: Bulletin title
+          bulletin_content: Bulletin content
         rss:
           rss_import: RSS import
           no_url: Please input RSS url

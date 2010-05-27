@@ -1,16 +1,16 @@
 module ActiveRecord
-  module Acts
+  module Has
     module Settings
       def self.included(base)
         base.extend(ClassMethods)
       end
       
       module ClassMethods
-        def acts_as_settings(options = {})
+        def has_settings(options = {})
 	    class_eval { cattr_accessor :nil_value }
 	    self.nil_value = ([nil] << options[:nil_value]).flatten.uniq
 	    serialize :settings
-	    include ActiveRecord::Acts::Settings::InstanceMethods
+	    include ActiveRecord::Has::Settings::InstanceMethods
         end
       end
 

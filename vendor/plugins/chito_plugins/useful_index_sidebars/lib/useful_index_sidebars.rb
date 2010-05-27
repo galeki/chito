@@ -104,4 +104,13 @@ module ApplicationPlugin
                 #bar.config = true
                 IndexSidebar.add(bar)
         end
+        def add_index_bulletin_in_index_sidebar
+                bar = IndexSidebar.new
+                bar.id = :index_bulletin
+                bar.info = "Bulletin"
+                bar.default_position = 0
+                bar.plugin_id = :useful_index_sidebars
+                #bar.config = true
+                IndexSidebar.add(bar)
+        end
 end

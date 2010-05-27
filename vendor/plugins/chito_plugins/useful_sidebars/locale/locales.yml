@@ -23,6 +23,8 @@ en-US:
                 info: Search
             archive:
                 info: Archive
+            bulletin:
+                info: Bulletin
             register: Register
             admin: Admin
             login: Login
@@ -64,6 +66,8 @@ zh-CN:
                 info: 搜索
             archive:
                 info: 存档
+            bulletin:
+                info: 公告
             register: 注册
             admin: 管理
             login: 登录

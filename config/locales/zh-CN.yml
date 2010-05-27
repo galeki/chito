@@ -357,6 +357,9 @@ zh-CN:
           change_profile: 更改你的信息、头像和 Blog 标题
           see_talks: 查看讨论
           see_the_talks: 查看曾经在其他用户 Blog 上发表过评论的后续更新
+          new_posts: 用户新文章
+          new_posts_num: 显示数量
+          official_updates: 最近的更新
         share:
           option: 设置
           title: 标题
@@ -504,6 +507,9 @@ zh-CN:
           user: 用户
           index_mode_intro: 首页显示所有用户的更新文章。
           user_mode_intro: 首页显此户的 Blog：
+          bulletin: 公告
+          bulletin_title: 公告标题
+          bulletin_content: 公告内容
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址

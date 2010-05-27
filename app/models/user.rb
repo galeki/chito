@@ -6,7 +6,7 @@ require 'uuidtools'
 require 'cgi'
 class User < ActiveRecord::Base
     acts_as_taggable    
-    acts_as_settings :nil_value => ['', '0']
+    has_settings :nil_value => ['', '0']
     belongs_to :group
     has_and_belongs_to_many :indices, :select => "distinct indices.*"
     has_many :articles, :order => 'created_at DESC'

@@ -1,5 +1,5 @@
 class Index < ActiveRecord::Base
-    acts_as_settings :nil_value => ['', '0']
+    has_settings :nil_value => ['', '0']
     has_and_belongs_to_many :users, :select => "distinct users.*"
     has_many :posts,
 	     :class_name => "Article",
