@@ -5,7 +5,7 @@ class TrackbacksController < ApplicationController
 
     def create
 	@error_message = "Trackback not save"
-	if @user.enable_trackbacks
+	if false && @user.enable_trackbacks #TODO Disable for no spam protection
 	    post = @user.posts.find(params[:post_id])
 	    if post && post.trackback_key == params[:key]
 		@trackback = @user.trackbacks.new

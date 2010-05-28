@@ -33,6 +33,7 @@ class CommentsController < ApplicationController
 
    def chito_spam_check
         block_filter(:drop => true) unless params[:comment][:info].blank?
+        block_filter(:drop => true) unless params[:comment][:value].blank?
    end
 
    def call_notifier

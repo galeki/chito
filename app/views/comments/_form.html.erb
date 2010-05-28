@@ -2,7 +2,7 @@
            <%
 		form_remote_tag( 
 				:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
-				:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;",
+				:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;$('#comment_value').val('')",
 				:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
 				) do%>
 		<div id="comment_error" style="display: none;"></div>
@@ -28,6 +28,7 @@
 		    <%= text_field 'comment','twitter', :value => cookies[:comment_twitter], :size => 12 %>
 		    <br/>
 		    <input id="comment_info" name="comment[info]" size="6" type="text" value="" class="comment_info_field" autocomplete="off" /> 
+                    <input id="comment_value" name="comment[value]" type="hidden" value="some"/>
 		<% end %>
 
 		<div id="comment_editor">

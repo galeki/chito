@@ -12,7 +12,7 @@ module BlogHelperPlugin
     def show_simple_vcode_field_in_comment_form
 	if @user.enable_comment_filter_simple_vcode
 	    "<div id='show_simple_captcha'>" +
-		show_simple_captcha(:image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha")) +
+		show_simple_captcha(:image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha"), :distortion => "high") +
 	    "</div>"
 	end
     end
