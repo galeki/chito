@@ -14,12 +14,12 @@ module CommentsHelper
     end
 
     def comment_writer
-	h @comment.writer
+	@comment.writer
     end
 
     def link_to_comment_writer
 	comment_homepage ? 
-		white_list(link_to(comment_writer, comment_homepage)) :
+		link_to(comment_writer, comment_homepage) :
 		comment_writer
     end
 
@@ -70,7 +70,7 @@ module CommentsHelper
 
     def comment_content
 	@comment.mode == 'plain' ? content = simple_format(h(@comment.content)) : content = @comment.content
-	white_list (content)
+	white_list(content).html_safe
     end
 
     def render_comment

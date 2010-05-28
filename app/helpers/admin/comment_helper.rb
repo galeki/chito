@@ -6,7 +6,7 @@ module Admin::CommentHelper
 		    {:onclick => "open_remote_form({'url':'#{filter.form_url}', 'title':'#{filter.name}', 'width':450});", 
 		    :class => "remote_setting"} )  if filter.config} 
 		#{filter.name } 
-	    </li>]
+	    </li>].html_safe
     end
 
 end

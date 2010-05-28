@@ -20,4 +20,4 @@
 <link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 <title><%= @title %></title>
 </head>
-<%= @user.custom_header if @user.enable_custom_header %>
+<%=raw @user.custom_header if @user.enable_custom_header %>

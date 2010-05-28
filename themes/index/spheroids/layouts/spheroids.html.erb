@@ -21,7 +21,7 @@
 	<div id="topmenu">
 	</div>
 	<div id="logo">
-        <%= @index.title_field %>
+        <%=raw @index.title_field %>
 
 	</div>
 </div>
@@ -46,10 +46,10 @@
 
 	</div>
 </div>
-<%= @index.tail_field %>
+<%=raw @index.tail_field %>
 <div id="footer">
 	<p id="legal">
-	    <%= @site.footer %> 
+	    <%=raw @site.footer %> 
 	    | Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.
 	</p>
 </div>

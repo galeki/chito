@@ -21,8 +21,8 @@ module BlogControllerPlugin
 		@categories = @user.categories
 	    end
             if @user.show_archive && !sidebar_cache_enable(:archive)
-                first_post = @user.posts.find(:first)
-                last_post = @user.posts.find(:last)
+                first_post = @user.posts.find(:first, :order => 'created_at')
+                last_post = @user.posts.find(:last, :order => 'created_at')
                 @first_archive_time = Time.mktime(first_post.created_at.year, first_post.created_at.month)
                 @last_archive_time = Time.mktime(last_post.created_at.year, last_post.created_at.month)
             end

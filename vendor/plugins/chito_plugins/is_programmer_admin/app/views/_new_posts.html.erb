@@ -1,5 +1,5 @@
-    <h2><%= @site.bulletin_title %></h2>
-    <div><%= @site.bulletin_content %></div>
+    <h2><%=raw @site.bulletin_title %></h2>
+    <div><%=raw @site.bulletin_content %></div>
     <%= link_to image_tag("setting.gif"), "#", 
 		    {:onclick => "open_remote_form({'url':'/admin/remote_form/is_programmer_admin/new_posts_config', 'title':'#{t("txt.view.admin.dashboard.new_posts_num")}', 'width':450});", 
 		    :class => "remote_setting"} %>

@@ -6,7 +6,7 @@
 		    function hlw(){
 			highlightWord(document.getElementsByTagName("body")[0],"#{params[:s]}");
 		    }
-		    Event.observe(window, 'load', hlw);
+                    $(document).ready(hlw);
 		    </script>~ 
 	    end
 	end

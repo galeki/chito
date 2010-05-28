@@ -1,11 +1,11 @@
 module ThemeHelper
 
     def theme_css_links(options={})
-	theme_files(:theme => @theme, :type => :stylesheets, :order => options[:order], :user_theme => @user && @user.user_theme)
+	theme_files(:theme => @theme, :type => :stylesheets, :order => options[:order], :user_theme => @user && @user.user_theme).html_safe
     end
 
     def theme_js_links(options={})
-	theme_files(:theme => @theme, :type => :javascripts, :order => options[:order], :user_theme => @user && @user.user_theme)
+	theme_files(:theme => @theme, :type => :javascripts, :order => options[:order], :user_theme => @user && @user.user_theme).html_safe
     end
 
     def theme_files(options={})

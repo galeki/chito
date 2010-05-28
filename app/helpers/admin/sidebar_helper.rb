@@ -7,7 +7,7 @@ module Admin::SidebarHelper
 		#{bar_settings_area(bar)} 
 		#{bar.info} 
 		</div>
-	    </li>]
+	    </li>].html_safe
     end
 
     def bar_settings_area(bar)
@@ -58,6 +58,7 @@ module Admin::SidebarHelper
 	    html << show_bar(bar)
 	end
 	html << '</ul>'
+        html.html_safe
     end	
 
 end

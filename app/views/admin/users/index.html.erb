@@ -63,7 +63,7 @@
     <% @user = old_user -%>
 </table>
 <div id="pagilinks">
-<%= will_paginate @users, :prev_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+<%= will_paginate @users, :previous_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
 </div>
 </div>
 <%= in_place_edit_js :user, :bind_domain %>

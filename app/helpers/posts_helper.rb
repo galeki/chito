@@ -28,11 +28,11 @@ module PostsHelper
     end
 
     def post_title(post=@post)
-	post.title.blank? ? t(:no_title, :scope => [:txt, :helper, :posts]) : h(post.title)
+	post.title.blank? ? t(:no_title, :scope => [:txt, :helper, :posts]) : post.title
     end
 
     def post_writer
-	rewriter{ h(@post.writer || @user.nick) }
+	rewriter{ @post.writer || @user.nick }
     end
 
     def post_read_count
@@ -52,7 +52,7 @@ module PostsHelper
     end
 
     def post_brief
-	arounder{ "<div class='post_brief'>" + @post.brief + "</div>"}
+	arounder{ ("<div class='post_brief'>" + @post.brief + "</div>").html_safe}
     end
 
     def link_to_post_category(options={})
@@ -60,7 +60,7 @@ module PostsHelper
     end
 
     def link_to_post_tags(options={})
-	@post.tags.inject("") {|html, tag| html << (link_to h(tag.name), tag_posts_path(tag.name), options) << '  '}
+	@post.tags.inject(""){|html, tag| html << (link_to h(tag.name), tag_posts_path(tag.name), options) << '  '}.html_safe
     end
 
     def link_to_read_more
@@ -88,7 +88,7 @@ module PostsHelper
     end
 
     def post_content
-	arounder{ "<div id='article_content'>" + @post.content.sub('<!--more-->','<a id="more"></a>') + "</div>" }
+	arounder{ ("<div id='article_content'>" + @post.content.sub('<!--more-->','<a id="more"></a>') + "</div>").html_safe }
     end
 
     def postbars

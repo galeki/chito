@@ -6,15 +6,15 @@ module Admin::BaseHelper
     end
 
     def remote_form(&block)
-	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>"
+	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>".html_safe
 	form_for :user, :html => {:id => 'remote_form', :onsubmit => "return false"}, &block  #do |f|
-	concat "</div>"
+	concat "</div>".html_safe
     end
 
     def remote_form_index(&block)
-	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>"
+	concat "<div class='rmf' style='text-align:left;padding:10px 10px 0 10px;'>".html_safe
 	form_for :index, :html => {:id => 'remote_form', :onsubmit => "return false"}, &block  #do |f|
-	concat "</div>"
+	concat "</div>".html_safe
     end
 
     def selected_button(options={})

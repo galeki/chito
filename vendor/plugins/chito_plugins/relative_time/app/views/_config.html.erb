@@ -12,8 +12,8 @@
 <div class="right_c"></div>
 <div class="edit_header"><%= t "plugins.relative_time.settings" %></div>
 <% form_for :user, :url => {:action => 'plugin', :plugin_id => 'relative_time'} do |f|%>
-    <label><%= f.check_box :enable_rewriter_of_post_time,  :class => 'checkbox' %><%= t "plugins.relative_time.enable_post" %></label>
-    <label><%= f.check_box :enable_rewriter_of_comment_time,  :class => 'checkbox' %><%= t "plugins.relative_time.enable_comment" %></label>
+    <label><%= f.check_box :enable_rewriter_of_post_time,  :class => 'checkbox' %><%= t("plugins.relative_time.enable_post").html_safe %></label>
+    <label><%= f.check_box :enable_rewriter_of_comment_time,  :class => 'checkbox' %><%= t("plugins.relative_time.enable_comment").html_safe %></label>
     <%= expire_cache_field :type => "posts_index/*" %>
     <%= submit_tag t("plugins.relative_time.save"), :class =>'submit' %>
 <% end  %>

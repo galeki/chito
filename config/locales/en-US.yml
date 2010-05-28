@@ -621,7 +621,7 @@ en-US:
           message_13: "Chito use subdomain to specify different users, like: <br/> http://user1.chito.com <br/> http://user2.chito.com <br/> You must have a wildcard DNS record like chito.com, and point *.chito.com to your sever ip. And fill the root domian here (exclude www prefix)"
           message_6: Confirm password
           message_14: Submit
-          message_7: Blod mode
+          message_7: Blog mode
       posts: 
         show: 
           message_0: Edit this post

@@ -4,6 +4,7 @@ module InPlaceMacrosHelper
     tag = %Q[<span id='#{id}_#{method}' class='in_place_edit_#{object}_#{method}' onmouseover="this.style.backgroundColor='yellow'" onmouseout="this.style.backgroundColor='white'" >]
     tag << content
     tag << "</span>"
+    tag.html_safe
   end
 
   def in_place_edit_js(object, method, options={})

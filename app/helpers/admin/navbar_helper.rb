@@ -8,7 +8,7 @@ module Admin::NavbarHelper
 		    :class => "remote_setting"} )  if bar.config} 
 		#{bar.i18n_title} 
 		</div>
-	    </li>]
+	    </li>].html_safe
     end
 
 

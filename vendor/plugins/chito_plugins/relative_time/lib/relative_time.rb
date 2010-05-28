@@ -1,9 +1,9 @@
     module BlogHelperPlugin
 	def rewriter_of_post_time
-	    "<span class='relative_time_post'>#{@post.created_at.strftime("%b %d, %Y %I:%M:%S %p")}</span>"
+	    "<span class='relative_time_post'>#{@post.created_at.strftime("%b %d, %Y %I:%M:%S %p")}</span>".html_safe
 	end
 	def rewriter_of_comment_time
-	    "<span class='relative_time_comment'>#{@comment.created_at.strftime("%b %d, %Y %I:%M:%S %p")}</span>"
+	    "<span class='relative_time_comment'>#{@comment.created_at.strftime("%b %d, %Y %I:%M:%S %p")}</span>".html_safe
 	end
 	def add_relative_time_convert_in_blog_tail
 	    func = ""
@@ -17,7 +17,7 @@
 		    }
 		    $(document).ready(show_relative_time);
 		</script>
-	      !
+	      !.html_safe
 	    end
 	end
     end

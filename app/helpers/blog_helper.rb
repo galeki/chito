@@ -6,7 +6,7 @@ module BlogHelper
     end
 
     def footer
-	rewriter { @site.footer.to_s }
+	rewriter { @site.footer.to_s.html_safe }
     end
     
     def posts_rss_link
@@ -34,7 +34,7 @@ module BlogHelper
     end
 
     def site_slogan
-	@user.slogan
+	@user.slogan.html_safe
     end
 
     def blog_tail

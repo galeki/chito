@@ -1,7 +1,7 @@
 class IndexController < ApplicationController
   include IndexControllerPlugin 
   self.prepend_view_path(IndexTheme::PATH) 
-  before_filter :get_index, :except => [:plugin_css]
+  before_filter :get_index
 
   def index
     if @index

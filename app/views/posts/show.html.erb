@@ -9,7 +9,7 @@
   <div id="article_header">
     <strong> <%= post_writer %></strong> 
     posted @ <%= post_time %>
-    <%= (' in ' + link_to_post_category ) if @post.category %>
+    <%= (' in ' + link_to_post_category ).html_safe if @post.category %>
     <% unless @post.tags.empty? -%>
 	with tags 
 	<%= link_to_post_tags %>

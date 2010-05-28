@@ -18,7 +18,7 @@ module ApplicationHelperPlugin
 	html = ''
 	@@vhooks[hook] ||= methods.select{|h| h =~ /_#{hook}$/}.sort.map{|x| x.to_sym}
 	@@vhooks[hook].each {|h| html << send(h).to_s }
-	html
+	html.html_safe
     end
 end
 

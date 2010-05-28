@@ -1,7 +1,7 @@
     module BlogHelperPlugin
 	def add_auto_js_latex_js_link_in_head
 	    if @user.enable_auto_js_latex
-		plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n"
+		(plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n").html_safe
 	    end
 	end
 	def add_auto_js_latex_in_blog_tail
@@ -20,7 +20,7 @@
 		    }
 		    $(document).ready(auto_js_latex);
 		</script>
-	       !
+	       !.html_safe
 	    end
 	end
     end

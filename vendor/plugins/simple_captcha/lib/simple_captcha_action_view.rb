@@ -87,7 +87,7 @@ module SimpleCaptcha #:nodoc
           :image_style => options[:image_style] || '', 
           :distortion => options[:distortion] || '',
           :time => Time.now.to_i)
-      "<img src='#{url}' alt=' loading img...' onclick='re_captcha()' style='cursor:pointer;'>"
+      "<img src='#{url}' alt=' loading img...' onclick='re_captcha()' style='cursor:pointer;'>".html_safe
     end
     
     def simple_captcha_field(options={})

@@ -131,7 +131,7 @@ a.return{
 .reply_comment_box{
     margin: 8px 0px 8px 30px;
     background:none !important;    
-    border-left:5px solid #eee;
+    border-left:5px solid #ddd;
 }
 *+html .comment_box, *+html .comment_box0,*+html .comment_box1, *+html .comment_self {
     padding:10px;
