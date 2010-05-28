@@ -70,7 +70,7 @@ module CommentsHelper
 
     def comment_content
 	@comment.mode == 'plain' ? content = simple_format(h(@comment.content)) : content = @comment.content
-	white_list(content).html_safe
+	sanitize(content)
     end
 
     def render_comment

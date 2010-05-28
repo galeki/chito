@@ -44,10 +44,4 @@
 <% end -%>
 
 <%= text_field "article", "tag_list" %>
-<% if @user.enable_tags_auto_complete -%>
-<div class="tag_list_auto_complete" id="tag_list" style="display:none"></div>
-<script type="text/javascript">
-    new Autocompleter.Local('article_tag_list', 'tag_list',<%= array_or_string_for_javascript(@tags) %> , 
-			    {frequency: 0.1, tokens: ',', afterUpdateElement: function(element) {element.value+=', ';}});
-</script>
-<% end -%>
+

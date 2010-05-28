@@ -15,7 +15,7 @@ xml.rss "version" => "2.0",
 		xml.pubDate comment.created_at.to_s(:rfc822)
 		xml.guid post_url(comment.article, :anchor => "comment#{comment.id}")
 		xml.tag! 'content:encoded' do
-		    xml.cdata! white_list(comment.content)
+		    xml.cdata! sanitize(comment.content)
 		end
 		xml.author h(comment.writer)
 	    end
