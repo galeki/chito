@@ -66,7 +66,7 @@ class Article < ActiveRecord::Base
     end
 
     def brief
-        (self.auto_brief && !self.has_more) ? self.content : "<p>#{super}</p>"
+        (self.auto_brief && !self.has_more) ? self.content : "<p>#{super}</p>".html_safe
     end
 
     def prev

@@ -30,7 +30,7 @@ module ApplicationHelper
 	caller_method = (caller[0] =~ /`([^']*)'/ and $1)
 	rewriter_method = "rewriter_of_#{caller_method}"
 	if @user.send("enable_#{rewriter_method}") && respond_to?(rewriter_method)
-	    send(rewriter_method).html_safe
+	    send(rewriter_method).to_s.html_safe
 	else
 	    yield
 	end

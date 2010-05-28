@@ -34,7 +34,7 @@ module BlogHelper
     end
 
     def site_slogan
-	@user.slogan.html_safe
+	@user.slogan.to_s.html_safe
     end
 
     def blog_tail
