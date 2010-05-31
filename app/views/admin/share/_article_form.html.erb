@@ -68,6 +68,7 @@ var away_text = '<%= t(:leave_message, :scope => [:txt, :view, :admin, :share]) 
 var autosave_ok_text = '<%= t(:autosave_ok_message, :scope => [:txt, :view, :admin, :share]) %>';
 var autosaving_text = '<%= t(:autosaving_message, :scope => [:txt, :view, :admin, :share]) %>';
 var autosave_fail_text = '<%= t(:autosave_fail_message, :scope => [:txt, :view, :admin, :share]) %>';
+var confirm_blank_text = '<%= t(:confirm_blank_text, :scope => [:txt, :view, :admin, :share]) %>';
 
 window.onbeforeunload=unload_form;
 $("#trackbacks").val("");
@@ -82,22 +83,23 @@ function update_article_content()
     }
 }
 
-setInterval( update_article_content, 3000);
+setInterval( update_article_content, 9000);
 </script>
 <%= observe_form :article_form,
-		  :frequency => 250,
+		  :frequency => 300,
 		  :url => admin_draft_path(@article),
+                  :condition => "article_content_not_blank()",
 		  :before => "autosaving(autosaving_text);",
 		  :success => "autosave_ok(autosave_ok_text);",
 		  :failure => "autosave_fail(autosave_fail_text);"
 %>
 
-<input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form);" class="submit_post"/>
-<input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form);"/>
+<input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form, confirm_blank_text);" class="submit_post"/>
+<input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form, confirm_blank_text);"/>
 <!--
 <label style="display:inline;"><%= check_box_tag "show_in_navbar" %><%= t(:show_in_navbar, :scope => [:txt, :view, :admin, :share]) %></label>
 -->
-<input type="button" value="<%= t :save_to_draft_box, :scope => [:txt, :view, :admin, :share]  %>" onclick="submit_as('drafts', this.form);" />
-<input type="button" value="<%= t :save_and_edit, :scope => [:txt, :view, :admin, :share]%>" onclick="formSubmit=true;this.form.action += '?continue_editing=1';this.form.submit();" />
+<input type="button" value="<%= t :save_to_draft_box, :scope => [:txt, :view, :admin, :share]  %>" onclick="submit_as('drafts', this.form, confirm_blank_text);" />
+<input type="button" value="<%= t :save_and_edit, :scope => [:txt, :view, :admin, :share]%>" onclick="submit_and_edit(this.form, confirm_blank_text);" />
 </div>
 <% end -%>

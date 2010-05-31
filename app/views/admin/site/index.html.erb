@@ -23,6 +23,8 @@
 
 		     this, event, '220px')">[?]</a>
     </label>
+    
+    <label><%= f.check_box :use_external_jquery  %> <%= t(:use_external_jquery, :scope => [:txt, :view, :admin, :site]) %> </label>
 
     <label><div><%= t(:message_4, :scope => [:txt, :view, :admin, :site]) %>:</div></label>    
     	<label><%= f.radio_button :user_mode, "s", :class => "ck" %> <%= t(:message_5, :scope => [:txt, :view, :admin, :site]) %></label>

@@ -378,6 +378,7 @@ en-US:
           autosave_fail: Autosave fail
           show_in_navbar: and show in navbar
           indices: Indices
+          confirm_blank_text: Submit a blank post？
         _sub_menu_for_root: 
           message_0: Site
           message_1: User groups
@@ -510,6 +511,7 @@ en-US:
           bulletin: Bulletin
           bulletin_title: Bulletin title
           bulletin_content: Bulletin content
+          use_external_jquery: Use external JQuery
         rss:
           rss_import: RSS import
           no_url: Please input RSS url

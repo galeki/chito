@@ -83,7 +83,11 @@ class Article < ActiveRecord::Base
     end
 
     def short_brief(n)
-        helpers.truncate(helpers.strip_tags(self.brief), :length => n)
+        helpers.truncate(helpers.strip_tags(self.brief).gsub(/(&nbsp;)|(&#160;)/,''), :length => n)
+    end
+
+    def content_blank?
+        helpers.strip_tags(self.content).gsub(/(&nbsp;)|(&#160;)/,'').blank?
     end
 
     private

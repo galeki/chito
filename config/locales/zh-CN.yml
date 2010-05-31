@@ -378,6 +378,7 @@ zh-CN:
           autosave_fail: 自动保存失败
           show_in_navbar: 并显示在导航栏
           indices: 总分类
+          confirm_blank_text: 保存这篇空白内容的文章？
         _sub_menu_for_root: 
           message_0: 网站
           message_1: 用户组
@@ -510,6 +511,7 @@ zh-CN:
           bulletin: 公告
           bulletin_title: 公告标题
           bulletin_content: 公告内容
+          use_external_jquery: 使用外部 JQuery
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址

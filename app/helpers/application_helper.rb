@@ -15,13 +15,19 @@ module ApplicationHelper
     end
 
     def jquery_include_tag
-	#javascript_include_tag "jquery"
-	javascript_include_tag "jquery"
+	if @site.use_external_jquery
+           javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"
+        else
+	    javascript_include_tag "jquery"
+        end
     end
 
     def jquery_ui_include_tag
-	#javascript_include_tag "jquery-ui"
-	javascript_include_tag "jquery-ui"
+	if @site.use_external_jquery
+	    javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.3/jquery-ui.min.js"
+        else
+	    javascript_include_tag "jquery-ui"
+        end
     end
 
     private

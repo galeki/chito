@@ -161,11 +161,42 @@ function select_menu(main_menu_id, controller)
     $('#' + sub_menu_id).addClass("selected");
 
 }
-function submit_as(type, form)
+function article_content_not_blank()
 {
-    formSubmit=true;
-    form.action = form.action.replace(/posts|drafts|pages/, type);
-    form.submit();
+    if(FCKeditorAPI)
+    {
+	var oEditor = FCKeditorAPI.GetInstance('article_content');
+	oEditor.UpdateLinkedField();
+    }
+    var article_content = "not blank";
+    var e = document.getElementById('article_content');
+    if(e)
+        article_content = e.value;
+
+    var strip_content = article_content.replace(/<p>&#160;<\/p>/g,'').replace(/<p>&nbsp;<\/p>/g,'');
+    //alert(strip_content.length);
+    if(strip_content.length == 0)
+        return false;
+
+    return true;
+}
+function submit_as(type, form, cf_text)
+{
+    if(article_content_not_blank() || confirm(cf_text))
+    {
+        formSubmit=true;
+        form.action = form.action.replace(/posts|drafts|pages/, type);
+        form.submit();
+    }
+}
+function submit_and_edit(form, cf_text)
+{
+    if(article_content_not_blank() || confirm(cf_text))
+    {
+        formSubmit=true;
+        form.action += '?continue_editing=1';
+        form.submit();
+    }
 }
 function checkall(trigger, form) 
 {

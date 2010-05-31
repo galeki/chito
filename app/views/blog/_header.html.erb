@@ -16,8 +16,8 @@
 <%= javascript_include_tag "blog", "fckeditor/fckeditor" -%>
 <%= theme_css_links :order => options[:css]%>
 <%= theme_js_links :order => options[:js]%>
-<%= show_something :in_head %>
 <link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 <title><%= @title %></title>
+<%= show_something :in_head %>
 </head>
 <%=raw @user.custom_header if @user.enable_custom_header %>

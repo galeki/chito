@@ -601,3 +601,4 @@ span#autosave_fail{
 #links{
 height: 40px;
 }
+td.checkbox input {border:0;background:transparent;}
