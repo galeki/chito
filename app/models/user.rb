@@ -259,7 +259,7 @@ class User < ActiveRecord::Base
 	self.remember_key_expires_at = time.from_now.utc
 	self.remember_key = UUID.random_create.to_s
 	self.save(false)
-	cookies[:remember_key] = {:value => self.remember_key, :expires => self.remember_key_expires_at, :path => '/admin', :http_only => true, :domain => request.domain }
+	cookies[:remember_key] = {:value => self.remember_key, :expires => self.remember_key_expires_at, :path => '/admin', :httponly => true, :domain => request.domain }
     end
 
     def forgot_password(request, time = 1.day)

@@ -71,7 +71,7 @@ class FckeditorController < ActionController::Base
     begin 
       @fck_url = current_directory_path
       path = @fck_url + params[:NewFolderName]
-      if !session[:user_id]
+      if !session[:user_name]
 	@errorNumber = 111
       elsif !(File.stat(@fck_url).writable?)
         @errorNumber = 103
@@ -98,7 +98,7 @@ class FckeditorController < ActionController::Base
       @new_file = check_file(params[:NewFile])
       @fck_url = upload_directory_path
       ftype = @new_file.content_type.strip
-      if !session[:user_id]
+      if !session[:user_name]
 	@errorNumber = 1
 	render :text => %Q'<script>window.parent.OnUploadCompleted(#{@errorNumber},null,null,\"#{t("plugins.fck.please_login")}\");</script>'
 	return

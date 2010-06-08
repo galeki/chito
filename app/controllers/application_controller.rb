@@ -15,13 +15,19 @@ class ApplicationController < ActionController::Base
     end
 
     def admin_authorize
-	return if (session[:user_id] and @user = User.find(session[:user_id]))
-	if cookies[:remember_key] and @user = User.find_by_remember_key(cookies[:remember_key]) and @user.remember_key_expires_at > Time.now
-	    @user.set_session(session, request, @site)
-	else
-	    redirect_to(login_path(:subdomain => "www"))
-	    return false
-	end 
+        if session[:user_name]
+            @user = User.find_by_name(session[:user_name])
+            return if @user
+        end
+	if cookies[:remember_key] 
+            @user = User.find_by_remember_key(cookies[:remember_key])
+            if @user && @user.remember_key_expires_at > Time.now
+	        @user.set_session(session, request, @site) 
+                return
+            end
+	end
+	
+        redirect_to(login_path(:subdomain => "www")) and return false
     end
 
     def chito_admin_authorize

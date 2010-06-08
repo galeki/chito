@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100523133755) do
+ActiveRecord::Schema.define(:version => 20100607222832) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100523133755) do
     t.datetime "last_commented_at"
     t.integer  "rank",              :default => 0
     t.integer  "index_id"
+    t.integer  "comments_count",    :default => 0
   end
 
   add_index "articles", ["bit_opt"], :name => "index_articles_on_bit_opt"
@@ -175,6 +176,10 @@ ActiveRecord::Schema.define(:version => 20100523133755) do
     t.string   "reset_password_key"
     t.datetime "reset_password_key_expires_at"
     t.string   "twitter"
+    t.integer  "posts_count",                   :default => 0
+    t.integer  "drafts_count",                  :default => 0
+    t.integer  "comments_count",                :default => 0
+    t.integer  "messages_count",                :default => 0
   end
 
   add_index "users", ["bit_opt"], :name => "index_users_on_bit_opt"

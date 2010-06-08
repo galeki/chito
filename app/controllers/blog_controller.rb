@@ -101,6 +101,7 @@ class BlogController < ApplicationController
 
   def favicon
     if File.exists?("#{@user.base_dir}/config/favicon.ico")
+        #expires_in 1.day
 	send_file "#{@user.base_dir}/config/favicon.ico", :type => 'image/x-icon', :disposition => 'inline'
     else
 	render :text => "No Favicon"
