@@ -1,47 +1,48 @@
-           <%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
-           <%
-		form_remote_tag( 
-				:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
-				:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;$('#comment_value').val('')",
-				:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
-				) do%>
-		<div id="comment_error" style="display: none;"></div>
+<%= javascript_include_tag "fckeditor/fckeditor" -%>
+<%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
+<%
+     form_remote_tag( 
+     		:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
+     		:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;$('#comment_value').val('')",
+     		:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
+     		) do%>
+     <div id="comment_error" style="display: none;"></div>
 
- 
-		
-		<% if session[:user_name] %>
-		    <% t(:login_as, :scope => [:txt, :view, :comments, :_form]) %> <b><%= session[:user_name] %></b>
-		    <%= link_to t(:change_user, :scope => [:txt, :view, :comments, :_form]),
-				 :controller => "/blog", :action => 'login', :jump => request.url%> 
-		<% else %>
-               	    <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
-		    <input id="comment_writer" name="comment[writer]" size="10" type="text" value="<%= cookies[:comment_writer] %>" /> 
-		    <%= link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]),
-				 :controller => "/blog", :action => 'login', :jump => request.url%> 
-		    <label>E-mail:</label>
-		    <%= text_field 'comment','email', :value => cookies[:comment_email]  %> *
-		    <br/>
-		    <label>Web:</label>
-		    <%= text_field 'comment','homepage', :value => cookies[:comment_homepage] || 'http://' %>
-		    <br/>
-		    <label>Twitter:</label>
-		    <%= text_field 'comment','twitter', :value => cookies[:comment_twitter], :size => 12 %>
-		    <br/>
-		    <input id="comment_info" name="comment[info]" size="6" type="text" value="" class="comment_info_field" autocomplete="off" /> 
-                    <input id="comment_value" name="comment[value]" type="hidden" value="some"/>
-		<% end %>
 
-		<div id="comment_editor">
-		  <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
-                  <input id="comment_reply_to" name="comment[reply_to]" type="hidden" value=""/>
-		  <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>
-		  <input type="button" id="comment_editor_button" onclick='show_editor();' />
-		</div>
-		<% if controller.action_name == "show" %>
-		    <label><%= check_box_tag :enable_notifier, 1, false %><%= t("txt.view.comments._form.comment_notifier") %> </label>
-		<% end -%>
-		<div id="comment_extra" >
-		    <%= show_something :in_comment_form %>
-		</div>
-		    <input id="ss" name="commit" type="submit" autocomplete="off" value="<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>" />
-	    <% end %>
+     
+     <% if session[:user_name] %>
+         <% t(:login_as, :scope => [:txt, :view, :comments, :_form]) %> <b><%= session[:user_name] %></b>
+         <%= link_to t(:change_user, :scope => [:txt, :view, :comments, :_form]),
+     		 :controller => "/blog", :action => 'login', :jump => request.url%> 
+     <% else %>
+    	    <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
+         <input id="comment_writer" name="comment[writer]" size="10" type="text" value="<%= cookies[:comment_writer] %>" /> 
+         <%= link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]),
+     		 :controller => "/blog", :action => 'login', :jump => request.url%> 
+         <label>E-mail:</label>
+         <%= text_field 'comment','email', :value => cookies[:comment_email]  %> *
+         <br/>
+         <label>Web:</label>
+         <%= text_field 'comment','homepage', :value => cookies[:comment_homepage] || 'http://' %>
+         <br/>
+         <label>Twitter:</label>
+         <%= text_field 'comment','twitter', :value => cookies[:comment_twitter], :size => 12 %>
+         <br/>
+         <input id="comment_info" name="comment[info]" size="6" type="text" value="" class="comment_info_field" autocomplete="off" /> 
+         <input id="comment_value" name="comment[value]" type="hidden" value="some"/>
+     <% end %>
+
+     <div id="comment_editor">
+       <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
+       <input id="comment_reply_to" name="comment[reply_to]" type="hidden" value=""/>
+       <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>
+       <input type="button" id="comment_editor_button" onclick='show_editor();' />
+     </div>
+     <% if controller.action_name == "show" %>
+         <label><%= check_box_tag :enable_notifier, 1, false %><%= t("txt.view.comments._form.comment_notifier") %> </label>
+     <% end -%>
+     <div id="comment_extra" >
+         <%= show_something :in_comment_form %>
+     </div>
+         <input id="ss" name="commit" type="submit" autocomplete="off" value="<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>" />
+ <% end %>

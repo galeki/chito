@@ -15,7 +15,7 @@
 <div id="tabs10">
   <ul>
 				    <% navbar.each do |n| -%>
-					<li><%= link_to_nav n, :text =>"<span>#{n.i18n_title}</span>" %></li>
+					<li><%= link_to_nav n, :text =>"<span>#{n.i18n_title}</span>".html_safe %></li>
 				    <% end -%>
 
   </ul>

@@ -38,6 +38,6 @@ module BlogHelper
     end
 
     def blog_tail
-	show_something :in_blog_tail
+	render :partial => 'blog/tail'
     end
 end

@@ -1,5 +1,5 @@
     module BlogHelperPlugin
-	def add_syntaxhighlighter_css_js_link_in_head
+	def add_syntaxhighlighter_css_js_link_in_blog_tail
             head = ""
 	    if @user.enable_syntaxhighlighter
 		head = plugin_javascript_inculde_tag('syntaxhighlighter', "shCore.js") + "\n"

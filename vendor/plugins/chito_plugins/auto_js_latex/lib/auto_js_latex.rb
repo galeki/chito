@@ -1,12 +1,8 @@
     module BlogHelperPlugin
-	def add_auto_js_latex_js_link_in_head
+	def add_auto_js_latex_js_link_in_blog_tail
 	    if @user.enable_auto_js_latex
-		(plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n").html_safe
-	    end
-	end
-	def add_auto_js_latex_in_blog_tail
-	    if @user.enable_auto_js_latex
-	      %Q! <script type="text/javascript">
+                html = plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n"
+	        html += %Q! <script type="text/javascript">
 		    function auto_js_latex(){
 			try{
 			    $('#article_content').html($('#article_content').html().replace(/\\[tex\\]/g, "<span class='latex_eq'>").replace(/\\[\\/tex\\]/g, "</span>"));
@@ -19,8 +15,8 @@
 			$(".latex_eq").latex(); 
 		    }
 		    $(document).ready(auto_js_latex);
-		</script>
-	       !.html_safe
+		</script>!.html_safe
+               html.html_safe
 	    end
 	end
     end
