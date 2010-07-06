@@ -7,6 +7,11 @@
 <div class="right_c"></div>
 <div class="edit_header"><%=t("plugins.img_resize.settings") %></div>
 <% form_for :user, :url => {:action => 'plugin', :plugin_id => 'img_resize'} do |f|%>
+    <b><%= t("plugins.img_resize.style") %></b><br/>
+    <label><%= f.radio_button :img_resize_style, "open_in_new_window" %> <%=  t("plugins.img_resize.new_window") %></label>
+    <label><%= f.radio_button :img_resize_style, "lightbox" %> <%= "LightBox" %></label>
+    <br/>
+    <b><%= t("plugins.img_resize.width") %></b>
     <label><%= t("plugins.img_resize.bigger_than")%>
     <%= f.text_field 'img_max_width', :style => 'width:4em;text-align:right;' %> px <%= t("plugins.img_resize.resize_to") %></label>
     <%= submit_tag t("plugins.img_resize.save"), :class =>'submit' %>

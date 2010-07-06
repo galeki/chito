@@ -9,6 +9,9 @@ en-US:
             bigger_than: When the width of image is bigger than
             resize_to: Auto resize it to this width. Defaule is 400px.
             new_window: Open image in new window
+            style: Style
+            width: Width
+            new_window: Open in new window
 zh-CN:
     plugins:
         img_resize:
@@ -20,3 +23,6 @@ zh-CN:
             bigger_than: 当图片宽度大于
             resize_to: " 自动缩小到此宽度。默认为 400px。"
             new_window: 在新窗口打开图片
+            style: 样式
+            width: 宽度
+            new_window: 在新窗口打开
