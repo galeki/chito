@@ -42,10 +42,8 @@ Rails::Initializer.run do |config|
    config.plugins = [ :chito_plugin, :all ]
    #config.action_controller.session_store = :memory_store
   config.load_paths += %W(
-    vendor/redcloth/lib
     vendor/simple-rss/lib
     vendor/uuidtools/lib
-    vendor/gettext/lib
   ).map {|dir| "#{RAILS_ROOT}/#{dir}"}.select { |dir| File.directory?(dir) } 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper, 
