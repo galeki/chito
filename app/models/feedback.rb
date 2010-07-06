@@ -28,10 +28,10 @@ class Feedback < ActiveRecord::Base
 	    self.post_by = session[:user_id]
 	end
 	self.twitter = self.twitter.split('/').last unless self.twitter.blank?
-	cookies[:comment_writer] = {:value => self.writer, :expires => 365.days.from_now, :domain => request.domain}
-	cookies[:comment_homepage] = {:value => self.homepage, :expires => 365.days.from_now, :domain => request.domain}
-	cookies[:comment_email] = {:value => self.email, :expires => 365.days.from_now, :domain => request.domain}
-	cookies[:comment_twitter] = {:value => self.twitter, :expires => 365.days.from_now, :domain => request.domain}
+	cookies.permanent[:comment_writer] = {:value => self.writer, :domain => request.domain}
+	cookies.permanent[:comment_homepage] = {:value => self.homepage, :domain => request.domain}
+	cookies.permanent[:comment_email] = {:value => self.email, :domain => request.domain}
+	cookies.permanent[:comment_twitter] = {:value => self.twitter, :domain => request.domain}
     end
 
     def prepare_trackback(request, params)

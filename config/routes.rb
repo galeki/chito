@@ -101,7 +101,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.login   "/login", :controller => 'blog', :action => "login"
 	map.forgot_password   "/forgot_password", :controller => 'blog', :action => "forgot_password"
 	map.reset_password   "/reset_password/:key", :controller => 'blog', :action => "reset_password"#, :default => {:key => nil}
-	map.connect "/guestbook", :controller => 'blog', :action => 'guestbook'
+	map.guestbook "/guestbook", :controller => 'blog', :action => 'guestbook'
 
 
 	map.connect "/articles/:id/:seo_title.:format", :controller => 'posts', :action => 'show'
