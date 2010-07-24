@@ -12,6 +12,7 @@ class Admin::ArticlesController < Admin::BaseController
     @post = Article.find(params[:id])
     return unless check_rank_authorize(@post.index_id)
     @post.increment!(:rank)
+    expire_index(@post.index) if @post.index
 
     render :update do |page|
         page.replace_html "post#{@post.id}_rank", @post.rank.to_s
@@ -25,6 +26,7 @@ class Admin::ArticlesController < Admin::BaseController
     @post = Article.find(params[:id])
     return unless check_rank_authorize(@post.index_id)
     @post.decrement!(:rank)
+    expire_index(@post.index) if @post.index
 
     render :update do |page|
         page.replace_html "post#{@post.id}_rank", @post.rank.to_s
@@ -48,5 +50,9 @@ class Admin::ArticlesController < Admin::BaseController
     end 
     notice_stickie t(:posts_successfully_deleted, :scope => [:txt, :controller, :admin, :posts])
     redirect_to admin_articles_path(:page => params[:page]) 
+  end
+
+  def expire_index(index)
+    chito_cache_expire :part => :index, :type => :indices_index, :id => "#{index.id}/*"
   end
 end

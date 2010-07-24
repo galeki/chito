@@ -73,7 +73,7 @@
 </div>
 
 <% for field in @fields -%>
-    <%= sortable_element field,:url => '' , :constraint => false, :containment => @fields, :dropOnEmpty => true, :overlap => @overlap[field.to_sym], :format => "/^bar_(.*)$/"%>
+    <%= sortable_element field, :constraint => false, :containment => @fields, :dropOnEmpty => true, :overlap => @overlap[field.to_sym], :format => "/^bar_(.*)$/"%>
 <% end -%>
 </div>
 

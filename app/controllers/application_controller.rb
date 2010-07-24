@@ -65,9 +65,9 @@ class ApplicationController < ActionController::Base
     end
 
     def chito_cache_expire(options={})
-	key = chito_cache_key(options)
-	key = Regexp.new(key) if key =~ /\*$/
-	expire_fragment key
+	ckey = chito_cache_key(options)
+	ckey = Regexp.new(ckey) if ckey =~ /\*$/
+	expire_fragment ckey
     end
 
     def sidebar_cache_expire(id, options={})
@@ -75,10 +75,11 @@ class ApplicationController < ActionController::Base
     end
 
     def chito_cache_key(options={})
-	key = "#{@user.name}/#{options.delete(:part) || 'blog'}/#{options.delete(:type) || 'main'}"
-	key << "/#{options.delete(:id)}" unless options[:id].blank?
-	key << "/#{options.to_param}" unless options.blank?
-	key
+        ckey = options[:part] == :index ? "index" : @user.name
+	ckey = "/#{options.delete(:part) || 'blog'}/#{options.delete(:type) || 'main'}"
+	ckey << "/#{options.delete(:id)}" unless options[:id].blank?
+	ckey << "/#{options.to_param}" unless options.blank?
+	ckey
     end
 
     private
