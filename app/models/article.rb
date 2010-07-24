@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
 	include ArticlePlugin
 
     def self.new_posts(num=20)
-	find :all, :conditions => ["articles.bit_opt = 0"], :order => 'articles.created_at DESC', :limit => num
+	find :all, :conditions => ["articles.bit_opt = 0 and articles.rank >= 0"], :order => 'articles.created_at DESC', :limit => num
     end
 
     def self.new_ranked_posts(options)

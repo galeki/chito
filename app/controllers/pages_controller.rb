@@ -7,6 +7,8 @@ class PagesController < BlogController
 	    @page = @user.pages.find(params[:id])
 	end
 	raise ActiveRecord::RecordNotFound unless @page
+	@titles.unshift h(@page.title)
+	@title = @titles * " - "
     end
 
 end
