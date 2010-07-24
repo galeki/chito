@@ -50,9 +50,21 @@ function set_form()
 function Ok()
 {
 	var slang_obj = document.getElementById('slang');
+        var fln_obj = document.getElementById('fln')
+        var title_obj = document.getElementById('c_t')
+        var collapse_obj = document.getElementById('c_c')
 	var code_text = $("#code").val().replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
-	var html = "<pre class='brush: " + slang_obj.value + "\'>" + code_text + "</pre>";
+	var html = "<pre class='brush: " + slang_obj.value;
+        if(fln_obj.value.length > 0)
+            html += "; first-line: " + fln_obj.value;
+        if(collapse_obj.checked)
+            html += "; collapse: true";
+        
+        html += "\'";
+        if(title_obj.value.length >0)
+            html += " title=\"" + title_obj.value + "\"";
+        html += ">" + code_text + "</pre>";
 	//alert(html);
 	oEditor.FCK.InsertHtml(html);
 	set_form_cookie();
@@ -96,7 +108,10 @@ function Ok()
 				<option value="xml">XML/HTML</option>
 				<option value="yaml">YAML</option>
 		</select>
-
+            <label><span fckLang="SyntaxHighlighterLine">First line number:</span><input name="first_line_number" id="fln" type="text" size="8" /></label>
+            <br/>
+            <label><span fckLang="SyntaxHighlighterCodeTitle">Title:</span><input name="code_title" id="c_t" type="text" size="30" /></label>
+            <label><input name="code_collapse" id="c_c" type="checkbox" /><span fckLang="SyntaxHighlighterCollapse">Collapse</span></label>
 	    <br/>
 	    <br/>
     	    <label style="text-align:left;"><span fckLang="SyntaxHighlighterCode">Code: </span></label> <br/>

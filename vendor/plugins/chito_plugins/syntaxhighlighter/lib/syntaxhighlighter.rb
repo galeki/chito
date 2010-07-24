@@ -6,7 +6,7 @@
 		
 		head += plugin_javascript_inculde_tag('syntaxhighlighter', "shBrushes.js") + "\n"
 
-		head += %Q!<script type="text/javascript">SyntaxHighlighter.config.clipboardSwf = '/plugins/syntaxhighlighter/javascripts/clipboard.swf';SyntaxHighlighter.all();</script>!.html_safe
+		head += %Q!<script type="text/javascript">SyntaxHighlighter.all();</script>!.html_safe
 
 		head += plugin_stylesheet_link_tag('syntaxhighlighter', "shCore.css") + "\n"
 

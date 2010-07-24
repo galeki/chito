@@ -1,0 +1,21 @@
+en-US:
+    plugins:
+       syntaxhighlighter: 
+            name: SyntaxHighlighter
+            intro: Intro
+            intro_content: Use SyntaxHighlighter highlight your code.
+            enable: Enable SyntaxHighlighter
+            settings: Settings
+            themes: 'Themes: '
+            save: Save
+
+zh-CN:
+    plugins:
+       syntaxhighlighter: 
+            name: SyntaxHighlighter
+            intro: 简介
+            intro_content: 用 SyntaxHighlighter 自动高亮你的代码。
+            enable: 激活 SyntaxHighlighter
+            settings: 设置
+            themes: '主题: '
+            save: 保存
