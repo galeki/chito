@@ -36,5 +36,10 @@ function img_resize_lightbox(w){
         $(this).wrap('<a href="' + $(this).attr('src') + '" class="lightbox"></a>');
     }
   });
- $('a.lightbox').lightBox();
+ $('a.lightbox').lightBox({
+    imageBtnClose: '/plugins/img_resize/images/lightbox-btn-close.gif',
+    imageBtnPrev: '/plugins/img_resize/images/lightbox-btn-prev.gif',
+    imageBtnNext: '/plugins/img_resize/images/lightbox-btn-next.gif',
+    imageLoading: '/plugins/img_resize/images/lightbox-ico-loading.gif',
+ });
 }
