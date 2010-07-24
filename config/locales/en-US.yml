@@ -360,6 +360,7 @@ en-US:
           new_posts: New posts
           new_posts_num: New posts numbers
           official_updates: Official updates
+          last_logined_in_at: Last logined in at
         share:
           option: Option
           title: Title

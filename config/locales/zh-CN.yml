@@ -360,6 +360,7 @@ zh-CN:
           new_posts: 用户新文章
           new_posts_num: 显示数量
           official_updates: 最近的更新
+          last_logined_in_at: 上次登录
         share:
           option: 设置
           title: 标题

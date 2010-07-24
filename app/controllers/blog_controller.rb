@@ -52,6 +52,7 @@ class BlogController < ApplicationController
 	    #reset_session
 	    user.set_session(session, request, @site)
 	    user.remember_me(cookies, request) if params[:persist]
+            user.update_attribute(:last_logined_in_at, Time.now)
 	    if jump
 		redirect_to(jump) and return
 	    elsif request.domain == @site.domain
