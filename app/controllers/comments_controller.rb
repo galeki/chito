@@ -75,7 +75,7 @@ class CommentsController < ApplicationController
 	render :update do |page|
  	  page.replace_html "comment_error", "" 
           if @user.enable_thread_comment && @comment.reply_to
-	    page.insert_html :top, 'post_comment',  :partial => 'comments/comment'
+	    page.insert_html :before, 'post_comment',  :partial => 'comments/comment'
           else
 	    page.insert_html options[:position], 'comments',  :partial => 'comments/comment'
           end
