@@ -116,12 +116,17 @@ class FckeditorController < ActionController::Base
         #raise "#{ftype} is invalid MIME type"
       else
         path = current_directory_path + "/" + @new_file.original_filename
+        file_name = @new_file.original_filename
+        if File.exist?(path)
+            file_name = File.basename(file_name, ".*") + "_" + Time.now.strftime("%Y%m%d%H%M%S") + File.extname(file_name)
+            path = current_directory_path + "/" + file_name 
+        end
         File.open(path,"wb",0664) do |fp|
           FileUtils.copy_stream(@new_file, fp)
         end
 	@user.dirty_space
         @errorNumber = 0
-	render :text => %Q'<script>window.parent.OnUploadCompleted(#{@errorNumber},\"#{UPLOADED}/#{session[:user_name]}/#{params[:Type]}/#{@new_file.original_filename}\",\"\");</script>'
+	render :text => %Q'<script>window.parent.OnUploadCompleted(#{@errorNumber},\"#{UPLOADED}/#{session[:user_name]}/#{params[:Type]}/#{file_name}\",\"\");</script>'
       end
     rescue => e
       @errorNumber = 110 if @errorNumber.nil?
