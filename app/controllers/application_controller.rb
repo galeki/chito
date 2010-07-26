@@ -75,8 +75,8 @@ class ApplicationController < ActionController::Base
     end
 
     def chito_cache_key(options={})
-        ckey = options[:part] == :index ? "index" : @user.name
-	ckey = "/#{options.delete(:part) || 'blog'}/#{options.delete(:type) || 'main'}"
+        ckey = (options[:part] == :index ? "index" : @user.name.clone)
+	ckey << "/#{options.delete(:part) || 'blog'}/#{options.delete(:type) || 'main'}"
 	ckey << "/#{options.delete(:id)}" unless options[:id].blank?
 	ckey << "/#{options.to_param}" unless options.blank?
 	ckey
