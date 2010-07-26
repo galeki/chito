@@ -56,7 +56,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   config.action_controller.session = {
-    :key => '_chito_session_116_beta_3',
+    :key => '_chito_session_117_beta_2',
     :secret      => 'cfb8733302e2533ca5d22b4cb72af032a56634a69fac916401f6b1cc21284743a0149bbbadf30d576b'
   } 
   # See Rails::Configuration for more options

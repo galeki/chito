@@ -95,6 +95,12 @@ module PostsHelper
 	render :partial => "postbars"
     end
 
+    def postbars_script_tag
+        if @user.show_postbars && @post
+            javascript_tag %Q=$(function() {$("#article_tabs").tabs();});=
+        end
+    end
+
     def rss_content(post_content)
 	arounder{ post_content }
     end
