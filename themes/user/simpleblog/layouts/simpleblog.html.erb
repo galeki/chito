@@ -23,7 +23,7 @@
 		<div id="menu">
 			<ul>
 				    <% navbar.each do |n| -%>
-					<li id="<%= "current" if current(n) %>"><%= link_to_nav n, :text => "<span>#{n.title}</span>" %></li>
+					<li id="<%= "current" if current(n) %>"><%= link_to_nav n, :text => "<span>#{n.title}</span>".html_safe %></li>
 				    <% end -%>
 			</ul>
 		</div>	
