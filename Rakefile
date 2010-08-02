@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Myapp::Application.load_tasks
+Chito::Application.load_tasks

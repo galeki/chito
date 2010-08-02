@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     validates_presence_of :nick
     validates_presence_of :email
     #validates_uniqueness_of :email
-    BASE_DIR = "#{RAILS_ROOT}/public/user_files/"
+    BASE_DIR = "#{Rails.root}/public/user_files/"
 
     def before_create
 	self.theme = "elitecircle"
@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
     end
 
     def base_dir
-	File.expand_path "#{RAILS_ROOT}/public/user_files/#{self.name}"
+	File.expand_path "#{Rails.root}/public/user_files/#{self.name}"
     end
 
     def avatar=(file)

@@ -42,7 +42,7 @@ class Admin::FilesController < Admin::BaseController
 	info = {}
 	info[:size] = (File.size(path)/1024).to_num(1)
 	info[:name] = entry
-	info[:url] = path.sub(/^#{RAILS_ROOT}\/public/,'')
+	info[:url] = path.sub(/^#{Rails.root}\/public/,'')
 	if entry =~ /\.(jpg|gif|png|jpeg)$/i
 	    info[:is_pic] = true
 	    info[:thumbnail] = get_thumbnail(entry, path)
@@ -59,7 +59,7 @@ class Admin::FilesController < Admin::BaseController
 	    thumb = thumb_no_bigger_than(img, 150, 80)
 	    thumb.write(thumb_file)	
 	end
-	thumb_file.sub(/^#{RAILS_ROOT}\/public/,'')
+	thumb_file.sub(/^#{Rails.root}\/public/,'')
 
 	rescue
 	   return "file.png" 

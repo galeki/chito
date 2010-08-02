@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Myapp
+module Chito
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -36,7 +36,22 @@ module Myapp
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
+    config.action_controller.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+
+    config.plugins = [ :chito_plugin, :all ]
+    #config.action_controller.session_store = :memory_store
+    config.autoload_paths += %W(
+        vendor/simple-rss/lib
+        vendor/uuidtools/lib
+    ).map {|dir| "#{Rails.root}/#{dir}"}.select { |dir| File.directory?(dir) } 
+
+    
+    config.action_view.sanitized_allowed_tags = %w(u strong em b i p code pre sub sup cite small address br div span ul ol li dt dd abbr acronym img blockquote)
+    config.action_view.sanitized_allowed_attributes = %w(src alt cite title class style id)
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end
 end
+
+Time::DATE_FORMATS[:db_short] = "%Y-%m-%d %H:%M"
+Time::DATE_FORMATS[:update] = "<b>%H:%M</b>"

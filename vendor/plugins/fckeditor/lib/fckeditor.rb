@@ -1,7 +1,7 @@
 # Fckeditor
 module Fckeditor
   PLUGIN_NAME = 'fckeditor'
-  PLUGIN_PATH = "#{RAILS_ROOT}/vendor/plugins/#{PLUGIN_NAME}"
+  PLUGIN_PATH = "#{Rails.root}/vendor/plugins/#{PLUGIN_NAME}"
   PLUGIN_PUBLIC_PATH = "#{PLUGIN_PATH}/public"
   PLUGIN_CONTROLLER_PATH = "#{PLUGIN_PATH}/app/controllers"  
   PLUGIN_VIEWS_PATH = "#{PLUGIN_PATH}/app/views"  

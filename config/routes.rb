@@ -1,156 +1,184 @@
-ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
+Chito::Application.routes.draw do
+  match '/' => 'index#index', :as => 'root'
+  match '/index.rss' => 'index#index', :as => :index_feed, :format => 'rss'
+  match '/' => 'posts#index'
+  match '/favicon.ico' => 'blog#favicon', :as => :favicon
+  match '/plugin.css' => 'blog#plugin_css', :as => :plugin_css
+  match '/index_plugin.css' => 'index#plugin_css', :as => :index_plugin_css
+  match '/simple_captcha/:action' => 'simple_captcha#index', :as => :simple_captcha
+  match '/simple_captcha_ajax' => 'simple_captcha#simple_captcha_ajax'
+  match '/:year/:month/:day/:permalink.:id.:format' => 'posts#show', :constraints => { :year => /(19|20)\d\d/, :month => /[0|1]?\d/, :day => /[0-3]?\d/ }
+  match ':year/:month' => 'posts#index', :as => :archive, :year => /\d{4}/, :month => /\d{1,2}/
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :posts do
+    member do
+        get :cancel_comment_notifier
+    end 
+  end
 
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :posts
+  resources :pages
+  resources :categories
+  resources :messages
+  match '/comments.:format' => 'comments#index', :as => :comments
+  match '/tag/*tag_name' => 'posts#index', :as => :tag_posts
+  match '/admin/links/set_link_title' => 'admin/links#set_link_title'
+  match '/admin/links/set_link_url' => 'admin/links#set_link_url'
+  match '/admin/links/set_link_info' => 'admin/links#set_link_info'
+  match '/admin/categories/set_category_name' => 'admin/categories#set_category_name'
+  match '/admin/categories/set_category_info' => 'admin/categories#set_category_info'
+  match '/admin/users/set_user_bind_domain' => 'admin/users#set_user_bind_domain'
+  match '/admin/groups/set_group_space' => 'admin/groups#set_group_space'
+  match '/admin/groups/set_group_file_size_limit' => 'admin/groups#set_group_file_size_limit'
+  match '/admin/indices/set_index_title' => 'admin/indices#set_index_title'
+  match '/admin/indices/set_index_bind_domain' => 'admin/indices#set_index_bind_domain'
+  match '/admin/indices/set_index_info' => 'admin/indices#set_index_info'
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  namespace :admin do
+    resources :posts do
+        collection do
+            post :destroy_selected
+            post :recategory_selected
+        end
+    end
 
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+    resources :drafts do
+        collection do
+            post :destroy_selected
+        end
+    end
 
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+    resources :pages do
+        member do
+            post :enable_fontpage
+            post :cancel_fontpage
+        end
+    end
+      
+    resources :users do 
+        member do
+            post :set_group
+        end
+    end
+    
+    resources :groups do
+        member do
+            post :set_group_space
+            post :set_group_name
+            post :set_group_file_size_limit
+        end
+    end
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
+    resources :indices do
+        member do
+            post :add_manager
+            post :remove_manager
+            get :settings
+            post :change_settings
+            post :sidebar_position
+            post :save_avatar
+        end
+    end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+    resources :comments do
+        collection do
+            get :settings
+            post :set_filter_position
+            delete :destroy_selected
+        end
+    end
 
-  # See how all your routes lay out with "rake routes"
+    resources :messages do
+        collection do
+            delete :destroy_selected
+        end
+    end
 
-  # Install the default routes as the lowest priority.
-	#map.root :controller => 'posts', :action => 'index'
-	map.connect "/", :controller => 'index', :action => 'index'
-	map.index_feed "/index.rss", :controller => 'index', :action => 'index', :format => "rss"
-	map.root :controller => 'posts', :action => 'index'
-	map.favicon '/favicon.ico', :controller => 'blog', :action => 'favicon'
-	map.plugin_css '/plugin.css', :controller => 'blog', :action => 'plugin_css'
-	map.index_plugin_css '/index_plugin.css', :controller => 'index', :action => 'plugin_css'
-#	map.captcha_image '/captcha_image', :controller => 'blog', :action => 'captcha'
-	map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
-	map.connect '/simple_captcha_ajax', :controller => 'simple_captcha', :action => 'simple_captcha_ajax'
+    resources :trackbacks do
+        collection do
+            delete :destroy_selected
+        end
+    end
 
-	map.connect "/:year/:month/:day/:permalink.:id.:format", 
-		    :requirements => {:year => /(19|20)\d\d/, :month => /[0|1]?\d/, :day => /[0-3]?\d/},
-		    :controller => 'posts',
-		    :action => 'show'
-        map.archive ':year/:month', :controller => 'posts', :action => 'index', :year => /\d{4}/, :month => /\d{1,2}/
+    resources :talks
 
-	map.resources :posts, :has_many => :comments, :member => {:cancel_comment_notifier => :get}
-	map.resources :posts, :has_many => :trackbacks
-	map.resources :pages
-	map.resources :categories, :has_many => :posts
-	map.resources :messages
-	map.comments '/comments.:format', :controller => 'comments', :action => 'index'
-	#map.tag_posts '/tag/:tag_name', :controller => 'posts', :action => 'index'
-	map.tag_posts '/tag/*tag_name', :controller => 'posts', :action => 'index'
-	#
-	
-	#In place edit jQuery
-	map.connect '/admin/links/set_link_title', :controller => 'admin/links', :action => 'set_link_title'
-	map.connect '/admin/links/set_link_url', :controller => 'admin/links', :action => 'set_link_url'
-	map.connect '/admin/links/set_link_info', :controller => 'admin/links', :action => 'set_link_info'
+    resources :spams do
+        collection do
+            delete :destroy_selected
+        end
+        member do
+            post :pass
+        end
+    end
 
-	map.connect '/admin/categories/set_category_name', :controller => 'admin/categories', :action => 'set_category_name'
-	map.connect '/admin/categories/set_category_info', :controller => 'admin/categories', :action => 'set_category_info'
+    resources :categories do
+        collection do
+            post :set_position
+        end
+    end
+      
+    resources :links do
+        collection do
+            post :set_position
+        end
+    end
 
-	map.connect '/admin/users/set_user_bind_domain', :controller => 'admin/users', :action => 'set_user_bind_domain'
+    resources :files do
+        collection do
+            get :list
+            post :delete_file
+            post :delete_dir
+        end
+    end
+      
+    resources :feedbacks do
+        collection do
+            delete :destroy_selected
+        end
+    end
+    
+    resources :articles do
+        collection do
+            delete :destroy_selected
+        end
+        member do
+            post :increase_rank
+            post :decrease_rank
+        end
+    end
 
-	map.connect '/admin/groups/set_group_space', :controller => 'admin/groups', :action => 'set_group_space'
-	map.connect '/admin/groups/set_group_file_size_limit', :controller => 'admin/groups', :action => 'set_group_file_size_limit'
+  end
 
-	map.connect '/admin/indices/set_index_title', :controller => 'admin/indices', :action => 'set_index_title'
-	map.connect '/admin/indices/set_index_bind_domain', :controller => 'admin/indices', :action => 'set_index_bind_domain'
-	map.connect '/admin/indices/set_index_info', :controller => 'admin/indices', :action => 'set_index_info'
-
-	map.namespace :admin do |admin|
-	    admin.resources :posts, :collection => {:destroy_selected => :post, :recategory_selected => :post}
-	    admin.resources :drafts, :collection => {:destroy_selected => :post}
-	    admin.resources :pages, :member => {:enable_fontpage => :post, :cancel_fontpage => :post}
-	    admin.resources :users, :member => {:set_group => :post}
-	    admin.resources :groups, :member => {:set_group_space => :post, :set_group_name => :post, :set_group_file_size_limit => :post}
-	    admin.resources :indices, :member => {:add_manager => :post, :remove_manager => :post, :settings => :get, :change_settings => :post, :sidebar_position => :post, :save_avatar => :post}
-	    admin.resources :comments, :collection => {:settings => :get, :set_filter_position => :post, :destroy_selected => :delete}
-	    admin.resources :messages, :collection => {:destroy_selected => :delete}
-	    admin.resources :trackbacks, :collection => {:destroy_selected => :delete}
-	    admin.resources :talks
-	    admin.resources :spams, :member => {:pass => :post}, :collection => {:destroy_selected => :delete}
-	    admin.resources :categories, :has_many => [:posts, :drafts],
-			    :collection => {:set_position => :post}
-	    admin.resources :links, 
-			    :collection => {:set_position => :post}
-	    admin.resources :files, 
-			    :collection => {:list => :get, :delete_file => :post, :delete_dir => :post}
-	    admin.resources :feedbacks, :collection => {:destroy_selected => :delete} 
-	    admin.resources :articles, :member => {:increase_rank => :post, :decrease_rank => :post}, :collection => {:destroy_selected => :delete} 
-	end
-	#map.admin_files "/admin/files/:action", :controller => "admin/files"
-
-	map.connect "/add", :controller => 'blog', :action => "add"
-	map.login   "/login", :controller => 'blog', :action => "login"
-	map.forgot_password   "/forgot_password", :controller => 'blog', :action => "forgot_password"
-	map.reset_password   "/reset_password/:key", :controller => 'blog', :action => "reset_password"#, :default => {:key => nil}
-	map.guestbook "/guestbook", :controller => 'blog', :action => 'guestbook'
-
-
-	map.connect "/articles/:id/:seo_title.:format", :controller => 'posts', :action => 'show'
-	map.connect "/rss", :controller => 'posts', :action => 'index', :format => "rss"
-	map.feed    "/feed", :controller => 'posts', :action => 'index', :format => "rss"
-	map.connect "/show/:id.:format", :controller => 'posts', :action => 'show'
-	map.site "/site.:format", :controller => 'blog', :action => 'index'
-	
-	map.connect "/setup", :controller => 'site', :action => "setup"
-	#map.connect "/category/:category_id", :controller => 'posts', :action => 'list'
-	#map.connect "/categpry/:category_id/page/:page", :controller => 'posts', :action => 'list'
-	map.connect "/pages/:id/:seo_title.:format", :controller => 'pages', :action => 'show'
-	#map.connect "/show_page/:id.:format", :controller => 'posts', :action => 'page'
-	#map.connect "/page/:page", :controller => 'posts', :action => 'index'
-
-
-	map.connect '/themes/:theme/*anything', :controller => 'theme', :action => 'user_theme_file'
-	map.connect '/index/themes/:theme/*anything', :controller => 'theme', :action => 'index_theme_file'
-	map.connect '/plugins/:plugin/*anything', :controller => 'plugin', :action => 'file'
-
-
-	map.admin   '/admin', :controller => 'admin/dashboard', :action => "index"
-	map.connect '/admin/logout', :controller => 'admin/dashboard', :action => "logout"
-
-	map.connect '/admin/plugins/:plugin_id', :controller => 'admin/plugins', :action => 'index', :defaults => {:plugin_id => nil}
-	map.connect '/admin/plugin_config/:plugin_id', :controller => 'admin/plugins', :action => 'plugin'
-	map.connect '/admin/remote_form/:plugin/:view', :controller => 'admin/plugins', :action => 'remote_form'
-	map.connect '/admin/remote_update', :controller => 'admin/plugins', :action => 'remote_update'
-	map.connect '/admin/themes/:action/:id', :controller => 'admin/themes'
-	map.connect '/admin/themesettings/:action/:id', :controller => 'admin/themesettings'
-
-	map.connect '/admin/sidebar/:action/:id', :controller => 'admin/sidebar'
-	#map.connect '/admin/index_sidebar/:action/:id', :controller => 'admin/index_sidebar'
-	map.connect '/admin/navbar/:action/:id', :controller => 'admin/navbar'
-	map.connect '/admin/postbar/:action/:id', :controller => 'admin/postbar'
-	
-	#map.connect '/admin/files/:action/:id', :controller => 'admin/files'
-	map.connect '/admin/settings/:action/:id', :controller => 'admin/settings'
-	map.connect '/admin/rss/:action/:id', :controller => 'admin/rss'
-	map.connect '/admin/site/:action/:id', :controller => 'admin/site'
-	map.connect '/admin/systeminfo/:action/:id', :controller => 'admin/systeminfo'
-
-	map.connect '/admin/:action/:id',:controller => 'admin/dashboard'
-	
-	map.page_permalink '/:permalink', :controller => 'pages', :action => 'show'
-	#map.connect "/:action/*anthing", :controller => 'posts'
-
-
-	#map.connect "*anything", :controller => 'site', :action => 'unknown_request'
-        #map.connect ':controller/:action/:id'
+  match '/add' => 'blog#add'
+  match '/login' => 'blog#login', :as => :login
+  match '/forgot_password' => 'blog#forgot_password', :as => :forgot_password
+  match '/reset_password/:key' => 'blog#reset_password', :as => :reset_password
+  match '/guestbook' => 'blog#guestbook', :as => :guestbook
+  match '/articles/:id/:seo_title.:format' => 'posts#show'
+  match '/rss' => 'posts#index', :format => 'rss'
+  match '/feed' => 'posts#index', :as => :feed, :format => 'rss'
+  match '/show/:id.:format' => 'posts#show'
+  match '/site.:format' => 'blog#index', :as => :site
+  match '/setup' => 'site#setup'
+  match '/pages/:id/:seo_title.:format' => 'pages#show'
+  match '/themes/:theme/*anything' => 'theme#user_theme_file'
+  match '/index/themes/:theme/*anything' => 'theme#index_theme_file'
+  match '/plugins/:plugin/*anything' => 'plugin#file'
+  match '/admin' => 'admin/dashboard#index', :as => :admin
+  match '/admin/logout' => 'admin/dashboard#logout'
+  match '/admin/plugins/:plugin_id' => 'admin/plugins#index', :defaults => { :plugin_id =>  nil }
+  match '/admin/plugin_config/:plugin_id' => 'admin/plugins#plugin'
+  match '/admin/remote_form/:plugin/:view' => 'admin/plugins#remote_form'
+  match '/admin/remote_update' => 'admin/plugins#remote_update'
+  match '/admin/themes/:action/:id' => 'admin/themes#index'
+  match '/admin/themesettings/:action/:id' => 'admin/themesettings#index'
+  match '/admin/sidebar/:action/:id' => 'admin/sidebar#index'
+  match '/admin/navbar/:action/:id' => 'admin/navbar#index'
+  match '/admin/postbar/:action/:id' => 'admin/postbar#index'
+  match '/admin/settings/:action/:id' => 'admin/settings#index'
+  match '/admin/rss/:action/:id' => 'admin/rss#index'
+  match '/admin/site/:action/:id' => 'admin/site#index'
+  match '/admin/systeminfo/:action/:id' => 'admin/systeminfo#index'
+  match '/admin/:action/:id' => 'admin/dashboard#index'
+  match '/:permalink' => 'pages#show', :as => :page_permalink
 end
-

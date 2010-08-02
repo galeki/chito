@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
-    filter_parameter_logging :password    
     #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
     #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 

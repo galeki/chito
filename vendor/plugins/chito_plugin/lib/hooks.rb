@@ -22,6 +22,10 @@ module ApplicationHelperPlugin
     end
 end
 
+module ArticlePlugin;end
+module BlogHelperPlugin;end
+module BlogControllerPlugin;end
+
 module Admin::ArticleControllerPlugin
 
 end

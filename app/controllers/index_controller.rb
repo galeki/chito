@@ -18,7 +18,7 @@ class IndexController < ApplicationController
 	    format.rss
         end
     else
-        internal_redirect_to :controller => "posts", :action => "index"
+        internal_redirect_to :action => "index"
     end
   end
 

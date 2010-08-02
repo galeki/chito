@@ -2,7 +2,7 @@ module LatexFormula
 
 require "digest/sha1"
   PLUGIN_NAME = 'latex_formula'
-  PLUGIN_PATH = "#{RAILS_ROOT}/vendor/plugins/#{PLUGIN_NAME}"
+  PLUGIN_PATH = "#{Rails.root}/vendor/plugins/#{PLUGIN_NAME}"
   PLUGIN_CONTROLLER_PATH = "#{PLUGIN_PATH}/app/controllers"  
 end
 

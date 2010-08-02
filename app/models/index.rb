@@ -18,7 +18,7 @@ class Index < ActiveRecord::Base
     end
 
     def public_path
-        File.join RAILS_ROOT, "public/index", self.id.to_s
+        File.join Rails.root, "public/index", self.id.to_s
     end
 
     def avatar=(file)

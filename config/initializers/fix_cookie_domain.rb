@@ -11,7 +11,7 @@ module ActionControllerExtensions
 
   module DispatcherExtensions
     def self.included(base)
-      base.send :before_dispatch, :set_session_domain
+      #base.send :before_dispatch, :set_session_domain
     end
 
     def set_session_domain

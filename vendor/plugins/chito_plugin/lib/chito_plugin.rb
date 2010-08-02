@@ -1,6 +1,6 @@
 class ChitoPlugin
-    PLUGIN_PATH = File.expand_path("#{RAILS_ROOT}/vendor/plugins/chito_plugins")
-    PUBLIC_PATH =  File.expand_path(File.join(RAILS_ROOT, "public/plugins"))    
+    PLUGIN_PATH = File.expand_path("#{Rails.root}/vendor/plugins/chito_plugins")
+    PUBLIC_PATH =  File.expand_path(File.join(Rails.root, "public/plugins"))    
     attr_accessor :id, :name, :version,
 		  :writer, :web, :contributers,
 		  :category, :info,
