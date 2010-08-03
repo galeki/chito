@@ -18,5 +18,4 @@ class SimpleCaptchaController < ActionController::Base
   def simple_captcha_ajax
     render :partial => 'simple_captcha/simple_captcha_ajax'
   end
-
 end

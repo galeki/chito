@@ -1,6 +1,7 @@
 class Site < ActiveRecord::Base
     has_flags [:registerable], [:column => 'bit_opt']
     has_settings :nil_value => ['', '0']
+    attr_accessor :index
 
     @@site = nil
 
@@ -26,8 +27,8 @@ class Site < ActiveRecord::Base
     end
 
     def get_index(request)
-        index = Index.find_by_bind_domain(request.host) || Index.find_by_bind_domain("www." + request.host)
-        index
+        @index = Index.find_by_bind_domain(request.host) || Index.find_by_bind_domain("www." + request.host)
+        @index
     end
     
     def get_user(request)

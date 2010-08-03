@@ -1,19 +1,21 @@
 Copyright (c) 2008 [Sur http://expressica.com]
 
-SimpleCaptcha
+SimpleCaptcha3
 =========================================================================================
-  Version: edge
+  Version: edge(Only for Rails 3.*)
   Author:  Sur [http://expressica.com]
-  Plugin Homepage: http://expressica.com/simple_captcha
+  Plugin URL: http://github.com/bansalakhil/SimpleCaptcha3
   Contributors:  http://vinsol.com/team, Kei Kusakari [http://d.hatena.ne.jp/kusakari/about]
   License:  MIT
 
   Introduction:
   -------------
-  SimpleCaptcha is the simplest and a robust captcha plugin. Its implementation requires 
-  adding up a single line in views and in controllers/models.
-  SimpleCaptcha is available to be used with Rails2.0 or above and also it provides the 
-  backward compatibility with previous versions of Rails.
+  SimpleCaptcha3 is the simplest and a robust captcha plugin for Rails3 applications. Its 
+  implementation requires adding up a single line in views and in controllers/models.
+
+  SimpleCaptcha(older version of SimpleCaptcha3) is also available to be used with Rails2.0 or 
+  above and also it provides the backward compatibility with previous versions of Rails.
+  (http://expressica.com/simple_captcha)
   
   Features:
   -----------
@@ -24,7 +26,7 @@ SimpleCaptcha
     fine in distributed environment).
   -> Implementation is as easy as just writing a single line in your view.
     "<%= show_simple_captcha %>" within the 'form' tags.
-  -> Flexible DOM and CSS handling(There is a separate view partial for rednering SimpleCaptcha 
+  -> Flexible DOM and CSS handling(There is a separate view partial for rednering SimpleCaptcha3 
     DOM elements).
   -> Automated removal of 1 hour old unmatched simple_captcha data.
 
@@ -35,31 +37,18 @@ Pre-Requisite
 
 Installation
 =========================================================================================
-  SimpleCaptcha plugin can be installed by running this command from the application root
+  SimpleCaptcha3 plugin can be installed by running this command from the application root
   
-  >> ruby script/plugin install svn://rubyforge.org/var/svn/expressica/plugins/simple_captcha
+  >> rails plugin install git://github.com/bansalakhil/SimpleCaptcha3.git
   
-  OR
-  
-  SVN checkout the plugin as
-  svn co svn://rubyforge.org/var/svn/expressica/plugins/simple_captcha simple_captcha
-  Now put the directory simple_captcha in your application as /vendor/plugins/simple_captcha
-
 
 Setup
 =========================================================================================
-  After installation, follow these simple steps to setup the plugin. The setup will depend
-  on the version of rails your application is using.
+  After installation, follow these simple steps to setup the plugin.
 
   STEP 1
   ------
-    for rails >= 2.0
-    ---------------
     >> rake simple_captcha:setup
-    
-    for rails < 2.0
-    ---------------
-    >> rake simple_captcha:setup_old
   
   STEP 2
   ------
@@ -69,9 +58,7 @@ Setup
   ------
     add the following code in the file config/routes.rb
     
-      ActionController::Routing::Routes.draw do |map|
-        map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
-      end
+    match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
   
     This is a mandatory route used for rendering the simple_captcha image on the fly without 
     storing on the filesyste.

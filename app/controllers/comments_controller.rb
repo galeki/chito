@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
    def call_email_notifier
 	@post.emails ||= {}
 	if params[:enable_notifier] && !@post.emails.has_key?(@comment.email)
-	    @post.emails[@comment.email] = UUID.random_create.to_s
+	    @post.emails[@comment.email] = UUIDTools::UUID.random_create.to_s
 	    @post.save
 	end
 	@post.emails.each_key do |email|

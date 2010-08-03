@@ -3,11 +3,11 @@
 class CreateSimpleCaptchaData < ActiveRecord::Migration
   def self.up
     create_table :simple_captcha_data do |t|
-      t.column :key, :string, :limit => 40
-      t.column :value, :string, :limit => 6
-      t.column :created_at, :datetime
-      t.column :updated_at, :datetime
+      t.string :key, :limit => 40
+      t.string :value, :limit => 6
+      t.timestamps
     end
+    add_index :simple_captcha_data, :key
   end
 
   def self.down

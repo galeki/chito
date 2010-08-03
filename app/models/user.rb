@@ -257,13 +257,13 @@ class User < ActiveRecord::Base
 
     def remember_me(cookies, request, time = 1.week)
 	self.remember_key_expires_at = time.from_now.utc
-	self.remember_key = UUID.random_create.to_s
+	self.remember_key = UUIDTools::UUID.random_create.to_s
 	self.save(false)
 	cookies[:remember_key] = {:value => self.remember_key, :expires => self.remember_key_expires_at, :path => '/admin', :httponly => true, :domain => request.domain }
     end
 
     def forgot_password(request, time = 1.day)
-	self.reset_password_key = UUID.random_create.to_s
+	self.reset_password_key = UUIDTools::UUID.random_create.to_s
 	self.reset_password_key_expires_at = time.from_now.utc
 	ChitoMailer.deliver_forgot_password(self, request) if self.save
     end
@@ -316,7 +316,7 @@ class User < ActiveRecord::Base
 
     
     def create_salt
-	self.salt = UUID.random_create.to_s
+	self.salt = UUIDTools::UUID.random_create.to_s
     end
 
 end

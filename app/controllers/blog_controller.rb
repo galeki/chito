@@ -58,7 +58,7 @@ class BlogController < ApplicationController
 	    elsif request.domain == @site.domain
 		redirect_to admin_url(:subdomain => session[:user_name]) and return
 	    else
-		redirect_to("/admin") and return
+		redirect_to(admin_url) and return
 	    end
 	else
 	    error_stickie t(:message_3, :scope => [:txt, :controller, :blog])
@@ -102,7 +102,6 @@ class BlogController < ApplicationController
 
   def favicon
     if File.exists?("#{@user.base_dir}/config/favicon.ico")
-        #expires_in 1.day
 	send_file "#{@user.base_dir}/config/favicon.ico", :type => 'image/x-icon', :disposition => 'inline'
     else
 	render :text => "No Favicon"
@@ -118,15 +117,16 @@ class BlogController < ApplicationController
 	if File.exists?(layout_path)
 	    @user_theme = true
 	end
-	template = "#{@theme}/views/#{controller_name}/#{action_name}"
-	template_path = File.join(UserTheme::PATH, template + ".html.erb" )
-	if File.exists?(template_path)
-	    super :template => template, :layout => layout
+        template = "#{controller_name}/#{action_name}"
+	theme_template = "#{@theme}/views/#{template}"
+	theme_template_path = File.join(UserTheme::PATH, template + ".html.erb" )
+	if File.exists?(theme_template_path)
+	    super :template => theme_template, :layout => layout
 	else
-	    super :template => options[:template], :layout => layout
+	    super :template => options[:template] || template, :layout => layout
 	end 
     else
-	super(options, extra_options, &block)
+	super
     end
   end
 

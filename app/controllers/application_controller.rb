@@ -42,17 +42,17 @@ class ApplicationController < ActionController::Base
     end
 
     def url_for(options = {}, *params)
-     if options[:subdomain] && request.domain && @site.mutli_users?
-       options[:only_path] = false
-       host = []
-       host << options.delete(:subdomain)
-       host << request.subdomains[1..-1] if request.subdomains.size > 1
-       host << (@site.domain || request.domain)
-       options[:host] = host.join '.'
-     else
-       options.delete(:subdomain)
-     end
-     return super(options, *params)
+        if options[:subdomain] && request.domain && @site.mutli_users?
+            host = []
+            host << options.delete(:subdomain)
+            host << request.subdomains[1..-1] if request.subdomains.size > 1
+            host << (@site.domain || request.domain)
+            options[:host] = host.join('.')
+            options[:host] += request.port_string
+        else
+            options.delete(:subdomain)
+        end
+        super
     end
 
     def chito_cache_enable(options={}, &block)
@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
 	    redirect_to :controller => "site", :action => "setup"
 	    return false
 	end
-	ActionController::Base.asset_host = "www.#{request.domain}" if @site.domain == request.domain
+	#ActionController::Base.asset_host = "www.#{request.domain}" if @site.domain == request.domain
     end
 
     def get_user

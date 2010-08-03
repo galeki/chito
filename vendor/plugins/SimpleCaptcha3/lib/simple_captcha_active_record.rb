@@ -43,7 +43,7 @@ module SimpleCaptcha #:nodoc
     
     module InstanceMethods
       def valid?
-        return valid_without_captcha? if RAILS_ENV == 'test'
+        return valid_without_captcha? if Rails.env == 'test'
         if authenticate_with_captcha
           ret = valid_without_captcha?
           if captcha && captcha.upcase.delete(" ") == simple_captcha_value(captcha_key)
@@ -62,7 +62,7 @@ module SimpleCaptcha #:nodoc
       end
       
       def valid_with_captcha?
-        return valid_without_captcha? if RAILS_ENV == 'test'
+        return valid_without_captcha? if Rails.env == 'test'
         self.authenticate_with_captcha = true
         ret = self.valid?
         self.authenticate_with_captcha = false

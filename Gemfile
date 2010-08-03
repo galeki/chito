@@ -19,6 +19,7 @@ gem "rails", :git => "git://github.com/rails/rails.git"
  gem 'rmagick'
 
  gem "will_paginate", "~> 3.0.pre2"
+ gem 'uuidtools', '>= 2.1.1'
 # Deploy with Capistrano
 # gem 'capistrano'
 

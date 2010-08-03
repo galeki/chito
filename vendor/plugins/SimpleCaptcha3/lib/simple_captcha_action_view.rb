@@ -87,7 +87,7 @@ module SimpleCaptcha #:nodoc
           :image_style => options[:image_style] || '', 
           :distortion => options[:distortion] || '',
           :time => Time.now.to_i)
-      "<img src='#{url}' alt=' loading img...' onclick='re_captcha()' style='cursor:pointer;'>".html_safe
+      "<img src='#{url}' alt='loading captcha image...' />".html_safe  
     end
     
     def simple_captcha_field(options={})
@@ -109,9 +109,9 @@ module SimpleCaptcha #:nodoc
       value = ''
       case code
       when 'numeric'
-        4.times{value << (48 + rand(10)).chr}
+        6.times{value << (48 + rand(10)).chr}
       else
-        4.times{value << (65 + rand(26)).chr}
+        6.times{value << (65 + rand(26)).chr}
       end
       return value
     end

@@ -3,9 +3,7 @@ require 'fileutils'
 module SimpleCaptcha #:nodoc
   module SetupTasks #:nodoc
 
-    def self.do_setup(version = :new)
-      @version = version
-
+    def self.do_setup
       begin
         puts "STEP 1"
         generate_migration
@@ -13,7 +11,8 @@ module SimpleCaptcha #:nodoc
         copy_view_file
         puts "Followup Steps"
         puts "STEP 2 -- run the task 'rake db:migrate'"
-        puts "STEP 3 -- edit the file config/routes.rb to add the route \"map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'\""
+        puts "STEP 3 -- edit the file config/routes.rb to add the route \"match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha\""
+        
       rescue StandardError => e
         p e
       end
@@ -23,19 +22,17 @@ module SimpleCaptcha #:nodoc
 
     def self.generate_migration
       puts "==============================================================================="
-      puts "ruby script/generate migration create_simple_captcha_data"
-      puts %x{ruby script/generate migration create_simple_captcha_data}
+      puts "rails generate migration create_simple_captcha_data"
+      puts %x{rails generate migration create_simple_captcha_data}
       puts "================================DONE==========================================="
     end
   
     def self.migration_source_file
-      @version == :old ?
-      File.join(File.dirname(__FILE__), "../assets", "migrate", "create_simple_captcha_data_less_than_2.0.rb") :
       File.join(File.dirname(__FILE__), "../assets", "migrate", "create_simple_captcha_data.rb")
     end
 
     def self.write_migration_content
-      copy_to_path = File.join(RAILS_ROOT, "db", "migrate")
+      copy_to_path = File.join(Rails.root, "db", "migrate")
       migration_filename = 
         Dir.entries(copy_to_path).collect do |file|
           number, *name = file.split("_")
@@ -47,11 +44,11 @@ module SimpleCaptcha #:nodoc
 
     def self.copy_view_file
       puts "Copying SimpleCaptcha view file."
-      mkdir(File.join(RAILS_ROOT, "app/views/simple_captcha")) unless File.exist?(File.join(RAILS_ROOT, "app/views/simple_captcha"))
-      view_file = @version == :old ? '_simple_captcha.rhtml' : '_simple_captcha.erb'
+      mkdir(File.join(Rails.root, "app/views/simple_captcha")) unless File.exist?(File.join(Rails.root, "app/views/simple_captcha"))
+      view_file = '_simple_captcha.erb'
       FileUtils.cp_r(
         File.join(File.dirname(__FILE__), "../assets/views/simple_captcha/_simple_captcha.erb"),
-        File.join(RAILS_ROOT, "app/views/simple_captcha/", view_file)
+        File.join(Rails.root, "app/views/simple_captcha/", view_file)
       )
       puts "================================DONE==========================================="
     end

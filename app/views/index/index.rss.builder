@@ -1,3 +1,4 @@
+# encoding: utf-8
 xml.instruct! :xml, :version => "1.0", :encoding=>"UTF-8"
 xml.rss "version" => "2.0",
 	"xmlns:wfw" => "http://wellformedweb.org/CommentAPI/" do

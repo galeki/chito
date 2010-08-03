@@ -4,21 +4,17 @@ class IndexController < ApplicationController
   before_filter :get_index
 
   def index
-    if @index
-        get_index_needed
-        @posts = Article.new_ranked_posts :rank => 0, 
+    get_index_needed
+    @posts = Article.new_ranked_posts :rank => 0, 
                                           :index_id => @index.id,
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
-        respond_to do |format|
-	    format.html do
-                get_index_sidebars
-                do_something :before_index_show
-	    end
-	    format.rss
-        end
-    else
-        internal_redirect_to :action => "index"
+    respond_to do |format|
+	format.html do
+            get_index_sidebars
+            do_something :before_index_show
+	end
+	format.rss
     end
   end
 
@@ -26,10 +22,11 @@ class IndexController < ApplicationController
     send_data @index.plugin_css.to_s, :type => 'text/css', :disposition => 'inline'  
   end
 
-  private 
+  private
 
   def get_index
-    @index = @site.get_index(request)
+    @index = @site.index
+    raise "no index" unless @index
   end
 
   def get_index_needed
@@ -44,16 +41,9 @@ class IndexController < ApplicationController
 	template_path = File.join(IndexTheme::PATH, template + ".html.erb" )
 	super :template => template, :layout => layout
     else
-	super(options, extra_options, &block)
+	super
     end
   end
-
-  def internal_redirect_to (options={})
-    params.merge!(options)
-    (c = PostsController.new).process(request,response)
-    c.instance_variables.each{|v| self.instance_variable_set(v,c.instance_variable_get(v))} 
-  end
-  
 
 end
 
