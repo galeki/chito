@@ -602,3 +602,4 @@ span#autosave_fail{
 height: 40px;
 }
 td.checkbox input {border:0;background:transparent;}
+.button_to_link{width:20px;padding:5px;border:1px solid #bed569;color:#000;}

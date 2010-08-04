@@ -5,13 +5,12 @@
 
 <div class="add_cate">
     <div id='add_category'>
-	<% form_remote_tag( :url => admin_indices_path,
-			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :groups])}';$(s).disabled=true;",
-			    :complete => "$(index_title).value='';$(s).value='#{t(:create, :scope => [:txt, :view, :admin, :groups])}';$(s).disabled=false;"
+	<%= form_tag(        admin_indices_path,
+                            :remote => true
 			    ) do %>
 		<label for="index_title"><%= t(:title, :scope => [:txt, :view, :admin, :indices]) %>:</label>
 		<%= text_field 'index', 'title', :size => 20  %>
-	    <%= submit_tag t(:create, :scope => [:txt, :view, :admin, :groups]), :id => 's', :autocomplete => 'off' %> 
+	    <%= submit_tag t(:create, :scope => [:txt, :view, :admin, :groups]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :groups]) %> 
 	<% end -%>	
     </div>	
 </div>

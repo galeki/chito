@@ -23,8 +23,8 @@
     </tr>
     <% @system_info.each do |t| -%>
         <tr class="<%= cycle("odd", "") %>">
-            <td ><%= t.keys %></td>
-	    <td ><pre><%= t.values %></pre></td>
+            <td ><%= t.keys.first %></td>
+	    <td ><pre><%= t.values.first %></pre></td>
 
         </tr>
     <% end -%>
@@ -37,8 +37,8 @@
     </tr>
     <% @rails_info.each do |t| -%>
         <tr class="<%= cycle("odd", "") %>">
-            <td ><%= t.keys %></td>
-	    <td ><pre><%= t.values %></pre></td>
+            <td ><%= t.keys.first %></td>
+	    <td ><pre><%= t.values.first %></pre></td>
 
         </tr>
     <% end -%>

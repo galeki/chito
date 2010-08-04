@@ -78,6 +78,7 @@ module RainCity
           
           # now declare the class Singleton methods
           class_eval { extend RainCity::Has::BitFlags::BitFlagMethods }
+          class_eval { after_initialize :initialize_flags}
         end
         
         private
@@ -114,11 +115,11 @@ module RainCity
             end
           end
           
-          if true
-            define_method( 'after_initialize' ) do
-              initialize_flags
-            end
-          end
+          #if true
+          #  define_method( 'after_initialize' ) do
+          #    initialize_flags
+          #  end
+          #end
         end
         
         #

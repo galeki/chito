@@ -120,6 +120,7 @@ Chito::Application.routes.draw do
 
     resources :categories do
         resources :posts
+        resources :drafts
         collection do
             post :set_position
         end
@@ -134,8 +135,8 @@ Chito::Application.routes.draw do
     resources :files do
         collection do
             get :list
-            post :delete_file
-            post :delete_dir
+            delete :delete_file
+            delete :delete_dir
         end
     end
       

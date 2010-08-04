@@ -98,7 +98,10 @@ class CommentsController < ApplicationController
 	 @comment.pass = false
 	 @comment.audit_by = options[:by]
 	 @comment.save unless options[:drop]
-	 @user.update_attribute("has_new_spam", true) unless options[:drop]
+	 unless options[:drop]
+            @user.has_new_spam = true 
+            @user.save
+         end
 	 raise CommentFilterBlock
    end
 

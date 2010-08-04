@@ -12,8 +12,8 @@
 				<div><%= image_tag theme_path(:theme => theme, :type => nil, :file => "screenshot.png", :user_theme => is_user_theme) %></div>
 				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
 				<div class="theme_form">
-					<% form_remote_tag( :update => "theme_iframe_content", 
-									:url => { :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i}
+					<%= form_tag(    {   :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
+                                                            :remote => true,
 									) do%>
 					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]) %>
 					<% end %>
@@ -25,7 +25,7 @@
 		    </td>
 		    <td id="theme_iframe" valign="top">
 		      <div id="theme_iframe_content">
-			<%= render :partial => 'theme_demo' %>
+			<iframe src="<%= root_url %>" id="theme_preview" width="100%" height="480px" frameborder="0" style="background:#fff"></iframe>
 		      </div>
 		    </td>
 	 </tr>

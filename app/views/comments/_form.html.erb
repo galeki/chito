@@ -1,11 +1,10 @@
 <%= javascript_include_tag "fckeditor/fckeditor" -%>
 <%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
-<%
-     form_remote_tag( 
-     		:url => url,#post_comments_path(@post), #{ :controller => 'comment', :action => 'save', :id => @post, :guestbook => @guestbook},
-     		:before => "update_field();document.getElementById('ss').value='#{t(:message_0, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=true;$('#comment_value').val('')",
-     		:complete => "document.getElementById('ss').value='#{t(:message_1, :scope => [:txt, :view, :comments, :_form])}';document.getElementById('ss').disabled=false;" 
-     		) do%>
+
+<%=    form_tag(     url,
+     		    :onsubmit => "update_field();$('#comment_value').val('')",
+                    :remote => true
+     		) do %>
      <div id="comment_error" style="display: none;"></div>
 
 
@@ -44,5 +43,5 @@
      <div id="comment_extra" >
          <%= show_something :in_comment_form %>
      </div>
-         <input id="ss" name="commit" type="submit" autocomplete="off" value="<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>" />
+         <%= submit_tag t(:message_4, :scope => [:txt, :view, :comments, :_form]), :disable_with => t(:message_0, :scope => [:txt, :view, :comments, :_form]) %>
  <% end %>

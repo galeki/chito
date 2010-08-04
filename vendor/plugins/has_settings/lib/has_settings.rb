@@ -24,7 +24,7 @@ module ActiveRecord
 		if name =~ /=$/
 		    name.chomp!('=')
 		    sym = name.to_sym
-		    val = *args
+		    val = args.first
 		    self.settings_will_change! if self.respond_to?(:settings_will_change!)
 		    if self.nil_value.include? val #val.blank? or val == '0'
 			self.settings[sym] = nil 

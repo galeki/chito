@@ -7,14 +7,14 @@
     <tr>
     <!--
 	    <td class="category_filter">
-		<% form_tag(admin_feedbacks_path, :method => :get) do %>
+		<%= form_tag(admin_feedbacks_path, :method => :get) do %>
 		    <%=t(:search_for, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %>:
 		    <%= text_field_tag(:keyword, params[:keyword], :size => 25) %>
 		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :comments]), :id => 's' %> 
 		<% end -%>	
 	    </td>
     -->
-<% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
+<%= form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
 
     </tr>
 </table>

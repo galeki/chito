@@ -1,0 +1,3 @@
+$("#post<%= @post.id%>_rank").html("<%= @post.rank.to_s%>");
+$("#post<%= @post.id%>_rank").effect('highlight',{endcolor:'#ffffff', startcolor:'#ffff00'},4000);
+

@@ -11,11 +11,9 @@
 </script>
     <div id="import_result"></div>
            <%
-		form_remote_tag( :update => "import_result", 
-				:condition => "check_url(this.rss_url.value, t1, t2)",
-				:url => { :action => 'import'},
-				:before => "$('#importing').show();$('#s').disabled=true;",
-				:complete => "$('#importing').hide();$('#s').disabled=false;"
+		form_tag(       { :action => 'import', :format => :js},
+                                :remote => true,
+				:onsubmit => "$('#importing').show();",
 				) do
 				%>
     <label style="margin-bottom:20px;"><%= t(:rss_url, :scope => [:txt, :view, :admin, :rss]) %>: <%= text_field_tag 'rss_url', '', :size => '70' %></label>
@@ -24,7 +22,7 @@
     <label><%= check_box_tag :import_comments, 1, false, :class => 'ck' %> <%= t(:import_comments, :scope => [:txt, :view, :admin, :rss]) %></label>
     <label><%= check_box_tag :unescape_html, 1, false, :class => 'ck' %> <%= t(:unescape_html, :scope => [:txt, :view, :admin, :rss]) %></label>
     <span style="display:none;" id="importing"><%= image_tag 'importing.gif' %> <%= t(:importing, :scope => [:txt, :view, :admin, :rss]) %></span>
-    <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :id => 's' %>
+    <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]) %>
 <% end %>
 </div>
 </div>

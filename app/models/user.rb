@@ -50,8 +50,10 @@ class User < ActiveRecord::Base
     validates_presence_of :email
     #validates_uniqueness_of :email
     BASE_DIR = "#{Rails.root}/public/user_files/"
+    before_create :set_default
+    after_create  :create_default
 
-    def before_create
+    def set_default
 	self.theme = "elitecircle"
 	self.title = self.nick + "'s Blog"
 	self.slogan = "Happy coding"
@@ -71,7 +73,7 @@ class User < ActiveRecord::Base
     end
 
 
-    def after_create
+    def create_default
 	self.categories.create :name => I18n.t("activerecord.attributes.category.default_name", :default => "Uncategorized"), 
 	                       :info => I18n.t("activerecord.attributes.category.default_info", :default => "Uncategorized Posts")
 	create_dir

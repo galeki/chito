@@ -3,7 +3,8 @@ class Admin::SpamsController < Admin::CommentsController
     def index
 	@spams = @user.find_feedbacks :type => :spams, :keyword => nil,
 					:per_page => 25, :page => params[:page]
-	@user.update_attribute("has_new_spam", false)					
+	@user.has_new_spam = false
+        @user.save
     end
 
     def pass

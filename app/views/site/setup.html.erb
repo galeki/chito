@@ -1,7 +1,7 @@
 <% @title = t(:message_0, :scope => [:txt, :view, :site, :setup]) %>
 <h1><%= t(:message_1, :scope => [:txt, :view, :site, :setup]) %></h1>
 <div id="reg">
-    <% form_for :user, :url => {:controller => "site", :action => 'setup'} do |f| %>
+    <%= form_for :user, :url => {:controller => "site", :action => 'setup'} do |f| %>
     <label for="user_name"><div><%= t(:message_2, :scope => [:txt, :view, :site, :setup]) %></div> <%= f.text_field :name, :size => "12" %></label>
     <%= error_message_on :user, :name %>
     <label for="user_name"><div><%= t(:message_3, :scope => [:txt, :view, :site, :setup]) %></div> <%= f.text_field :nick, :size => "12" %></label>
@@ -12,7 +12,7 @@
     <label for="user_email"><div><%= t(:message_5, :scope => [:txt, :view, :site, :setup]) %></div> <%= f.text_field :email, :size => "12" %></label>
     <%= error_message_on :user, :email %>
     <label><div><%= t(:message_7, :scope => [:txt, :view, :site, :setup]) %>:</div></label>
-    <% fields_for :sites do |s| -%>
+    <%= fields_for :sites do |s| -%>
 	<label><%= s.radio_button :user_mode, "s", :class => "ck", :checked => true %> <%= t(:message_8, :scope => [:txt, :view, :site, :setup]) %></label>
 	<p><%= t(:message_9, :scope => [:txt, :view, :site, :setup]) %></p>
 	<label><%= s.radio_button :user_mode, "m", :class => "ck" %> <%= t(:message_10, :scope => [:txt, :view, :site, :setup]) %></label>

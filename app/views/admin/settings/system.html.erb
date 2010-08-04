@@ -5,7 +5,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:message_1, :scope => [:txt, :view, :admin, :settings]) %></div>
-<% form_tag :action => :change_password do |f|%>
+<%= form_tag :action => :change_password do |f|%>
 	<label><%= t(:message_2, :scope => [:txt, :view, :admin, :settings]) %></label>
 	<%= password_field_tag 'old', nil, :size => '15' %><br/>
 	<label><%= t(:message_3, :scope => [:txt, :view, :admin, :settings]) %></label>
@@ -18,7 +18,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:message_6, :scope => [:txt, :view, :admin, :settings]) %></div>
-<% form_for :user, :url => {:action => :admin_style} do |f|%>
+<%= form_for :user, :url => {:action => :admin_style} do |f|%>
 	<label><%= f.radio_button :admin_style, 'green', :class => 'ck' %> <%= t(:message_7, :scope => [:txt, :view, :admin, :settings]) %></label>
 	<label><%= f.radio_button :admin_style, 'blue' , :class => 'ck' %> <%= t(:message_8, :scope => [:txt, :view, :admin, :settings]) %></label>
 	<label><%= f.radio_button :admin_style, 'grey' , :class => 'ck' %> <%= t(:grey, :scope => [:txt, :view, :admin, :settings]) %></label>

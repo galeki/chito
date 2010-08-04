@@ -7,8 +7,10 @@
 <%= stylesheet_link_tag "admin/#{@user.admin_style || 'green'}" %>
 <%= jquery_include_tag %>
 <%= jquery_ui_include_tag %>
-<%= javascript_include_tag "jrails", "jquery.jeditable" %>
+<%= javascript_include_tag "jquery.rails.js" %>
+<%= javascript_include_tag "jquery.jeditable" %>
 <%= javascript_include_tag "admin" -%>
+<%= csrf_meta_tag %>
 <title><%= "#{@title} - Chito" %></title>
 </head>
 

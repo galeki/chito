@@ -13,13 +13,6 @@ class Admin::ArticlesController < Admin::BaseController
     return unless check_rank_authorize(@post.index_id)
     @post.increment!(:rank)
     expire_index(@post.index) if @post.index
-
-    render :update do |page|
-        page.replace_html "post#{@post.id}_rank", @post.rank.to_s
-        page.visual_effect :highlight, "post#{@post.id}_rank", :startcolor => '#ffff00',
-                           :endcolor => '#ffffff',
-                           :duration => 4.0
-    end
   end
 
   def decrease_rank
@@ -27,13 +20,6 @@ class Admin::ArticlesController < Admin::BaseController
     return unless check_rank_authorize(@post.index_id)
     @post.decrement!(:rank)
     expire_index(@post.index) if @post.index
-
-    render :update do |page|
-        page.replace_html "post#{@post.id}_rank", @post.rank.to_s
-        page.visual_effect :highlight, "post#{@post.id}_rank", :startcolor => '#ff0000',
-                           :endcolor => '#ffffff',
-                           :duration => 4.0
-    end
   end
 
   def destroy

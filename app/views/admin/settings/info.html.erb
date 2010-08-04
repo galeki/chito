@@ -13,14 +13,14 @@
 </div>
 <div id="head_option">
 <label><%= t(:upload_new, :scope => [:txt, :view, :admin, :settings]) %>:</label>
-<% form_for :user, :url => {:action => 'save_avatar'}, :html => {:multipart => true} do |f| -%>
+<%= form_for :user, :url => {:action => 'save_avatar'}, :html => {:multipart => true} do |f| -%>
     <%= file_field :file, :data, :accept => 'image/png' %>
     <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
     <br/>
 <% end -%>
 <%= t(:pic_format, :scope => [:txt, :view, :admin, :settings]) %>
 <label><%= t(:pic_info, :scope => [:txt, :view, :admin, :settings]) %>:</label>
-<% form_for :user, :url => {:action => 'avatar_info'} do |f| %>
+<%= form_for :user, :url => {:action => 'avatar_info'} do |f| %>
     <%= f.text_field 'info', :size => '50' %>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
@@ -30,7 +30,7 @@
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:favicon, :scope => [:txt, :view, :admin, :settings]) %></div>
 <%= image_tag "/user_files/#{@user.name}/config/favicon.ico", :size => "16x16", :class => "favicon", :alt => "" %>
-<% form_for :user, :url => {:action => 'save_favicon'}, :html => {:multipart => true} do |f| -%>
+<%= form_for :user, :url => {:action => 'save_favicon'}, :html => {:multipart => true} do |f| -%>
     <%= file_field :file, :data, :accept => 'image/ico' %>
     <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
     <%= link_to t(:refresh_favicon, :scope => [:txt, :view, :admin, :settings]), "/favicon.ico", :target => "_blank" %>
@@ -41,7 +41,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:change_profile, :scope => [:txt, :view, :admin, :settings]) %></div>
-<% form_for :user, :url =>{:action => 'info'} do |f| %>
+<%= form_for :user, :url =>{:action => 'info'} do |f| %>
     <label><%= t(:title, :scope => [:txt, :view, :admin, :settings]) %>:</label>
     <%= f.text_field 'title', :size => '25'%>
     <br/>

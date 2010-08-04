@@ -49,7 +49,6 @@ class BlogController < ApplicationController
 	if user
 	    jump = session[:jump]
 	    clean_session_cookie
-	    #reset_session
 	    user.set_session(session, request, @site)
 	    user.remember_me(cookies, request) if params[:persist]
             user.update_attribute(:last_logined_in_at, Time.now)

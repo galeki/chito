@@ -15,7 +15,7 @@
 	<%= link_to_post_tags %>
     <% end -%>
     , <%= post_read_count %> <%= t("txt.view.posts.show.readers") %>
-      <% if_my_post do %>
+      <%= if_my_post do %>
 	    <br/>
 		<%= link_to t(:message_0, :scope => [:txt, :view, :posts, :show]), edit_admin_post_path(@post), :class => "edit" %>
 		<%= link_to t(:message_1, :scope => [:txt, :view, :posts, :show]), admin_posts_path, :class => "return" %>
@@ -30,7 +30,7 @@
 
   <%= postbars %>
 
-<% if_show_trackbacks do -%>
+<%= if_show_trackbacks do -%>
     <div class="articlefooter">
 	<span class="trackbacks">
 	    <%= image_tag "trackbacks.gif", :class => 'trackbacks' %>
@@ -61,7 +61,7 @@
     <%= comments %> 
 </div>
 
-<% if_can_comment do -%>
+<%= if_can_comment do -%>
 <br />
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>

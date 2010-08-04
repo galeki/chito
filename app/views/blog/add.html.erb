@@ -6,7 +6,7 @@
 <div id="flash"><span class="wrong"><%= flash[:error] %></span></div>
 <% end %>
 <div id="reg">
-<% form_for :new_user, :url => {:controller => "blog", :action => 'add'} do |f| %>
+<%= form_for :new_user, :url => {:controller => "blog", :action => 'add'} do |f| %>
     <label for="user_name"><div><%= t(:message_2, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.text_field :name, :size => "14" %></label>
     <%= error_message_on :new_user, :name %>
     <label for="user_name"><div><%= t(:message_3, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.text_field :nick, :size => "14" %></label>

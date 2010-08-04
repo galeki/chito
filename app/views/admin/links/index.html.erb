@@ -4,9 +4,8 @@
 <div class="option_wrap">
 <div class="add_cate">
     <div id='add_category'>
-	<% form_remote_tag( :url => admin_links_path,
-			    :loading => "$(s).value='#{t(:saving, :scope => [:txt, :view, :admin, :links])}';$(s).disabled=true;",
-			    :complete => "$(s).value='#{t(:create_link, :scope => [:txt, :view, :admin, :links])}';$(s).disabled=false;"
+	<%= form_tag(        admin_links_path,
+                            :remote => true,
 			    ) do %>
 		<label for="link_title"><%= t(:name, :scope => [:txt, :view, :admin, :links]) %>:</label>
 		<%= text_field 'link', 'title', :size => 10  %>
@@ -14,7 +13,7 @@
 		<%= text_field 'link', 'url', :size => 20 %>
 		<label for="link_info"><%= t(:info, :scope => [:txt, :view, :admin, :links]) %>:</label>
 		<%= text_field 'link', 'info', :size => 20 %>
-	    <%= submit_tag t(:create_link, :scope => [:txt, :view, :admin, :links]), :id => 's', :autocomplete => 'off' %> 
+	    <%= submit_tag t(:create_link, :scope => [:txt, :view, :admin, :links]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]) %> 
 	<% end -%>	
     </div>	
 </div>

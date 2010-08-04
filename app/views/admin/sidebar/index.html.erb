@@ -5,7 +5,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:sidebar_layout_title, :scope => [:txt, :view, :admin, :sidebar]) %> - <%= t(:theme, :scope => [:txt, :view, :admin, :sidebar]) %> [ <%= @user.theme.camelize %> ] </div>
-<% form_for :user, :url => {:action => 'sidebar_postion'} do |f| %>
+<%= form_for :user, :url => {:action => 'sidebar_postion'} do |f| %>
   <%= bars_layout %>
   <br style="clear:both"/>
   <% @disable_bars ||= @all_bars.reject {|b| b.show? and @fields.include?(b.field.to_s)} -%>

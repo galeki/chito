@@ -6,13 +6,13 @@
 <table id="article_actions" cellspacing="0" style="width:100%;">
     <tr>
 	    <td class="category_filter">
-		<% form_tag(admin_messages_path, :method => :get) do %>
+		<%= form_tag(admin_messages_path, :method => :get) do %>
 		    <%=t(:search_for, :scope => [:txt, :view, :admin, :messages]) %>:
 		    <%= text_field_tag(:keyword, params[:keyword], :size => 25) %>
 		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :messages]), :id => 's' %> 
 		<% end -%>	
 	    </td>
-<% form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
+<%= form_tag "", :method => :delete, :onsubmit => "return false;" do -%>
 
     </tr>
 </table>

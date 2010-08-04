@@ -5,7 +5,7 @@
     <%= render :partial => 'comments/form', :locals => {:url => messages_path} %>
 </div>
 <br />
-<% chito_cache :id => :guestbook do -%>
+<%= chito_cache :id => :guestbook do -%>
     <div id="comments">
 	<%= comments %> 
     </div>

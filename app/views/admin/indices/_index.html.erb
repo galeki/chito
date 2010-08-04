@@ -6,7 +6,8 @@
             <td class="index_info_col"><%= in_place_edit :index, :info, @index.id, @index.info.to_s %></td>
 	    <td class="index_theme_col"><%= @index.theme %></td>
 	    <td class="index_managers_col">
-                <% form_remote_tag( :url => add_manager_admin_index_path(@index)
+                <% form_tag( add_manager_admin_index_path(@index),
+                             :remote => true
 			    ) do %>
 		    <%= text_field_tag 'user_name', "", :size => 8  %>
 	            <%= submit_tag t(:add, :scope => [:txt, :view, :admin, :indices]), :id => "ss_#{@index.id}", :autocomplete => 'off' %> 

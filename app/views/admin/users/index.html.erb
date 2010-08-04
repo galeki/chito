@@ -5,7 +5,7 @@
 <table id="article_actions" cellspacing="0" style="width:100%;">
     <tr>
 	    <td class="category_filter">
-		<% form_tag(admin_users_path, :method => :get) do %>
+		<%= form_tag(admin_users_path, :method => :get) do %>
 		    <%=t(:search_for, :scope => [:txt, :view, :admin, :users]) %>:
 		    <%= text_field_tag(:name, params[:name], :size => 20) %>
 		    <%= submit_tag t(:search, :scope => [:txt, :view, :admin, :users]), :id => 's' %> 
@@ -39,7 +39,7 @@
 	     <% if @user.id == session[:user_id] -%>
 		<%= @user.group.name %>
 	     <% else -%>
-		<% form_remote_tag :url => set_group_admin_user_path(@user) do-%>
+		<%= form_tag set_group_admin_user_path(@user), :remote => true do-%>
 		   <select name="group" id="group"> 
 		    <%= options_from_collection_for_select(@groups, "id", "name", @user.get_group.id) %>
 		   </select>

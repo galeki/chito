@@ -164,7 +164,7 @@ class FckeditorController < ActionController::Base
   end
   
   def check_file(file)
-    unless "#{file.class}" == "Tempfile" || "StringIO"
+    unless "#{file.class}" == "Tempfile" || "#{file.class}" == "StringIO"
       @errorNumber = 403
       throw Exception.new
     end
