@@ -2,7 +2,7 @@ require 'fileutils'
 require 'tmpdir'
 class FckeditorController < ActionController::Base
   UPLOADED = "/user_files"
-  UPLOADED_ROOT = Rails.root + "/public" + UPLOADED
+  UPLOADED_ROOT = Rails.root.to_s + "/public" + UPLOADED
   MIME_TYPES = [
    # "image/jpg",
     #"image/jpeg",
@@ -94,7 +94,7 @@ class FckeditorController < ActionController::Base
     @user = User.find_by_name(session[:user_name])
     I18n.locale = @user.language || "en-US"
     @limit_size = @user.get_group.file_size_limit
-    begin
+    #begin
       @new_file = check_file(params[:NewFile])
       @fck_url = upload_directory_path
       ftype = @new_file.content_type.strip
@@ -128,9 +128,9 @@ class FckeditorController < ActionController::Base
         @errorNumber = 0
 	render :text => %Q'<script>window.parent.OnUploadCompleted(#{@errorNumber},\"#{UPLOADED}/#{session[:user_name]}/#{params[:Type]}/#{file_name}\",\"\");</script>'
       end
-    rescue => e
-      @errorNumber = 110 if @errorNumber.nil?
-    end
+    #rescue => e
+    #  @errorNumber = 110 if @errorNumber.nil?
+    #end
     #render :text => %Q'<script>alert("#{@errorNumber}");</script>', :layout => nil
    
   end

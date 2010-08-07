@@ -6,7 +6,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t "plugins.custom_header_footer.option" %></div>
-<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'custom_header_footer'} do |f|%>
+<%= form_for :user, :url => {:action => 'plugin', :plugin_id => 'custom_header_footer'} do |f|%>
     <label><%= t "plugins.custom_header_footer.custom_header" %> : </label>
     <label><strong><%= t "plugins.custom_header_footer.custom_header_intro" %></strong></label>
     <label><%= f.check_box :enable_custom_header,  :class => 'checkbox' %><%= t "plugins.custom_header_footer.enable_custom_header" %></label>

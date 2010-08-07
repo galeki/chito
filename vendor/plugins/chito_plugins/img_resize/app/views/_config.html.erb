@@ -6,7 +6,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%=t("plugins.img_resize.settings") %></div>
-<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'img_resize'} do |f|%>
+<%= form_for :user, :url => {:action => 'plugin', :plugin_id => 'img_resize'} do |f|%>
     <b><%= t("plugins.img_resize.style") %></b><br/>
     <label><%= f.radio_button :img_resize_style, "open_in_new_window" %> <%=  t("plugins.img_resize.new_window") %></label>
     <label><%= f.radio_button :img_resize_style, "lightbox" %> <%= "LightBox" %></label>

@@ -1,4 +1,4 @@
-<% remote_form do |f|%>
+<%= remote_form do |f|%>
     <label><%= t("plugins.useful_sidebars.num_of_newcomments") %>: <%= f.text_field :new_comments_number, :size => '5'%></label>
     <label><%=t("plugins.useful_sidebars.maxlength_of_newcomments") %>: <%= f.text_field :new_comments_cut, :size => '5'%></label>
     <%= sidebar_expire_cache_field :new_comments %>

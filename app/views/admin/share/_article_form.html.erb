@@ -1,4 +1,4 @@
-<%= form_for :article, url, :id => "article_form",:name => "article_form", :method => method, :onsubmit => 'return false', :multipart => true do |f| -%>
+<%= form_tag url, :id => "article_form",:name => "article_form", :method => method, :remote => true, :onsubmit => 'return false;', :multipart => true do  -%>
 <div id="form_sidebar">
 <% unless @indices.empty? -%>
  <div class="form_item">
@@ -12,7 +12,7 @@
             <% end -%>
         };
     </script>
-        <%= f.collection_select(:index_id, @indices, :id, :title, {}, :onchange => "show_index_info(this)", :style => "width:80%;") %>
+        <%= collection_select(:article, :index_id, @indices, :id, :title, {}, :onchange => "show_index_info(this)", :style => "width:80%;") %>
     <div id="index_info_wrap">
         <div id="index_img"></div>
         <div id="index_url"></div>
@@ -85,7 +85,7 @@ function update_article_content()
 
 setInterval( update_article_content, 9000);
 </script>
-<%= observe_form :article_form,
+<%# observe_form :article_form,
 		  :frequency => 300,
 		  :url => admin_draft_path(@article),
                   :condition => "article_content_not_blank()",

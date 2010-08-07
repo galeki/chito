@@ -2,7 +2,7 @@
 <%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
 
 <%=    form_tag(     url,
-     		    :onsubmit => "update_field();$('#comment_value').val('')",
+     		    :onsubmit => "update_field();$('#comment_value').val('')l;",
                     :remote => true
      		) do %>
      <div id="comment_error" style="display: none;"></div>

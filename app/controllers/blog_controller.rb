@@ -53,11 +53,11 @@ class BlogController < ApplicationController
 	    user.remember_me(cookies, request) if params[:persist]
             user.update_attribute(:last_logined_in_at, Time.now)
 	    if jump
-		redirect_to(jump) and return
+		redirect_to(jump)
 	    elsif request.domain == @site.domain
-		redirect_to admin_url(:subdomain => session[:user_name]) and return
+		redirect_to admin_url(:subdomain => session[:user_name]) 
 	    else
-		redirect_to(admin_url) and return
+		redirect_to(admin_url)
 	    end
 	else
 	    error_stickie t(:message_3, :scope => [:txt, :controller, :blog])

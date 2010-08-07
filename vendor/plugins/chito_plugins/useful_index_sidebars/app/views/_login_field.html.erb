@@ -6,7 +6,7 @@
 <% else -%>
     	<fieldset>
     	<legend>Sign-In</legend>
-    		<% form_tag ({:controller => "blog", :action => 'login'}) do%>
+    		<%= form_tag ({:controller => "blog", :action => 'login'}) do%>
     		    <fieldset>
     		    <label for="inputtext1">用户名:</label>
     		    <%= text_field_tag "name", params[:name], :size => 10, :id => "inputtext1" %> <br/>

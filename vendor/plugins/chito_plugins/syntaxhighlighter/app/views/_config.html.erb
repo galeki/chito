@@ -8,7 +8,7 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t("plugins.syntaxhighlighter.settings") %></div>
-<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'syntaxhighlighter'} do |f|%>
+<%= form_for :user, :url => {:action => 'plugin', :plugin_id => 'syntaxhighlighter'} do |f|%>
     <style>label{padding:8px;} label:hover{background: #fff;} label img{margin:5px;}</style>
     <label><%= f.check_box :enable_syntaxhighlighter,  :class => 'checkbox' %><%= t("plugins.syntaxhighlighter.enable") %></label>
 

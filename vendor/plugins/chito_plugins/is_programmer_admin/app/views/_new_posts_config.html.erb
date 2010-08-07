@@ -1,4 +1,4 @@
-<% remote_form do |f|%>
+<%= remote_form do |f|%>
     <label><%= "新文章显示数量" %>: <%= f.text_field :numbers_of_new_posts_in_admin, :size => '5'%> </label>
     <label>默认为 6 篇，,最大为 30 篇，刷新后生效。</label>
 <% end %>

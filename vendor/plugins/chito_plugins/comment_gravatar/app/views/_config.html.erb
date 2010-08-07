@@ -1,9 +1,9 @@
-<% options_div t("plugins.comment_gravatar.intro") do %>
+<%= options_div t("plugins.comment_gravatar.intro") do %>
     <%= t("plugins.comment_gravatar.intro_content") %>
 <% end %>
 
-<% options_div t("plugins.comment_gravatar.settings") do %>
-<% form_for :user, :url => {:action => 'plugin', :plugin_id => 'comment_gravatar'} do |f|%>
+<%= options_div t("plugins.comment_gravatar.settings") do %>
+<%= form_for :user, :url => {:action => 'plugin', :plugin_id => 'comment_gravatar'} do |f|%>
     <label><%= f.check_box :enable_rewriter_of_guest_avatar,  :class => 'checkbox' %><%= t("plugins.comment_gravatar.enable_gravatar") %></label>
     <%= submit_tag t("plugins.comment_gravatar.save"), :class =>'submit' %>
 <% end  %>
