@@ -80,8 +80,8 @@ module CommentsHelper
     def reply_comment_button
 	content_tag :span, :class => "reply_comment_button" do
             reply_js_function = @user.enable_thread_comment ? "reply_to_id('#{@comment.id}')" : "reply_to('#{comment_writer}', '#{@comment.id}')"
-	    link_to_function t("txt.helper.comments.reply"), "#{reply_js_function};event.returnValue = false;",
-			      :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
+	    link_to  t("txt.helper.comments.reply"), "#", :onclick => "#{reply_js_function};event.returnValue = false;return false;",
+		     :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
 	end
     end
 

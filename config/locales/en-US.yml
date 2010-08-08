@@ -376,7 +376,7 @@ en-US:
           leave_message: The changes you made will be lost if you navigate away
           autosaving_message: Autosaving
           autosave_ok_message: Autosaved to draft on
-          autosave_fail: Autosave fail
+          autosave_fail_message: Autosave fail
           show_in_navbar: and show in navbar
           indices: Indices
           confirm_blank_text: Submit a blank post？

@@ -1,5 +1,5 @@
 <%= javascript_include_tag "fckeditor/fckeditor" -%>
-<%= link_to_function t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "cancel_reply_to_id();", :style => "display:none;", :id => 'cancel_reply_link' %>
+<%= link_to t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "#", :onclick => "cancel_reply_to_id();event.returnValue = false;return false;", :style => "display:none;", :id => 'cancel_reply_link' %>
 
 <%=    form_tag(     url,
      		    :onsubmit => "update_field();$('#comment_value').val('')l;",

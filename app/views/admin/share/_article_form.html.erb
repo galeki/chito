@@ -64,6 +64,7 @@
  </div>
     <br/>
 <script type='text/javascript'>
+//<![CDATA[
 var away_text = '<%= t(:leave_message, :scope => [:txt, :view, :admin, :share]) %>';
 var autosave_ok_text = '<%= t(:autosave_ok_message, :scope => [:txt, :view, :admin, :share]) %>';
 var autosaving_text = '<%= t(:autosaving_message, :scope => [:txt, :view, :admin, :share]) %>';
@@ -84,15 +85,24 @@ function update_article_content()
 }
 
 setInterval( update_article_content, 9000);
+//]]>
 </script>
-<%# observe_form :article_form,
-		  :frequency => 300,
-		  :url => admin_draft_path(@article),
-                  :condition => "article_content_not_blank()",
-		  :before => "autosaving(autosaving_text);",
-		  :success => "autosave_ok(autosave_ok_text);",
-		  :failure => "autosave_fail(autosave_fail_text);"
-%>
+<script type="text/javascript">
+//<![CDATA[
+jQuery('#article_form').delayedObserver(300, function(element, value) {
+    if(article_content_not_blank()) 
+    { 
+        autosaving(autosaving_text);     
+        jQuery.ajax({data:value, 
+                     dataType:'script', 
+                     error:function(request){autosave_fail(autosave_fail_text);}, 
+                     success:function(request){autosave_ok(autosave_ok_text);}, 
+                     type:'post', 
+                     url:'<%= admin_draft_path(@article) %>'}); 
+    }
+});
+//]]>
+</script>
 
 <input type="button" value="<%= @submit_button_text || t(:submit_post, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('posts', this.form, confirm_blank_text);" class="submit_post"/>
 <input type="button" value="<%= t(:submit_as_page, :scope => [:txt, :view, :admin, :share]) %>" onclick="submit_as('pages', this.form, confirm_blank_text);"/>

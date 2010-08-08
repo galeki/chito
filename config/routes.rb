@@ -161,6 +161,7 @@ Chito::Application.routes.draw do
   match 'fckeditor/check_spelling' => 'fckeditor#check_spelling'
   match 'fckeditor/command' => 'fckeditor#command'
   match 'fckeditor/upload' => 'fckeditor#upload'
+  match '/latex_formula/make_png' => 'latex_formula#make_png'
 
   match '/add' => 'blog#add'
   match '/login' => 'blog#login', :as => :login

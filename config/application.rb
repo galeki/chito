@@ -38,11 +38,12 @@ module Chito
 
     config.action_controller.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
+    #config.plugin_paths = "#{Rails.root}/vendor/plugins/chito_plugins"
+    #raise config.plugin_paths
     config.plugins = [ :chito_plugin, :all ]
     #config.action_controller.session_store = :memory_store
     config.autoload_paths += %W(
         vendor/simple-rss/lib
-        vendor/uuidtools/lib
     ).map {|dir| "#{Rails.root}/#{dir}"}.select { |dir| File.directory?(dir) } 
 
     

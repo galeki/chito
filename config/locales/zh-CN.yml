@@ -376,7 +376,7 @@ zh-CN:
           leave_message: 当前的内容还没有保存，如果离开，编辑的内容将丢失
           autosaving_message: 自动保存中
           autosave_ok_message: 自动保存草稿于
-          autosave_fail: 自动保存失败
+          autosave_fail_message: 自动保存失败
           show_in_navbar: 并显示在导航栏
           indices: 总分类
           confirm_blank_text: 保存这篇空白内容的文章？

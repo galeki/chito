@@ -267,7 +267,7 @@ class User < ActiveRecord::Base
     def forgot_password(request, time = 1.day)
 	self.reset_password_key = UUIDTools::UUID.random_create.to_s
 	self.reset_password_key_expires_at = time.from_now.utc
-	ChitoMailer.deliver_forgot_password(self, request) if self.save
+	ChitoMailer.forgot_password(self, request).deliver if self.save
     end
 
     def self.login(name, password)

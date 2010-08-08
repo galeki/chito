@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
 	    @post.save
 	end
 	@post.emails.each_key do |email|
-	    ChitoMailer.deliver_comment_notifier(email, @comment, @post, request) unless email == @comment.email
+            ChitoMailer.comment_notifier(email, @comment, @post, request).deliver unless email == @comment.email
 	end
    end
    

@@ -5,7 +5,8 @@
         :address: 127.0.0.1
         :port:    25
         :domain:  mail.is-programmer.com
-#       :authentication:  :login
-#       :user_name:        myname
-#       :password:         mypass        
+#       :authentication:  "login"
+#       :user_name:        "myname"
+#       :password:         "mypass"
+#       :enable_starttls_auto: true
 
