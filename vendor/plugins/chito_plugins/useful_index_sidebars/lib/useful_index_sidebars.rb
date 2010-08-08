@@ -5,18 +5,18 @@ module IndexControllerPlugin
                 uname = @index.user_of_user_updates || 'official'
                 u = User.find_by_name(uname)
                 if u
-                    @user_update_posts = u.posts.find(:all, :limit => @index.user_updates_number.to_num(5))
+                    @user_update_posts = u.posts.order('created_at desc').limit(@index.user_updates_number.to_num(5))
                 else
                     @user_update_posts = []
                 end
             end
 
             if @index.show_new_reg_users
-                @new_reg_users = User.find(:all, :order => 'created_at desc', :limit => @index.new_reg_users_number.to_num(10))
+                @new_reg_users = User.order('created_at desc').limit(@index.new_reg_users_number.to_num(10))
             end
 
             if @index.show_index_list
-                @index_list = Index.find(:all, :order => 'id')
+                @index_list = Index.order('id')
             end
 
         end

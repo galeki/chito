@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
 
   def index
     @users = User.users_in_admin(:page => params[:page], :name => params[:name])
-    @groups = Group.find(:all)
+    @groups = Group.order("id")
   end
 
   def set_group

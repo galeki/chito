@@ -4,7 +4,7 @@ module ApplicationPlugin
     def find_official_notices_and_new_posts_before_admin_dashboard_show
 	@notices = []
 	of = User.find_by_name('official')
-	@notices = of.posts.find(:all, :limit => 4) if of
+	@notices = of.posts.order('created_at desc').limit(4) if of
 
 	num = @user.numbers_of_new_posts_in_admin.to_num(6)
 	num = 30 if num > 50

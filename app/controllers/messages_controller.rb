@@ -1,7 +1,7 @@
 class MessagesController < CommentsController
 
     def index
-	@messages = @user.messages.find(:all, :limit => 20)
+	@messages = @user.messages.order('created_at desc').limit(20)
 	respond_to {|format| format.rss}
     end
 

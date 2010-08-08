@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
 	include ArticlePlugin
 
     def self.new_posts(num=20)
-	find :all, :conditions => ["articles.bit_opt = 0 and articles.rank >= 0"], :order => 'articles.created_at DESC', :limit => num
+        where("articles.bit_opt = 0 and articles.rank >= 0").order('articles.created_at DESC').limit(num)
     end
 
     def self.new_ranked_posts(options)
@@ -39,7 +39,7 @@ class Article < ActiveRecord::Base
 	    self.bit_opt_will_change!
 	    self.attributes = params[:article]
 	    self.user_id = user.id
-	    self.category = user.categories.find(params[:category] || :first)
+	    self.category = params[:category] ? user.categories.find(params[:category]) : user.categories.order('position').first
     end
 
     def make_brief
@@ -70,11 +70,11 @@ class Article < ActiveRecord::Base
     end
 
     def prev
-        self.category.posts.find(:first, :conditions => ["created_at < ? and bit_opt = 0 ", self.created_at]) if self.category
+        self.category.posts.where("created_at < ? and bit_opt = 0 ", self.created_at).first if self.category
     end
 
     def next
-        self.category.posts.find(:first, :conditions => ["created_at > ? and bit_opt = 0 ", self.created_at], :order => 'id') if self.category
+        self.category.posts.where("created_at > ? and bit_opt = 0 ", self.created_at).first if self.category
     end
 
     def to_xml(options={})

@@ -33,7 +33,7 @@ class Navbar < Sidebar
 
     def position=(n)
 	if @page
-	    @page.update_attribute("position", n)
+	    @page.send("position=", n)
 	else
 	    @@user.send("#{position_name}=", n)
 	end
@@ -45,7 +45,7 @@ class Navbar < Sidebar
 
     def show=(s)
 	if @page
-	    @page.update_attribute("show_as_navbar", s) 
+	    @page.send("show_as_navbar=", s) 
 	else
 	    @@user.send("#{show_name}=", s)
 	end

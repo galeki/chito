@@ -84,11 +84,11 @@ class User < ActiveRecord::Base
     end
 
     def new_comments(n)
-	self.comments.find(:all, :limit => n.to_num(5))
+	self.comments.limit(n.to_num(5)).order('created_at desc')
     end
 
     def new_messages(n)
-	self.messages.find(:all, :limit => n.to_num(5))
+	self.messages.limit(n.to_num(5)).order('created_at desc')
     end
 
     def self.users_in_admin(options={})

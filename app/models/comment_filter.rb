@@ -24,7 +24,7 @@ class CommentFilter
     end
 
     def position=(n)
-	@@user.update_attribute("comment_filter_#{self.id}_position", n)	
+	@@user.send("comment_filter_#{self.id}_position=", n)	
     end
 
     def enable
@@ -32,7 +32,7 @@ class CommentFilter
     end
     
     def enable=(n)
-	@@user.update_attribute("enable_comment_filter_#{self.id}", n)
+	@@user.send("enable_comment_filter_#{self.id}=", n)
     end
 
 end

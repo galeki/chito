@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
      before_filter :get_comment_filters, :except => [:index]
     
    def index
-	@comments = @user.comments.find(:all, :limit => 20)
+	@comments = @user.comments.order('created_at desc').limit(20)
 	respond_to {|format| format.rss}
    end
 

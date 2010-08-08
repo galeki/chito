@@ -3,7 +3,7 @@ class Admin::SiteController < Admin::BaseController
     
     def index
 	@site_class = @root = "selected"	
-	@groups = Group.find(:all, :conditions => ["name != 'Admin'"])
+	@groups = Group.where("name != 'Admin'")
     end
     
 

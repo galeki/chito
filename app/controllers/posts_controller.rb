@@ -35,7 +35,7 @@ class PostsController < BlogController
 					     :page => params[:page], :per_page => @user.blog_per_page.to_num(10)
 	    end
 	    @category = @user.categories.find(params[:category_id]) if params[:category_id]
-	    @titles.unshift(h @category.name) if @category
+	    @titles.unshift(@category.name) if @category
 	    @title = @titles * " - "
 	    do_something :before_list_show
 	end

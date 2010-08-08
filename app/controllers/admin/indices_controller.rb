@@ -50,7 +50,7 @@ class Admin::IndicesController < Admin::BaseController
   end
 
   def index
-    @indices = Index.find(:all)
+    @indices = Index.order('id')
   end
 
   def create

@@ -5,7 +5,7 @@ class Admin::GroupsController < Admin::BaseController
     in_place_edit_for :group, :file_size_limit
 
   def index
-    @groups = Group.find(:all)
+    @groups = Group.order("id")
   end
 
   def create
