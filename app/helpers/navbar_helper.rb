@@ -18,7 +18,7 @@ module NavbarHelper
     end
 
     def current(nav)
-	nav.page ? (params[:id] == nav.id.to_s || params[:permalink] == nav.page.permalink) : request.request_uri == nav.url
+	nav.page ? (params[:id] == nav.id.to_s || params[:permalink] == nav.page.permalink) : request.fullpath == nav.url
     end
 
     def pagepath(page)

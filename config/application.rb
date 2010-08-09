@@ -5,6 +5,7 @@ require 'rails/all'
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
+Encoding.default_internal = "UTF-8"
 
 module Chito
   class Application < Rails::Application
@@ -39,7 +40,7 @@ module Chito
     config.action_controller.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
     #config.plugin_paths = "#{Rails.root}/vendor/plugins/chito_plugins"
-    #raise config.plugin_paths
+    config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")
     config.plugins = [ :chito_plugin, :all ]
     #config.action_controller.session_store = :memory_store
     config.autoload_paths += %W(

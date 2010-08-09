@@ -52,7 +52,7 @@ module PostsHelper
     end
 
     def post_brief
-	arounder{ ("<div class='post_brief'>" + @post.brief + "</div>").html_safe}
+	arounder{ ("<div class='post_brief'>" + @post.brief.to_s + "</div>").html_safe}
     end
 
     def link_to_post_category(options={})

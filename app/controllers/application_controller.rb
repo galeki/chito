@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
+    helper_method :url_for
     #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
     #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
@@ -27,7 +28,7 @@ class ApplicationController < ActionController::Base
             end
 	end
 	
-        redirect_to(login_path(:subdomain => "www")) and return false
+        redirect_to(login_path(:subdomain => "www"))
     end
 
     def chito_admin_authorize
@@ -41,16 +42,18 @@ class ApplicationController < ActionController::Base
 	redirect_to login_path
     end
 
-    def url_for(options = {}, *params)
-        if options[:subdomain] && request.domain && @site.mutli_users?
-            host = []
-            host << options.delete(:subdomain)
-            host << request.subdomains[1..-1] if request.subdomains.size > 1
-            host << (@site.domain || request.domain)
-            options[:host] = host.join('.')
-            options[:host] += request.port_string
-        else
-            options.delete(:subdomain)
+    def url_for(options = nil)
+        if options.is_a?(Hash) && options[:subdomain]
+            if request.domain && @site.mutli_users?
+                host = []
+                host << options.delete(:subdomain)
+                host << request.subdomains[1..-1] if request.subdomains.size > 1
+                host << (@site.domain || request.domain)
+                options[:host] = host.join('.')
+                options[:host] += request.port_string
+            else
+                options.delete(:subdomain) 
+            end
         end
         super
     end
