@@ -1,12 +1,5 @@
-module ApplicationPlugin
-    private
-
-  def add_simple_vcode_in_comment_filter
-    filter = CommentFilter.new(:simple_vcode, 'Simple Captcha', 'check_simple_vcode')
-    CommentFilter.add(filter)
-  end
-
-end
+filter = CommentFilter.new(:simple_vcode, 'Simple Captcha', 'check_simple_vcode')
+CommentFilter.add(filter)
 
 module BlogHelperPlugin
     def show_simple_vcode_field_in_comment_form
@@ -23,7 +16,6 @@ end
 
 module CommentControllerPlugin
   private
-
 
   def check_simple_vcode
     @call = "re_captcha"

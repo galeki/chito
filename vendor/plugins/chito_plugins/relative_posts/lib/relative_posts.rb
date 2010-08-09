@@ -1,3 +1,20 @@
+bar = Postbar.new 
+bar.id = :relative_posts
+bar.info = 'Relative Posts'
+bar.plugin_id = :relative_posts
+bar.config = true
+bar.default_position = 10
+Postbar.add(bar)
+
+bar = Postbar.new 
+bar.id = :global_relative_posts
+bar.info = 'Global Relative Posts'
+bar.plugin_id = :relative_posts
+bar.config = true
+bar.default_position = 12
+Postbar.add(bar)
+
+
 module ApplicationPlugin
 	private
 
@@ -9,30 +26,12 @@ module ApplicationPlugin
 	    end
 	end
 
-	def add_relative_posts_in_postbar
-		bar = Postbar.new 
-		bar.id = :relative_posts
-		bar.info = 'Relative Posts'
-		bar.plugin_id = :relative_posts
-		bar.config = true
-		bar.default_position = 10
-		Postbar.add(bar)
-	end
-	
-	def add_global_relative_posts_in_postbar
-		bar = Postbar.new 
-		bar.id = :global_relative_posts
-		bar.info = 'Global Relative Posts'
-		bar.plugin_id = :relative_posts
-		bar.config = true
-		bar.default_position = 12
-		Postbar.add(bar)
-	end
+
 end
-    module Admin::ArticleControllerPlugin
-	private
- 	def cut_tag_list_before_article_save
-	    #tag_list = @article.tag_list
-	    #@article.tag_list = tag_list[1..8] if tag_list
- 	end
+module Admin::ArticleControllerPlugin
+    private
+    def cut_tag_list_before_article_save
+        #tag_list = @article.tag_list
+        #@article.tag_list = tag_list[1..8] if tag_list
     end
+end

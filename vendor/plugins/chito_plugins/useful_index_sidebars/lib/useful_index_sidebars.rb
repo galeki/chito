@@ -21,96 +21,83 @@ module IndexControllerPlugin
 
         end
 end
-module ApplicationPlugin
-    private
-	def add_user_update_in_index_sidebar
-		bar = IndexSidebar.new 
-		bar.id = :user_updates
-		bar.info = 'User Updates'
-		bar.plugin_id = :useful_index_sidebars
-		bar.config = true
-		bar.default_position = 2
-		IndexSidebar.add(bar)
-	end
-	def add_login_field_in_index_sidebar
-	        bar = IndexSidebar.new 
-		bar.id = :login_field
-		bar.info = 'Login Field'
-		bar.plugin_id = :useful_index_sidebars
-		bar.default_position = 1
-		#bar.config = true
-		IndexSidebar.add(bar)
-	end
-	def add_new_reg_users_in_index_sidebar
-	        bar = IndexSidebar.new 
-		bar.id = :new_reg_users
-		bar.info = 'New Users'
-		bar.default_position = 3
-		bar.plugin_id = :useful_index_sidebars
-		bar.config = true
-		IndexSidebar.add(bar)
-	end
-        def add_custom_index_bar_1_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :custom_index_sidebar_1
-                bar.info = "Custom Index Sidebar 1"
-                bar.default_position = 4
-                bar.plugin_id = :useful_index_sidebars
-                bar.config = true
-                IndexSidebar.add(bar)
-        end
-        def add_custom_index_bar_2_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :custom_index_sidebar_2
-                bar.info = "Custom Index Sidebar 2"
-                bar.default_position = 5
-                bar.plugin_id = :useful_index_sidebars
-                bar.config = true
-                IndexSidebar.add(bar)
-        end
-        def add_custom_index_bar_3_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :custom_index_sidebar_3
-                bar.info = "Custom Index Sidebar 3"
-                bar.default_position = 6
-                bar.plugin_id = :useful_index_sidebars
-                bar.config = true
-                IndexSidebar.add(bar)
-        end
-        def add_index_managers_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :index_managers
-                bar.info = "Managers"
-                bar.default_position = 0
-                bar.plugin_id = :useful_index_sidebars
-                bar.config = false
-                IndexSidebar.add(bar)
-        end
-        def add_rss_icon_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :index_rss_icon
-                bar.info = "Feed"
-                bar.default_position = 0
-                bar.plugin_id = :useful_index_sidebars
-                bar.config = true
-                IndexSidebar.add(bar)
-        end
-        def add_index_list_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :index_list
-                bar.info = "Indices"
-                bar.default_position = 0
-                bar.plugin_id = :useful_index_sidebars
-                #bar.config = true
-                IndexSidebar.add(bar)
-        end
-        def add_index_bulletin_in_index_sidebar
-                bar = IndexSidebar.new
-                bar.id = :index_bulletin
-                bar.info = "Bulletin"
-                bar.default_position = 0
-                bar.plugin_id = :useful_index_sidebars
-                #bar.config = true
-                IndexSidebar.add(bar)
-        end
-end
+
+bar = IndexSidebar.new 
+bar.id = :user_updates
+bar.info = 'User Updates'
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+bar.default_position = 2
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new 
+bar.id = :login_field
+bar.info = 'Login Field'
+bar.plugin_id = :useful_index_sidebars
+bar.default_position = 1
+#bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new 
+bar.id = :new_reg_users
+bar.info = 'New Users'
+bar.default_position = 3
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :custom_index_sidebar_1
+bar.info = "Custom Index Sidebar 1"
+bar.default_position = 4
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :custom_index_sidebar_2
+bar.info = "Custom Index Sidebar 2"
+bar.default_position = 5
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :custom_index_sidebar_3
+bar.info = "Custom Index Sidebar 3"
+bar.default_position = 6
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :index_managers
+bar.info = "Managers"
+bar.default_position = 0
+bar.plugin_id = :useful_index_sidebars
+bar.config = false
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :index_rss_icon
+bar.info = "Feed"
+bar.default_position = 0
+bar.plugin_id = :useful_index_sidebars
+bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :index_list
+bar.info = "Indices"
+bar.default_position = 0
+bar.plugin_id = :useful_index_sidebars
+#bar.config = true
+IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :index_bulletin
+bar.info = "Bulletin"
+bar.default_position = 0
+bar.plugin_id = :useful_index_sidebars
+#bar.config = true
+IndexSidebar.add(bar)

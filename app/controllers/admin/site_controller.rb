@@ -7,7 +7,7 @@ class Admin::SiteController < Admin::BaseController
     end
     
 
-    def config
+    def settings
 	return unless request.post?
 	if User.find_by_name(params[:site][:default_user])
 	    @site.bit_opt_will_change! if @site.respond_to?(:bit_opt_will_change!)

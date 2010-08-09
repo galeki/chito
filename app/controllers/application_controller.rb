@@ -148,7 +148,6 @@ class ApplicationController < ActionController::Base
     def get_sidebars
 	if_html do 
 	    Sidebar.user = @user
-	    do_something :in_sidebar if Sidebar.sidebars.empty?
 	    @all_bars = Sidebar.sidebars
 	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
 	end
@@ -157,7 +156,6 @@ class ApplicationController < ActionController::Base
     def get_index_sidebars
         if_html do 
 	    IndexSidebar.user = @index
-	    do_something :in_index_sidebar if IndexSidebar.index_sidebars.empty?
 	    @all_bars = IndexSidebar.index_sidebars
 	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
         end
@@ -166,7 +164,6 @@ class ApplicationController < ActionController::Base
     def get_postbars
 	if_html do 
 	    Postbar.user = @user
-	    do_something :in_postbar if Postbar.postbars.empty?
 	    @all_postbars = Postbar.postbars
 	    @enable_postbars = @all_postbars.select{|b| b.show?}.sort_by{|b| b.position}
 	end
@@ -175,7 +172,6 @@ class ApplicationController < ActionController::Base
     def get_navbars
 	if_html do 
 	    Navbar.user = @user
-	    do_something :in_navbar if Navbar.navbars.empty?
 	    @navbars = Navbar.navbars.dup
 	    @pages = @user.pages
 	    @pages.each do |p|
@@ -188,7 +184,6 @@ class ApplicationController < ActionController::Base
     
     def get_comment_filters
 	CommentFilter.user = @user
-	do_something :in_comment_filter if CommentFilter.filters.empty?
 	@filters = CommentFilter.filters.sort_by {|x| x.position }
     end
 

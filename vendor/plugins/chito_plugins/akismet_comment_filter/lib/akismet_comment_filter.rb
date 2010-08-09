@@ -1,14 +1,7 @@
-module ApplicationPlugin
-    private
-
-  def add_akismet_filter_in_comment_filter
-    filter = CommentFilter.new(:akismet, 'Akismet', 'call_akismet')
-    filter.config = true
-    filter.plugin_id = :akismet_comment_filter
-    CommentFilter.add(filter)
-  end
-
-end
+filter = CommentFilter.new(:akismet, 'Akismet', 'call_akismet')
+filter.config = true
+filter.plugin_id = :akismet_comment_filter
+CommentFilter.add(filter)
 
 
 module CommentControllerPlugin

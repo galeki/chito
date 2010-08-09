@@ -1,2 +1,7 @@
 require "chito_plugin"
 require "hooks"
+require "sidebar"
+require "index_sidebar"
+require "postbar"
+require "navbar"
+require "comment_filter"

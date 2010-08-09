@@ -9,3 +9,28 @@ ActionView::OutputBuffer.class_eval do
   alias :append= :<<
 end
 
+Fixnum.class_eval do  
+  alias_method :old_to_s, :to_s  
+  def to_s  
+    old_to_s.force_encoding("UTF-8")  
+  end  
+end  
+Hash.class_eval do  
+  alias_method :old_to_s, :to_s  
+  def to_s  
+    old_to_s.force_encoding("UTF-8")  
+  end  
+end  
+Symbol.class_eval do  
+  alias_method :old_to_s, :to_s  
+  def to_s  
+    old_to_s.force_encoding("UTF-8")  
+  end  
+end  
+Array.class_eval do  
+  alias_method :old_pack, :pack  
+  def pack(*args)  
+    old_pack(*args).force_encoding("UTF-8")  
+  end  
+end  
+
