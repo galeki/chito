@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-#gem 'rails', '3.0.0.rc'
-gem "rails", :git => "git://github.com/rails/rails.git"
+gem 'rails', '3.0.0.rc'
+#gem "rails", :git => "git://github.com/rails/rails.git"
 
 
 # Bundle edge Rails instead:
@@ -12,9 +12,9 @@ gem "rails", :git => "git://github.com/rails/rails.git"
 # Use unicorn as the web server
 # gem 'unicorn'
  gem 'mysql2'
- #gem 'ruby-mysql'
-
- gem 'mongrel', '1.2.0.pre2'
+ #gem 'mysql'
+ 
+# gem 'mongrel', '1.2.0.pre2'
 
  gem 'rmagick'
 

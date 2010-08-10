@@ -12,9 +12,8 @@
 				<div><%= image_tag theme_path(:theme => theme, :type => nil, :file => "screenshot.png", :user_theme => is_user_theme) %></div>
 				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
 				<div class="theme_form">
-					<%= form_tag(    {   :action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
-                                                            :remote => true,
-									) do%>
+					<%= form_tag({:action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
+                                                            :remote => true) do%>
 					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]) %>
 					<% end %>
 				</div>

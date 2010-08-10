@@ -5,7 +5,7 @@ class Admin::SettingsController < Admin::BaseController
     if @user.update_attributes(params[:user])
         notice_stickie t(:profile_updated, :scope => [:txt, :controller, :admin, :settings])
     else
-        error_stickie @user.error_messages
+        error_stickie @user.errors.full_messages * "; "
     end
     redirect_to :action => 'info'
   end

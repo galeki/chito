@@ -1,3 +1,6 @@
+if false #RUBY_VERSION > '1.9'  
+
+Encoding.default_internal = "UTF-8"
 ActionView::OutputBuffer.class_eval do
   undef << if defined?(:<<)
 
@@ -34,3 +37,4 @@ Array.class_eval do
   end  
 end  
 
+end

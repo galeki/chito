@@ -32,7 +32,11 @@ module ActiveRecord
 			self.settings[sym] = val
 		    end
 		else
-		    return self.settings[name.to_sym]
+                    val = self.settings[name.to_sym]
+                    if RUBY_VERSION > '1.9' && val.respond_to?(:force_encoding)
+                        val = val.force_encoding("UTF-8")
+                    end
+		    return val
 		end
 	    end
 	end
