@@ -4,5 +4,5 @@ config/database.yml
 db/*.sqlite3
 .DS_Store
 vendor/gems/*
-!vendor/gems/cache/
+vendor/cache/*
 Gemfile.lock

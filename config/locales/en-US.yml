@@ -431,6 +431,8 @@ en-US:
           sidebar_settings: Sidebar settings
           sidebar_layout_title: Sidebar layout and title
           save: Save
+          save_layout: Save current layout
+          saving_layout: 'Saving...'
           available_sidebars: Available sidebars
           theme: Theme
           sidebar: Sidebar

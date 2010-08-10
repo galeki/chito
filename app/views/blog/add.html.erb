@@ -8,14 +8,14 @@
 <div id="reg">
 <%= form_for :new_user, :url => {:controller => "blog", :action => 'add'} do |f| %>
     <label for="user_name"><div><%= t(:message_2, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.text_field :name, :size => "14" %></label>
-    <%= error_message_on :new_user, :name %>
+    <%= error_message_on @new_user, :name %>
     <label for="user_name"><div><%= t(:message_3, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.text_field :nick, :size => "14" %></label>
-    <%= error_message_on :new_user, :nick %>
+    <%= error_message_on @new_user, :nick %>
     <label for="user_password"><div><%= t(:message_4, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.password_field :password, :size => "14" %></label>
-    <%= error_message_on :new_user, :password %>
+    <%= error_message_on @new_user, :password %>
     <label><div><%= t(:message_5, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.password_field :password_confirmation, :size => "14" %></label>
     <label for="user_email"><div>E-mail</div> <%= f.text_field :email, :size => "14" %></label>
-    <%= error_message_on :new_user, :email %>
+    <%= error_message_on @new_user, :email %>
     <label for="user_language"><div>Language</div> <%= f.select :language, LANGUAGES %></label>
     <br/>
     <%= show_simple_captcha :image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha") %>

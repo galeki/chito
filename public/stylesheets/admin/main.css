@@ -603,3 +603,12 @@ height: 40px;
 }
 td.checkbox input {border:0;background:transparent;}
 .button_to_link{width:20px;padding:5px;border:1px solid #bed569;color:#000;}
+#sortable_form_submit
+{
+   font-weight:bold; 
+    width: 96%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    border-bottom:1px solid #bed569;
+}

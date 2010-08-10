@@ -30,6 +30,15 @@ module ApplicationHelper
         end
     end
 
+    def error_message_on(object, method)
+        if (obj = (object.respond_to?(:errors) ? object : instance_variable_get("@#{object}"))) &&
+          (errors = obj.errors[method]).presence
+          content_tag(:div, errors.first, :class => 'formError')
+        else
+          ''
+        end
+    end    
+
     private
 
     def rewriter

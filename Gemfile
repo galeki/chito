@@ -14,7 +14,7 @@ gem 'rails', '3.0.0.rc'
  gem 'mysql2'
  #gem 'mysql'
  
-# gem 'mongrel', '1.2.0.pre2'
+ gem 'mongrel', '1.2.0.pre2'
 
  gem 'rmagick'
 

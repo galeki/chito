@@ -48,7 +48,7 @@ function sortable_serialize(config)
 }
 function form_serialize(form)
 {
-    return ( $('form').find('input').serialize());
+    return ( $(form).find('input').serialize());
 }
 function bars_config(form, config)
 {

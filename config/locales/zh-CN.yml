@@ -431,6 +431,8 @@ zh-CN:
           sidebar_settings: 边栏设置
           sidebar_layout_title: 边栏布局和标题
           save: 保存
+          save_layout: 保存当前布局
+          saving_layout: '保存中...'
           available_sidebars: 可用的边栏
           theme: 主题
           sidebar: 边栏
