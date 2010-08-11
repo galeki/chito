@@ -88,7 +88,7 @@ module PostsHelper
     end
 
     def post_content
-	arounder{ ("<div id='article_content'>" + @post.content.sub('<!--more-->','<a id="more"></a>') + "</div>").html_safe }
+	arounder{ ("<div id='article_content'>" + @post.content.to_s.sub('<!--more-->','<a id="more"></a>') + "</div>").html_safe }
     end
 
     def postbars

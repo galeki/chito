@@ -1,7 +1,6 @@
 require "digest/sha1"
 require 'RMagick'
 require 'simple-rss'
-require 'open-uri'
 require 'uuidtools'
 require 'cgi'
 class User < ActiveRecord::Base
@@ -197,6 +196,7 @@ class User < ActiveRecord::Base
     end
 
     def import_rss(url, import_category, category, import_comments, unescape_html)
+        require 'open-uri'
 	feed = SimpleRSS.parse(open(url).read)
 	feed.items.each do |item|
 	    article = self.articles.build

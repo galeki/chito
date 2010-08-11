@@ -10,7 +10,7 @@ module BlogControllerPlugin
   private
   def get_tag_cloud_before_blog_show
         if @user.show_tag_cloud && !sidebar_cache_enable(:tag_cloud)
-    	@tags = @user.posts.tag_counts
+    	    @tags = @user.posts.tag_counts
         end
   end
 end

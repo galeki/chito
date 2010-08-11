@@ -1,3 +1,33 @@
+[11 Jun 09]
+
+* Remove deprecated TagCountsExtension.
+
+* Update tests to use foxy fixtures [Jonas Wagner]
+
+* Allow hash conditions to be passed to Tag.counts [Jonas Wagner]
+
+[3 Jun 09]
+
+* Upgrade tests for Rails 2.3
+
+[18 Mar 09]
+
+* Change callbacks used to save tags.
+
+[18 Feb 09]
+
+* Greatly improve speed when using find_tagged_with and :match_all [notonthehighstreet.com].
+
+[17 Sep 08]
+
+* Sanitize scope conditions in find_options_for_tag_counts [Rémy-Christophe Schermesser]
+
+[23 Aug 08]
+
+* Fix tag_counts instance method when no tags are present.
+
+* Make tag_counts instance_method merge any :conditions passed to it.
+
 [30 Mar 08]
 
 * Make TagList.from accept array arguments.
