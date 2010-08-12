@@ -6,7 +6,7 @@ class Site < ActiveRecord::Base
     @@site = nil
 
     def self.instance
-	@@site ||= Site.find(:first, :order => "created_at")
+	@@site ||= Site.first
 	@@site
     end
 

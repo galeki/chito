@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'yaml'
+CHITO_CONFIG = YAML.load(File.read(File.expand_path('../chito_config.yml', __FILE__)))
+
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -13,7 +16,7 @@ module Chito
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    #config.autoload_paths += %W(#{Rails.root}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -42,10 +45,6 @@ module Chito
     config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")
     config.plugins = [ :chito_plugin, :all ]
     #config.action_controller.session_store = :memory_store
-    config.autoload_paths += %W(
-        vendor/simple-rss/lib
-    ).map {|dir| "#{Rails.root}/#{dir}"}.select { |dir| File.directory?(dir) } 
-
     
     config.action_view.sanitized_allowed_tags = %w(u strong em b i p code pre sub sup cite small address br div span ul ol li dt dd abbr acronym img blockquote)
     config.action_view.sanitized_allowed_attributes = %w(src alt cite title class style id)
