@@ -1,5 +1,6 @@
 var formSubmit = false;
 var index_list = {};
+var FCKeditorAPI = false;
 function remote_form(index)
 {
     var url = "/admin/remote_update";
@@ -121,8 +122,11 @@ function add_category_remote(category_name,token)
 }
 function update_field()
 {
-    var oEditor = FCKeditorAPI.GetInstance('article_content');
-    oEditor.UpdateLinkedField();
+    if(FCKeditorAPI)
+    {
+        var oEditor = FCKeditorAPI.GetInstance('article_content');
+        oEditor.UpdateLinkedField();
+    }
 }
 function change_list_by(e)
 {

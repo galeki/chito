@@ -1,11 +1,16 @@
-<%= javascript_include_tag "fckeditor/fckeditor" -%>
+<%= javascript_include_tag "ckeditor/ckeditor" -%>
 
 <%= text_area 'article', 'content' %>
+<style type="text/css">
+.cke_skin_kama .cke_button_wpmore span.cke_label{display:inline;}
+</style>
 <script type="text/javascript">
 //<![CDATA[
-var oFCKeditor = new FCKeditor('article_content', '100%', '600px');
-oFCKeditor.BasePath = "/javascripts/fckeditor/"
-oFCKeditor.Config['CustomConfigurationsPath'] = '../../fckcustom.js';
-oFCKeditor.ReplaceTextarea();
+CKEDITOR.replace('article_content',
+{
+    customConfig : '/javascripts/ckeditor.custom.js',
+    toobar: 'Basic'
+});
 //]]>
 </script>
+
