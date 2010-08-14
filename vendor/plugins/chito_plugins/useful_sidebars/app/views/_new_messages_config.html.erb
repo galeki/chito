@@ -1,5 +1,5 @@
 <%= remote_form do |f|%>
     <label><%=t("plugins.useful_sidebars.num_of_newmessages") %>: <%= f.text_field :new_messages_number, :size => '5'%></label>
-    <label><%= t("plugins.useful_sidebars.num_of_newmessages") %>: <%= f.text_field :new_messages_cut, :size => '5'%></label>
+    <label><%= t("plugins.useful_sidebars.maxlength_of_newmessages") %>: <%= f.text_field :new_messages_cut, :size => '5'%></label>
     <%= sidebar_expire_cache_field :new_messages %>    
 <% end %>

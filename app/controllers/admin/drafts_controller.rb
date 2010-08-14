@@ -18,10 +18,15 @@ class Admin::DraftsController <  Admin::ArticleBaseController
     def update
 	super
 	save_draft
-	unless_continue_edit do
-	    notice_stickie t(:draft_successfully_saved, :scope => [:txt, :controller, :admin, :drafts])
-	    redirect_to admin_drafts_path
-	end
+        respond_to do |format|
+	    format.html do
+	        unless_continue_edit do
+	            notice_stickie t(:draft_successfully_saved, :scope => [:txt, :controller, :admin, :drafts])
+	            redirect_to admin_drafts_path
+	        end
+            end
+            format.js { render :nothing => true}
+        end
     end
 
     def destroy

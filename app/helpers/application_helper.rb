@@ -24,7 +24,7 @@ module ApplicationHelper
 
     def jquery_ui_include_tag
 	if @site.use_external_jquery
-	    javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"
+	    javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"
         else
 	    javascript_include_tag "jquery-ui"
         end

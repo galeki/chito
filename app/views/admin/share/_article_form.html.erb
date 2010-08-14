@@ -98,7 +98,7 @@ jQuery('#article_form').delayedObserver(300, function(element, value) {
                      error:function(request){autosave_fail(autosave_fail_text);}, 
                      success:function(request){autosave_ok(autosave_ok_text);}, 
                      type:'post', 
-                     url:'<%= admin_draft_path(@article) %>'}); 
+                     url:'<%= admin_draft_path(@article, :format => "js") %>'}); 
     }
 });
 //]]>

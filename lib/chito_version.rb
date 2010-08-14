@@ -1,4 +1,4 @@
 # encoding: utf-8
 
-VER = "1.1.7 beta"
-LANGUAGES = [["English","en-US"], ["简体中文", "zh-CN"]]
+VER = "1.1.8 beta"
+LANGUAGES = [["简体中文(Simplified Chinese)", "zh-CN"], ["English","en-US"]]

@@ -24,7 +24,8 @@
   <% for field in @fields -%>
     <%= hidden_field_tag 'fields[]', field %>
   <% end -%>
-    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :sidebar]) %>" onclick='this.form.action += "?" + bars_config(this.form, <%= @fields.inspect %>);this.form.submit();return false;'
+    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :sidebar]) %>" 
+        onclick='this.form.action += "?" + sidebars_config(this.form, <%= @fields.inspect %>);this.form.submit();return false;'
 	style=""/>
 <% end %>
 </div>

@@ -5,6 +5,5 @@ require "chito_helper"
 require "chito_version"
 require "chito_routes"
 
-CHITO_CONFIG = YAML.load(File.read("#{Rails.root}/config/chito_config.yml"))
 # Initialize the rails application
 Chito::Application.initialize!

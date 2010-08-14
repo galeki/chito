@@ -5,7 +5,7 @@ function remote_form(index)
     var url = "/admin/remote_update";
     if(index >= 0)
         url += "?index_id=" + index;
-    //alert($('#remote_form').find('input').serialize() + $('#remote_form').find('textarea').serialize());
+
     $.post(url, $('#remote_form').find('input').serialize() + '&' + $('#remote_form').find('textarea').serialize()  , function(data)
     {
 	eval(data);
@@ -13,9 +13,7 @@ function remote_form(index)
 }
 function open_remote_form(options)
 {
-	//var url = this.href;
-        var dialog = $('<div style="display:hidden"></div>').appendTo('body');
-                        // load remote content
+        var dialog = $('<div></div>');
 	dialog.ajaxComplete(function() {                         
 			dialog.dialog( {  
 				modal: true,  
@@ -24,15 +22,18 @@ function open_remote_form(options)
 					    remote_form(options['index']);  
 					    $(this).html("");
 					    $(this).dialog("close");  
+                                            $(this).remove();
 				    },  
 				    "Cancel": function(){  
 					$(this).html("");
 					$(this).dialog("close");  
+                                        $(this).remove();
 				    }  
 				},
 				title: options['title'],
 				width: options['width']
-			})
+			});
+
 		});
         dialog.load(
                      options['url'], 
@@ -46,29 +47,25 @@ function sortable_serialize(config)
 {
     return $('#' + config).sortable('serialize',{key:(config + '[]'), expression:/^bar_(.*)$/});
 }
-function form_serialize(form)
-{
-    return ( $(form).find('input').serialize());
-}
-function bars_config(form, config)
+function sidebars_config(form, config)
 {
     var config_data = '' ;
     for(i=0; i<config.length; i++ )
 	config_data = config_data + '&' + sortable_serialize(config[i]) ;
-    return ( form_serialize(form) + config_data	);
+    return (config_data);
 }
 
 function navbars_config(form)
 {
-    return form_serialize(form) + '&' + sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    return sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
 }
 function postbars_config(form)
 {
-    return form_serialize(form) + '&' + sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    return sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
 }
 function filter_config(form)
 {
-    return form_serialize(form) + '&' + sortable_serialize("enable_filters") + '&' + sortable_serialize("disable_filters") ;
+    return sortable_serialize("enable_filters") + '&' + sortable_serialize("disable_filters") ;
 }
 function unload_form()
 {
@@ -214,7 +211,9 @@ function autosaving(text)
 function autosave_ok(text)
 {
    var now = new Date();
-   $("#article_autosave_notifier").html("<span id='autosave_ok'>" + text + " " + now.getHours() + ":" + now.getMinutes() +  "</span>");
+   var hours = (now.getHours() < 10 ? "0" + now.getHours() : now.getHours());
+   var mins = (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
+   $("#article_autosave_notifier").html("<span id='autosave_ok'>" + text + " " + hours + ":" + mins +  "</span>");
    $("#article_autosave_notifier").highlight({ startcolor: '#ffff00', endcolor: '#ffffff', duration: 10 });
 }
 function autosave_fail(text)
