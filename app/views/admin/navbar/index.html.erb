@@ -23,7 +23,8 @@
 	<br style="clear:both"/>
   </div>
 
-    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :navbar]) %>" onclick='this.form.action += "?" + navbars_config(this.form);this.form.submit();return false;'/>
+    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :navbar]) %>" 
+    onclick='navbars_config(this.form);this.form.submit();return false;'/>
 <% end %>
 </div>
 

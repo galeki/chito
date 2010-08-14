@@ -43,8 +43,29 @@ function open_remote_form(options)
                      }
                    );
 }
+function append_data_str_to_form(form, data_str)
+{
+    var pary = data_str.split('&');
+    for(i=0; i<pary.length; i++)
+    {
+        if(pary[i].length > 0)
+        {
+            var p = pary[i].split('=');
+            if(p.length == 2 && p[0].length > 0 && p[1].length > 0)
+            {
+                var hfield = document.createElement("input");
+                hfield.setAttribute("type", "hidden");
+                hfield.setAttribute("name", p[0]);
+                hfield.setAttribute("value", p[1]);
+
+                form.appendChild(hfield);
+            }
+        }
+    }
+}
 function sortable_serialize(config)
 {
+    
     return $('#' + config).sortable('serialize',{key:(config + '[]'), expression:/^bar_(.*)$/});
 }
 function sidebars_config(form, config)
@@ -52,20 +73,24 @@ function sidebars_config(form, config)
     var config_data = '' ;
     for(i=0; i<config.length; i++ )
 	config_data = config_data + '&' + sortable_serialize(config[i]) ;
-    return (config_data);
+
+    append_data_str_to_form(form, config_data);
 }
 
 function navbars_config(form)
 {
-    return sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    var config_data = sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    append_data_str_to_form(form, config_data);
 }
 function postbars_config(form)
 {
-    return sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    var config_data = sortable_serialize("enable") + '&' + sortable_serialize("disable") ;
+    append_data_str_to_form(form, config_data);
 }
 function filter_config(form)
 {
-    return sortable_serialize("enable_filters") + '&' + sortable_serialize("disable_filters") ;
+    var config_data = sortable_serialize("enable_filters") + '&' + sortable_serialize("disable_filters") ;
+    append_data_str_to_form(form, config_data);
 }
 function unload_form()
 {

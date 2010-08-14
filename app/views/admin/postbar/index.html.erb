@@ -24,7 +24,8 @@
 	<br style="clear:both"/>
   </div>
 
-    <input class="submit" type="button" value="<%= t(:message_5, :scope => [:txt, :view, :admin, :postbar]) %>" onclick='this.form.action += "?" + postbars_config(this.form);this.form.submit();return false;'/>
+    <input class="submit" type="button" value="<%= t(:message_5, :scope => [:txt, :view, :admin, :postbar]) %>" 
+    onclick='postbars_config(this.form);this.form.submit();return false;'/>
 <% end %>
 </div>
 
