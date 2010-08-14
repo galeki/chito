@@ -2,7 +2,7 @@
     <ul>
 		    <li><%= link_to t(:articles, :scope => [:txt, :view, :admin, :_sub_menu_for_index]), admin_index_path(@index), :id => "_indices_show" %></li>
 		    <li><%= link_to t(:settings, :scope => [:txt, :view, :admin, :_sub_menu_for_index]), settings_admin_index_path(@index), :id => "_indices_settings" %></li>
-                    <li><%= link_to t(:jumpto, :scope => [:txt, :view, :admin, :_sub_menu_for_index]), "http://"+@index.bind_domain, :target => '_blank' %></li>
+                    <li><%= link_to t(:jumpto, :scope => [:txt, :view, :admin, :_sub_menu_for_index]), "http://"+@index.bind_domain+request.port_string, :target => '_blank' %></li>
     </ul>
 </div>
 <%= select_admin_menu("index_index_#{@index.id}") %>
