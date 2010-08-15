@@ -147,6 +147,9 @@ zh-CN:
           file_too_large: 文件大小必须小于 {{size}}M
           no_space: 文件储存空间已满
           file_must_be_img: 文件必须是图片
+          no_file: 请选择文件
+          no_dir_name: 请输入目录名称
+          dir_exist: 目录已经存在
     helper: 
       posts: 
         message_0: 继续阅读
@@ -243,6 +246,9 @@ zh-CN:
           manage_files: 管理文件
           file: 文件
           image: 图片
+          create_dir: 创建目录
+          upload_file: 上传文件 
+          input_dir_name: 请输入新建目录名称
         groups: 
           manage_groups: 管理组
           name: 组名

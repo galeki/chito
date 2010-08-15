@@ -1,6 +1,10 @@
 <div id="file_list_top">
-<div id="space_info"><%=t(:used, :scope => [:txt, :view, :admin, :files]) %> <%= @precent.round(1) %>% | <%= @used_space.round(1) %>M/<%= @user.get_group.space %>M</div><style>#used_space{width:<%= @precent.round(1) %>%;}</style>
+
+<div id="space_info">
+<%=t(:used, :scope => [:txt, :view, :admin, :files]) %> <%= @precent.round(1) %>% | <%= @used_space.round(1) %>M/<%= @user.get_group.space %>M</div>
+<style>#used_space{width:<%= @precent.round(1) %>%;}</style>
 <div id="space_bar"><div id="used_space"></div></div>
+
 <div id="folder_info">
 <span class="file_info_type">
 <% if @type == 'File'-%>
@@ -12,11 +16,39 @@
 <% end -%>
 </span>
 <span class="file_info_folder"><%= @folder %></span>
+
 <span id='in_pro' style='margin-left:20px;color:#06f;display:none;'><%=t(:loading, :scope => [:txt, :view, :admin, :files])  %> <img src='/images/inprogress.gif' /></span>
-<span id='delete_flash'><%= flash[:notice] %></span>
 </div>
+
 </div>
 <table id="file_table" class="sofT" cellspacing="0">
+    <tr>
+	    <td class="file_size_col" colspan="4" style="text-align:right;">
+                <%= form_tag url_for(:action => 'create_dir', :folder => params[:folder], :type => params[:type], :editor => params[:editor], :format => "js"),  
+                        :remote => true, :style => 'float:right;padding:5px 15px 0px 0px' do |f| -%>
+                    <%= hidden_field_tag :dir %>
+                    <%= submit_tag t(:create_dir, :scope => [:txt, :view, :admin, :files]), :id => "dir_submit"%>
+                <% end -%>
+                <script type="text/javascript">
+                //<![CDATA[
+                    $('#dir_submit').click(function(){
+                        $('#dir').val(
+                            window.prompt('<%= t(:input_dir_name, :scope => [:txt, :view, :admin, :files]) %>')
+                        );
+                        if($('#dir').val())
+                        {
+                            $('#in_pro').show();
+                            $(this).form.submit();
+                        }
+                        return false;
+                    });
+                //]]>
+                </script>
+                <iframe id="upload_iframe" src="<%= url_for :action => "create_file_iframe", :folder => @folder, :type => params[:type], :editor => params[:editor] %>" 
+                frameborder="0" allowtransparency="1" style="height:2.2em;width:270px;margin:0;padding:5px 0px 0px 0px;overflow:hidden;">
+                </iframe>
+            </td>
+    </tr>
     <% unless @folder.blank? or @folder =~ /^\/$/-%>
     <tr>
 	    <td class="file_pic_col"><%= link_to_files (image_tag 'up-folder.png'), :type => @type, :folder => File.dirname(@folder) %></td>

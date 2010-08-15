@@ -612,3 +612,9 @@ td.checkbox input {border:0;background:transparent;}
     margin-left: 2%;
     border-bottom:1px solid #bed569;
 }
+#upload_file{
+    float:right;
+}
+.file_action_col{
+    width:8em;
+}

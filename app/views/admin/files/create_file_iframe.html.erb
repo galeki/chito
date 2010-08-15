@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<%= stylesheet_link_tag 'admin/main' %>
+<%= stylesheet_link_tag "admin/#{@user.admin_style || 'green'}" %>
+<%= jquery_include_tag %>
+<%= jquery_ui_include_tag %>
+<%= javascript_include_tag "jquery.rails.js" %>
+<%= javascript_include_tag "jrails.js" %>
+<%= javascript_include_tag "admin" -%>
+<%= csrf_meta_tag %>
+<title><%= "#{@folder}" %></title>
+</head>
+<body>
+    <%= form_tag url_for(:action => 'create_file_iframe', :folder => params[:folder], :type => params[:type], :editor => params[:editor]), :multipart => true do |f| -%>
+        <%= file_field_tag :upload %>
+        <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
+    <% end -%>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        <% if @error_message -%>
+            window.parent.alert("<%= @error_message %>");
+        <% elsif @new_file_url -%>
+            window.parent.$('#file_list').html("<%= escape_javascript(render :partial => "list.html") %>");
+        <% end -%>
+    //]]>
+    </script>
+</body>
+</html>

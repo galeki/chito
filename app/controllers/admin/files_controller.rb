@@ -2,7 +2,7 @@ require 'fileutils'
 require 'RMagick'	
 class Admin::FilesController < Admin::BaseController
     before_filter :get_path
-    before_filter :get_user_limit, :only => [:create_file]
+    before_filter :get_user_limit, :only => [:create_file, :create_file_iframe]
 
   def index
     get_files
@@ -17,9 +17,19 @@ class Admin::FilesController < Admin::BaseController
     end
   end
 
+  def create_file_iframe
+    if request.post?
+        create_file
+        get_files
+    end
+    render :layout => false
+  end
+
   def create_file
     @new_file = params[:upload]
-    if params[:type] == "Image" && !is_img(@new_file)
+    if @new_file.nil?
+        @error_message = t(:no_file, :scope => [:txt, :controller, :admin, :files])
+    elsif params[:type] == "Image" && !is_img(@new_file)
         @error_message = t(:file_must_be_img, :scope => [:txt, :controller, :admin, :files])
     elsif @new_file.length > @file_size_limit.megabytes
         @error_message = t(:file_too_large, :scope => [:txt, :controller, :admin, :files], :size => @file_size_limit)
@@ -41,6 +51,16 @@ class Admin::FilesController < Admin::BaseController
   end
 
   def create_dir
+    @new_dir = params[:dir]
+    new_dir_path = File.join(@path, @new_dir.to_s)
+    if @new_dir.blank?
+        @error_message = t(:no_dir_name, :scope => [:txt, :controller, :admin, :files])
+    elsif File.exist?(new_dir_path)
+        @error_message = t(:dir_exist, :scope => [:txt, :controller, :admin, :files])
+    else
+       Dir.mkdir(new_dir_path,0775) 
+    end
+    get_files
   end
 
   def delete_file

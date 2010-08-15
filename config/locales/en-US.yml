@@ -147,6 +147,9 @@ en-US:
           file_too_large: File size must smaller than {{size}}M
           no_space: Your file space is full
           file_must_be_img: File must be image
+          no_file: Please select file
+          no_dir_name: Please input dir name
+          dir_exist: Dir already exists
     helper: 
       posts: 
         message_0: Read more
@@ -243,6 +246,9 @@ en-US:
           manage_files: Manage Files
           file: File
           image: Image
+          create_dir: Create Dir
+          upload_file: Upload 
+          input_dir_name: Please input dir name
         groups: 
           manage_groups: Manage Groups
           name: Name

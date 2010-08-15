@@ -21,16 +21,15 @@ CKEDITOR.editorConfig = function(config) {
 
 	config.toolbar_Full = [
 			['Source'],
-			['Cut','Copy','Paste','PasteText','PasteFromWord','-','SpellChecker', 'Scayt'],
-			['Undo','Redo','Find','Replace','-','SelectAll','RemoveFormat'],
-			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],
-			'/',
 			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+			['Undo','Redo','Find'],
+			['Image'],['Flash','Table','HorizontalRule','Smiley','SpecialChar'],
+			['NumberedList','BulletedList'],
 			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
 			['Link','Unlink','Anchor'],
 			'/',
 			['Format','Font','FontSize'],
+                        ['Outdent','Indent','Blockquote'],
 			['TextColor','BGColor'],
 			['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter'],['LatexFormula']
 		 ];

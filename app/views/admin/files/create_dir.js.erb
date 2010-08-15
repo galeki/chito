@@ -1,0 +1,5 @@
+<% if @error_message -%>
+    alert('<%= @error_message %>');
+<% else -%>
+    $('#file_list').html("<%= escape_javascript(render :partial => "list.html") %>");
+<% end -%>

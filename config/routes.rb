@@ -135,6 +135,8 @@ Chito::Application.routes.draw do
     resources :files do
         collection do
             get :list
+            get :create_file_iframe
+            post :create_file_iframe
             delete :delete_file
             delete :delete_dir
             post :create_file
