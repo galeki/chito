@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<%= stylesheet_link_tag 'admin/main', 'admin/smoothness/jquery-ui' %>
+<%= stylesheet_link_tag "admin/#{@user.admin_style || 'green'}" %>
+<%= jquery_include_tag %>
+<%= jquery_ui_include_tag %>
+<%= javascript_include_tag "jquery.rails.js" %>
+<%= javascript_include_tag "jrails.js" %>
+<%= javascript_include_tag "admin" -%>
+<%= csrf_meta_tag %>
+<title><%= "#{@folder}" %></title>
+    <script type="text/javascript">
+    //<![CDATA[
+    // http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    
+    var CKEditorFuncNum = getUrlVars()["CKEditorFuncNum"];
+    var CKEditorName = getUrlVars()["CKEditor"];
+    var CKEDITOR = window.opener.CKEDITOR;
+    var editor = CKEDITOR.instances[CKEditorName];
+    //]]>
+    </script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="links_container">
+      <div id="notifier_wrap"><div id="notifier"></div></div>
+    </div>
+    <div id="content" style="overflow-y:auto;">
+        <div id="file_list">
+	    <%= yield %>
+        </div>
+    </div>
+    <div id="footer">
+      <%= footer %> | <a href="http://www.dcarter.co.uk">design by dcarter</a>
+    </div>
+  </div>
+</body>
+</html>

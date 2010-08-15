@@ -37,9 +37,9 @@
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="file_pic_col">
 	    <% if file[:thumbnail] -%>
-		<%= image_tag file[:thumbnail], :alt => file[:name] %>
+		<%= image_tag file[:thumbnail], :alt => file[:name], :class => "image_entry", :title => file[:url] %>
 	    <% else -%>
-		<%= image_tag 'file.png' %>
+		<%= image_tag 'file.png', :class => "file_entry" %>
 	    <% end -%>
 	    </td>
 	    <td class="file_name_col">
@@ -50,3 +50,17 @@
     </tr>
     <% end -%>	
 </table>
+
+<% if params[:editor] -%>
+    <script type="text/javascript">
+    //<![CDATA[
+        $(".image_entry").each(function(){
+            $(this).click(function(){
+                var url = $(this).attr('title'); 
+                CKEDITOR.tools.callFunction(CKEditorFuncNum, url);
+                window.close();
+            });
+        });
+    //]]>
+    </script>
+<% end -%>

@@ -32,12 +32,24 @@ CKEDITOR.editorConfig = function(config) {
 			'/',
 			['Format','Font','FontSize'],
 			['TextColor','BGColor'],
-			['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter']
+			['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter'],['LatexFormula']
 		 ];
+        config.contentsCss = "/javascripts/ckeditor_plugins/contents.css";
+
+        config.filebrowserBrowseUrl = "/admin/files/list?type=File&editor=1";
+        config.filebrowserImageBrowseUrl = "/admin/files/list?type=Image&editor=1";
+        config.filebrowserUploadUrl = "/admin/files/create_file?type=File&editor=1";
+        config.filebrowserImageUploadUrl = "/admin/files/create_file?type=Image&editor=1";
+
+        config.filebrowserWindowWidth = "640";
+        config.filebrowserWindowHeight = "480";
+        config.filebrowserImageWindowWidth = "640";
+        config.filebrowserImageWindowHeight = "480";
 	// mediaembed plugin
 	// config.extraPlugins += (config.extraPlugins ? ',mediaembed' : 'mediaembed' );
 	// CKEDITOR.plugins.addExternal('mediaembed', ckeditorSettings.pluginPath + 'plugins/mediaembed/');
-        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter' : 'wpmore,syntaxhighlighter' );
+        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter,latexformula' : 'wpmore,syntaxhighlighter,latexformula' );
         CKEDITOR.plugins.addExternal('wpmore',  '/javascripts/ckeditor_plugins/wpmore/');
         CKEDITOR.plugins.addExternal('syntaxhighlighter',  '/javascripts/ckeditor_plugins/syntaxhighlighter/');
+        CKEDITOR.plugins.addExternal('latexformula',  '/javascripts/ckeditor_plugins/latexformula/');
 };

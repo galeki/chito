@@ -143,6 +143,10 @@ en-US:
           no_such_user: No such user
           avatar_uploaded: Avatar uploaded successfully
           avatar_format_error: Avatar must be a picture and less than 200KB
+        files:
+          file_too_large: File size must smaller than {{size}}M
+          no_space: Your file space is full
+          file_must_be_img: File must be image
     helper: 
       posts: 
         message_0: Read more

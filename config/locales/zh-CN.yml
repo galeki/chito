@@ -143,6 +143,10 @@ zh-CN:
           no_such_user: 此用户不存在
           avatar_uploaded: 图标上传成功
           avatar_format_error: 图标必须是小于 200K 的图片
+        files:
+          file_too_large: 文件大小必须小于 {{size}}M
+          no_space: 文件储存空间已满
+          file_must_be_img: 文件必须是图片
     helper: 
       posts: 
         message_0: 继续阅读

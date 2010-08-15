@@ -137,6 +137,8 @@ Chito::Application.routes.draw do
             get :list
             delete :delete_file
             delete :delete_dir
+            post :create_file
+            post :create_dir
         end
     end
       
@@ -158,9 +160,6 @@ Chito::Application.routes.draw do
 
   end
 
-  match 'fckeditor/check_spelling' => 'fckeditor#check_spelling'
-  match 'fckeditor/command' => 'fckeditor#command'
-  match 'fckeditor/upload' => 'fckeditor#upload'
   match '/latex_formula/make_png' => 'latex_formula#make_png'
 
   match '/add' => 'blog#add'
