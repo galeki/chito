@@ -1,6 +1,5 @@
 var formSubmit = false;
 var index_list = {};
-var FCKeditorAPI = false;
 function remote_form(index)
 {
     var url = "/admin/remote_update";
@@ -122,11 +121,7 @@ function add_category_remote(category_name,token)
 }
 function update_field()
 {
-    if(FCKeditorAPI)
-    {
-        var oEditor = FCKeditorAPI.GetInstance('article_content');
-        oEditor.UpdateLinkedField();
-    }
+    CKEDITOR.instances['article_content'].updateElement();
 }
 function change_list_by(e)
 {
@@ -189,11 +184,7 @@ function select_menu(main_menu_id, controller)
 }
 function article_content_not_blank()
 {
-    if(FCKeditorAPI)
-    {
-	var oEditor = FCKeditorAPI.GetInstance('article_content');
-	oEditor.UpdateLinkedField();
-    }
+    update_field();
     var article_content = "not blank";
     var e = document.getElementById('article_content');
     if(e)

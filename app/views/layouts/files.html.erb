@@ -4,7 +4,6 @@
 <%= stylesheet_link_tag 'admin/main' %>
 <%= stylesheet_link_tag "admin/#{@user.admin_style || 'green'}" %>
 <%= jquery_include_tag %>
-<%= jquery_ui_include_tag %>
 <%= javascript_include_tag "jquery.rails.js" %>
 <%= javascript_include_tag "jrails.js" %>
 <%= javascript_include_tag "admin" -%>
@@ -33,19 +32,15 @@
     //]]>
     </script>
 </head>
-
+<style>
+#file_table{font-size:small;}
+</style>
 <body>
-  <div id="main">
-    <div id="links_container">
-      <div id="notifier_wrap"><div id="notifier"></div></div>
-    </div>
-    <div id="content" style="overflow:scroll;">
-        <div id="file_list">
+  <div style="margin:0 0 0 8%;padding:0;height:400px;overflow:scroll;">
+    <div style="">
+        <div id="file_list" style="padding:0;font-size:12px;">
 	    <%= yield %>
         </div>
-    </div>
-    <div id="footer">
-      <%= footer %> | <a href="http://www.dcarter.co.uk">design by dcarter</a>
     </div>
   </div>
 </body>

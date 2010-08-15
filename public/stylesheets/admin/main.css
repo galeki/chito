@@ -616,5 +616,7 @@ td.checkbox input {border:0;background:transparent;}
     float:right;
 }
 .file_action_col{
-    width:8em;
+    width:7em;
+}
+input#upload{
 }

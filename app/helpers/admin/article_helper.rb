@@ -8,12 +8,12 @@ module Admin::ArticleHelper
 	elsif @article.mode && respond_to?("#{@article.mode}_edit_mode")
 	    send("#{@article.mode}_edit_mode")
 	else
-	    fck_editor
+	    ck_editor
 	end
     end
 
-    def fck_editor
-	render :partial => 'admin/share/fck'
+    def ck_editor
+	render :partial => 'admin/share/ck'
     end
     
     def edit_modes

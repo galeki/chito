@@ -77,14 +77,11 @@ $("#trackbacks").val("");
 
 function update_article_content()
 {
-    if(FCKeditorAPI)
-    {
-	var oEditor = FCKeditorAPI.GetInstance('article_content');
-	oEditor.UpdateLinkedField();
-    }
+    update_field();
+    $('#article_content').trigger('keyup');
 }
 
-setInterval( update_article_content, 9000);
+setInterval( update_article_content, 30000);
 //]]>
 </script>
 <script type="text/javascript">

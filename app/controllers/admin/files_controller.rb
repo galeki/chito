@@ -42,6 +42,7 @@ class Admin::FilesController < Admin::BaseController
             file_name = File.basename(file_name, ".*") + "_" + Time.now.strftime("%Y%m%d%H%M%S") + File.extname(file_name)
             new_file_path =  File.join(@path, file_name)
         end
+        check_path(new_file_path)
         File.open(new_file_path,"wb",0664) do |fp|
           FileUtils.copy_stream(@new_file, fp)
         end
@@ -58,7 +59,8 @@ class Admin::FilesController < Admin::BaseController
     elsif File.exist?(new_dir_path)
         @error_message = t(:dir_exist, :scope => [:txt, :controller, :admin, :files])
     else
-       Dir.mkdir(new_dir_path,0775) 
+        check_path(new_dir_path)
+        Dir.mkdir(new_dir_path,0775) 
     end
     get_files
   end
@@ -85,12 +87,16 @@ class Admin::FilesController < Admin::BaseController
     new_file.content_type =~ /^image/
   end
 
+  def check_path(path)
+    raise "Access denied" unless File.expand_path(path).start_with?(@user.base_dir)
+  end
+
   def get_path
     @type = params[:type] || "Image"
     @folder = params[:folder] || ""
     @name = params[:name] || ""
     @path = File.join @user.base_dir, @type, @folder, @name
-    raise "Access denied" unless File.expand_path(@path).start_with?(@user.base_dir)
+    check_path(@path)
   end
 
   def file_info(entry, path)

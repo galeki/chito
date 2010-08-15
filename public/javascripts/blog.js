@@ -1,7 +1,3 @@
-var post_show = false;
-var insert = false;
-var g_user_name, g_time, g_id, g_text;
-var FCKeditorAPI = null;
 function set_cookie(name, value)
 {
     var theCookie = name + "=" + encodeURIComponent(value);
@@ -12,37 +8,11 @@ function change_list_by(e)
     var url = e.options[e.selectedIndex].value;
     location.replace(url);
 }
-function insert_cite(user_name, time, id, text)
-{
-    if(!post_show)
-    {
-	g_user_name = user_name;
-	g_time = time;
-	g_id = id;
-	g_text = text;
-	insert = true;
-	show_editor();
-    }else
-	 _insert_cite(user_name, time, id, text)
-}
-function _insert_cite(user_name, time, id, text)
-{
-    if(!post_show)
-	show_editor();
-    var cite_info = document.getElementById(id).innerHTML;
-    var cite = "<div class='cite_box'><div class='cite_header'>" + text  + 
-    "<a>" + user_name + "</a>" +
-    " @ " + "<small>" + time + "</small>" +
-    "</div>" + cite_info + "</div>";
-    var oEditor = FCKeditorAPI.GetInstance('comment_content');
-    oEditor.InsertHtml(cite);
-}
 function clean_field()
 {
-    if(FCKeditorAPI)
+    if(CKEDITOR.instances['comment_content'])
     {
-	var oEditor = FCKeditorAPI.GetInstance('comment_content');
-	oEditor.SetHTML("");
+        CKEDITOR.instances['comment_content'].setData("");
     }else
     {
 	var e = document.getElementById('comment_content');
@@ -51,12 +21,7 @@ function clean_field()
 }
 function update_field()
 {
-    if(FCKeditorAPI)
-    {
-	var oEditor = FCKeditorAPI.GetInstance('comment_content');
-	oEditor.UpdateLinkedField();
-    }
-    
+    CKEDITOR.instances['comment_content'].updateElement();
 }
 function show_editor()
 {
@@ -64,11 +29,13 @@ function show_editor()
     e0.style.display="none";
     var e1 = document.getElementById('comment_mode');
     e1.value = "html";
-    var oFCKeditor = new FCKeditor('comment_content', '90%', '250px', 'Basic');
-    oFCKeditor.BasePath = "/javascripts/fckeditor/"
-    oFCKeditor.Config['CustomConfigurationsPath'] = '../../fckcustom.js';
-    oFCKeditor.ReplaceTextarea();
-    post_show = true;
+
+    CKEDITOR.replace('comment_content',
+    {
+        customConfig : '/javascripts/ckeditor.custom.js',
+        height : '100',
+        toolbar : 'Basic'
+    });
 }
 function FCKeditor_OnComplete( editorInstance )
 {
@@ -101,11 +68,11 @@ function reply_to(s, id){
     var content;
     if(s){
 	content = "@" + s + ": ";
-	if(FCKeditorAPI){
-	    var oEditor = FCKeditorAPI.GetInstance('comment_content');
-	    if(oEditor.GetHtml != "")
+	if(CKEDITOR.instances['comment_content']){
+	    var oEditor = CKEDITOR.instances['comment_content'];
+	    if(oEditor.getData != "")
 		content = "<br/>" + content;
-	    oEditor.InsertHtml(content);
+	    oEditor.insertHtml(content);
 	}else{
 	    var e = document.getElementById('comment_content');
 	    if(e)
