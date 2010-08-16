@@ -3,7 +3,10 @@
 Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
-
+var SYNTAX_LABEL = {};
+SYNTAX_LABEL['zh-cn'] = "高亮代码";
+SYNTAX_LABEL['en'] = "SyntaxHighlighter";
+SYNTAX_LABEL['default'] = "SyntaxHighlighter";
 CKEDITOR.plugins.add( 'syntaxhighlighter',
 {
 	requires: [ 'iframedialog' ],
@@ -58,8 +61,8 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                         
                                         html += ">" + code_text + "</pre>";
 
-	                                document.getElementById('iframeSyntaxHighlighter').contentWindow.set_form_cookie();
 	                                editor.insertHtml(html);
+	                                document.getElementById('iframeSyntaxHighlighter').contentWindow.set_form_cookie();
 				}
 			};
 		});
@@ -68,7 +71,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
 		// Register the toolbar buttons.
 		editor.ui.addButton( 'SyntaxHighlighter',
 			{
-				label : 'SyntaxHighlighter',
+				label : (SYNTAX_LABEL[editor.langCode] || SYNTAX_LABEL['default']),
 				icon : this.path + 'toolbar.png',
 				command : 'syntaxhighlighter'
 			});

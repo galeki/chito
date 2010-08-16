@@ -3,6 +3,10 @@
 Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
+var LATEX_LABEL = {};
+LATEX_LABEL['zh-cn'] = "Tex 数学公式";
+LATEX_LABEL['en'] = "Tex Formula";
+LATEX_LABEL['default'] = "Tex Formula";
 
 CKEDITOR.plugins.add( 'latexformula',
 {
@@ -49,7 +53,7 @@ CKEDITOR.plugins.add( 'latexformula',
 		// Register the toolbar buttons.
 		editor.ui.addButton( 'LatexFormula',
 			{
-				label : 'LatexFormula',
+				label : (LATEX_LABEL[editor.langCode] || LATEX_LABEL['default']),
 				icon : this.path + 'toolbar.gif',
 				command : 'latexformula'
 			});

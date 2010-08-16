@@ -3,8 +3,12 @@
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta content="noindex, nofollow" name="robots">
-		<script language="text/javascript">
-//<![CDATA[
+                <script src="/javascripts/jquery.js" type="text/javascript"></script>
+                <script src="/javascripts/ckeditor_plugins/common.js" type="text/javascript"></script>
+                <script src="./locales/locales.js" type="text/javascript"></script>
+                
+	</head>
+		<script language="javascript">
 function set_cookie(name, value)
 {
     var theCookie = name + "=" + encodeURIComponent(value);
@@ -36,13 +40,13 @@ function set_form()
     if(val)
 	form[name].value = val;
 }
-//]]>
+$(document).ready(_trans_all);
+$(document).ready(set_form);
 </script>
-	</head>
 	<body scroll="no" style="OVERFLOW: hidden;font-size:12px;">
 	<div style="">
 	<form id="f2" name="f2" onsubmit="return false;">
-	    <label><span fckLang="SyntaxHighlighterLang">Language: </span></label>
+	    <label><span class="trans_rq" trans_id="SyntaxHighlighterLang">Language: </span></label>
 		<select name="slang" id="slang">
 				<option value="actionscript3">ActionScript3</option>
 				<option value="asm">ASM</option>
@@ -75,22 +79,21 @@ function set_form()
 				<option value="xml">XML/HTML</option>
 				<option value="yaml">YAML</option>
 		</select>
-            <label><span fckLang="SyntaxHighlighterLine">First line number:</span><input name="first_line_number" id="fln" type="text" size="8" /></label>
+            <label><span class="trans_rq" trans_id="SyntaxHighlighterLine">First line number:</span><input name="first_line_number" id="fln" type="text" size="8" /></label>
             <br/>
-            <label><span fckLang="SyntaxHighlighterCodeTitle">Title:</span><input name="code_title" id="c_t" type="text" size="30" /></label>
-            <label><input name="code_collapse" id="c_c" type="checkbox" /><span fckLang="SyntaxHighlighterCollapse">Collapse</span></label>
+            <label><span class="trans_rq" trans_id="SyntaxHighlighterCodeTitle">Title:</span><input name="code_title" id="c_t" type="text" size="30" /></label>
+            <label><input name="code_collapse" id="c_c" type="checkbox" /><span class="trans_rq" trans_id="SyntaxHighlighterCollapse">Collapse</span></label>
 	    <br/>
 	    <br/>
-    	    <label style="text-align:left;"><span fckLang="SyntaxHighlighterCode">Code: </span></label> <br/>
+    	    <label style="text-align:left;"><span class="trans_rq" trans_id="SyntaxHighlighterCode">Code: </span></label> <br/>
 	    <div style="text-align:center;margin-top:10px;">
 		<textarea name="code" id="code" style="width:95%;height:80%;font-family: 'bitstream vera sans mono',monaco,'lucida console','courier new',courier,serif;"></textarea>
 		<br/>
-		<span fckLang="SyntaxHighlighterTip1">Dont forget to enable SyntaxHighlighter in Chito plugins settings.</span>
+		<span class="trans_rq" trans_id="SyntaxHighlighterTip1">Dont forget to enable SyntaxHighlighter in Chito plugins settings.</span>
 		<br/>
-		<span fckLang="SyntaxHighlighterTip2">And the highlighted code will show when your post is loaded.</span>
+		<span class="trans_rq" trans_id="SyntaxHighlighterTip2">And the highlighted code will show when your post is loaded.</span>
 	    </div>
 	</form>
 	</div>
-<script type="text/javascript">set_form();</script>
 	</body>
 </html>

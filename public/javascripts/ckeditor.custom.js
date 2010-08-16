@@ -17,7 +17,7 @@ CKEDITOR.editorConfig = function(config) {
 	// Define toolbars, you can remove or add buttons.
 	// List of all buttons is here: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full
 
-	config.toolbar_Basic = [ [ 'Bold', 'Italic', '-', 'NumberedList','BulletedList', '-', 'Link', 'Unlink', 'Image' ] ];
+	config.toolbar_Basic = [ [ 'Bold', 'Italic', '-', 'NumberedList','BulletedList', '-', 'Link', 'Unlink'], ['Smiley'] ];
 
 	config.toolbar_Full = [
 			['Source'],
