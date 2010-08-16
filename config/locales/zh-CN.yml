@@ -249,6 +249,8 @@ zh-CN:
           create_dir: 创建目录
           upload_file: 上传文件 
           input_dir_name: 请输入新建目录名称
+          insert: 插入
+          ctime: 创建日期
         groups: 
           manage_groups: 管理组
           name: 组名

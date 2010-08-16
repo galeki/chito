@@ -104,6 +104,7 @@ class Admin::FilesController < Admin::BaseController
     info[:size] = (File.size(path)/1024).to_num(1)
     info[:name] = entry
     info[:url] = get_url_from_path(path)
+    info[:ctime] = File.ctime(path)
     if entry =~ /\.(jpg|gif|png|jpeg)$/i
         info[:is_pic] = true
         info[:thumbnail] = get_thumbnail(entry, path)

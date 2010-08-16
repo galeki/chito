@@ -62,7 +62,17 @@
 	    <td class="file_pic_col"><%= image_tag 'folder.png' %></td>
 	    <td class="file_name_col"><%= link_to_files folder, :type => @type, :folder => File.join(@folder, folder) %></td>
 	    <td class="file_size_col"></td>
-	    <td class="file_action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :class => "delete" %></td>
+            <% if in_editor? -%>
+	        <td class="file_action_col">
+                </td>
+            <% else -%>
+	        <td class="file_action_col delete">
+                    <%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), 
+                                {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , 
+                                :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", 
+                                :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :class => "delete" %>
+                </td>
+            <% end -%>
     </tr>
     <% end -%>
     <% for file in @files -%>
@@ -75,24 +85,28 @@
 	    <% end -%>
 	    </td>
 	    <td class="file_name_col">
-	    <%= link_to file[:name], file[:url], :target => '_blank', :title => t(:download, :scope => [:txt, :view, :admin, :files]) %>
+	        <%= link_to file[:name], file[:url], :target => '_blank', :title => t(:download, :scope => [:txt, :view, :admin, :files]) %>
+                <div class="file_ctime_text" title="<%= t(:ctime, :scope => [:txt, :view, :admin, :files]) %>">@<%= file[:ctime].to_s(:db_short) %></div>
 	    </td>
-	    <td class="file_size_col"><%= file[:size] %>KB</td>
-	    <td class="file_action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :class => "delete"  %></td>
+	    <td class="file_size_col">
+                <%= file[:size] %>KB
+            </td>
+            <% if in_editor? -%>
+	        <td class="file_action_col">
+                    <%= link_to t(:insert, :scope => [:txt, :view, :admin, :files]), "#",
+                                :onclick => "CKEDITOR.tools.callFunction(CKEditorFuncNum, '#{file[:url]}');window.close();return false;",
+                                :title => t(:insert, :scope => [:txt, :view, :admin, :files]), :class => "insert"
+                                %>
+            </td>
+            <% else -%>
+	        <td class="file_action_col delete">
+                    <%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), 
+                            {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, 
+                                :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", 
+                                :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :class => "delete"  %>
+                </td>
+            <% end -%>
     </tr>
     <% end -%>	
 </table>
 
-<% if params[:editor] -%>
-    <script type="text/javascript">
-    //<![CDATA[
-        $(".image_entry").each(function(){
-            $(this).click(function(){
-                var url = $(this).attr('title'); 
-                CKEDITOR.tools.callFunction(CKEditorFuncNum, url);
-                window.close();
-            });
-        });
-    //]]>
-    </script>
-<% end -%>

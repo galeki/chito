@@ -439,6 +439,11 @@ a.delete{
     background: url(/images/delete.gif) no-repeat left center;
     padding-left: 22px;
 }
+a.insert{    
+    background: url(/images/pass.gif) no-repeat left center;
+    padding-left: 22px;
+    font-weight:bold;
+}
 a.post_comments{    
     background: url(/images/post_comment.gif) no-repeat left center;
     padding-left: 16px;
@@ -619,4 +624,9 @@ td.checkbox input {border:0;background:transparent;}
     width:7em;
 }
 input#upload{
+}
+.file_ctime_text{
+    color:#aaa;
+    margin-top:3px;
+    font-size: xx-small;
 }

@@ -249,6 +249,8 @@ en-US:
           create_dir: Create Dir
           upload_file: Upload 
           input_dir_name: Please input dir name
+          insert: Insert
+          ctime: Upload time
         groups: 
           manage_groups: Manage Groups
           name: Name

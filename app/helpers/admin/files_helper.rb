@@ -5,4 +5,7 @@ module Admin::FilesHelper
 			     :method => :get, :remote => true, :onclick => "$('#in_pro').show();"
     end
 
+    def in_editor?
+        params[:editor] || params[:CKEditorFuncNum]
+    end
 end
