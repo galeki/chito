@@ -17,36 +17,57 @@
 </span>
 <span class="file_info_folder"><%= @folder %></span>
 
-<span id='in_pro' style='margin-left:20px;color:#06f;display:none;'><%=t(:loading, :scope => [:txt, :view, :admin, :files])  %> <img src='/images/inprogress.gif' /></span>
+<span id='in_pro' style='margin-left:20px;color:#06f;display:none;'><img src='/images/inprogress.gif' /></span>
 </div>
 
 </div>
 <table id="file_table" class="sofT" cellspacing="0">
     <tr>
-	    <td class="file_size_col" colspan="4" style="text-align:right;">
-                <%= form_tag url_for(:action => 'create_dir', :folder => params[:folder], :type => params[:type], :editor => params[:editor], :format => "js"),  
-                        :remote => true, :style => 'float:right;padding:5px 15px 0px 0px' do |f| -%>
-                    <%= hidden_field_tag :dir %>
-                    <%= submit_tag t(:create_dir, :scope => [:txt, :view, :admin, :files]), :id => "dir_submit"%>
-                <% end -%>
+            <td class="file_pic_col">
+               <%= t(:sort_by, :scope => [:txt, :view, :admin, :files]) %>
+               <select id="sort_by" name="sort_by">
+                    <option value="name" selected="selected"><%= t(:name, :scope => [:txt, :view, :admin, :files]) %></option>
+                    <option value="ctime"><%= t(:ctime, :scope => [:txt, :view, :admin, :files]) %></option>
+               </select>
                 <script type="text/javascript">
                 //<![CDATA[
-                    $('#dir_submit').click(function(){
-                        $('#dir').val(
-                            window.prompt('<%= t(:input_dir_name, :scope => [:txt, :view, :admin, :files]) %>')
-                        );
-                        if($('#dir').val())
-                        {
-                            $('#in_pro').show();
-                            $(this).form.submit();
-                        }
-                        return false;
-                    });
+                   $('#sort_by').change(function(){
+                       $('#in_pro').show();
+                       $.get('<%= list_admin_files_path(:folder => @folder, :type => params[:type], :editor => params[:editor]) %>', 
+                                {'sort_by': $(this).val()}, function(data){
+                                    eval(data);
+                                });
+                                
+                        });
+                        <% if @sort_by -%>
+                            $('#sort_by option[value=<%= @sort_by %>]').attr('selected', 'selected');
+                        <% end -%>
+                        
                 //]]>
                 </script>
+            </td>
+	    <td class="file_size_col" colspan="2" style="text-align:right;">
                 <iframe id="upload_iframe" src="<%= url_for :action => "create_file_iframe", :folder => @folder, :type => params[:type], :editor => params[:editor] %>" 
-                frameborder="0" allowtransparency="1" style="height:2.2em;width:270px;margin:0;padding:5px 0px 0px 0px;overflow:hidden;">
+                frameborder="0" allowtransparency="1">
                 </iframe>
+            </td>
+            <td class="file_action_col">
+                        <%= submit_tag t(:create_dir, :scope => [:txt, :view, :admin, :files]), :id => "dir_submit"%>
+                    <script type="text/javascript">
+                    //<![CDATA[
+                        $('#dir_submit').click(function(){
+                            var dir_str = window.prompt('<%= t(:input_dir_name, :scope => [:txt, :view, :admin, :files]) %>', "");
+                            if(dir_str)
+                            {
+                                $('#in_pro').show();
+                                $.post('<%= url_for(:action => 'create_dir', :folder => params[:folder], :type => params[:type], :editor => params[:editor], :format => "js") %>',
+                                        {'dir' : dir_str}, function(data){
+                                        });
+                            }
+                            return false;
+                        });
+                    //]]>
+                    </script>
             </td>
     </tr>
     <% unless @folder.blank? or @folder =~ /^\/$/-%>
@@ -60,7 +81,10 @@
     <% for folder in @folders -%>
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="file_pic_col"><%= image_tag 'folder.png' %></td>
-	    <td class="file_name_col"><%= link_to_files folder, :type => @type, :folder => File.join(@folder, folder) %></td>
+	    <td class="file_name_col">
+                <%= link_to_files folder[:name], :type => @type, :folder => File.join(@folder, folder[:name]) %>
+                <div class="file_ctime_text" title="<%= t(:ctime, :scope => [:txt, :view, :admin, :files]) %>">@<%= folder[:ctime].to_s(:db_short) %></div>
+            </td>
 	    <td class="file_size_col"></td>
             <% if in_editor? -%>
 	        <td class="file_action_col">
@@ -68,9 +92,9 @@
             <% else -%>
 	        <td class="file_action_col delete">
                     <%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), 
-                                {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder} , 
+                                {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder[:name]} , 
                                 :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", 
-                                :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder), :class => "delete" %>
+                                :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder[:name]), :class => "delete" %>
                 </td>
             <% end -%>
     </tr>

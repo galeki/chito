@@ -150,6 +150,8 @@ zh-CN:
           no_file: 请选择文件
           no_dir_name: 请输入目录名称
           dir_exist: 目录已经存在
+          upload_success: 上传成功！
+          create_dir_success: 目录创建成功！
     helper: 
       posts: 
         message_0: 继续阅读
@@ -194,8 +196,8 @@ zh-CN:
           message_7: 提交
           input_captcha: (输入验证码)
         guestbook: 
-          message_0: "{{user}} 的留言簿"
-          message_1: 给 {{user}} 留言
+          message_0: "%{user} 的留言簿"
+          message_1: 给 %{user} 留言
         login: 
           message_0: 登录
           message_1: 用户名
@@ -251,6 +253,8 @@ zh-CN:
           input_dir_name: 请输入新建目录名称
           insert: 插入
           ctime: 创建日期
+          name: 名称
+          sort_by: '排序: '
         groups: 
           manage_groups: 管理组
           name: 组名

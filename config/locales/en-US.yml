@@ -150,6 +150,8 @@ en-US:
           no_file: Please select file
           no_dir_name: Please input dir name
           dir_exist: Dir already exists
+          upload_success: Upload Success!
+          create_dir_success: Dir created!
     helper: 
       posts: 
         message_0: Read more
@@ -251,6 +253,8 @@ en-US:
           input_dir_name: Please input dir name
           insert: Insert
           ctime: Upload time
+          name: Name
+          sort_by: 'Sort by:'
         groups: 
           manage_groups: Manage Groups
           name: Name

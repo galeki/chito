@@ -5,11 +5,11 @@ class Admin::FilesController < Admin::BaseController
     before_filter :get_user_limit, :only => [:create_file, :create_file_iframe]
 
   def index
-    get_files
+    get_files(:sort_by => "name")
   end
 
   def list
-    get_files
+    get_files(:sort_by => params[:sort_by])
     if params[:editor]
         render :template => 'admin/files/_list', :layout => 'files'
     else
@@ -20,7 +20,8 @@ class Admin::FilesController < Admin::BaseController
   def create_file_iframe
     if request.post?
         create_file
-        get_files
+        get_files(:sort_by => "ctime")
+        @notice_message = t(:upload_success, :scope => [:txt, :controller, :admin, :files]) unless @error_message
     end
     render :layout => false
   end
@@ -61,8 +62,9 @@ class Admin::FilesController < Admin::BaseController
     else
         check_path(new_dir_path)
         Dir.mkdir(new_dir_path,0775) 
+        @notice_message = t(:create_dir_success, :scope => [:txt, :controller, :admin, :files])
     end
-    get_files
+    get_files(:sort_by => "ctime")
   end
 
   def delete_file
@@ -112,6 +114,13 @@ class Admin::FilesController < Admin::BaseController
     info
   end
 
+  def dir_info(entry, path)
+    info = {}
+    info[:name] = entry
+    info[:ctime] = File.ctime(path)
+    info
+  end
+
   def get_thumbnail(entry, path)
     thumb_dir = File.join(File.dirname(path), '.thumbnail')
     Dir.mkdir(thumb_dir) unless File.exist?(thumb_dir)
@@ -133,7 +142,7 @@ class Admin::FilesController < Admin::BaseController
       end
   end
 
-  def get_files
+  def get_files(options={})
     @folders = []
     @files = []
     @used_space = @user.used_space/1024.0
@@ -142,8 +151,13 @@ class Admin::FilesController < Admin::BaseController
     Dir.entries(@path).each do |entry|
         next if entry =~ /^\./
         path = @path + entry
-        @folders.push entry if FileTest.directory?(path)
+        @folders.push file_info(entry, path) if FileTest.directory?(path)
         @files.push file_info(entry, path) if FileTest.file?(path)
+    end
+    if options[:sort_by] == "ctime"
+        @sort_by = "ctime"
+        @folders = @folders.sort_by {|f| f[:ctime]}.reverse
+        @files = @files.sort_by {|f| f[:ctime]}.reverse
     end
   end
 

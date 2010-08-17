@@ -624,9 +624,18 @@ td.checkbox input {border:0;background:transparent;}
     width:7em;
 }
 input#upload{
+    display:inline;
+    width:220px;
 }
 .file_ctime_text{
     color:#aaa;
     margin-top:3px;
     font-size: xx-small;
+}
+#upload_iframe{
+    height:2.5em;
+    width:500px
+    margin:0;
+    padding:5px 0px 0px 0px;
+    overflow:hidden;
 }
