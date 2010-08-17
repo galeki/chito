@@ -6,6 +6,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 /**
  * @file Plugin for inserting Drupal teaser and page breaks.
  */
+var WPMORE_COFIRME = {};
+WPMORE_COFIRME['zh-cn'] = "文档中已经插入了一个 more 标记，删除并插入新标记吗？";
+WPMORE_COFIRME['en'] = 'The document already contains a more. Do you want to proceed by removing it first?';
+WPMORE_COFIRME['default'] = 'The document already contains a more. Do you want to proceed by removing it first?';
 CKEDITOR.plugins.add( 'wpmore',
 {
   requires  : [ 'fakeobjects', 'htmldataprocessor' ],
@@ -50,7 +54,7 @@ CKEDITOR.plugins.add( 'wpmore',
           var img = images.getItem( i );
           if ( img.hasClass( 'cke_wordpress_more' ) )
           {
-            if ( confirm( 'The document already contains a more. Do you want to proceed by removing it first?' ) )
+            if ( confirm( WPMORE_COFIRME[editor.langCode] || WPMORE_COFIRME['default'] ) )
             {
               img.remove();
               break;
