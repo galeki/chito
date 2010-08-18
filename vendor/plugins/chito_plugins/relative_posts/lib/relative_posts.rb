@@ -21,8 +21,13 @@ module ApplicationPlugin
 	def get_relative_posts_before_post_show
 	    if @post
 		tag_list = @post.tag_list * ","
-		@relative_posts = @user.posts.where("articles.id != ?", @post.id).tagged_with(tag_list, :any => true).limit(@user.local_relative_posts_num.to_num(5)).order('created_at desc')
-		@global_relative_posts = Article.where("articles.bit_opt = 0 and articles.user_id != ?", @post.user_id).tagged_with(tag_list, :any => true).limit(@user.global_relative_posts_num.to_num(5)).order('created_at desc')
+                if tag_list.blank?
+                    @relative_posts = []
+                    @global_relative_posts = []
+                else
+		    @relative_posts = @user.posts.where("articles.id != ?", @post.id).tagged_with(tag_list, :any => true).limit(@user.local_relative_posts_num.to_num(5)).order('created_at desc')
+		    @global_relative_posts = Article.where("articles.bit_opt = 0 and articles.user_id != ?", @post.user_id).tagged_with(tag_list, :any => true).limit(@user.global_relative_posts_num.to_num(5)).order('created_at desc')
+                end
 	    end
 	end
 
