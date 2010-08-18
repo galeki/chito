@@ -36,7 +36,7 @@ en-US:
     close: Close
     mail:
         comment_notifier:
-            email_title: "{{post}} has a new comment"
+            email_title: "%{post} has a new comment"
             new_comment: has a new comment.
             writer: Writer
             post_at: post at
@@ -62,13 +62,13 @@ en-US:
       site: 
         message_0: Unkown request.
       posts: 
-        cancel_comment_notifier: Comment notifier of {{title}} was successfully canceled.
-        no_comment_notifier: You had already canceled the comment notifier of {{title}}.
+        cancel_comment_notifier: Comment notifier of %{title} was successfully canceled.
+        no_comment_notifier: You had already canceled the comment notifier of %{title}.
       pages: 
         message_0: Page not found.
       admin:
         articles:
-          draft_saved: Draft was successfully saved at {{time}}
+          draft_saved: Draft was successfully saved at %{time}
         posts:
           post_successfully_deleted: Post was successfully deleted
           posts_successfully_deleted: Posts were successfully deleted
@@ -129,7 +129,7 @@ en-US:
         site:
           config_updated: Site config was successfully updated
           config_not_save: Site config could not be saved
-          no_user: "The user {{user}} doesn't exist."
+          no_user: "The user %{user} doesn't exist."
         groups:
           group_deleted: Group was successfully deleted
           no_delete: "'Admin' and 'Default' groups should not be deleted"
@@ -144,7 +144,7 @@ en-US:
           avatar_uploaded: Avatar uploaded successfully
           avatar_format_error: Avatar must be a picture and less than 200KB
         files:
-          file_too_large: File size must smaller than {{size}}M
+          file_too_large: File size must smaller than %{size}M
           no_space: Your file space is full
           file_must_be_img: File must be image
           no_file: Please select file
@@ -161,7 +161,7 @@ en-US:
         message_5: Next post
         no_title: "- No Title -"
       comments:
-          reply_to: Reply to {{user}}
+          reply_to: Reply to %{user}
           reply: "[Reply]"
     view: 
       messages: 
@@ -196,8 +196,8 @@ en-US:
           message_7: Submit
           input_captcha: (type the code from the image)
         guestbook: 
-          message_0: "{{user}}'s guestbook"
-          message_1: Leave a message to {{user}}
+          message_0: "%{user}'s guestbook"
+          message_1: Leave a message to %{user}
         login: 
           message_0: Login
           message_1: Username
@@ -241,10 +241,10 @@ en-US:
           up: Up
           loading: Londing
           delete: " Delete"
-          delete_folder?: Delete folder {{folder}} ?
+          delete_folder?: Delete folder %{folder} ?
           download: Download
           used: Used
-          delete_file?: Delete file {{file}} ?
+          delete_file?: Delete file %{file} ?
           manage_files: Manage Files
           file: File
           image: Image
@@ -265,10 +265,10 @@ en-US:
           delete: Delete
           saving_text: Saving
           click_to_edit_text: Click to edit
-          delete_category?: Delete category {{name}} ?
+          delete_category?: Delete category %{name} ?
           save_text: Save
           cancel_text: Cancel
-          delete_group?: Delete group {{group}} ?
+          delete_group?: Delete group %{group} ?
         indices:
           manage_indices: Manage Indices
           title: Index title
@@ -277,14 +277,14 @@ en-US:
           theme: Theme
           managers: Managers
           delete: Delete
-          delete_index?: Delete index {{index}} ?
+          delete_index?: Delete index %{index} ?
           add: Add
           remove: Remove
         comments: 
           manage_comments: Manage Comments
           search_for: Search for
           search: Search
-          comments_contain: Comments contain {{words}}
+          comments_contain: Comments contain %{words}
           writer: Writer
           time: Time
           brief: Brief
@@ -304,7 +304,7 @@ en-US:
           manage_messages: Manage Messages
           search_for: Search for
           search: Search
-          messages_contain: Messages contain {{keyword}}
+          messages_contain: Messages contain %{keyword}
           writer: Writer
           time: Time
           brief: Brief
@@ -319,7 +319,7 @@ en-US:
           manage_trackbacks: Manage Trackbacks
           search_for: Search for
           search: Search
-          trackbacks_contain: Trackbacks contain {{keyword}}
+          trackbacks_contain: Trackbacks contain %{keyword}
           writer: Writer
           time: Time
           brief: Brief
@@ -357,10 +357,10 @@ en-US:
           no_spam: No Spam
         dashboard: 
           message_0: Administration
-          message_1: "Posts: {{posts_size}}"
-          message_2: "Drafts: {{drafts_size}}"
-          message_3: "Comments: {{comments_size}}"
-          message_4: "Messages: {{messages_size}}"
+          message_1: "Posts: %{posts_size}"
+          message_2: "Drafts: %{drafts_size}"
+          message_3: "Comments: %{comments_size}"
+          message_4: "Messages: %{messages_size}"
           message_5: Write new post
           message_6: Manage your posts
           message_7: Update your profile
@@ -415,13 +415,13 @@ en-US:
           delete: Delete
           saving_text: Saving
           click_to_edit_text: Click to edit
-          delete_category?: Delete category {{name}} ?
+          delete_category?: Delete category %{name} ?
           save_text: Save
           cancel_text: Cancel
           manage_categories: Manage Categories
-          categories_position_updated: Category positions updated at {{time}}
+          categories_position_updated: Category positions updated at %{time}
         links: 
-          links_position_updated: Link positions updated at {{time}}
+          links_position_updated: Link positions updated at %{time}
           saving: Saving
           create_link: Add Link
           name: Name
@@ -433,7 +433,7 @@ en-US:
           delete: Delete
           saving_text: Saving
           click_to_edit_text: Click to edit
-          delete_link?: Delete link {{link}} ?
+          delete_link?: Delete link %{link} ?
           save_text: Save
           cancel_text: Cancel
           manage_links: Manage Links
@@ -473,7 +473,7 @@ en-US:
           enable_trackback: Enable trackback
           paginate: Paginate
           posts_pre_page: Posts pre page
-          default: Default {{num}}
+          default: Default %{num}
           rss: RSS
           full: Full
           brief: Brief
@@ -564,10 +564,10 @@ en-US:
           domain: Domain
           group: Group
           delete: Delete
-          delete_user?: Delete user {{user}} ?
+          delete_user?: Delete user %{user} ?
           saving_text: Saving
           click_to_edit_text: Click to edit
-          delete_category?: Delete category {{name}} ?
+          delete_category?: Delete category %{name} ?
           save_text: Save
           cancel_text: Cancel
           set: Set
@@ -588,29 +588,29 @@ en-US:
           view: View
           edit: Edit
           delete: Delete
-          delete_post: Delete {{title}} ?
+          delete_post: Delete %{title} ?
           all: All
         drafts:
-          delete_draft?: Delete {{title}} ?
+          delete_draft?: Delete %{title} ?
           edit_draft: Edit draft
         pages: 
-          delete_page?: Delete {{title}} ?
+          delete_page?: Delete %{title} ?
           permalink: Permalink
           edit_page: Edit page
           enable_frontpage: Set as Fontpage
           cancel_frontpage: Cancel Fontpage
         _sub_menu_for_compose: 
           message_0: Post
-          message_1: Post [{{mode}}]
+          message_1: Post [%{mode}]
         themes:
           theme_settings: Theme settings
           use: Use
         themesettings:
-          no_theme_settings: Current Theme {{theme}} has no settings.
+          no_theme_settings: Current Theme %{theme} has no settings.
         feedbacks:
           manage_feedbacks: Manage Feedbacks
           delete_feedback?: Delete this feedback?
-          feedback_contain: Feedbacks contains {{word}}
+          feedback_contain: Feedbacks contains %{word}
           no_match: No Match
         articles:
           manage_articles: Manage Posts
@@ -660,7 +660,7 @@ en-US:
         admin: 
           message_8: Appearance
           message_9: Settings
-          message_0: "{{user}}'s Administration"
+          message_0: "%{user}'s Administration"
           message_1: Return to Blog
           message_2: Logout
           message_10: Plugins

@@ -36,7 +36,7 @@ zh-CN:
     close: 关闭
     mail:
         comment_notifier:
-            email_title: "{{post}} 有了新评论"
+            email_title: "%{post} 有了新评论"
             new_comment: 有一条新评论
             writer: 作者
             post_at: 发表于
@@ -62,13 +62,13 @@ zh-CN:
       site: 
         message_0: 未知的请求。
       posts: 
-        cancel_comment_notifier: 成功取消 {{title}} 的评论邮件提醒。
-        no_comment_notifier: 你已经取消了 {{title}} 的评论邮件提醒。
+        cancel_comment_notifier: 成功取消 %{title} 的评论邮件提醒。
+        no_comment_notifier: 你已经取消了 %{title} 的评论邮件提醒。
       pages: 
         message_0: 页面未找到。
       admin:
         articles:
-          draft_saved: 草稿成功保存于 {{time}}
+          draft_saved: 草稿成功保存于 %{time}
         posts:
           post_successfully_deleted: 文章删除成功
           posts_successfully_deleted: 文章删除成功
@@ -129,7 +129,7 @@ zh-CN:
         site:
           config_updated: 网站设置更新成功
           config_not_save: 网站设置保存失败
-          no_user: "用户 {{user}} 不存在"
+          no_user: "用户 %{user} 不存在"
         groups:
           group_deleted: 用户组删除成功
           no_delete: "'Admin' 和 'Default' 组是不能删除的"
@@ -144,7 +144,7 @@ zh-CN:
           avatar_uploaded: 图标上传成功
           avatar_format_error: 图标必须是小于 200K 的图片
         files:
-          file_too_large: 文件大小必须小于 {{size}}M
+          file_too_large: 文件大小必须小于 %{size}M
           no_space: 文件储存空间已满
           file_must_be_img: 文件必须是图片
           no_file: 请选择文件
@@ -161,7 +161,7 @@ zh-CN:
         message_5: 下一篇
         no_title: "- 未命名 -"
       comments:
-        reply_to: 回复 {{user}}
+        reply_to: 回复 %{user}
         reply: "[回复]"
     view: 
       messages: 
@@ -241,10 +241,10 @@ zh-CN:
           up: 向上
           loading: 载入中……
           delete: " 删除"
-          delete_folder?: 删除文件夹 {{folder}} ?
+          delete_folder?: 删除文件夹 %{folder} ?
           download: 下载
           used: 已使用
-          delete_file?: 删除文件 {{file}} ?
+          delete_file?: 删除文件 %{file} ?
           manage_files: 管理文件
           file: 文件
           image: 图片
@@ -265,10 +265,10 @@ zh-CN:
           delete: 删除
           saving_text: 保存中…
           click_to_edit_text: 点击修改
-          delete_category?: 删除分类 {{name}} ?
+          delete_category?: 删除分类 %{name} ?
           save_text: 保存
           cancel_text: 取消
-          delete_group?: 删除用户组 {{group}} ?
+          delete_group?: 删除用户组 %{group} ?
         indices:
           manage_indices: 管理索引
           title: 索引名称
@@ -277,14 +277,14 @@ zh-CN:
           theme: 主题
           managers: 管理者
           delete: 删除
-          delete_index?: 删除索引 {{index}} ?
+          delete_index?: 删除索引 %{index} ?
           add: 加入
           remove: 删除
         comments: 
           manage_comments: 管理评论
           search_for: 搜索
           search: 搜索
-          comments_contain: 含有 {{words}} 的评论
+          comments_contain: 含有 %{words} 的评论
           writer: 作者
           time: 时间
           brief: 摘要
@@ -304,7 +304,7 @@ zh-CN:
           manage_messages: 管理留言
           search_for: 搜索
           search: 搜索
-          messages_contain: 含有 {{keyword}} 的留言
+          messages_contain: 含有 %{keyword} 的留言
           writer: 作者
           time: 时间
           brief: 摘要
@@ -319,7 +319,7 @@ zh-CN:
           manage_trackbacks: 管理 Trackback
           search_for: 搜索
           search: 搜索
-          trackbacks_contain: 含有 {{keyword}} 的 Trackback
+          trackbacks_contain: 含有 %{keyword} 的 Trackback
           writer: 作者
           time: 时间
           brief: 摘要
@@ -357,10 +357,10 @@ zh-CN:
           no_spam: 没有 Spam
         dashboard: 
           message_0: 工作台
-          message_1: "文章: {{posts_size}}"
-          message_2: "草稿: {{drafts_size}}"
-          message_3: "评论: {{comments_size}}"
-          message_4: "留言: {{messages_size}}"
+          message_1: "文章: %{posts_size}"
+          message_2: "草稿: %{drafts_size}"
+          message_3: "评论: %{comments_size}"
+          message_4: "留言: %{messages_size}"
           message_5: 撰写新文章
           message_6: 管理你的文章
           message_7: 更新你的信息
@@ -415,13 +415,13 @@ zh-CN:
           delete: 删除
           saving_text: 保存中
           click_to_edit_text: 点击编辑
-          delete_category?: 删除分类 {{name}} ?
+          delete_category?: 删除分类 %{name} ?
           save_text: 保存
           cancel_text: 取消
           manage_categories: 管理评论
-          categories_position_updated: 分类位置于 {{time}} 更新成功
+          categories_position_updated: 分类位置于 %{time} 更新成功
         links: 
-          links_position_updated: 链接位置于 {{time}} 更新成功
+          links_position_updated: 链接位置于 %{time} 更新成功
           saving: 保存中
           create_link: 添加链接
           name: 名称
@@ -433,7 +433,7 @@ zh-CN:
           delete: 删除
           saving_text: 保存中
           click_to_edit_text: 点击编辑
-          delete_link?: 删除友情链接 {{link}} ?
+          delete_link?: 删除友情链接 %{link} ?
           save_text: 保存
           cancel_text: 取消
           manage_links: 管理友情链接
@@ -473,7 +473,7 @@ zh-CN:
           enable_trackback: 接受 Trackback
           paginate: 分页
           posts_pre_page: 每页文章数量
-          default: 默认为 {{num}}
+          default: 默认为 %{num}
           rss: RSS
           full: 全文
           brief: 摘要
@@ -564,7 +564,7 @@ zh-CN:
           domain: 域名
           group: 用户组
           delete: 删除
-          delete_user?: 删除用户 {{user}} ?
+          delete_user?: 删除用户 %{user} ?
           saving_text: 保存中
           click_to_edit_text: 点击编辑
           save_text: 保存
@@ -587,29 +587,29 @@ zh-CN:
           view: 查看
           edit: 编辑
           delete: 删除
-          delete_post: 删除 {{title}} ?
+          delete_post: 删除 %{title} ?
           all: 全部
         drafts:
-          delete_draft?: 删除 {{title}} ?
+          delete_draft?: 删除 %{title} ?
           edit_draft: 编辑草稿
         pages: 
-          delete_page?: 删除 {{title}} ?
+          delete_page?: 删除 %{title} ?
           permalink: 永久链接
           edit_page: 编辑页面
           enable_frontpage: 设为首页
           cancel_frontpage: 取消首页
         _sub_menu_for_compose: 
           message_0: 文章
-          message_1: 位置 [{{mode}}]
+          message_1: 位置 [%{mode}]
         themes:
           theme_settings: 主题设置
           use: 设置
         themesettings:
-          no_theme_settings: 当前主题 {{theme}} 没有设置信息。
+          no_theme_settings: 当前主题 %{theme} 没有设置信息。
         feedbacks:
           manage_feedbacks: 管理反馈 
           delete_feedback?: 删除这条反馈？
-          feedback_contain: 含有 {{word}} 的反馈
+          feedback_contain: 含有 %{word} 的反馈
           no_match: 没有找到反馈
         articles:
           manage_articles: 管理文章
@@ -659,7 +659,7 @@ zh-CN:
         admin: 
           message_8: 外观
           message_9: 设置
-          message_0: "{{user}} 的工作台"
+          message_0: "%{user} 的工作台"
           message_1: 返回 Blog
           message_2: 登出
           message_10: 插件
