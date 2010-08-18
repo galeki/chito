@@ -1,6 +1,6 @@
 class UserTheme
     PATH = File.expand_path(File.join(Rails.root, "themes", "user"))
-    PUBLIC_PATH =  File.expand_path(File.join(Rails.root, "public", "themes"))
+    PUBLIC_PATH =  File.expand_path(File.join(Rails.root, "public", "themes", "user"))
     LIST = Dir[PATH + "/*"].map{|t| File.basename(t)}.sort
     COPIED = {}
 

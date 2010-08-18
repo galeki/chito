@@ -18,17 +18,17 @@ class Index < ActiveRecord::Base
     end
 
     def public_path
-        File.join Rails.root, "public/index", self.id.to_s
+        File.join Rails.root, "public/user_files/_index", self.id.to_s
     end
 
     def avatar=(file)
-	Dir.mkdir(self.public_path) unless File.exists?(self.public_path)  
+	FileUtils.makedirs(self.public_path) unless File.exists?(self.public_path)  
 	File.open(File.join(self.public_path, "avatar.png"), "wb") do |f| 
 	    f.write(file.read)
 	end
     end
 
     def avatar_url
-        "/index/#{self.id}/avatar.png"
+        "/user_files/_index/#{self.id}/avatar.png"
     end
 end

@@ -176,8 +176,8 @@ Chito::Application.routes.draw do
   match '/site.:format' => 'blog#index', :as => :site
   match '/setup' => 'site#setup'
   match '/pages/:id/:seo_title.:format' => 'pages#show'
-  match '/themes/:theme/*anything' => 'theme#user_theme_file'
-  match '/index/themes/:theme/*anything' => 'theme#index_theme_file'
+  match '/themes/user/:theme/*anything' => 'theme#user_theme_file'
+  match '/themes/index/:theme/*anything' => 'theme#index_theme_file'
   match '/plugins/:plugin/*anything' => 'plugin#file'
   match '/admin' => 'admin/dashboard#index', :as => :admin
   match '/admin/logout' => 'admin/dashboard#logout'
