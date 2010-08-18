@@ -1,5 +1,5 @@
 module ApplicationHelper
-    include TagsHelper
+    include ActsAsTaggableOn::TagsHelper
     include ApplicationHelperPlugin
 
     def render_flash(options={})

@@ -19,6 +19,8 @@ gem 'rails', '3.0.0.rc'
  gem 'rmagick'
 
  gem "will_paginate", "~> 3.0.pre2"
+ gem 'acts-as-taggable-on'
+ 
  gem 'uuidtools', '>= 2.1.1'
  gem 'simple-rss'
 # Deploy with Capistrano
