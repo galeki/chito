@@ -103,7 +103,7 @@ class BlogController < ApplicationController
     if File.exists?("#{@user.base_dir}/config/favicon.ico")
 	send_file "#{@user.base_dir}/config/favicon.ico", :type => 'image/x-icon', :disposition => 'inline'
     else
-	render :text => "No Favicon"
+	render :text => "No Favicon", :status => 404
     end
   end
 

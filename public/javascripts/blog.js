@@ -21,7 +21,8 @@ function clean_field()
 }
 function update_field()
 {
-    CKEDITOR.instances['comment_content'].updateElement();
+    if(CKEDITOR.instances['comment_content'])
+        CKEDITOR.instances['comment_content'].updateElement();
 }
 function show_editor()
 {

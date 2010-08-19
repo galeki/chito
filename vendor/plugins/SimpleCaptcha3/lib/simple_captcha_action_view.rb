@@ -109,9 +109,9 @@ module SimpleCaptcha #:nodoc
       value = ''
       case code
       when 'numeric'
-        6.times{value << (48 + rand(10)).chr}
+        4.times{value << (48 + rand(10)).chr}
       else
-        6.times{value << (65 + rand(26)).chr}
+        4.times{value << (65 + rand(26)).chr}
       end
       return value
     end

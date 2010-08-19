@@ -129,8 +129,10 @@ class ApplicationController < ActionController::Base
 	get_user
 	get_locale
 	get_theme
-	get_sidebars
-	get_navbars
+        if_html do
+	    get_sidebars
+	    get_navbars
+        end
 	get_title
 	do_something :before_blog_show
     end
@@ -146,40 +148,32 @@ class ApplicationController < ActionController::Base
     end
 
     def get_sidebars
-	if_html do 
-	    Sidebar.user = @user
-	    @all_bars = Sidebar.sidebars
-	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
-	end
+	Sidebar.user = @user
+	@all_bars = Sidebar.sidebars
+	@enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
     end
 
     def get_index_sidebars
-        if_html do 
-	    IndexSidebar.user = @index
-	    @all_bars = IndexSidebar.index_sidebars
-	    @enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
-        end
+	IndexSidebar.user = @index
+	@all_bars = IndexSidebar.index_sidebars
+	@enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
     end
 
     def get_postbars
-	if_html do 
-	    Postbar.user = @user
-	    @all_postbars = Postbar.postbars
-	    @enable_postbars = @all_postbars.select{|b| b.show?}.sort_by{|b| b.position}
-	end
+	Postbar.user = @user
+	@all_postbars = Postbar.postbars
+	@enable_postbars = @all_postbars.select{|b| b.show?}.sort_by{|b| b.position}
     end
 
     def get_navbars
-	if_html do 
-	    Navbar.user = @user
-	    @navbars = Navbar.navbars.dup
-	    @pages = @user.pages
-	    @pages.each do |p|
-		navbar = Navbar.new(p)
-		@navbars << navbar
-	    end
-	    @enable_navbars = @navbars.select{|n| n.show?}.sort_by{|n| n.position}
+	Navbar.user = @user
+	@navbars = Navbar.navbars.dup
+	@pages = @user.pages
+	@pages.each do |p|
+	    navbar = Navbar.new(p)
+	    @navbars << navbar
 	end
+	@enable_navbars = @navbars.select{|n| n.show?}.sort_by{|n| n.position}
     end
     
     def get_comment_filters
