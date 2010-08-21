@@ -17,5 +17,6 @@ class Admin::SysteminfoController < Admin::BaseController
     @rails_info << {"Rails version" => Rails.version}
     @rails_info << {"Application root" => Rails.root.to_s}
     @rails_info << {"Rails environment" => Rails.env}
+    @rails_info << {"Bundle list" => %x[bundle list]}
   end
 end

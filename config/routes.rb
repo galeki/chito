@@ -181,6 +181,7 @@ Chito::Application.routes.draw do
   match '/plugins/:plugin/*anything' => 'plugin#file'
   match '/admin' => 'admin/dashboard#index', :as => :admin
   match '/admin/logout' => 'admin/dashboard#logout'
+  match '/admin/dashboardbar_position' => 'admin/dashboard#dashboardbar_position'
   match '/admin/plugins/(:plugin_id)' => 'admin/plugins#index'
   match '/admin/plugin_config/:plugin_id' => 'admin/plugins#plugin'
   match '/admin/remote_form/:plugin/:view' => 'admin/plugins#remote_form'

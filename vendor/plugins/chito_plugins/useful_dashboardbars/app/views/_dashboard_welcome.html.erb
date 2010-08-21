@@ -1,0 +1,20 @@
+    <table id="index_table">
+	<tr>
+	    <td><%= link_to t(:message_5, :scope => [:txt, :view, :admin, :dashboard]), new_admin_post_path, :class => :index_action %></td>
+	    <td class="ainfo"><%=t(:write_new_post, :scope => [:txt, :view, :admin, :dashboard])  %></td>
+	</tr>
+	<tr>
+	    <td><%= link_to t(:message_6, :scope => [:txt, :view, :admin, :dashboard]), admin_posts_path, :class => :index_action   %></td>
+	    <td class="ainfo"><%=t(:manage_posts, :scope => [:txt, :view, :admin, :dashboard])  %></td>
+	</tr>
+	<tr>
+	    <td><%= link_to t(:message_7, :scope => [:txt, :view, :admin, :dashboard]), {:controller => "settings", :action => 'info'}, :class => :index_action  %></td>
+	    <td class="ainfo"><%=t(:change_profile, :scope => [:txt, :view, :admin, :dashboard])  %></td>
+	</tr>
+	<% unless @site.single_user? || @user.find_talks.empty? -%>
+	<tr>
+	    <td><%= link_to t(:see_talks, :scope => [:txt, :view, :admin, :dashboard]), {:controller => "talks"}, :class => :index_action  %></td>
+	    <td class="ainfo"><%=t(:see_the_talks, :scope => [:txt, :view, :admin, :dashboard])  %></td>
+	</tr>
+	<% end -%>
+    </table>

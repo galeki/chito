@@ -159,6 +159,13 @@ class ApplicationController < ActionController::Base
 	@enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
     end
 
+    def get_dashboardbars
+	Dashboardbar.user = @user
+	@all_bars = Dashboardbar.dashboardbars
+	@enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
+        @disable_bars = @all_bars.reject {|b| b.show?}
+    end
+
     def get_postbars
 	Postbar.user = @user
 	@all_postbars = Postbar.postbars

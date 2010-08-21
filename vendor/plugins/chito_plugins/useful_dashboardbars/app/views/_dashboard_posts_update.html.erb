@@ -1,0 +1,5 @@
+    <ul>
+	<% for post in @new_posts -%>
+	    <li><%= post_link post, :target => '_blank', :subdomain => post.user.name %></li>
+	<% end -%>
+    </ul>

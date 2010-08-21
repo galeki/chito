@@ -1,0 +1,30 @@
+en-US:
+    plugins:
+        useful_dashboardbars:
+            dashboard_new_comments:
+                info: New Comments
+            dashboard_new_messages:
+                info: New Messages
+            dashboard_bulletin:
+                info: Bulletin
+            dashboard_statistics:
+                info: Statistics
+            dashboard_posts_update:
+                info: Posts Update
+            dashboard_welcome:
+                info: 'Welcome back!'
+zh-CN:
+    plugins:
+        useful_dashboardbars:
+            dashboard_new_comments:
+                info: 最新评论
+            dashboard_new_messages:
+                info: 最新留言
+            dashboard_bulletin:
+                info: 公告
+            dashboard_statistics:
+                info: 统计
+            dashboard_posts_update:
+                info: 用户新文章
+            dashboard_welcome:
+                info: '欢迎回来！'

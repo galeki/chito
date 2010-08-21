@@ -4,58 +4,72 @@
     </ul>
 </div>
 <%= select_admin_menu("index") %>
-<div class="option_wrap_index">
-<div class="edit_field index">
-<div class="index_sidebar">
-    <h2><%= t(:recent_comments, :scope => [:txt, :view, :admin, :dashboard])  %> :</h2>
-    <ul>
-			<% for comment in @new_comments 
-			    e = h(comment.writer + ":" + strip_tags(comment.content))
-			-%>
-			    <li><%= (link_to truncate(e, :length => 25), post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
-			<% end -%>
+<div class="option_wrap_index" style="">
+<%= form_tag( {:action => 'dashboardbar_position'}, :style => "padding:0;margin:0;" ) do  %>
+    <% @fields = ['chito_dashboard_right', 'chito_dashboard_left', 'disable'] -%> 
+    <div id="dashboardbar_settings_box" style="display:none;">
+        <div id="disable_dashboardbar_box" style="">
+            <%= link_to image_tag('close.gif'), '#', :id => "d_close", :style => "float:right;padding:5px 10px 5px 5px;" %>
+	    <ul id="disable" class="dashbar_disable">
+	        <% for bar in @disable_bars -%>
+	            <%= show_dashboardbar(bar, :disable => true) %>
+	        <% end -%>
+	    </ul>
+        </div>
+        <div id="columns_setting" style="">
+            <input class="submit" type="button" value="<%= t(:save_layout, :scope => [:txt, :view, :admin, :sidebar]) %>" 
+                onclick='sidebars_config(this.form, <%= @fields.inspect %>);this.form.submit();return false;'
+	        style="float:right;margin:5px 20px 5px 0px;" id="d_submit"/>
+	    <br style="clear:both"/>
 
+        </div>
+        <% for field in @fields -%>
+            <%= hidden_field_tag 'fields[]', field %>
+        <% end -%>
+    </div>
+
+<div class="edit_field index" style="">
+    <ul id='chito_dashboard_right' class="dashboard_right">
+           <li style="float:right;"><%= link_to "Column Settings", "#", :class => "setting", :id => "d_open" %> </li>
+        <% bars_in :chito_dashboard_right do |bar| -%> 
+            <%= show_dashboardbar(bar) %>
+        <% end -%>
     </ul>
-    <h2><%=t(:recent_messages, :scope => [:txt, :view, :admin, :dashboard])  %> :</h2>
-    <ul>
-	    		<% for comment in @new_messages 
-			    e = h(comment.writer + ":" + strip_tags(comment.content))
-			-%>
-			    <li><%= (link_to truncate(e, :length => 25), :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
-			<% end -%>
+
+    <ul id='chito_dashboard_left' class="dashboard_left">
+        <% bars_in :chito_dashboard_left do |bar| -%> 
+            <%= show_dashboardbar(bar) %>
+        <% end -%>    
     </ul>
-    <h2><%=t(:statistics, :scope => [:txt, :view, :admin, :dashboard]) %> :</h2>
-    <ul>
-	    <li><%=t(:message_1, :scope => [:txt, :view, :admin, :dashboard], :posts_size => @posts_size ) %></li>
-	    <li><%=t(:message_2, :scope => [:txt, :view, :admin, :dashboard], :drafts_size => @drafts_size)  %></li>
-	    <li><%=t(:message_3, :scope => [:txt, :view, :admin, :dashboard], :comments_size => @comments_size)  %></li>
-	    <li><%=t(:message_4, :scope => [:txt, :view, :admin, :dashboard], :messages_size => @messages_size)  %></li>
-	    <li><%=t(:last_logined_in_at, :scope => [:txt, :view, :admin, :dashboard]) %>: <%= @user.last_logined_in_at || "---" %></li>
-    </ul>
-    <%= show_something :in_admin_dashboard_sidebar %>
+
 </div>
-<h1><%=t(:welcome_back,:scope => [:txt, :view, :admin, :dashboard] ) %>, <%= @user.nick %> !</h1>
-    <table id="index_table">
-	<tr>
-	    <td><%= link_to t(:message_5, :scope => [:txt, :view, :admin, :dashboard]), new_admin_post_path, :class => :index_action %></td>
-	    <td class="ainfo"><%=t(:write_new_post, :scope => [:txt, :view, :admin, :dashboard])  %></td>
-	</tr>
-	<tr>
-	    <td><%= link_to t(:message_6, :scope => [:txt, :view, :admin, :dashboard]), admin_posts_path, :class => :index_action   %></td>
-	    <td class="ainfo"><%=t(:manage_posts, :scope => [:txt, :view, :admin, :dashboard])  %></td>
-	</tr>
-	<tr>
-	    <td><%= link_to t(:message_7, :scope => [:txt, :view, :admin, :dashboard]), {:controller => "settings", :action => 'info'}, :class => :index_action  %></td>
-	    <td class="ainfo"><%=t(:change_profile, :scope => [:txt, :view, :admin, :dashboard])  %></td>
-	</tr>
-	<% unless @site.single_user? || @user.find_talks.empty? -%>
-	<tr>
-	    <td><%= link_to t(:see_talks, :scope => [:txt, :view, :admin, :dashboard]), {:controller => "talks"}, :class => :index_action  %></td>
-	    <td class="ainfo"><%=t(:see_the_talks, :scope => [:txt, :view, :admin, :dashboard])  %></td>
-	</tr>
-	<% end -%>
-    </table>
-    <%= show_something :in_admin_dashboard %>
+
+<% end -%>
 </div>
-</div>
+
+<%= sortable_element :chito_dashboard_right,  
+                     :constraint => false, :containment => @fields, :dropOnEmpty => true,  :format => "/^bar_(.*)$/"%>
+<%= sortable_element :chito_dashboard_left , 
+                     :constraint => false, :containment => @fields, :dropOnEmpty => true,  :format => "/^bar_(.*)$/"%>
+<%= sortable_element :disable , 
+                     :constraint => false, :containment => @fields, :dropOnEmpty => true,  :format => "/^bar_(.*)$/"%>
+
+<script type="text/javascript">
+//<![CDATA[
+    $('#d_close').click(function(){
+        $('#dashboardbar_settings_box').hide();
+        $('#d_open').show();
+        $('#chito_dashboard_right').removeClass('dashbar_border');
+        $('#chito_dashboard_left').removeClass('dashbar_border');
+    });
+    $('#d_open').click(function(){
+        $('#dashboardbar_settings_box').show();
+        $('#d_open').hide();
+        $('#chito_dashboard_right').addClass('dashbar_border');
+        $('#chito_dashboard_left').addClass('dashbar_border');
+        $('#disable').addClass('dashbar_border');
+    });
+
+//]]>
+</script>
 

@@ -1,0 +1,9 @@
+<ul>
+    <% for comment in @new_messages 
+	     e = h(comment.writer + ":" + strip_tags(comment.content))
+    -%>
+	 
+         <li><%= (link_to truncate(e, :length => 25), :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
+    
+    <% end -%>
+</ul>

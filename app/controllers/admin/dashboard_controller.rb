@@ -1,13 +1,22 @@
 class Admin::DashboardController <  Admin::BaseController
     
     def index
-	@new_comments = @user.new_comments(4)	    
-	@new_messages = @user.new_messages(4)	    
-	@comments_size = @user.comments.size
-	@messages_size = @user.messages.size
-	@posts_size = @user.posts.size
-	@drafts_size = @user.drafts.size
+        get_dashboardbars
 	do_something :before_admin_dashboard_show
+    end
+
+    def dashboardbar_position
+        get_dashboardbars
+        for field in params[:fields]
+            next unless params[field.to_sym]
+            params[field.to_sym].each_with_index do |id,idx| 
+	        bar = @all_bars.detect{|s| s.id==id.to_sym}
+	        bar.position = idx
+	        bar.field = field
+	        bar.show = (field.to_sym != :disable)
+            end
+        end
+        @user.save && redirect_to(:action => "index")
     end
 
     def logout

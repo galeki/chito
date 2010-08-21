@@ -1,0 +1,7 @@
+    <ul>
+	    <li><%=t(:message_1, :scope => [:txt, :view, :admin, :dashboard], :posts_size => @posts_size ) %></li>
+	    <li><%=t(:message_2, :scope => [:txt, :view, :admin, :dashboard], :drafts_size => @drafts_size)  %></li>
+	    <li><%=t(:message_3, :scope => [:txt, :view, :admin, :dashboard], :comments_size => @comments_size)  %></li>
+	    <li><%=t(:message_4, :scope => [:txt, :view, :admin, :dashboard], :messages_size => @messages_size)  %></li>
+	    <li><%=t(:last_logined_in_at, :scope => [:txt, :view, :admin, :dashboard]) %>: <%= @user.last_logined_in_at || "---" %></li>
+    </ul>

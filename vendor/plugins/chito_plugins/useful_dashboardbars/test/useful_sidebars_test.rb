@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class IsProgrammerAdminTest < Test::Unit::TestCase
+class UsefulSidebarsTest < Test::Unit::TestCase
   # Replace this with your real tests.
   def test_this_plugin
     flunk

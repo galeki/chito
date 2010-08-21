@@ -444,6 +444,10 @@ a.insert{
     padding-left: 22px;
     font-weight:bold;
 }
+a.setting{
+    background: url(/images/setting.gif) no-repeat left center;
+    padding-left: 18px;
+}
 a.post_comments{    
     background: url(/images/post_comment.gif) no-repeat left center;
     padding-left: 16px;
@@ -638,4 +642,56 @@ input#upload{
     margin:0;
     padding:5px 0px 0px 0px;
     overflow:hidden;
+}
+.dashbar_border{
+    border: 1px dashed #666;
+}
+.hover_dashbar_border{
+    border: 3px dashed #666;
+}
+.dashbar_border h2{
+    font-weight:bold;
+    padding: 10px 0px 8px 0px;
+    cursor:move;
+}
+ul.dashbar_disable{
+    width: 90%;
+    padding: 5px 5px 35px 5px; 
+    margin-top:0px;
+}
+ul.dashbar_disable li{
+    float:left;
+    padding: 0px 10px 0px 0px;
+    margin:0px 15px 0px 16px;
+}
+.dashboard_right{
+    float:right;
+    width:30%;
+    padding:0px 0px 50px 0px;    
+}
+.dashboard_right li, .dashboard_left li{
+    margin-bottom:10px;
+}
+.dashboard_right h2, .dashboard_left h2{
+    padding-bottom:4px;
+    border-bottom:1px solid #c4da75;
+    color: #666;
+}
+.dashboard_left{
+    width:61%;
+    padding:10px 10px 50px 0px;    
+}
+#disable_dashboardbar_box .dashboardbar_content{
+    display:none;
+}
+#columns_setting{
+    padding: 0px 20px 0px 5px;
+    width:100%;
+}
+#disable_dashboardbar_box{
+    background: #eee;
+    width:100%;
+}
+#dashboardbar_settings_box{
+    width:100%;
 }
