@@ -377,6 +377,9 @@ en-US:
           new_posts_num: New posts numbers
           official_updates: Official updates
           last_logined_in_at: Last logined in at
+          drag_to_setting: Drag the title to change layout
+          save_to_see: Save layout to see the content
+          settings: Column setting
         share:
           option: Option
           title: Title

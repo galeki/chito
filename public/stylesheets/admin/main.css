@@ -651,26 +651,32 @@ input#upload{
 }
 .dashbar_border h2{
     font-weight:bold;
-    padding: 10px 0px 8px 0px;
+    padding: 3px 0px 15px 0px;
     cursor:move;
 }
 ul.dashbar_disable{
     width: 90%;
-    padding: 5px 5px 35px 5px; 
+    padding: 5px 5px 45px 5px; 
     margin-top:0px;
 }
 ul.dashbar_disable li{
     float:left;
     padding: 0px 10px 0px 0px;
-    margin:0px 15px 0px 16px;
+    margin:0px 10px 0px 16px;
+    list-style:none;
 }
 .dashboard_right{
     float:right;
     width:30%;
-    padding:0px 0px 50px 0px;    
+    padding:10px 0px 50px 0px;    
 }
 .dashboard_right li, .dashboard_left li{
     margin-bottom:10px;
+}
+.dashbar_disable h2{
+    padding-bottom:4px;
+    border-bottom:1px solid #c4da75;
+    color: #666;
 }
 .dashboard_right h2, .dashboard_left h2{
     padding-bottom:4px;
@@ -681,17 +687,36 @@ ul.dashbar_disable li{
     width:61%;
     padding:10px 10px 50px 0px;    
 }
-#disable_dashboardbar_box .dashboardbar_content{
+#disable_dashboardbar_box .dashboardbar_content, #disable_dashboardbar_box .remote_setting{
     display:none;
+}
+.dashboardbar_content{
+    
 }
 #columns_setting{
     padding: 0px 20px 0px 5px;
     width:100%;
 }
 #disable_dashboardbar_box{
-    background: #eee;
+    background: #efefef;
+    padding:5px 0px 15px 8px;
     width:100%;
 }
 #dashboardbar_settings_box{
     width:100%;
+}
+#d_p{
+    text-align:right;
+    padding:8px 0px 0px 0px;
+}
+a#d_open{
+    float:right;
+    padding:0;
+    margin:0;
+    /*background: url(/images/set.gif) no-repeat left center;*/
+    padding-left: 22px;
+    color: #ccc;
+}
+a#d_open:hover{
+    color: #666;
 }

@@ -3,7 +3,7 @@
 	    e = h(comment.writer + ":" + strip_tags(comment.content))
     -%>
 	
-        <li><%= (link_to truncate(e, :length => 25), post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
+        <li><%= (link_to truncate(e, :length => @user.dashboard_new_comments_cut.to_num(25)), post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
     
     <% end -%>
 

@@ -377,6 +377,9 @@ zh-CN:
           new_posts_num: 显示数量
           official_updates: 最近的更新
           last_logined_in_at: 上次登录
+          drag_to_setting: 拖动项目标题改变布局
+          save_to_see: 内容在保存布局后显示
+          settings: 配置栏目
         share:
           option: 设置
           title: 标题
