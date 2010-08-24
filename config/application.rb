@@ -50,6 +50,7 @@ module Chito
     config.action_view.sanitized_allowed_attributes = %w(src alt cite title class style id)
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
   end
 end
 
