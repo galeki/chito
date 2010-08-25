@@ -2,6 +2,7 @@ class Admin::DashboardController <  Admin::BaseController
     
     def index
         get_dashboardbars
+        @user.set_default_dashboard_settings unless @user.has_dashboard_settings
 	do_something :before_admin_dashboard_show
     end
 
@@ -16,11 +17,11 @@ class Admin::DashboardController <  Admin::BaseController
 	        bar.show = (field.to_sym != :disable)
             end
         end
+        @user.has_dashboard_settings = true
         @user.save && redirect_to(:action => "index")
     end
 
     def logout
 	logout_and_redirect_to
     end
-
 end

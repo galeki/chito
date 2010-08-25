@@ -5,7 +5,7 @@
             window.parent.CKEDITOR.tools.callFunction(<%= params[:CKEditorFuncNum] %>, null, '<%= @error_message %>');
             //window.close();
         <% else -%>
-            window.parent.CKEDITOR.tools.callFunction(<%= params[:CKEditorFuncNum] %>, '<%= @new_file_url.to_s.force_encoding('UTF-8') %>');
+            window.parent.CKEDITOR.tools.callFunction(<%= params[:CKEditorFuncNum] %>, '<%= @new_file_url.to_s %>');
         <% end -%>
     //]]>
     </script>

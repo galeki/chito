@@ -416,7 +416,7 @@ span.read_count {
     padding:10px 15px 10px 15px;
     font-size:12px;
 }
-.wrong, .formError {color:red;font-weight:bold;}
+.wrong, .formError {font-size:large;color:red;font-weight:bold;}
 .fieldWithErrors {
     padding: 3px;
     background: red;

@@ -11,7 +11,7 @@ class Admin::SysteminfoController < Admin::BaseController
     @system_info << {"Lats login" => %x[last |grep pts]}
 
     @rails_info = []
-    @rails_info << {"Ruby version" => %x[ruby -v]}
+    @rails_info << {"Ruby version" => RUBY_DESCRIPTION}
     @rails_info << {"RubyGems version" => %x[gem -v]}
     @rails_info << {"Rack version" => Rack.version}
     @rails_info << {"Rails version" => Rails.version}

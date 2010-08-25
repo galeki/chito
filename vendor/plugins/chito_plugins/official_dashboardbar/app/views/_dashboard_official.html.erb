@@ -1,0 +1,7 @@
+<% for @post in @notices -%>
+    <div class="notice">
+<h4><%= link_to_post(:subdomain => @post.user.name) %> <span class="notice_date"> - <%= @post.created_at.strftime("%a %b %d %H:%M %Y") %></span></h4>
+<%= @post.brief %>
+    </div>
+<% end -%>
+

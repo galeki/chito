@@ -12,9 +12,7 @@ class BlogController < ApplicationController
 
   def index
     respond_to do |format|
-        format.html do
-
-        end
+        format.html
 	format.rss do
 	    @posts = Article.new_posts 
 	end
@@ -31,11 +29,11 @@ class BlogController < ApplicationController
 		@new_user = User.new(params[:new_user])
 		if @new_user.save
 		    notice_stickie t(:message_1, :scope => [:txt, :controller, :blog])
-		    redirect_to(login_path) and return
+		    redirect_to(login_path) 
 		end
 	    else
-		@new_user = User.new(params[:user])
-		flash[:error] = t(:message_2, :scope => [:txt, :controller, :blog])
+		@new_user = User.new(params[:new_user])
+		error_stickie t(:message_2, :scope => [:txt, :controller, :blog])
 	    end
 	end
     end

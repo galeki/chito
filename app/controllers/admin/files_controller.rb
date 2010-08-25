@@ -48,6 +48,7 @@ class Admin::FilesController < Admin::BaseController
           FileUtils.copy_stream(@new_file, fp)
         end
         @new_file_url = get_url_from_path(new_file_path)
+        @new_file_url = @new_file_url.to_s.force_encoding('UTF-8') if RUBY_VERSION > "1.9"
         @user.dirty_space
     end
   end

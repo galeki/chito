@@ -2,14 +2,13 @@ class ApplicationController < ActionController::Base
     include ApplicationPlugin
     include SimpleCaptcha::ControllerHelpers
     before_filter :get_site
-    #protect_from_forgery :secret => "d81237377dsbbasd88a3e[e5e6brt4b0d3255bfef9dew890afdqaz"    
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
     helper :all
     helper_method :chito_cache_key
     helper_method :'_params'
     helper_method :url_for
-    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}

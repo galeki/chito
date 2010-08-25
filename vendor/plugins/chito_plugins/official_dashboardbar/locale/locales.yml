@@ -1,0 +1,10 @@
+en-US:
+    plugins:
+        official_dashboardbar:
+            dashboard_official:
+                info: Official Updates
+zh-CN:
+    plugins:
+        official_dashboardbar:
+            dashboard_official:
+                info: 官方更新

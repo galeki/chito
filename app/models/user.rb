@@ -69,13 +69,38 @@ class User < ActiveRecord::Base
 	self.show_meta = true
 	self.enable_comment_filter_simple_vcode = true
 	self.group_id ||= Site.instance.default_group
+        set_default_dashboard_settings
     end
-
-
+    
     def create_default
 	self.categories.create :name => I18n.t("activerecord.attributes.category.default_name", :default => "Uncategorized"), 
 	                       :info => I18n.t("activerecord.attributes.category.default_info", :default => "Uncategorized Posts")
 	create_dir
+    end
+
+    def set_default_dashboard_settings
+        self.show_dashboard_welcome = true
+        self.dashboard_welcome_field = "chito_dashboard_left"
+        self.dashboard_welcome_position = 1
+        self.show_dashboard_official = true
+        self.dashboard_official_field = "chito_dashboard_left"
+        self.dashboard_official_position = 2
+        self.show_dashboard_new_comments = true
+        self.dashboard_new_comments_field = "chito_dashboard_right"
+        self.dashboard_new_comments_position = 1
+        self.show_dashboard_new_messages = true
+        self.dashboard_new_messages_field = "chito_dashboard_right"
+        self.dashboard_new_messages_position = 2
+        self.show_dashboard_statistics = true
+        self.dashboard_statistics_field = "chito_dashboard_right"
+        self.dashboard_statistics_position = 3
+        self.show_dashboard_bulletin = true
+        self.dashboard_bulletin_field = "chito_dashboard_right"
+        self.dashboard_bulletin_position = 4
+        self.show_dashboard_posts_update = true
+        self.dashboard_posts_update_field = "chito_dashboard_right"
+        self.dashboard_posts_update_position = 5
+        self.has_dashboard_settings = true
     end
 
     def is_chito_admin?

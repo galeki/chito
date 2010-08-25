@@ -164,6 +164,7 @@ Chito::Application.routes.draw do
 
   match '/latex_formula/make_png' => 'latex_formula#make_png'
 
+  match '/xmlrpc' => 'xmlrpc/meta_weblog#index', :format => 'xml'
   match '/xml_rpc' => 'xmlrpc/meta_weblog#index', :format => 'xml'
 
   match '/add' => 'blog#add'

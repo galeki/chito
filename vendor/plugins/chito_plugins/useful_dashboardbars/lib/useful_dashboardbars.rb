@@ -1,16 +1,13 @@
 module ApplicationPlugin
     private
     
-    def find_official_notices_and_new_posts_before_admin_dashboard_show
+    def find_useful_dashboardbars_needed_before_admin_dashboard_show
         if @user.show_dashboard_new_comments
             @new_comments = @user.new_comments(@user.dashboard_new_comments_number.to_num(5))
         end
         if @user.show_dashboard_new_messages
             @new_messages = @user.new_messages(@user.dashboard_new_messages_number.to_num(5))
         end
-	#@notices = []
-	#of = User.find_by_name('official')
-	#@notices = of.posts.order('created_at desc').limit(4) if of
         if @user.show_dashboard_posts_update
 	    num = @user.numbers_of_new_posts_in_admin.to_num(6)
 	    num = 30 if num > 50

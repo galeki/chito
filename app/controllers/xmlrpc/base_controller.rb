@@ -2,7 +2,7 @@ require 'xmlrpc/parser'
 class Xmlrpc::BaseController < ApplicationController
     class XMLRPCFaultError < RuntimeError; end
     rescue_from XMLRPCFaultError, :with => :fault
-    #rescue_from NoMethodError, :with => :fault
+    rescue_from NoMethodError, :with => :fault
     before_filter :get_params, :rename_method
     @@method_alias = {}
 
@@ -16,7 +16,10 @@ class Xmlrpc::BaseController < ApplicationController
         @fault_string ||= "Unexcept Error"
         render "fault"
     end
-    
+
+    def self.method_alias(hash)
+        @@method_alias = hash
+    end
     
     private
     def get_params

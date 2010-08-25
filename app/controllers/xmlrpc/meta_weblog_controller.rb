@@ -1,10 +1,6 @@
 class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
     before_filter :get_user, :get_locale
-
-    @@method_alias = {
-        "getPageList"=> "getPages",
-        "getCategoryList" => "getCategories"
-    }
+    method_alias "getPageList"=> "getPages", "getCategoryList" => "getCategories"
 
     def getUsersBlogs
     end
@@ -18,7 +14,7 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
     end
 
     def getRecentPosts
-        num = @method_params[3].to_num(5)
+        num = @method_params[3].to_num(10)
         @recent_posts = @user.posts.order("created_at desc").limit(num).includes(:category)
     end
 
@@ -122,6 +118,7 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
                 FileUtils.copy_stream(file_data, fp)
             end
             @new_file_url = new_file_path.sub(/^#{Rails.root}\/public/,'')
+            @new_file_url = @new_file_url.to_s.force_encoding('UTF-8') if RUBY_VERSION > "1.9"
             @user.dirty_space
         end
         raise_fault(2041, @error_message) if @error_message
@@ -141,7 +138,6 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
 
     def fill_article(article)
         data = @method_params[3]
-        #raise data.inspect
         is_publish = @method_params[4]
         custom_fields = data['custom_fields']
         p = {:article => {:title => data['title'], :content => data['description']}}
@@ -155,6 +151,8 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
                 p[:article][c["key"].to_sym] = c["value"]
             end
         end
+        index = Index.first
+        article.index_id = index.id if index
         article.prepare(@user, p)
         article.is_draft = !is_publish
         article.make_brief
