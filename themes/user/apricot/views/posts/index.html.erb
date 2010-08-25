@@ -11,7 +11,7 @@
 				</div>
 		
 				<p class="postmetadata alt">Tags: <%= link_to_post_tags %><br /> 
-				Posted in <%= link_to_post_category %> |   <span><%= link_to_post(:text => "#{@post.comments.size} Comments", :anchor => 'comments') %></span></p>
+				Posted in <%= link_to_post_category %> |   <span><%= link_to_post(:text => "#{@post.comments.count} Comments", :anchor => 'comments') %></span></p>
 
 			</div>
 

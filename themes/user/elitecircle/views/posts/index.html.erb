@@ -7,7 +7,7 @@
 			<p class="post-footer align-right">					
 				<%= link_to_post_category(:class => 'readmore') %>
 				<%= link_to_post_tags(:class => 'post_tags') %>
-				<%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
+				<%= link_to_post(:text => "Comments(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %>
 				<span class="date"><%= post_time %></span>	
 			</p>	
 <% end -%>

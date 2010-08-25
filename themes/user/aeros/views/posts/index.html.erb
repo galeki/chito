@@ -12,7 +12,7 @@
 
          <!-- if you don't want the comment count left of the post, erase from here ... -->
          <div class="commy">
-         <%= link_to_post(:text => "#{@post.comments.size}", :anchor => 'comments', :title => "Comments") %>    
+         <%= link_to_post(:text => "#{@post.comments.count}", :anchor => 'comments', :title => "Comments") %>    
 		 </div><!-- end commy -->
          <!-- to here -->
 

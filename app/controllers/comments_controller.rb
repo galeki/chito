@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
 	@post = @user.posts.find(params[:post_id])
 	@comment.article_id = @post.id
-	@no = [@post.comments.size + 1]
+	@no = [@post.comments.count + 1]
 
 	call_filter
 	@comment.save 

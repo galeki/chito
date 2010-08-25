@@ -15,10 +15,10 @@ module ApplicationPlugin
         end
 
         if @user.show_dashboard_statistics
-	    @comments_size = @user.comments.size
-	    @messages_size = @user.messages.size
-	    @posts_size = @user.posts.size
-	    @drafts_size = @user.drafts.size
+	    @comments_size = @user.comments.count
+	    @messages_size = @user.messages.count
+	    @posts_size = @user.posts.count
+	    @drafts_size = @user.drafts.count
         end
         if @user.show_dashboard_links
             @links = @user.links

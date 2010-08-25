@@ -11,7 +11,7 @@
   <div class="meta">		
     <br/>
     <p class="links">
-	Comment: <%= post_link @post, :text => "(#{@post.comments.size})", :subdomain => @post.user.name, :anchor => 'comments', :class => 'comments' %>
+	Comment: <%= post_link @post, :text => "(#{@post.comments.count})", :subdomain => @post.user.name, :anchor => 'comments', :class => 'comments' %>
     	Posted by: <cite><%= link_to @post.user.nick, root_url(:subdomain => @post.user.name) %></cite>
     	@<abbr class="published" title="<%= @post.created_at %>"> <%= @post.created_at.to_s(:db_short) %></abbr>
     </p>

@@ -15,7 +15,7 @@
 	<%= link_to_read_more %>
 	Category: <%= link_to_post_category(:class => 'readmore') %>
 	Tag: <%= link_to_post_tags(:class => 'post_tags') %>
-	Comment: <%= link_to_post(:text => "(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
+	Comment: <%= link_to_post(:text => "(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %>
     </p>
     <br style="clear:both;" />
   </div>

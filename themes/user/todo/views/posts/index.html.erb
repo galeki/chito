@@ -17,7 +17,7 @@
 	<span class="postedby">Posted by <%= post_writer %></span>
 	<span class="filedto">Filed in <%= link_to_post_category %></span>
 	<span class="posttags">Tagged by <%= link_to_post_tags %></span>
-	<span class="commentslink"><%= link_to_post(:text => "Comments[#{@post.comments.size}]", :anchor => 'comments') %></span>
+	<span class="commentslink"><%= link_to_post(:text => "Comments[#{@post.comments.count}]", :anchor => 'comments') %></span>
 	</div>
 </div>
 <% end -%>

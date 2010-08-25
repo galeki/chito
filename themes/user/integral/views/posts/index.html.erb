@@ -3,7 +3,7 @@
 <% posts do -%>
 		<div class="box">
 			<h3><%= link_to_post %></h3>
-			<h4><strong><%= post_time %></strong> | <%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %> | Category:<%= link_to_post_category(:class => 'readmore') %> | Tags:<%= link_to_post_tags(:class => 'post_tags') %></h4>
+			<h4><strong><%= post_time %></strong> | <%= link_to_post(:text => "Comments(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %> | Category:<%= link_to_post_category(:class => 'readmore') %> | Tags:<%= link_to_post_tags(:class => 'post_tags') %></h4>
 			<%= post_brief %>
 		</div>
 <% end -%>

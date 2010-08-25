@@ -9,7 +9,7 @@
 				<p class="read-more align-right">					
 				    <%= link_to_read_more %>
 				</p>
-				<p class="comentarios-link"><%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %></p>
+				<p class="comentarios-link"><%= link_to_post(:text => "Comments(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %></p>
 				<p class="tags-link"><%= link_to_post_tags(:class => 'post_tags') %></p>
 			</div>
 

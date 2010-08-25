@@ -7,7 +7,7 @@
 	  <h2><%= link_to_post %></h2>
 		<span class="post-cat"> <%= link_to_post_category %></span> 
 				
-		<span class="post-comments"><%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %></span>
+		<span class="post-comments"><%= link_to_post(:text => "Comments(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %></span>
 	  </div>
 	  <div class="entry">
 		<%= post_brief %>

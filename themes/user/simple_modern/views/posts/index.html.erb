@@ -11,7 +11,7 @@
 		    <%= link_to_read_more %>
 		</p>
 		<p class="postmetadata">
-		Posted in <%= link_to_post_category %>|<%= link_to_post(:text => "Comments(#{@post.comments.size})", :anchor => 'comments', :class => 'comments') %>
+		Posted in <%= link_to_post_category %>|<%= link_to_post(:text => "Comments(#{@post.comments.count})", :anchor => 'comments', :class => 'comments') %>
 		</p>
 	    </div>
 <% end -%>

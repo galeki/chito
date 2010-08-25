@@ -2,7 +2,7 @@
 
 <% posts do -%>
     <div class="tip_box">
-	<h2><%= link_to_post %> <span title="<%= "#{@post.comments.size}条评论" %>"><%= @post.comments.size %></span></h2>
+	<h2><%= link_to_post %> <span title="<%= "#{@post.comments.count}条评论" %>"><%= @post.comments.size %></span></h2>
 	<div class="tip_header">
 	    <%= post_time %> in <%= link_to_post_category %>
 	    tags: <%= link_to_post_tags %>

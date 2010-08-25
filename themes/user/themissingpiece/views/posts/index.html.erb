@@ -12,7 +12,7 @@
 				&nbsp;&nbsp;&nbsp;
 				Category: <%= link_to_post_category %>	
 				&nbsp;&nbsp;&nbsp;
-				<%= link_to_post(:text => "Comments ( #{@post.comments.size} ) ", :anchor => 'comments', :class => 'comments') %>
+				<%= link_to_post(:text => "Comments ( #{@post.comments.count} ) ", :anchor => 'comments', :class => 'comments') %>
 				&nbsp;&nbsp;&nbsp;
 				Tags: <%= link_to_post_tags(:class => 'post_tags') %>
 			</p>
