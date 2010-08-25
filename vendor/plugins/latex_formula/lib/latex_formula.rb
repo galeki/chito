@@ -7,14 +7,15 @@ require "digest/sha1"
 end
 
 class LatexFormulaToPng
+    BIN_PATH = File.expand_path('../../bin/l2p', __FILE__)
     def initialize(latex, size, dir)
 	@latex, @size, @dir = latex, size, dir
     end
 
     def make_png
-	@latex.gsub!("'","")
+	@latex.gsub!(/(\'|\;|\`)/,"")
 	Dir.mkdir(@dir,0775) unless File.exists?(@dir)	    
-	command = "l2p -p amsmath,amsfonts -T -i '#{@latex}' -d "
+	command = "#{BIN_PATH} -p amsmath,amsfonts -T -i '#{@latex}' -d "
 	command += @size
 	h_command =  Digest::SHA1.hexdigest(command)
 	unless File.exists?("#{@dir}/#{h_command}.png")

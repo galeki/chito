@@ -14,6 +14,7 @@ class Admin::NavbarController <  Admin::BaseController
 	bar = @navbars.detect{|s| s.id == id.to_sym}
 	bar.position = idx
 	bar.show = (field == :enable)
+        bar.page.save if bar.page
       end
     end    
     Navbar.user.save

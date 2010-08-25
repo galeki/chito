@@ -408,6 +408,7 @@ zh-CN:
           index_sidebar: 首页边栏
           indices: 索引
           systeminfo: 系统信息
+          blog: Blog
         categories:
           saving: 保存中
           create_category: 创建分类
@@ -534,6 +535,9 @@ zh-CN:
           bulletin_title: 公告标题
           bulletin_content: 公告内容
           use_external_jquery: 使用外部 JQuery
+          global_blog_setting: 全局 Blog 设置
+          header: 页面头部追加代码
+          force_comment_filter: 强制评论验证码
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址

@@ -154,6 +154,7 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
         index = Index.first
         article.index_id = index.id if index
         article.prepare(@user, p)
+        article.auto_brief = true
         article.is_draft = !is_publish
         article.make_brief
     end

@@ -32,7 +32,7 @@ class Article < ActiveRecord::Base
     end
 
     def title
-	    super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
+	super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
     end
 
     def prepare(user, params)

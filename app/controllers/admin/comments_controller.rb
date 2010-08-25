@@ -37,6 +37,7 @@ class Admin::CommentsController < Admin::FeedbacksController
 		bar.enable = (field.to_sym == :enable_filters)
 	    end
 	end
+        @user.save
 	notice_stickie t(:filter_settings_updated, :scope => [:txt, :controller, :admin, :comments])
 	redirect_to :action => "settings"
     end

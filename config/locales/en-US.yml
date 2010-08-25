@@ -408,6 +408,7 @@ en-US:
           index_sidebar: Index sidebars
           indices: Indices
           systeminfo: System Info
+          blog: Blog
         categories:
           saving: Saving
           create_category: Create Category
@@ -534,6 +535,9 @@ en-US:
           bulletin_title: Bulletin title
           bulletin_content: Bulletin content
           use_external_jquery: Use external JQuery
+          global_blog_setting: Global Blog Settings
+          header: Extra header code
+          force_comment_filter: Force comment captche
         rss:
           rss_import: RSS import
           no_url: Please input RSS url

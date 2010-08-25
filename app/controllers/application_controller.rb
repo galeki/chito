@@ -116,12 +116,12 @@ class ApplicationController < ActionController::Base
 	    redirect_to :controller => "site", :action => "setup"
 	    return false
 	end
-	#ActionController::Base.asset_host = "www.#{request.domain}" if @site.domain == request.domain
     end
 
     def get_user
 	@user = @site.get_user(request)
-	do_something :after_get_user
+        @user.enable_comment_filter_simple_vcode = @site.force_comment_captche
+	#do_something :after_get_user
     end
 
     def get_user_and_needed

@@ -26,10 +26,10 @@
     </ul>
 	<br style="clear:both"/>    
    </div>
-    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :comments]) %>" onclick='this.form.action += "?" + filter_config(this.form);this.form.submit();return false;'/>   
+    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :comments]) %>" onclick='filter_config(this.form);this.form.submit();return false;'/>   
 <% end -%>
-    <%= sortable_element 'disable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :overlap => :horizontal, :format => "/^filter_(.*)$/" %>
-    <%= sortable_element 'enable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :overlap => :horizontal, :format => "/^filter_(.*)$/" %>
+    <%= sortable_element 'disable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
+    <%= sortable_element 'enable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
 </div>
 </div>
 

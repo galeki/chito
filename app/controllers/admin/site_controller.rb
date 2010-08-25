@@ -5,7 +5,6 @@ class Admin::SiteController < Admin::BaseController
 	@site_class = @root = "selected"	
 	@groups = Group.where("name != 'Admin'")
     end
-    
 
     def settings
 	return unless request.post?

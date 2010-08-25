@@ -197,6 +197,7 @@ Chito::Application.routes.draw do
   match '/admin/settings/:action/(:id)' => 'admin/settings#index'
   match '/admin/rss/:action/(:id)' => 'admin/rss#index'
   match '/admin/site/:action/(:id)' => 'admin/site#index'
+  match '/admin/blog/:action/(:id)' => 'admin/blog#index'
   match '/admin/systeminfo/:action/(:id)' => 'admin/systeminfo#index'
   match '/admin/:action/:id' => 'admin/dashboard#index'
   match '/:permalink' => 'pages#show', :as => :page_permalink

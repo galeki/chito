@@ -15,6 +15,12 @@ module ActiveRecord
       end
 
       module InstanceMethods
+
+        alias_method :old_respond_to?, :respond_to?
+        def respond_to?(*args)
+            true    #always return ture to bypass the rails value type cast
+        end
+
         def method_missing(method, *args)
 	    begin
 		super
@@ -25,7 +31,7 @@ module ActiveRecord
 		    name.chomp!('=')
 		    sym = name.to_sym
 		    val = args.first
-		    self.settings_will_change! if self.respond_to?(:settings_will_change!)
+		    self.settings_will_change! if self.old_respond_to?(:settings_will_change!)
 		    if self.nil_value.include? val #val.blank? or val == '0'
 			self.settings[sym] = nil 
 		    else

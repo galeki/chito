@@ -1,0 +1,582 @@
+#!/usr/bin/perl -w
+# L2P - Convert LaTeX expressions to PNG
+
+$version = '1.1.1';
+
+=head1 NAME
+
+l2p - create PNG images from LaTeX expressions
+
+=head1 SYNOPSIS
+
+B<l2p> [options...] -i '$I<latex_expression>$'
+
+or
+
+B<l2p> [options...] [I<expression_file>]
+
+I<expression_file> contains an expression or expressions in (La)TeX
+format - one per line.  If neither I<expression_file> nor an 
+B<-i> option is given, the expression is read from standard input.
+
+=head1 DESCRIPTION
+
+Convert expressions in LaTeX format into PNGs
+
+=head1 EXAMPLES
+
+=over
+
+=item
+
+l2p -i '$4x^2-7=\cos{2 \pi x}$' -o 'eqn4.png'
+
+Produce a PNG image, named 'eqn4.png', of the equation described by the
+LaTeX expression '$4x^2 - 7 = \cos{2 \pi x}$'.
+
+=item
+
+l2p -o big_equation.png big_hairy_equation
+
+Produce a PNG image, called big_equation.png, from the LaTeX expression
+contained in the file big_hairy_equation (specifically, it contains
+'$x=2$'.) Note that this file is NOT a full LaTeX document - use the
+B<-F> option for that.
+
+=item
+
+l2p -d 250 -i '$\nabla \cdot \mathbf{D} = \rho$' 
+
+Produce a PNG image from the LaTeX code given with the B<-i> argument
+(which happens to be one of Maxwell's equations), at 250 dots per inch.
+Since we did not specify an output file name with the B<-o> option, the
+image will be 'eqn.png' (the default).  
+
+=item
+
+l2p -p amssymb -i '$\mho$' -o mho.png
+
+Produce a PNG image of the Mho symbol (an upside-down capital omega),
+saving the image in the file 'mho.png'.  We include the amssymb package,
+which defines that symbol.
+
+=item
+
+l2p -B 20x30 -i '$\sum_{n=0}^{\infty}\frac{(-\phi^2)^n}{(2n)!}$' -o cosine.png
+
+Produce an image of the indicated infinite summation, padded with a
+border that is 20 pixels on each side horizontally, and 30 pixels each
+side vertically.  The color of this border region will be the same as
+the rest of the image background.
+
+=back
+
+=head1 OPTIONS
+
+Many options have arguments that may contain characters, like '#' or
+spaces, that the shell considers special.  Be sure to surround all
+such arguments with single or double quotes, so that the shell
+understands what is meant.  (If unsure, it's always safe to use the
+quotes.)
+
+=over
+
+=item
+B<-i "$latex$">
+
+Argument is an equation/expression in (La)TeX format.  In most cases,
+you will want to enclose the argument in quotes to protect it from shell
+expansion.
+
+=item
+B<-b "rrggbb">
+
+Background color.  There are several ways to specify the color.  See the
+section L</COLORS>, below, for details.
+
+=item 
+B<-d dpi>
+
+Pixel density at which the equation is rendered, in dots per inch
+(default 300).  
+
+An image with a DPI of 600 will have twice as many pixels in each of the
+x and y directions than an image with a DPI of 300.  The effect is
+different in the normal context of printing, where a higher DPI will
+leave the text with the same physical size, but with a finer resolution.
+This is because the physical size of a pixel is not really variable; so
+to have double the resolution, a symbol in an image must be double the
+size.
+
+=item 
+B<-f "rrggbb">
+
+Foreground color.  There are several ways to specify the color.  See the
+section L</COLORS>, below, for details.
+
+=item
+B<-h>
+
+Show a help summary.
+
+=item 
+B<-o output.png>
+
+Name of output file.  Default is 'eqn.png'.
+
+=item
+B<-p packagename[,packagename2[,...]]]>
+
+Use additional LaTeX/TeX packages.  You can specify several, separated
+by commas.
+
+=item
+B<-B "WIDTHxHEIGHT [color]">
+
+or: B<-B "SIZE [color]">
+
+Pad the resulting image with a border of the indicated size, in pixels. 
+
+You can optionally specify a color for the border region.  By default,
+the border will be the same color as the rest of the background. (See
+L</COLORS> below for the format.)
+
+=item
+B<-C>
+
+Suppress automatic removal (cleanup) of temporary files.  This will be
+useful if something goes wrong, or if you want to use the intermediate
+DVI or Postscript renditions.  B<l2p> will tell you which directory
+contains these files.
+
+=item
+B<-F>
+
+Supplied expression is a full LaTeX document, rather than just an
+expression fragment. Negates the B<-f>, B<-b>, B<-p>, B<-B> and B<-T>
+options.
+
+B<Note>:  B<l2p> currently only converts full LaTeX documents
+that are relatively simple: only one page in length, and with no external
+dependencies (such as included graphics).  If you need to convert a more
+complex document, you can generate a DVI file with latex like normal,
+then convert the DVI into a series of PNG images using B<convert> from
+the ImageMagick distribution.  See L<convert(1)>, or
+L<http://imagemagick.org/script/convert.php> for more information.
+
+=item
+B<-T>
+
+Create an image with a transparent background.
+
+=item
+B<-V>
+
+Show version information.
+
+=back
+
+=head1 COLORS
+
+Some options, such as B<-b> and B<-f>, take an argument specifying a
+color in RGB format.  B<l2p> will decipher most representations, such
+as:
+
+=over
+
+=item
+
+A hexidecimal triplet.  For example, '-f "FF0000" -b "#ffffff"' gives a
+red foreground on a white background.  Case is not important, and the
+"#" is optional.
+
+=item
+
+Three decimal whole numbers, in the range of 0 to 255.  These must be
+separated by spaces or punctuation (comma, semicolon or colon).  For
+example, '-b "0 127 255" -f "0,0,0"' is black on a nice bluish
+background.
+
+=item
+
+Three fractions between 0 and 1, inclusive.  At least one of the three
+numbers must contain a decimal point (to distinguish this format from
+the others), and they are separated by space or punctuation.  For
+example, "0.87 .78 .41" is the same as the hex triplet "DEC769", and "0,
+1.0, 0" is the color green.  (Remember that decimal point.  "0, 1, 0"
+will give you a nearly black color.)
+
+=back
+
+Note that you may need to put single or double quotes around the color
+string, to ensure the shell interprets it correctly.
+
+=head1 BUGS
+
+Error handling is imperfect.  Among other things, If a needed 
+LaTeX package is not included, B<l2p> will silently produce a
+broken image.
+
+On certain platforms, images produced with the B<-T> option (transparent
+background) may leave pixels at the edges of symbols a mixture of the
+text color and some background color.  This may not look good if the
+resulting image is put on a differently colored background.  A
+workaround is to give a background color hint with the B<-b> option;
+the edge pixels will then be a mixture of specified foreground and
+background colors.
+
+=head1 ACKS
+
+Thanks to Jesse Merriman (L<http://www.jessemerriman.com/>) for
+providing a patch that improved transparent background support.
+Integrated in version 1.1.
+
+=head1 COPYRIGHT
+
+This software is in the public domain.
+
+=head1 AUTHOR
+
+Aaron Maxwell (amax@redsymbol.net).  Comments, feature requests, and
+patches are welcome.
+
+=cut
+
+use File::Temp qw/tempfile tempdir/;
+use Getopt::Std;
+
+# Takes a string and extracts an RGB value from it.
+# Returns ($r,$g,$b), all values between 0 and 1 if parsing is successful,
+# otherwise returns undef.
+# Usage: ($r,$g,$b) = parsergb($string); 
+sub parsergb {
+    my $string=shift;
+    $string =~s/^\s+//;
+    $string =~s/\s+$//;
+    $string =~s/^#//;
+    my(@args,@vals,$arg,$val);
+
+    # hex triplet format?
+    if($string=~/^[0-9a-fA-F]{6}$/) {
+	@args=(substr($string,0,2), substr($string,2,2), substr($string,4,2)); 
+	foreach $arg (@args) {
+	    $val=hex($arg)/255;
+	    push @vals, $val;
+	}
+	return @vals;
+    }
+    $string =~s/[,:;]/ /g;
+    @args = split /\s+/, $string;
+    if (@args != 3) {
+	return undef;
+    }
+
+    # 0-255 decimal format?
+    if ($string =~ /^[\d\s]+$/) {
+	foreach $arg (@args) {
+	    if ($arg>=0 && $arg<=255) {
+		$val=$arg/255;
+	    } else { return undef; }
+	    push @vals, $val;
+	}
+	
+	# 0.0-1.0 range format?
+    } elsif ($string =~ /^[\d\.\s]+$/) {
+	foreach $arg (@args) {
+	    if($arg>=0 && $arg<=1) {
+		$val = 0+$arg;
+	    } else { return undef; }
+	    push @vals, $val;
+	}
+	
+    } else {
+	return undef;  # unrecognized format!
+    }
+
+    return @vals;
+}
+
+# norm2hex - convert an RGB color in the form 'r,g,b', 0<=[rgb]<=1,
+# to a hex triplet. Returns undef if invoked incorrectly.
+# usage: $hexrgb = norm2hex($normrgb);
+sub norm2hex {
+    $_=shift;
+    my @vals=split(/,/,$_);
+    scalar(@vals)==3 or return undef;
+    my($val,$hex);
+    foreach $val (@vals) {
+	unless($val>=0 and $val<=1) { return undef; }
+	$hex .= sprintf('%02x',$val*255);
+    }
+    return $hex;
+}
+
+my($pre,$post,$dpi,$eqn,$outfile,$fg,$bg);
+our($opt_o, # output file name
+    $opt_d, # dpi
+    $opt_i, # in-command-line latex expression
+    $opt_f, # foreground RGB triplet
+    $opt_b, # background RGB triplet
+    $opt_F, # set if input is a full LaTeX document
+    $opt_T, # transparent background 
+    $opt_C, # suppress autocleaning of temp files
+    $opt_h, # display help message
+    $opt_p, # additional package(s)
+    $opt_V, # print version info
+    $opt_B, # border
+    $opt_Z, # reserved for hacks
+    );
+
+# check to see if needed software is available
+my($latex,$dvips,$convert);
+$latex = `which latex`; chomp $latex;
+if($latex eq '' or not -X $latex) {
+	print STDERR "Cannot find latex executable.  Aborting.\n";
+	exit(2);
+}
+$dvips = `which dvips`; chomp $dvips;
+if($dvips eq '' or not -X $dvips) {
+	print STDERR "Cannot find dvips executable.  Aborting.\n";
+	exit(2);
+}
+$convert = `which convert`; chomp $convert;
+if($convert eq '' or not -X $convert) {
+	print STDERR "Cannot find convert executable.  Aborting.\n";
+	exit(2);
+}
+
+# process command line opts
+getopt('odifbpB');
+
+if ($opt_V) {
+	print $version, "\n";
+	exit(0);
+}
+
+if ($opt_h) {
+print <<'EOT';
+Generate PNG images from LaTeX expressions
+usage: 
+    l2p [options] [file_containing_latex_expressions]
+or
+    l2p [options] -i '$LaTeX-expression$'
+
+Note: Many options will require quotes around their arguments to
+ensure correct interpretation by the shell.
+
+Options:
+    -o output.png     Name of output file.  Default is 'eqn.png'.
+    -i '$latex$'      equation/expression in (La)TeX format
+    -f 'rrggbb'       foreground color
+    -b 'rrggbb'       background color
+    -d dpi            Conversion resolution (default 300)
+    -T                Transparent background
+    -p pkg[,pkg2...]  use TeX/LaTeX package(s)
+    -C                Suppress removal (cleanup) of temporary files
+    -F                Input is full LaTeX document, not just fragment
+    -V                Show version
+    -B 'geom [color]' Pad image with a border
+    -h                Show this help and exit
+Also see the full documentation (try typing 'perldoc l2p').
+EOT
+	exit(0);
+}
+
+$outfile = $opt_o || 'eqn.png';
+$dpi =  $opt_d || 300;
+
+# determine foreground color
+$fg='0,0,0';
+if($opt_f) {
+	my($r,$g,$b) = parsergb($opt_f);
+	if (not defined $r) {
+		print STDERR "Foreground color not in recognizeable format.  Reverting to default.\n";
+		($r,$g,$b) = (0,0,0);
+	}
+	$fg=join(',',$r,$g,$b);
+}
+
+$bg='1,1,1';
+# determine background color
+if($opt_b) {
+    my($r,$g,$b) = parsergb($opt_b);
+    if (not defined $r) {
+	print STDERR "Background color not in recognizeable format.  Reverting to default.\n";
+	($r,$g,$b) = (1,1,1);
+    }
+    $bg=join(',',$r,$g,$b);
+}
+# deal with transparent background
+$fuzz = 20;
+if ($opt_T) {
+    if($opt_b) {
+	# Workaround: with a BG hint, a nonzero fuzz can result in erased symbols
+	$fuzz = 0;
+    }
+    # $bg and $fg must be different for transparency to work 
+    my($bR,$bG,$bB) = split(/,/, $bg);
+    my($fR,$fG,$fB) = split(/,/, $fg);
+    my($dR, $dG, $dB) = map { abs($_) } ($fR-$bR, $fG-$bG, $fB-$bB);
+    if($dR<0.1 && $dG<0.1 && $dB<0.1) {
+	$bg = (sqrt($fR**2+$fG**2+$fB**2)>0.5) ? '0,0,0' : '1,1,1';
+    }
+}
+
+my @packages = ('color');
+if ($opt_p) {
+	@packages = (@packages, split(/,/, $opt_p));
+}
+
+# get expression to render
+$pre = join "\n", (
+'\documentclass{article}',
+(map { '\usepackage{' . $_ . '}' } @packages),
+'\definecolor{bg}{rgb}{', $bg, '}',
+'\definecolor{fg}{rgb}{', $fg, '}',
+'\pagestyle{empty}',
+'\pagecolor{bg}',
+'\begin{document}',
+'\color{fg}',
+'\begin{center}',
+"");
+
+$post = <<'EOT';
+\end{center}
+\end{document}
+EOT
+
+# discover the LaTeX expression to render
+$eqn='';
+if (defined $opt_i) {
+    # expression from command line
+    $eqn =  $opt_i . "\n";
+} elsif (not $opt_F) {
+    # file/stdin contains LaTeX expression(s)
+    # TODO: rewrite using an expression iterator subroutine
+    while(<>) {
+        next if /^\s*#/ or /^\s*$/;
+            chomp; 
+        $eqn .= $_ . "\n";
+        # If this is line contains a single inline expression, add
+        # an extra newline, so that it renders correctly
+        if (/^\s*\$.*\$\s*$/) {
+            $eqn .= "\n";
+        }
+}
+}
+if (not $opt_F and $eqn =~ /^\s*$/) {
+    print STDERR <<'EOT';
+Did not find a LaTeX expression to render.  Perhaps the supplied
+expression or file is empty, or does not exist.
+EOT
+    exit(3);
+}
+
+# create a temporary latex file to use
+my $tempdir = tempdir(CLEANUP=> $opt_C ? 0 : 1)
+    or die "Cannot not make temp dir.  Unable to proceed - aborting.";
+print "Temporary files stored in $tempdir\n" if $opt_C;
+my $latexfn = $tempdir . "/foo.latex";
+if($opt_F) {
+    $source = shift @ARGV;
+    if(not -e $source) {
+        die "LaTeX source ($source) does not exist!";
+    } elsif (not -r $source) {
+        die "Cannot read file $source.";
+    }
+    if(substr($source,0,1) ne '/') {
+        my $cwd = `pwd`; chomp $cwd;
+        $source = $cwd . '/' . $source;
+    }
+    system("ln -s $source $latexfn");
+    -e "$latexfn" or die "Unable to create link to source file ($source)";
+} else {
+    my $latexfh;
+    open($latexfh,">",$latexfn) or die "could not write to latex temp file";
+    print $latexfh $pre, $eqn, $post;
+    close($latexfh);
+}
+
+# produce dvi output
+system("cd $tempdir; $latex -interaction=batchmode $latexfn >/dev/null");
+unless (-e "${tempdir}/foo.dvi") {
+	print STDERR <<'EOT';
+latex run failed.  Perhaps the input is invalid, or a specified 
+package was not found.
+EOT
+	exit(1);
+}
+
+# convert dvi to ps
+# the -E option prevents convert from freaking out later
+my $dvipscmd = "$dvips " . ($opt_F ? "": "-E") . " foo -o 2>/dev/null";
+system("cd $tempdir; $dvipscmd");
+unless (-e "${tempdir}/foo.ps") {
+	print STDERR <<'EOT';
+Conversion of DVI to PS, a needed intermediate step, has failed.
+This probably should not happen.  Please send a bug report to
+amax@redsymbol.net.
+EOT
+	exit(2);
+}
+
+# convert ps to png
+my @cargs;
+if($opt_F) { # make image of full latex document
+    @cargs = ();
+} else {
+    @cargs = (
+	'-units',
+	'PixelsPerInch',
+	'-density',
+	"$dpi",
+        );
+}
+if ($opt_T) { # transparent background
+    @cargs = (
+	'-matte',
+	'-fuzz',
+	$fuzz . '%',
+	'-transparent',
+	'#' . norm2hex($bg),
+	'-units',
+	'PixelsPerInch',
+	'-density',
+	"$dpi",
+	);
+}
+# Border
+if($opt_B) {
+    my($geom, $color);
+    if($opt_B =~ /\s/) {
+	# user has defined a border color
+	$opt_B =~ m|^(\S+)\s+(.+)$|;
+	($geom, $color) = ($1, $2);
+	$color = join(',', parsergb($color));
+    } else {
+	# no border color defined, so use regular background color
+	($geom, $color) = ($opt_B, $bg);
+    }
+    $color = '#' . norm2hex($color);
+    unshift @cargs, ('-border', $geom, '-bordercolor', $color);
+}
+unshift @cargs, ("$convert");
+push @cargs, (
+    "${tempdir}/foo.ps",
+    "${tempdir}/foo.png",
+    );
+# The following system() call seems to be completely successful.
+# However, using the ``system(...) or die "died: $!"'' idiom results
+# in death with the error message 'Inappropriate ioctl for device'.  I
+# never could discern why, so I've left it as is.  If you know why,
+# please let me know (amax@redsymbol.net)
+system(@cargs);
+unless (-e "$tempdir/foo.png") {
+    print STDERR <<'EOT';
+Sorry, something went wrong.  Final conversion to PNG format has failed.
+EOT
+    exit(2);
+}
+
+# rename final png
+system("cp $tempdir/foo.png $outfile");
