@@ -73,6 +73,7 @@ Chito::Application.routes.draw do
             post :set_group_space
             post :set_group_name
             post :set_group_file_size_limit
+            post :set_api_status
         end
     end
 

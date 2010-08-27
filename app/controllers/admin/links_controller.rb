@@ -33,7 +33,7 @@ class Admin::LinksController < Admin::BaseController
 			       :duration => 5.0
 	end
     else
-	error_stickie @link.errors.full_messages * "; "
+	error_stickie(@link.errors.full_messages * "; ")
  	render :update do |page|
  	  page.replace_html "updater", :partial => "share/error" 
 	  page.visual_effect :BlindDown, "updater"

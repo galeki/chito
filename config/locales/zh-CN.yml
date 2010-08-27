@@ -269,6 +269,7 @@ zh-CN:
           save_text: 保存
           cancel_text: 取消
           delete_group?: 删除用户组 %{group} ?
+          api_enable: API
         indices:
           manage_indices: 管理索引
           title: 索引名称

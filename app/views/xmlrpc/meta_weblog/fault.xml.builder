@@ -12,7 +12,7 @@ xml.methodResponse do
                 xml.member do
                     xml.name "faultString"
                     xml.value do
-                        xml.string @fault_string
+                        xml.string (@fault_string + " [from #{@method_name}]")
                     end
                 end
             end

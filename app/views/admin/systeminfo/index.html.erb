@@ -52,7 +52,7 @@
     <% ENV.each do |k, v| -%>
         <tr class="<%= cycle("odd", "") %>" >
             <td style="padding:12px;"><%= k %></td>
-	    <td style="padding:12px;"><%= v %></td>
+	    <td style="padding:12px;word-break: break-all;"><%= v %></td>
 
         </tr>
     <% end -%>

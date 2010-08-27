@@ -4,6 +4,10 @@
 	    </td>
 	    <td class="group_space_col"><%= in_place_edit :group, :space, @group.id, @group.space.to_s %></td>
 	    <td class="group_file_size_limit_col"><%= in_place_edit :group, :file_size_limit, @group.id, @group.file_size_limit.to_s %></td>
+	    <td class="group_api_enable_col" id="api_enable_<%= @group.id %>">
+                            <%= check_box :group, :api_enable, :autocomplete => 'off', 
+                                                               :onclick => "change_api_status(this, '#{set_api_status_admin_group_path(@group)}');" %>
+            </td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :groups]), admin_group_path(@group), :class => "delete", 
 		:confirm => t(:delete_group?, :scope => [:txt, :view, :admin, :groups], :group => @group.name), :method => :delete %></td>
     </tr>

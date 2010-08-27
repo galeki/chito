@@ -12,11 +12,11 @@ class Admin::SysteminfoController < Admin::BaseController
 
     @rails_info = []
     @rails_info << {"Ruby version" => RUBY_DESCRIPTION}
-    @rails_info << {"RubyGems version" => %x[gem -v]}
+    @rails_info << {"RubyGems version" => Gem::VERSION}
     @rails_info << {"Rack version" => Rack.version}
     @rails_info << {"Rails version" => Rails.version}
     @rails_info << {"Application root" => Rails.root.to_s}
     @rails_info << {"Rails environment" => Rails.env}
-    @rails_info << {"Bundle list" => %x[bundle list]}
+    #@rails_info << {"Bundle list" => %x[bundle list]}
   end
 end

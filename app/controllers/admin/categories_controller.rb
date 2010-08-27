@@ -35,7 +35,7 @@ class Admin::CategoriesController <  Admin::BaseController
 			       :duration => 8.0
 	end
     else
-	error_stickie @category.errors.full_messages
+	error_stickie(@category.errors.full_messages * "; ")
  	render :update do |page|
  	  page.replace_html "updater", :partial => "share/error" 
 	  page.visual_effect :BlindDown, "updater"

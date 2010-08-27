@@ -13,11 +13,9 @@ function clean_field()
     if(CKEDITOR.instances['comment_content'])
     {
         CKEDITOR.instances['comment_content'].setData("");
-    }else
-    {
-	var e = document.getElementById('comment_content');
-	e.value = '';
     }
+    var e = document.getElementById('comment_content');
+    e.value = '';
 }
 function update_field()
 {
@@ -45,7 +43,6 @@ function FCKeditor_OnComplete( editorInstance )
 }
 function re_captcha()
 {
-   //new Ajax.Updater('show_simple_captcha', '/simple_captcha_ajax', {asynchronous:true, evalScripts:true}); 
     $('#show_simple_captcha').load('/simple_captcha_ajax');
 
 }

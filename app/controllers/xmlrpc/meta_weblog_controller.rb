@@ -132,8 +132,8 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
             username = @method_params[1]; password = @method_params[2]
         end
         @user = User.login(username, password) 
-        return if @user
-        raise_fault(2041, "Error username or passowrd")
+        raise_fault(2041, "Error username or passowrd") unless @user
+        raise_fault(2041, "Permission denied, API access is disable.") unless @user.get_group.api_enable
     end
 
     def fill_article(article)

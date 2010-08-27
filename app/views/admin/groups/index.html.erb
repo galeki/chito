@@ -5,7 +5,7 @@
 
 <div class="add_cate">
     <div id='add_category'>
-	<% form_tag(        admin_groups_path,
+	<%= form_tag(        admin_groups_path,
                             :remote => true
 			    ) do %>
 		<label for="link_title"><%= t(:name, :scope => [:txt, :view, :admin, :groups]) %>:</label>
@@ -21,6 +21,7 @@
 	    <th class="helpHed"><%= t(:name, :scope => [:txt, :view, :admin, :groups]) %></th>
 	    <th class="helpHed"><%= t(:space_c, :scope => [:txt, :view, :admin, :groups]) %></th>
 	    <th class="helpHed"><%= t(:file_size_limit_c, :scope => [:txt, :view, :admin, :groups]) %></th>
+	    <th class="helpHed"><%= t(:api_enable, :scope => [:txt, :view, :admin, :groups]) %></th>
 	    <th class="helpHed"></th>
     </tr>
     <tbody id="all_groups">

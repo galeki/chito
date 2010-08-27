@@ -63,7 +63,7 @@ class Admin::IndicesController < Admin::BaseController
 			       :duration => 5.0
 	end
     else
-	error_stickie @index.errors.full_messages
+	error_stickie(@index.errors.full_messages * "; ")
  	render :update do |page|
  	  page.replace_html "updater", :partial => "share/error" 
 	  page.visual_effect :BlindDown, "updater"

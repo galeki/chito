@@ -240,3 +240,17 @@ function autosave_fail(text)
 {
    $("#article_autosave_notifier").html("<span id='autosave_fail'>" + text + "</span>");
 }
+function change_api_status(ck, url)
+{
+    if(ck.checked)
+    {
+        url += "?" + "enable=true"; 
+    }else
+    {
+        url += "?" + "enable=false"; 
+    }
+    $.post(url, {}, function(data)
+    {
+	eval(data);
+    });
+}

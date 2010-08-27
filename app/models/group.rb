@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+    has_flags [:api_enable], [:column => 'bit_opt']
     has_many :users
     validates_uniqueness_of :name
     validates_presence_of :name
@@ -6,7 +7,6 @@ class Group < ActiveRecord::Base
     def self.admin
 	Group.find_by_name("Admin")
     end
-
 
     def self.default
 	Group.find_by_name("Default")
@@ -22,7 +22,6 @@ class Group < ActiveRecord::Base
     def space
 	super.blank? ? 0 : super
     end
-
 
     def file_size_limit
 	super.blank? ? 0 : super
