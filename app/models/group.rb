@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-    has_flags [:api_enable], [:column => 'bit_opt']
+    has_flags [:api_enable, true], [:column => 'bit_opt']
     has_many :users
     validates_uniqueness_of :name
     validates_presence_of :name
