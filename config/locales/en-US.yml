@@ -152,6 +152,7 @@ en-US:
           dir_exist: Dir already exists
           upload_success: Upload Success!
           create_dir_success: Dir created!
+          dir_depth_too_deep: Dir depth too deep
     helper: 
       posts: 
         message_0: Read more

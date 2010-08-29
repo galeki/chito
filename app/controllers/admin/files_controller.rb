@@ -58,6 +58,8 @@ class Admin::FilesController < Admin::BaseController
     new_dir_path = File.join(@path, @new_dir.to_s)
     if @new_dir.blank?
         @error_message = t(:no_dir_name, :scope => [:txt, :controller, :admin, :files])
+    elsif @relative_path.split('/').size >= 10
+        @error_message = t(:dir_depth_too_deep, :scope => [:txt, :controller, :admin, :files])
     elsif File.exist?(new_dir_path)
         @error_message = t(:dir_exist, :scope => [:txt, :controller, :admin, :files])
     else
@@ -98,7 +100,8 @@ class Admin::FilesController < Admin::BaseController
     @type = params[:type] || "Image"
     @folder = params[:folder] || ""
     @name = params[:name] || ""
-    @path = File.join @user.base_dir, @type, @folder, @name
+    @relative_path = File.join @type, @folder, @name
+    @path = File.join @user.base_dir, @relative_path
     check_path(@path)
   end
 

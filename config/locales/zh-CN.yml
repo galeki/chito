@@ -152,6 +152,7 @@ zh-CN:
           dir_exist: 目录已经存在
           upload_success: 上传成功！
           create_dir_success: 目录创建成功！
+          dir_depth_too_deep: 目录层数过深
     helper: 
       posts: 
         message_0: 继续阅读
