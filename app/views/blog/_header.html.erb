@@ -16,6 +16,6 @@
 <link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 <title><%= @title %></title>
 <%= show_something :in_head %>
-<%= @site.extra_header.to_s %>
+<%=raw @site.extra_header.to_s %>
 </head>
 <%=raw @user.custom_header if @user.enable_custom_header %>

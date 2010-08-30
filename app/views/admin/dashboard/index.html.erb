@@ -60,6 +60,9 @@
         $('#d_open').show();
         $('#chito_dashboard_right').removeClass('dashbar_border');
         $('#chito_dashboard_left').removeClass('dashbar_border');
+        $('.remote_setting').each(function(){
+            $(this).hide();
+        });
     });
     $('#d_open').click(function(){
         $('#dashboardbar_settings_box').fadeIn(1000);
@@ -67,11 +70,16 @@
         $('#chito_dashboard_right').addClass('dashbar_border');
         $('#chito_dashboard_left').addClass('dashbar_border');
         $('#disable').addClass('dashbar_border');
-
+        $('.remote_setting').each(function(){
+            $(this).show();
+        });
 
         jQuery('#chito_dashboard_right').sortable({connectWith:['#chito_dashboard_right','#chito_dashboard_left','#disable'], dropOnEmpty:true, format:/^bar_(.*)$/});
         jQuery('#chito_dashboard_left').sortable({connectWith:['#chito_dashboard_right','#chito_dashboard_left','#disable'], dropOnEmpty:true, format:/^bar_(.*)$/});
         jQuery('#disable').sortable({connectWith:['#chito_dashboard_right','#chito_dashboard_left','#disable'], dropOnEmpty:true, format:/^bar_(.*)$/});
+    });
+    $('.remote_setting').each(function(){
+        $(this).hide();
     });
 
 //]]>

@@ -8,15 +8,14 @@
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:message_1, :scope => [:txt, :view, :admin, :site]) %></div>
 <%= form_for :site, :url =>{:action => 'settings'} do |f| %>
+<!--
     <label><%= t(:message_2, :scope => [:txt, :view, :admin, :site]) %>:</label>
     <%= f.text_field 'title', :size => '25'%>
     <br/>
     <label><%= t(:message_3, :scope => [:txt, :view, :admin, :site]) %>:</label>
     http:// <%= f.text_field 'url', :size => '30'%>
     <br/>
-    <label><%= t(:footer, :scope => [:txt, :view, :admin, :site]) %>:</label>
-    <%= f.text_field 'footer', :style => "width:60%;"%>
-    <br/>
+-->
     <label><%= t(:message_12, :scope => [:txt, :view, :admin, :site]) %>: <%= f.text_field :domain, :size => 15  %> 
 		<a href="#" class="hintanchor" onMouseover="showhint(
 		    '<%= t(:message_13, :scope => [:txt, :view, :admin, :site]) % {:br =>%q[<br/>]} %>',
@@ -24,7 +23,6 @@
 		     this, event, '220px')">[?]</a>
     </label>
     
-    <label><%= f.check_box :use_external_jquery  %> <%= t(:use_external_jquery, :scope => [:txt, :view, :admin, :site]) %> </label>
 
     <label><div><%= t(:message_4, :scope => [:txt, :view, :admin, :site]) %>:</div></label>    
     	<label><%= f.radio_button :user_mode, "s", :class => "ck" %> <%= t(:message_5, :scope => [:txt, :view, :admin, :site]) %></label>

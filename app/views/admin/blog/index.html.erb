@@ -16,12 +16,13 @@
     <%= f.text_area 'extra_header', :style => 'width:80%;height:150px;'%>
 
     <br/>
+    <label><%= t(:footer, :scope => [:txt, :view, :admin, :site]) %>:</label>
+    <%= f.text_area 'footer', :style => "width:80%;height:100px;"%>
+    <br/>
 
     <label><%= f.check_box 'force_comment_captche'%> <%= t(:force_comment_filter, :scope => [:txt, :view, :admin, :site]) %></label>
     
-    
-    <br/>
-
+    <label><%= f.check_box :use_external_jquery  %> <%= t(:use_external_jquery, :scope => [:txt, :view, :admin, :site]) %> </label>
 
     <%= submit_tag t(:message_16, :scope => [:txt, :view, :admin, :site]), :class =>'submit' %>	
     

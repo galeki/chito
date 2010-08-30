@@ -9,8 +9,8 @@ en-US:
             autocomplete: Auto complete tags.
             clickadd: Show a tag list, and click to add.
             settings: Settings
-            autocomplete_tag: Show tag list
-            show_tag_list: Auto complete tags
+            autocomplete_tag: Auto complete tags
+            show_tag_list: Show tag listAuto complete tags
             save: Save
 zh-CN:
     plugins:
@@ -23,7 +23,7 @@ zh-CN:
             autocomplete: 自动完成未完成的 Tag。
             clickadd: 显示一个 Tag 列表，点击添加 Tag。
             settings: 设置
-            autocomplete_tag: 显示 Tag 列表
-            show_tag_list: 自动完成 Tag
+            autocomplete_tag: 自动完成 Tag
+            show_tag_list: 显示 Tag 列表
             save: 保存
 

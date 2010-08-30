@@ -10,7 +10,7 @@
 	def set_meta_data_before_post_show
 	   @meta_author = @post.writer
 	   @meta_keywords = @post.seo_key_words
-	   brief = truncate(escape_once(@post.brief.to_s.gsub(/<.+?>/,"").gsub("\r\n","")), :length => 200 )
+	   brief = @post.short_brief(200).to_s.gsub("\r\n","")
 	   @meta_description = "#{@post.title}-#{brief}"
 	end
 	def set_meta_data_before_list_show

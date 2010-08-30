@@ -45,5 +45,6 @@ function img_resize_lightbox(w){
     imageBtnPrev: '/plugins/img_resize/images/lightbox-btn-prev.gif',
     imageBtnNext: '/plugins/img_resize/images/lightbox-btn-next.gif',
     imageLoading: '/plugins/img_resize/images/lightbox-ico-loading.gif',
+    imageBlank: '/plugins/img_resize/images/lightbox-blank.gif'
  });
 }
