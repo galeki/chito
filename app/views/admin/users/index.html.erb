@@ -28,7 +28,7 @@
     <% old_user = @user -%>
     <% for @user in @users %>
     <tr class="<%= cycle("odd", "") %>">
-	    <td class="user_name_col"><%= link_to @user.name, root_path(:subdomain => @user.name) %></td>
+	    <td class="user_name_col"><%= link_to @user.name, root_url(:subdomain => @user.name) %></td>
 	    <td class="user_nick_col"><%= @user.nick %></td>
 	    <td class="user_email_col"><%= @user.email %></td>
 	    <td class="user_email_col"><%= @user.created_at.to_s(:db_short) if @user.created_at%></td>

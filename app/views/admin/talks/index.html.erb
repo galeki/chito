@@ -30,7 +30,7 @@
 		<%=h strip_tags(@comment.content) %>
 	    </td>
 	    <td class="comments_col" style="text-align:center;">
-		<%= link_to t("txt.view.admin.talks.jump_to"), post_path(talk, :anchor => comment_id, :subdomain => talk.user.name, :format => :html), :target => "_blank"%>
+		<%= link_to t("txt.view.admin.talks.jump_to"), post_url(talk, :anchor => comment_id, :subdomain => talk.user.name, :format => :html), :target => "_blank"%>
 	    </td>
 	    
     </tr>

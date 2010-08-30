@@ -44,10 +44,10 @@
 	    <td class="comment_guest_col">
                 <% if feedback.article -%>
                     <%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :comments])), 
-			    post_path(feedback.article, :anchor => "comment#{feedback.id}", :subdomain => feedback.user.name, :format => :html), :target => '_blank')  %>
+			    post_url(feedback.article, :anchor => "comment#{feedback.id}", :subdomain => feedback.user.name, :format => :html), :target => '_blank')  %>
                 <% else -%>
                     <%= (link_to (image_tag "page.gif", :title => t(:view, :scope => [:txt, :view, :admin, :comments])), 
-			    guestbook_path(feedback.article, :anchor => "comment#{feedback.id}", :subdomain => feedback.user.name), :target => '_blank')  %>
+			    guestbook_url(feedback.article, :anchor => "comment#{feedback.id}", :subdomain => feedback.user.name), :target => '_blank')  %>
                 <% end -%>
             </td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :comments]), admin_feedback_path(feedback, _params), :class => "delete",
