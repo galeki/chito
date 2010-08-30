@@ -157,6 +157,7 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
         article.auto_brief = true
         article.is_draft = !is_publish
         article.make_brief
+        chito_cache_expire(:type => "posts_index/*")
     end
 
 end

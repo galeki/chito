@@ -150,12 +150,16 @@ class User < ActiveRecord::Base
     end
 
     def find_talks(options={})
-	Article.paginate :per_page => 10, :page => options[:page],
-			 :select => "distinct articles.id, articles.user_id, articles.title",
-			 :conditions => ["articles.user_id != ?", self.id],
-			 :include => [:user, :comments],
-			 :joins => "INNER JOIN feedbacks ON feedbacks.user_name = '#{self.name}' and articles.id = feedbacks.article_id",
-			 :order => 'articles.last_commented_at desc, articles.created_at desc'
+        Article.where("articles.user_id != ?", self.id)\
+               .joins("INNER JOIN feedbacks ON feedbacks.user_name = '#{self.name}' and articles.id = feedbacks.article_id")\
+               .order('articles.last_commented_at desc, articles.created_at desc')\
+               .select("distinct articles.id, articles.user_id, articles.title")\
+               .includes(:user)\
+               .includes(:comments)\
+               .paginate(:per_page => 10, :page => options[:page])
+        
+        rescue
+                []
     end
 
     def find_feedbacks(options={})

@@ -2,7 +2,6 @@ class Admin::DashboardController <  Admin::BaseController
     
     def index
         get_dashboardbars
-        @user.set_default_dashboard_settings unless @user.has_dashboard_settings
 	do_something :before_admin_dashboard_show
     end
 

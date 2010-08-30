@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     helper_method :chito_cache_key
     helper_method :'_params'
     helper_method :url_for
-    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
-    rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
+    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
 	params.reject {|k,v| k =~ /action|controller/}
@@ -159,6 +159,7 @@ class ApplicationController < ActionController::Base
     end
 
     def get_dashboardbars
+        @user.set_default_dashboard_settings unless @user.has_dashboard_settings
 	Dashboardbar.user = @user
 	@all_bars = Dashboardbar.dashboardbars
 	@enable_bars = @all_bars.select{|b| b.show?}.sort_by{|b| b.position}
