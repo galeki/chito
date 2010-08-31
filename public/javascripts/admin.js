@@ -111,10 +111,7 @@ function add_category_remote(category_name,token)
 		    '_method': "POST",
 		    "authenticity_token": encodeURIComponent(token)};
 	$('#_category_name').val("");
-	$.post(url, data, function(data)
-	{
-	    eval(data);
-	});
+	$.post(url, data);
 	//new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:data});
     }
     return false;
@@ -249,8 +246,5 @@ function change_api_status(ck, url)
     {
         url += "?" + "enable=false"; 
     }
-    $.post(url, {}, function(data)
-    {
-	eval(data);
-    });
+    $.post(url, {});
 }

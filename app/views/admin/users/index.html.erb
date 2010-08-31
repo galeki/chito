@@ -12,6 +12,20 @@
 		<% end -%>	
 		Sum: <%= @users.total_entries %>
 	    </td>
+
+	    <td >
+		    <%= t(:group, :scope => [:txt, :view, :admin, :users]) %>:
+		    <select id="group" name="group" onchange="change_list_by(this)" >
+		    <% for group in @groups %>
+			<option  value="<%= admin_users_path(:page => params[:page], :group => group.id) %>"
+                                 <%= "selected='selected'" if group.id.to_s == params[:group]%>
+                                    > <%= group.name %></option>
+		    <% end %>
+                    <option  value="<%= admin_users_path(:page => params[:page]) %>"
+                                 <%= "selected='selected'" if params[:group].nil? %>
+                                    > <%= t :all, :scope => [:txt, :view, :admin, :posts]  %></option>
+		    </select>
+	    </td>
     </tr>
 </table>
 <table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
@@ -39,13 +53,21 @@
 	     <% if @user.id == session[:user_id] -%>
 		<%= @user.group.name %>
 	     <% else -%>
-		<%= form_tag set_group_admin_user_path(@user), :remote => true do-%>
+		<%= form_tag set_group_admin_user_path(@user), :remote => true, :id => "rform_#{@user.id}", :onsubmit => "return false;" do-%>
 		   <select name="group" id="group"> 
 		    <%= options_from_collection_for_select(@groups, "id", "name", @user.get_group.id) %>
 		   </select>
-		    <%= submit_tag t(:set, :scope => [:txt, :view, :admin, :users]) %>
+		    <%= submit_tag t(:set, :scope => [:txt, :view, :admin, :users]), :id => "subm_#{@user.id}" %>
 		    <span id="user_<%= @user.id %>"></span>
 		<% end -%>
+                <script type="text/javascript">
+                //<![CDATA[
+                $('#subm_<%= @user.id %>').click(function(){
+                        $.post('<%= set_group_admin_user_path(@user) %>',$('#rform_<%= @user.id %>').find('select').serialize());
+                        return false;
+                 });
+                //]]>
+                </script>
 	     <% end -%>
 	    </td>
 	    <td class="action_col delete">

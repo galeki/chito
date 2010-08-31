@@ -13,10 +13,18 @@
 				<div class="theme_info"><strong><%= theme.camelize%></strong></div>
 				<div class="theme_form">
 					<%= form_tag({:action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i},
-                                                            :remote => true) do%>
-					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]) %>
+                                                            :remote => true, :id => "rform_#{theme}", :onsubmit => "return false;") do%>
+					    <%= submit_tag t(:use, :scope => [:txt, :view, :admin, :themes]), :id => "subm_#{theme}" %>
 					<% end %>
 				</div>
+                                <script type="text/javascript">
+                                //<![CDATA[
+                                $('#subm_<%= theme %>').click(function(){
+                                        $.post('<%= url_for(:action => 'change_theme', :theme => theme, :user_theme => is_user_theme.to_i) %>',{});
+                                        return false;
+                                });
+                                //]]>
+                                </script>
 			    </div>
 			    <% no_theme += 1 -%>
 			<% end -%>

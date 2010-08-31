@@ -4,16 +4,24 @@
 <div class="option_wrap">
 <div class="add_cate">
     <div id='add_category'>
-	<%= form_tag(        admin_categories_path(:format => :html),
-                            :remote => true
-			    ) do %>
+	<%= form_tag(admin_categories_path(:format => :html), :method => :post,:remote => true, :id => 'rform', :onsubmit => "return false;") do %>
 		<label for="category_name"><%=t :name, :scope => [:txt, :view, :admin, :categories] %>:</label>
 		<%= text_field 'category', 'name', :size => 20  %>
 		<label for="category_info"><%=t :description, :scope => [:txt, :view, :admin, :categories] %>:</label>
 		<%= text_field 'category', 'info', :size => 25 %>
-	    <%= submit_tag t(:create_category, :scope => [:txt, :view, :admin, :categories]), :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :categories]) %> 
+	    <%= submit_tag t(:create_category, :scope => [:txt, :view, :admin, :categories]), :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :categories]), :id => "subm" %> 
 	<% end -%>	
     </div>	
+
+<script type="text/javascript">
+//<![CDATA[
+
+        $('#subm').click(function(){
+            $.post('<%= admin_categories_path(:format => :html) %>',$('#rform').find('input').serialize());
+            return false;
+        });
+//]]>
+</script>
 </div>
 <div id="updater"></div>
 <div id='categories'>

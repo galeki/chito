@@ -4,8 +4,8 @@
 <div class="option_wrap">
 <div class="add_cate">
     <div id='add_category'>
-	<%= form_tag(        admin_links_path,
-                            :remote => true,
+	<%= form_tag(admin_links_path,
+                    :remote => true, :id => 'rform', :onsubmit => "return false;"
 			    ) do %>
 		<label for="link_title"><%= t(:name, :scope => [:txt, :view, :admin, :links]) %>:</label>
 		<%= text_field 'link', 'title', :size => 10  %>
@@ -13,9 +13,18 @@
 		<%= text_field 'link', 'url', :size => 20 %>
 		<label for="link_info"><%= t(:info, :scope => [:txt, :view, :admin, :links]) %>:</label>
 		<%= text_field 'link', 'info', :size => 20 %>
-	    <%= submit_tag t(:create_link, :scope => [:txt, :view, :admin, :links]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]) %> 
+	    <%= submit_tag t(:create_link, :scope => [:txt, :view, :admin, :links]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]), :id => "subm" %> 
 	<% end -%>	
     </div>	
+<script type="text/javascript">
+//<![CDATA[
+
+        $('#subm').click(function(){
+            $.post('<%= admin_links_path %>',$('#rform').find('input').serialize());
+            return false;
+        });
+//]]>
+</script>
 </div>
 <div id="updater"></div>
 <div id='mylinks'>

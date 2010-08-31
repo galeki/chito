@@ -14,6 +14,7 @@
 <%= theme_js_links :order => options[:js]%>
 <%= csrf_meta_tag %>
 <link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
+<%= jquery_include_tag %>
 <title><%= @title %></title>
 <%= show_something :in_head %>
 <%=raw @site.extra_header.to_s %>

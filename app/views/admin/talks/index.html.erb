@@ -21,7 +21,7 @@
 	    <td class="title_col"><%= link_to talk.title, post_url(talk, :subdomain => talk.user.name, :format => :html) %></td>
 	    <td class="comment_writer_col"><%=h talk.user.nick %></td>
 	    <td class="comment_content_col">
-		<% @comment = talk.comments.all.last -%>
+		<% @comment = talk.last_comment -%>
 		<div class="talk_avatar"><%= comment_avatar %></div>
 		<b><%= @comment.writer %> </b> <%= t "txt.view.comments._comment.said" %>
 		<br/>

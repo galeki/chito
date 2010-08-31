@@ -13,7 +13,7 @@
            <%
 		form_tag(       { :action => 'import', :format => :js},
                                 :remote => true,
-				:onsubmit => "$('#importing').show();",
+				:id => 'rform', :onsubmit => "$('#importing').show();return false;"
 				) do
 				%>
     <label style="margin-bottom:20px;"><%= t(:rss_url, :scope => [:txt, :view, :admin, :rss]) %>: <%= text_field_tag 'rss_url', '', :size => '70' %></label>
@@ -22,8 +22,16 @@
     <label><%= check_box_tag :import_comments, 1, false, :class => 'ck' %> <%= t(:import_comments, :scope => [:txt, :view, :admin, :rss]) %></label>
     <label><%= check_box_tag :unescape_html, 1, false, :class => 'ck' %> <%= t(:unescape_html, :scope => [:txt, :view, :admin, :rss]) %></label>
     <span style="display:none;" id="importing"><%= image_tag 'importing.gif' %> <%= t(:importing, :scope => [:txt, :view, :admin, :rss]) %></span>
-    <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]) %>
+    <%= submit_tag t(:import, :scope => [:txt, :view, :admin, :rss]), :class =>'submit', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :links]), :id => "subm" %>
 <% end %>
+<script type="text/javascript">
+//<![CDATA[
+        $('#subm').click(function(){
+            $.post('<%= url_for(:action => 'import', :format => :js) %>',$('#rform').find('input').serialize());
+            return false;
+        });
+//]]>
+</script>
 </div>
 </div>
 

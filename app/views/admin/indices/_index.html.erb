@@ -7,11 +7,19 @@
 	    <td class="index_theme_col"><%= @index.theme %></td>
 	    <td class="index_managers_col">
                 <% form_tag( add_manager_admin_index_path(@index),
-                             :remote => true
+                             :remote => true, :id => "rform_#{@index.id}", :onsubmit => "return false;"
 			    ) do %>
 		    <%= text_field_tag 'user_name', "", :size => 8  %>
-	            <%= submit_tag t(:add, :scope => [:txt, :view, :admin, :indices]), :id => "ss_#{@index.id}", :autocomplete => 'off' %> 
+	            <%= submit_tag t(:add, :scope => [:txt, :view, :admin, :indices]), :id => "ss_#{@index.id}", :autocomplete => 'off', :id => "subm_#{@index.id}" %> 
 	        <% end -%>	
+                <script type="text/javascript">
+                //<![CDATA[
+                $('#subm_<%= @index.id %>').click(function(){
+                        $.post('<%= add_manager_admin_index_path(@index) %>',$('#rform_<%= @index.id %>').find('input').serialize());
+                        return false;
+                 });
+                //]]>
+                </script>
                 <div id="index_users_<%= @index.id %>">
                     <%= render :partial => "managers" %>
                 </div>

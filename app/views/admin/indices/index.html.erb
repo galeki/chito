@@ -6,13 +6,21 @@
 <div class="add_cate">
     <div id='add_category'>
 	<%= form_tag(        admin_indices_path,
-                            :remote => true
+                            :remote => true, :id => "rform", :onsubmit => "return false;"
 			    ) do %>
 		<label for="index_title"><%= t(:title, :scope => [:txt, :view, :admin, :indices]) %>:</label>
 		<%= text_field 'index', 'title', :size => 20  %>
-	    <%= submit_tag t(:create, :scope => [:txt, :view, :admin, :groups]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :groups]) %> 
+	    <%= submit_tag t(:create, :scope => [:txt, :view, :admin, :groups]), :id => 's', :autocomplete => 'off', :disable_with => t(:saving, :scope => [:txt, :view, :admin, :groups]), :id => "subm" %> 
 	<% end -%>	
     </div>	
+<script type="text/javascript">
+//<![CDATA[
+        $('#subm').click(function(){
+            $.post('<%= admin_indices_path %>',$('#rform').find('input').serialize());
+            return false;
+        });
+//]]>
+</script>
 </div>
 <div id="updater"></div>
 <div id='groups'>

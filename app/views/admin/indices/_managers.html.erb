@@ -1,10 +1,18 @@
 <% for user in @index.users -%>
     <div class="manager" style="padding-top:5px;">
-        <% form_tag( remove_manager_admin_index_path(@index, :user_id => user.id),
-                     :remote => true
+        <%= form_tag( remove_manager_admin_index_path(@index, :user_id => user.id),
+                     :remote => true, :id => "rform_2_#{@index.id}", :onsubmit => "return false;"
 			    ) do %>
             <span><%= user.name %></span>
-	    <%= submit_tag t(:remove, :scope => [:txt, :view, :admin, :indices]), :id => "sr_#{@index.id}", :autocomplete => 'off' %> 
+	    <%= submit_tag t(:remove, :scope => [:txt, :view, :admin, :indices]), :id => "sr_#{@index.id}", :autocomplete => 'off', :id => "subm_2_#{@index.id}" %> 
         <% end -%>
     </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    $('#subm_2_<%= @index.id %>').click(function(){
+            $.post('<%= remove_manager_admin_index_path(@index, :user_id => user.id) %>',{});
+            return false;
+    });
+    //]]>
+    </script>
 <% end -%>

@@ -59,6 +59,9 @@ class CommentsController < ApplicationController
 	@post.emails.each_key do |email|
             ChitoMailer.comment_notifier(email, @comment, @post, request).deliver unless email == @comment.email
 	end
+
+        rescue
+            nil
    end
    
    def call_filter

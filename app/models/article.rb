@@ -77,6 +77,10 @@ class Article < ActiveRecord::Base
         self.category.posts.where("created_at > ? and bit_opt = 0 ", self.created_at).first if self.category
     end
 
+    def last_comment
+        Feedback.where("feedbacks.article_id = ? and feedbacks.bit_opt = 1", self.id).order('feedbacks.created_at').last
+    end
+
     def to_xml(options={})
         only = {:only => [:title, :created_at, :content, :writer]}
         super only.merge(options)

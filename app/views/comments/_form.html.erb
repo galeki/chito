@@ -2,8 +2,8 @@
 <%= link_to t(:cancel_reply_to, :scope => [:txt, :view, :comments, :_form]), "#", :onclick => "cancel_reply_to_id();event.returnValue = false;return false;", :style => "display:none;", :id => 'cancel_reply_link' %>
 
 <%=    form_tag(     url,
-     		    :onsubmit => "update_field();$('#comment_value').val('');",
-                    :remote => true
+     		    :onsubmit => "return false;",
+                    :remote => true, :id => 'rform_chito_comment'
      		) do %>
      <div id="comment_error" style="display: none;"></div>
 
@@ -43,5 +43,16 @@
      <div id="comment_extra" >
          <%= show_something :in_comment_form %>
      </div>
-         <%= submit_tag t(:message_4, :scope => [:txt, :view, :comments, :_form]), :disable_with => t(:message_0, :scope => [:txt, :view, :comments, :_form]) %>
+         <%= submit_tag t(:message_4, :scope => [:txt, :view, :comments, :_form]), :disable_with => t(:message_0, :scope => [:txt, :view, :comments, :_form]), :id => "subm_chito_comment" %>
  <% end %>
+ <script type="text/javascript">
+//<![CDATA[
+        $('#subm_chito_comment').click(function(){
+            update_field();
+            $('#comment_value').val('');
+            $.post('<%= url %>', $('#rform_chito_comment').find('input').serialize() + '&' + $('#rform_chito_comment').find('textarea').serialize());
+            return false;
+        });
+//]]>
+</script>
+
