@@ -45,14 +45,4 @@
      </div>
          <%= submit_tag t(:message_4, :scope => [:txt, :view, :comments, :_form]), :disable_with => t(:message_0, :scope => [:txt, :view, :comments, :_form]), :id => "subm_chito_comment" %>
  <% end %>
- <script type="text/javascript">
-//<![CDATA[
-        $('#subm_chito_comment').click(function(){
-            update_field();
-            $('#comment_value').val('');
-            $.post('<%= url %>', $('#rform_chito_comment').find('input').serialize() + '&' + $('#rform_chito_comment').find('textarea').serialize());
-            return false;
-        });
-//]]>
-</script>
 

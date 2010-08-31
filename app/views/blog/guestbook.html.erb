@@ -4,6 +4,7 @@
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => messages_path} %>
 </div>
+<%= render :partial => 'comments/trigger', :locals => {:url => messages_path} %>
 <br />
 <%= chito_cache :id => :guestbook do -%>
     <div id="comments">

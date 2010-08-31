@@ -1,0 +1,10 @@
+ <script type="text/javascript">
+//<![CDATA[
+        $('#subm_chito_comment').click(function(){
+            update_field();
+            $('#comment_value').val('');
+            $.post('<%= url %>', $('#rform_chito_comment').find('input').serialize() + '&' + $('#rform_chito_comment').find('textarea').serialize());
+            return false;
+        });
+//]]>
+</script>
