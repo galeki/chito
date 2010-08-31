@@ -116,37 +116,32 @@ class User < ActiveRecord::Base
     end
 
     def self.users_in_admin(options={})
-	conditions = ["users.name like ?", "%#{options[:name]}%"] if options[:name]
-	User.paginate :per_page => 30, :page => options[:page], :conditions => conditions,
-		      :order => 'id desc'
+        temp = User.order('id desc')
+	temp = temp.where("users.name like ?", "%#{options[:name]}%") if options[:name]
+        temp.paginate :per_page => 30, :page => options[:page]
     end
 
     def find_articles(options={})
-	temp = [["articles.user_id = ?", self.id]]
-	temp << ["articles.category_id = ?", options[:category_id]] if options[:category_id]
+	temp = Article.where("articles.user_id = ?", self.id)
+	temp = temp.where("articles.category_id = ?", options[:category_id]) if options[:category_id]
 	case options[:type]
 	    when :posts
-		temp << ["articles.bit_opt = 0"]
+		temp = temp.where("articles.bit_opt = 0")
 	    when :pages
-		temp << ["articles.bit_opt = 4"]
+		temp = temp.where("articles.bit_opt = 4")
 	    when :drafts
-		temp << ["(articles.bit_opt = 2 or articles.bit_opt = 6)"]
+		temp = temp.where("(articles.bit_opt = 2 or articles.bit_opt = 6)")
 	end
-	temp << ["articles.content like ?", "%#{options[:keyword]}%"] if options[:keyword]
-	temp << ["tags.name = ?", options[:tag]] if options[:tag]
+	temp = temp.where("articles.content like ?", "%#{options[:keyword]}%") if options[:keyword]
         if options[:year] && options[:month]
-            temp << ["articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i)]
-            temp << ["articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month].to_i + 1)]
+            temp = temp.where("articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i))
+            temp = temp.where("articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month].to_i + 1))
         end
-	joins = options[:tag] && "INNER JOIN taggings ON articles.id = taggings.taggable_id INNER JOIN tags ON taggings.tag_id = tags.id"
-	sql = temp.map {|x| x.first}.join " AND "
-	sql_params = temp.map {|x| x[1]}.compact
-	conditions = [sql].concat(sql_params)
-	Article.paginate :per_page => options[:per_page], :page => options[:page],
-			 :conditions => conditions,
-			 :include => [:comments, :category],
-			 :joins => joins,
-			 :order => 'articles.created_at desc'
+        if options[:tag]
+	    temp = temp.where("tags.name = ?", options[:tag]) 
+	    temp = temp.joins("INNER JOIN taggings ON articles.id = taggings.taggable_id INNER JOIN tags ON taggings.tag_id = tags.id")
+        end
+        temp.includes(:comments).includes(:category).order('articles.created_at desc').paginate(:per_page => options[:per_page], :page => options[:page])
     end
 
     def find_talks(options={})
@@ -163,25 +158,19 @@ class User < ActiveRecord::Base
     end
 
     def find_feedbacks(options={})
-	temp = [["feedbacks.user_id = ?", self.id]]
+	temp = Feedback.where("feedbacks.user_id = ?", self.id)
 	case options[:type]
 	    when :comments
-		temp << ["feedbacks.bit_opt = 1"]
+		temp = temp.where("feedbacks.bit_opt = 1")
 	    when :messages
-		temp << ["feedbacks.bit_opt = 3"]
+		temp = temp.where("feedbacks.bit_opt = 3")
 	    when :spams
-		temp << ["(feedbacks.bit_opt & 0b1 = 0)"]
+		temp = temp.where("feedbacks.bit_opt & 0b1 = 0")
 	    when :trackbacks
-		temp << ["(feedbacks.bit_opt = 5)"]
+		temp = temp.where("feedbacks.bit_opt = 5")
 	end
-	temp << ["feedbacks.content like ?", "%#{options[:keyword]}%"] if options[:keyword]
-	sql = temp.map {|x| x.first}.join " AND "
-	sql_params = temp.map {|x| x[1]}.compact
-	conditions = [sql].concat(sql_params)
-	Feedback.paginate :per_page => options[:per_page], :page => options[:page],
-			 :conditions => conditions,
-			 :include => [:article],
-			 :order => "feedbacks.created_at desc"
+	temp = temp.where("feedbacks.content like ?", "%#{options[:keyword]}%") if options[:keyword]
+        temp.includes(:article).order("feedbacks.created_at desc").paginate(:per_page => options[:per_page], :page => options[:page])
     end
 
     def get_group

@@ -3,6 +3,7 @@ class Admin::SysteminfoController < Admin::BaseController
 
   def index
     @system_info = []
+    @system_info << {"System Time" => Time.now.to_s(:db_short)}
     @system_info << {"Host name" => %x[uname -a]}
     @system_info << {"Uptime" => %x[uptime]}
     @system_info << {"Date" => %x[date]}
