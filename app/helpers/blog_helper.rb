@@ -5,6 +5,10 @@ module BlogHelper
 	render :partial => 'blog/header', :locals => {:options => options}
     end
 
+    def favicon_url
+        root_url + "user_files/#{@user.name}/config/favicon.ico"
+    end
+
     def footer
 	rewriter { @site.footer.to_s.html_safe }
     end

@@ -97,14 +97,6 @@ class BlogController < ApplicationController
     send_data @plugin_css, :type => 'text/css', :disposition => 'inline'   
   end  
 
-  def favicon
-    if File.exists?("#{@user.base_dir}/config/favicon.ico")
-	send_file "#{@user.base_dir}/config/favicon.ico", :type => 'image/x-icon', :disposition => 'inline'
-    else
-	render :text => "No Favicon", :status => 404
-    end
-  end
-
   protected
 
   def render(options = {}, extra_options = {}, &block)

@@ -5,7 +5,6 @@ Chito::Application.routes.draw do
     match '/index_plugin.css' => 'index#plugin_css', :as => :index_plugin_css
   end
   root :to => 'posts#index'
-  match '/favicon.ico' => 'blog#favicon', :as => :favicon
   match '/plugin.css' => 'blog#plugin_css', :as => :plugin_css
   match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
   match '/simple_captcha_ajax' => 'simple_captcha#simple_captcha_ajax'

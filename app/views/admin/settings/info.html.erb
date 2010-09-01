@@ -29,11 +29,11 @@
 <div class="edit_field">
 <div class="right_c"></div>
 <div class="edit_header"><%= t(:favicon, :scope => [:txt, :view, :admin, :settings]) %></div>
-<%= image_tag "/user_files/#{@user.name}/config/favicon.ico", :size => "16x16", :class => "favicon", :alt => "" %>
+<%= image_tag favicon_url, :size => "16x16", :class => "favicon", :alt => "" %>
 <%= form_for :user, :url => {:action => 'save_favicon'}, :html => {:multipart => true} do |f| -%>
     <%= file_field :file, :data, :accept => 'image/ico' %>
     <%= submit_tag t(:upload, :scope => [:txt, :view, :admin, :settings]) %>
-    <%= link_to t(:refresh_favicon, :scope => [:txt, :view, :admin, :settings]), "/favicon.ico", :target => "_blank" %>
+    <%= link_to t(:refresh_favicon, :scope => [:txt, :view, :admin, :settings]), favicon_url, :target => "_blank" %>
     <br/>
     <span style="padding-left:36px;"><%= t(:favicon_format, :scope => [:txt, :view, :admin, :settings]) %>
 <% end -%>
