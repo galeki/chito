@@ -1,9 +1,15 @@
  <script type="text/javascript">
 //<![CDATA[
         $('#subm_chito_comment').click(function(){
+            $(this).attr("disabled",true);
+            $(this).val('<%= t(:message_0, :scope => [:txt, :view, :comments, :_form]) %>');
             update_field();
             $('#comment_value').val('');
-            $.post('<%= url %>', $('#rform_chito_comment').find('input').serialize() + '&' + $('#rform_chito_comment').find('textarea').serialize());
+            $.post('<%= url %>', $('#rform_chito_comment').find('input').serialize() + '&' + $('#rform_chito_comment').find('textarea').serialize(), function(){
+                $('#subm_chito_comment').val('<%= t(:message_4, :scope => [:txt, :view, :comments, :_form]) %>');
+                $('#subm_chito_comment').attr("disabled",false);
+            });
+
             return false;
         });
 //]]>
