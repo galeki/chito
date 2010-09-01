@@ -57,11 +57,13 @@ class CommentsController < ApplicationController
 	    @post.save
 	end
 	@post.emails.each_key do |email|
-            ChitoMailer.comment_notifier(email, @comment, @post, request).deliver unless email == @comment.email
+            begin
+                ChitoMailer.comment_notifier(email, @comment, @post, request).deliver unless email == @comment.email
+            rescue
+                next #continue deliver remianed email if current deliver failed
+            end
 	end
 
-        rescue
-            nil
    end
    
    def call_filter
