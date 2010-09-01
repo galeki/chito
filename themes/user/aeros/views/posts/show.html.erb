@@ -92,6 +92,7 @@
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>
 </div>
+<%= render :partial => 'comments/trigger', :locals => {:url => post_comments_path(@post)} %>
 <% end %>
 
 
