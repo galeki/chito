@@ -93,7 +93,7 @@ class CommentsController < ApplicationController
    def render_error
  	render :update do |page|
  	  page.replace_html "comment_error", :partial => "comments/error" 
-	  page.visual_effect :blind_down, "comment_error"
+	  page.visual_effect :slide_down, "comment_error"
 	  page.call @call if @call
          end
    end
