@@ -16,7 +16,7 @@
     <label><div><%= t(:message_5, :scope => [:txt, :view, :blog, :add]) %></div> <%= f.password_field :password_confirmation, :size => "14" %></label>
     <label for="user_email"><div>E-mail</div> <%= f.text_field :email, :size => "14" %></label>
     <%= error_message_on @new_user, :email %>
-    <label for="user_language"><div>Language</div> <%= f.select :language, LANGUAGES %></label>
+    <label for="user_language"><div>Language</div> <%= f.select :language, Chito::LANGUAGES %></label>
     <br/>
     <%= show_simple_captcha :image_style => "simply_green", :label => t("txt.view.blog.add.input_captcha") %>
     <%= submit_tag  t(:message_7, :scope => [:txt, :view, :blog, :add]) , :class => 'submit' %><br/>

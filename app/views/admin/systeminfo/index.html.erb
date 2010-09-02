@@ -9,11 +9,15 @@
     </tr>
         <tr class="<%= cycle("odd", "") %>">
             <td ><%= "Version" %></td>
-	    <td ><pre><%= VER %></pre></td>
+	    <td ><pre><%= Chito::VERSION::STRING %></pre></td>
         </tr>
         <tr class="<%= cycle("odd", "") %>">
             <td ><%= "Languages" %></td>
-	    <td ><pre><%= LANGUAGES.map{|l| l[0]} * "\n" %></pre></td>
+	    <td ><pre><%= Chito::LANGUAGES.map{|l| l[0]} * "\n" %></pre></td>
+        </tr>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= "Uptime" %></td>
+	    <td ><pre><%= time_ago_in_words(Chito::STARTTIME) %></pre></td>
         </tr>
 </table>
 <table id="systeminfo_table" class="sofT" cellspacing="0" style="margin-top:5px;">

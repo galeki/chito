@@ -57,7 +57,7 @@
     <label >Twitter:</label>
     <%= f.text_field 'twitter', :size => '15' %>
     <label >Language:</label>
-    <%= f.select :language, LANGUAGES %>
+    <%= f.select :language, Chito::LANGUAGES %>
     <br/>
     <br/>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>

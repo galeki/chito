@@ -1,4 +1,13 @@
 # encoding: utf-8
+module Chito
+    module VERSION
+        MAJOR = 1
+        MINOR = 2
+        TINY  = 0
+        BUILD = ""
 
-VER = "1.2.0 rc1"
-LANGUAGES = [["简体中文 (Simplified Chinese)", "zh-CN"], ["English","en-US"]]
+        STRING = [MAJOR, MINOR, TINY, BUILD].join('.')
+    end
+    LANGUAGES = [["简体中文 (Simplified Chinese)", "zh-CN"], ["English","en-US"]]
+    STARTTIME = Time.now
+end
