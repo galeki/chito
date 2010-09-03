@@ -151,7 +151,6 @@ class User < ActiveRecord::Base
                .order('articles.last_commented_at desc, articles.created_at desc')\
                .select("distinct articles.id, articles.user_id, articles.title")\
                .includes(:user)\
-               .includes(:comments)\
                .paginate(:per_page => 10, :page => options[:page])
         
         rescue
