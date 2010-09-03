@@ -39,8 +39,8 @@ module Chito
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    #config.action_controller.cache_store = :file_store, "#{Rails.root}/tmp/cache"
-    config.action_controller.cache_store = :memory_store
+    config.action_controller.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+    #config.action_controller.cache_store = :memory_store
 
     #config.plugin_paths = "#{Rails.root}/vendor/plugins/chito_plugins"
     config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")

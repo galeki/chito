@@ -6,7 +6,7 @@
 </div>
 <%= render :partial => 'comments/trigger', :locals => {:url => messages_path} %>
 <br />
-<%= chito_cache :id => :guestbook do -%>
+<% chito_cache :id => :guestbook do -%>
     <div id="comments">
 	<%= comments %> 
     </div>

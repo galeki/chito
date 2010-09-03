@@ -8,7 +8,7 @@ xml.rss "version" => "2.0",
 	else
 	    xml.link root_url
 	end
-	xml.generator "Chito #{VER}"
+	xml.generator "Chito"
 	xml.description {xml.cdata! @user.info } 
 
 	@posts.each do |post|

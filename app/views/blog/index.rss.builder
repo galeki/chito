@@ -4,7 +4,7 @@ xml.rss "version" => "2.0",
     xml.channel do
 	xml.title @site.title
 	xml.link root_url :subdomain => "www"
-	xml.generator "Chito #{VER}"
+	xml.generator "Chito"
 
 	@posts.each do |post|
 	    xml.item do

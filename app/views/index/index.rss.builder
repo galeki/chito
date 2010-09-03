@@ -5,7 +5,7 @@ xml.rss "version" => "2.0",
     xml.channel do
 	xml.title {xml.cdata! @index.title }
 	xml.link "http://" + @index.bind_domain 
-	xml.generator "Chito #{VER}"
+	xml.generator "Chito"
 	xml.description {xml.cdata! @index.info } 
 
 	@posts.each do |post|
