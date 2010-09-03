@@ -12,7 +12,7 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql2
-  database: chito_dev_2
+  database: chito_dev_3
   username: root      
   password: 
   host: localhost

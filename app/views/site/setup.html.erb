@@ -24,7 +24,7 @@
 	</label></p>
     <% end -%>
 	<label for="user_language">Language:</label>
-	<div><%= f.select :language, LANGUAGES %></div>
+	<div><%= f.select :language,Chito::LANGUAGES %></div>
     <%= submit_tag t(:message_14, :scope => [:txt, :view, :site, :setup]), :class => 'submit' %><br/>
 <% end %>
 
