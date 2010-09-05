@@ -23,8 +23,13 @@ module BlogControllerPlugin
             if @user.show_archive && !sidebar_cache_enable(:archive)
                 first_post = @user.posts.last
                 last_post = @user.posts.first
-                @first_archive_time = Time.mktime(first_post.created_at.year, first_post.created_at.month)
-                @last_archive_time = Time.mktime(last_post.created_at.year, last_post.created_at.month)
+                if first_post && last_post
+                    @first_archive_time = Time.mktime(first_post.created_at.year, first_post.created_at.month)
+                    @last_archive_time = Time.mktime(last_post.created_at.year, last_post.created_at.month)
+                else
+                    @first_archive_time = Time.now
+                    @last_archive_time = Time.now
+                end
             end
         end
 
