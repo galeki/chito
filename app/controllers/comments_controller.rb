@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
    end
 
    def create
-        chito_spam_check
 	@comment = @user.comments.new(params[:comment])
 	@comment.prepare(params, request, session, cookies)
+        chito_spam_check
 
 	@post = @user.posts.find(params[:post_id])
 	@comment.article_id = @post.id
