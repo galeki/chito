@@ -136,7 +136,7 @@ class User < ActiveRecord::Base
 	temp = temp.where("articles.content like ?", "%#{options[:keyword]}%") if options[:keyword]
         if options[:year] && options[:month]
             temp = temp.where("articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i))
-            temp = temp.where("articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month].to_i + 1))
+            temp = temp.where("articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month]) + 1.month)
         end
         if options[:tag]
 	    temp = temp.where("tags.name = ?", options[:tag]) 
