@@ -54,4 +54,7 @@ CKEDITOR.editorConfig = function(config) {
         CKEDITOR.plugins.addExternal('wpmore',  '/javascripts/ckeditor_plugins/wpmore/');
         CKEDITOR.plugins.addExternal('syntaxhighlighter',  '/javascripts/ckeditor_plugins/syntaxhighlighter/');
         CKEDITOR.plugins.addExternal('latexformula',  '/javascripts/ckeditor_plugins/latexformula/');
+
+        config.smiley_columns = 12;
+        //config.ignoreEmptyParagraph = false;
 };
