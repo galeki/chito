@@ -12,6 +12,11 @@
 				$(this).html($(this).html().replace(/\\[tex\\]/g, "<span class='latex_eq'>").replace(/\\[\\/tex\\]/g, "</span>"));
 			    });
 			}catch(e){;}
+                        $(".latex_eq").each(function(){
+                            var html = $(this).html();
+                            html = html.replace(/&nbsp;/g, " ").replace(/<br \\/>/g, "");
+                            $(this).html(html);
+                        });
 			$(".latex_eq").latex(); 
 		    }
 		    $(document).ready(auto_js_latex);
