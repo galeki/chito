@@ -65,14 +65,22 @@ class ApplicationController < ActionController::Base
 	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
     end
 
-    def chito_cache_expire(options={})
-	ckey = chito_cache_key(options)
-	ckey = Regexp.new(ckey) if ckey =~ /\*$/
-	expire_fragment ckey
+    def postbar_cache_enable(id, options={}, &block)
+	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)), &block 
     end
 
     def sidebar_cache_expire(id, options={})
 	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)) 
+    end
+
+    def postbar_cache_expire(id, options={})
+	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)) 
+    end
+
+    def chito_cache_expire(options={})
+	ckey = chito_cache_key(options)
+	ckey = Regexp.new(ckey) if ckey =~ /\*$/
+	expire_fragment ckey
     end
 
     def chito_cache_key(options={})
@@ -81,6 +89,7 @@ class ApplicationController < ActionController::Base
 	ckey << (options.delete(:part) || 'blog')
         ckey << (options.delete(:type) || 'main')
 	ckey << options.delete(:id)
+        ckey << (@now.to_i / options.delete(:in).to_i) if options[:in]
 	ckey << options.to_param unless options.blank?
 	ckey.compact.join('/')
     end
@@ -114,6 +123,7 @@ class ApplicationController < ActionController::Base
 
     def get_site
 	@site = Site.instance
+        @now = Time.now
 	unless @site
 	    redirect_to :controller => "site", :action => "setup"
 	    return false

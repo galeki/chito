@@ -14,6 +14,10 @@ module ApplicationHelper
 	cache chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
     end
 
+    def postbar_cache(id, options={}, &block)
+	cache chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)), &block 
+    end
+
     def jquery_include_tag
 	if @site.use_external_jquery
            javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"

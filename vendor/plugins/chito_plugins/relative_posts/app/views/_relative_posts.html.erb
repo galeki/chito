@@ -1,3 +1,4 @@
+<% postbar_cache :relative_posts, :in => 1.hours do -%>
 <ul>
 	<% unless @relative_posts.blank? -%>
 	    <% for post in @relative_posts -%>
@@ -7,3 +8,4 @@
 	    <li><%= t "plugins.relative_posts.no_match" %></li>
 	<% end -%>
 </ul>	
+<% end %>

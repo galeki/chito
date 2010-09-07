@@ -25,11 +25,18 @@ module ApplicationPlugin
                     @relative_posts = []
                     @global_relative_posts = []
                 else
-                    if @user.show_relative_posts
-		        @relative_posts = @user.posts.where("articles.id != ?", @post.id).tagged_with(tag_list, :any => true).limit(@user.local_relative_posts_num.to_num(5)).order('created_at desc')
+                    if @user.show_relative_posts && !postbar_cache_enable(:relative_posts, :in => 1.hours)
+                        #postbar_cache_expire(:relative_posts, :in => "*")
+		        @relative_posts = @user.posts.where("articles.id != ?", @post.id)\
+                                               .tagged_with(tag_list, :any => true)\
+                                               .limit(@user.local_relative_posts_num.to_num(5))\
+                                               .order('created_at desc')
                     end
-                    if @user.show_global_relative_posts
-		        @global_relative_posts = Article.where("articles.bit_opt = 0 and articles.user_id != ?", @post.user_id).tagged_with(tag_list, :any => true).limit(@user.global_relative_posts_num.to_num(5)).order('created_at desc')
+                    if @user.show_global_relative_posts && !postbar_cache_enable(:global_relative_posts, :in => 1.hours)
+		        @global_relative_posts = Article.where("articles.bit_opt = 0 and articles.user_id != ?", @post.user_id)\
+                                                        .tagged_with(tag_list, :any => true)\
+                                                        .limit(@user.global_relative_posts_num.to_num(5))\
+                                                        .order('created_at desc')
                     end
                 end
 	    end
