@@ -1,21 +1,10 @@
 module ApplicationHelper
     include ActsAsTaggableOn::TagsHelper
     include ApplicationHelperPlugin
+    include Chito::CacheHelper
 
     def render_flash(options={})
 	render_stickies({:close => t("txt.close") }.update(options)).html_safe
-    end
-
-    def chito_cache(options={}, &block)
-	cache( chito_cache_key(options), &block )
-    end
-
-    def sidebar_cache(id, options={}, &block)
-	cache chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
-    end
-
-    def postbar_cache(id, options={}, &block)
-	cache chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)), &block 
     end
 
     def jquery_include_tag

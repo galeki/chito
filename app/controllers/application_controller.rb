@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
     before_filter :get_site
     self.prepend_view_path(ChitoPlugin::PLUGIN_PATH) 
     helper :all
+    include Chito::CacheController
     helper_method :chito_cache_key
     helper_method :'_params'
     helper_method :url_for
@@ -55,43 +56,6 @@ class ApplicationController < ActionController::Base
             end
         end
         super
-    end
-
-    def chito_cache_enable(options={}, &block)
-	read_fragment chito_cache_key(options), &block
-    end
-
-    def sidebar_cache_enable(id, options={}, &block)
-	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
-    end
-
-    def postbar_cache_enable(id, options={}, &block)
-	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)), &block 
-    end
-
-    def sidebar_cache_expire(id, options={})
-	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)) 
-    end
-
-    def postbar_cache_expire(id, options={})
-	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)) 
-    end
-
-    def chito_cache_expire(options={})
-	ckey = chito_cache_key(options)
-	ckey = Regexp.new(ckey) if ckey =~ /\*$/
-	expire_fragment ckey
-    end
-
-    def chito_cache_key(options={})
-        ckey = []
-        ckey << @user.name if @user
-	ckey << (options.delete(:part) || 'blog')
-        ckey << (options.delete(:type) || 'main')
-	ckey << options.delete(:id)
-        ckey << (@now.to_i / options.delete(:in).to_i) if options[:in]
-	ckey << options.to_param unless options.blank?
-	ckey.compact.join('/')
     end
 
     private

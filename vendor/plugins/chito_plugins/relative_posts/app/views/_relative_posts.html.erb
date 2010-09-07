@@ -1,4 +1,4 @@
-<% postbar_cache :relative_posts, :in => 1.hours do -%>
+<% postbar_cache :relative_posts, :in => 1.hours, :post => @post.id do -%>
 <ul>
 	<% unless @relative_posts.blank? -%>
 	    <% for post in @relative_posts -%>
