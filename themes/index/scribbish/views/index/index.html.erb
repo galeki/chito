@@ -1,4 +1,4 @@
-
+<% indices_cache do -%>
 <% posts do -%>
 <div class="atomentry">
         <div class="post_avatar" style="float:right;padding:5px;">
@@ -22,4 +22,4 @@
 <div id="pagilinks">
     <%= will_paginate @posts, :previous_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
 </div>
-
+<% end -%>
