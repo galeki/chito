@@ -52,7 +52,7 @@
 
 
 
-
+<% chito_cache :type => :posts, :id => :feedbacks, :post => @post.id do -%>
 <% if_show_trackbacks do -%>
     <div class="articlefooter">
 	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :format => :xml) %></span>
@@ -86,6 +86,7 @@
 <div id="comments">
     <%= comments %> 
 </div>
+<% end -%>
 
 <% if_can_comment do -%>
 <br />

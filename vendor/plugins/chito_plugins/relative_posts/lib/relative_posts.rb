@@ -26,13 +26,14 @@ module ApplicationPlugin
                     @global_relative_posts = []
                 else
                     if @user.show_relative_posts && !postbar_cache_enable(:relative_posts, :in => 1.hours, :post => @post.id)
-                    #postbar_cache_expire(:relative_posts, :post => @post.id, :in => :all)
+                        postbar_cache_expire(:relative_posts, :post => @post.id, :in => :all)
 		        @relative_posts = @user.posts.where("articles.id != ?", @post.id)\
                                                .tagged_with(tag_list, :any => true)\
                                                .limit(@user.local_relative_posts_num.to_num(5))\
                                                .order('created_at desc')
                     end
                     if @user.show_global_relative_posts && !postbar_cache_enable(:global_relative_posts, :in => 1.hours, :post => @post.id)
+                        postbar_cache_expire(:global_relative_posts, :post => @post.id, :in => :all)
 		        @global_relative_posts = Article.where("articles.bit_opt = 0 and articles.user_id != ?", @post.user_id)\
                                                         .tagged_with(tag_list, :any => true)\
                                                         .limit(@user.global_relative_posts_num.to_num(5))\

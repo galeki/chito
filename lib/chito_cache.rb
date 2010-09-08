@@ -5,19 +5,19 @@ module Chito
     end
 
     def sidebar_cache_enable(id, options={}, &block)
-	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)), &block 
+	chito_cache_enable(options.merge(:part => :plugins, :type => :sidebars, :id => id), &block)
     end
 
     def postbar_cache_enable(id, options={}, &block)
-	read_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)), &block 
+	chito_cache_enable(options.merge(:part => :plugins, :type => :postbars, :id => id), &block) 
     end
 
     def sidebar_cache_expire(id, options={})
-	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :sidebars, :id => id)) 
+	chito_cache_expire(options.merge(:part => :plugins, :type => :sidebars, :id => id)) 
     end
 
     def postbar_cache_expire(id, options={})
-	expire_fragment chito_cache_key(options.merge(:part => :plugins, :type => :postbars, :id => id)) 
+	chito_cache_expire(options.merge(:part => :plugins, :type => :postbars, :id => id)) 
     end
 
     def chito_cache_expire(options={})
@@ -33,7 +33,12 @@ module Chito
         ckey << (options.delete(:type) || 'main')
 	ckey << options.delete(:id)
         ckey << options.delete(:post)
-        ckey << (@now.to_i / options.delete(:in).to_i) if options[:in]
+        if options[:in] == :all
+            ckey << "*"
+            options.delete(:in)
+        elsif options[:in].to_i > 0
+            ckey << (@now.to_i / options.delete(:in).to_i)
+        end
 	ckey << options.to_param unless options.blank?
 	ckey.compact.join('/')
     end    
