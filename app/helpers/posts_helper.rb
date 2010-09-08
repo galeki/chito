@@ -61,7 +61,7 @@ module PostsHelper
     end
 
     def link_to_post_tags(options={})
-	@post.tags.inject(""){|html, tag| html << (link_to h(tag.name), tag_posts_path(tag.name), options) << '  '}.html_safe
+	@post.cached_tag_list.split(', ').inject(""){|html, tag| html << (link_to h(tag), tag_posts_path(tag), options) << '  '}.html_safe
     end
 
     def link_to_read_more
