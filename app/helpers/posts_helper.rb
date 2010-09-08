@@ -44,7 +44,8 @@ module PostsHelper
     end
 
     def if_show_trackbacks(&block)
-	with_output_buffer(&block) if @trackbacks.size > 0 && @user.show_trackbacks
+        @trackbacks = @post.trackbacks
+	with_output_buffer(&block) if @user.show_trackbacks && @trackbacks.size > 0
     end
 
     def if_can_comment(&block)

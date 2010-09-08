@@ -10,7 +10,6 @@ class PostsController < BlogController
 	    @comment = Feedback.new
 	    @previous_post = @post.prev
 	    @next_post = @post.next
-	    @trackbacks = @post.trackbacks
 	    @titles.unshift @post.title
 	    @title = @titles * " - "
 	    do_something :before_post_show

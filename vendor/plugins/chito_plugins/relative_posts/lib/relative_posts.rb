@@ -26,7 +26,7 @@ module ApplicationPlugin
                     @global_relative_posts = []
                 else
                     if @user.show_relative_posts && !postbar_cache_enable(:relative_posts, :in => 1.hours, :post => @post.id)
-                        #postbar_cache_expire(:relative_posts, :in => "*")
+                    #postbar_cache_expire(:relative_posts, :post => @post.id, :in => :all)
 		        @relative_posts = @user.posts.where("articles.id != ?", @post.id)\
                                                .tagged_with(tag_list, :any => true)\
                                                .limit(@user.local_relative_posts_num.to_num(5))\

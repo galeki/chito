@@ -11,6 +11,7 @@ class TrackbacksController < ApplicationController
 		@trackback = @user.trackbacks.new
 		@trackback.prepare_trackback(request, params)
 		@trackback.save && @error_message = ""
+	        chito_cache_expire(:type => :posts, :id => :feedbacks, :post => post.id)
 	    end
 	end
 

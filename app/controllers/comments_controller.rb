@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
 	@post.update_attribute(:last_commented_at, Time.now)
 	sidebar_cache_expire(:new_comments)
 	chito_cache_expire(:type => "posts_index/*")
+	chito_cache_expire(:type => :posts, :id => :feedbacks, :post => @post.id)
 	render_update(:position => :bottom)
 	call_notifier
 

@@ -1,7 +1,8 @@
+
 <div id="article_wrap">
   <div class="pre_next_post">
-	<div><%= link_to_previous_post %></div> 
-        <div><%= link_to_next_post %></div>
+	<div><%# link_to_previous_post %></div> 
+        <div><%# link_to_next_post %></div>
   </div>
 
   <h1><%= post_title %></h1>
@@ -12,7 +13,7 @@
     <%= (' in ' + link_to_post_category ).html_safe if @post.category %>
     <% unless @post.tags.empty? -%>
 	with tags 
-	<%= link_to_post_tags %>
+	<%# link_to_post_tags %>
     <% end -%>
     , <%= post_read_count %> <%= t("txt.view.posts.show.readers") %>
       <%= if_my_post do %>
@@ -29,6 +30,8 @@
   </div>
 
   <%= postbars %>
+
+<% chito_cache :type => :posts, :id => :feedbacks, :post => @post.id do -%>
 
 <%= if_show_trackbacks do -%>
     <div class="articlefooter">
@@ -48,6 +51,7 @@
 	</ul>
     </div>
 <% end -%>
+
 <div class="articlefooter">
     <% if @trackbacks.empty? && false-%> <!-- TODO Disable for no spam protection -->
 	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :key => @post.trackback_key, :format => :xml) %></span>
@@ -57,9 +61,11 @@
 	<%= t(:comments, :scope => [:txt, :view, :posts, :show]) %> (<%= @comments.size %>)
     </span>
 </div>
-<div id="comments">
-    <%= comments %> 
-</div>
+    <div id="comments">
+        <%= comments %> 
+    </div>
+
+<% end -%>
 
 <%= if_can_comment do %>
 <br />
@@ -70,3 +76,4 @@
 <% end %>
 
 </div>
+
