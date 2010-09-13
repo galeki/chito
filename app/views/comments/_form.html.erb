@@ -15,17 +15,17 @@
      		 :controller => "/blog", :action => 'login', :jump => request.url%> 
      <% else %>
     	 <label><%= t(:message_2, :scope => [:txt, :view, :comments, :_form]) %></label>
-         <input id="comment_writer" name="comment[writer]" size="10" type="text" value="<%= cookies[:comment_writer].to_s.force_encoding('UTF-8') %>" /> 
+         <input id="comment_writer" name="comment[writer]" size="10" type="text" value="<%= c(:comment_writer) %>" /> 
          <%= link_to t(:message_3, :scope => [:txt, :view, :comments, :_form]),
      		 :controller => "/blog", :action => 'login', :jump => request.url%> 
          <label>E-mail:</label>
-         <%= text_field 'comment','email', :value => cookies[:comment_email].to_s.force_encoding('UTF-8')  %> *
+         <%= text_field 'comment','email', :value => c(:comment_email)  %> *
          <br/>
          <label>Web:</label>
-         <%= text_field 'comment','homepage', :value => (cookies[:comment_homepage] ? cookies[:comment_homepage].to_s.force_encoding('UTF-8') : 'http://') %>
+         <%= text_field 'comment','homepage', :value => (c(:comment_homepage) || 'http://') %>
          <br/>
          <label>Twitter:</label>
-         <%= text_field 'comment','twitter', :value => cookies[:comment_twitter].to_s.force_encoding('UTF-8'), :size => 12 %>
+         <%= text_field 'comment','twitter', :value => c(:comment_twitter), :size => 12 %>
          <br/>
          <input id="comment_info" name="comment[info]" size="6" type="text" value="" class="comment_info_field" autocomplete="off" /> 
          <input id="comment_value" name="comment[value]" type="hidden" value="some"/>

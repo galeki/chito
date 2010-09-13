@@ -3,6 +3,14 @@ module ApplicationHelper
     include ApplicationHelperPlugin
     include Chito::CacheHelper
 
+    def c(key)
+        if RUBY_VERSION > '1.9' && cookies[key]
+            cookies[key].to_s.force_encoding('UTF-8')
+        else
+            cookies[key]
+        end
+    end
+
     def render_flash(options={})
 	render_stickies({:close => t("txt.close") }.update(options)).html_safe
     end
