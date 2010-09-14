@@ -1,0 +1,123 @@
+h2. About Chito
+
+Chito is a full feature blogging platform in Rails. 
+
+h2. Requires
+
+* Ruby 1.8.7+ or Ruby 1.9.2+
+* Rails 3.0+
+* MySQL database engine
+* Linux or MacOS system
+
+h2. Installing
+
+h3. 1.Get Chito
+
+<pre>
+$ git clone git@github.com:galeki/chito.git
+</pre>
+
+h3. 2.Install gems with bundler
+
+Inside the Chito dir, run:
+
+<pre>
+$ bundle install
+</pre>
+
+h3. 3.Create database
+
+Edit config/database.yml with proper database name and password.
+
+Then run:
+
+<pre>
+$ rake db:migrate
+</pre>
+
+Or if you are deploying Chito in production, run:
+
+<pre>
+$ RAILS_ENV=production rake db:migrate
+</pre>
+
+h3. 4.Done
+
+Just run:
+
+<pre>
+$ rails s
+</pre>
+
+and launch your favorite web browser with:
+
+<pre>
+http://localhost:3000
+</pre>
+
+Or if you want deply Chito in production, now is ready deploy with Mongrel or Passenger... just like other rails applications.
+
+h2. Themes & Plugins
+
+Current Chito is shipped with all themes and plugins (now is about 32 themes and 25 plugins).
+
+The locations of themes and plugins is listed below. Simply delete the dir of any of them if you think you dont need it.
+
+h3. Theme list
+
+All themes of Chito is located at:
+
+<pre>
+ themes/user/
+</pre>
+
+The default theme is Convergence which located at:
+
+<pre>
+ themes/user/convergence/
+</pre>
+
+h3. Plugin list
+
+All plugins of Chito is located at:
+
+<pre>
+ vendor/plugins/chito_plugins/
+</pre>
+
+Here is a simple intro of these plugins:
+
+<pre>
+ akismet_comment_filter                     Antispam with Akismet
+ auto_complete_tag                          Enable user tag their posts
+ auto_js_latex                              Auto convert the fragment [tex]...[/tex] to math formula
+ comment_gravatar                           Show poster's Gravatar in comment
+ custom_css                                 Enable user add extra CSS in their blog
+ custom_header_footer                       Enable user custom the header and the footer of their blog
+ custom_navbars                             Enable user add custom navbars
+ custom_sidebar_item                        Enable user add custom sidebars
+ default_navbars                            Show the default 'Top', 'Guestbook', 'Admin' navbars
+ highlight_search_word                      Highlight the search word of visitors
+ hot_posts                                  Show the 'Hot Posts' sidebar
+ img_resize                                 Auto resize the image of posts to proper width and height
+ official_dashboardbar                      Show the updates of user named 'official' in admin dashboard
+ page_patch                                 Patch several position of blog with custom content
+ random_posts                               Show the 'Random Posts' sidebar
+ relative_posts                             Show the 'Relative Posts' postbar
+ relative_time                              Convert the created time of posts and comments to relative style
+ rss_icon_sidebar                           Show a Feed icons in sidebar
+ rss_patch                                  Patch RSS feed with custom content
+ seo                                        Enable user change the meta-keyword and description of posts and blog
+ simple_vcode_comment_filter                Show a simple captcha in comment form for spam protection
+ syntaxhighlighter                          Highlight code with the popular SyntaxHighlighter plugin
+ tag_cloud                                  Show the 'Tag Cloud' sidebar
+ useful_sidebars                            Several useful sidebars like 'New Comments', 'Avatar', 'Categories', 'Meta'...
+ useful_dashboardbars                       Several useful dashborad bars
+ useful_index_sidebars                      Several useful index sidebars
+</pre>
+
+h2. Rails 2.x
+
+Chit 1.2+ only works with Rails3.0+. If you want use Chito under Rails 2.x version, you can checkout or download the old v1.1.7-for-rails-2.x tag at github. 
+
+The old v1.1.7-for-rails-2.x version is nolonger supported anymore.
