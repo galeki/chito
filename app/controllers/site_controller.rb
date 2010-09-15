@@ -20,8 +20,8 @@ class SiteController < ApplicationController
 	    redirect_to "/" if @site.save
 	end
 
-	rescue 
-	   error t(:message_0, :scope => [:txt, :controller, :site])
+	#rescue 
+	#   error t(:message_0, :scope => [:txt, :controller, :site])
     end
     
 
