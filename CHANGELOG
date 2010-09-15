@@ -1,5 +1,7 @@
 *Chito 1.2.2 (unreleased)*
 
+* SQLite compatible
+
 * Update CKEditor to 3.4
 
 * Change some editor dialogs to a better size 

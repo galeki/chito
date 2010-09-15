@@ -165,7 +165,7 @@ class User < ActiveRecord::Base
 	    when :messages
 		temp = temp.where("feedbacks.bit_opt = 3")
 	    when :spams
-		temp = temp.where("feedbacks.bit_opt & 0b1 = 0")
+		temp = temp.where("feedbacks.bit_opt % 2 = 0")
 	    when :trackbacks
 		temp = temp.where("feedbacks.bit_opt = 5")
 	end

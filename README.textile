@@ -6,7 +6,7 @@ h2. Requires
 
 * Ruby 1.8.7+ or Ruby 1.9.2+
 * Rails 3.0+
-* MySQL database engine
+* MySQL or SQLite3 database engine
 * Linux or MacOS system
 
 h2. Installing
