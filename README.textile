@@ -1,6 +1,10 @@
-h2. About Chito
+h1. About Chito
 
 Chito is a full feature blogging platform in Rails. 
+
+h2. Demo
+
+Here:http://chitodemo.is-programmer.com is a demo Chito blog hosted by is-programmer.com.
 
 h2. Requires
 
