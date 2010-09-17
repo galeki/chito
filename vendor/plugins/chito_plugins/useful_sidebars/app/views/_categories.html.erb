@@ -2,7 +2,11 @@
     <ul id="category">
      <% for category in @categories -%>
 	<li class="category">
-	    <%= link_to h(category.name), category_posts_path(category) %>
+            <% if category.permalink.to_s == "- No Permalink -" -%>
+	        <%= link_to category.name, category_posts_path(category) %>
+            <% else -%>
+                <%= link_to category.name, category_permalink_posts_path(category.permalink)  %>
+            <% end -%>
 	</li>
      <% end -%>
     </ul>

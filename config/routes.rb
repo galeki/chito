@@ -28,11 +28,13 @@ Chito::Application.routes.draw do
   resources :messages
   match '/comments.:format' => 'comments#index', :as => :comments
   match '/tag/*tag_name' => 'posts#index', :as => :tag_posts
+  match '/category/*category_permalink' => 'posts#index', :as => :category_permalink_posts
   match '/admin/links/set_link_title' => 'admin/links#set_link_title'
   match '/admin/links/set_link_url' => 'admin/links#set_link_url'
   match '/admin/links/set_link_info' => 'admin/links#set_link_info'
   match '/admin/categories/set_category_name' => 'admin/categories#set_category_name'
   match '/admin/categories/set_category_info' => 'admin/categories#set_category_info'
+  match '/admin/categories/set_category_permalink' => 'admin/categories#set_category_permalink'
   match '/admin/users/set_user_bind_domain' => 'admin/users#set_user_bind_domain'
   match '/admin/groups/set_group_space' => 'admin/groups#set_group_space'
   match '/admin/groups/set_group_file_size_limit' => 'admin/groups#set_group_file_size_limit'

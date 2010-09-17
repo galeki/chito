@@ -1,6 +1,7 @@
 class Admin::CategoriesController <  Admin::BaseController
 	in_place_edit_for :category, :name
 	in_place_edit_for :category, :info
+	in_place_edit_for :category, :permalink
 	after_filter(:except => :index) { |c| c.sidebar_cache_expire :categories }
 
   def index

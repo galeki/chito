@@ -415,6 +415,7 @@ en-US:
           saving: Saving
           create_category: Create Category
           name: Name
+          permalink: Permalink
           description: Description
           name_c: Name (click to edit)
           description_c: Description (click to edit)

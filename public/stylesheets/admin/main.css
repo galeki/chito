@@ -720,3 +720,6 @@ a#d_open{
 a#d_open:hover{
     color: #666;
 }
+.category_permalink_col{
+    width:7em;
+}

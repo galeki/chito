@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818082309) do
+ActiveRecord::Schema.define(:version => 20100917182920) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(:version => 20100818082309) do
     t.integer  "position",   :default => 0
     t.integer  "bit_opt",    :default => 0
     t.integer  "user_id"
+    t.string   "permalink"
   end
 
   add_index "categories", ["bit_opt"], :name => "index_categories_on_bit_opt"
+  add_index "categories", ["permalink"], :name => "index_categories_on_permalink"
   add_index "categories", ["user_id"], :name => "index_categories_on_user_id"
 
   create_table "feedbacks", :force => true do |t|
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20100818082309) do
   end
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", :force => true do |t|

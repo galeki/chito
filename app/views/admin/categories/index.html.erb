@@ -29,6 +29,7 @@
 	    <tr>
 		    <th class="helpHed dragger"></th>
 		    <th class="helpHed"><%=t :name_c, :scope => [:txt, :view, :admin, :categories] %></th>
+		    <th class="helpHed"><%=t :permalink, :scope => [:txt, :view, :admin, :categories] %></th>
 		    <th class="helpHed"><%=t :description_c, :scope => [:txt, :view, :admin, :categories] %></th>
 		    <th class="helpHed"></th>
 	    </tr>
@@ -45,4 +46,5 @@
 </div>
 </div>
 <%= in_place_edit_js :category, :name %>
+<%= in_place_edit_js :category, :permalink %>
 <%= in_place_edit_js :category, :info %>

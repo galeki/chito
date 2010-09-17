@@ -1,6 +1,7 @@
     <tr id="category_<%= @category.id %>" class="">
 	    <td class="dragger"></td>
 	    <td class="category_name_col"><%= in_place_edit :category, :name, @category.id, @category.name %></td>
+	    <td class="category_permalink_col"><%= in_place_edit :category, :permalink, @category.id, @category.permalink %></td>
 	    <td class="category_info_col"><%= in_place_edit :category, :info, @category.id, @category.info %></td>
 	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :categories]), admin_category_path(@category), :class => "delete", 
 	    :confirm => t(:delete_category?, :scope => [:txt, :view, :admin, :categories], :name => @category.name) , :method => :delete %></td>
