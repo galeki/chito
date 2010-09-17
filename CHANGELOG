@@ -1,5 +1,7 @@
 *Chito 1.2.2 (unreleased)*
 
+* Category permalink support
+
 * SQLite compatible
 
 * Update CKEditor to 3.4

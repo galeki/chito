@@ -415,7 +415,7 @@ zh-CN:
           saving: 保存中
           create_category: 创建分类
           name: 名称
-          permalink: 永久链接
+          permalink: 永久链接 (点击编辑)
           description: 描述
           name_c: 名称 (点击编辑)
           description_c: 描述 (点击编辑)
