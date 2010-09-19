@@ -35,8 +35,12 @@ module BlogControllerPlugin
 
 	def count_blog_view_and_post_view_before_post_show
 	    if session[:user_id].to_s != @user.id.to_s
-	        @user.increment!(:blog_read) 
-		@post.increment!(:read_count)
+                begin
+	            @user.increment!(:blog_read) 
+		    @post.increment!(:read_count)
+                rescue
+                    nil #TODO: sometime there is a weired 'cant modify frozen hash' error here
+                end
 	    end
 	end
 end

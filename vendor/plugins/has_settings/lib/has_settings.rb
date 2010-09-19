@@ -25,6 +25,7 @@ module ActiveRecord
 	    begin
 		super
 	    rescue NoMethodError
+                return if self.frozen?
 		name = method.to_s
 		self.settings = {} unless self.settings.is_a?(Hash)
 		if name =~ /=$/

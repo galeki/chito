@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100917182920) do
+ActiveRecord::Schema.define(:version => 20100919105113) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20100917182920) do
     t.datetime "reset_password_key_expires_at"
     t.string   "twitter"
     t.datetime "last_logined_in_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["bit_opt"], :name => "index_users_on_bit_opt"
