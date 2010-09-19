@@ -28,7 +28,7 @@
                 <%= link_to "+", increase_rank_admin_article_path(post), :remote => true, :method => :post, :class => "button_to_link" %>
             </td>
 	    <td class="action_col">
-		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_path(post, :subdomain => post.user.name, :format => :html), :class => "read", :target => '_blank' %></td>
+		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_url(post, :subdomain => post.user.name, :format => :html), :class => "read", :target => '_blank' %></td>
 	    
     </tr>
     <% end -%>	
