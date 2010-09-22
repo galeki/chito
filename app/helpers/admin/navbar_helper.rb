@@ -6,7 +6,7 @@ module Admin::NavbarHelper
 		#{(link_to image_tag("setting.gif"), "#", 
 		    {:onclick => "open_remote_form({'url':'#{bar.form_url}', 'title':'#{bar.info}', 'width':450});", 
 		    :class => "remote_setting"} )  if bar.config} 
-		#{bar.i18n_title} 
+		#{h(bar.i18n_title)} 
 		</div>
 	    </li>].html_safe
     end
