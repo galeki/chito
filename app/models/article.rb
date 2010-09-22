@@ -1,24 +1,24 @@
 require 'net/http'
 require 'uri'
 class Article < ActiveRecord::Base
-	acts_as_taggable
-	has_settings :nil_value => ['', '0']
-	has_flags [:is_none, :is_draft, :is_page], [:column => 'bit_opt']
-	belongs_to :user 
-	belongs_to :index 
-	has_many :comments, 
-		 :class_name => 'Feedback',
-		 :order => 'feedbacks.created_at', 
-		 :conditions => ["feedbacks.bit_opt = 1"],
-		 :dependent => :destroy
-	has_many :trackbacks, 
-		 :class_name => 'Feedback',
-		 :order => 'feedbacks.created_at', 
-		 :conditions => ["feedbacks.bit_opt = 5"],
-		 :dependent => :destroy
-	belongs_to :category
-        attr_protected :read_count, :rank
-	include ArticlePlugin
+    acts_as_taggable
+    has_settings :nil_value => ['', '0']
+    has_flags [:is_none, :is_draft, :is_page], [:column => 'bit_opt']
+    belongs_to :user 
+    belongs_to :index 
+    has_many :comments, 
+             :class_name => 'Feedback',
+             :order => 'feedbacks.created_at', 
+             :conditions => ["feedbacks.bit_opt = 1"],
+             :dependent => :destroy
+    has_many :trackbacks, 
+             :class_name => 'Feedback',
+             :order => 'feedbacks.created_at', 
+             :conditions => ["feedbacks.bit_opt = 5"],
+             :dependent => :destroy
+    belongs_to :category
+    attr_protected :read_count, :rank
+    include ArticlePlugin
 
     def self.new_posts(num=20)
         where("articles.bit_opt = 0 and articles.rank >= 0").order('articles.created_at DESC').limit(num)
@@ -32,26 +32,26 @@ class Article < ActiveRecord::Base
     end
 
     def title
-	super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
+        super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
     end
 
     def prepare(user, params)
-	    self.bit_opt_will_change!
-	    self.attributes = params[:article]
-	    self.user_id = user.id
-	    self.category = params[:category] ? user.categories.find(params[:category]) : user.categories.order('position').first
+        self.bit_opt_will_change!
+        self.attributes = params[:article]
+        self.user_id = user.id
+        self.category = params[:category] ? user.categories.find(params[:category]) : user.categories.order('position').first
     end
 
     def make_brief
-      return unless self.auto_brief
-      index = self.content.index('<!--more-->')
-      if index
-        s = content[0,index]
-        self.has_more = true
-        self.brief = close_html(s)
-      else
-        self.has_more = false
-      end
+        return unless self.auto_brief
+        index = self.content.index('<!--more-->')
+        if index
+            s = content[0,index]
+            self.has_more = true
+            self.brief = close_html(s)
+        else
+            self.has_more = false
+        end
     end
 
     def trackback_key
@@ -100,12 +100,12 @@ class Article < ActiveRecord::Base
         stream = html.scan(/<\s*[\/]*[^>^\/]+>/).map {|x| x[/<\s*([^>^\s]*)[^>]*>/, 1]}
         stack = []
         stream.each do |x|
-	        if x =~ /^\//
-	            stack.pop if x[1..-1] == stack.last
-	        else
+            if x =~ /^\//
+                stack.pop if x[1..-1] == stack.last
+            else
                 stack.push x
-	        end
-	    end
+            end
+        end
         stack.reverse.each {|x| html << "</#{x}>\n"}
         html
     end 

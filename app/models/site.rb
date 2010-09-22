@@ -6,16 +6,16 @@ class Site < ActiveRecord::Base
     @@site = nil
 
     def self.instance
-	@@site ||= Site.first
-	@@site
+        @@site ||= Site.first
+        @@site
     end
 
     def mutli_users?
-	self.user_mode == "m"
+        self.user_mode == "m"
     end
 
     def single_user?
-	self.user_mode == "s"
+        self.user_mode == "s"
     end
 
     def no_subdomain?(request)
@@ -32,14 +32,14 @@ class Site < ActiveRecord::Base
     end
     
     def get_user(request)
-	if self.single_user? #or no_subdomain?(request) 
-	    user = User.find_by_name(self.default_user)
-	elsif request.domain == self.domain
-	    user = User.find_by_name(request.subdomains.join("."))	
-	else
-	    user = User.find_by_bind_domain(request.host) || User.find_by_bind_domain("www." + request.host)
-	end
-	user || User.find_by_name(self.default_user)
+        if self.single_user? #or no_subdomain?(request) 
+            user = User.find_by_name(self.default_user)
+        elsif request.domain == self.domain
+            user = User.find_by_name(request.subdomains.join("."))      
+        else
+            user = User.find_by_bind_domain(request.host) || User.find_by_bind_domain("www." + request.host)
+        end
+        user || User.find_by_name(self.default_user)
     end
 
 end

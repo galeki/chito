@@ -1,63 +1,63 @@
 module CommentsHelper
 
     def comments
-	render :partial => 'comments/comments'
+        render :partial => 'comments/comments'
     end
 
     def all_comments
-	@no = (1..@comments.size).to_a
-	@no.reverse! unless controller.action_name == "guestbook"
-	for @comment in @comments
-	    yield
-	end
-	@comment = nil
+        @no = (1..@comments.size).to_a
+        @no.reverse! unless controller.action_name == "guestbook"
+        for @comment in @comments
+            yield
+        end
+        @comment = nil
     end
 
     def comment_writer
-	@comment.writer
+        @comment.writer
     end
 
     def link_to_comment_writer
-	comment_homepage ? 
-		link_to(comment_writer, comment_homepage) :
-		comment_writer
+        comment_homepage ? 
+                link_to(comment_writer, comment_homepage) :
+                comment_writer
     end
 
     def comment_time
-	link_to rewriter{l @comment.created_at}, "#comment#{@comment.id}" 
+        link_to rewriter{l @comment.created_at}, "#comment#{@comment.id}" 
     end
 
     def comment_class
-	t = "comment_box comment_box#{cycle('0', '1')}"
-	t << " comment_self" if @comment.user_name && @comment.user_name.downcase == request.subdomains.first
+        t = "comment_box comment_box#{cycle('0', '1')}"
+        t << " comment_self" if @comment.user_name && @comment.user_name.downcase == request.subdomains.first
         t << " comment_reply" if @comment.reply_to.to_i != 0
-	t
+        t
     end
 
     def comment_avatar
-	@comment.user_post ? user_avatar : guest_avatar
+        @comment.user_post ? user_avatar : guest_avatar
     end
 
     def user_avatar
-	comment_homepage ? 
-		link_to(image_tag(@comment.avatar_url), h(comment_homepage || '')) :
-		image_tag(@comment.avatar_url)
+        comment_homepage ? 
+                link_to(image_tag(@comment.avatar_url), h(comment_homepage || '')) :
+                image_tag(@comment.avatar_url)
     end
 
     def guest_avatar
-	rewriter{ image_tag "/user_files/avatar_small.png" }
+        rewriter{ image_tag "/user_files/avatar_small.png" }
     end
 
     def comment_homepage
-	@comment.user_post ? root_url(:subdomain => @comment.user_name) : (@comment.homepage.to_s.to_url)
+        @comment.user_post ? root_url(:subdomain => @comment.user_name) : (@comment.homepage.to_s.to_url)
     end
 
     def comment_count
-	@no.pop.to_s if @no
+        @no.pop.to_s if @no
     end
 
     def comment_id
-	"comment#{@comment.id}"
+        "comment#{@comment.id}"
     end
 
     def comment_reply_id
@@ -65,32 +65,32 @@ module CommentsHelper
     end
 
     def comment_content_id
-	"comment_content#{@comment.id}"
+        "comment_content#{@comment.id}"
     end
 
     def comment_content
-	@comment.mode == 'plain' ? content = simple_format(h(@comment.content)) : content = @comment.content
-	sanitize(content)
+        @comment.mode == 'plain' ? content = simple_format(h(@comment.content)) : content = @comment.content
+        sanitize(content)
     end
 
     def render_comment
-	render :partial => 'comments/comment'
+        render :partial => 'comments/comment'
     end
 
     def reply_comment_button
-	content_tag :span, :class => "reply_comment_button" do
+        content_tag :span, :class => "reply_comment_button" do
             reply_js_function = @user.enable_thread_comment ? "reply_to_id('#{@comment.id}')" : "reply_to('#{comment_writer}', '#{@comment.id}')"
-	    link_to  t("txt.helper.comments.reply"), "#", :onclick => "#{reply_js_function};event.returnValue = false;return false;",
-		     :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
-	end
+            link_to  t("txt.helper.comments.reply"), "#", :onclick => "#{reply_js_function};event.returnValue = false;return false;",
+                     :title => t("txt.helper.comments.reply_to", :user => @comment.writer)
+        end
     end
 
     def twitter_comment_button
-	unless @comment.twitter.blank?
-	    content_tag :span, :class => "twitter_comment_button" do
-	    	link_to "", "http://twitter.com/#{h @comment.twitter}", :class => "follow_him", :target => "_blank"
-	    end
-	end
+        unless @comment.twitter.blank?
+            content_tag :span, :class => "twitter_comment_button" do
+                link_to "", "http://twitter.com/#{h @comment.twitter}", :class => "follow_him", :target => "_blank"
+            end
+        end
     end
 
     def thread_comment_script_tag

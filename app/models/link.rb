@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
     validates_presence_of :url 
 
     def info
-	super.blank? ? "- No Info -" : super
+        super.blank? ? "- No Info -" : super
     end
     
 end

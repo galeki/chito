@@ -1,6 +1,6 @@
 module IndexControllerPlugin
-	private
-	def get_useful_index_sidebars_needed_before_index_show
+        private
+        def get_useful_index_sidebars_needed_before_index_show
             if @index.show_user_updates
                 uname = @index.user_of_user_updates || 'official'
                 u = User.find_by_name(uname)

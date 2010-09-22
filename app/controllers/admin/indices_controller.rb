@@ -20,10 +20,10 @@ class Admin::IndicesController < Admin::BaseController
   def save_avatar
     file = params[:file] && params[:file][:data]
     if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.length < 204800
-	@index.avatar = file
-	notice_stickie t(:avatar_uploaded, :scope => [:txt, :controller, :admin, :indices])
+        @index.avatar = file
+        notice_stickie t(:avatar_uploaded, :scope => [:txt, :controller, :admin, :indices])
     else
-	error_stickie t(:avatar_format_error, :scope => [:txt, :controller, :admin, :indices])
+        error_stickie t(:avatar_format_error, :scope => [:txt, :controller, :admin, :indices])
     end
     redirect_to :action => "settings"
   end
@@ -39,10 +39,10 @@ class Admin::IndicesController < Admin::BaseController
     for field in params[:fields]
       next unless params[field.to_sym]
       params[field.to_sym].each_with_index do |id,idx| 
-	bar = @all_bars.detect{|s| s.id==id.to_sym}
-	bar.position = idx
-	bar.field = field
-	bar.show = (field.to_sym != :disable)
+        bar = @all_bars.detect{|s| s.id==id.to_sym}
+        bar.position = idx
+        bar.field = field
+        bar.show = (field.to_sym != :disable)
       end
     end
     notice_stickie(t(:sidebars_updated, :scope => [:txt, :controller, :admin, :sidebar])) if @index.update_attributes(params[:index])
@@ -56,17 +56,17 @@ class Admin::IndicesController < Admin::BaseController
   def create
     @index = Index.new(params[:index])
     if @index.save
-	render :update do |page|
-	    page.insert_html :top, "all_indices", :partial => "index" 
-	    page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-			       :endcolor => '#ffffff',
-			       :duration => 5.0
-	end
+        render :update do |page|
+            page.insert_html :top, "all_indices", :partial => "index" 
+            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
+                               :endcolor => '#ffffff',
+                               :duration => 5.0
+        end
     else
-	error_stickie(@index.errors.full_messages * "; ")
- 	render :update do |page|
- 	  page.replace_html "updater", :partial => "share/error" 
-	  page.visual_effect :BlindDown, "updater"
+        error_stickie(@index.errors.full_messages * "; ")
+        render :update do |page|
+          page.replace_html "updater", :partial => "share/error" 
+          page.visual_effect :BlindDown, "updater"
          end
     end
 
@@ -78,15 +78,15 @@ class Admin::IndicesController < Admin::BaseController
     if user && @index.users << user
         render :update do |page|
             page.replace_html "index_users_#{@index.id}", :partial => "managers"
-	    page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-			       :endcolor => '#ffffff',
-			       :duration => 5.0
+            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
+                               :endcolor => '#ffffff',
+                               :duration => 5.0
         end
     else
-	error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
- 	render :update do |page|
- 	  page.replace_html "updater", :partial => "share/error" 
-	  page.visual_effect :BlindDown, "updater"
+        error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
+        render :update do |page|
+          page.replace_html "updater", :partial => "share/error" 
+          page.visual_effect :BlindDown, "updater"
          end
     end
   end
@@ -97,15 +97,15 @@ class Admin::IndicesController < Admin::BaseController
     if user && @index.users.delete(user)
         render :update do |page|
             page.replace_html "index_users_#{@index.id}", :partial => "managers"
-	    page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-			       :endcolor => '#ffffff',
-			       :duration => 5.0
+            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
+                               :endcolor => '#ffffff',
+                               :duration => 5.0
         end
     else
-	error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
- 	render :update do |page|
- 	  page.replace_html "updater", :partial => "share/error" 
-	  page.visual_effect :BlindDown, "updater"
+        error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
+        render :update do |page|
+          page.replace_html "updater", :partial => "share/error" 
+          page.visual_effect :BlindDown, "updater"
          end
     end
   end

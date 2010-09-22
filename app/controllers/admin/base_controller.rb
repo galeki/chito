@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
-	before_filter :admin_authorize, :get_locale
-	layout "admin"
+        before_filter :admin_authorize, :get_locale
+        layout "admin"
 
  private
 
@@ -18,10 +18,10 @@ class Admin::BaseController < ApplicationController
 
   def expire_chito_fragment
     if params[:expire_requests]
-	params[:expire_requests].each do |key|
-	    key = Regexp.new(key) if key =~ /\*$/
-	    expire_fragment(key)
-	end
+        params[:expire_requests].each do |key|
+            key = Regexp.new(key) if key =~ /\*$/
+            expire_fragment(key)
+        end
     end
   end
 

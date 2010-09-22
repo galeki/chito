@@ -43,7 +43,7 @@ function show_editor()
 function FCKeditor_OnComplete( editorInstance )
 {
     if(insert)
-	_insert_cite(g_user_name, g_time, g_id, g_text);
+        _insert_cite(g_user_name, g_time, g_id, g_text);
 }
 function re_captcha()
 {
@@ -51,9 +51,9 @@ function re_captcha()
 
 }
 function fix_comment_mode(){
-	var e = document.getElementById('comment_mode');
-	if(e)
-	    e.value = 'plain';
+        var e = document.getElementById('comment_mode');
+        if(e)
+            e.value = 'plain';
         $("#comment_reply_to").val("");
         $("#comment_info").val("");
 }
@@ -69,24 +69,24 @@ function setCaretAtEnd (field) {
 function reply_to(s, id){
     var content;
     if(s){
-	content = "@" + s + ": ";
-	if(CKEDITOR.instances['comment_content']){
-	    var oEditor = CKEDITOR.instances['comment_content'];
-	    if(oEditor.getData != "")
-		content = "<br/>" + content;
-	    oEditor.insertHtml(content);
-	}else{
-	    var e = document.getElementById('comment_content');
-	    if(e)
-	    {
-		if(e && e.value != "")
-		    content = "\n" + content;
-		e.value += content;
-	    }
-	}
-	window.location.hash="comment_writer";
-	var e1 = document.getElementById('comment_content');
-	setCaretAtEnd(e);
+        content = "@" + s + ": ";
+        if(CKEDITOR.instances['comment_content']){
+            var oEditor = CKEDITOR.instances['comment_content'];
+            if(oEditor.getData != "")
+                content = "<br/>" + content;
+            oEditor.insertHtml(content);
+        }else{
+            var e = document.getElementById('comment_content');
+            if(e)
+            {
+                if(e && e.value != "")
+                    content = "\n" + content;
+                e.value += content;
+            }
+        }
+        window.location.hash="comment_writer";
+        var e1 = document.getElementById('comment_content');
+        setCaretAtEnd(e);
     }
     $("#comment_reply_to").val(id);
 }
@@ -140,37 +140,37 @@ rtlang['zh-CN'][' ago'] = '前';
 function relative_time_text(m, local){
     var text;
     if(!rtlang[local])
-	local = 'en';
+        local = 'en';
 
     if(m <= 1)
-	text = rtlang[local]['less than a minute'];
+        text = rtlang[local]['less than a minute'];
     else if(m > 1 && m <= 45)
-	text = m + rtlang[local][' minutes'];
+        text = m + rtlang[local][' minutes'];
     else if(m > 45 && m <= 90)
-	text = rtlang[local]['about 1 hour'];
+        text = rtlang[local]['about 1 hour'];
     else if(m > 90 && m <= 1440)
-	text = Math.round(m/60) + rtlang[local][' hour'];
+        text = Math.round(m/60) + rtlang[local][' hour'];
     else if(m > 1440 && m <= 2880)
-	text = rtlang[local]['1 day'];
+        text = rtlang[local]['1 day'];
     else if(m > 2880 && m <= 43200)
-	text = Math.round(m/1440)+ rtlang[local][' days'];
+        text = Math.round(m/1440)+ rtlang[local][' days'];
     else if(m > 43200 && m <= 86400)
-	text = rtlang[local]['about 1 month'];
+        text = rtlang[local]['about 1 month'];
     else if(m > 86400 && m <= 525600)
-	text = Math.round(m/43200) + rtlang[local][' months'];
+        text = Math.round(m/43200) + rtlang[local][' months'];
     else if(m > 525600 && m <= 1051200)
-	text = rtlang[local]['about 1 year'];
+        text = rtlang[local]['about 1 year'];
     else
-	text = Math.round(m/525600) + rtlang[local][' years'];
+        text = Math.round(m/525600) + rtlang[local][' years'];
 
     return text + rtlang[local][' ago'];
 }
 function _show_relative_time(selector, local){
     var now = new Date();
     $(selector).each(function(index){
-	var t = new Date($(this).text());
-	var diff = now - t;
-	$(this).html(relative_time_text(Math.floor(Math.abs(diff/1000/60)), local))
+        var t = new Date($(this).text());
+        var diff = now - t;
+        $(this).html(relative_time_text(Math.floor(Math.abs(diff/1000/60)), local))
     
     })
 }

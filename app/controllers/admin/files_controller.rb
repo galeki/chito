@@ -1,5 +1,5 @@
 require 'fileutils'
-require 'RMagick'	
+require 'RMagick'       
 class Admin::FilesController < Admin::BaseController
     before_filter :get_path
     before_filter :get_user_limit, :only => [:create_file, :create_file_iframe]
@@ -132,7 +132,7 @@ class Admin::FilesController < Admin::BaseController
     unless File.exist?(thumb_file)
         img = Magick::Image.read(path).first
         thumb = thumb_no_bigger_than(img, 150, 80)
-        thumb.write(thumb_file)	
+        thumb.write(thumb_file) 
     end
     thumb_file.sub(/^#{Rails.root}\/public/,'')
 

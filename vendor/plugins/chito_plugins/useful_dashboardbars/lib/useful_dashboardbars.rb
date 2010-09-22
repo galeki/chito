@@ -9,16 +9,16 @@ module ApplicationPlugin
             @new_messages = @user.new_messages(@user.dashboard_new_messages_number.to_num(5))
         end
         if @user.show_dashboard_posts_update
-	    num = @user.numbers_of_new_posts_in_admin.to_num(6)
-	    num = 30 if num > 50
-	    @new_posts = Article.new_posts(num)
+            num = @user.numbers_of_new_posts_in_admin.to_num(6)
+            num = 30 if num > 50
+            @new_posts = Article.new_posts(num)
         end
 
         if @user.show_dashboard_statistics
-	    @comments_size = @user.comments.count
-	    @messages_size = @user.messages.count
-	    @posts_size = @user.posts.count
-	    @drafts_size = @user.drafts.count
+            @comments_size = @user.comments.count
+            @messages_size = @user.messages.count
+            @posts_size = @user.posts.count
+            @drafts_size = @user.drafts.count
         end
         if @user.show_dashboard_links
             @links = @user.links

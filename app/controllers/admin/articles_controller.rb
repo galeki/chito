@@ -30,9 +30,9 @@ class Admin::ArticlesController < Admin::BaseController
 
   def destroy_selected
     if params[:ids]
-	for article in Article.find(params[:ids])
-	    article.destroy
-	end
+        for article in Article.find(params[:ids])
+            article.destroy
+        end
     end 
     notice_stickie t(:posts_successfully_deleted, :scope => [:txt, :controller, :admin, :posts])
     redirect_to admin_articles_path(:page => params[:page]) 

@@ -8,7 +8,7 @@ class Admin::PluginsController <  Admin::BaseController
   def plugin
     return unless request.post?
     @user.update_attributes(params[:user]) ? (notice_stickie t(:plugin_updated, :scope => [:txt, :controller, :admin, :plugins])) : 
-					     (error_stickie t(:plugin_not_save, :scope => [:txt, :controller, :admin, :plugins]))
+                                             (error_stickie t(:plugin_not_save, :scope => [:txt, :controller, :admin, :plugins]))
     expire_chito_fragment
     redirect_to :action => 'index', :plugin_id => params[:plugin_id]
   end
@@ -32,8 +32,8 @@ class Admin::PluginsController <  Admin::BaseController
         expire_chito_fragment
     end
     render :update do |page|
-	page.replace_html 'notifier', t(:config_updated, :scope => [:txt, :controller, :admin, :plugins])
-	page.visual_effect :highlight, "notifier", :duration => 4, :startcolor => '#ffff00'
+        page.replace_html 'notifier', t(:config_updated, :scope => [:txt, :controller, :admin, :plugins])
+        page.visual_effect :highlight, "notifier", :duration => 4, :startcolor => '#ffff00'
     end
   end
 

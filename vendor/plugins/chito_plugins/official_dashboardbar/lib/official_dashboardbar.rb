@@ -2,9 +2,9 @@ module ApplicationPlugin
     private
     
     def find_official_posts_before_admin_dashboard_show
-	@notices = []
-	of = User.find_by_name('official')
-	@notices = of.posts.order('created_at desc').limit(4) if of
+        @notices = []
+        of = User.find_by_name('official')
+        @notices = of.posts.order('created_at desc').limit(4) if of
     end
 end
 

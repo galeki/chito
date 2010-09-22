@@ -10,7 +10,7 @@ module BlogControllerPlugin
   private
   def get_tag_cloud_before_blog_show
         if @user.show_tag_cloud && !sidebar_cache_enable(:tag_cloud)
-    	    @tags = @user.posts.tag_counts_on(:tags)
+            @tags = @user.posts.tag_counts_on(:tags)
         end
   end
 end
@@ -35,7 +35,7 @@ module Admin::ArticleControllerPlugin
     private
     def expire_tag_cloud_before_article_save
         unless @article.tag_list.blank?
-    	sidebar_cache_expire :id => :tag_cloud
+        sidebar_cache_expire :id => :tag_cloud
         end
     end
 end

@@ -8,37 +8,37 @@ function remote_form(index)
 
     $.post(url, $('#remote_form').find('input').serialize() + '&' + $('#remote_form').find('textarea').serialize()  , function(data)
     {
-	eval(data);
+        eval(data);
     });
 }
 function open_remote_form(options)
 {
         var dialog = $('<div></div>');
-	dialog.ajaxComplete(function() {                         
-			dialog.dialog( {  
-				modal: true,  
-				buttons: {  
-				    "Save": function(){  
-					    remote_form(options['index']);  
-					    $(this).html("");
-					    $(this).dialog("close");  
+        dialog.ajaxComplete(function() {                         
+                        dialog.dialog( {  
+                                modal: true,  
+                                buttons: {  
+                                    "Save": function(){  
+                                            remote_form(options['index']);  
+                                            $(this).html("");
+                                            $(this).dialog("close");  
                                             $(this).remove();
-				    },  
-				    "Cancel": function(){  
-					$(this).html("");
-					$(this).dialog("close");  
+                                    },  
+                                    "Cancel": function(){  
+                                        $(this).html("");
+                                        $(this).dialog("close");  
                                         $(this).remove();
-				    }  
-				},
-				title: options['title'],
-				width: options['width']
-			});
+                                    }  
+                                },
+                                title: options['title'],
+                                width: options['width']
+                        });
 
-		});
+                });
         dialog.load(
                      options['url'], 
                      function (data) {
-			dialog.html(data);
+                        dialog.html(data);
 
                      }
                    );
@@ -72,7 +72,7 @@ function sidebars_config(form, config)
 {
     var config_data = '' ;
     for(i=0; i<config.length; i++ )
-	config_data = config_data + '&' + sortable_serialize(config[i]) ;
+        config_data = config_data + '&' + sortable_serialize(config[i]) ;
 
     append_data_str_to_form(form, config_data);
 }
@@ -95,9 +95,9 @@ function filter_config(form)
 function unload_form()
 {
     if(formSubmit)
-	return;
+        return;
     else
-	return away_text;
+        return away_text;
 }
 function go_to(url)
 {
@@ -106,13 +106,13 @@ function go_to(url)
 function add_category_remote(category_name,token)
 {
     if(category_name.length > 0){ 
-	var url = '/admin/categories.js';
-	var data = {'category[name]':  category_name,
-		    '_method': "POST",
-		    "authenticity_token": encodeURIComponent(token)};
-	$('#_category_name').val("");
-	$.post(url, data);
-	//new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:data});
+        var url = '/admin/categories.js';
+        var data = {'category[name]':  category_name,
+                    '_method': "POST",
+                    "authenticity_token": encodeURIComponent(token)};
+        $('#_category_name').val("");
+        $.post(url, data);
+        //new Ajax.Request(url, {asynchronous:true, evalScripts:true, parameters:data});
     }
     return false;
 }
@@ -150,13 +150,13 @@ function clean_link_field()
 function check_url(url, t1, t2)
 {
     var re = /^http:\/\/[\w\/\.-]+/
-    if(!url)	
-	alert(t1);
+    if(!url)    
+        alert(t1);
     else if(re.test(url))
-	return true;
+        return true;
     else{
-	alert(t2);
-	return false;
+        alert(t2);
+        return false;
     }
 }
 function add_tag(tag)
@@ -164,11 +164,11 @@ function add_tag(tag)
     var tag_list = document.getElementById('article_tag_list');
     if(tag_list.value.length == 0)
     {
-	tag_list.value = tag_list.value + tag;
+        tag_list.value = tag_list.value + tag;
     }
     else
     {
-	tag_list.value = tag_list.value + ', ' + tag;
+        tag_list.value = tag_list.value + ', ' + tag;
     }
 }
 function select_menu(main_menu_id, controller)
@@ -216,8 +216,8 @@ function checkall(trigger, form)
 {
     for(var e = 0; e < form.elements.length; e++)
     {
-	var v = form.elements[e];
-	v.checked = form.elements[trigger].checked;
+        var v = form.elements[e];
+        v.checked = form.elements[trigger].checked;
     }
 }
 

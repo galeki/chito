@@ -1,25 +1,25 @@
 module BlogControllerPlugin
-	private
-	def get_useful_sidebars_needed_before_blog_show
-	    if @user.show_new_comments && !sidebar_cache_enable(:new_comments)
-		num = @user.new_comments_number.to_i
-		@new_comments = @user.new_comments(num)	    
-		@comment_cut = @user.new_comments_cut.to_num(20)
-	    end
+        private
+        def get_useful_sidebars_needed_before_blog_show
+            if @user.show_new_comments && !sidebar_cache_enable(:new_comments)
+                num = @user.new_comments_number.to_i
+                @new_comments = @user.new_comments(num)     
+                @comment_cut = @user.new_comments_cut.to_num(20)
+            end
 
-	    if @user.show_new_messages && !sidebar_cache_enable(:new_messages)
-		num = @user.new_messages_number.to_i
-		@new_messages = @user.new_messages(num)
-		@message_cut = @user.new_messages_cut.to_num(20)
-	    end
+            if @user.show_new_messages && !sidebar_cache_enable(:new_messages)
+                num = @user.new_messages_number.to_i
+                @new_messages = @user.new_messages(num)
+                @message_cut = @user.new_messages_cut.to_num(20)
+            end
 
-	    if @user.show_links && !sidebar_cache_enable(:links)
-		@links = @user.links
-	    end
+            if @user.show_links && !sidebar_cache_enable(:links)
+                @links = @user.links
+            end
 
-	    if @user.show_categories && !sidebar_cache_enable(:categories)
-		@categories = @user.categories
-	    end
+            if @user.show_categories && !sidebar_cache_enable(:categories)
+                @categories = @user.categories
+            end
             if @user.show_archive && !sidebar_cache_enable(:archive)
                 first_post = @user.posts.last
                 last_post = @user.posts.first
@@ -33,16 +33,16 @@ module BlogControllerPlugin
             end
         end
 
-	def count_blog_view_and_post_view_before_post_show
-	    if session[:user_id].to_s != @user.id.to_s
+        def count_blog_view_and_post_view_before_post_show
+            if session[:user_id].to_s != @user.id.to_s
                 begin
-	            @user.increment!(:blog_read) 
-		    @post.increment!(:read_count)
+                    @user.increment!(:blog_read) 
+                    @post.increment!(:read_count)
                 rescue
                     nil #TODO: sometime there is a weired 'cant modify frozen hash' error here
                 end
-	    end
-	end
+            end
+        end
 end
 
 bar = Sidebar.new 

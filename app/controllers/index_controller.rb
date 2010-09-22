@@ -10,11 +10,11 @@ class IndexController < ApplicationController
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
     respond_to do |format|
-	format.html do
+        format.html do
             get_index_sidebars
             do_something :before_index_show
-	end
-	format.rss
+        end
+        format.rss
     end
   end
 
@@ -36,12 +36,12 @@ class IndexController < ApplicationController
 
   def render(options = {}, extra_options = {}, &block)
     if @theme && (params[:format].nil? or params[:format] == "html")
-   	layout = "#{@theme}/layouts/#{@theme}"
-	template = "#{@theme}/views/#{controller_name}/#{action_name}"
-	template_path = File.join(IndexTheme::PATH, template + ".html.erb" )
-	super :template => template, :layout => layout
+        layout = "#{@theme}/layouts/#{@theme}"
+        template = "#{@theme}/views/#{controller_name}/#{action_name}"
+        template_path = File.join(IndexTheme::PATH, template + ".html.erb" )
+        super :template => template, :layout => layout
     else
-	super
+        super
     end
   end
 

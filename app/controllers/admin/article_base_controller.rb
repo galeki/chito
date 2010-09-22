@@ -41,9 +41,9 @@ class Admin::ArticleBaseController <  Admin::BaseController
 
   def destroy_selected
     if params[:ids]
-	for article in @user.articles.find(params[:ids])
-	    article.destroy
-	end
+        for article in @user.articles.find(params[:ids])
+            article.destroy
+        end
     end
   end
 
@@ -51,13 +51,13 @@ class Admin::ArticleBaseController <  Admin::BaseController
   
   def unless_continue_edit
     if params[:continue_editing]
-	@article.is_draft = true
-	@article.save
-	notice_stickie t("txt.controller.admin.articles.draft_saved", :time => Time.now.to_s(:update))
-	redirect_to edit_admin_draft_path(@article)
+        @article.is_draft = true
+        @article.save
+        notice_stickie t("txt.controller.admin.articles.draft_saved", :time => Time.now.to_s(:update))
+        redirect_to edit_admin_draft_path(@article)
     else
-	@article.save
-	yield
+        @article.save
+        yield
     end
   end
 

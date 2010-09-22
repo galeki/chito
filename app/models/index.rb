@@ -2,9 +2,9 @@ class Index < ActiveRecord::Base
     has_settings :nil_value => ['', '0']
     has_and_belongs_to_many :users, :select => "distinct users.*"
     has_many :posts,
-	     :class_name => "Article",
-	     :conditions => ["articles.bit_opt = 0"],
-	     :order => 'articles.created_at DESC'
+             :class_name => "Article",
+             :conditions => ["articles.bit_opt = 0"],
+             :order => 'articles.created_at DESC'
 
     validates_uniqueness_of :title
     validates_presence_of :title
@@ -22,10 +22,10 @@ class Index < ActiveRecord::Base
     end
 
     def avatar=(file)
-	FileUtils.makedirs(self.public_path) unless File.exists?(self.public_path)  
-	File.open(File.join(self.public_path, "avatar.png"), "wb") do |f| 
-	    f.write(file.read)
-	end
+        FileUtils.makedirs(self.public_path) unless File.exists?(self.public_path)  
+        File.open(File.join(self.public_path, "avatar.png"), "wb") do |f| 
+            f.write(file.read)
+        end
     end
 
     def avatar_url

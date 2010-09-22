@@ -11,9 +11,9 @@ class Admin::NavbarController <  Admin::BaseController
     for field in [:enable, :disable]
       next unless params[field]
       params[field].each_with_index do |id,idx| 
-	bar = @navbars.detect{|s| s.id == id.to_sym}
-	bar.position = idx
-	bar.show = (field == :enable)
+        bar = @navbars.detect{|s| s.id == id.to_sym}
+        bar.position = idx
+        bar.show = (field == :enable)
         bar.page.save if bar.page
       end
     end    
