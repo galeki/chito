@@ -36,7 +36,7 @@
 
 SyntaxHighlighter.brushes.Latex = function()
 {
-	var keywords =	'if fi then elif else for do done until while break continue case function return in eq ne gt lt ge le';
+	var keywords =	'if fi then elif else for do done until while break continue case function return in eq ne ge le';
 	//var commands =  'include usepackage begin end ref label includegraphics';
     
 	this.regexList = [
