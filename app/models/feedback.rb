@@ -51,13 +51,6 @@ class Feedback < ActiveRecord::Base
         end
         return "/user_files/avatar_small.png"
     end
-
-    def short_brief(n)
-        str = self.writer + ":" + self.content
-        str = helpers.strip_tags(str) if self.mode == 'html'
-        str = helpers.truncate(str, :length => n)
-        str
-    end
 end
 
 class CommentFilterBlock < RuntimeError; end

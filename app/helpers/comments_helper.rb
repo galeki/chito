@@ -73,6 +73,17 @@ module CommentsHelper
         sanitize(content)
     end
 
+    def comment_brief(comment=@comment, options={})
+        text = comment.writer + ":" + comment.content.to_s
+        if comment.mode == 'plain'
+            text = truncate(text, :length => options[:length])
+        else
+            text = strip_tags(text)
+            text = truncate(text, :length => options[:length]).html_safe
+        end
+        text
+    end
+
     def render_comment
         render :partial => 'comments/comment'
     end

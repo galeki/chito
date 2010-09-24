@@ -2,7 +2,8 @@
     <% for comment in @new_messages 
     -%>
 	 
-         <li><%= (link_to comment.short_brief(@user.dashboard_new_messages_cut.to_num(25)), :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
+    <li><%= (link_to comment_brief(comment, :length => @user.dashboard_new_messages_cut.to_num(25)), 
+                     :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
     
     <% end -%>
 </ul>

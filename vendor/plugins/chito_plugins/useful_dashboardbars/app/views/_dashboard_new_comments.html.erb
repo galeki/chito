@@ -2,7 +2,8 @@
     <% for comment in @new_comments 
     -%>
 	
-        <li><%= (link_to comment.short_brief(@user.dashboard_new_comments_cut.to_num(25)), post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
+    <li><%= (link_to comment_brief(comment, :length => @user.dashboard_new_comments_cut.to_num(25)), 
+                     post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></li>
     
     <% end -%>
 
