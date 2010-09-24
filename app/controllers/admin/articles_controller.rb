@@ -38,7 +38,4 @@ class Admin::ArticlesController < Admin::BaseController
     redirect_to admin_articles_path(:page => params[:page]) 
   end
 
-  def expire_index(index)
-    chito_cache_expire :part => :index, :type => :indices_index, :id => "#{index.id}/*"
-  end
 end

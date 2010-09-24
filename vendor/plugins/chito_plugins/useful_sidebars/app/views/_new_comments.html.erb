@@ -1,10 +1,9 @@
 <% sidebar_cache :new_comments do -%>
 <ul class="navlist">
 	<% @new_comments.each do |comment| 
-		e = comment.writer + ":" + strip_tags(comment.content)
 	-%>
 		<li>
-                <%= (link_to truncate(e,:length => @comment_cut), 
+                <%= (link_to comment.short_brief(@comment_cut), 
                                      post_path(comment.article, 
                                      :anchor => "comment#{comment.id}", 
                                      :format => :html)) if comment.article %>

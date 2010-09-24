@@ -1,9 +1,8 @@
 <ul>
     <% for comment in @new_messages 
-	     e = h(comment.writer + ":" + strip_tags(comment.content))
     -%>
 	 
-         <li><%= (link_to truncate(e, :length => @user.dashboard_new_messages_cut.to_num(25)), :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
+         <li><%= (link_to comment.short_brief(@user.dashboard_new_messages_cut.to_num(25)), :controller => '/blog', :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
     
     <% end -%>
 </ul>

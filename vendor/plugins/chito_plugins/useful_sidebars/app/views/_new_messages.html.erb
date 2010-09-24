@@ -1,9 +1,8 @@
 <% sidebar_cache :new_messages do -%>
 <ul class="navlist">
 			<% for comment in @new_messages 
-			    e = h(comment.writer + ":" + strip_tags(comment.content))
 			-%>
-			    <li><%= (link_to truncate(e,:length => @message_cut), :controller => "/blog", :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
+			    <li><%= (link_to comment.short_brief(@message_cut), :controller => "/blog", :action => "guestbook", :anchor => "comment#{comment.id}") %></li>
 			<% end -%>
 	
 </ul>	
