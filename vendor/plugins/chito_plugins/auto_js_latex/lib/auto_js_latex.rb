@@ -8,6 +8,9 @@
                             $('#article_content').html($('#article_content').html().replace(/\\[tex\\]/g, "<span class='latex_eq'>").replace(/\\[\\/tex\\]/g, "</span>"));
                         }catch(e){;}
                         try{
+                            $('#comments').html($('#comments').html().replace(/\\[tex\\]/g, "<span class='latex_eq'>").replace(/\\[\\/tex\\]/g, "</span>"));
+                        }catch(e){;}
+                        try{
                             $('.post_brief').each(function(index){
                                 $(this).html($(this).html().replace(/\\[tex\\]/g, "<span class='latex_eq'>").replace(/\\[\\/tex\\]/g, "</span>"));
                             });
