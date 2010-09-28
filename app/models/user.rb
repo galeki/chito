@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     attr_accessor :password_confirmation    
     attr_protected :group_id #, :bind_domain
     validates_presence_of :name
-    validates_format_of :name, :with => /^[a-zA-Z0-9]+$/
+    validates_format_of :name, :with => /\A[a-zA-Z0-9]+\z/
     validates_uniqueness_of :name
     validates_length_of :name, :maximum => 50
     validates_confirmation_of :password
