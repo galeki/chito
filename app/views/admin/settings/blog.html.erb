@@ -7,6 +7,7 @@
 <div class="edit_header"><%= t(:comments, :scope => [:txt, :view, :admin, :settings]) %></div>
 <%= form_for :user do |f| %>
     <label><%= f.check_box :enable_thread_comment, :class => 'checkbox' %> <%= t(:enable_thread_comment, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= f.check_box :check_comment_notifier_by_default, :class => 'checkbox' %> <%= t(:check_comment_notifier_by_default, :scope => [:txt, :view, :admin, :settings]) %></label>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>
 <% end %>
 </div>

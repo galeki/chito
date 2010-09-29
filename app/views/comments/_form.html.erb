@@ -38,7 +38,7 @@
        <input type="button" id="comment_editor_button" onclick='show_editor();' />
      </div>
      <% if controller.action_name == "show" %>
-         <label><%= check_box_tag :enable_notifier, 1, false %><%= t("txt.view.comments._form.comment_notifier") %> </label>
+         <label><%= check_box_tag :enable_notifier, 1, @user.check_comment_notifier_by_default %><%= t("txt.view.comments._form.comment_notifier") %> </label>
      <% end -%>
      <div id="comment_extra" >
          <%= show_something :in_comment_form %>

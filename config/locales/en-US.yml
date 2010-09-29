@@ -509,6 +509,7 @@ en-US:
           message_7: Green
           comments: Comments
           enable_thread_comment: Enable Thread Comment
+          check_comment_notifier_by_default: Enable the E-mail notifier by default
           grey: Grey
         site: 
           message_16: Save

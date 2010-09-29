@@ -509,6 +509,7 @@ zh-CN:
           message_7: 绿色
           comments: 评论
           enable_thread_comment: 使用 Thread Comment
+          check_comment_notifier_by_default: 默认选中 E-mail 通知
           grey: 灰色
         site: 
           message_16: 保存
