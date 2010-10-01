@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
         redirect_to(login_path(:subdomain => "www"))
     end
 
+    def admin_subdomain_check
+        if request.domain == @site.domain && @site.mutli_users? && session[:user_name].to_s.downcase != request.subdomains.first
+            redirect_to(:subdomain => session[:user_name])
+        end
+    end
+
     def chito_admin_authorize
         return if @user.is_chito_admin?
         redirect_to login_path
