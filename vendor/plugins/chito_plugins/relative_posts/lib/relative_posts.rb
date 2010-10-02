@@ -20,7 +20,7 @@ module ApplicationPlugin
 
         def get_relative_posts_before_post_show
             if @post && @user.show_postbars
-                tag_list = @post.cached_tag_list
+                tag_list = @post.cached_tag_list || @post.tag_list.to_s
                 if tag_list.blank?
                     @relative_posts = []
                     @global_relative_posts = []

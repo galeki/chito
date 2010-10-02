@@ -11,7 +11,7 @@
     <strong> <%= post_writer %></strong> 
     posted @ <%= post_time %>
     <%= (' in ' + link_to_post_category ).html_safe if @post.category %>
-    <% unless @post.cached_tag_list.blank? -%>
+    <% unless @post.cached_tag_list.blank? && @post.tag_list.blank? -%>
 	with tags 
 	<%= link_to_post_tags %>
     <% end -%>
