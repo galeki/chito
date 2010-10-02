@@ -1,4 +1,4 @@
-*Chito 1.2.2 (unreleased)*
+*Chito 1.2.2*
 
 * Category permalink support
 
@@ -25,6 +25,8 @@
 * Fix custom header position
 
 * Fix encoding problem in comment form when there is UTF-8 chars in cookies
+
+* Fix a url problem when access admin field with wrong subdomain 
 
 
 *Chito 1.2.1*

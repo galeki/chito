@@ -3,8 +3,8 @@ module Chito
     module VERSION
         MAJOR = 1
         MINOR = 2
-        TINY  = 1
-        BUILD = ""
+        TINY  = 2
+        BUILD = "beta"
 
         STRING = [MAJOR, MINOR, TINY, BUILD].join('.')
     end
