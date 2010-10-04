@@ -62,6 +62,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                         html += ">" + code_text + "</pre>";
 
 	                                editor.insertHtml(html);
+                                    editor.updateElement();
 	                                document.getElementById('iframeSyntaxHighlighter').contentWindow.set_form_cookie();
 				}
 			};
