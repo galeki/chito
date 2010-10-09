@@ -202,5 +202,5 @@ Chito::Application.routes.draw do
   match '/admin/blog/:action/(:id)' => 'admin/blog#index'
   match '/admin/systeminfo/:action/(:id)' => 'admin/systeminfo#index'
   match '/admin/:action/:id' => 'admin/dashboard#index'
-  match '/:permalink' => 'pages#show', :as => :page_permalink
+  match '/*permalink' => 'pages#show', :as => :page_permalink
 end
