@@ -11,6 +11,7 @@ class Admin::CommentsController < Admin::FeedbacksController
         notice_stickie t(:comment_deleted, :scope => [:txt, :controller, :admin, :comments]) if comment.destroy
         sidebar_cache_expire(:new_comments)
         chito_cache_expire(:type => "posts_index/*")
+        chito_cache_expire(:type => :posts, :id => :feedbacks, :post => comment.article_id) if comment.article_id
         redirect_to(admin_comments_path :keyword => params[:keyword], :page => params[:page])
     end
 

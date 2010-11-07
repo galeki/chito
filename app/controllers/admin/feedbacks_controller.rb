@@ -37,6 +37,7 @@ class Admin::FeedbacksController < Admin::BaseController
             for comment in @user.feedbacks.find(ids)
                 clean_email(comment)
                 comment.destroy
+                chito_cache_expire(:type => :posts, :id => :feedbacks, :post => comment.article_id) if comment.article_id
             end
         end     
   end
@@ -46,7 +47,7 @@ class Admin::FeedbacksController < Admin::BaseController
             for feedback in Feedback.find(ids)
                 clean_email(feedback)
                 feedback.destroy
-                end
+            end
         end
   end
             
