@@ -42,7 +42,7 @@ SyntaxHighlighter.brushes.Haskell = function()
 		{ regex: /{-(?!\$)[\s\S]*?-}/gm,	                        css: 'comments' },      // multiline comments
 		{ regex: /'.'/g,                                     		css: 'string' },        // chars
 		{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },        // strings
-        { regex: /([-!#$%&*+/<=>?@^|~:.\\])+/g,                      css: 'keyword bold' },  // infix operators
+        { regex: /([-!#$%&*+/?@^|~:.\\])+/g,                      css: 'keyword bold' },  // infix operators
         { regex: /`[a-z][a-z0-9_']*`/g,                             css: 'keyword bold' },  // infix operators
         { regex: /\b(\d+|0x[0-9a-f]+)\b/gi,                         css: 'value' },         // integer
         { regex: /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/gi,                css: 'value' },         // floating number
