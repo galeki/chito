@@ -101,3 +101,11 @@ bar.default_position = 0
 bar.plugin_id = :useful_index_sidebars
 #bar.config = true
 IndexSidebar.add(bar)
+
+bar = IndexSidebar.new
+bar.id = :index_search
+bar.info = "Search"
+bar.default_position = 0
+bar.plugin_id = :useful_index_sidebars
+#bar.config = true
+IndexSidebar.add(bar)

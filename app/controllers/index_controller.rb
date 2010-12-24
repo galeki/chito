@@ -7,6 +7,7 @@ class IndexController < ApplicationController
     get_index_needed
     @posts = Article.new_ranked_posts :rank => 0, 
                                           :index_id => @index.id,
+                                          :keyword => params[:is],
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
     respond_to do |format|

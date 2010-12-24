@@ -25,8 +25,9 @@ class Article < ActiveRecord::Base
     end
 
     def self.new_ranked_posts(options)
-        self.where("articles.index_id = ? and articles.bit_opt = 0 and articles.rank > ?", options[:index_id], options[:rank])\
-            .order("articles.created_at DESC")\
+        temp = self.where("articles.index_id = ? and articles.bit_opt = 0 and articles.rank > ?", options[:index_id], options[:rank])
+        temp = temp.where("articles.content like ?", "%#{options[:keyword]}%") if options[:keyword]
+        temp.order("articles.created_at DESC")\
             .includes(:user).includes(:comments)\
             .paginate(:per_page => (options[:per_page] || 10), :page => options[:page])
     end
