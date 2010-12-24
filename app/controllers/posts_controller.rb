@@ -33,7 +33,7 @@ class PostsController < BlogController
             unless chito_cache_enable(_params.merge(:type => :posts_index, :theme => @user.theme))
                 @posts = @user.find_articles :type => :posts, :category_id => @category_id, 
                                              :tag => params[:tag_name], :keyword => params[:s],
-                                             :year => params[:year], :month => params[:month],
+                                             :year => params[:year], :month => params[:month], :day => params[:day],
                                              :page => params[:page], :per_page => @user.blog_per_page.to_num(10)
             end
             @titles.unshift(@category.name) if @category
