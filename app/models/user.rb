@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
         self.show_categories = true
         self.show_head = true
         self.show_meta = true
+        self.show_rss_icon = true
         self.enable_comment_filter_simple_vcode = true
         self.group_id ||= Site.instance.default_group
         set_default_dashboard_settings
