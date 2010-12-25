@@ -249,6 +249,7 @@ zh-CN:
           manage_files: 管理文件
           file: 文件
           image: 图片
+          extra: 其他
           create_dir: 创建目录
           upload_file: 上传文件 
           input_dir_name: 请输入新建目录名称

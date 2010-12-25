@@ -3,8 +3,9 @@
 <div class="option_wrap">
 <div id="file_type">
     <ul id="file_type_list">
-	<li><%= link_to t(:file, :scope => [:txt, :view, :admin, :files]), list_admin_files_path(:type => "File"), :method => :get, :remote => true, :onclick => "$('#in_pro').show();"  %></li>
 	<li><%= link_to t(:image, :scope => [:txt, :view, :admin, :files]), list_admin_files_path(:type => "Image"), :method => :get, :remote => true, :onclick => "$('#in_pro').show();"  %></li>
+	<li><%= link_to t(:file, :scope => [:txt, :view, :admin, :files]), list_admin_files_path(:type => "File"), :method => :get, :remote => true, :onclick => "$('#in_pro').show();"  %></li>
+	<li><%= link_to t(:extra, :scope => [:txt, :view, :admin, :files]), list_admin_files_path(:type => "epics"), :method => :get, :remote => true, :onclick => "$('#in_pro').show();"  %></li>
     </ul>
 </div>
 <div id="file_list">

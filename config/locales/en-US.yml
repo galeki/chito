@@ -249,6 +249,7 @@ en-US:
           manage_files: Manage Files
           file: File
           image: Image
+          extra: Extra
           create_dir: Create Dir
           upload_file: Upload 
           input_dir_name: Please input dir name
