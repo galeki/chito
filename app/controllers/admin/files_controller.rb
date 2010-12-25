@@ -32,9 +32,9 @@ class Admin::FilesController < Admin::BaseController
         @error_message = t(:no_file, :scope => [:txt, :controller, :admin, :files])
     elsif params[:type] == "Image" && !is_img(@new_file)
         @error_message = t(:file_must_be_img, :scope => [:txt, :controller, :admin, :files])
-    elsif @new_file.length > @file_size_limit.megabytes
+    elsif @new_file.size > @file_size_limit.megabytes
         @error_message = t(:file_too_large, :scope => [:txt, :controller, :admin, :files], :size => @file_size_limit)
-    elsif (@user.used_space.kilobytes + @new_file.length) > (@space_limit.megabytes)
+    elsif (@user.used_space.kilobytes + @new_file.size) > (@space_limit.megabytes)
         @error_message = t(:no_space, :scope => [:txt, :controller, :admin, :files])
     else
         new_file_path = File.join(@path, @new_file.original_filename)
