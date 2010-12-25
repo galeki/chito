@@ -3,6 +3,7 @@ class Xmlrpc::BaseController < ApplicationController
     class XMLRPCFaultError < RuntimeError; end
     rescue_from XMLRPCFaultError, :with => :fault
     rescue_from NoMethodError, :with => :fault
+    rescue_from RuntimeError, :with => :fault
     before_filter :get_params, :rename_method
     @@method_alias = {}
 
