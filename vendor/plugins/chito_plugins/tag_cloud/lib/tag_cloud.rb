@@ -35,7 +35,7 @@ module Admin::ArticleControllerPlugin
     private
     def expire_tag_cloud_before_article_save
         unless @article.tag_list.blank?
-        sidebar_cache_expire :id => :tag_cloud
+            sidebar_cache_expire(:tag_cloud)
         end
     end
 end
