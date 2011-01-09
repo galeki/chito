@@ -28,6 +28,7 @@
 	    <th class="helpHed"><%=t(:writer, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
 	    <th class="helpHed"><%=t(:time, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments]) %></th>
 	    <th class="helpHed"><%=t(:brief, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
+	    <th class="helpHed"><%=t(:ip, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
 	    <th class="helpHed"><%=t(:email, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
 	    <th class="helpHed"><%=t(:view, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
 	    <th class="helpHed"></th>
@@ -38,6 +39,7 @@
 	    <td class="comment_writer_col"><%=h comment.writer %></td>
 	    <td class="comment_time_col"><%= comment.created_at.to_s :db_short %></td>
 	    <td class="comment_content_col"><%=h strip_tags(comment.content) %></td>
+	    <td class="comment_ip_col" style="width:10em;"><%= comment.ip if comment.ip %></td>
 	    <td class="comment_email_col"><%= (mail_to h(comment.email), (image_tag "email.gif")) unless comment.email.blank? %></td>
 	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :comments])), 
 			post_path(comment.article, :anchor => "comment#{comment.id}", :format => :html)) if comment.article %></td>

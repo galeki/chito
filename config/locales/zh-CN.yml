@@ -293,6 +293,7 @@ zh-CN:
           brief: 摘要
           view: 查看
           email: E-mail
+          ip: IP
           delete: 删除
           delete_selected: 删除所选
           delete_selected?: 删除所选的评论 ?
@@ -313,6 +314,7 @@ zh-CN:
           brief: 摘要
           view: 查看
           email: E-mail
+          ip: IP
           delete: 删除
           delete_selected: 删除所选
           delete_selected?: 删除所选的留言 ?

@@ -27,6 +27,7 @@
 	    <th class="helpHed"><%=t(:writer, :scope => [:txt, :view, :admin, :messages])  %></th>
 	    <th class="helpHed"><%=t(:time, :scope => [:txt, :view, :admin, :messages])  %></th>
 	    <th class="helpHed"><%=t(:brief, :scope => [:txt, :view, :admin, :messages])  %></th>
+	    <th class="helpHed"><%=t(:ip, :scope => [:txt, :view, :admin, :messages])  %></th>
 	    <th class="helpHed"><%=t(:email, :scope => [:txt, :view, :admin, :messages])  %></th>
 	    <th class="helpHed"><%=t(:view, :scope => [:txt, :view, :admin, :messages])  %></th>
 	    <th class="helpHed"></th>
@@ -37,6 +38,7 @@
 	    <td class="comment_writer_col"><%=h message.writer %></td>
 	    <td class="comment_time_col"><%= message.created_at.to_s :db_short %></td>
 	    <td class="comment_content_col"><%=h strip_tags(message.content) %></td>
+	    <td class="comment_ip_col" style="width:10em;"><%= message.ip if message.ip %></td>
 	    <td class="comment_email_col"><%= (mail_to h(message.email), (image_tag "email.gif")) unless message.email.blank? %></td>	    
 	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :messages])), 
 					    :controller => '/blog', :action => "guestbook", :anchor => "comment#{message.id}") %></td>

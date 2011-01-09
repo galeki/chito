@@ -293,6 +293,7 @@ en-US:
           brief: Brief
           view: View
           email: Email
+          ip: IP
           delete: Delete
           delete_selected: Delete selected
           delete_selected?: Delete selected comments ?
@@ -313,6 +314,7 @@ en-US:
           brief: Brief
           view: View
           email: Email
+          ip: IP
           delete: Delete
           delete_selected: Delete selected
           delete_selected?: Delete selected messages ?
