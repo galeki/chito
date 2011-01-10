@@ -29,7 +29,7 @@ class Admin::SettingsController < Admin::BaseController
 
   def save_avatar
     file = params[:file] && params[:file][:data]
-    if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.length < 204800
+    if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.size < 204800
         @user.avatar = file
         notice_stickie t(:avatar_uploaded, :scope => [:txt, :controller, :admin, :settings])
     else
@@ -40,7 +40,7 @@ class Admin::SettingsController < Admin::BaseController
 
   def save_favicon
     file = params[:file] && params[:file][:data]
-    if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.length < 20480
+    if file.respond_to?('content_type')  && file.content_type =~ /^image/ && file.size < 20480
         @user.favicon = file
         notice_stickie t(:favicon_uploaded, :scope => [:txt, :controller, :admin, :settings])
     else
