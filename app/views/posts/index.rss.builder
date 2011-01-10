@@ -21,7 +21,7 @@ xml.rss "version" => "2.0",
 		    end
 		else
 		    xml.description do
-			xml.cdata! rss_content(post.brief)
+			    xml.cdata! rss_content(post.brief.html_safe)
 		    end
 		end
 		(xml.category {xml.cdata! post.category.name}) if post.category

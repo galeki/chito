@@ -13,7 +13,7 @@ xml.rss "version" => "2.0",
 		xml.title {xml.cdata! post.title}
 		xml.link post_url(post, :subdomain => post.user.name, :format => :html) 
 		xml.description do
-		    xml.cdata! post.brief
+		    xml.cdata! post.brief.html_safe
 		end
 		xml.tag! 'wfw:commentRss', post_url(post, :format => :rss)
 		xml.pubDate post.created_at.to_s(:rfc822)
