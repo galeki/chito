@@ -18,6 +18,7 @@ xml.rss "version" => "2.0",
 		xml.tag! 'wfw:commentRss', post_url(post, :format => :rss)
 		xml.pubDate post.created_at.to_s(:rfc822)
 		xml.guid post_url(post, :html, :subdomain => post.user.name, :format => :html)
+        xml.author post.user.nick
 	    end
 	end
     end
