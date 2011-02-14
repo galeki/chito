@@ -73,6 +73,9 @@ zh-CN:
           post_successfully_deleted: 文章删除成功
           posts_successfully_deleted: 文章删除成功
           posts_successfully_recategoried: 文章重归类成功
+        trash:
+          aritlce_successfully_restored: 文章恢复成功
+          article_restore_failed: 文章恢复失败
         drafts:
           draft_successfully_deleted: 草稿删除成功
           draft_successfully_saved: 草稿保存成功
@@ -221,6 +224,7 @@ zh-CN:
           message_4: 友情链接
           message_5: 文件
           message_6: RSS 导入
+          trash: 垃圾箱
         plugins: 
           message_0: 插件设置
         _sub_menu_for_feedbacks: 
@@ -603,6 +607,16 @@ zh-CN:
           delete: 删除
           delete_post: 删除 %{title} ?
           all: 全部
+        trash:
+          delete_all: 清空垃圾箱
+          delete_all?: 删除所有垃圾箱中的文章吗?  此操作将不可恢复 !
+          restore: 恢复
+          restore?: 恢复 %{title} ?
+          delete?: 删除 %{title} 吗 ? 删除的文章将不可恢复 !
+          type: 原类别
+          draft: 草稿
+          page: 页面
+          post: 文章
         drafts:
           delete_draft?: 删除 %{title} ?
           edit_draft: 编辑草稿

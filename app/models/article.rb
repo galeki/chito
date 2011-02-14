@@ -3,7 +3,7 @@ require 'uri'
 class Article < ActiveRecord::Base
     acts_as_taggable
     has_settings :nil_value => ['', '0']
-    has_flags [:is_none, :is_draft, :is_page], [:column => 'bit_opt']
+    has_flags [:is_deleted, :is_draft, :is_page], [:column => 'bit_opt']
     belongs_to :user 
     belongs_to :index 
     has_many :comments, 
@@ -93,6 +93,12 @@ class Article < ActiveRecord::Base
 
     def content_blank?
         helpers.strip_tags(self.content).gsub(/(&nbsp;)|(&#160;)/,'').blank?
+    end
+
+    def type
+        return :draft if self.is_draft?
+        return :page if self.is_page?
+        return :post
     end
 
     private

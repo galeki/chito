@@ -439,6 +439,14 @@ a.delete{
     background: url(/images/delete.gif) no-repeat left center;
     padding-left: 22px;
 }
+a.destory{    
+    background: url(/images/destory.gif) no-repeat left center;
+    padding-left: 22px;
+}
+a.restore{    
+    background: url(/images/restore.png) no-repeat left center;
+    padding-left: 22px;
+}
 a.insert{    
     background: url(/images/pass.gif) no-repeat left center;
     padding-left: 22px;
@@ -490,6 +498,12 @@ input.selected_submit,input.selected_submit:hover, input.selected_submit:focus {
 input.recategory_selected_submit,input.recategory_selected_submit:hover, input.recategory_selected_submit:focus {
     margin-top:0px;    
     background: url(/images/recategory.gif) no-repeat 5px center;
+    padding-left: 23px;
+    color:#000;
+}
+input.destory_all,input.destory_all:hover, input.destory_all:focus {
+    margin-top:0px;    
+    background: url(/images/destory.gif) no-repeat 5px center;
     padding-left: 23px;
     color:#000;
 }

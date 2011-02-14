@@ -1,0 +1,48 @@
+<% @title = "" -%>
+<%= render :partial => "admin/sub_menu_for_manage" %>
+<%= render_flash %>
+<div class="center">
+<%= form_tag "", :onsubmit => "return false;" do -%>
+<table id="article_actions" cellspacing="0" style="width:100%;">
+    <tr>
+	    <td class="category_filter">
+	    </td>
+	    <td>
+		    <%= selected_button :text => t(:delete_all, :scope => [:txt, :view, :admin, :trash]), :url => destroy_all_admin_trash_index_path(_params), :confirm => t(:delete_all?, :scope => [:txt, :view, :admin, :trash]), :class => "destory_all" %>
+	    </td>
+
+    </tr>
+</table>
+<% if @posts.size >0 -%>
+<table id="article_table" class="sofT" cellspacing="0" style="margin-top:5px;">
+    <tr>
+	    <th class="helpHed" style="text-align:left;"><%= t :title, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :create_time,:scope => [:txt, :view, :admin, :posts]  %></th>
+	    <th class="helpHed"><%= t :category, :scope => [:txt, :view, :admin, :posts] %></th>
+	    <th class="helpHed"><%= t :type, :scope => [:txt, :view, :admin, :trash]  %></th>
+	    <th class="helpHed"></th>
+	    <th class="helpHed"></th>
+    </tr>
+    <% for post in @posts %>
+    <tr class="<%= cycle "odd", "" %>">
+	    <td class="title_col"><%= link_to post_title(post), post_path(post, :format => :html), :class => "post_title_link"  %></td>
+	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
+	    <td class="category_col"><%= post.category.name if post.category %></td>
+	    <td class="category_col"><%= t(post.type, :scope => [:txt, :view, :admin, :trash]) %></td>
+        <td class="action_col"><%= link_to t(:restore, :scope => [:txt, :view, :admin, :trash]), 
+                                            restore_admin_trash_path(post), :class => "restore", 
+                                            :method => :post,
+                                            :confirm => t(:restore?, :scope => [:txt, :view, :admin, :trash], :title => post.title)                                            
+        %></td>
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :posts]), admin_trash_path(post, _params), :class => "destory", :method => :delete, 
+	    :confirm => t(:delete?, :scope => [:txt, :view, :admin, :trash], :title => post.title) %></td>
+	    
+    </tr>
+    <% end -%>	
+</table>
+<% end -%>
+<div id="pagilinks">
+<%= will_paginate @posts, :previous_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+</div>
+<% end -%>
+</div>

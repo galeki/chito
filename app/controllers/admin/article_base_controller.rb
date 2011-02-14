@@ -36,13 +36,15 @@ class Admin::ArticleBaseController <  Admin::BaseController
 
   def destroy
     @article = @user.articles.find(params[:id])
-    @article.destroy
+    @article.is_deleted = true
+    @article.save
   end
 
   def destroy_selected
     if params[:ids]
         for article in @user.articles.find(params[:ids])
-            article.destroy
+            article.is_deleted = true
+            article.save
         end
     end
   end

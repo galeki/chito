@@ -73,6 +73,9 @@ en-US:
           post_successfully_deleted: Post was successfully deleted
           posts_successfully_deleted: Posts were successfully deleted
           posts_successfully_recategoried: Posts were successfully recategoried
+        trash:
+          aritlce_successfully_restored: Article was successfully restored
+          article_restore_failed: Article restore failed
         drafts:
           draft_successfully_deleted: Draft was successfully deleted
           draft_successfully_saved: Draft was successfully saved
@@ -221,6 +224,7 @@ en-US:
           message_4: Links
           message_5: Files
           message_6: RSS import
+          trash: Trash box
         plugins: 
           message_0: Plugin config
         _sub_menu_for_feedbacks: 
@@ -604,6 +608,16 @@ en-US:
           delete: Delete
           delete_post: Delete %{title} ?
           all: All
+        trash:
+          delete_all: Delete all
+          delete_all?: Delete all articles in trash ?
+          restore: Restore
+          restore?: Restore %{title} ?
+          delete?: Delete %{title} ?
+          type: Type
+          draft: Draft
+          page: Page
+          post: Post
         drafts:
           delete_draft?: Delete %{title} ?
           edit_draft: Edit draft

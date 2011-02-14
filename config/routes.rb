@@ -57,6 +57,15 @@ Chito::Application.routes.draw do
         end
     end
 
+    resources :trash do
+        collection do
+            post :destroy_all
+        end
+        member do
+            post :restore
+        end
+    end
+
     resources :pages do
         member do
             post :enable_fontpage

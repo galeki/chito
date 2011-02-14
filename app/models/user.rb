@@ -127,6 +127,8 @@ class User < ActiveRecord::Base
         temp = Article.where("articles.user_id = ?", self.id)
         temp = temp.where("articles.category_id = ?", options[:category_id]) if options[:category_id]
         case options[:type]
+            when :trash
+                temp = temp.where("articles.bit_opt % 2 = 1")    
             when :posts
                 temp = temp.where("articles.bit_opt = 0")
             when :pages
