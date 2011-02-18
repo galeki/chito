@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100919105113) do
+ActiveRecord::Schema.define(:version => 20110218142642) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -135,11 +135,12 @@ ActiveRecord::Schema.define(:version => 20100919105113) do
     t.string   "user_mode"
     t.datetime "created_at"
     t.integer  "default_group"
-    t.integer  "bit_opt",       :default => 0
+    t.integer  "bit_opt",           :default => 0
     t.string   "footer"
     t.string   "index_mode"
     t.string   "index_theme"
     t.text     "settings"
+    t.string   "default_time_zone"
   end
 
   create_table "taggings", :force => true do |t|
@@ -184,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20100919105113) do
     t.string   "twitter"
     t.datetime "last_logined_in_at"
     t.datetime "updated_at"
+    t.string   "time_zone"
   end
 
   add_index "users", ["bit_opt"], :name => "index_users_on_bit_opt"

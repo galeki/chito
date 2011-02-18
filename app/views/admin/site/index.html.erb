@@ -44,7 +44,10 @@
 		    this, event, '220px')">[?]</a>
         </label>
         </p>
-	
+	<p><label><%= t(:default_time_zone, :scope => [:txt, :view, :admin, :site]) %>:  
+            <%= f.time_zone_select :default_time_zone, ActiveSupport::TimeZone.all %>
+        </label>
+        </p>	
     <br/>
     <%= submit_tag t(:message_16, :scope => [:txt, :view, :admin, :site]), :class =>'submit' %>	
     

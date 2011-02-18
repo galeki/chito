@@ -58,6 +58,8 @@
     <%= f.text_field 'twitter', :size => '15' %>
     <label >Language:</label>
     <%= f.select :language, Chito::LANGUAGES %>
+    <label ><%= t(:time_zone, :scope => [:txt, :view, :admin, :settings]) %>:</label>
+        <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
     <br/>
     <br/>
     <%= submit_tag t(:save, :scope => [:txt, :view, :admin, :settings]), :class =>'submit' %>

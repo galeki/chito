@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
      include CommentControllerPlugin
-     before_filter :get_user
+     before_filter :get_user, :get_time_zone
      before_filter :get_comment_filters, :except => [:index]
     
    def index

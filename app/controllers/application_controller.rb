@@ -91,6 +91,11 @@ class ApplicationController < ActionController::Base
         I18n.locale = params[:local] || @user.language || "en-US"
     end
 
+    def get_time_zone
+        Time.zone = @site.default_time_zone || "UTC"
+        Time.zone = @user.time_zone if @user && @user.time_zone
+    end
+
     def get_site
         @site = Site.instance
         @now = Time.now
@@ -109,6 +114,7 @@ class ApplicationController < ActionController::Base
     def get_user_and_needed
         get_user
         get_locale
+        get_time_zone
         get_theme
         if_html do
             get_sidebars

@@ -518,6 +518,7 @@ en-US:
           enable_thread_comment: Enable Thread Comment
           check_comment_notifier_by_default: Enable the E-mail notifier by default
           grey: Grey
+          time_zone: Time Zone
         site: 
           message_16: Save
           message_8: I want to write several blogs, or hope people register and write blogs here
@@ -549,6 +550,7 @@ en-US:
           global_blog_setting: Global Blog Settings
           header: Extra header code
           force_comment_filter: Force comment captche
+          default_time_zone: Default time zone
         rss:
           rss_import: RSS import
           no_url: Please input RSS url

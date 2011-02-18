@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-        before_filter :admin_authorize, :admin_subdomain_check, :get_locale
+        before_filter :admin_authorize, :admin_subdomain_check, :get_locale, :get_time_zone
         layout "admin"
 
  private

@@ -518,6 +518,7 @@ zh-CN:
           enable_thread_comment: 使用 Thread Comment
           check_comment_notifier_by_default: 默认选中 E-mail 通知
           grey: 灰色
+          time_zone: 时区
         site: 
           message_16: 保存
           message_8: 我想写多个 Blog，或者想让别人到这里来写 Blog。
@@ -549,6 +550,7 @@ zh-CN:
           global_blog_setting: 全局 Blog 设置
           header: 页面头部追加代码
           force_comment_filter: 强制评论验证码
+          default_time_zone: 默认时区
         rss:
           rss_import: RSS 导入
           no_url: 请输入 RSS 地址

@@ -18,6 +18,12 @@
         <tr class="<%= cycle("odd", "") %>">
             <td ><%= "Uptime" %></td>
 	    <td ><pre><%= time_ago_in_words(Chito::STARTTIME) %></pre></td>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= "Default TimeZone" %></td>
+        <td ><pre><%= @site.default_time_zone %></pre></td>
+        <tr class="<%= cycle("odd", "") %>">
+            <td ><%= "Current TimeZone" %></td>
+        <td ><pre><%= Time.zone %></pre></td>
         </tr>
 </table>
 <table id="systeminfo_table" class="sofT" cellspacing="0" style="margin-top:5px;">
