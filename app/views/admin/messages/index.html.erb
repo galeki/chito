@@ -42,7 +42,7 @@
 	    <td class="comment_email_col"><%= (mail_to h(message.email), (image_tag "email.gif")) unless message.email.blank? %></td>	    
 	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :messages])), 
 					    :controller => '/blog', :action => "guestbook", :anchor => "comment#{message.id}") %></td>
-	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :messages]), admin_message_path(message, _params), :class => "delete",
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :messages]), admin_message_path(message, _params), :class => "destory",
 		:confirm => t(:delete_message?, :scope => [:txt, :view, :admin, :messages]), :method => :delete %></td>
 	    
     </tr>

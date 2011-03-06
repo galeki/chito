@@ -38,7 +38,7 @@
 	    <td class="comment_content_col"><%=h strip_tags(trackback.content) %></td>
 	    <td class="comment_guest_col"><%= (link_to (image_tag "post.gif", :title => t(:view, :scope => [:txt, :view, :admin, :trackbacks])), 
 					    post_path(trackback.article, :anchor => "trackback#{trackback.id}", :format => :html)) if trackback.article %></td>
-	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :trackbacks]), admin_trackback_path(trackback, _params), :class => "delete",
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :trackbacks]), admin_trackback_path(trackback, _params), :class => "destory",
 		:confirm => t(:delete_trackback?, :scope => [:txt, :view, :admin, :trackbacks]), :method => :delete %></td>
 	    
     </tr>

@@ -29,7 +29,7 @@
 	    <td class="comment_block_by"><%= spam.audit_by %></td>
 	    <td class="action_col"><%= link_to t(:pass, :scope => [:txt, :view, :admin, :spams]), pass_admin_spam_path(spam, _params), :class => "pass", 
 					:confirm => t(:pass_spam?, :scope => [:txt, :view, :admin, :spams]), :method => :post %></td>
-	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :spams]), admin_spam_path(spam, _params), :class => "delete",
+	    <td class="action_col delete"><%= link_to t(:delete, :scope => [:txt, :view, :admin, :spams]), admin_spam_path(spam, _params), :class => "destory",
 		:confirm => t(:delete_spam?, :scope => [:txt, :view, :admin, :spams]), :method => :delete %></td>
 	    
     </tr>
