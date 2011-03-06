@@ -565,7 +565,7 @@ table#article_actions td.category_filter {width:25em;text-align:left;}
     word-break:break-all;
     overflow:hidden;
 }
-#comments_table, #messages_table{table-layout:fixed;}
+/*#comments_table, #messages_table{table-layout:fixed;}*/
 .comment_guest_col{
     width:50px;
 }
