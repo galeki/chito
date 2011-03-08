@@ -17,7 +17,7 @@ xml.rss "version" => "2.0",
 		xml.link post_url(post, :format => :html) 
 		if @user.rss_type == 'full'
 		    xml.description do
-			xml.cdata! rss_content(post.content.to_s)
+			xml.cdata! rss_content(post.content.to_s.html_safe)
 		    end
 		else
 		    xml.description do
