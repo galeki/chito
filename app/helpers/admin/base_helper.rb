@@ -36,6 +36,6 @@ module Admin::BaseHelper
     def if_has_notifier(&block)
         @notifier_path = admin_spams_path if @user.has_new_spam
         @notifier_path = admin_talks_path if @user.has_new_talk
-        with_output_buffer(&block) if @notifier_path
+        capture(&block) if @notifier_path
     end
 end
