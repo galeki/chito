@@ -20,6 +20,7 @@ module ActiveRecord
         def respond_to?(*method)
             return true if self.old_respond_to?(*method)
             return false if method.first =~ /_before_type_cast$/ 
+            return false if method.first =~ /^_/ 
             return true    #return ture to bypass the rails value type cast
         end
 

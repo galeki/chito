@@ -40,7 +40,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mysql2 (0.3.2)
+    mysql2 (0.2.7)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -75,7 +75,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  mysql2
+  mysql2 (~> 0.2.0)
   rails (~> 3.0.0)
   rmagick
   simple-rss

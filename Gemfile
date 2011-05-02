@@ -11,7 +11,7 @@ gem 'rails', '~> 3.0.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
- gem 'mysql2'
+ gem 'mysql2', '~> 0.2.0'
  #gem 'mysql'
  
  #gem 'mongrel', '1.2.0.pre2'
