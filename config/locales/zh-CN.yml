@@ -432,7 +432,7 @@ zh-CN:
           delete_category?: 删除分类 %{name} ?
           save_text: 保存
           cancel_text: 取消
-          manage_categories: 管理评论
+          manage_categories: 管理分类
           categories_position_updated: 分类位置于 %{time} 更新成功
         links: 
           links_position_updated: 链接位置于 %{time} 更新成功
