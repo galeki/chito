@@ -646,3 +646,6 @@ a img {
 	It won't be a stylish marriage, I can't afford a carriage.
 	But you'll look sweet upon the seat of a bicycle built for two." */
 
+.otherMonth, .day, .specialDay {
+  padding: 0.2em 0.4em;
+}

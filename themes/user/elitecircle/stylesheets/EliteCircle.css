@@ -89,11 +89,11 @@ th strong {
 }
 th {
 	background: #882D2D;
-	height: 29px;
-	padding-left: 12px;
-	padding-right: 12px;
+	height: 20px;
+	padding-left: 7px;
+	padding-right: 7px;
 	color: #FFF;
-	text-align: left;
+	text-align: center;
 	border-left: 1px solid #EDC9C9;
 	border-bottom: 1px solid #FFF;
 }
@@ -102,8 +102,8 @@ tr {
 	background: #F3F3F3;
 }
 td {
-	padding-left: 11px;
-	padding-right: 11px;
+	padding-left: 5px;
+	padding-right: 5px;
 	border-left: 1px solid #fff;
 	border-bottom: 1px solid #fff;
 }
@@ -441,3 +441,5 @@ input.button {
 .comment_box0, .comment_box1, .comment_self {
     width: 93%;
 }
+
+

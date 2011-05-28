@@ -666,3 +666,6 @@ a.down {
     background: url(/images/down-gray.gif) no-repeat left center;
     padding-left: 14px;
 }
+.month_names, .day_names{
+    background-color:#eee;
+}

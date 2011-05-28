@@ -25,6 +25,8 @@ en-US:
                 info: Archive
             bulletin:
                 info: Bulletin
+            calendar:
+                info: Calendar
             register: Register
             admin: Admin
             login: Login
@@ -68,6 +70,8 @@ zh-CN:
                 info: 存档
             bulletin:
                 info: 公告
+            calendar:
+                info: 日历
             register: 注册
             admin: 管理
             login: 登录

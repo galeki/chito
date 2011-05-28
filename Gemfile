@@ -23,6 +23,7 @@ gem 'rails', '~> 3.0.0'
  
  gem 'uuidtools', '>= 2.1.1'
  gem 'simple-rss'
+ gem 'later_dude', '>= 0.3.1'
 # Deploy with Capistrano
 # gem 'capistrano'
 

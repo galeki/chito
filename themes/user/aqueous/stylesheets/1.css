@@ -464,3 +464,10 @@ a.up:hover, a.down:hover, #article_header a:hover{color:#555;}
 
 
 #article_tabs{float:left;width:100%;margin-bottom:25px;}
+
+.month_names, .day_names{
+    background-color:#eee;
+}
+.day a{
+    text-decoration:underline !important;
+}

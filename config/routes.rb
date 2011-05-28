@@ -9,7 +9,7 @@ Chito::Application.routes.draw do
   match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
   match '/simple_captcha_ajax' => 'simple_captcha#simple_captcha_ajax'
   match '/:year/:month/:day/:permalink.:id.:format' => 'posts#show', :constraints => { :year => /(19|20)\d\d/, :month => /[0|1]?\d/, :day => /[0-3]?\d/ }
-  match ':year/:month/:day' => 'posts#index', :as => :day, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }
+  match ':year/:month/:day' => 'posts#index', :as => :day, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }, :as => :posts_on
   match ':year/:month' => 'posts#index', :as => :archive, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/ }
 
   resources :posts do

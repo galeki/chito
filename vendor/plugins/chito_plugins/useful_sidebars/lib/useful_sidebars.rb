@@ -128,3 +128,11 @@ bar.default_position = 9
 bar.plugin_id = :useful_sidebars
 bar.config = false
 Sidebar.add(bar)
+
+bar = Sidebar.new
+bar.id = :calendar
+bar.info = "Calendar"
+bar.default_position = 999
+bar.plugin_id = :useful_sidebars
+bar.config = false
+Sidebar.add(bar)

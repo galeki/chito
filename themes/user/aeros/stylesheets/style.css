@@ -1092,3 +1092,15 @@ div.aligncenter {
 #comments{
     font-size:12px;
 }
+
+.today {
+    background-color: black;
+	color: white;
+}
+.month_names, .day_names{
+    background-color:#eee;
+}
+.day a{
+    color:black !important;
+    text-decoration:underline;
+}

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     helper_method :chito_cache_key
     helper_method :'_params'
     helper_method :url_for
+    helper LaterDude::CalendarHelper
     #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
     #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 

@@ -153,6 +153,9 @@ class User < ActiveRecord::Base
         temp.includes(:comments).includes(:category).order('articles.created_at desc').paginate(:per_page => options[:per_page], :page => options[:page])
     end
 
+    #def has_posts_on?(day)
+    #    self.where("articles.cread)
+
     def find_talks(options={})
         Article.where("articles.user_id != ?", self.id)\
                .joins("INNER JOIN feedbacks ON feedbacks.user_name = '#{self.name}' and articles.id = feedbacks.article_id")\

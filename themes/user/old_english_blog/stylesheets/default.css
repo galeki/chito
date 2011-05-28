@@ -331,3 +331,8 @@ a.down {
     float:left;
 }
 #comments a{text-decoration:none;border:none;}
+
+.day a {padding-left:0px !important;}
+.otherMonth, .day, .specialDay {
+  padding: 0.2em 0.4em;
+}

@@ -283,3 +283,6 @@ margin-bottom: 0px;
     color:#777;
     margin-bottom:10px;
 }
+.day a{
+    text-decoration:underline !important;
+}

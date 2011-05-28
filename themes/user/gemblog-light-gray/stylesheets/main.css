@@ -186,3 +186,6 @@ h2.link_to_post{
     text-align:left;
 }
 
+.otherMonth, .day, .specialDay {
+  padding: 0.0em 0.0em;
+}
