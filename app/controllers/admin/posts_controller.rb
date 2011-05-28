@@ -1,6 +1,9 @@
 class Admin::PostsController <  Admin::ArticleBaseController
     after_filter(:except => :index) {|c| c.chito_cache_expire(:type => "posts_index/*")}
-    after_filter(:except => [:index, :update, :recategory_selected]) {|c| c.sidebar_cache_expire(:archive) }
+    after_filter(:except => [:index, :update, :recategory_selected]) do |c| 
+        c.sidebar_cache_expire(:archive)
+        c.sidebar_cache_expire(:calendar)
+    end
     
     def index
         @categories = @user.categories
