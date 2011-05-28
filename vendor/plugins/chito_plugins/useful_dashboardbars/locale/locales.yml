@@ -15,6 +15,8 @@ en-US:
                 info: 'Welcome back!'
             dashboard_links:
                 info: Links
+            dashboard_calendar:
+                info: Calendar
             num_of_new_posts: Number of new posts
             default_num_of_new_posts: 'Default is 6, max is 30'
             counter: Counter
@@ -35,6 +37,8 @@ zh-CN:
                 info: '欢迎回来！'
             dashboard_links:
                 info: 友情链接
+            dashboard_calendar:
+                info: 日历
             num_of_new_posts: 新文章显示数量 
             default_num_of_new_posts: '默认为 6 篇，,最大为 30 篇，刷新后生效。'
             counter: 访问计数

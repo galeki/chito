@@ -1,0 +1,11 @@
+
+<%= calendar_for(Time.now.year, Time.now.month) do |day|
+    if @user.posts.where("articles.created_at >= ? and articles.created_at < ?", 
+                         Time.mktime(day.year, day.month, day.day), 
+                         Time.mktime(day.year, day.month, day.day)+1.day).first
+        link_to day.day, posts_on_path(:year => day.year, :month => day.month, :day => day.day)
+    else
+        day.day
+    end
+end %>
+

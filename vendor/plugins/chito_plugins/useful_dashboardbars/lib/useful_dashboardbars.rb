@@ -87,3 +87,10 @@ bar.config = false
 bar.default_position = 6
 Dashboardbar.add(bar)
 
+bar = Dashboardbar.new
+bar.id = :dashboard_calendar
+bar.info = 'Calendar'
+bar.plugin_id = :useful_dashboardbars
+bar.config = false
+bar.default_position = 7
+Dashboardbar.add(bar)
