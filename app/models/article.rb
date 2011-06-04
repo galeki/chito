@@ -21,13 +21,13 @@ class Article < ActiveRecord::Base
     include ArticlePlugin
 
     def self.new_posts(num=20)
-        where("articles.bit_opt = 0 and articles.rank >= 0").order('articles.created_at DESC').limit(num)
+        where("articles.bit_opt = 0 and articles.rank >= 0").order('articles.published_at DESC').limit(num)
     end
 
     def self.new_ranked_posts(options)
         temp = self.where("articles.index_id = ? and articles.bit_opt = 0 and articles.rank > ?", options[:index_id], options[:rank])
         temp = temp.where("articles.content like ?", "%#{options[:keyword]}%") if options[:keyword]
-        temp.order("articles.created_at DESC")\
+        temp.order("articles.published_at DESC")\
             .includes(:user).includes(:comments)\
             .paginate(:per_page => (options[:per_page] || 10), :page => options[:page])
     end
@@ -99,6 +99,10 @@ class Article < ActiveRecord::Base
         return :draft if self.is_draft?
         return :page if self.is_page?
         return :post
+    end
+
+    def published_or_created_time
+        self.published_at || self.created_at
     end
 
     private

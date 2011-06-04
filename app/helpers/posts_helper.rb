@@ -5,7 +5,9 @@ module PostsHelper
         permalink = permalink.blank? ?  nil : permalink.gsub(' ','-').gsub('.','-')
         path = {:controller => "/posts", :subdomain => options[:subdomain],  :action => 'show', :id => post.id, 
                  :format => 'html', :permalink => permalink,:anchor => options.delete(:anchor)}
-        path.merge!({:year => post.created_at.year, :month => post.created_at.month, :day => post.created_at.day}) unless permalink.blank?
+        path.merge!({:year => post.published_or_created_time.year, 
+                     :month => post.published_or_created_time.month, 
+                     :day => post.published_or_created_time.day}) unless permalink.blank?
         link_to options.delete(:text) || post_title(post), path, options
     end 
 
@@ -74,11 +76,11 @@ module PostsHelper
     end
 
     def post_date
-        @post.created_at
+        @post.published_or_created_time
     end
 
     def post_time
-        rewriter{l @post.created_at} 
+        rewriter{l(@post.published_or_created_time)} 
     end
 
     def link_to_previous_post

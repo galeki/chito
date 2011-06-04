@@ -126,11 +126,13 @@ class User < ActiveRecord::Base
     def find_articles(options={})
         temp = Article.where("articles.user_id = ?", self.id)
         temp = temp.where("articles.category_id = ?", options[:category_id]) if options[:category_id]
+        temp = temp.order('articles.created_at desc')
         case options[:type]
             when :trash
                 temp = temp.where("articles.bit_opt % 2 = 1")    
             when :posts
                 temp = temp.where("articles.bit_opt = 0")
+                temp = temp.order('articles.published_at desc')
             when :pages
                 temp = temp.where("articles.bit_opt = 4")
             when :drafts
@@ -139,22 +141,20 @@ class User < ActiveRecord::Base
         temp = temp.where("articles.content like ?", "%#{options[:keyword]}%") if options[:keyword]
         if options[:year] && options[:month]
             if options[:day]
-                temp = temp.where("articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i, options[:day].to_i))
-                temp = temp.where("articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month], options[:day].to_i) + 1.day)
+                temp = temp.where("articles.published_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i, options[:day].to_i))
+                temp = temp.where("articles.published_at < ?",Time.mktime(options[:year].to_i, options[:month], options[:day].to_i) + 1.day)
             else
-                temp = temp.where("articles.created_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i))
-                temp = temp.where("articles.created_at < ?",Time.mktime(options[:year].to_i, options[:month]) + 1.month)
+                temp = temp.where("articles.published_at >= ?", Time.mktime(options[:year].to_i, options[:month].to_i))
+                temp = temp.where("articles.published_at < ?",Time.mktime(options[:year].to_i, options[:month]) + 1.month)
             end
         end
         if options[:tag]
             temp = temp.where("tags.name = ?", options[:tag]) 
             temp = temp.joins("INNER JOIN taggings ON articles.id = taggings.taggable_id INNER JOIN tags ON taggings.tag_id = tags.id")
         end
-        temp.includes(:comments).includes(:category).order('articles.created_at desc').paginate(:per_page => options[:per_page], :page => options[:page])
+        temp.includes(:comments).includes(:category)\
+            .paginate(:per_page => options[:per_page], :page => options[:page])
     end
-
-    #def has_posts_on?(day)
-    #    self.where("articles.cread)
 
     def find_talks(options={})
         Article.where("articles.user_id != ?", self.id)\

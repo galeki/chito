@@ -12,17 +12,14 @@ class Admin::PostsController <  Admin::ArticleBaseController
 
     def create
         super
-#       @article.published = true
+        @article.published_at = Time.now unless @article.published_at
         save_and_redirect
         send_trackback(params[:trackbacks], @article)
     end
 
     def update
         super
-        #unless @article.published
-        #    @article.created_at = Time.now
-        #    @article.published = true
-        #end
+        @article.published_at = Time.now unless @article.published_at
         save_and_redirect
         send_trackback(params[:trackbacks], @article)
     end

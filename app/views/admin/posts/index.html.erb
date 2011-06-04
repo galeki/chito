@@ -46,7 +46,7 @@
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
 	    <td class="title_col"><%= link_to post_title(post), post_path(post, :format => :html), :class => "post_title_link"  %></td>
-	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
+	    <td class="time_col"><%= post.published_or_created_time.to_s(:db_short) %></td>
 	    <td class="comments_col"><%= link_to "(#{post.comments.count})", post_path(post, :anchor => "comments", :format => :html), :class => "post_comments" %></td>
 	    <td class="category_col"><%= post.category.name if post.category %></td>
 	    <td class="category_col"><%= post.index.title if post.index %></td>
