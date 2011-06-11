@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function(config) {
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['Link','Unlink','Anchor'],
             '/',
-            ['Format','Font','FontSize'],
+            ['Format','Styles','Font','FontSize'],
                         ['Outdent','Indent','Blockquote'],
             ['TextColor','BGColor'],
             ['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter'],['LatexFormula']
@@ -57,4 +57,5 @@ CKEDITOR.editorConfig = function(config) {
 
         config.smiley_columns = 12;
         //config.ignoreEmptyParagraph = false;
+        
 };
