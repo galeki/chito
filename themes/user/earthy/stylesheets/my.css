@@ -191,7 +191,7 @@ width: 100%;
 height: 23px;
 margin: 0 0 0 0;
 padding: 0 0 1px 0;
-background: #A6C3AD url(images/pt02.jpg) no-repeat;
+background: #A6C3AD;
 color:#000;
 }
 .navlist li {
