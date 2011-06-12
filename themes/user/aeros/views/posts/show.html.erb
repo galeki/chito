@@ -55,7 +55,7 @@
 <% chito_cache :type => :posts, :id => :feedbacks, :post => @post.id do -%>
 <% if_show_trackbacks do -%>
     <div class="articlefooter">
-	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :format => :xml) %></span>
+	<span class="trackbacks_url"></span>
 	<span class="trackbacks">
 	    <%= image_tag "trackbacks.gif", :class => 'trackbacks' %>
 	    <%= t(:trackbacks, :scope => [:txt, :view, :posts, :show]) %> (<%= @trackbacks.size %>)
@@ -76,7 +76,7 @@
 
 <div class="articlefooter">
     <% if @trackbacks.empty? -%>
-	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :key => @post.trackback_key, :format => :xml) %></span>
+	<span class="trackbacks_url"></span>
     <% end -%>
     <span class="comments">
 	<%= link_to (image_tag "small_feed.png", :class => 'feed'), post_path(@post, :format => :rss) %>

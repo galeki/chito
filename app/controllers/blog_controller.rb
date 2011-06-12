@@ -108,7 +108,7 @@ class BlogController < ApplicationController
         end
         template = "#{controller_name}/#{action_name}"
         theme_template = "#{@theme}/views/#{template}"
-        theme_template_path = File.join(UserTheme::PATH, template + ".html.erb" )
+        theme_template_path = File.join(UserTheme::PATH, theme_template + ".html.erb" )
         if File.exists?(theme_template_path)
             super :template => theme_template, :layout => layout
         else

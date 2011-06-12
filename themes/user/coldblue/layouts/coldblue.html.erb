@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%= header %>
+<body id="<%= @theme %>">
+	<div id="header"><div class="inner clear">
+		<h1><%= site_title %></h1>
+		<ul id="navigation">
+			<li><%= site_slogan %></li>
+		</ul>
+	</div></div>
+	
+	<div id="search"><div class="inner clear">
+	<ul id="nav-link">
+        <% navbar.each do |bar| -%>
+		    <li class="page_item <%= "current_page_item" if current(bar)%>"><%= link_to_nav bar %></li>
+	    <% end -%>
+		</ul>
+        <%= form_tag( posts_path, {:id => :searchform, :method => :get} ) do -%>
+            <%= text_field_tag :s, '', :size => 7 %>
+            <%= submit_tag "Search" %>
+        <% end -%>
+	</div></div>
+	<div id="wrapper" class="clear">
+        <div id="content">
+            <%= yield %>
+<div id="pageurl">
+</div>
+</div>
+<ul id="sidebar">
+    <% sidebar do |s| -%>
+        <h2><span><%= title_of(s) %></span></h2>
+        <%= content_of(s) %>
+        <br/>
+    <% end -%>
+</ul>
+</div>
+<%= blog_tail%>
+<div id="footer">
+    <p><%= footer %></p>
+<p id="webrevolutionary-link">
+<a href="http://webrevolutionary.com/coldblue/">ColdBlue</a> v1.0 — A theme by <a href="http://webrevolutionary.com/">WebRevolutionary</a> &amp; <a href="http://www.forwebdesigners.com/">ForWebdesigners</a>
+</p>
+</div>
+</body></html>

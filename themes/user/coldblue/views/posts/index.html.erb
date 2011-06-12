@@ -1,0 +1,24 @@
+<% posts_cache do -%>
+<% posts do -%>
+<div class="post">
+	<div class="post-title">
+	<h2><%= link_to_post %></h2>
+    <h3> <%= post_time %>  </h3>
+	</div>
+	<div class="post-content">
+        <%= post_brief %>
+	</div>
+	<p></p>
+    <% unless @post.cached_tag_list.blank? -%>
+        <span>Tags:	<%= link_to_post_tags %></span>
+    <% end -%>
+    <div class="post-p"> <%= link_to_post(:text => "#{t(:comments, :scope => [:txt, :view, :posts, :show])}(#{@post.comments.count})", :anchor => 'comments', :title => "Comments") %>
+    <%= link_to_post(:text => "#{t("txt.view.posts.show.readers")}(#{@post.read_count})") %>
+    </div>
+</div>
+
+<% end -%>
+<div class="navlink">
+<%= pagilinks %>
+</div>
+<% end -%>
