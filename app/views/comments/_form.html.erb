@@ -34,7 +34,9 @@
      <div id="comment_editor">
        <input id="comment_mode" name="comment[mode]" type="hidden" value="plain" />	
        <input id="comment_reply_to" name="comment[reply_to]" type="hidden" value=""/>
-       <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc'%>
+       <%=  text_area 'comment', 'content', :cols => 40, :rows => 3 , :class => 'pc',
+           :onkeydown => "if(event.ctrlKey&&event.keyCode==13){document.getElementById('subm_chito_comment').click();return false};"
+       %>
        <input type="button" id="comment_editor_button" onclick='show_editor();' />
      </div>
      <% if controller.action_name == "show" %>
@@ -44,5 +46,6 @@
          <%= show_something :in_comment_form %>
      </div>
          <%= submit_tag t(:message_4, :scope => [:txt, :view, :comments, :_form]), :disable_with => t(:message_0, :scope => [:txt, :view, :comments, :_form]), :id => "subm_chito_comment", :autocomplete => "off" %>
+         <span id="crtl_enter_tip" style="color:#ccc;font-size:small;"> or Ctrl+Enter</span>
  <% end %>
 

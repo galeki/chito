@@ -32,6 +32,8 @@ function show_editor()
     e0.style.display="none";
     var e1 = document.getElementById('comment_mode');
     e1.value = "html";
+    var e2 = document.getElementById('crtl_enter_tip');
+    e2.style.display="none";
 
     CKEDITOR.replace('comment_content',
     {
