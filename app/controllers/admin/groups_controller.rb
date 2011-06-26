@@ -37,6 +37,17 @@ class Admin::GroupsController < Admin::BaseController
     end
   end
 
+  def set_no_index_status
+    @group = Group.find(params[:id])
+    @group.no_index = (params[:enable] == "true" ? true : false)
+    @group.save
+    render :update do |page|
+        page.visual_effect :highlight, "no_index_#{@group.id}", :startcolor => '#ffff00',
+                           :endcolor => '#ffffff',
+                           :duration => 3.0
+    end
+  end
+
   def destroy
     group = Group.find(params[:id])
     if group.deletable? 

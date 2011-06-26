@@ -1,6 +1,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<% if @user.get_group.no_index -%>
+<meta name="robots" content="noindex, nofollow"/>
+<% else -%>
 <meta name="robots" content="all"/>
+<% end -%>
 <meta name="author" content="<%=h @meta_author %>"/>
 <meta name="description" content="<%=h @meta_description %>"/>
 <meta name="keywords" content="<%=h @meta_keywords %>"/>

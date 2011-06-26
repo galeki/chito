@@ -295,6 +295,12 @@ td.group_space_col  {
 td.group_file_size_limit_col  {
     width:16em;
 }
+td.group_api_enable_col {
+    width:4em;
+}
+td.group_no_index_col {
+    width:7em;
+}
 #add_category label {
     margin-left:15px;
 }

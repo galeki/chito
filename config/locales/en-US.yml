@@ -276,6 +276,7 @@ en-US:
           cancel_text: Cancel
           delete_group?: Delete group %{group} ?
           api_enable: Enable API
+          no_index: No Index
         indices:
           manage_indices: Manage Indices
           title: Index title
