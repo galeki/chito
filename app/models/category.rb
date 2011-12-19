@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
              :conditions => ["articles.bit_opt = 0"],
              :order => 'articles.created_at DESC'
     validates_presence_of :name 
-    validates_uniqueness_of :permalink
+    #validates_uniqueness_of :permalink
 
     def info
         super.blank? ? "- No Info -" : super

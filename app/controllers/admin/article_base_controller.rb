@@ -8,7 +8,7 @@ class Admin::ArticleBaseController <  Admin::BaseController
     @article.auto_brief = true
     @categories = @user.categories
     @indices = Index.order('id')
-    @selected = @user.categories.first.id
+    @selected = @user.categories.first.id if @user.categories.first
     @article.save
     redirect_to edit_admin_draft_path(@article)
   end
