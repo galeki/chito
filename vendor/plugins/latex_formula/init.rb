@@ -1,6 +1,6 @@
 require "latex_formula"
 
-Application.config.autoload_paths += %W(#{LatexFormula::PLUGIN_CONTROLLER_PATH})
+Chito::Application.config.autoload_paths += %W(#{LatexFormula::PLUGIN_CONTROLLER_PATH})
 
 require 'latex_formula_controller'
 
