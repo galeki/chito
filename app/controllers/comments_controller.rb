@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
         @post = @user.posts.find(params[:post_id])
         @comment.article_id = @post.id
         @no = [@post.comments.count + 1]
+        @render_options = {:position => :bottom}
 
         call_filter
         @comment.save 
@@ -23,11 +24,11 @@ class CommentsController < ApplicationController
         sidebar_cache_expire(:new_comments)
         chito_cache_expire(:type => "posts_index/*")
         chito_cache_expire(:type => :posts, :id => :feedbacks, :post => @post.id)
-        render_update(:position => :bottom)
+        render "comment_update" 
         call_notifier
 
       rescue CommentFilterBlock
-        render_error
+        render "comment_error"
    end 
 
    private
@@ -75,28 +76,6 @@ class CommentsController < ApplicationController
         @filters.each do |f|
             send(f.hook) if f.enable
         end
-   end
-
-   def render_update(options = {})
-        render :update do |page|
-          page.replace_html "comment_error", "" 
-          if @user.enable_thread_comment && @comment.reply_to
-            page.insert_html :before, 'post_comment',  :partial => 'comments/comment'
-          else
-            page.insert_html options[:position], 'comments',  :partial => 'comments/comment'
-          end
-          page.visual_effect :highlight, "comment#{@comment.id}", :duration => 5, :startcolor => '#ffff00'
-          page.call @call if @call
-          page.call 'clean_field'
-        end
-   end
-
-   def render_error
-        render :update do |page|
-          page.replace_html "comment_error", :partial => "comments/error" 
-          page.visual_effect :slide_down, "comment_error"
-          page.call @call if @call
-         end
    end
 
    def block_filter(options={})

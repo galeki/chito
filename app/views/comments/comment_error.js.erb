@@ -1,0 +1,11 @@
+$("#comment_error").html("<%= escape_javascript(render :partial => 'comments/error') %>"); 
+
+
+$("#comment_error").effect('slide', {});
+
+
+try{
+    <% if @call -%>
+        <%= @call %>();
+    <% end -%>
+}catch(e){;}

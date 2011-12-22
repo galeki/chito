@@ -9,13 +9,14 @@ class MessagesController < CommentsController
         @comment = @user.messages.new(params[:comment])
         @comment.prepare(params, request, session, cookies)
         @comment.is_message = true 
+        @render_options = {:position => :top}
         call_filter
         @comment.save 
         chito_cache_expire :id => :guestbook
         sidebar_cache_expire :new_messages
-        render_update(:position => :top)
+        render "comment_update"
 
       rescue CommentFilterBlock
-        render_error
+        render "comment_error"
     end
 end

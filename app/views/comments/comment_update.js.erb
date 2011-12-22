@@ -1,0 +1,22 @@
+$("#comment_error").val("");
+
+<% if @user.enable_thread_comment && @comment.reply_to %>
+    $("#post_comment").before("<%= escape_javascript(render :partial => 'comments/comment') %>"); 
+<% else %>
+    <% if @render_options[:position] == :bottom -%> 
+        $("#comments").append("<%= escape_javascript(render :partial => 'comments/comment') %>");
+    <% else -%>
+        $("#comments").before("<%= escape_javascript(render :partial => 'comments/comment') %>");
+    <% end -%>
+<% end %>
+
+$("#comment<%= @comment.id %>").effect('highlight',{ startcolor:'#ffff00'},5000);
+
+
+try{
+    <% if @call -%>
+        <%= @call %>();
+    <% end -%>
+
+    clean_field();
+}catch(e){;}
