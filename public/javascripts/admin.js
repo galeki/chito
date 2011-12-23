@@ -108,6 +108,7 @@ function add_category_remote(category_name,token)
     if(category_name.length > 0){ 
         var url = '/admin/categories.js';
         var data = {'category[name]':  category_name,
+                    'editor' : 'TRUE',
                     '_method': "POST",
                     "authenticity_token": encodeURIComponent(token)};
         $('#_category_name').val("");

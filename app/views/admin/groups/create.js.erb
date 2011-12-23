@@ -1,0 +1,9 @@
+<% if @created -%>
+    $("#all_groups").prepend("<%= escape_javascript(render :partial => 'group') %>");
+    $("#group_<%= @group.id %>").effect('highlight',{ startcolor:'#ffff00'},8000);
+<% else -%>
+    $("#updater").html("<%= escape_javascript(render :partial => "share/error") %>");
+    $("#updater").effect('slide', {});
+<% end -%>
+
+

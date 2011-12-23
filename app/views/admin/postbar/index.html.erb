@@ -28,7 +28,14 @@
     onclick='postbars_config(this.form);this.form.submit();return false;'/>
 <% end %>
 </div>
-
-    <%= sortable_element 'disable', :constraint => false, :containment => [:disable, :enable], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
-    <%= sortable_element 'enable', :constraint => false, :containment => [:disable, :enable], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
+<script type="text/javascript">
+//<![CDATA[
+    jQuery('#disable').sortable({connectWith:['#disable','#enable'], dropOnEmpty:true, format:/^bar_(.*)$/})
+//]]>
+</script>
+    <script type="text/javascript">
+//<![CDATA[
+    jQuery('#enable').sortable({connectWith:['#disable','#enable'], dropOnEmpty:true, format:/^bar_(.*)$/})
+//]]>
+</script>
 </div>

@@ -17,7 +17,7 @@
 //<![CDATA[
 
         $('#subm').click(function(){
-            $.post('<%= admin_categories_path(:format => :html) %>',$('#rform').find('input').serialize());
+                $.post('<%= admin_categories_path(:format => :js) %>',$('#rform').find('input').serialize());
             return false;
         });
 //]]>
@@ -39,10 +39,15 @@
 	<% end -%>	
 	</tbody>
 	</table>
-	<%= sortable_element 'all_categories',:url => set_position_admin_categories_path,
-			     :containment => ['all_categories'], :tag => 'tr', :ghosting => true,
-			     :handle => "dragger"
-			     %>
+
+	<script type="text/javascript">
+    //<![CDATA[
+    jQuery('#all_categories').sortable({axis:'y', 
+            connectWith:['#all_categories'], dropOnEmpty:false, handle:'.dragger', helper:'clone', items:'> tr', 
+            update:function(){jQuery.ajax({data:jQuery(this).sortable('serialize',{key:'all_categories[]'}), 
+                dataType:'script', type:'post', url:'<%= set_position_admin_categories_path %>'})}})
+    //]]>
+    </script>
 </div>
 </div>
 <%= in_place_edit_js :category, :name %>

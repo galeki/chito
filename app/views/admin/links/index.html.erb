@@ -42,9 +42,15 @@
 	<% end -%>	
     </tbody>
 </table>
-<%= sortable_element 'all_links',:url => set_position_admin_links_path, 
-				 :containment => ['all_links'], 
-				 :tag => 'tr', :ghosting => true, :handle => "dragger" %>
+
+<script type="text/javascript">
+//<![CDATA[
+jQuery('#all_links').sortable({axis:'y', connectWith:['#all_links'], dropOnEmpty:false, handle:'.dragger', helper:'clone', items:'> tr', 
+        update:function(){jQuery.ajax({data:jQuery(this).sortable('serialize',{key:'all_links[]'}), dataType:'script', type:'post', 
+            url:'<%= set_position_admin_links_path %>'})}})
+//]]>
+
+</script>
 </div>
 
 </div>

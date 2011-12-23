@@ -14,33 +14,24 @@ class Admin::CategoriesController <  Admin::BaseController
         @category = @categories.find(id) 
         @category.update_attributes(:position => idx) if @category
     end
-    render :update do |page|
-        page.replace_html "updater", :partial => "category_position"
-        page.visual_effect :highlight, "position_update", :startcolor => '#ffff00',
-                           :endcolor => '#ffffff',
-                           :duration => 5.0             
-    end
   end
 
   def create
     @category = @user.categories.new(params[:category])
     if @category.save
+        @created = true
         respond_to do |format|
-            format.html {@update = "all_categories"; @partial = "category"}
-            format.js {@update = "categories_checkboxes"; @partial = "category_checkbox"}
-        end
-        render :update do |page|
-            page.insert_html :top, @update, :partial => @partial 
-            page.visual_effect :highlight, "category_#{@category.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 8.0
+            format.html {}
+            format.js do
+                if params[:editor]
+                    @update = "categories_checkboxes"; @partial = "category_checkbox"
+                else
+                    @update = "all_categories"; @partial = "category"
+                end
+            end
         end
     else
         error_stickie(@category.errors.full_messages * "; ")
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end
     end 
   end
 

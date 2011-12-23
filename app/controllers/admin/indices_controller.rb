@@ -56,38 +56,19 @@ class Admin::IndicesController < Admin::BaseController
   def create
     @index = Index.new(params[:index])
     if @index.save
-        render :update do |page|
-            page.insert_html :top, "all_indices", :partial => "index" 
-            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 5.0
-        end
+        @created = true
     else
         error_stickie(@index.errors.full_messages * "; ")
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end
     end
-
   end
 
   def add_manager
     @index = Index.find(params[:id])
     user = User.find_by_name(params[:user_name])
     if user && @index.users << user
-        render :update do |page|
-            page.replace_html "index_users_#{@index.id}", :partial => "managers"
-            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 5.0
-        end
+        @added = true
     else
         error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end
     end
   end
 
@@ -95,18 +76,9 @@ class Admin::IndicesController < Admin::BaseController
     @index = Index.find(params[:id])
     user = User.find(params[:user_id])
     if user && @index.users.delete(user)
-        render :update do |page|
-            page.replace_html "index_users_#{@index.id}", :partial => "managers"
-            page.visual_effect :highlight, "index_#{@index.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 5.0
-        end
+        @deleted = true
     else
         error_stickie t(:no_such_user, :scope => [:txt, :controller, :admin, :indices])
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end
     end
   end
 

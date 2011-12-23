@@ -1,0 +1,9 @@
+<% if @added -%>
+    $("#index_users_<%= @index.id %>").html("<%= escape_javascript(render :partial => 'managers') %>");
+    $("#index_<%= @index.id %>").effect('highlight',{ startcolor:'#ffff00'},8000);
+<% else -%>
+    $("#updater").html("<%= escape_javascript(render :partial => "share/error") %>");
+    $("#updater").effect('slide', {});
+<% end -%>
+
+

@@ -14,30 +14,14 @@ class Admin::LinksController < Admin::BaseController
         @link = @links.find(id) 
         @link.update_attributes(:position => idx) if @link
     end
-    render :update do |page|
-        page.replace_html "updater", :partial => "link_position"
-        page.visual_effect :highlight, "position_update", :startcolor => '#ffff00',
-                           :endcolor => '#ffffff',
-                           :duration => 3.0             
-    end
   end
 
   def create
     @link = @user.links.new(params[:link])
     if @link.save
-        render :update do |page|
-            page.insert_html :top, "all_links", :partial => "link" 
-            page.call "clean_link_field"
-            page.visual_effect :highlight, "link_#{@link.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 5.0
-        end
+        @created = true
     else
         error_stickie(@link.errors.full_messages * "; ")
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end    
     end
   end
 

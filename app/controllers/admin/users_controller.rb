@@ -11,11 +11,8 @@ class Admin::UsersController < Admin::BaseController
     unless session[:user_id] == params[:id]
         @u = User.find(params[:id])
         @u.group_id = params[:group]
-        @u.save
-        render :update do |page|
-            page.visual_effect :highlight, "user#{@u.id}_group", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 3.0
+        if @u.save
+            @setted = true
         end
     end
   end

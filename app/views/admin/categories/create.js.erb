@@ -1,0 +1,9 @@
+<% if @created -%>
+    $("#<%= @update %>").prepend("<%= escape_javascript(render :partial => @partial) %>");
+    $("#category_<%= @category.id %>").effect('highlight',{ startcolor:'#ffff00'},8000);
+<% else -%>
+    $("#updater").html("<%= escape_javascript(render :partial => "share/error") %>");
+    $("#updater").effect('slide', {});
+<% end -%>
+
+

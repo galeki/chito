@@ -28,8 +28,16 @@
    </div>
     <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :comments]) %>" onclick='filter_config(this.form);this.form.submit();return false;'/>   
 <% end -%>
-    <%= sortable_element 'disable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
-    <%= sortable_element 'enable_filters',:url => '' , :constraint => false, :containment => [:disable_filters, :enable_filters], :dropOnEmpty => true, :format => "/^bar_(.*)$/" %>
+<script type="text/javascript">
+//<![CDATA[
+jQuery('#disable_filters').sortable({connectWith:['#enable_filters','#disable_filters'], dropOnEmpty:true, format:/^bar_(.*)$/})
+//]]>
+</script>
+    <script type="text/javascript">
+//<![CDATA[
+jQuery('#enable_filters').sortable({connectWith:['#enable_filters','#disable_filters'], dropOnEmpty:true, format:/^bar_(.*)$/})
+//]]>
+</script>
 </div>
 </div>
 

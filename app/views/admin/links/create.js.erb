@@ -1,0 +1,10 @@
+<% if @created -%>
+    $("#all_links").prepend("<%= escape_javascript(render :partial => 'link') %>");
+    $("#link_<%= @link.id %>").effect('highlight',{ startcolor:'#ffff00'},8000);
+    clean_link_field();
+<% else -%>
+    $("#updater").html("<%= escape_javascript(render :partial => "share/error") %>");
+    $("#updater").effect('slide', {});
+<% end -%>
+
+

@@ -11,18 +11,9 @@ class Admin::GroupsController < Admin::BaseController
   def create
     @group = Group.new(params[:group])
     if @group.save
-        render :update do |page|
-            page.insert_html :top, "all_groups", :partial => "group" 
-            page.visual_effect :highlight, "group_#{@group.id}", :startcolor => '#ffff00',
-                               :endcolor => '#ffffff',
-                               :duration => 5.0
-        end
+        @created = true
     else
         error_stickie(@group.errors.full_messages * "; ")
-        render :update do |page|
-          page.replace_html "updater", :partial => "share/error" 
-          page.visual_effect :BlindDown, "updater"
-         end
     end
   end
 
@@ -30,22 +21,12 @@ class Admin::GroupsController < Admin::BaseController
     @group = Group.find(params[:id])
     @group.api_enable = (params[:enable] == "true" ? true : false)
     @group.save
-    render :update do |page|
-        page.visual_effect :highlight, "api_enable_#{@group.id}", :startcolor => '#ffff00',
-                           :endcolor => '#ffffff',
-                           :duration => 3.0
-    end
   end
 
   def set_no_index_status
     @group = Group.find(params[:id])
     @group.no_index = (params[:enable] == "true" ? true : false)
     @group.save
-    render :update do |page|
-        page.visual_effect :highlight, "no_index_#{@group.id}", :startcolor => '#ffff00',
-                           :endcolor => '#ffffff',
-                           :duration => 3.0
-    end
   end
 
   def destroy
