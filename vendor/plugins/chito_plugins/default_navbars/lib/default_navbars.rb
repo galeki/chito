@@ -9,7 +9,8 @@ Navbar.add(navbar)
 navbar = Navbar.new
 navbar.id = :admin
 navbar.title = "Admin"
-navbar.url = {:controller => 'admin/dashboard'}
+#navbar.url = {:controller => 'admin/dashboard'}
+navbar.url = "/admin"
 navbar.default_position = 999
 navbar.plugin_id = :default_navbars
 Navbar.add(navbar)

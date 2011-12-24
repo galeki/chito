@@ -19,9 +19,9 @@ module NavbarHelper
     end
 
     def link_to_nav_link(navbar, options={})
-        if navbar.url.is_a?(Hash) && request.domain == @site.domain
-            navbar.url.merge! :subdomain => (session[:user_name] || 'www') 
-        end
+        #if navbar.url.is_a?(Hash) && request.domain == @site.domain
+        #    navbar.url.merge! :subdomain => (session[:user_name] || 'www') 
+        #end
         link_to (options[:text] || navbar.title), navbar.url,
                 :class => (options[:selected_class] if current(navbar)),
                 :id => (options[:selected_id] if current(navbar))
