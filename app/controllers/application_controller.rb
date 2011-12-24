@@ -57,7 +57,6 @@ class ApplicationController < ActionController::Base
                 host << request.subdomains[1..-1] if request.subdomains.size > 1
                 host << (@site.domain || request.domain)
                 options[:host] = host.join('.')
-                options[:host] += request.port_string
             else
                 options.delete(:subdomain) 
             end
