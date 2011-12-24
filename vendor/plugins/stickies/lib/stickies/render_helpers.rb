@@ -55,9 +55,6 @@ module Stickies
           html << m.message.to_s
           html << %Q(<br style="clear:all;"/>)
           html << %Q(</div>)
-	  if configuration[:effect] && configuration[:close].nil?
-	    html <<  javascript_tag(visual_effect(configuration[:effect], "stickie_#{m.options[:name]}", configuration[:effect_options]))
-	  end
         end
 
         messages.flash
@@ -75,21 +72,7 @@ module Stickies
       div_id = "stickie_#{message.options[:name]}"
       html = %Q(<div class="stickies_close_area">)
 
-      undisplay = 
-        if options[:effect]
-          lambda {|p| p.visual_effect(options[:effect], div_id, options[:effect_options])}
-        else
-          lambda {|p| p.hide(div_id)}
-        end
-
-      if message.options[:flash]
-        html << link_to_function(options[:close], nil, options[:link_html], &undisplay)
-      else
-        html << link_to_remote(options[:close], {
-          :url => {:action => 'destroy_stickie', :id => message.options[:name]},
-          :before => update_page(&undisplay),
-        }, options[:link_html])
-      end
+      html << link_to_function(options[:close], %Q{ $("##{div_id}").hide(); }, options[:link_html] )
 
       html << %Q(</div>)
       html
