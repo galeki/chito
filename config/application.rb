@@ -44,7 +44,8 @@ module Chito
     #config.action_controller.cache_store = :memory_store
 
     #config.plugin_paths = "#{Rails.root}/vendor/plugins/chito_plugins"
-    config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")
+    #config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")
+    config.paths["vendor/plugins"] = ["vendor/plugins", "vendor/plugins/chito_plugins"]
     config.plugins = [ :chito_plugin, :all ]
     #config.action_controller.session_store = :memory_store
     
