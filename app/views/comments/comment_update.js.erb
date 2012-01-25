@@ -1,4 +1,4 @@
-$("#comment_error").val("");
+$("#comment_error").html("");
 
 <% if @user.enable_thread_comment && @comment.reply_to %>
     $("#post_comment").before("<%= escape_javascript(render :partial => 'comments/comment') %>"); 
