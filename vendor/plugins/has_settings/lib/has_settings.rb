@@ -21,6 +21,7 @@ module ActiveRecord
             return true if self.old_respond_to?(*method)
             return false if method.first =~ /_before_type_cast$/ 
             return false if method.first =~ /^_/ 
+            return false if method.first =~ /(created_at)|(updated_at)|(created_on)|(updated_on)/
             return true    #return ture to bypass the rails value type cast
         end
 
