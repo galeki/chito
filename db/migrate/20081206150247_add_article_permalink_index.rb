@@ -1,9 +1,9 @@
 class AddArticlePermalinkIndex < ActiveRecord::Migration
-  def self.up
+  def up
     add_index :articles, :permalink  
   end
 
-  def self.down
+  def down
     remove_index :articles, :permalink  
   end
 end

@@ -1,9 +1,9 @@
 class DeletePersistloginTable < ActiveRecord::Migration
-  def self.up
+  def up
     drop_table :persistent_logins
   end
 
-  def self.down
+  def down
     create_table :persistent_logins do |t|
 	t.column :uid,		:text
 	t.column :user_id,	:integer

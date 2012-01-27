@@ -1,9 +1,9 @@
 class AddDefaultTagsContext < ActiveRecord::Migration
-  def self.up
+  def up
     change_column :taggings, :context, :string, :default => 'tags'
   end
 
-  def self.down
+  def down
     change_column :taggings, :context, :string
   end
 end

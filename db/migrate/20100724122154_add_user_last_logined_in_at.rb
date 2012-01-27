@@ -1,9 +1,9 @@
 class AddUserLastLoginedInAt < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :users, :last_logined_in_at, :datetime
   end
 
-  def self.down
+  def down
     remove_column :users, :last_logined_in_at
   end
 end

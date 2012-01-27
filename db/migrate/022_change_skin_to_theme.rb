@@ -1,9 +1,9 @@
 class ChangeSkinToTheme < ActiveRecord::Migration
-  def self.up
+  def up
     rename_column :users, :skin, :theme
   end
 
-  def self.down
+  def down
     rename_column :users, :theme, :skin 
   end
 end

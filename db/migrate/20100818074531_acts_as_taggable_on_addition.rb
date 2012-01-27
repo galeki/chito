@@ -1,5 +1,5 @@
 class ActsAsTaggableOnAddition < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :taggings, :tagger_id, :integer
     add_column :taggings, :tagger_type, :string
     add_column :taggings, :context, :string
@@ -7,7 +7,7 @@ class ActsAsTaggableOnAddition < ActiveRecord::Migration
     add_index :taggings, [:taggable_id, :taggable_type, :context]
   end
 
-  def self.down
+  def down
     remove_column :taggings, :tagger_id
     remove_column :taggings, :tagger_type
     remove_column :taggings, :context

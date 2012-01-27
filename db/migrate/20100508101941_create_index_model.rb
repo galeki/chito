@@ -1,5 +1,5 @@
 class CreateIndexModel < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :indices do |t|
         t.column :title, :string
         t.column :theme, :string
@@ -15,7 +15,7 @@ class CreateIndexModel < ActiveRecord::Migration
     add_index :indices_users, :index_id
   end
 
-  def self.down
+  def down
     drop_table :indices
     drop_table :indices_users
   end

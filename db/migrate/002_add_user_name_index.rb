@@ -1,9 +1,9 @@
 class AddUserNameIndex < ActiveRecord::Migration
-  def self.up
+  def up
     add_index :users, :name
   end
 
-  def self.down
+  def down
     remove_index :users, :name
   end
 end

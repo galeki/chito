@@ -1,9 +1,9 @@
 class AddArticleIndexId < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :articles, :index_id, :integer
   end
 
-  def self.down
+  def down
     remove_column :articles, :index_id
   end
 end

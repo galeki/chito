@@ -1,9 +1,9 @@
 class AddFeedbackReplyTo < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :feedbacks, :reply_to, :integer
   end
 
-  def self.down
+  def down
     remove_column :feedbacks, :reply_to
   end
 end

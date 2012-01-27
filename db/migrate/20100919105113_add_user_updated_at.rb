@@ -1,9 +1,9 @@
 class AddUserUpdatedAt < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :users, :updated_at, :datetime
   end
 
-  def self.down
+  def down
     remove_column :users, :updated_at
   end
 end

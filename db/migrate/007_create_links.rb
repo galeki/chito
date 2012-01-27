@@ -1,5 +1,5 @@
 class CreateLinks < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :links do |t|
 	t.column :title,	:string
 	t.column :url,		:string
@@ -11,7 +11,7 @@ class CreateLinks < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     drop_table :links
   end
 end

@@ -1,9 +1,9 @@
 class AddArticleLastCommentedAt < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :articles, :last_commented_at, :datetime
   end
 
-  def self.down
+  def down
     remove_column :articles, :last_commented_at
   end
 end

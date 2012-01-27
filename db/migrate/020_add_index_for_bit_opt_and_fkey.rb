@@ -1,5 +1,5 @@
 class AddIndexForBitOptAndFkey < ActiveRecord::Migration
-  def self.up
+  def up
     add_index :articles, :bit_opt
     add_index :articles, :user_id
     add_index :articles, :category_id
@@ -21,7 +21,7 @@ class AddIndexForBitOptAndFkey < ActiveRecord::Migration
     add_index :users, :group_id
   end
 
-  def self.down
+  def down
     remove_index :articles, :bit_opt
     remove_index :articles, :user_id
     remove_index :articles, :category_id

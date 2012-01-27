@@ -1,9 +1,9 @@
 class AddArticlePermalink < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :articles, :permalink, :string
   end
 
-  def self.down
+  def down
     remove_column :articles, :permalink
   end
 end

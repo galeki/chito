@@ -1,10 +1,10 @@
 class AddCategoryPermalink < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :categories, :permalink, :string
     add_index :categories, :permalink
   end
 
-  def self.down
+  def down
     remove_index :categories, :permalink
     remove_column :categories, :permalink, :string
   end

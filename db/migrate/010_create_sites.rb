@@ -1,5 +1,5 @@
 class CreateSites < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :sites do |t|
 	t.column :title,	    :string
 	t.column :url,		    :string
@@ -13,7 +13,7 @@ class CreateSites < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def own
     drop_table :sites
   end
 end

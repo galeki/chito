@@ -1,9 +1,9 @@
 class AddUserBindDomain < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :users, :bind_domain, :string  
   end
 
-  def self.down
+  def down
     remove_column :users, :bind_domain    
   end
 end

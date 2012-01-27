@@ -1,5 +1,5 @@
 class ChangeCommentsBitSetAndAddIsAudited < ActiveRecord::Migration
-  def self.up
+  def up
     #comments = Comment.find(:all)
     #comments.each do |comment|
     #  comment.user_post = true if comment.pass?
@@ -8,6 +8,6 @@ class ChangeCommentsBitSetAndAddIsAudited < ActiveRecord::Migration
     #end
   end
 
-  def self.down
+  def down
   end
 end

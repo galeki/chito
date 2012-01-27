@@ -1,5 +1,5 @@
 class CreateGroups < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :groups do |t|
 	t.column :name,		    :string
 	t.column :space,	    :integer, :default => 0
@@ -9,7 +9,7 @@ class CreateGroups < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     drop_table :groups
   end
 end

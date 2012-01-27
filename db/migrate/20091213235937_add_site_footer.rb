@@ -1,9 +1,9 @@
 class AddSiteFooter < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :sites, :footer, :string 
   end
 
-  def self.down
+  def down
     remove_column :sites, :footer 
   end
 end

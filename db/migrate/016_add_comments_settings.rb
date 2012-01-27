@@ -1,9 +1,9 @@
 class AddCommentsSettings < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :comments, :settings, :text
   end
 
-  def self.down
+  def down
     remove_column :comments, :settings
   end
 end

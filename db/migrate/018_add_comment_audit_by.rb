@@ -1,9 +1,9 @@
 class AddCommentAuditBy < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :comments, :audit_by, :string  
   end
 
-  def self.down
+  def down
     remove_column :comments, :audit_by
   end
 end

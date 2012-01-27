@@ -1,9 +1,9 @@
 class AddSiteSettings < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :sites, :settings, :text
   end
 
-  def self.down
+  def down
     remove_column :sites, :settings
   end
 end

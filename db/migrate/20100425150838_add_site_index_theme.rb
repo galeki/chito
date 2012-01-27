@@ -1,9 +1,9 @@
 class AddSiteIndexTheme < ActiveRecord::Migration
-  def self.up
+  def up
     add_column :sites, :index_theme, :string
   end
 
-  def self.down
+  def down
     remove_column :sites, :index_theme
   end
 end
