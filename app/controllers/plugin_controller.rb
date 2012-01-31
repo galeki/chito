@@ -13,7 +13,7 @@ class PluginController < ThemeController
     private
 
     def get_path
-        @plugin, @file = params[:plugin], File.join(params[:anything])
+        @plugin, @file = params[:plugin], File.join(params[:anything]+"."+params[:format])
         @path = ChitoPlugin.file_path(@plugin, @file)
         raise "Access denied" unless File.expand_path(@path).start_with?(ChitoPlugin::PLUGIN_PATH)
     end

@@ -195,8 +195,23 @@ function article_content_not_blank()
 
     return true;
 }
+function set_tags_string()
+{
+    var s = "";
+    try
+    {
+        s = eval($("#article_tag_list").textext()[0].hiddenInput().val()).toString();
+        alert(s);
+
+    }catch(e){
+    
+    }
+
+   $("#article_tag_list").val("aaa,bbb");
+}
 function submit_as(type, form, cf_text)
 {
+    set_tags_string();
     if(article_content_not_blank() || confirm(cf_text))
     {
         formSubmit=true;
