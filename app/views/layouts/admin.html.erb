@@ -32,7 +32,6 @@
 		    <li><%= link_to t(:message_6, :scope => [:txt, :view, :layouts, :admin]), admin_comments_path, :id => 'comments' %>
 			<%= if_has_notifier do
 			    (image_tag "/images/comment_notice.gif", :class =>'notice', 
-					:alt => t(:message_7, :scope => [:txt, :view, :layouts, :admin]), 
 					:onclick => "go_to('#{@notifier_path}');") 
 			    end	%>
 		    </li>
