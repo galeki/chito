@@ -23,7 +23,7 @@ class PostsController < BlogController
   def index
     respond_to do |format|
         format.html do
-            if request.path.sub("/", "").blank? && @user.fontpage_id
+            if request.path.sub("/", "").blank? && @user.fontpage_id && params[:page].nil?
                 @page = @user.pages.find(@user.fontpage_id) rescue nil
                 redirect_to(@page.permalink.blank? ? page_path(@page) : page_permalink_path(@page.permalink)) if @page
             end
