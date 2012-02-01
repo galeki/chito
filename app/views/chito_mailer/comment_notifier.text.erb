@@ -3,7 +3,7 @@
 
 [<%= @comment.writer %>] <%= t("txt.mail.comment_notifier.post_at") %> <%= Time.now.to_s(:db_short) %> :
 
-<%= strip_tags @comment.content %>
+<%= (strip_tags @comment.content).gsub('&nbsp;', '') %>
 
 <%= t("txt.mail.comment_notifier.check_all_comments") %>:
 <%= post_url(@post.id, :host => @request.host, :anchor => "comments", :format => :html) %>
