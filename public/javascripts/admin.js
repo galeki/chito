@@ -264,3 +264,7 @@ function change_group_status(ck, url)
     }
     $.post(url, {});
 }
+function show_spin(eid)
+{
+    $("#"+eid).html("<img alt='*' src='/images/hint.gif' />");
+}

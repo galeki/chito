@@ -23,9 +23,11 @@
 	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
 	    <td class="comments_col"><%= link_to "(#{post.comments.count})", post_url(post, :anchor => "comments", :subdomain => post.user.name, :format => :html), :class => "post_comments", :target => '_blank' %></td>
 	    <td class="category_col">
-                <%= link_to "-", decrease_rank_admin_article_path(post), :remote => true, :method => :post, :class => "button_to_link"%>
+                <%= link_to "-", decrease_rank_admin_article_path(post), :remote => true, :method => :post, :class => "button_to_link",
+                    :onclick => "show_spin('post#{post.id}_rank');" %>
                     <span id="<%= "post#{post.id}_rank" %>" class="post_rank"><%= post.rank %></span>
-                <%= link_to "+", increase_rank_admin_article_path(post), :remote => true, :method => :post, :class => "button_to_link" %>
+                <%= link_to "+", increase_rank_admin_article_path(post), :remote => true, :method => :post, :class => "button_to_link",
+                    :onclick => "show_spin('post#{post.id}_rank');" %>
             </td>
 	    <td class="action_col">
 		<%= link_to t(:view, :scope => [:txt, :view, :admin, :posts]), post_url(post, :subdomain => post.user.name, :format => :html), :class => "read", :target => '_blank' %></td>
