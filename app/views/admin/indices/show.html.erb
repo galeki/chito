@@ -18,7 +18,10 @@
     <% for post in @posts %>
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
-        <td class="user_name_col"><%= link_to post.user.name, root_url(:subdomain => post.user.name) %></td>
+        <td class="user_name_col">
+            <%= link_to post.user.name, root_url(:subdomain => post.user.name) %>
+            <%= link_to image_tag("set.gif"), admin_users_path(:user_name => post.user.name) %>
+        </td>
 	    <td class="title_col"><%= link_to post_title(post), post_url(post, :subdomain => post.user.name, :format => :html), :class => "post_title_link"  %></td>
 	    <td class="time_col"><%= post.created_at.to_s :db_short %></td>
 	    <td class="comments_col"><%= link_to "(#{post.comments.count})", post_url(post, :anchor => "comments", :subdomain => post.user.name, :format => :html), :class => "post_comments", :target => '_blank' %></td>

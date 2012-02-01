@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
     in_place_edit_for :user, :bind_domain
 
   def index
-    @users = User.users_in_admin(:page => params[:page], :name => params[:name], :group => params[:group])
+    @users = User.users_in_admin(:page => params[:page], :name => params[:name], :group => params[:group], :user_name => params[:user_name])
     @groups = Group.order("id")
   end
 
