@@ -201,7 +201,7 @@ function set_tags_string()
     try
     {
         s = eval($("#article_tag_list").textext()[0].hiddenInput().val()).toString();
-        alert(s);
+        //alert(s);
 
     }catch(e){
     
