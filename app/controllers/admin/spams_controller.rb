@@ -11,6 +11,9 @@ class Admin::SpamsController < Admin::CommentsController
         spam = @user.feedbacks.find(params[:id])
         spam.pass = true
         notice_stickie t(:comment_restored, :scope => [:txt, :controller, :admin, :spams]) if spam.save
+        sidebar_cache_expire(:new_comments)
+        chito_cache_expire(:type => "posts_index/*")
+        chito_cache_expire(:type => :posts, :id => :feedbacks, :post => spam.article_id) if spam.article_id
         redirect_to admin_spams_path :page => params[:page]
     end
 
