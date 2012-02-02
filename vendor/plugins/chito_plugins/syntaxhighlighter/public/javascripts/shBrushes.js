@@ -859,64 +859,101 @@ SyntaxHighlighter.brushes.Cmd.aliases = ['bat', 'cmd', 'batch'];
 	// CommonJS
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
-SyntaxHighlighter.brushes.Haskell = function()
-{
-	// Copyright 2009 watashi
-    // http://watashi.ws/blog
-    // Zejun.WU@gmail.com
-	
-    var constants = 'True False Nothing Just Left Right LT EQ GT';
+/*
 
-	var datatypes =	'Bool Maybe Either Ordering Char String Int Integer Float Double Rational ' +
-                    'IO ReadS ShowS FilePath IOError Monad Functor Show Read' +
-                    'Eq Ord Enum Bounded Num Real Integral Fractional Floating RealFrac RealFloat';
-					
-	var functions =	'abs acos acosh all and any appendFile applyM asTypeOf asin asinh atan atan2 atanh ' +
-                    'break catch ceiling compare concat concatMap const cos cosh curry cycle ' +
-                    'decodeFloat div divMod drop dropWhile elem encodeFloat enumFrom enumFromThen ' +
-                    'enumFromThenTo enumFromTo error even exp exponent fail filter flip floatDigits ' +
-                    'floatRadix floatRange floor fmap foldl foldl1 foldr foldr1 fromEnum fromInteger ' +
-                    'fromIntegral fromRational fst gcd getChar getContents getLine head id init interact ' +
-                    'ioError isDenormalized isIEEE isInfinite isNaN isNegativeZero iterate last lcm ' +
-                    'length lex lines log logBase lookup map mapM mapM_ max maxBound maximum maybe min ' +
-                    'minBound minimum mod negate not notElem null odd or otherwise pi pred print product ' +
-                    'properFraction putChar putStr putStrLn quot quotRem read readFile readIO readList ' +
-                    'readLn readParen reads readsPrec realToFrac recip rem repeat replicate return ' +
-                    'reverse round scaleFloat scanl scanl1 scanr scanr1 seq sequence sequence_ show ' +
-                    'showChar showList showParen showString shows showsPrec significand signum sin sinh ' +
-                    'snd span splitAt sqrt subtract succ sum tail take takeWhile tan tanh toEnum ' +
-                    'toInteger toRational truncate uncurry undefined unlines until unwords unzip unzip3 ' +
-                    'userError words writeFile zip zip3 zipWith zipWith3';    
+Copyright (C) 2011 by ArieShout
 
-	var keywords =	'as case of class data default deriving do forall foreign hiding ' +
-                    'if then else import instance let in mdo module newtype qualified type where';
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-	this.findMatches = function(regexList, code) {
-		code = code.replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
-		this.code = code;
-		return SyntaxHighlighter.Highlighter.prototype.findMatches.apply(this, [regexList, code]);
-	};
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+SyntaxHighlighter.brushes.Haskell = function() {
+    var keywords = 'module import as qualified hiding ' +
+                   'infix infixl infixr ' +
+                   'class data deriving instance default where ' +
+                   'type newtype ' +
+                   'do return case of let in ' +
+                   'if then else ' +
+                   'foreign family '
+    var types = 'Bool Maybe Either Ordering ' +
+                'Char String Int Integer Float Double Rational IO ' +
+                'ReadS ShowS ' +
+                'FilePath IOError ' +
+                'Eq Ord Enum Bounded Num Read Integral Fractional Floating RealFrac RealFloat Monad Functor ' +
+                'Show Read';
+    var values = 'True False Nothing Just Left Right LT GT EQ';
+    var funcs = 'compare max min ' +
+                'succ pred toEnum fromEnum enumFrom enumFromThen enumFromTo enumFromThenTo ' +
+                'minBound maxBound ' +
+                'negate abs signum fromInteger ' +
+                'toRational ' +
+                'quot rem div mod quotRem divMod toInteger ' +
+                'recip fromRational ' +
+                'pi exp log sqrt logBase sin cos tan asin acos atan sinh cosh tanh asinh acosh atanh ' +
+                'properFraction truncate round ceiling floor ' +
+                'floatRadix floatDigits floatRange decodeFloat encodeFloat ' +
+                'exponent significand scaleFloat isNaN isInfinite isDenormalized isIEEE isNegativeZero atan2 ' +
+                'return fail ' +
+                'fmap ' +
+                'mapM mapM_ sequence sequence_ ' +
+                'maybe either ' +
+                'not otherwise ' +
+                'subtract even odd gcd lcm ' +
+                'fromIntegral realToFrac ' +
+                'fst snd curry uncurry id const flip until ' +
+                'asTypeOf error undefined ' +
+                'seq ' +
+                'map filter concat concatMap ' +
+                'head last tail init null length ' +
+                'foldl foldl1 scanl scanl1 foldr foldr1 scanr scanr1 ' +
+                'iterate repeat replicate cycle ' +
+                'take drop splitAt takeWhile dropWhile span break ' +
+                'lines words unlines unwords reverse and or ' +
+                'any all elem notElem lookup ' +
+                'sum product maximum minimum ' +
+                'zip zip3 zipWith zipWith3 unzip unzip3 ' +
+                'readsPrec readList ' +
+                'showsPrec show showList ' +
+                'reads shows read lex ' +
+                'showChar showString readParen showParen ' +
+                'ioError userError catch ' +
+                'putChar putStr putStrLn print ' +
+                'getChar getLine getContents interact ' +
+                'readFile writeFile appendFile readIO readLn';
+    // plain comments string keyword preprocessor variable value functions constants script color1(a) color2 color3
     this.regexList = [
-		{ regex: /{-#[\s\S]*?#-}/g,	                                css: 'preprocessor' },
-		{ regex: /--.*/g,	                                        css: 'comments' },      // one line comments
-		{ regex: /{-(?!\$)[\s\S]*?-}/gm,	                        css: 'comments' },      // multiline comments
-		{ regex: /'.'/g,                                     		css: 'string' },        // chars
-		{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },        // strings
-        { regex: /([-!#$%&*+/?@^|~:.\\])+/g,                      css: 'keyword bold' },  // infix operators
-        { regex: /`[a-z][a-z0-9_']*`/g,                             css: 'keyword bold' },  // infix operators
-        { regex: /\b(\d+|0x[0-9a-f]+)\b/gi,                         css: 'value' },         // integer
-        { regex: /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/gi,                css: 'value' },         // floating number
-        { regex: new RegExp(this.getKeywords(constants), 'g'),      css: 'color1 bold' },
-		{ regex: new RegExp(this.getKeywords(datatypes), 'g'),		css: 'color1 bold' },
-		{ regex: new RegExp(this.getKeywords(functions), 'g'),		css: 'functions bold' },
-		{ regex: new RegExp(this.getKeywords(keywords), 'gm'),   	css: 'keyword bold' }
-	];
-};
+        { regex: SyntaxHighlighter.regexLib.doubleQuotedString, css: 'string' },
+        { regex: SyntaxHighlighter.regexLib.singleQuotedString, css: 'string' },
+        { regex: /^ *--.*/gm, css: 'comments' },
+        { regex: /\{-#[\s\S]*?#-\}/gm, css: 'preprocessor' },
+        { regex: /\{-[\s\S]*?-\}/gm, css: 'comments' },
+        { regex: new RegExp(this.getKeywords(keywords), 'gm'), css: 'keyword bold' },
+        { regex: new RegExp(this.getKeywords(values), 'gm'), css: 'value bold' },
+        { regex: new RegExp(this.getKeywords(types), 'gm'), css: 'color1 bold' },
+        { regex: new RegExp(this.getKeywords(funcs), 'gm'), css: 'functions' },
+        { regex: /\b[0-9]+|0[xX][0-9a-fA-F]+|0[oO][0-7]+\b/gm, css: 'value' },     // number
+        { regex: /\b[0-9]+\.[0-9]+(?:[eE][-+]?[0-9]+)?\b/gm, css: 'value' },       // float
+    ];
+}
 
-SyntaxHighlighter.brushes.Haskell.prototype	= new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Haskell.aliases	= ['haskell'];
-
+SyntaxHighlighter.brushes.Haskell.prototype = new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Haskell.aliases  = ['hs', 'hask', 'haskell'];
 /**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
