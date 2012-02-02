@@ -207,11 +207,10 @@ function set_tags_string()
     
     }
 
-   $("#article_tag_list").val("aaa,bbb");
 }
 function submit_as(type, form, cf_text)
 {
-    set_tags_string();
+    //set_tags_string();
     if(article_content_not_blank() || confirm(cf_text))
     {
         formSubmit=true;

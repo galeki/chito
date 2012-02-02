@@ -1,45 +1,48 @@
+<% @color = ( @user.admin_style == 'blue' ? '#91A5BD' : '#bed569' )-%>
 <style type="text/css" media="all">
-    #article_tag_list{
-        width:700px;
-    }
-
+.tag_list_auto_complete{
+    background: #fff;
+    border:1px solid #999;
+    border-top:0px;
+    font-size:16px;
+}
+.tag_list_auto_complete ul{
+    margin:0;
+    padding:0;
+}
+.tag_list_auto_complete li{
+    list-style-type:none;
+    padding:2px 0px 0px 8px;
+}
+.tag_list_auto_complete li.selected{
+    background:#ff9;
+}
+#tags_field a:hover{
+    color: #000;
+}
+#tags_field a{
+    text-decoration:none;
+    color: #666;
+    font-weight:bold;
+}
+#tags_field{
+    float:right;
+    width:25%;
+    padding:5px 10px 5px 10px;
+    border:1px dashed <%= @color %>;
+}
 </style>
-<% 
-    @tags = @user.posts.tag_counts.map {|t| t.name}.sort rescue @tags = []
-    @article_tags = @article.tag_list.split(',') rescue @article_tags = []
+<% @tags = @user.posts.tag_counts.map {|t| t.name}.sort rescue @tags = []-%>
+<label><strong>Tags</strong> <%= t("plugins.auto_complete_tag.comma") %> :</label>
+<% if @user.enable_tags_select_field -%>
+<div id="tags_field">
+    <%= t("plugins.auto_complete_tag.tag_list") %>:<br/>
+    <% for tag in @tags -%>
+<%= link_to tag, "#", :onclick => "add_tag('#{tag}');event.returnValue = false;return false;" %>
+    <% end -%>
+</div>
+<% end -%>
 
--%>
-<label><strong>Tags</strong> <%= t("plugins.auto_complete_tag.comma")  %> :</label>
+<%= text_field "article", "tag_list" %>
 
-
-<%= text_field_tag "article[tag_list]", @article.tag_list, :autocomplete => false, :id => "article_tag_list" %>
-
-<%= plugin_javascript_inculde_tag "auto_complete_tag", "jquery-textext-1.2.0.js" %>
-
-<script type="text/javascript">
-    $('#article_tag_list')
-        .textext({
-            plugins : 'tags autocomplete arrow',
-            tagsItems: $('#article_tag_list').val().split(',')
-
-        })
-        .bind('getSuggestions', function(e, data)
-        {
-            var list = [
-                    <% for tag in @tags -%>
-                        '<%= tag %>',
-                    <% end -%>
-                ],
-                textext = $(e.target).textext()[0],
-                query = (data ? data.query : '') || ''
-                ;
-
-            $(this).trigger(
-                'setSuggestions',
-                { result : textext.itemManager().filter(list, query) }
-            );
-        })
-        ;
-    $('#article_tag_list').val('');
-</script>
 
