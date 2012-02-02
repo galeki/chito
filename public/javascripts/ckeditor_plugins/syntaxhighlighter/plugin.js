@@ -42,6 +42,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                         var frame_doc = document.getElementById('iframeSyntaxHighlighter').contentWindow.document;
                                         var slang_obj = frame_doc.getElementById('slang');
                                         var fln_obj = frame_doc.getElementById('fln')
+                                        var tbs_obj = frame_doc.getElementById('tbs')
                                         var title_obj = frame_doc.getElementById('c_t')
                                         var collapse_obj = frame_doc.getElementById('c_c')
                                         var code_obj = frame_doc.getElementById('code');
@@ -54,6 +55,8 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                             html += "; first-line: " + fln_obj.value;
                                         if(collapse_obj.checked)
                                             html += "; collapse: true";
+                                        if(tbs_obj.value.length > 0)
+                                            html += "; tab-size: " + tbs_obj.value;
         
                                         html += "\'";
                                         if(title_obj.value.length >0)

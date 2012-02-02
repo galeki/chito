@@ -3,6 +3,7 @@
     SyntaxHighlighterLang	: '语言: ',
     SyntaxHighlighterCode	: '代码: ',
     SyntaxHighlighterLine	: '起始行号: ',
+    SyntaxHighlighterTabSize	: 'Tab 大小(默认为4): ',
     SyntaxHighlighterCodeTitle	: '代码标题: ',
     SyntaxHighlighterCollapse	: '折叠代码',
     SyntaxHighlighterTip1	: '不要忘记在 Chito 的插件设置中激活 Syntax Highlighter。',
