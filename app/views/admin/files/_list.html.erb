@@ -33,7 +33,7 @@
                 //<![CDATA[
                    $('#sort_by').change(function(){
                        $('#in_pro').show();
-                       $.get('<%= list_admin_files_path(:folder => @folder, :type => params[:type], :editor => params[:editor]) %>', 
+                       $.get('<%= list_admin_files_path(:folder => @folder, :type => params[:type], :editor => params[:editor], :format => :js) %>', 
                                 {'sort_by': $(this).val()}, function(data){
                                     eval(data);
                                 });
@@ -46,8 +46,8 @@
                 //]]>
                 </script>
             </td>
-	    <td class="" style="text-align:right;color:#aaa;border-left:0px;">
-               <%= t(:file_limit, :scope => [:txt, :view, :admin, :files]) %>: <%= @file_limit %>M
+	    <td class="" style="text-align:right;color:#aaa;border-left:0px;padding-right:5px;">
+               <%= t(:file_limit, :scope => [:txt, :view, :admin, :files]) %> : <%= @file_limit %>M
         </td>
 	    <td class="file_size_col" style="text-align:right;">
                 <iframe id="upload_iframe" src="<%= url_for :action => "create_file_iframe", :folder => @folder, :type => params[:type], :editor => params[:editor] %>" 
