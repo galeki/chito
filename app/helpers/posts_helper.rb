@@ -1,8 +1,8 @@
 module PostsHelper
 
     def post_link(post, options={})
-        permalink = post.permalink || post.seo_title
-        permalink = permalink.blank? ?  nil : permalink.gsub(' ','-').gsub('.','-').gsub('/', '-')
+        permalink = post.permalink.to_s.parameterize
+        permalink = nil if permalink.blank?
         path = {:controller => "/posts", :subdomain => options[:subdomain],  :action => 'show', :id => post.id, 
                  :format => 'html', :permalink => permalink,:anchor => options.delete(:anchor)}
         path.merge!({:year => post.published_or_created_time.year, 

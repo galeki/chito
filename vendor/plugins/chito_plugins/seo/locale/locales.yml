@@ -12,6 +12,7 @@ en-US:
           permalink: Permalink
           seo_keywords: SEO keywords
           dbc: (delimited by comma)
+          only_roman: Only Roman char and digit
 zh-CN:
     plugins:
          seo:
@@ -26,5 +27,6 @@ zh-CN:
           permalink: 永久链接
           seo_keywords: SEO 关键字
           dbc: (英文逗号分隔)
+          only_roman: 英文字符或数字
 
 
