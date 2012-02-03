@@ -261,6 +261,7 @@ en-US:
           ctime: Upload time
           name: Name
           sort_by: 'Sort by:'
+          file_limit: Max file size
         groups: 
           manage_groups: Manage Groups
           name: Name

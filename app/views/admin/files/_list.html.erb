@@ -1,7 +1,7 @@
 <div id="file_list_top">
 
 <div id="space_info">
-<%=t(:used, :scope => [:txt, :view, :admin, :files]) %> <%= @precent.round(1) %>% | <%= @used_space.round(1) %>M/<%= @user.get_group.space %>M</div>
+    <%=t(:used, :scope => [:txt, :view, :admin, :files]) %> <%= @precent.round(1) %>% | <%= @used_space.round(1) %>M/<%= @user.get_group.space %>M </div>
 <style>#used_space{width:<%= @precent.round(1) %>%;}</style>
 <div id="space_bar"><div id="used_space"></div></div>
 
@@ -46,7 +46,10 @@
                 //]]>
                 </script>
             </td>
-	    <td class="file_size_col" colspan="2" style="text-align:right;">
+	    <td class="" style="text-align:right;color:#aaa;border-left:0px;">
+               <%= t(:file_limit, :scope => [:txt, :view, :admin, :files]) %>: <%= @file_limit %>M
+        </td>
+	    <td class="file_size_col" style="text-align:right;">
                 <iframe id="upload_iframe" src="<%= url_for :action => "create_file_iframe", :folder => @folder, :type => params[:type], :editor => params[:editor] %>" 
                 frameborder="0" allowtransparency="1">
                 </iframe>

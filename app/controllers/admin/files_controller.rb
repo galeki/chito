@@ -150,6 +150,7 @@ class Admin::FilesController < Admin::BaseController
     @folders = []
     @files = []
     @used_space = @user.used_space/1024.0
+    @file_limit = @user.get_group.file_size_limit
     @precent = @used_space / @user.get_group.space.to_num(@used_space)  * 100
     Dir.mkdir(@path) unless File.exist?(@path)
     Dir.entries(@path).each do |entry|
