@@ -84,7 +84,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
     uuidtools (2.1.2)
-    will_paginate (3.0.2)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
