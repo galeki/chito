@@ -31,6 +31,23 @@ class CommentsController < ApplicationController
         render "comment_error"
    end 
 
+   def mark_as_spam
+       user = User.find_by_name(session[:user_name]) if session[:user_name]
+       if user
+            @comment = @user.feedbacks.find(params[:id])
+            if @comment
+                @comment.pass = false
+                @comment.audit_by = "manual"
+                @success = true if @comment.save
+                sidebar_cache_expire(:new_comments)
+                chito_cache_expire(:type => "posts_index/*")
+                chito_cache_expire(:type => :posts, :id => :feedbacks, :post => @comment.article_id) if @comment.article_id
+                chito_cache_expire :id => :guestbook
+                sidebar_cache_expire :new_messages
+            end
+       end
+   end
+
    private
 
    def chito_spam_check

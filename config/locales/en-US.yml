@@ -165,8 +165,9 @@ en-US:
         message_5: Next post
         no_title: "- No Title -"
       comments:
-          reply_to: Reply to %{user}
-          reply: "[Reply]"
+        reply_to: Reply to %{user}
+        reply: "[Reply]"
+        mark_as_spam: "[Mark as spam]"
     view: 
       messages: 
         index: 

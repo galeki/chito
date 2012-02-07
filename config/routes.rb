@@ -22,12 +22,13 @@ Chito::Application.routes.draw do
     resources :posts
   end
   resources :posts do
-    resources :comments
+    resources :comments 
   end
 
   resources :pages
   resources :messages
   match '/comments.:format' => 'comments#index', :as => :comments
+  match '/comments/:id/mark_as_spam.:format' => 'comments#mark_as_spam', :as => :mark_comment_as_spam
   match '/tag/*tag_name' => 'posts#index', :as => :tag_posts
   match '/category/*category_permalink' => 'posts#index', :as => :category_permalink_posts
   match '/admin/links/set_link_title' => 'admin/links#set_link_title'

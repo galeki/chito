@@ -167,6 +167,7 @@ zh-CN:
       comments:
         reply_to: 回复 %{user}
         reply: "[回复]"
+        mark_as_spam: "[标记为Spam]"
     view: 
       messages: 
         index: 

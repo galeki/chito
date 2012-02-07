@@ -1,0 +1,7 @@
+<% if @success -%>
+    cancel_reply_to_id();
+    $("#comment<%= @comment.id %>").effect('blind',{ },500);
+<% end -%>
+
+
+

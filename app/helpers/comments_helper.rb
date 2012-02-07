@@ -96,6 +96,14 @@ module CommentsHelper
         end
     end
 
+    def mark_spam_comment_button
+        content_tag :span, :class => "mark_spam_comment_button" do
+            link_to  t("txt.helper.comments.mark_as_spam"), mark_comment_as_spam_path(@comment, :format => :js), 
+                     :remote => true, :method => :post,
+                     :title => t("txt.helper.comments.mark_as_spam")
+        end
+    end
+
     def twitter_comment_button
         unless @comment.twitter.blank?
             content_tag :span, :class => "twitter_comment_button" do

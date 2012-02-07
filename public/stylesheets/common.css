@@ -158,9 +158,9 @@ a.return{
 .comment_header {
     padding: 1px;
 }
-.reply_comment_button{
+.reply_comment_button, .mark_spam_comment_button{
     text-align:center;
-    margin-right:10px;
+    margin-right:6px;
     float:right;
 }
 .reply_him:hover{

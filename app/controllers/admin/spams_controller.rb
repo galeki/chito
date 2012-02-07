@@ -14,6 +14,8 @@ class Admin::SpamsController < Admin::CommentsController
         sidebar_cache_expire(:new_comments)
         chito_cache_expire(:type => "posts_index/*")
         chito_cache_expire(:type => :posts, :id => :feedbacks, :post => spam.article_id) if spam.article_id
+        chito_cache_expire :id => :guestbook
+        sidebar_cache_expire :new_messages
         redirect_to admin_spams_path :page => params[:page]
     end
 
