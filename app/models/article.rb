@@ -105,6 +105,10 @@ class Article < ActiveRecord::Base
         self.published_at || self.created_at
     end
 
+    def parameterize_permalink
+        self.permalink.to_s.parameterize
+    end
+
     private
 
     def close_html(html)

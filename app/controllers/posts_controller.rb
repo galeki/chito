@@ -2,6 +2,11 @@ class PostsController < BlogController
 
   def show
     @post = @user.articles.find(params[:id])
+    if @user.auto_redirect_to_permalink && params[:format] == "html" && @post
+        if  request.path != chito_post_path(@post)   
+            redirect_to chito_post_path(@post), :status => :moved_permanently
+        end
+    end
     @comments = @post.comments
     respond_to do |format|
         format.html do

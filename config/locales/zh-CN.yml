@@ -522,6 +522,8 @@ zh-CN:
           check_comment_notifier_by_default: 默认选中 E-mail 通知
           grey: 灰色
           time_zone: 时区
+          post: 文章
+          auto_redirect_to_permalink: 自动定向到永久链接
         site: 
           message_16: 保存
           message_8: 我想写多个 Blog，或者想让别人到这里来写 Blog。

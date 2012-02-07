@@ -1,13 +1,7 @@
 module PostsHelper
 
     def post_link(post, options={})
-        permalink = post.permalink.to_s.parameterize
-        permalink = nil if permalink.blank?
-        path = {:controller => "/posts", :subdomain => options[:subdomain],  :action => 'show', :id => post.id, 
-                 :format => 'html', :permalink => permalink,:anchor => options.delete(:anchor)}
-        path.merge!({:year => post.published_or_created_time.year, 
-                     :month => post.published_or_created_time.month, 
-                     :day => post.published_or_created_time.day}) unless permalink.blank?
+        path = chito_post_path(post, options)
         link_to options.delete(:text) || post_title(post), path, options
     end 
 

@@ -522,6 +522,8 @@ en-US:
           check_comment_notifier_by_default: Enable the E-mail notifier by default
           grey: Grey
           time_zone: Time Zone
+          post: Posts
+          auto_redirect_to_permalink: Auto redirect to permalink
         site: 
           message_16: Save
           message_8: I want to write several blogs, or hope people register and write blogs here

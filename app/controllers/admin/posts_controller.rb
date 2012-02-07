@@ -52,7 +52,7 @@ class Admin::PostsController <  Admin::ArticleBaseController
     def save_and_redirect
         @article.is_draft = false
         @article.is_page = false
-        unless_continue_edit { redirect_to post_path(@article) }
+        unless_continue_edit { redirect_to chito_post_path(@article, :format => :html) }
     end
 
     def send_trackback(url, post)
