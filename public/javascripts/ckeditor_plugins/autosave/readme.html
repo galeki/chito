@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CKEditor autosave plugin - manual</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		h3
+		{
+			border-bottom: 1px solid #AAAAAA;
+		}
+		pre
+		{
+			background-color: #F9F9F9;
+			border: 1px dashed #2F6FAB;
+			padding: 1em;
+			line-height: 1.1em;
+		}
+		#footer hr
+		{
+			margin: 10px 0 15px 0;
+			height: 1px;
+			border: solid 1px gray;
+			border-bottom: none;
+		}
+		#footer p
+		{
+			margin: 0 10px 10px 10px;
+			float: left;
+		}
+		#footer #copy
+		{
+			float: right;
+		}
+		.no_vertical_margins
+		{
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		span.comments
+		{
+			color: #3F7F5F;
+		}
+		h3.just_header
+		{
+			border: none;
+		}
+		.bottom_margin
+		{
+			margin-bottom : 10px;
+		}
+		.my_anchor
+		{
+			text-decoration : none;
+			font-weight : bold;
+			color : #D1D1D1;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		CKEditor autosave plugin - manual</h1>
+	<h3>
+		General information</h3>
+	<p>
+		This plugin registers changes, made in editor content area, and when their number exceeds 
+		earlier defined value it sends the editor contents to server.</p>
+		
+	<div class="no_vertical_margins">
+		<span>
+				Plugin has three types of AJAX communication triggers: </span>
+		<ul class="no_vertical_margins">
+			<li><strong>Toolbar button</strong> - sends data to server without any counter 
+			checks.</li>
+			<li><strong>Change counter</strong> - Optional trigger which sends data to server only when earlier 
+			defined limit was exceeded.</li>
+			<li><strong>Interval</strong> - Optional trigger which sends data to server after 
+			specified amount of time.</li>
+		</ul>
+		<span>
+				All of those triggers work independent of each other and without any conflicts.</span>
+	</div>
+	<p>
+		Plugin sends data in POST request by default. There is also possibility to configure it to 
+		use GET request but when doing so one might get into query string limitation problems.</p>
+	<p>
+		Plugin expects response in form of XML. The format of that response is hardcoded inside the 
+		plugin so the server-side connector should adjust to this format.</p>
+	<p>
+		<strong>NOTE:</strong>As of version <strong>1.0.1</strong>, it is also possible to use this plugin as <strong>AJAX manual save</strong>.<br />
+		Please see <a href="#bottom_notes" class="my_anchor">Notes</a> section at the bottom.</p>	
+		
+	<h3>
+		Installation</h3>
+	<div class="no_vertical_margins">
+		<p>
+			<strong>Unpack</strong> downloaded zip file and <strong>copy</strong> autosave folder to 
+			<span class="comments">/ckeditor/plugins/</span> or <span class="comments">/ckeditor/_source/plugins/</span> folder 
+			(It all depends whether you use ckeditor_source.js or ckeditor.js script on your page). If you are interested 
+			only in using the plugin then the first path is what you are looking for.	</p>			
+		<span>Next you have to make three things which are in fact providing values for three parameters:</span>
+		<ol class="no_vertical_margins">
+			<li><strong>Register the plugin</strong> -
+				<pre>config.extraPlugins = 'autosave';</pre></li>
+			<li><strong>Add new toolbar button</strong> -
+				<pre>config.toolbar = [['Source','Save','Preview','-', <strong>'Autosave'</strong>]];</pre></li>
+			<li><strong>Specify URL for the data saving server-side script</strong> -
+				<pre>config.autosaveTargetUrl = 'http://192.168.1.100:8080/AjaxAutosaveTest/cksource/core/connector/java/connector.java';</pre>
+				<span><strong>NOTE: value for autosaveTargetUrl should be the same as the one used in browser address bar. </strong><br />
+				If for example you have specified <span class="comments">http://192.168.1.100:8080</span> 
+				then the same URL should be used in your browser address bar and <strong>not localhost</strong>.</span></li>	
+		</ol>
+		<span>That's it. Plugin should be up and running.</span>
+	</div>	
+	<h3>
+		Configuration options</h3>
+	<div class="no_vertical_margins">	
+	<p>
+		<span>autosaveSensitivity : 20,</span><br />
+		<span class="comments">Informs after how many changes made in the editor’s data autosave 
+		should be fired. If set to zero this trigger will not be used. Default value is 20.</span></p>
+	<p>
+		<span>autosaveRefreshTime : 30,</span><br />
+		<span class="comments">Time in seconds after which autosave will fire. If set to zero, 
+		interval will not be used (it will be switched off). Default value is 30. <br />
+		NOTE: If not set to zero then the value for this property can be either bigger or equal to autosaveMinTimeBetweenRequests. </span></p>	
+	<p>
+		<span>autosaveUseOnBeforeUnload : true,</span><br />
+		<span class="comments">Specifies if onbeforeunload event should be used. <br />
+		If user has changed editor data which haven’t yet been saved and he wants to leave 
+		the page, browser will ask him if he really wants to leave without saving the data. 
+		Default value is true.</span></p>
+	<p>
+		<span>autosaveTargetUrl : '',</span><br />
+		<span class="comments">Target url (required). URL for connector handling the request on server-side<br /> 
+		E.g. http://192.168.1.115:8080/AjaxAutosave/cksource/connector/connector.java.</span></p>
+	<p>
+		<span>autosaveParentFormId : '',</span><br />
+		<span class="comments">Id of parent form element containing the editor instance. If specified, 
+		plugin will be disabled when form is submitted.<br /> 
+		NOTE: If id is not specified, plugin will try to search for the parent form element and attach 
+		the same events as when id for the form is given. Default value is empty string.</span></p>
+	<p>
+		<span>autosaveMethod : 'POST',</span><br />
+		<span class="comments">Method used to send request. Only POST and GET are supported. Default 
+		value is POST.</span></p>
+	<p>
+		<span>autosaveContentParamName : 'content',</span><br />
+		<span class="comments">Name of parameter, holding editor data, to use in GET or POST request. 
+		Default value is ‘content’.</span></p>
+	<p>
+		<span>autosaveRequestTimeout : 10,</span><br />
+		<span class="comments">Time in seconds after which client-side request will timeout if it is 
+		not yet finished on server-side. If set to zero timeout for client-side request will not be used. 
+		Default value is 10.<br />
+		NOTE: This only aborts the client-side request so that application on browser side could 
+		return to its default state.</span></p>	
+	<p>
+		<span>autosaveMinTimeBetweenRequests : 15</span><br />
+		<span class="comments">Minimum amount of time in seconds which has to pass before another request 
+		is send to server. Default value is 15.</span></p>	
+	</div>
+	
+	
+	<h3>
+		Server-side connector</h3>
+	<p>
+		This plugin doesn’t come with server-side connector and it’s up to the user to create one.</p>
+	<p>
+		There is a sample java application (second zip) which contains a draft of a connector. 
+		It’s a simple servlet which receives requests and sends back responses. It can be used as a 
+		jump start to create own connector.	</p>
+	<div class="no_vertical_margins">	
+		
+		<ol class="no_vertical_margins">						
+			<li><strong>Request / response rules that server-side connector should follow:</strong><br />
+				Autosave plugin sends three parameters – <span class="comments">“autosaveaction”</span> set to 
+				<span class="comments">“draft”</span>, <span class="comments">“ckeditorname”</span> set 
+				to name of instance using the plugin and <span class="comments">“content”</span> (this name 
+				can be changed) which holds encoded editor data. Server-side connector should 
+				refer to those parameters to get user input. Below is the example data (rewritten form Firebug) send from plugin: 
+				<table class="bottom_margin" border="1px" cellspacing="0">
+					<tr><td><strong>Parameters:</strong></td><td><span class="comments">application/x-www-form-urlencoded</span></td></tr>
+					<tr><td><strong>autosaveaction:</strong></td><td><span class="comments">draft</span></td></tr>
+					<tr><td><strong>ckeditorname:</strong></td><td><span class="comments">editor1</span></td></tr>
+					<tr><td><strong>content:</strong></td><td><span class="comments">&lt;p&gt;test message&lt;/p&gt;</span></td></tr>
+					<tr>
+						<td><strong>Source:</strong></td>
+						<td><span class="comments">action=draft&amp;ckeditorname=editor1&amp;content=%3Cp%3E%0A%09test%20message%3C%2Fp%3E%0A</span></td>
+					</tr>
+				</table>				
+			</li>			
+			<li><strong>Autosave plugin expects XML response in defined format. There are two general 
+			scenarios when response is returned: success and error.</strong><br />				
+				<ul class="no_vertical_margins">
+					<li>
+						<strong>Success</strong>  - if request status is 200, Content-Type header is set to “text/xml” and response 
+						contains XML in form  <span class="comments"> &lt;result status=&quot;ok&quot; /&gt;</span>, it means that 
+						contents were saved and plugin can display success message with time when data was saved.</li>
+					<li>
+						<strong>Error</strong> – expected XML has the following form: <br /> 
+						<span class="comments">&lt;error statuscode=&quot;404&quot; message=&quot;message from server&quot;/&gt;</span> or<br /> 
+						<span class="comments">&lt;error statuscode=&quot;500&quot;/&gt;</span> or <br />
+						<span class="comments">&lt;error message=&quot;message from server&quot;/&gt;</span>. <br />
+						As you can see either error code and message or both can be send. If message from 
+						server is provided it will be used instead of plugin predefined one. <br />
+						If only error code is send then plugin will try to match this code with one of his ready 
+						to use template messages and if it can’t find any matching message it will display a default one:
+						<span class="comments">“Code ### was returned. Please contact with an administrator”</span>.<br /> 
+						The same scenario is applied when exception is thrown, no XML is provided or language specific 
+						method was used to send error response ( like response.sendError(500, “Server error”) used in Java ). 
+						In all of those situations format is unknown and any judgment can be made based on request status code 
+						(Note that response with status equal to 200 and no XML or unknown XML will also be treated as error).
+						If response will be send in unknown XML format, plugin will treat it as an error and simply display 
+						the code provided</li>		
+				</ul>
+			</li>
+		</ol>
+		
+		<p>
+			<strong>Below are the few examples written in Java:</strong></p>
+		<h3 class="just_header">Recommended ways to send XML response to plugin</h3>
+		<ol class="no_vertical_margins">
+			<li><strong>Returning success message</strong><br />
+				Content-type is set to XML, expected “success XML” is send. <strong>This is recommended way to send success message.</strong><br />
+				Additionally you can send response status which defaults to 200.
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;response.setStatus(200);&#10;out.println("&lt;result status=\"ok\" /&gt;");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;out.println("&lt;result status=\"ok\" /&gt;");</pre>
+			</li>
+			<li><strong>Returning error message</strong><br />
+				Expected “error XML” is provided. It will be used to give information to the user. 
+				<strong>This is the recommended way to send error messages from the server.</strong><br />
+				Additionally you can send response status which defaults to 200.
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;out.println("&lt;error statuscode=\"404\" message=\"Page not found\" /&gt;");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;response.setStatus(200);&#10;out.println("&lt;error message=\"Page not found\" /&gt;");</pre>
+			</li>	
+			<li><strong>Returning error message only with error code</strong><br />
+				Expected “error XML” only with status code is provided. In first example message from plugin will be 
+				used in second status code is unknown (there is no 555 HTTP status code) thus default message will be used. 
+				<strong>This is the also recommended way to send error messages from the server.</strong>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;response.setStatus(200);&#10;out.println("&lt;error statuscode=\"503\" /&gt;");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;out.println("&lt;error statuscode=\"555\" message=\"\ "/&gt;");</pre>
+			</li>
+		</ol>		
+		
+		<h3 class="just_header">Other ways to send XML error response to the plugin</h3>
+		<ol class="no_vertical_margins">			
+			<li>
+				Content-type set to XML and exception or error or only exception is send to the plugin. In all of those 
+				situations plugin predefined message for code 500 will be used.
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;response.sendError(500, "Internal server error");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;throw new ServletException("excepton on servlet was thrown");</pre>
+				<pre>throw new ServletException("excepton on servlet was thrown");</pre>
+			</li>
+			<li>
+				In the below examples there is no XML and status code is not 200 thus all of them will be treated as errors. 
+				In first case message from sever will be used. In second and third a predefined plugin message for status code 404 will be used. 
+				In fourth default error message plus some garbage HTML send from Tomcat.<br />
+				You may wonder why in second case the custom message from server is not displayed. This is because, 
+				for status different than 200, predefined plugin messages for known status codes have higher priority 
+				than custom message coming from server. This message can be garbage XML/HTML/Text or user defined. 
+				Anyway it best not to risk and display something that plugin knows is definitely understandable.
+				<pre>response.setStatus(555);&#10;response.setContentType("text/plain;charset=UTF-8");&#10;out.println("Custom error message");</pre>
+				<pre>response.setStatus(404);&#10;response.setContentType("text/plain;charset=UTF-8");&#10;out.println("File not found");</pre>
+				<pre>response.setStatus(404);&#10;response.setContentType("text/plain;charset=UTF-8");</pre>
+				<pre>response.setStatus(555);&#10;response.setContentType("text/plain;charset=UTF-8");</pre>
+			</li>	
+		</ol>
+		<h3 class="just_header">Troubleshooting</h3>	
+		<ol class="no_vertical_margins">				
+			<li>
+				Setting content-type to text and sending expected XML will fail in all browsers except Opera. Sending only expected XML will work in all browsers except for IE.
+				<pre>response.setContentType("text/plain;charset=UTF-8");&#10;out.println("&lt;result status=\"ok\" /&gt;");</pre>
+				<pre>out.println("&lt;result status=\"ok\" /&gt;");</pre>
+			</li>	
+			<li>
+				Custom XML will be displayed in the same form as it was send to the plugin.
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;out.println("&lt;error errorNo=\"501\" errorD=\"\" /&gt;");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;out.println("&lt;myerror statuscode=\"555\" message=\"\" /&gt;");</pre>
+			</li>
+			<li>
+				Although status code is set to 200, there is no XML provided thus all three examples will be treated as errors. 
+				In first case custom server message will be displayed. In the next two the default error message will be used.
+				<pre>response.setStatus(200);&#10;response.setContentType("text/plain;charset=UTF-8");&#10;out.println("Some message which will be treated as an error");</pre>
+				<pre>response.setContentType("text/xml;charset=UTF-8");&#10;response.setStatus(200);</pre>
+				<pre>response.setStatus(200);</pre>
+			</li>			
+		</ol>	
+	</div>
+	<h3>
+		Notes</h3>
+	<a name="bottom_notes"></a>	
+	<ol class="no_vertical_margins">				
+		<li>
+			Autosave plugin searches common error messages using the 
+			construction ‘error’+statuscode E.g. error404 or error500.<br />
+			If user wants to create his own custom message all he has to 
+			do is go to language file like en.js and add it.<br />
+			For example user can add error555 : ‘My custom message for custom code’. 
+			Now every time user’s connector will return status code 555 the 
+			above message will be used.
+		</li>	
+		<li>	
+			In plugin language files, one key (<strong>defaultErrorMessage</strong>) contains message with placeholder (<strong>###</strong>) 
+			which is later replaced by status code. When defining own language files one should not forget about placeholder for this key.<br/>
+			<span class="comments">defaultErrorMessage: Code ### was returned. Please contact with an administrator.</span>	
+		</li>	
+		<li>
+			As of version <strong>1.0.1</strong>, it is possible switch off <strong>&quot;Change counter&quot;</strong> and <strong>&quot;Interval&quot;</strong> and use this plugin as <strong>AJAX manual save</strong>.<br />
+			All that needs to be done is setting <strong>autosaveSensitivity</strong> and <strong>autosaveRefreshTime</strong> configuration properties to <strong>0</strong>.
+		</li>
+	</ol>
+	
+	<div id="footer">
+		<hr />
+		<p>
+			CKEditor - The text editor for Internet - <a href="http://ckeditor.com/">http://ckeditor.com</a>
+		</p>
+		<p id="copy">
+			Copyright &copy; 2003-2011, <a href="http://cksource.com/">CKSource</a> - Frederico
+			Knabben. All rights reserved.
+		</p>
+	</div>
+</body>
+</html>

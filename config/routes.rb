@@ -56,6 +56,9 @@ Chito::Application.routes.draw do
         collection do
             post :destroy_selected
         end
+        member do
+            post :autosave
+        end
     end
 
     resources :trash do

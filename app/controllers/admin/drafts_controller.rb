@@ -29,6 +29,15 @@ class Admin::DraftsController <  Admin::ArticleBaseController
         end
     end
 
+    def autosave
+        @article = @user.articles.find(params[:id])
+        unless params[:content].blank?
+            @article.content = params[:content]
+            @article.is_draft = true
+            @success = true if @article.save
+        end
+    end
+
     def destroy
         super
         notice_stickie t(:draft_successfully_deleted, :scope => [:txt, :controller, :admin, :drafts])

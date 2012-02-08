@@ -31,7 +31,7 @@ CKEDITOR.editorConfig = function(config) {
             ['Format','Styles','Font','FontSize'],
                         ['Outdent','Indent','Blockquote'],
             ['TextColor','BGColor'],
-            ['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter'],['LatexFormula']
+            ['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter','LatexFormula'], ['Autosave']
          ];
         config.contentsCss = "/javascripts/ckeditor_plugins/contents.css";
 
@@ -50,12 +50,17 @@ CKEDITOR.editorConfig = function(config) {
     // mediaembed plugin
     // config.extraPlugins += (config.extraPlugins ? ',mediaembed' : 'mediaembed' );
     // CKEDITOR.plugins.addExternal('mediaembed', ckeditorSettings.pluginPath + 'plugins/mediaembed/');
-        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter,latexformula' : 'wpmore,syntaxhighlighter,latexformula' );
+        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter,latexformula,autosave' : 'wpmore,syntaxhighlighter,latexformula,autosave' );
         CKEDITOR.plugins.addExternal('wpmore',  '/javascripts/ckeditor_plugins/wpmore/');
         CKEDITOR.plugins.addExternal('syntaxhighlighter',  '/javascripts/ckeditor_plugins/syntaxhighlighter/');
         CKEDITOR.plugins.addExternal('latexformula',  '/javascripts/ckeditor_plugins/latexformula/');
+        CKEDITOR.plugins.addExternal('autosave',  '/javascripts/ckeditor_plugins/autosave/');
 
         config.smiley_columns = 12;
         //config.ignoreEmptyParagraph = false;
-        
+       
+        config.autosaveTargetUrl = "autosave.xml";
+        config.autosaveRefreshTime = 300;
+        config.autosaveRequestTimeout = 120;
+        //config.autosaveMinTimeBetweenRequests =30;
 };
