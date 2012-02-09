@@ -62,5 +62,6 @@ CKEDITOR.editorConfig = function(config) {
         config.autosaveTargetUrl = "autosave.xml";
         config.autosaveRefreshTime = 300;
         config.autosaveRequestTimeout = 120;
+        config.autosaveUseOnBeforeUnload = false;
         //config.autosaveMinTimeBetweenRequests =30;
 };
