@@ -12,7 +12,7 @@ class ThemeController < ApplicationController
     private
 
     def get_theme_file_of(klass)
-        @theme, @file = params[:theme], File.join(params[:anything])
+        @theme, @file = params[:theme], File.join(params[:anything]+"."+params[:format])
         @path = klass.file_path(@theme, @file)
         raise "Access denied" unless File.expand_path(@path).start_with?(klass::PATH)
 
