@@ -14,6 +14,8 @@ class Admin::SysteminfoController < Admin::BaseController
     @rails_info = []
     @rails_info << {"Ruby version" => RUBY_DESCRIPTION}
     @rails_info << {"RubyGems version" => Gem::VERSION}
+    @rails_info << {"RubyGems path" => Gem.path}
+    @rails_info << {"Bundler version" => Bundler::VERSION}
     @rails_info << {"Rack version" => Rack.version}
     @rails_info << {"Rails version" => Rails.version}
     @rails_info << {"Application root" => Rails.root.to_s}
