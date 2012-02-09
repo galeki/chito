@@ -1,0 +1,43 @@
+<% chito_cache :type => :posts, :id => :feedbacks, :post => @post.id do -%>
+
+<%= if_show_trackbacks do -%>
+    <div class="articlefooter">
+	<span class="trackbacks">
+	    <%= image_tag "trackbacks.gif", :class => 'trackbacks' %>
+	    <%= t(:trackbacks, :scope => [:txt, :view, :posts, :show]) %> (<%= @trackbacks.size %>)
+	</span>
+    </div>
+    <div id="trackbacks">
+	<ul>
+		<% for trackback in @trackbacks -%>
+		    <li>
+			<%= link_to (trackback.writer || trackback.blog_name), trackback.homepage, :title => trackback.content, :target => "_blank", :id => "trackback#{trackback.id}" %>
+			- <%= trackback.created_at.to_s(:db_short) %>
+		    </li>
+		<% end -%>
+	</ul>
+    </div>
+<% end -%>
+
+<div class="articlefooter">
+    <% if @trackbacks.empty? && false-%> <!-- TODO Disable for no spam protection -->
+	<span class="trackbacks_url"><%= link_to "Trackback URI", post_trackbacks_path(@post, :key => @post.trackback_key, :format => :xml) %></span>
+    <% end -%>
+    <span class="comments">
+	<%= link_to (image_tag "small_feed.png", :class => 'feed'), post_path(@post, :format => :rss) %>
+	<%= t(:comments, :scope => [:txt, :view, :posts, :show]) %> (<%= @comments.size %>)
+    </span>
+</div>
+    <div id="comments">
+        <%= comments %> 
+    </div>
+
+<% end -%>
+
+<%= if_can_comment do %>
+<br />
+<div id="post_comment">
+    <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>
+</div>
+<%= render :partial => 'comments/trigger', :locals => {:url => post_comments_path(@post)} %>
+<% end %>
