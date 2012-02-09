@@ -12,5 +12,11 @@
 
             return false;
         });
+
+        <% if session[:user_name] && session[:user_name] == @user.name -%>
+            $(function() {
+                $('.mark_spam_comment_button').show();
+            });
+        <% end -%>
 //]]>
 </script>

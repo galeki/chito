@@ -97,7 +97,7 @@ module CommentsHelper
     end
 
     def mark_spam_comment_button
-        content_tag :span, :class => "mark_spam_comment_button" do
+        content_tag :span, :class => "mark_spam_comment_button", :style => "display:none;" do
             link_to  t("txt.helper.comments.mark_as_spam"), mark_comment_as_spam_path(@comment, :format => :js), 
                      :remote => true, :method => :post,
                      :title => t("txt.helper.comments.mark_as_spam")
