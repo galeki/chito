@@ -94,3 +94,11 @@ bar.plugin_id = :useful_dashboardbars
 bar.config = false
 bar.default_position = 7
 Dashboardbar.add(bar)
+
+bar = Dashboardbar.new
+bar.id = :dashboard_custom_area
+bar.info = 'Custom'
+bar.plugin_id = :useful_dashboardbars
+bar.config = true
+bar.default_position = 8
+Dashboardbar.add(bar)
