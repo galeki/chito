@@ -474,6 +474,7 @@ zh-CN:
           message_0: 个人信息
           message_1: Blog
           message_2: 系统
+          feedback: 评论
         _sub_menu_for_index:
           articles: 文章
           settings: 设置

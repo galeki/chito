@@ -106,9 +106,6 @@ Chito::Application.routes.draw do
 
     resources :comments do
         collection do
-            get :settings
-            get :setting_area
-            post :set_comment_system_settings
             delete :destroy_selected
         end
     end
@@ -212,6 +209,8 @@ Chito::Application.routes.draw do
   match '/admin/sidebar/:action/(:id)' => 'admin/sidebar#index'
   match '/admin/navbar/:action/(:id)' => 'admin/navbar#index'
   match '/admin/postbar/:action/(:id)' => 'admin/postbar#index'
+  match '/admin/settings/comment/setting_area' => 'admin/settings#comment_setting_area', :as => :admin_comment_setting_area
+  match '/admin/settings/comment/set_comment_system' => 'admin/settings#set_comment_system_settings', :as => :admin_set_comment_system
   match '/admin/settings/:action/(:id)' => 'admin/settings#index'
   match '/admin/rss/:action/(:id)' => 'admin/rss#index'
   match '/admin/site/:action/(:id)' => 'admin/site#index'

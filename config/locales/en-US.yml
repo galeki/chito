@@ -474,6 +474,7 @@ en-US:
           message_0: Profile
           message_1: Blog
           message_2: System
+          feedback: Feedback
         _sub_menu_for_index:
           articles: Articles
           settings: Settings

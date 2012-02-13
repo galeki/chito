@@ -1,3 +1,6 @@
+    <label><%= check_box :user, :enable_thread_comment, :class => 'checkbox' %> <%= t(:enable_thread_comment, :scope => [:txt, :view, :admin, :settings]) %></label>
+    <label><%= check_box :user, :check_comment_notifier_by_default, :class => 'checkbox' %> <%= t(:check_comment_notifier_by_default, :scope => [:txt, :view, :admin, :settings]) %></label>
+
    <label><%= t(:filter_chain, :scope => [:txt, :view, :admin, :comments]) %></label>
    <div id="filters"> 
     <div class="comment_box"><%= t(:a_comment, :scope => [:txt, :view, :admin, :comments]) %></div><div class="point_box"></div>

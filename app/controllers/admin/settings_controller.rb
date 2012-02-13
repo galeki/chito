@@ -67,4 +67,39 @@ class Admin::SettingsController < Admin::BaseController
   def system
   end
 
+  def comment
+
+  end
+
+    def comment_setting_area
+        system = params[:system] || @user.comment_system
+        if system == 'disqus'
+            @area = 'disqus_comment_settings'
+        else
+            get_chito_comment_system_settings
+            @area = 'chito_comment_settings'
+        end
+    end
+
+    def set_comment_system_settings
+        get_comment_filters
+        for field in ["enable_filters", "disable_filters"]
+            next unless params[field.to_sym]
+            params[field.to_sym].each_with_index do |id,idx| 
+                bar = @filters.detect{|s| s.id == id.to_sym}
+                bar.position = idx
+                bar.enable = (field.to_sym == :enable_filters)
+            end
+        end
+        @user.update_attributes(params[:user])
+        notice_stickie t(:filter_settings_updated, :scope => [:txt, :controller, :admin, :comments])
+        redirect_to :action => "comment"
+    end
+
+    private
+
+    def get_chito_comment_system_settings
+        get_comment_filters
+        @enable_filters, @disable_filters = @filters.separate {|x| x.enable}
+    end
 end
