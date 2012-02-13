@@ -75,7 +75,7 @@ class Article < ActiveRecord::Base
     end
 
     def next
-        self.category.posts.where("created_at > ? and bit_opt = 0 ", self.created_at).first if self.category
+        self.category.posts.where("created_at > ? and bit_opt = 0 ", self.created_at).last if self.category
     end
 
     def last_comment
