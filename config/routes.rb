@@ -107,7 +107,8 @@ Chito::Application.routes.draw do
     resources :comments do
         collection do
             get :settings
-            post :set_filter_position
+            get :setting_area
+            post :set_comment_system_settings
             delete :destroy_selected
         end
     end

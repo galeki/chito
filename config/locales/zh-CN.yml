@@ -311,6 +311,7 @@ zh-CN:
           filter_chain: 过滤链
           a_comment: "我是条评论"
           available_comment_filters: 可用的过滤链
+          comment_system_settings: 评论系统设置
         messages: 
           manage_messages: 管理留言
           search_for: 搜索

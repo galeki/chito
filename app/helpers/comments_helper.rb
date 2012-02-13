@@ -4,6 +4,14 @@ module CommentsHelper
         render :partial => 'comments/comments'
     end
 
+    def post_comments
+        if @user.comment_system == 'disqus'
+            render :partial => 'comments/disqus_comment'
+        else
+            render :partial => "comments/chito_comment"
+        end
+    end
+
     def all_comments
         @no = (1..@comments.size).to_a
         @no.reverse! unless controller.action_name == "guestbook"

@@ -1,5 +1,4 @@
-<%= t(:filter_chain, :scope => [:txt, :view, :admin, :comments]) %>
-<%= form_for :user, :url => set_filter_position_admin_comments_path do |f| %>
+   <label><%= t(:filter_chain, :scope => [:txt, :view, :admin, :comments]) %></label>
    <div id="filters"> 
     <div class="comment_box"><%= t(:a_comment, :scope => [:txt, :view, :admin, :comments]) %></div><div class="point_box"></div>
     <ul id="enable_filters">
@@ -20,8 +19,7 @@
     </ul>
 	<br style="clear:both"/>    
    </div>
-    <input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :comments]) %>" onclick='filter_config(this.form);this.form.submit();return false;'/>   
-<% end -%>
+
 <script type="text/javascript">
 //<![CDATA[
 jQuery('#disable_filters').sortable({connectWith:['#enable_filters','#disable_filters'], dropOnEmpty:true, format:/^bar_(.*)$/})

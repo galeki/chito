@@ -4,10 +4,33 @@
 <div class="option_wrap">
 <div class="edit_field">
 <div class="right_c"></div>
-<div class="edit_header"><div id="notifier"></div><%=  %></div>
+<div class="edit_header"><div id="notifier"></div><%= t(:comment_system_settings, :scope => [:txt, :view, :admin, :comments]) %></div>
 
+<%= form_for :user, :url => set_comment_system_settings_admin_comments_path do |f| %>
 
-    <%= render :partial =>"chito_comments_config" %>
+    <label><%= f.radio_button :comment_system, 'chito', :class => 'ck' %> <%= "Chito default" %></label>
+    <label><%= f.radio_button :comment_system, 'disqus',  :class => 'ck' %> <%= "Disqus" %></label>
+
+    <div id="comment_system_settings" style="padding:15px 0px 20px 12px;">
+    </div>
+
+<input class="submit" type="button" value="<%= t(:save, :scope => [:txt, :view, :admin, :comments]) %>" onclick='filter_config(this.form);this.form.submit();return false;'/>   
+
+<% end -%>
 </div>
 </div>
+<script type="text/javascript">
+//<![CDATA[
+function show_settings_area()
+{
+    show_spin('comment_system_settings');
+    if($(this).val())
+        $.get("<%= setting_area_admin_comments_path(:format => :js) %>" + "?system=" + $(this).val());
+    else
+        $.get("<%= setting_area_admin_comments_path(:format => :js) %>" );
+}
+$('.ck').change(show_settings_area);
 
+$(document).ready(show_settings_area);
+//]]>
+</script>

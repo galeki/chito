@@ -311,6 +311,7 @@ en-US:
           filter_chain: Filter Chain
           a_comment: "I'm a comment"
           available_comment_filters: Available Comment Filters
+          comment_system_settings: Comment system settings
         messages: 
           manage_messages: Manage Messages
           search_for: Search for
