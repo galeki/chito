@@ -808,4 +808,5 @@ thead tr {
 .day a{
     text-decoration:underline !important;
 }
-
+#chito_dashboard_left li#bar_dashboard_custom_area{float:left;width:100%;}
+#disable_dashboardbar_box a.remote_setting{display:none !important;}
