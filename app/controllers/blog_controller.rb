@@ -93,6 +93,7 @@ class BlogController < ApplicationController
 
   def plugin_css
     @plugin_css = ''
+    @plugin_css += "\na.comments{display:none;}\n" if @user.comment_system == "disqus"
     do_something :in_plugin_css
     send_data @plugin_css, :type => 'text/css', :disposition => 'inline'   
   end  
