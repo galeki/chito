@@ -471,3 +471,8 @@ a.up:hover, a.down:hover, #article_header a:hover{color:#555;}
 .day a{
     text-decoration:underline !important;
 }
+#guestbook_wrap, #comments_wrap{
+    float:left;
+    width:98%;
+}
+.page_clear{clear:both;}

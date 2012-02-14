@@ -274,3 +274,9 @@ h2.link_to_post a:hover{
 }
 
 #article_tabs{float:left;width:100%;margin-bottom:25px;}
+
+#guestbook_wrap, #comments_wrap{
+    float:left;
+    width:98%;
+}
+.page_clear{clear:both;}

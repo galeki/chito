@@ -405,3 +405,4 @@ a.down {
 .comment_box0, .comment_box1, .comment_self {
     width: 93%;
 }
+#disqus_thread li, #article_tabs li {list-style-image:none !important;}
