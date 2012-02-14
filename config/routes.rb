@@ -50,6 +50,9 @@ Chito::Application.routes.draw do
             post :destroy_selected
             post :recategory_selected
         end
+        member do
+            post :autosave
+        end
     end
 
     resources :drafts do
@@ -74,6 +77,9 @@ Chito::Application.routes.draw do
         member do
             post :enable_fontpage
             post :cancel_fontpage
+        end
+        member do
+            post :autosave
         end
     end
       

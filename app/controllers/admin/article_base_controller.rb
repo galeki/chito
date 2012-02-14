@@ -34,6 +34,16 @@ class Admin::ArticleBaseController <  Admin::BaseController
     @article.make_brief
   end
 
+  def autosave
+    @article = @user.articles.find(params[:id])
+    unless params[:content].blank?
+        @article.content = params[:content]
+        @article.is_draft = true
+        @success = true if @article.save
+    end
+    render "admin/share/autosave"
+  end
+
   def destroy
     @article = @user.articles.find(params[:id])
     @article.is_deleted = true
