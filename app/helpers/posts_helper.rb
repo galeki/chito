@@ -1,7 +1,7 @@
 module PostsHelper
 
     def post_link(post, options={})
-        path = chito_post_path(post, options)
+        path = chito_post_url(post, options)
         link_to options.delete(:text) || post_title(post), path, options
     end 
 

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     helper_method :'_params'
     helper_method :url_for
     helper_method :chito_post_path
+    helper_method :chito_post_url
     helper LaterDude::CalendarHelper
     #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
     #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
@@ -60,6 +61,20 @@ class ApplicationController < ActionController::Base
                                 post.parameterize_permalink,
                                 post.id,
                                 :html
+                               )
+        end
+    end
+
+    def chito_post_url(post, options={})
+        if post.parameterize_permalink.blank?
+            post_url(post.id, :format => :html, :subdomain => post.user.name)
+        else
+            post_permalink_url(post.published_or_created_time.year, 
+                                post.published_or_created_time.month, 
+                                post.published_or_created_time.day,
+                                post.parameterize_permalink,
+                                post.id,
+                                :html, :subdomain => post.user.name
                                )
         end
     end
