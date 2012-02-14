@@ -121,7 +121,7 @@ module CommentsHelper
     end
 
     def thread_comment_script_tag
-        if @user.enable_thread_comment
+        if @user.enable_thread_comment && @user.comment_system != 'disqus'
            javascript_tag "thread_comment();"
         end
     end
