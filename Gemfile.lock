@@ -81,7 +81,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     rmagick (2.13.1)
-    sass (3.1.14)
+    sass (3.1.15)
     sass-rails (3.2.4)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
