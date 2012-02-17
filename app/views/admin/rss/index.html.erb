@@ -10,7 +10,7 @@
     var t2 = "<%= t(:url_invalid, :scope => [:txt, :view, :admin, :rss]) %>";
 </script>
     <div id="import_result"></div>
-           <%
+           <%=
 		form_tag(       { :action => 'import', :format => :js},
                                 :remote => true,
 				:id => 'rform', :onsubmit => "$('#importing').show();return false;"
