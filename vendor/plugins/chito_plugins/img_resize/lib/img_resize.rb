@@ -1,9 +1,10 @@
     module BlogHelperPlugin
         def resize_img_in_blog_tail
             if @user.img_resize_style == 'lightbox'
-                html = plugin_javascript_inculde_tag('img_resize', "jquery.lightbox-0.5.pack.js") + "\n"
+                html = ""
+                html += plugin_javascript_inculde_tag('img_resize', "jquery.ui.rlightbox.min.js") + "\n"
                 html += plugin_javascript_inculde_tag('img_resize', "core.js") + "\n"
-                html += plugin_stylesheet_link_tag('img_resize', "jquery.lightbox-0.5.css") + "\n"
+                html += plugin_stylesheet_link_tag('img_resize', "lightbox.min.css") + "\n"
                 html +=  %Q~ <script type="text/javascript">
                     function auto_resize_img(){
                         img_resize_lightbox(#{@user.img_max_width || 400});

@@ -29,8 +29,8 @@ function img_resize_normal(w, text){
 }
 function img_resize_lightbox(w){
   $('img').each(function(){
-    var myw = $(this).attr('width');
-    var myh = $(this).attr('height');
+    var myw = $(this).width();
+    var myh = $(this).height();
     if(myw > w)
     {
 	var newh = myh * w / myw;
@@ -40,11 +40,5 @@ function img_resize_lightbox(w){
         $(this).wrap('<a href="' + $(this).attr('src') + '" class="lightbox"></a>');
     }
   });
- $('a.lightbox').lightBox({
-    imageBtnClose: '/plugins/img_resize/images/lightbox-btn-close.gif',
-    imageBtnPrev: '/plugins/img_resize/images/lightbox-btn-prev.gif',
-    imageBtnNext: '/plugins/img_resize/images/lightbox-btn-next.gif',
-    imageLoading: '/plugins/img_resize/images/lightbox-ico-loading.gif',
-    imageBlank: '/plugins/img_resize/images/lightbox-blank.gif'
- });
+ $('a.lightbox').rlightbox();
 }
