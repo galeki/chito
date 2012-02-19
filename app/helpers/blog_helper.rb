@@ -34,7 +34,7 @@ module BlogHelper
     end
 
     def site_title
-        link_to @user.title, :controller => 'posts', :action => 'index' 
+        link_to @user.title, root_path
     end
 
     def site_slogan
