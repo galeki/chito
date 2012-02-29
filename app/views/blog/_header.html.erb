@@ -17,10 +17,10 @@
 <%= theme_css_links :order => options[:css]%>
 <%= theme_js_links :order => options[:js]%>
 <%= csrf_meta_tag %>
-<link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 <%= jquery_include_tag %>
 <title><%= @title %></title>
 <%= show_something :in_head %>
 <%=raw @site.extra_header.to_s %>
 <%=raw @user.custom_header if @user.enable_custom_header %>
+<link href="/plugin.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
