@@ -31,7 +31,7 @@ CKEDITOR.editorConfig = function(config) {
             ['Format','Styles','Font','FontSize'],
                         ['Outdent','Indent','Blockquote'],
             ['TextColor','BGColor'],
-            ['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter','LatexFormula'], ['Autosave']
+            ['Maximize', 'ShowBlocks'], ['WPMore'], ['SyntaxHighlighter'], ['Autosave']
          ];
         config.contentsCss = "/javascripts/ckeditor_plugins/contents.css";
 
@@ -50,10 +50,9 @@ CKEDITOR.editorConfig = function(config) {
     // mediaembed plugin
     // config.extraPlugins += (config.extraPlugins ? ',mediaembed' : 'mediaembed' );
     // CKEDITOR.plugins.addExternal('mediaembed', ckeditorSettings.pluginPath + 'plugins/mediaembed/');
-        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter,latexformula,autosave' : 'wpmore,syntaxhighlighter,latexformula,autosave' );
+        config.extraPlugins += (config.extraPlugins ? ',wpmore,syntaxhighlighter,autosave' : 'wpmore,syntaxhighlighter,autosave' );
         CKEDITOR.plugins.addExternal('wpmore',  '/javascripts/ckeditor_plugins/wpmore/');
         CKEDITOR.plugins.addExternal('syntaxhighlighter',  '/javascripts/ckeditor_plugins/syntaxhighlighter/');
-        CKEDITOR.plugins.addExternal('latexformula',  '/javascripts/ckeditor_plugins/latexformula/');
         CKEDITOR.plugins.addExternal('autosave',  '/javascripts/ckeditor_plugins/autosave/');
 
         config.smiley_columns = 12;
