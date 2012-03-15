@@ -43,10 +43,10 @@
 <div class="edit_header"><%= t(:change_profile, :scope => [:txt, :view, :admin, :settings]) %></div>
 <%= form_for :user, :url =>{:action => 'info'} do |f| %>
     <label><%= t(:title, :scope => [:txt, :view, :admin, :settings]) %>:</label>
-    <%= f.text_field 'title', :size => '25'%>
+    <%= f.text_field 'title', :size => '40'%>
     <br/>
     <label><%= t(:slogan, :scope => [:txt, :view, :admin, :settings]) %>:</label>
-    <%= f.text_field 'slogan', :size => '50'%><br/> 
+    <%= f.text_field 'slogan', :size => '100'%><br/> 
     <%= f.check_box :show_slogan_in_title, :class => "ck" %> <%= t("txt.view.admin.settings.show_slogan_in_title") %>
     <br/>
     <label><%= t(:nick, :scope => [:txt, :view, :admin, :settings]) %>:</label>
