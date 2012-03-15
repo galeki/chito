@@ -1,7 +1,8 @@
     module BlogHelperPlugin
         def add_auto_js_latex_js_link_in_blog_tail
+            html = ""
             if @user.enable_auto_js_latex
-                html = plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n"
+                html += plugin_javascript_inculde_tag('auto_js_latex', "jquery.jslatex.packed.js") + "\n"
                 html += %Q! <script type="text/javascript">
                     function auto_js_latex(){
                         try{
@@ -23,8 +24,12 @@
                         $(".latex_eq").latex(); 
                     }
                     $(document).ready(auto_js_latex);
-                </script>!.html_safe
-               html.html_safe
+                </script>\n !
             end
+            if @user.enable_mathjax
+                #html += %Q! <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script>\n !
+                html += %Q! <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>\n !
+            end
+            html.html_safe
         end
     end

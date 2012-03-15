@@ -11,6 +11,7 @@
 <%= form_for :user, :url => {:action => 'plugin', :plugin_id => 'auto_js_latex'} do |f|%>
     <style>label{padding:8px;} label:hover{background: #fff;} label img{margin:5px;}</style>
     <label><%= f.check_box :enable_auto_js_latex,  :class => 'checkbox' %><%= t("plugins.auto_js_latex.enable") %></label>
+    <label><%= f.check_box :enable_mathjax,  :class => 'checkbox' %><%= t("plugins.auto_js_latex.enable_mathjax") %></label>
 
     <%= submit_tag t("plugins.auto_js_latex.save"), :class =>'submit' %>
 <% end  %>
