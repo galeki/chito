@@ -21,7 +21,7 @@
             window.parent.alert("<%= @error_message %>");
         <% elsif @new_file_url -%>
             window.parent.alert("<%= @notice_message %>");
-            window.parent.$('#file_list').html("<%= escape_javascript(render :partial => "list.html") %>");
+            window.parent.$('#file_list').html("<%= escape_javascript(render :partial => "list", :formats => [:html]) %>");
         <% end -%>
     //]]>
     </script>
