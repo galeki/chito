@@ -13,7 +13,8 @@ class Admin::FilesController < Admin::BaseController
     if params[:editor]
         render :template => 'admin/files/_list', :layout => 'files'
     else
-        render :partial => 'list'
+        #render :partial => 'list'
+        render :template => 'admin/files/_list'
     end
   end
 
