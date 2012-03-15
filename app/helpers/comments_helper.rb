@@ -82,7 +82,7 @@ module CommentsHelper
     end
 
     def comment_brief(comment=@comment, options={})
-        text = comment.writer + ":" + comment.content.to_s
+        text = comment.writer + " : " + comment.content.to_s
         if comment.mode == 'plain'
             text = truncate(text, :length => options[:length])
         else
