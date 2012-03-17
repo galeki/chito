@@ -2,11 +2,13 @@ class ThemeController < ApplicationController
     skip_before_filter :get_site
 
     def user_theme_file
-        get_theme_file_of(UserTheme)
+        render :text => 'Not Found', :status => '404'                
+        #get_theme_file_of(UserTheme)
     end
 
     def index_theme_file
-        get_theme_file_of(IndexTheme)
+        render :text => 'Not Found', :status => '404'                
+        #get_theme_file_of(IndexTheme)
     end
 
     private
