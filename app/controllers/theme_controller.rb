@@ -17,7 +17,7 @@ class ThemeController < ApplicationController
         raise "Access denied" unless File.expand_path(@path).start_with?(klass::PATH)
 
         if File.exists?(@path)
-            klass.copy_to_public(@theme)
+            #klass.copy_to_public(@theme)
             send_file(@path, :type => mime_for(@file), :disposition => 'inline', :stream => true) 
         else
             return (render :text => "Not Found", :status => 404)

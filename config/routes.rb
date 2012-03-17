@@ -183,7 +183,7 @@ Chito::Application.routes.draw do
 
   end
 
-  match '/latex_formula/make_png' => 'latex_formula#make_png'
+  #match '/latex_formula/make_png' => 'latex_formula#make_png'
 
   match '/xmlrpc' => 'xmlrpc/meta_weblog#index', :format => 'xml'
   match '/xml_rpc' => 'xmlrpc/meta_weblog#index', :format => 'xml'
@@ -200,9 +200,9 @@ Chito::Application.routes.draw do
   match '/site.:format' => 'blog#index', :as => :site
   match '/setup' => 'site#setup'
   match '/pages/:id/:seo_title.:format' => 'pages#show'
-  match '/themes/user/:theme/*anything' => 'theme#user_theme_file'
-  match '/themes/index/:theme/*anything' => 'theme#index_theme_file'
-  match '/plugins/:plugin/*anything' => 'plugin#file'
+  #match '/themes/user/:theme/*anything' => 'theme#user_theme_file'
+  #match '/themes/index/:theme/*anything' => 'theme#index_theme_file'
+  #match '/plugins/:plugin/*anything' => 'plugin#file'
   match '/admin' => 'admin/dashboard#index', :as => :admin
   match '/admin/logout' => 'admin/dashboard#logout'
   match '/admin/dashboardbar_position' => 'admin/dashboard#dashboardbar_position'

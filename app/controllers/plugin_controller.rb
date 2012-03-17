@@ -3,7 +3,7 @@ class PluginController < ThemeController
     def file
         get_path
         if File.exists?(@path)
-            ChitoPlugin.copy_to_public(@plugin)
+            #ChitoPlugin.copy_to_public(@plugin)
             send_file(@path, :type => mime_for(@file), :disposition => 'inline', :stream => true) 
         else
             return (render :text => "Not Found", :status => 404)

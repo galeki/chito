@@ -32,9 +32,11 @@ class ChitoPlugin
     def self.copy_to_public(plugin)
         src = File.join(PLUGIN_PATH, plugin, "public")
         dst = File.join(PUBLIC_PATH, plugin)
-        FileUtils.makedirs dst rescue nil
+        FileUtils.makedirs dst # rescue nil
         ['images', 'javascripts', 'stylesheets'].each do |f|
-            FileUtils.cp_r File.join(src, f), dst rescue nil
+            if File.exists?(File.join(src, f))
+                FileUtils.cp_r File.join(src, f), dst # rescue nil
+            end
         end
     end
 

@@ -45,7 +45,17 @@ Or if you are deploying Chito in production, run:
 $ RAILS_ENV=production rake db:migrate
 </pre>
 
-h3. 4.Done
+h3. 4.Setup Chito files
+
+Just run:
+
+<pre>
+$ rake chito:setup
+</pre>
+
+This will copy some cache files of themes and plugins to /public.
+
+h3. 5.Done
 
 Just run:
 
@@ -120,8 +130,3 @@ Here is a simple intro of these plugins:
  useful_index_sidebars                      Several useful index sidebars
 </pre>
 
-h2. Rails 2.x
-
-Chit 1.2+ only works with Rails3.0+. If you want use Chito under Rails 2.x version, you can checkout or download the old v1.1.7-for-rails-2.x tag at github. 
-
-The old v1.1.7-for-rails-2.x version is nolonger supported anymore.
