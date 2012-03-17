@@ -13,7 +13,7 @@ module NavbarHelper
     end
 
     def link_to_nav_page(navbar, options={})
-        link_to navbar.title, pagepath(navbar.page),
+        link_to (options[:text] || navbar.title), pagepath(navbar.page),
                 :class => (options[:selected_class] if current(navbar)),
                 :id => (options[:selected_id] if current(navbar))
     end
