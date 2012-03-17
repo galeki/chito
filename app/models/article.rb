@@ -34,6 +34,8 @@ class Article < ActiveRecord::Base
 
     def title
         super.blank? ? t(:message_0, :scope => [:txt, :model, :article]) : super
+        rescue 
+            "No Title"
     end
 
     def prepare(user, params)
