@@ -22,8 +22,11 @@
                                     > <%= group.name %></option>
 		    <% end %>
                     <option  value="<%= admin_users_path(:page => params[:page]) %>"
-                                 <%= "selected='selected'" if params[:group].nil? %>
+                                 <%= "selected='selected'" if params[:group].nil? && params[:has_bind_domain].nil? %>
                                     > <%= t :all, :scope => [:txt, :view, :admin, :posts]  %></option>
+                    <option  value="<%= admin_users_path(:page => params[:page], :has_bind_domain => true) %>"
+                                 <%= "selected='selected'" if params[:has_bind_domain] %>
+                                    > <%= t :has_bind_domain, :scope => [:txt, :view, :admin, :posts]  %></option>
 		    </select>
 	    </td>
     </tr>

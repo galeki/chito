@@ -617,6 +617,7 @@ en-US:
           delete: Delete
           delete_post: Delete %{title} ?
           all: All
+          has_bind_domain: Has domain
         trash:
           delete_all: Delete all
           delete_all?: Delete all articles in trash ?

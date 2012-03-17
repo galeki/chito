@@ -121,6 +121,7 @@ class User < ActiveRecord::Base
         temp = temp.where("users.group_id = ?", options[:group]) if options[:group]
         temp = temp.where("users.name like ?", "%#{options[:name]}%") if options[:name]
         temp = temp.where("users.name = ?", options[:user_name]) if options[:user_name]
+        temp = temp.where("users.bind_domain IS NOT NULL and users.bind_domain != ''") if options[:has_bind_domain]
         temp.paginate :per_page => 30, :page => options[:page]
     end
 

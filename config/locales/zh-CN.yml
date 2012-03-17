@@ -616,6 +616,7 @@ zh-CN:
           delete: 删除
           delete_post: 删除 %{title} ?
           all: 全部
+          has_bind_domain: 绑定域名
         trash:
           delete_all: 清空垃圾箱
           delete_all?: 删除所有垃圾箱中的文章吗?  此操作将不可恢复 !
