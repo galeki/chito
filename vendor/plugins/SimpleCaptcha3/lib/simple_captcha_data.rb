@@ -1,7 +1,8 @@
 # Copyright (c) 2008 [Sur http://expressica.com]
 
 class SimpleCaptchaData < ActiveRecord::Base
-  set_table_name "simple_captcha_data"
+  #set_table_name "simple_captcha_data"
+  self.table_name = "simple_captcha_data"
   
   class << self
     def get_data(key)
