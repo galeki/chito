@@ -412,6 +412,7 @@ en-US:
           show_in_navbar: and show in navbar
           indices: Indices
           confirm_blank_text: Submit a blank post？
+          brief_hint: "(Content beofore <!--more-->)"
         _sub_menu_for_root: 
           message_0: Site
           message_1: User groups

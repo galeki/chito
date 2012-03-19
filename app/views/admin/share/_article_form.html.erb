@@ -59,7 +59,7 @@
     <%= show_something :in_article_form %>
  <div id="article_brief_div">
     <label for="article_brief"><strong><%=t :brief, :scope => [:txt, :view, :admin, :share] %></strong></label>
-	<label><%= check_box 'article', 'auto_brief', :onclick => 'if(this.checked){$("#article_brief").fade();}else{$("#article_brief").show()};', :class => 'checkbox', :checked => @article.auto_brief.to_tf%> <%= t :auto_brief, :scope => [:txt, :view, :admin, :share] %></label>
+    <label><%= check_box 'article', 'auto_brief', :onclick => 'if(this.checked){$("#article_brief").fade();}else{$("#article_brief").show()};', :class => 'checkbox', :checked => @article.auto_brief.to_tf%> <%= t :auto_brief, :scope => [:txt, :view, :admin, :share] %> <span style="color:#aaa;"><%= t "txt.view.admin.share.brief_hint" %></span></label>
 	<%= text_area 'article', 'brief', :style => ('display:none;' if @article.auto_brief) %>
  </div>
     <br/>

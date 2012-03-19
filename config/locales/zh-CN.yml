@@ -412,6 +412,7 @@ zh-CN:
           show_in_navbar: 并显示在导航栏
           indices: 总分类
           confirm_blank_text: 保存这篇空白内容的文章？
+          brief_hint: "(将<!--more-->之前的内容作为摘要)"
         _sub_menu_for_root: 
           message_0: 网站
           message_1: 用户组
