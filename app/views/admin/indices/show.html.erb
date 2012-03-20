@@ -16,6 +16,7 @@
 	    <th class="helpHed"></th>
     </tr>
     <% for post in @posts %>
+        <% next unless post.user %> 
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", post.id, nil, :id => post.id %></td>
         <td class="user_name_col">
