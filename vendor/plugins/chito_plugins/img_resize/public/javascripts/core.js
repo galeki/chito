@@ -1,4 +1,8 @@
-function img_resize_normal(w, text){
+function img_resize_normal(ow, text){
+  var w = ow;
+  if(w > $(window).width()*0.8)
+      w = $(window).width()*0.8;
+
   for (i=0;i<document.images.length;i++)
    {
    if (document.all){
@@ -27,7 +31,11 @@ function img_resize_normal(w, text){
   }
   }
 }
-function img_resize_lightbox(w){
+function img_resize_lightbox(ow){
+  var w = ow;
+  if(w > $(window).width()*0.8)
+      w = $(window).width()*0.8;
+
   $('img').each(function(){
     var myw = $(this).width();
     var myh = $(this).height();

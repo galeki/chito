@@ -12,6 +12,8 @@ en-US:
             style: Style
             width: Width
             new_window: Open in new window
+            auto_detect_browswe_width: Adjust img width to browser
+            or: or
 zh-CN:
     plugins:
         img_resize:
@@ -26,3 +28,5 @@ zh-CN:
             style: 样式
             width: 宽度
             new_window: 在新窗口打开
+            auto_detect_browswe_width: 根据浏览器窗口大小自动调整图片宽度
+            or: 或者
