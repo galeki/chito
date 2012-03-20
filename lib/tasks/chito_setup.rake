@@ -15,7 +15,7 @@ namespace :chito do
       puts "Copy IndexThemes(#{IndexTheme::PATH}) to /public:\n"
       IndexTheme::LIST.each do |t|
         print "    Copying #{t}... "
-        UserTheme.copy_to_public(t)
+        IndexTheme.copy_to_public(t)
         print "done.\n"
       end
   end
