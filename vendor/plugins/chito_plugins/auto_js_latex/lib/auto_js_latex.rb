@@ -27,7 +27,13 @@
                 </script>\n !
             end
             if @user.enable_mathjax
-                #html += %Q! <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script>\n !
+                html += %Q! <script type="text/x-mathjax-config"> 
+                    MathJax.Hub.Config({
+                        tex2jax: {
+                            inlineMath: [['$','$'], ["\\\\(","\\\\)"]],
+                            processEscapes: true
+                            }
+                }); </script>\n !
                 html += %Q! <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>\n !
             end
             html.html_safe
