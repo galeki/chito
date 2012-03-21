@@ -17,6 +17,7 @@
 	    <th class="helpHed"><%=t(:comments, :words => params[:keyword], :scope => [:txt, :view, :admin, :talks]) %></th>
     </tr>
     <% for talk in @talks -%>
+        <% next unless talk.user %>
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="title_col"><%= link_to talk.title, post_url(talk, :subdomain => talk.user.name, :format => :html) %></td>
 	    <td class="comment_writer_col"><%=h talk.user.nick %></td>
