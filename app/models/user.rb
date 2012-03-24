@@ -336,6 +336,7 @@ class User < ActiveRecord::Base
     def fix_settings
         s = self.settings
         new_s = {}
+        return unless s.is_a?(Hash)
         s.each do |key, value|
             if value.is_a?(String)
                 begin
