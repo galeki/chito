@@ -334,13 +334,12 @@ class User < ActiveRecord::Base
 
     # Fix of Psych YAML persing problem with Syck data.
     def fix_settings
-        puts self.settings
         s = self.settings
         new_s = {}
         s.each do |key, value|
             if value.is_a?(String)
                 begin
-                    new_value = value.clone.encode("ISO-8859-1").force_encoding("UTF-8")
+                    new_value = value.clone.force_encoding("UTF-8").encode("ISO-8859-1").force_encoding("UTF-8")
                 rescue
                     new_value = value
                 end
