@@ -35,6 +35,7 @@
 	    <th class="helpHed"></th>
     </tr>
     <% for feedback in @feedbacks -%>
+        <% next unless feedback.user %>
     <tr class="<%= cycle "odd", "" %>">
 	    <td class="checkbox"><%= check_box_tag "ids[]", feedback.id, nil, :id => feedback.id %></td>    
 	    <td class="comment_writer_col"><%=h feedback.writer %></td>
