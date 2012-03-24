@@ -332,6 +332,34 @@ class User < ActiveRecord::Base
         self.errors.map{|x| x[1]}.join("; ")
     end
 
+    # Fix of Psych YAML persing problem with Syck data.
+    def fix_settings
+        puts self.settings
+        s = self.settings
+        new_s = {}
+        s.each do |key, value|
+            if value.is_a?(String)
+                begin
+                    new_value = value.clone.encode("ISO-8859-1").force_encoding("UTF-8")
+                rescue
+                    new_value = value
+                end
+            else
+                new_value = value
+            end
+            new_s[key] = new_value
+        end
+        self.settings = new_s
+        self.settings_will_change!
+        self.save
+    end
+
+    def self.fix_all_settings
+        self.all.each do |u|
+            u.fix_settings
+        end
+    end
+
     private
 
     def self.hash_password(password, salt)
@@ -351,5 +379,6 @@ class User < ActiveRecord::Base
     def create_salt
         self.salt = UUIDTools::UUID.random_create.to_s
     end
+
 
 end
