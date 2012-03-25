@@ -16,7 +16,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
 		CKEDITOR.dialog.add( 'SyntaxHighlighterDialog', function (){
 			return {
 				title : 'SyntaxHighlighter Dialog',
-				minWidth : 520,
+				minWidth : 550,
 				minHeight : 380,
 				contents :
 					[
@@ -30,7 +30,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
 										type : 'html',
 										id : 'pageSyntaxHighlighter',
 										label : 'SyntaxHighlighter',
-										style : 'width : 550px;height: 400px;',
+										style : 'width : 600px;height: 400px;',
 										html : '<iframe src="'+me.path+'dialog.html" frameborder="0" name="iframeSyntaxHighlighter" id="iframeSyntaxHighlighter" allowtransparency="1" style="width:100%;height:380px;margin:0;padding:0;"></iframe>'
 									}
 								]
