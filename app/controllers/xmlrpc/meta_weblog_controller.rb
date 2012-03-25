@@ -118,7 +118,7 @@ class Xmlrpc::MetaWeblogController < Xmlrpc::BaseController
                 FileUtils.copy_stream(file_data, fp)
             end
             @new_file_url = new_file_path.sub(/^#{Rails.root}\/public/,'')
-            @new_file_url = @new_file_url.to_s.force_encoding('UTF-8') if RUBY_VERSION > "1.9"
+            @new_file_url = @new_file_url.to_s.force_encoding('UTF-8')
             @user.dirty_space
         end
         raise_fault(2041, @error_message) if @error_message

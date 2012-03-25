@@ -4,11 +4,7 @@ module ApplicationHelper
     include Chito::CacheHelper
 
     def c(key)
-        if RUBY_VERSION > '1.9' && cookies[key]
-            cookies[key].to_s.force_encoding('UTF-8')
-        else
-            cookies[key]
-        end
+        cookies[key].to_s.force_encoding('UTF-8')
     end
 
     def render_flash(options={})
