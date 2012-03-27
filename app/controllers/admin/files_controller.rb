@@ -28,6 +28,7 @@ class Admin::FilesController < Admin::BaseController
   end
 
   def create_file
+    @user.create_dir
     @new_file = params[:upload]
     if @new_file.nil?
         @error_message = t(:no_file, :scope => [:txt, :controller, :admin, :files])

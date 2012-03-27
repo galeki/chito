@@ -360,6 +360,14 @@ class User < ActiveRecord::Base
         end
     end
 
+    def create_dir
+        Dir.mkdir(self.base_dir,0775) unless File.exists?(self.base_dir)
+        Dir.mkdir("#{self.base_dir}/config",0775) unless File.exists?("#{self.base_dir}/config")
+        Dir.mkdir("#{self.base_dir}/themes",0775) unless File.exists?("#{self.base_dir}/themes")
+        Dir.mkdir("#{self.base_dir}/File",0775) unless File.exists?("#{self.base_dir}/File")
+        Dir.mkdir("#{self.base_dir}/Image",0775) unless File.exists?("#{self.base_dir}/Image")
+    end
+
     private
 
     def self.hash_password(password, salt)
@@ -367,14 +375,6 @@ class User < ActiveRecord::Base
         ( str << "galeki" << salt ) unless salt.nil?
         Digest::SHA1.hexdigest(str)
     end
-
-
-    def create_dir
-        Dir.mkdir(self.base_dir,0775) unless File.exists?(self.base_dir)
-        Dir.mkdir("#{self.base_dir}/config",0775) unless File.exists?("#{self.base_dir}/config")
-        Dir.mkdir("#{self.base_dir}/themes",0775) unless File.exists?("#{self.base_dir}/themes")
-    end
-
     
     def create_salt
         self.salt = UUIDTools::UUID.random_create.to_s
