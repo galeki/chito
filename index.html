@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Chito by galeki</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chito</h1>
+<p>A full feature blogging platform in Rails.</p>
+        <p class="view"><a href="https://github.com/galeki/chito">View the Project on GitHub <small>galeki/chito</small></a></p>
+        <ul>
+          <li><a href="https://github.com/galeki/chito/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/galeki/chito/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/galeki/chito">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Demo</h2>
+
+<p><a href="http://chitodemo.is-programmer.com">Here</a> is a demo Chito blog hosted by is-programmer.com.</p>
+
+<h2>Requires</h2>
+
+<ul>
+<li>Ruby 1.9.2+</li>
+<li>Rails 3.1+</li>
+<li>MySQL or SQLite3 database engine</li>
+<li>Linux or MacOS system</li>
+</ul><h2>Installing</h2>
+
+<h3>1.Get Chito</h3>
+
+<pre>
+$ git clone git@github.com:galeki/chito.git
+</pre>
+
+<h3>2.Install gems with bundler</h3>
+
+<p>Inside the Chito dir, run:</p>
+
+<pre>
+$ bundle install
+</pre>
+
+<h3>3.Create database</h3>
+
+<p>Edit config/database.yml with proper database name and password.</p>
+
+<p>Then run:</p>
+
+<pre>
+$ rake db:migrate
+</pre>
+
+<p>Or if you are deploying Chito in production, run:</p>
+
+<pre>
+$ RAILS_ENV=production rake db:migrate
+</pre>
+
+<h3>4.Setup Chito files</h3>
+
+<p>Just run:</p>
+
+<pre>
+$ rake chito:setup
+</pre>
+
+<p>This will copy some cache files of themes and plugins to /public.</p>
+
+<h3>5.Done</h3>
+
+<p>Just run:</p>
+
+<pre>
+$ rails s
+</pre>
+
+<p>and launch your favorite web browser with:</p>
+
+<pre>
+http://localhost:3000
+</pre>
+
+<p>Or if you want deply Chito in production, now is ready deploy with Mongrel or Passenger... just like other rails applications.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/galeki">galeki</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
