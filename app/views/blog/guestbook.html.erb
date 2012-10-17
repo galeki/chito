@@ -23,6 +23,7 @@
 
 <%  @title = t(:message_0, :scope => [:txt, :view, :blog, :guestbook], :user => @user.nick) %>
 <h4><%= t(:message_1, :scope => [:txt, :view, :blog, :guestbook], :user => @user.nick) %></h4>
+<%= javascript_include_tag "ckeditor/ckeditor" -%>
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => messages_path} %>
 </div>

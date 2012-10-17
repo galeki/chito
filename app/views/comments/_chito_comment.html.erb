@@ -35,6 +35,7 @@
 <% end -%>
 
 <%= if_can_comment do %>
+<%= javascript_include_tag "ckeditor/ckeditor" -%>
 <br />
 <div id="post_comment">
     <%= render :partial => 'comments/form', :locals => {:url => post_comments_path(@post)} %>
