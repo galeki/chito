@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.9'
 #gem 'rails', '3.0.7'
 #gem "rails", :git => "git://github.com/rails/rails.git"
 
