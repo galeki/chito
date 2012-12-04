@@ -9,7 +9,7 @@ SYNTAX_LABEL['en'] = "SyntaxHighlighter";
 SYNTAX_LABEL['default'] = "SyntaxHighlighter";
 CKEDITOR.plugins.add( 'syntaxhighlighter',
 {
-	requires: [ 'iframedialog' ],
+	requires: [ 'iframe' ],
 	init : function( editor )
 	{
 		var me = this;

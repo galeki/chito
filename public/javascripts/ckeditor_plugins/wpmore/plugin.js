@@ -12,12 +12,12 @@ WPMORE_COFIRME['en'] = 'The document already contains a more. Do you want to pro
 WPMORE_COFIRME['default'] = 'The document already contains a more. Do you want to proceed by removing it first?';
 CKEDITOR.plugins.add( 'wpmore',
 {
-  requires  : [ 'fakeobjects', 'htmldataprocessor' ],
+  requires  : [ 'fakeobjects' ],
 
   init : function( editor )
   {
     // Add the styles that renders our fake objects.
-    editor.addCss(
+    CKEDITOR.addCss(
       'img.cke_wordpress_more' +
       '{' +
         'background-image: url(' + CKEDITOR.getUrl( this.path + 'images/more_bug.gif' ) + ');' +
