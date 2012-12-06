@@ -6,8 +6,8 @@ Chito::Application.routes.draw do
   end
   root :to => 'posts#index'
   match '/plugin.css' => 'blog#plugin_css', :as => :plugin_css
+  match '/ajax_simple_captcha' => 'blog#ajax_simple_captcha'
   match '/simple_captcha(/:action)' => 'simple_captcha', :as => :simple_captcha
-  match '/simple_captcha_ajax' => 'blog#simple_captcha_ajax'
   match '/:year/:month/:day/:permalink.:id.:format' => 'posts#show', :constraints => { :year => /(19|20)\d\d/, :month => /[0|1]?\d/, :day => /[0-3]?\d/ }, :as => :post_permalink
   match ':year/:month/:day' => 'posts#index', :as => :day, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/ }, :as => :posts_on
   match ':year/:month' => 'posts#index', :as => :archive, :constraints => { :year => /\d{4}/, :month => /\d{1,2}/ }

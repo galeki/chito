@@ -26,7 +26,7 @@ gem 'rails', '3.2.9'
  gem 'simple-rss'
  gem 'later_dude', '>= 0.3.1'
 
-
+gem "galetahub-simple_captcha", :require => "simple_captcha"
 
 # Gems used only for assets and not required
 # in production environments by default.
