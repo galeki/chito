@@ -6,11 +6,11 @@ class Admin::RssController <  Admin::BaseController
   end 
 
   def import
-    return unless request.post?
-    if @user.import_rss(params[:rss_url], params[:import_category], params[:category], params[:import_comments], params[:unescape_html])
-        notice_stickie t(:rss_import_successfully, :scope => [:txt, :controller, :admin, :rss])
-    end
-    rescue
+    #return unless request.post?
+    #if @user.import_rss(params[:rss_url], params[:import_category], params[:category], params[:import_comments], params[:unescape_html])
+    #    notice_stickie t(:rss_import_successfully, :scope => [:txt, :controller, :admin, :rss])
+    #end
+    #rescue
         error_stickie t(:rss_import_fail, :scope => [:txt, :controller, :admin, :rss])
   end
 
