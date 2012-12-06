@@ -16,6 +16,7 @@
 	    <th class="helpHed"><%=t(:writer, :scope => [:txt, :view, :admin, :spams])  %></th>
 	    <th class="helpHed"><%=t(:time, :scope => [:txt, :view, :admin, :spams])  %></th>
 	    <th class="helpHed"><%=t(:brief, :scope => [:txt, :view, :admin, :spams])  %></th>
+	    <th class="helpHed"><%=t(:ip, :words => params[:keyword], :scope => [:txt, :view, :admin, :comments])  %></th>
 	    <th class="helpHed"><%=t(:block_by, :scope => [:txt, :view, :admin, :spams])  %></th>
 	    <th class="helpHed"></th>
 	    <th class="helpHed"></th>
@@ -26,6 +27,7 @@
 	    <td class="comment_writer_col"><%=h spam.writer %></td>
 	    <td class="comment_time_col"><%= spam.created_at.to_s :db_short %></td>
 	    <td class="comment_content_col"><%=h strip_tags(spam.content) %></td>
+	    <td class="comment_ip_col" style="width:10em;"><%= spam.ip if spam.ip %></td>
 	    <td class="comment_block_by"><%= spam.audit_by %></td>
 	    <td class="action_col"><%= link_to t(:pass, :scope => [:txt, :view, :admin, :spams]), pass_admin_spam_path(spam, _params), :class => "pass", 
 					:confirm => t(:pass_spam?, :scope => [:txt, :view, :admin, :spams]), :method => :post %></td>
