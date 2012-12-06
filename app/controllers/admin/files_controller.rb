@@ -165,6 +165,10 @@ class Admin::FilesController < Admin::BaseController
         @sort_by = "ctime"
         @folders = @folders.sort_by {|f| f[:ctime]}.reverse
         @files = @files.sort_by {|f| f[:ctime]}.reverse
+    elsif options[:sort_by] == "size"
+        @sort_by = "size"
+        @folders = @folders.sort_by {|f| f[:size]}.reverse
+        @files = @files.sort_by {|f| f[:size]}.reverse
     end
   end
 

@@ -263,6 +263,7 @@ en-US:
           name: Name
           sort_by: 'Sort by:'
           file_limit: Max file size
+          size: Size
         groups: 
           manage_groups: Manage Groups
           name: Name

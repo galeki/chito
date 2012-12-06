@@ -263,6 +263,7 @@ zh-CN:
           name: 名称
           sort_by: '排序: '
           file_limit: 单个文件大小上限
+          size: 大小
         groups: 
           manage_groups: 管理组
           name: 组名
