@@ -15,7 +15,4 @@ class SimpleCaptchaController < ActionController::Base
       :filename => 'simple_captcha.jpg')
   end
 
-  def simple_captcha_ajax
-    render :partial => 'simple_captcha/simple_captcha_ajax'
-  end
 end
