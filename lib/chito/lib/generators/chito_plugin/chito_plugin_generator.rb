@@ -3,7 +3,7 @@ class ChitoPluginGenerator < Rails::Generators::Base
   argument :plugin_name, :type => :string
 
   def manifest 
-    basedir = "vendor/plugins/chito_plugins/#{file_name}"
+    basedir = "plugins/#{file_name}"
 
     template "app/views/_config.html.erb", "#{basedir}/app/views/_config.html.erb"
     template "lib/plugin_code.rb", "#{basedir}/lib/#{file_name}.rb"

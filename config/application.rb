@@ -54,8 +54,8 @@ module Chito
 
     #config.plugin_paths = "#{Rails.root}/vendor/plugins/chito_plugins"
     #config.paths.vendor.plugins("vendor/plugins", "vendor/plugins/chito_plugins")
-    config.paths["vendor/plugins"] = ["vendor/plugins", "vendor/plugins/chito_plugins"]
-    config.plugins = [ :chito_plugin, :all ]
+    #config.paths["vendor/plugins"] = ["vendor/plugins", "vendor/plugins/chito_plugins"]
+    #config.plugins = [ :chito_plugin, :all ]
     #config.action_controller.session_store = :memory_store
     
     config.action_view.sanitized_allowed_tags = %w(u strong em b i p code pre sub sup cite small address br div span ul ol li dt dd abbr acronym img blockquote)

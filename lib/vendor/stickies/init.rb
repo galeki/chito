@@ -24,7 +24,7 @@
 ################################################################################
 # Load the stickies code
 require 'stickies'
-puts "Stickies Loading.................................."
+#puts "Stickies Loading.................................."
 ################################################################################
 # Hook into the Rails system
 ActionController::Base.send(:include, Stickies::ControllerActions)

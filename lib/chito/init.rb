@@ -1,3 +1,8 @@
+require "chito_helper"
+require "chito_version"
+require "chito_routes"
+require "chito_cache"
+
 require "chito_plugin"
 require "hooks"
 require "sidebar"
