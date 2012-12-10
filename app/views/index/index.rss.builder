@@ -9,6 +9,7 @@ xml.rss "version" => "2.0",
 	xml.description {xml.cdata! @index.info } 
 
 	@posts.each do |post|
+        next unless post.user
 	    xml.item do
 		xml.title {xml.cdata! post.title}
 		xml.link post_url(post, :subdomain => post.user.name, :format => :html) 
