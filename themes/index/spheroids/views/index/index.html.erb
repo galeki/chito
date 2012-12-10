@@ -1,5 +1,6 @@
 <% indices_cache do -%>
 <% posts do -%>
+    <% next unless @post.user -%>
     <div class="post_wrap" style="margin-bottom:10px;">
         <div class="post_avatar" style="float:left;padding-right:5px;">
             <%= link_to (image_tag @post.user.small_avatar_url), root_url(:subdomain => @post.user.name) %>
