@@ -203,7 +203,8 @@ module RainCity
           end
           
           s = sprintf "(%s & %i)=%i", self.bitflag_column, msk, msk
-          self.find :all, :conditions => [ s ]
+          #self.find :all, :conditions => [ s ]
+          self.where(s)
         end
       end
     end
