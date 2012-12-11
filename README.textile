@@ -8,9 +8,10 @@ h2. Demo
 
 h2. Requires
 
-* Ruby 1.9.2+
+* Ruby 1.9.3+
 * Rails 3.1+
 * MySQL or SQLite3 database engine
+* ImageMagick:http://www.imagemagick.org
 * Linux or MacOS system
 
 h2. Installing
@@ -96,7 +97,7 @@ h3. Plugin list
 All plugins of Chito is located at:
 
 <pre>
- vendor/plugins/chito_plugins/
+ plugins/
 </pre>
 
 Here is a simple intro of these plugins:
