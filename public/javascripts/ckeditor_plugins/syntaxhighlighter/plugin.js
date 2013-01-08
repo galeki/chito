@@ -45,6 +45,7 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                         var tbs_obj = frame_doc.getElementById('tbs')
                                         var title_obj = frame_doc.getElementById('c_t')
                                         var collapse_obj = frame_doc.getElementById('c_c')
+                                        var notoolbar_obj = frame_doc.getElementById('no_toolbar')
                                         var code_obj = frame_doc.getElementById('code');
                                         var code_text = "";
                                         if(code_obj && code_obj.value.length > 0)
@@ -57,6 +58,8 @@ CKEDITOR.plugins.add( 'syntaxhighlighter',
                                             html += "; collapse: true";
                                         if(tbs_obj.value.length > 0)
                                             html += "; tab-size: " + tbs_obj.value;
+                                        if(notoolbar_obj.checked)
+                                            html += "; toolbar: false";
         
                                         html += "\'";
                                         if(title_obj.value.length >0)
