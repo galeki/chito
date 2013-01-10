@@ -39,7 +39,7 @@ function show_editor()
     {
         customConfig : '/javascripts/ckeditor.custom.js',
         height : '100',
-        toolbar :  [ [ 'Bold', 'Italic', '-', 'NumberedList','BulletedList'], ['TextColor','BGColor'], ['Smiley'] ]
+        toolbar : 'Basic'
     });
 }
 function FCKeditor_OnComplete( editorInstance )

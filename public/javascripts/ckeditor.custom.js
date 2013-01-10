@@ -9,11 +9,17 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
 CKEDITOR.editorConfig = function(config) {
-
+        //config.baseHref = "";
+    // The minimum editor width, in pixels, when resizing it with the resize handle.
     config.resize_minWidth = 450;
-    config.skin = 'kama';
 
-    config.toolbar = [
+
+    // Define toolbars, you can remove or add buttons.
+    // List of all buttons is here: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full
+
+    config.toolbar_Basic = [ [ 'Bold', 'Italic', '-', 'NumberedList','BulletedList'], ['TextColor','BGColor'], ['Smiley'] ];
+
+    config.toolbar_Full = [
             ['Source'],
             ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
             ['Undo','Redo','Find'],
