@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     helper_method :chito_post_path
     helper_method :chito_post_url
     helper LaterDude::CalendarHelper
-    #rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
+    rescue_from(ActiveRecord::RecordNotFound) { error t("txt.errors.404.title1") }
     #rescue_from(NoMethodError) { error t("txt.errors.404.title2") }
 
     def _params
