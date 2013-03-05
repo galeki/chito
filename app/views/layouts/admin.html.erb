@@ -30,11 +30,12 @@
 		    <li><%= link_to t(:message_3, :scope => [:txt, :view, :layouts, :admin]), admin_path, :id => "index", :class => "" %></li>
 		    <li><%= link_to t(:message_4, :scope => [:txt, :view, :layouts, :admin]), new_admin_post_path, :id => 'write' %></li>
 		    <li><%= link_to t(:message_5, :scope => [:txt, :view, :layouts, :admin]), admin_posts_path, :id => 'manage' %></li>
-		    <li><%= link_to t(:message_6, :scope => [:txt, :view, :layouts, :admin]), admin_comments_path, :id => 'comments' %>
-			<%= if_has_notifier do
-			    (image_tag "/images/comment_notice.gif", :class =>'notice', 
-					:onclick => "go_to('#{@notifier_path}');") 
-			    end	%>
+            <% if has_notifier -%>
+		            <li><%= link_to t(:message_6, :scope => [:txt, :view, :layouts, :admin]), @notifier_path, :id => 'comments' %>
+                    <%= image_tag "/images/comment_notice.gif", :class =>'notice' %>
+            <% else -%>
+		            <li><%= link_to t(:message_6, :scope => [:txt, :view, :layouts, :admin]), admin_comments_path, :id => 'comments' %>
+			<% end	-%>
 		    </li>
 		    <li><%= link_to t(:message_8, :scope => [:txt, :view, :layouts, :admin]), {:controller => 'themes'}, :id => "appearance" %></li>
 		    <li><%= link_to t(:message_9, :scope => [:txt, :view, :layouts, :admin]), {:controller => 'settings', :action => 'info'}, :id => "settings" %></li>

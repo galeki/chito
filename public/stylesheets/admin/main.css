@@ -384,7 +384,7 @@ img.notice{
     top:-7px;
     z-index:9999;
     margin-right:-20px;
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 img.notice, x:-moz-any-link, x:default {
     float:right;
