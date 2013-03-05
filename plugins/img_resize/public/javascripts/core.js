@@ -45,8 +45,8 @@ function img_resize_lightbox(ow){
         $(this).attr({'width': w, 'height': newh});
         $(this).css({'width': w, 'height': newh});
 
-        $(this).wrap('<a href="' + $(this).attr('src') + '" class="lightbox"></a>');
+        $(this).wrap('<a href="' + $(this).attr('src') + '" class="chito_rlightbox"></a>');
     }
   });
- $('a.lightbox').rlightbox();
+ $(".chito_rlightbox").rlightbox({setPrefix: "chito"});
 }
