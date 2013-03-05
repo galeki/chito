@@ -96,7 +96,7 @@
             <% else -%>
 	        <td class="file_action_col delete">
                     <%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), 
-                                {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder[:name]} , 
+                        {:action => 'delete_dir', :type => @type, :folder => @folder, :name => folder[:name], :sort_by => params[:sort_by]} , 
                                 :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", 
                                 :confirm => t(:delete_folder?, :scope => [:txt, :view, :admin, :files], :folder => folder[:name]), :class => "delete" %>
                 </td>
@@ -129,7 +129,7 @@
             <% else -%>
 	        <td class="file_action_col delete">
                     <%= link_to t(:delete, :scope => [:txt, :view, :admin, :files]), 
-                            {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder}, 
+                        {:action => 'delete_file', :name => file[:name], :type => @type, :folder => @folder, :sort_by => params[:sort_by]}, 
                                 :remote => true, :method => :delete, :onclick => "$('#in_pro').show();", 
                                 :confirm => t(:delete_file?, :scope => [:txt, :view, :admin, :files], :file => file[:name]), :class => "delete"  %>
                 </td>
