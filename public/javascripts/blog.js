@@ -117,6 +117,11 @@ function thread_comment()
         $(this).find(".comments_count").html("");
     });
 }
+function show_spin(eid)
+{
+    $("#"+eid).html("<img alt='*' src='/images/hint.gif' />");
+}
+
 var rtlang = {'zh-CN':{}, 'en':{}};
 rtlang['en']['less than a minute'] = 'less than a minute';
 rtlang['en'][' minutes'] = ' minutes';
