@@ -9,11 +9,11 @@ xml.rss "version" => "2.0",
 	    xml.link root_url
 	end
 	xml.generator "Chito"
-	xml.description {xml.cdata! @user.info } 
+	xml.description {xml.cdata! @user.info.to_s } 
 
 	@posts.each do |post|
 	    xml.item do
-		xml.title {xml.cdata! post.title}
+		xml.title {xml.cdata! post.title.to_s}
 		xml.link post_url(post, :format => :html) 
 		if @user.rss_type == 'full'
 		    xml.description do
@@ -21,7 +21,7 @@ xml.rss "version" => "2.0",
 		    end
 		else
 		    xml.description do
-			    xml.cdata! rss_content(post.brief.html_safe)
+			    xml.cdata! rss_content(post.brief.to_s.html_safe)
 		    end
 		end
 		(xml.category {xml.cdata! post.category.name}) if post.category

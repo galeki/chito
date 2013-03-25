@@ -6,12 +6,12 @@ xml.rss "version" => "2.0",
 	xml.title {xml.cdata! @index.title }
 	xml.link "http://" + @index.bind_domain 
 	xml.generator "Chito"
-	xml.description {xml.cdata! @index.info } 
+	xml.description {xml.cdata! @index.info.to_s } 
 
 	@posts.each do |post|
         next unless post.user
 	    xml.item do
-		xml.title {xml.cdata! post.title}
+		xml.title {xml.cdata! post.title.to_s}
 		xml.link post_url(post, :subdomain => post.user.name, :format => :html) 
 		xml.description do
 		    xml.cdata! post.brief.html_safe
