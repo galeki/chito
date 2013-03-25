@@ -98,7 +98,7 @@ class BlogController < ApplicationController
     send_data @plugin_css, :type => 'text/css', :disposition => 'inline'   
   end  
 
-  def ajax_simple_captcha
+  def simple_captcha_ajax
     @theme = nil
     render :partial => 'simple_captcha/simple_captcha_ajax'
   end

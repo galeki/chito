@@ -26,11 +26,6 @@ gem 'rails', '3.2.13'
  gem 'simple-rss'
  gem 'later_dude', '>= 0.3.1'
 
- gem "galetahub-simple_captcha", :require => "simple_captcha"
-
- #gem "stickies", :git => "git://github.com/techbang/stickies.git"
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 #group :assets do

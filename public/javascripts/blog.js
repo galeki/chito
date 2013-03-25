@@ -49,7 +49,7 @@ function FCKeditor_OnComplete( editorInstance )
 }
 function re_captcha()
 {
-    $('#show_simple_captcha').load('/ajax_simple_captcha');
+    $('#show_simple_captcha').load('/simple_captcha_ajax');
 
 }
 function fix_comment_mode(){
