@@ -98,11 +98,6 @@ class BlogController < ApplicationController
     send_data @plugin_css, :type => 'text/css', :disposition => 'inline'   
   end  
 
-  def simple_captcha_ajax
-    @theme = nil
-    render :partial => 'simple_captcha/simple_captcha_ajax'
-  end
-
   protected
 
   def render(options = {}, extra_options = {}, &block)
