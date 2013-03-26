@@ -37,6 +37,9 @@ module Chito
         ckey << (options.delete(:type) || 'main')
         ckey << options.delete(:id)
         ckey << options.delete(:post)
+        if options[:tag_name]
+            options[:tag_name] = options[:tag_name].to_i(36).to_s
+        end
         if options[:in] == :all
             ckey << "*"
             options.delete(:in)
