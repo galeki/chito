@@ -47,8 +47,8 @@ module Chito
             ckey << (@now.to_i / options.delete(:in).to_i)
         end
         ckey << options.to_param unless options.blank?
-        key = ckey.compact.join('-')
-        key.gsub!('/', '-')
+        key = ckey.compact.join('/')
+        #key.gsub!('/', '-')
         key.gsub!('%', '-')
         key
     end    
