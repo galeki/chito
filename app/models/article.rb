@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
     include ArticlePlugin
 
     def self.new_posts(num=20)
-        where("articles.bit_opt = 0 and articles.rank >= 0").order('articles.published_at DESC').limit(num)
+        where("articles.bit_opt = 0 and articles.rank >= 1").order('articles.published_at DESC').limit(num)
     end
 
     def self.new_ranked_posts(options)

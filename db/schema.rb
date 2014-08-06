@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120127190545) do
+ActiveRecord::Schema.define(:version => 20110604070849) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(:version => 20120127190545) do
     t.integer  "rank",              :default => 0
     t.integer  "index_id"
     t.datetime "published_at"
-    t.datetime "created_on"
-    t.datetime "updated_on"
   end
 
   add_index "articles", ["bit_opt"], :name => "index_articles_on_bit_opt"
@@ -116,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20120127190545) do
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
@@ -126,8 +124,8 @@ ActiveRecord::Schema.define(:version => 20120127190545) do
   create_table "simple_captcha_data", :force => true do |t|
     t.string   "key",        :limit => 40
     t.string   "value",      :limit => 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "sites", :force => true do |t|
