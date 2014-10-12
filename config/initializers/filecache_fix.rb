@@ -27,15 +27,15 @@ module ActiveSupport
 
 
       def delete_matched(matcher, options = nil)
-        search_dir(@cache_path) do |f|
-          if f =~ matcher
-            begin
-              File.delete(f)
-            rescue SystemCallError => e
-              # If there's no cache, then there's nothing to complain about
-            end
-          end
-        end
+        #search_dir(@cache_path) do |f|
+        #  if f =~ matcher
+        #    begin
+        #      File.delete(f)
+        #    rescue SystemCallError => e
+        #      # If there's no cache, then there's nothing to complain about
+        #    end
+        #  end
+        #end
       end
 
       def read_entry(name, options)
@@ -51,9 +51,16 @@ module ActiveSupport
       end
 
       def delete_entry(name, options)
-          File.delete(real_file_path(name))
+          if name =~ /\*$/
+            s=File.join(@cache_path,  name)
+            #puts "====================#{s}========================"
+            FileUtils.rm_f(Dir.glob(s))          
+          else
+            File.delete(real_file_path(name))
+          end
+          
           rescue SystemCallError => e
-              # If there's no cache, then there's nothing to complain about
+                # If there's no cache, then there's nothing to complain about
       end
 
       # Delete empty directories in the cache.

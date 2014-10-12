@@ -22,7 +22,7 @@ module Chito
 
     def chito_cache_expire(options={})
         ckey = chito_cache_key(options)
-        ckey = Regexp.new(ckey) if ckey =~ /\*$/
+        #ckey = Regexp.new(ckey) if ckey =~ /\*$/
         expire_fragment ckey
     end
 
