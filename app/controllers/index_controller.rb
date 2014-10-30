@@ -5,17 +5,20 @@ class IndexController < ApplicationController
 
   def index
     get_index_needed
-    @posts = Article.new_ranked_posts :rank => 0, 
+    respond_to do |format|
+        format.html do
+            @posts = Article.new_ranked_posts :rank => 0, 
                                           :index_id => @index.id,
                                           :keyword => params[:is],
                                           :page => params[:page], 
                                           :per_page => @index.new_post_number.to_num(10)
-    respond_to do |format|
-        format.html do
             get_index_sidebars
             do_something :before_index_show
         end
-        format.rss
+
+        format.rss do
+            @posts = Article.new_posts(5).where("articles.index_id = ?", @index.id)
+        end
     end
   end
 
