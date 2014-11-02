@@ -6,4 +6,5 @@ db/*.sqlite3
 vendor/gems/*
 vendor/cache/*
 *.swo
+*.swp
 .sass-cache/
