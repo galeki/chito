@@ -170,6 +170,11 @@ class User < ActiveRecord::Base
                 []
     end
 
+    def find_messages(options={})
+        temp = self.messages
+        temp.paginate(:per_page => options[:per_page], :page => options[:page])
+    end
+
     def find_feedbacks(options={})
         temp = Feedback.where("feedbacks.user_id = ?", self.id)
         case options[:type]

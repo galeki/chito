@@ -6,7 +6,9 @@ class BlogController < ApplicationController
     #protect_from_forgery  :only => [:add, :login]
 
   def guestbook
-    @comments = @user.messages unless chito_cache_enable(:id => :guestbook)
+    unless chito_cache_enable(_params.merge(:id => :guestbook, :page=> params[:page] || 1))
+        @comments = @user.find_messages(:per_page => 5, :page=> params[:page])
+    end
     @comment = Feedback.new
   end
 

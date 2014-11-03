@@ -29,10 +29,16 @@
 </div>
 <%= render :partial => 'comments/trigger', :locals => {:url => messages_path} %>
 <br />
-<% chito_cache :id => :guestbook do -%>
+<style>.comments_count{display:none;}</style>
+<% chito_cache _params.merge(:id => :guestbook, :page=> params[:page] || 1) do -%>
     <div id="comments">
 	<%= comments %> 
     </div>
+
+    <div id="pagilinks">
+      <%= will_paginate @comments, :previous_label => t("txt.prev_page"), :next_label => t("txt.next_page") %>
+    </div>
+
 <% end -%>
 
 <% end -%>

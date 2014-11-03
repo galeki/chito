@@ -12,7 +12,7 @@ class MessagesController < CommentsController
         @render_options = {:position => :top}
         call_filter
         @comment.save 
-        chito_cache_expire :id => :guestbook
+        chito_cache_expire :id => :guestbook, :in => :all
         sidebar_cache_expire :new_messages
         render "comment_update"
 
