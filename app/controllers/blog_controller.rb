@@ -7,7 +7,7 @@ class BlogController < ApplicationController
 
   def guestbook
     unless chito_cache_enable(_params.merge(:id => :guestbook, :page=> params[:page] || 1))
-        @comments = @user.find_messages(:per_page => 5, :page=> params[:page])
+        @comments = @user.find_messages(:per_page => 20, :page=> params[:page])
     end
     @comment = Feedback.new
   end
